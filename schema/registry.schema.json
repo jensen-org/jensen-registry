@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jensen-org/jensen-registry/schema/registry.schema.json",
+  "title": "Jensen registry",
+  "description": "Entry files under skills/ and mcp/, the generated index.yaml, and upstreams.yaml.",
+  "$defs": {
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9._-]*$", "maxLength": 80 },
+    "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+    "env": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "secret"],
+        "properties": {
+          "name": { "type": "string", "pattern": "^[A-Z][A-Z0-9_]*$" },
+          "secret": { "type": "boolean" },
+          "optional": { "type": "boolean" },
+          "description": { "type": "string" }
+        }
+      }
+    },
+    "skillEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "repo", "path", "ref", "advised"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "repo": { "type": "string", "pattern": "^[A-Za-z0-9_.-]+/[A-Za-z0-9_.-]+$" },
+        "path": { "type": "string", "minLength": 1 },
+        "ref": { "type": "string", "minLength": 1 },
+        "provider": { "type": "string" },
+        "license": { "type": "string" },
+        "advised": { "type": "boolean" },
+        "tags": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "mcpEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "description", "transport", "advised"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "description": { "type": "string", "minLength": 1 },
+        "provider": { "type": "string" },
+        "license": { "type": "string" },
+        "advised": { "type": "boolean" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "transport": { "enum": ["stdio", "http"] },
+        "url": { "type": "string", "pattern": "^https://" },
+        "package": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ecosystem", "name", "bin"],
+          "properties": {
+            "ecosystem": { "enum": ["npm", "pypi"] },
+            "name": { "type": "string", "minLength": 1 },
+            "version": { "type": "string", "pattern": "^[0-9][0-9A-Za-z.+-]*$" },
+            "bin": { "type": "string", "minLength": 1 },
+            "args": { "type": "array", "items": { "type": "string" } }
+          }
+        },
+        "env": { "$ref": "#/$defs/env" }
+      },
+      "allOf": [
+        { "if": { "properties": { "transport": { "const": "stdio" } } }, "then": { "required": ["package"], "properties": { "url": false } } },
+        { "if": { "properties": { "transport": { "const": "http" } } }, "then": { "required": ["url"], "properties": { "package": false } } }
+      ]
+    },
+    "indexSkill": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "description", "advised", "repo", "path", "ref", "commit", "content_hash", "files"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "provider": { "type": "string" },
+        "license": { "type": "string" },
+        "advised": { "type": "boolean" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "repo": { "type": "string" },
+        "path": { "type": "string" },
+        "ref": { "type": "string" },
+        "commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+        "content_hash": { "$ref": "#/$defs/sha256" },
+        "files": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "url", "sha256", "size"],
+            "properties": {
+              "path": { "type": "string" },
+              "url": { "type": "string", "pattern": "^https://" },
+              "sha256": { "$ref": "#/$defs/sha256" },
+              "size": { "type": "integer", "minimum": 0 }
+            }
+          }
+        }
+      }
+    },
+    "indexMcp": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "description", "advised", "transport", "env", "tools"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "description": { "type": "string" },
+        "provider": { "type": "string" },
+        "license": { "type": "string" },
+        "advised": { "type": "boolean" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "transport": { "enum": ["stdio", "http"] },
+        "url": { "type": "string" },
+        "package": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["ecosystem", "name", "version", "purl", "bin", "lockfile"],
+          "properties": {
+            "ecosystem": { "enum": ["npm", "pypi"] },
+            "name": { "type": "string" },
+            "version": { "type": "string" },
+            "purl": { "type": "string", "pattern": "^pkg:(npm|pypi)/" },
+            "bin": { "type": "string" },
+            "args": { "type": "array", "items": { "type": "string" } },
+            "lockfile": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["path", "url", "sha256"],
+              "properties": {
+                "path": { "type": "string" },
+                "url": { "type": "string", "pattern": "^https://" },
+                "sha256": { "$ref": "#/$defs/sha256" }
+              }
+            }
+          }
+        },
+        "env": { "$ref": "#/$defs/env" },
+        "tools": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["name", "description"],
+            "properties": {
+              "name": { "type": "string" },
+              "description": { "type": "string" },
+              "input_schema": { "type": "object" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
