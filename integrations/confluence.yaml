@@ -1,0 +1,29 @@
+id: confluence
+name: Confluence
+description: Search and read Confluence pages and spaces so sessions can follow the team's written decisions.
+provider: Atlassian
+advised: false
+tags:
+  - docs
+category: docs
+icon:
+  simple_icons: confluence
+auth:
+  - method: oauth
+    label: Sign in with Atlassian
+  - method: api_key
+    label: Personal API token
+    fields:
+      - name: ATLASSIAN_EMAIL
+        secret: false
+        description: The email address of the Atlassian account that owns the token.
+      - name: ATLASSIAN_API_TOKEN
+        secret: true
+        description: A personal API token created in your Atlassian account.
+mcp:
+  - id: atlassian
+    note: Hosted by Atlassian, signed in with OAuth.
+    default: true
+  - id: atlassian-token
+    note: Hosted by Atlassian, signed in with a personal API token your admin has enabled.
+permissions: []

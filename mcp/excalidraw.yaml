@@ -1,0 +1,21 @@
+id: excalidraw
+description: Draw, edit and export Excalidraw flowcharts and architecture diagrams on your machine, to .excalidraw, SVG or PNG files you can embed in Markdown.
+provider: yctimlin
+license: MIT
+advised: true
+tags:
+  - diagrams
+transport: stdio
+package:
+  ecosystem: npm
+  name: mcp-excalidraw-server
+  bin: mcp-excalidraw-server
+env:
+  - name: EXCALIDRAW_EXPORT_DIR
+    secret: false
+    optional: true
+    description: The only directory the server may write exported files to. Defaults to the working directory.
+  - name: PORT
+    secret: false
+    optional: true
+    description: The local port of the canvas the server starts. Defaults to 3000.

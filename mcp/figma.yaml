@@ -1,0 +1,10 @@
+id: figma
+description: Read Figma designs through Figma's hosted server, signed in with OAuth. The hosted server limits how many tool calls a plan may make each month.
+provider: Figma
+advised: false
+tags:
+  - design
+transport: http
+url: https://mcp.figma.com/mcp
+oauth: true
+env: []

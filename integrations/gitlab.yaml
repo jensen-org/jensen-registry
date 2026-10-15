@@ -1,0 +1,75 @@
+id: gitlab
+name: GitLab
+description: Issues, merge requests, pipelines and scheduling for projects on GitLab and self hosted GitLab.
+provider: GitLab
+advised: true
+tags:
+  - code-hosting
+category: code-hosting
+icon:
+  simple_icons: gitlab
+hosts:
+  - gitlab.com
+native: forge.gitlab_rest
+auth:
+  - method: api_key
+    label: Personal access token
+    fields:
+      - name: GITLAB_TOKEN
+        secret: true
+        description: A personal or project access token with the api scope.
+    scopes:
+      - api
+  - method: cli_login
+    label: Use the command line login
+permissions:
+  - action: issue create
+    label: Create issues
+    hint: Open issues from plans and triage.
+    group: Issues
+    write: true
+  - action: issue comment
+    label: Comment on issues
+    hint: Post comments to the tracker.
+    group: Issues
+    write: true
+  - action: issue labels
+    label: Change issue labels
+    hint: Add or remove issue labels.
+    group: Issues
+    write: true
+  - action: issue state
+    label: Close or reopen issues
+    hint: Mark issues done or reopen them.
+    group: Issues
+    write: true
+  - action: issue assign
+    label: Assign yourself to issues
+    hint: Take or drop issues and bugs.
+    group: Issues
+    write: true
+  - action: issue fields
+    label: Change issue fields
+    hint: Set type, priority, and parent.
+    group: Issues
+    write: true
+  - action: work item schedule
+    label: Schedule work items
+    hint: Set milestone, dates, weight, and health.
+    group: Issues
+    write: true
+  - action: merge request create
+    label: Create merge requests
+    hint: Open draft merge requests from sessions.
+    group: Merge requests
+    write: true
+  - action: merge request comment
+    label: Comment on merge requests
+    hint: Post reviews and notes.
+    group: Merge requests
+    write: true
+  - action: merge request approve
+    label: Approve merge requests
+    hint: Approve merge requests and pull requests.
+    group: Merge requests
+    write: true

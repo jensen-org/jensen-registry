@@ -1,0 +1,12 @@
+id: atlassian
+description: Search and work with Jira and Confluence through Atlassian's hosted server, signed in with OAuth 2.1.
+provider: Atlassian
+license: Apache-2.0
+advised: false
+tags:
+  - work-tracking
+  - docs
+transport: http
+url: https://mcp.atlassian.com/v2/mcp
+oauth: true
+env: []

@@ -1,6 +1,19 @@
-import { existsSync, readFileSync } from "node:fs";
+import { existsSync, readFileSync, readdirSync } from "node:fs";
 import { join } from "node:path";
-import { CHECKSUMMED, ROOT, SCHEMA_VERSION, checksumsText, contentHash, loadEntries, readYaml, sha256, validator } from "./lib.mjs";
+import {
+  CHECKSUMMED,
+  ROOT,
+  SCHEMA_VERSION,
+  checksumsText,
+  contentHash,
+  integrationProblems,
+  loadEntries,
+  mcpProblems,
+  readYaml,
+  sha256,
+  validator,
+} from "./lib.mjs";
+import { canonicalSvg, checkCanonicalBytes, simpleIcons } from "./icons.mjs";
 
 const online = process.argv.includes("--online");
 const problems = [];
@@ -14,8 +27,21 @@ for (const { path, entry } of skillEntries) {
   if (path !== `skills/${entry.id}.yaml`) fail(`${path}: the file name must be the id`);
 }
 for (const { path, entry } of mcpEntries) {
-  problems.push(...check.mcpEntry(entry, path));
+  const found = check.mcpEntry(entry, path);
+  problems.push(...found);
+  if (!found.length) problems.push(...mcpProblems(entry, path));
   if (path !== `mcp/${entry.id}.yaml`) fail(`${path}: the file name must be the id`);
+}
+const integrationEntries = existsSync(join(ROOT, "integrations")) ? loadEntries("integrations") : [];
+const mcpIds = new Map(mcpEntries.map(({ entry }) => [entry.id, entry]));
+for (const { path, entry } of integrationEntries) {
+  const found = check.integrationEntry(entry, path);
+  problems.push(...found);
+  if (!found.length) problems.push(...integrationProblems(entry, path, mcpIds));
+  if (path !== `integrations/${entry.id}.yaml`) fail(`${path}: the file name must be the id`);
+}
+for (const name of existsSync(join(ROOT, "integrations")) ? readdirSync(join(ROOT, "integrations")) : []) {
+  if (!name.endsWith(".yaml")) fail(`integrations/${name}: only .yaml entries belong here`);
 }
 
 const index = readYaml("index.yaml");
@@ -51,7 +77,7 @@ for (const server of index.mcp ?? []) {
     fail(`index.yaml: mcp server ${server.id} has no entry file`);
     continue;
   }
-  for (const key of ["transport", "advised", "description", "url", "env"]) {
+  for (const key of ["transport", "advised", "description", "url", "env", "headers", "oauth"]) {
     same(`index.yaml mcp ${server.id} ${key}`, server[key] ?? (key === "env" ? [] : undefined), source[key] ?? (key === "env" ? [] : undefined));
   }
   if (server.package) {
@@ -65,6 +91,56 @@ for (const server of index.mcp ?? []) {
 }
 for (const { entry } of mcpEntries) {
   if (!(index.mcp ?? []).some((server) => server.id === entry.id)) fail(`index.yaml: missing mcp server ${entry.id}, run scripts/track.mjs`);
+}
+
+const icons = simpleIcons();
+const usedIcons = new Set();
+for (const item of index.integrations ?? []) {
+  problems.push(...check.indexIntegration(item, `index.yaml integrations/${item.id}`));
+  const source = integrationEntries.find(({ entry }) => entry.id === item.id)?.entry;
+  if (!source) {
+    fail(`index.yaml: integration ${item.id} has no entry file`);
+    continue;
+  }
+  for (const key of ["name", "description", "category", "advised", "default_on", "provider", "hosts", "native", "auth"]) {
+    same(`index.yaml integration ${item.id} ${key}`, item[key], source[key]);
+  }
+  same(`index.yaml integration ${item.id} mcp`, item.mcp, source.mcp ?? []);
+  same(`index.yaml integration ${item.id} permissions`, item.permissions, source.permissions ?? []);
+  const icon = item.icon;
+  const expectedPath = source.icon.simple_icons ? `icons/${source.icon.simple_icons}.svg` : `icons/local/${source.id}.svg`;
+  if (icon.path !== expectedPath) fail(`index.yaml: integration ${item.id} icon path must be ${expectedPath}`);
+  usedIcons.add(icon.path);
+  if (!existsSync(join(ROOT, icon.path))) {
+    fail(`index.yaml: integration ${item.id} icon ${icon.path} is missing`);
+    continue;
+  }
+  const bytes = readFileSync(join(ROOT, icon.path));
+  try {
+    checkCanonicalBytes(bytes);
+    if (source.icon.simple_icons) {
+      const upstream = icons.resolve(source.icon.simple_icons);
+      if (bytes.toString("utf8") !== canonicalSvg(upstream.d)) fail(`${icon.path} does not match simple-icons ${icons.version}`);
+      if (icon.hex !== upstream.hex) fail(`index.yaml: integration ${item.id} icon color does not match simple-icons`);
+      if (icon.source !== `simple-icons@${icons.version}`) fail(`index.yaml: integration ${item.id} icon source is stale, run scripts/track.mjs`);
+    } else if (icon.hex !== source.icon.hex) {
+      fail(`index.yaml: integration ${item.id} icon color differs from its entry`);
+    }
+  } catch (error) {
+    fail(`${icon.path}: ${error.message}`);
+  }
+  if (sha256(bytes) !== icon.sha256 || bytes.length !== icon.size) fail(`index.yaml: integration ${item.id} icon hash or size does not match`);
+  if (icon.url !== `https://raw.githubusercontent.com/jensen-org/jensen-registry/main/${icon.path}`) fail(`index.yaml: integration ${item.id} icon url is not the registry's own`);
+}
+for (const { entry } of integrationEntries) {
+  if (!(index.integrations ?? []).some((item) => item.id === entry.id)) fail(`index.yaml: missing integration ${entry.id}, run scripts/track.mjs`);
+}
+if (existsSync(join(ROOT, "icons"))) {
+  const walk = (dir) =>
+    readdirSync(join(ROOT, dir), { withFileTypes: true }).flatMap((item) =>
+      item.isDirectory() ? walk(`${dir}/${item.name}`) : [`${dir}/${item.name}`],
+    );
+  for (const path of walk("icons")) if (!usedIcons.has(path)) fail(`${path}: no integration uses this icon`);
 }
 
 const expected = checksumsText(CHECKSUMMED);
@@ -87,4 +163,4 @@ if (problems.length) {
   console.error(problems.join("\n"));
   process.exit(1);
 }
-console.log(`ok: ${index.skills?.length ?? 0} skills, ${index.mcp?.length ?? 0} mcp servers`);
+console.log(`ok: ${index.skills?.length ?? 0} skills, ${index.mcp?.length ?? 0} mcp servers, ${index.integrations?.length ?? 0} integrations`);

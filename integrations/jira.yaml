@@ -1,0 +1,29 @@
+id: jira
+name: Jira
+description: Search and read Jira issues, projects and boards to give sessions the context behind the work.
+provider: Atlassian
+advised: false
+tags:
+  - work-tracking
+category: work-tracking
+icon:
+  simple_icons: jira
+auth:
+  - method: oauth
+    label: Sign in with Atlassian
+  - method: api_key
+    label: Personal API token
+    fields:
+      - name: ATLASSIAN_EMAIL
+        secret: false
+        description: The email address of the Atlassian account that owns the token.
+      - name: ATLASSIAN_API_TOKEN
+        secret: true
+        description: A personal API token created in your Atlassian account.
+mcp:
+  - id: atlassian
+    note: Hosted by Atlassian, signed in with OAuth.
+    default: true
+  - id: atlassian-token
+    note: Hosted by Atlassian, signed in with a personal API token your admin has enabled.
+permissions: []
