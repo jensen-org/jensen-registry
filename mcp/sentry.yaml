@@ -4,6 +4,8 @@ provider: Sentry
 advised: false
 tags:
   - observability
+serves:
+  - sentry
 transport: http
 url: https://mcp.sentry.dev/mcp
 oauth: true

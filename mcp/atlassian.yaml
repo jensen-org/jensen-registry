@@ -6,6 +6,9 @@ advised: false
 tags:
   - work-tracking
   - docs
+serves:
+  - jira
+  - confluence
 transport: http
 url: https://mcp.atlassian.com/v2/mcp
 oauth: true

@@ -11,8 +11,5 @@ icon:
   simple_icons: excalidraw
 auth:
   - method: none
-mcp:
-  - id: excalidraw
-    note: Runs on your machine. Exports .excalidraw, SVG and PNG files into your project.
-    default: true
+default_mcp: excalidraw
 permissions: []

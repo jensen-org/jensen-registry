@@ -821,6 +821,9 @@ mcp:
     tags:
       - work-tracking
       - docs
+    serves:
+      - jira
+      - confluence
     transport: http
     url: https://mcp.atlassian.com/v2/mcp
     env:
@@ -844,6 +847,9 @@ mcp:
     tags:
       - work-tracking
       - docs
+    serves:
+      - jira
+      - confluence
     transport: http
     url: https://mcp.atlassian.com/v2/mcp
     env: []
@@ -944,6 +950,8 @@ mcp:
     advised: true
     tags:
       - diagrams
+    serves:
+      - excalidraw
     transport: stdio
     package:
       ecosystem: npm
@@ -952,8 +960,8 @@ mcp:
       purl: pkg:npm/mcp-excalidraw-server@2.1.2
       bin: mcp-excalidraw-server
       lockfile:
-        path: locks/mcp/excalidraw/package-lock.json
-        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/locks/mcp/excalidraw/package-lock.json
+        path: mcp/locks/excalidraw/package-lock.json
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/mcp/locks/excalidraw/package-lock.json
         sha256: e34afb7ddd5fab1916626445d6b0006f05f0e664810b2bb2976966e3521db7fd
     env:
       - name: EXCALIDRAW_EXPORT_DIR
@@ -1538,8 +1546,8 @@ mcp:
       purl: pkg:pypi/mcp-server-fetch@2026.10.10
       bin: mcp-server-fetch
       lockfile:
-        path: locks/mcp/fetch/requirements.txt
-        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/locks/mcp/fetch/requirements.txt
+        path: mcp/locks/fetch/requirements.txt
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/mcp/locks/fetch/requirements.txt
         sha256: 0e95408775500873869c3022317d505d1aca47e6740da4ca993b53e8d37f88da
     env: []
     tools:
@@ -1586,6 +1594,8 @@ mcp:
     advised: false
     tags:
       - design
+    serves:
+      - figma
     transport: stdio
     package:
       ecosystem: npm
@@ -1596,8 +1606,8 @@ mcp:
       args:
         - --stdio
       lockfile:
-        path: locks/mcp/figma-developer/package-lock.json
-        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/locks/mcp/figma-developer/package-lock.json
+        path: mcp/locks/figma-developer/package-lock.json
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/mcp/locks/figma-developer/package-lock.json
         sha256: 22893864fcea2a7002660b4847d5353c5668dff4fa7b5d34f10c4a03192ff4f8
     env:
       - name: FIGMA_API_KEY
@@ -1610,6 +1620,8 @@ mcp:
     advised: false
     tags:
       - design
+    serves:
+      - figma
     transport: http
     url: https://mcp.figma.com/mcp
     env: []
@@ -1630,8 +1642,8 @@ mcp:
       purl: pkg:npm/%40modelcontextprotocol/server-memory@1.0.0
       bin: mcp-server-memory
       lockfile:
-        path: locks/mcp/memory/package-lock.json
-        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/locks/mcp/memory/package-lock.json
+        path: mcp/locks/memory/package-lock.json
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/mcp/locks/memory/package-lock.json
         sha256: de41099ae5f9ca9e0b2d08e8f176ffa29e0e0634d64570971b2f8e3764d2cdcd
     env: []
     tools:
@@ -1824,8 +1836,8 @@ mcp:
       purl: pkg:npm/%40playwright/mcp@0.0.83
       bin: playwright-mcp
       lockfile:
-        path: locks/mcp/playwright/package-lock.json
-        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/locks/mcp/playwright/package-lock.json
+        path: mcp/locks/playwright/package-lock.json
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/mcp/locks/playwright/package-lock.json
         sha256: 70ad07bc4b6dae6796b475936c57e10526133f053966ae9c4d21261a77979ab5
     env: []
     tools:
@@ -2362,6 +2374,8 @@ mcp:
     advised: false
     tags:
       - observability
+    serves:
+      - sentry
     transport: http
     url: https://mcp.sentry.dev/mcp
     env: []
@@ -2388,17 +2402,17 @@ integrations:
           - name: ATLASSIAN_API_TOKEN
             secret: true
             description: A personal API token created in your Atlassian account.
+    default_mcp: atlassian
     mcp:
       - id: atlassian
-        note: Hosted by Atlassian, signed in with OAuth.
         default: true
       - id: atlassian-token
-        note: Hosted by Atlassian, signed in with a personal API token your admin has enabled.
+        default: false
     permissions: []
     icon:
       source: simple-icons@16.35.0
-      path: icons/confluence.svg
-      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/icons/confluence.svg
+      path: integrations/icons/confluence.svg
+      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/integrations/icons/confluence.svg
       sha256: 230d2f9b756187e861d0dfc750a51a1c944a3c18f80196208fb435af05b7916d
       size: 696
       hex: 172B4D
@@ -2413,15 +2427,15 @@ integrations:
     category: design
     auth:
       - method: none
+    default_mcp: excalidraw
     mcp:
       - id: excalidraw
-        note: Runs on your machine. Exports .excalidraw, SVG and PNG files into your project.
         default: true
     permissions: []
     icon:
       source: simple-icons@16.35.0
-      path: icons/excalidraw.svg
-      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/icons/excalidraw.svg
+      path: integrations/icons/excalidraw.svg
+      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/integrations/icons/excalidraw.svg
       sha256: 8e998b918b7c212c61e58a46a65f2544cfcfd43362f05ea3f4c7878cf36b360a
       size: 5232
       hex: 6965DB
@@ -2442,17 +2456,17 @@ integrations:
           - name: FIGMA_API_KEY
             secret: true
             description: A Figma personal access token.
+    default_mcp: figma
     mcp:
       - id: figma
-        note: Hosted by Figma, signed in with OAuth. The hosted server limits tool calls each month.
         default: true
       - id: figma-developer
-        note: Runs on your machine with your own token, with no monthly call limit.
+        default: false
     permissions: []
     icon:
       source: simple-icons@16.35.0
-      path: icons/figma.svg
-      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/icons/figma.svg
+      path: integrations/icons/figma.svg
+      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/integrations/icons/figma.svg
       sha256: 70cc881276c4869b21be94375d33f0f059a628ce31d136392faf57bd03041e5e
       size: 1063
       hex: F24E1E
@@ -2534,8 +2548,8 @@ integrations:
         write: true
     icon:
       source: simple-icons@16.35.0
-      path: icons/github.svg
-      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/icons/github.svg
+      path: integrations/icons/github.svg
+      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/integrations/icons/github.svg
       sha256: e327163d1e9b90a52a53da7d8207e70d64c4ed90e3cd13f3eb1a8cc9939634de
       size: 791
       hex: "181717"
@@ -2615,8 +2629,8 @@ integrations:
         write: true
     icon:
       source: simple-icons@16.35.0
-      path: icons/gitlab.svg
-      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/icons/gitlab.svg
+      path: integrations/icons/gitlab.svg
+      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/integrations/icons/gitlab.svg
       sha256: 7739dfcae6eea7517ee5f0f38a3f2a319cd0e14b3a8178147c72278ac71d7782
       size: 542
       hex: FC6D26
@@ -2640,17 +2654,17 @@ integrations:
           - name: ATLASSIAN_API_TOKEN
             secret: true
             description: A personal API token created in your Atlassian account.
+    default_mcp: atlassian
     mcp:
       - id: atlassian
-        note: Hosted by Atlassian, signed in with OAuth.
         default: true
       - id: atlassian-token
-        note: Hosted by Atlassian, signed in with a personal API token your admin has enabled.
+        default: false
     permissions: []
     icon:
       source: simple-icons@16.35.0
-      path: icons/jira.svg
-      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/icons/jira.svg
+      path: integrations/icons/jira.svg
+      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/integrations/icons/jira.svg
       sha256: 7ae70ef7bb541dee4f1d68760fe4bb1febf532f6d4311eeacbfe2bbe8a89b4e2
       size: 449
       hex: 0052CC
@@ -2665,15 +2679,15 @@ integrations:
     auth:
       - method: oauth
         label: Sign in with Sentry
+    default_mcp: sentry
     mcp:
       - id: sentry
-        note: Hosted by Sentry, signed in with OAuth.
         default: true
     permissions: []
     icon:
       source: simple-icons@16.35.0
-      path: icons/sentry.svg
-      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/icons/sentry.svg
+      path: integrations/icons/sentry.svg
+      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/integrations/icons/sentry.svg
       sha256: bd18cc0f7802508cd8fbe1e9194767d1d41e6bc9457d56de1b838f87aaed6686
       size: 655
       hex: 362D59

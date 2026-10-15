@@ -6,8 +6,8 @@
     "node": ">=20"
   },
   "scripts": {
-    "validate": "node scripts/validate.mjs",
-    "track": "node scripts/track.mjs"
+    "validate": "node registry.mjs validate",
+    "track": "node registry.mjs track"
   },
   "dependencies": {
     "ajv": "8.20.0",
