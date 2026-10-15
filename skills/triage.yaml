@@ -1,0 +1,8 @@
+id: triage
+repo: mattpocock/skills
+path: skills/engineering/triage
+ref: main
+provider: Matt Pocock
+advised: true
+tags:
+  - engineering

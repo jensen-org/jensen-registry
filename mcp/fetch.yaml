@@ -1,0 +1,13 @@
+id: fetch
+description: Fetch a web page and return it as markdown for the model to read.
+provider: Model Context Protocol
+license: MIT
+advised: true
+tags:
+  - web
+transport: stdio
+package:
+  ecosystem: pypi
+  name: mcp-server-fetch
+  bin: mcp-server-fetch
+env: []

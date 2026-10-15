@@ -1,1 +1,13 @@
 * @pallandir
+/.github/ @pallandir
+/scripts/ @pallandir
+/schema/ @pallandir
+/locks/ @pallandir
+/skills/ @pallandir
+/mcp/ @pallandir
+/index.yaml @pallandir
+/tools.yaml @pallandir
+/upstreams.yaml @pallandir
+/checksums.txt @pallandir
+/package.json @pallandir
+/package-lock.json @pallandir

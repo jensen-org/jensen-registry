@@ -1,0 +1,14 @@
+{
+  "name": "jensen-registry",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=20" },
+  "scripts": {
+    "validate": "node scripts/validate.mjs",
+    "track": "node scripts/track.mjs"
+  },
+  "dependencies": {
+    "ajv": "8.20.0",
+    "yaml": "2.9.1"
+  }
+}

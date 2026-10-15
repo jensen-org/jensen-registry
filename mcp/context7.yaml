@@ -1,0 +1,14 @@
+id: context7
+description: Look up current library documentation and code examples by library name.
+provider: Upstash
+license: MIT
+advised: false
+tags:
+  - docs
+transport: http
+url: https://mcp.context7.com/mcp
+env:
+  - name: CONTEXT7_API_KEY
+    secret: true
+    description: API key sent as a bearer token. Optional for the free tier.
+    optional: true

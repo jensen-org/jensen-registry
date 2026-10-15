@@ -1,0 +1,13 @@
+id: memory
+description: Keep a small knowledge graph of entities and relations that persists between sessions.
+provider: Model Context Protocol
+license: MIT
+advised: false
+tags:
+  - memory
+transport: stdio
+package:
+  ecosystem: npm
+  name: "@modelcontextprotocol/server-memory"
+  bin: mcp-server-memory
+env: []

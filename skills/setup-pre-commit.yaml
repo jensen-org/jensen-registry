@@ -1,0 +1,8 @@
+id: setup-pre-commit
+repo: mattpocock/skills
+path: skills/misc/setup-pre-commit
+ref: main
+provider: Matt Pocock
+advised: false
+tags:
+  - misc

@@ -1,0 +1,8 @@
+id: git-guardrails-claude-code
+repo: mattpocock/skills
+path: skills/misc/git-guardrails-claude-code
+ref: main
+provider: Matt Pocock
+advised: false
+tags:
+  - misc
