@@ -1,0 +1,1225 @@
+schema_version: 1
+languages:
+  - id: python
+    extensions:
+      - py
+      - pyi
+    catalog_labels:
+      - Python
+  - id: go
+    extensions:
+      - go
+    catalog_labels:
+      - Go
+  - id: rust
+    extensions:
+      - rs
+    catalog_labels:
+      - Rust
+  - id: typescript
+    extensions:
+      - ts
+      - mts
+      - cts
+    catalog_labels:
+      - TypeScript
+  - id: typescriptreact
+    extensions:
+      - tsx
+    catalog_labels:
+      - TypeScript
+  - id: javascript
+    extensions:
+      - js
+      - cjs
+      - mjs
+    catalog_labels:
+      - JavaScript
+  - id: javascriptreact
+    extensions:
+      - jsx
+    catalog_labels:
+      - JavaScript
+  - id: json
+    extensions:
+      - json
+    catalog_labels:
+      - JSON
+  - id: jsonc
+    extensions:
+      - jsonc
+  - id: css
+    extensions:
+      - css
+    catalog_labels:
+      - CSS
+  - id: scss
+    extensions:
+      - scss
+    catalog_labels:
+      - SCSS
+  - id: less
+    extensions:
+      - less
+    catalog_labels:
+      - Less
+  - id: html
+    extensions:
+      - htm
+      - html
+    catalog_labels:
+      - HTML
+  - id: vue
+    extensions:
+      - vue
+    catalog_labels:
+      - Vue
+  - id: markdown
+    extensions:
+      - markdown
+      - md
+    catalog_labels:
+      - Markdown
+  - id: yaml
+    extensions:
+      - yaml
+      - yml
+    catalog_labels:
+      - YAML
+  - id: graphql
+    extensions:
+      - gql
+      - graphql
+    catalog_labels:
+      - GraphQL
+  - id: toml
+    extensions:
+      - toml
+    catalog_labels:
+      - TOML
+  - id: c
+    extensions:
+      - c
+      - h
+    catalog_labels:
+      - C
+  - id: cpp
+    extensions:
+      - cc
+      - cpp
+      - cxx
+      - hh
+      - hpp
+      - hxx
+    catalog_labels:
+      - C++
+  - id: lua
+    extensions:
+      - lua
+    catalog_labels:
+      - Lua
+  - id: shellscript
+    extensions:
+      - bash
+      - sh
+      - zsh
+    catalog_labels:
+      - Shell
+      - Bash
+  - id: dockerfile
+    extensions: []
+    filenames:
+      - Dockerfile
+      - Containerfile
+    catalog_labels:
+      - Docker
+  - id: java
+    extensions:
+      - java
+    catalog_labels:
+      - Java
+  - id: kotlin
+    extensions:
+      - kt
+      - kts
+    catalog_labels:
+      - Kotlin
+  - id: ruby
+    extensions:
+      - rb
+    catalog_labels:
+      - Ruby
+  - id: php
+    extensions:
+      - php
+    catalog_labels:
+      - PHP
+  - id: csharp
+    extensions:
+      - cs
+    catalog_labels:
+      - C#
+  - id: swift
+    extensions:
+      - swift
+    catalog_labels:
+      - Swift
+  - id: dart
+    extensions:
+      - dart
+    catalog_labels:
+      - Dart
+  - id: sql
+    extensions:
+      - sql
+    catalog_labels:
+      - SQL
+  - id: xml
+    extensions:
+      - xml
+    catalog_labels:
+      - XML
+  - id: sass
+    extensions:
+      - sass
+tools:
+  - id: ruff-format
+    kind: formatter
+    bin: ruff
+    args:
+      - format
+      - "-"
+    languages:
+      - python
+    config:
+      - ruff.toml
+      - .ruff.toml
+    priority: 10
+    package: ruff
+  - id: black
+    kind: formatter
+    bin: black
+    args:
+      - -q
+      - "-"
+    languages:
+      - python
+    package: black
+  - id: gofmt
+    kind: formatter
+    bin: gofmt
+    args: []
+    languages:
+      - go
+  - id: goimports
+    kind: formatter
+    bin: goimports
+    args: []
+    languages:
+      - go
+    priority: 10
+  - id: rustfmt
+    kind: formatter
+    bin: rustfmt
+    args:
+      - --emit
+      - stdout
+      - --quiet
+    languages:
+      - rust
+    config:
+      - rustfmt.toml
+      - .rustfmt.toml
+  - id: clang-format
+    kind: formatter
+    bin: clang-format
+    args:
+      - --assume-filename={path}
+    languages:
+      - c
+      - cpp
+    config:
+      - .clang-format
+  - id: biome-format
+    kind: formatter
+    bin: biome
+    args:
+      - format
+      - --stdin-file-path={path}
+    languages:
+      - typescript
+      - typescriptreact
+      - javascript
+      - javascriptreact
+      - json
+      - jsonc
+      - css
+      - graphql
+    config:
+      - biome.json
+      - biome.jsonc
+    priority: 20
+    package: biome
+    remedies:
+      - match: nested root configuration
+        explain: Biome found another root configuration above this project and refused this one. Biome decides its project from the directory it runs in.
+        label: Copy biome's migration command
+        action:
+          kind: run
+          command:
+            - biome
+            - migrate
+            - --write
+      - match: unknown key
+        explain: Biome does not recognise a key in this configuration, which usually means it was written for a different version.
+        action:
+          kind: open
+          path: "{config}"
+      - match: configuration resulted in errors
+        explain: Biome stopped before reading the file because its configuration did not load.
+        action:
+          kind: open
+          path: "{config}"
+  - id: prettier
+    kind: formatter
+    bin: prettier
+    args:
+      - --stdin-filepath
+      - "{path}"
+    languages:
+      - typescript
+      - typescriptreact
+      - javascript
+      - javascriptreact
+      - json
+      - jsonc
+      - css
+      - scss
+      - less
+      - html
+      - vue
+      - markdown
+      - yaml
+      - graphql
+    config:
+      - name: .prettierrc
+        code_keys:
+          - plugins
+      - name: .prettierrc.json
+        code_keys:
+          - plugins
+      - name: .prettierrc.yaml
+        code_keys:
+          - plugins
+      - name: .prettierrc.yml
+        code_keys:
+          - plugins
+      - name: .prettierrc.js
+        executes: true
+      - name: prettier.config.js
+        executes: true
+      - name: prettier.config.mjs
+        executes: true
+    priority: 10
+    package: prettier
+  - id: taplo
+    kind: formatter
+    bin: taplo
+    args:
+      - format
+      - "-"
+    languages:
+      - toml
+    config:
+      - .taplo.toml
+      - taplo.toml
+  - id: stylua
+    kind: formatter
+    bin: stylua
+    args:
+      - "-"
+    languages:
+      - lua
+    config:
+      - stylua.toml
+      - .stylua.toml
+  - id: shfmt
+    kind: formatter
+    bin: shfmt
+    args:
+      - -filename={path}
+    languages:
+      - shellscript
+    config:
+      - .editorconfig
+  - id: ruff-check
+    kind: linter
+    bin: ruff
+    args:
+      - check
+      - --output-format
+      - json
+      - "{path}"
+    languages:
+      - python
+    config:
+      - ruff.toml
+      - .ruff.toml
+    priority: 10
+    parser:
+      kind: json
+      items: $
+      field:
+        path: filename
+        line: location.row
+        column: location.column
+        end_line: end_location.row
+        end_column: end_location.column
+        code: code
+        message: message
+    package: ruff
+  - id: biome-lint
+    kind: linter
+    bin: biome
+    args:
+      - lint
+      - --reporter=json
+      - "{path}"
+    languages:
+      - typescript
+      - typescriptreact
+      - javascript
+      - javascriptreact
+      - json
+      - jsonc
+      - css
+    config:
+      - biome.json
+      - biome.jsonc
+    priority: 20
+    parser:
+      kind: json
+      items: diagnostics
+      field:
+        path: location.path.file||location.path
+        span: location.span
+        code: category
+        message: description||message
+        line: location.start.line
+        column: location.start.column
+        end_line: location.end.line
+        end_column: location.end.column
+        severity: severity
+      severity:
+        map:
+          error: 1
+          warning: 2
+          information: 3
+          hint: 4
+        default: 2
+    package: biome
+    remedies:
+      - match: nested root configuration
+        explain: Biome found another root configuration above this project and refused this one. Biome decides its project from the directory it runs in.
+        label: Copy biome's migration command
+        action:
+          kind: run
+          command:
+            - biome
+            - migrate
+            - --write
+      - match: unknown key
+        explain: Biome does not recognise a key in this configuration, which usually means it was written for a different version.
+        action:
+          kind: open
+          path: "{config}"
+      - match: configuration resulted in errors
+        explain: Biome stopped before reading the file because its configuration did not load.
+        action:
+          kind: open
+          path: "{config}"
+  - id: eslint
+    kind: linter
+    bin: eslint
+    args:
+      - --format
+      - json
+      - "{path}"
+    languages:
+      - typescript
+      - typescriptreact
+      - javascript
+      - javascriptreact
+    config:
+      - name: eslint.config.js
+        executes: true
+      - name: eslint.config.mjs
+        executes: true
+      - name: eslint.config.cjs
+        executes: true
+      - name: .eslintrc
+        code_keys:
+          - plugins
+          - extends
+          - parser
+          - overrides
+      - name: .eslintrc.js
+        executes: true
+      - name: .eslintrc.json
+        code_keys:
+          - plugins
+          - extends
+          - parser
+          - overrides
+      - name: .eslintrc.cjs
+        executes: true
+    priority: 10
+    parser:
+      kind: json
+      groups: $
+      items: messages
+      field:
+        path: $group.filePath
+        line: line
+        column: column
+        end_line: endLine
+        end_column: endColumn
+        code: ruleId
+        message: message
+        severity: severity
+      severity:
+        map:
+          "1": 2
+          "2": 1
+        default: 2
+    package: eslint-lsp
+  - id: golangci-lint
+    kind: linter
+    bin: golangci-lint
+    args:
+      - run
+      - "{path}"
+    languages:
+      - go
+    config:
+      - .golangci.yml
+      - .golangci.yaml
+      - .golangci.toml
+    parser:
+      kind: pattern
+      regex: "^(?P<path>[^:]+):(?P<line>\\d+):(?P<column>\\d+): (?P<message>.*?) \\((?P<code>[^)]+)\\)$"
+  - id: shellcheck
+    kind: linter
+    bin: shellcheck
+    args:
+      - --format=json
+      - "{path}"
+    languages:
+      - shellscript
+    config:
+      - .shellcheckrc
+    parser:
+      kind: json
+      items: $
+      field:
+        path: file
+        line: line
+        column: column
+        end_line: endLine
+        end_column: endColumn
+        code: code
+        message: message
+        severity: level
+      severity:
+        map:
+          error: 1
+          warning: 2
+          info: 3
+          style: 4
+        default: 2
+  - id: stylelint
+    kind: linter
+    bin: stylelint
+    args:
+      - --formatter
+      - json
+      - "{path}"
+    languages:
+      - css
+      - scss
+      - less
+    config:
+      - name: .stylelintrc
+        code_keys:
+          - plugins
+          - extends
+          - customSyntax
+          - processors
+          - overrides
+      - name: .stylelintrc.json
+        code_keys:
+          - plugins
+          - extends
+          - customSyntax
+          - processors
+          - overrides
+      - name: stylelint.config.js
+        executes: true
+    parser:
+      kind: json
+      groups: $
+      items: warnings
+      field:
+        path: $group.source
+        line: line
+        column: column
+        end_line: endLine
+        end_column: endColumn
+        code: rule
+        message: text
+        severity: severity
+      severity:
+        map:
+          error: 1
+          warning: 2
+        default: 2
+  - id: yamllint
+    kind: linter
+    bin: yamllint
+    args:
+      - --format
+      - parsable
+      - "{path}"
+    languages:
+      - yaml
+    config:
+      - .yamllint
+      - .yamllint.yml
+      - .yamllint.yaml
+    parser:
+      kind: pattern
+      regex: "^(?P<path>.+?):(?P<line>\\d+):(?P<column>\\d+): \\[(?P<severity>\\w+)\\] (?P<message>.*?)(?: \\((?P<code>[^)]+)\\))?$"
+      severity:
+        map:
+          error: 1
+          warning: 2
+        default: 2
+  - id: hadolint
+    kind: linter
+    bin: hadolint
+    args:
+      - --format
+      - json
+      - "{path}"
+    languages:
+      - dockerfile
+    config:
+      - .hadolint.yaml
+    parser:
+      kind: json
+      items: $
+      field:
+        path: file
+        line: line
+        column: column
+        code: code
+        message: message
+        severity: level
+      severity:
+        map:
+          error: 1
+          warning: 2
+          info: 3
+          style: 4
+        default: 2
+  - id: rust-analyzer
+    kind: languageserver
+    bin: rust-analyzer
+    args: []
+    languages:
+      - rust
+    install:
+      - rustup
+      - component
+      - add
+      - rust-analyzer
+    install_label: rustup component add rust-analyzer
+    init_options:
+      check:
+        enable: false
+      checkOnSave: false
+      cargo:
+        buildScripts:
+          enable: false
+      procMacro:
+        enable: false
+    root_markers:
+      - Cargo.toml
+    package: rust-analyzer
+    root_strategy: cargo-workspace
+  - id: gopls
+    kind: languageserver
+    bin: gopls
+    args: []
+    languages:
+      - go
+    install:
+      - go
+      - install
+      - golang.org/x/tools/gopls@latest
+    install_label: go install golang.org/x/tools/gopls@latest
+    root_markers:
+      - go.work
+      - go.mod
+    package: gopls
+  - id: typescript-language-server
+    kind: languageserver
+    bin: typescript-language-server
+    args:
+      - --stdio
+    languages:
+      - typescript
+      - typescriptreact
+      - javascript
+      - javascriptreact
+    install:
+      - npm
+      - install
+      - -g
+      - typescript-language-server
+      - typescript
+    install_label: npm install -g typescript-language-server typescript
+    root_markers:
+      - tsconfig.json
+      - jsconfig.json
+      - package.json
+    package: typescript-language-server
+  - id: pyright
+    kind: languageserver
+    bin: pyright-langserver
+    args:
+      - --stdio
+    languages:
+      - python
+    install:
+      - npm
+      - install
+      - -g
+      - pyright
+    install_label: npm install -g pyright
+    settings:
+      python:
+        analysis:
+          autoSearchPaths: true
+          useLibraryCodeForTypes: true
+          diagnosticMode: openFilesOnly
+        pythonPath: "{interpreter}"
+        defaultInterpreterPath: "{interpreter}"
+    root_markers:
+      - pyproject.toml
+      - setup.py
+      - setup.cfg
+      - requirements.txt
+    package: pyright
+  - id: clangd
+    kind: languageserver
+    bin: clangd
+    args: []
+    languages:
+      - c
+      - cpp
+    install: []
+    install_label: install clangd via your OS package manager
+    root_markers:
+      - compile_commands.json
+      - compile_flags.txt
+    package: clangd
+  - id: lua-language-server
+    kind: languageserver
+    bin: lua-language-server
+    args: []
+    languages:
+      - lua
+    install: []
+    install_label: install lua-language-server via your OS package manager
+  - id: bash-language-server
+    kind: languageserver
+    bin: bash-language-server
+    args:
+      - start
+    languages:
+      - shellscript
+    install:
+      - npm
+      - install
+      - -g
+      - bash-language-server
+    install_label: npm install -g bash-language-server
+  - id: debugpy
+    kind: debugadapter
+    bin: python3
+    args:
+      - -m
+      - debugpy.adapter
+    languages:
+      - python
+    install_label: install debugpy from the tool catalog
+    venv: debugpy
+    dap:
+      transport: stdio
+      program_kind: source
+      launch:
+        type: python
+        request: launch
+        program: "{program}"
+        cwd: "{cwd}"
+        args: "{args}"
+        console: internalConsole
+        justMyCode: true
+      attach:
+        type: python
+        request: attach
+        connect:
+          host: "{host}"
+          port: "{port}"
+    package: debugpy
+  - id: codelldb
+    kind: debugadapter
+    bin: codelldb
+    args:
+      - --port
+      - "0"
+    languages:
+      - rust
+      - c
+      - cpp
+    install_label: install codelldb from the tool catalog
+    dap:
+      transport: tcp
+      port_pattern: (?i)port\D*(?P<port>\d+)
+      program_kind: executable
+      launch:
+        type: lldb
+        request: launch
+        program: "{program}"
+        cwd: "{cwd}"
+        args: "{args}"
+    package: codelldb
+  - id: delve
+    kind: debugadapter
+    bin: dlv
+    args:
+      - dap
+    languages:
+      - go
+    install_label: install delve from the tool catalog
+    dap:
+      transport: stdio
+      program_kind: source
+      launch:
+        type: go
+        request: launch
+        mode: debug
+        program: "{program}"
+        cwd: "{cwd}"
+        args: "{args}"
+    package: delve
+  - id: js-debug-adapter
+    kind: debugadapter
+    bin: js-debug-adapter
+    languages:
+      - javascript
+      - typescript
+      - javascriptreact
+      - typescriptreact
+    install_label: install js-debug-adapter from the tool catalog
+    dap:
+      transport: tcp
+      unsupported: js-debug drives child sessions; the single-session relay cannot host it yet
+    package: js-debug-adapter
+  - id: osv-scanner
+    kind: scanner
+    bin: osv-scanner
+    args:
+      - --format
+      - json
+      - --recursive
+      - "{path}"
+    languages: []
+    package: osv-scanner
+    priority: 10
+  - id: semgrep
+    kind: scanner
+    bin: semgrep
+    args:
+      - scan
+      - --json
+      - --quiet
+      - --config
+      - auto
+      - "{path}"
+    languages: []
+    package: semgrep
+    priority: 10
+  - id: clippy
+    kind: linter
+    bin: cargo
+    args:
+      - clippy
+      - --message-format
+      - short
+      - --quiet
+    languages:
+      - rust
+    config:
+      - clippy.toml
+      - .clippy.toml
+    priority: 10
+    parser:
+      kind: pattern
+      regex: "^(?P<path>[^:\\s]+):(?P<line>\\d+):(?P<column>\\d+): (?P<severity>error|warning)(?:\\[(?P<code>[^\\]]+)\\])?: (?P<message>.*)$"
+      severity:
+        map:
+          error: 1
+          warning: 2
+        default: 2
+  - id: mypy
+    kind: linter
+    bin: mypy
+    args:
+      - --no-error-summary
+      - --show-column-numbers
+      - "{path}"
+    languages:
+      - python
+    config:
+      - mypy.ini
+      - .mypy.ini
+      - setup.cfg
+    priority: 5
+    package: mypy
+    parser:
+      kind: pattern
+      regex: "^(?P<path>[^:]+):(?P<line>\\d+):(?P<column>\\d+): (?P<severity>error|warning|note): (?P<message>.*?)(?:  \\[(?P<code>[^\\]]+)\\])?$"
+      severity:
+        map:
+          error: 1
+          warning: 2
+          note: 3
+        default: 2
+  - id: luacheck
+    kind: linter
+    bin: luacheck
+    args:
+      - --formatter
+      - plain
+      - --codes
+      - "{path}"
+    languages:
+      - lua
+    config:
+      - .luacheckrc
+    priority: 10
+    package: luacheck
+    parser:
+      kind: pattern
+      regex: "^(?P<path>[^:]+):(?P<line>\\d+):(?P<column>\\d+): \\((?P<code>[EW]\\d+)\\) (?P<message>.*)$"
+  - id: markdownlint
+    kind: linter
+    bin: markdownlint
+    args:
+      - --json
+      - "{path}"
+    languages:
+      - markdown
+    config:
+      - .markdownlint.json
+      - .markdownlint.yaml
+      - .markdownlintrc
+    priority: 10
+    package: markdownlint
+    parser:
+      kind: json
+      items: $
+      field:
+        path: fileName
+        line: lineNumber
+        code: ruleNames.0
+        message: ruleDescription
+  - id: clang-tidy
+    kind: linter
+    bin: clang-tidy
+    args:
+      - --quiet
+      - "{path}"
+    languages:
+      - c
+      - cpp
+    config:
+      - .clang-tidy
+    priority: 10
+    parser:
+      kind: pattern
+      regex: "^(?P<path>[^:]+):(?P<line>\\d+):(?P<column>\\d+): (?P<severity>error|warning|note): (?P<message>.*?)(?: \\[(?P<code>[^\\]]+)\\])?$"
+      severity:
+        map:
+          error: 1
+          warning: 2
+          note: 3
+        default: 2
+  - id: vue-language-server
+    kind: languageserver
+    bin: vue-language-server
+    args:
+      - --stdio
+    languages:
+      - vue
+    package: vue-language-server
+    root_markers:
+      - package.json
+    install_label: install the Vue language server
+  - id: yaml-language-server
+    kind: languageserver
+    bin: yaml-language-server
+    args:
+      - --stdio
+    languages:
+      - yaml
+    package: yaml-language-server
+    install_label: install the YAML language server
+  - id: json-language-server
+    kind: languageserver
+    bin: vscode-json-language-server
+    args:
+      - --stdio
+    languages:
+      - json
+      - jsonc
+    package: json-lsp
+    install_label: install the JSON language server
+  - id: html-language-server
+    kind: languageserver
+    bin: vscode-html-language-server
+    args:
+      - --stdio
+    languages:
+      - html
+    package: html-lsp
+    install_label: install the HTML language server
+  - id: css-language-server
+    kind: languageserver
+    bin: vscode-css-language-server
+    args:
+      - --stdio
+    languages:
+      - css
+      - scss
+      - less
+    package: css-lsp
+    install_label: install the CSS language server
+  - id: taplo-lsp
+    kind: languageserver
+    bin: taplo
+    args:
+      - lsp
+      - stdio
+    languages:
+      - toml
+    package: taplo
+    install_label: install taplo
+  - id: marksman
+    kind: languageserver
+    bin: marksman
+    args:
+      - server
+    languages:
+      - markdown
+    package: marksman
+    install_label: install marksman
+  - id: docker-langserver
+    kind: languageserver
+    bin: docker-langserver
+    args:
+      - --stdio
+    languages:
+      - dockerfile
+    package: dockerfile-language-server
+    install_label: install the Dockerfile language server
+  - id: jdtls
+    kind: languageserver
+    bin: jdtls
+    args: []
+    languages:
+      - java
+    package: jdtls
+    root_markers:
+      - pom.xml
+      - build.gradle
+      - build.gradle.kts
+    install_label: install jdtls
+  - id: ruby-lsp
+    kind: languageserver
+    bin: ruby-lsp
+    args: []
+    languages:
+      - ruby
+    package: ruby-lsp
+    root_markers:
+      - Gemfile
+      - .ruby-version
+    install_label: install ruby-lsp
+  - id: intelephense
+    kind: languageserver
+    bin: intelephense
+    args:
+      - --stdio
+    languages:
+      - php
+    package: intelephense
+    root_markers:
+      - composer.json
+    install_label: install intelephense
+  - id: omnisharp
+    kind: languageserver
+    bin: omnisharp
+    args:
+      - -lsp
+    languages:
+      - csharp
+    package: omnisharp
+    root_markers:
+      - "*.sln"
+      - "*.csproj"
+    install_label: install omnisharp
+  - id: sourcekit-lsp
+    kind: languageserver
+    bin: sourcekit-lsp
+    args: []
+    languages:
+      - swift
+    root_markers:
+      - Package.swift
+    install_label: install sourcekit-lsp with the Swift toolchain
+  - id: kotlin-language-server
+    kind: languageserver
+    bin: kotlin-language-server
+    args: []
+    languages:
+      - kotlin
+    package: kotlin-language-server
+    root_markers:
+      - build.gradle.kts
+      - build.gradle
+    install_label: install the Kotlin language server
+  - id: google-java-format
+    kind: formatter
+    bin: google-java-format
+    args:
+      - "-"
+    languages:
+      - java
+    priority: 10
+    package: google-java-format
+  - id: ktlint
+    kind: formatter
+    bin: ktlint
+    args:
+      - --format
+      - --stdin
+    languages:
+      - kotlin
+    priority: 10
+    package: ktlint
+  - id: rubocop
+    kind: formatter
+    bin: rubocop
+    args:
+      - --stdin
+      - "{path}"
+      - --autocorrect
+      - --stderr
+      - --format
+      - quiet
+    languages:
+      - ruby
+    config:
+      - .rubocop.yml
+    priority: 10
+    package: rubocop
+  - id: php-cs-fixer
+    kind: formatter
+    bin: php-cs-fixer
+    args:
+      - fix
+      - --using-cache=no
+      - --quiet
+      - "{path}"
+    languages:
+      - php
+    config:
+      - name: .php-cs-fixer.php
+        executes: true
+      - name: .php_cs
+        executes: true
+    priority: 10
+    package: php-cs-fixer
+  - id: sql-formatter
+    kind: formatter
+    bin: sql-formatter
+    args: []
+    languages:
+      - sql
+    priority: 10
+    package: sql-formatter
+  - id: xmlformatter
+    kind: formatter
+    bin: xmlformat
+    args:
+      - "-"
+    languages:
+      - xml
+    priority: 10
+  - id: swift-format
+    kind: formatter
+    bin: swift-format
+    args:
+      - format
+      - "-"
+    languages:
+      - swift
+    priority: 10
+  - id: dart-format
+    kind: formatter
+    bin: dart
+    args:
+      - format
+    languages:
+      - dart
+    priority: 10
+  - id: csharpier
+    kind: formatter
+    bin: csharpier
+    args:
+      - --write-stdout
+    languages:
+      - csharp
+    priority: 10
+    package: csharpier
+  - id: yamlfmt
+    kind: formatter
+    bin: yamlfmt
+    args:
+      - -in
+    languages:
+      - yaml
+    config:
+      - .yamlfmt
+    priority: 20
+    package: yamlfmt
+  - id: sass-formatter
+    kind: formatter
+    bin: sass-formatter
+    args: []
+    languages:
+      - sass
+    priority: 10

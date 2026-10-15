@@ -11,8 +11,5 @@ icon:
 auth:
   - method: oauth
     label: Sign in with Sentry
-mcp:
-  - id: sentry
-    note: Hosted by Sentry, signed in with OAuth.
-    default: true
+default_mcp: sentry
 permissions: []

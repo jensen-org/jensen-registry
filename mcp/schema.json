@@ -1,0 +1,356 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jensen-org/jensen-registry/mcp/schema.json",
+  "title": "Jensen registry MCP servers",
+  "description": "Entry files under mcp/ and the MCP items of index.yaml. Also holds the env and header shapes that integrations reuse.",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$",
+      "maxLength": 80
+    },
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "envName": {
+      "type": "string",
+      "pattern": "^[A-Z][A-Z0-9_]*$"
+    },
+    "env": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "secret"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[A-Z][A-Z0-9_]*$"
+          },
+          "secret": {
+            "type": "boolean"
+          },
+          "optional": {
+            "type": "boolean"
+          },
+          "description": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "headers": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "scheme",
+          "secret"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9-]{0,63}$"
+          },
+          "scheme": {
+            "enum": [
+              "bearer",
+              "basic",
+              "raw"
+            ]
+          },
+          "secret": {
+            "$ref": "#/$defs/envName"
+          },
+          "user": {
+            "$ref": "#/$defs/envName"
+          }
+        }
+      }
+    },
+    "mcpEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "description",
+        "transport",
+        "advised"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "description": {
+          "type": "string",
+          "minLength": 1
+        },
+        "provider": {
+          "type": "string"
+        },
+        "license": {
+          "type": "string"
+        },
+        "advised": {
+          "type": "boolean"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "transport": {
+          "enum": [
+            "stdio",
+            "http"
+          ]
+        },
+        "url": {
+          "type": "string",
+          "pattern": "^https://"
+        },
+        "package": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ecosystem",
+            "name",
+            "bin"
+          ],
+          "properties": {
+            "ecosystem": {
+              "enum": [
+                "npm",
+                "pypi"
+              ]
+            },
+            "name": {
+              "type": "string",
+              "minLength": 1
+            },
+            "version": {
+              "type": "string",
+              "pattern": "^[0-9][0-9A-Za-z.+-]*$"
+            },
+            "bin": {
+              "type": "string",
+              "minLength": 1
+            },
+            "args": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "env": {
+          "$ref": "#/$defs/env"
+        },
+        "headers": {
+          "$ref": "#/$defs/headers"
+        },
+        "oauth": {
+          "type": "boolean"
+        },
+        "serves": {
+          "type": "array",
+          "maxItems": 12,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "transport": {
+                "const": "stdio"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "package"
+            ],
+            "properties": {
+              "url": false,
+              "headers": false,
+              "oauth": false
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "transport": {
+                "const": "http"
+              }
+            }
+          },
+          "then": {
+            "required": [
+              "url"
+            ],
+            "properties": {
+              "package": false
+            }
+          }
+        }
+      ]
+    },
+    "indexMcp": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "description",
+        "advised",
+        "transport",
+        "env",
+        "tools"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "description": {
+          "type": "string"
+        },
+        "provider": {
+          "type": "string"
+        },
+        "license": {
+          "type": "string"
+        },
+        "advised": {
+          "type": "boolean"
+        },
+        "tags": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "transport": {
+          "enum": [
+            "stdio",
+            "http"
+          ]
+        },
+        "url": {
+          "type": "string"
+        },
+        "package": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "ecosystem",
+            "name",
+            "version",
+            "purl",
+            "bin",
+            "lockfile"
+          ],
+          "properties": {
+            "ecosystem": {
+              "enum": [
+                "npm",
+                "pypi"
+              ]
+            },
+            "name": {
+              "type": "string"
+            },
+            "version": {
+              "type": "string"
+            },
+            "purl": {
+              "type": "string",
+              "pattern": "^pkg:(npm|pypi)/"
+            },
+            "bin": {
+              "type": "string"
+            },
+            "args": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              }
+            },
+            "lockfile": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "path",
+                "url",
+                "sha256"
+              ],
+              "properties": {
+                "path": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string",
+                  "pattern": "^https://"
+                },
+                "sha256": {
+                  "$ref": "#/$defs/sha256"
+                }
+              }
+            }
+          }
+        },
+        "env": {
+          "$ref": "#/$defs/env"
+        },
+        "headers": {
+          "$ref": "#/$defs/headers"
+        },
+        "oauth": {
+          "type": "boolean"
+        },
+        "tools": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "name",
+              "description"
+            ],
+            "properties": {
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "input_schema": {
+                "type": "object"
+              }
+            }
+          }
+        },
+        "serves": {
+          "type": "array",
+          "maxItems": 12,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        }
+      }
+    }
+  }
+}

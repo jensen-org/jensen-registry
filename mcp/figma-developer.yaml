@@ -5,6 +5,8 @@ license: MIT
 advised: false
 tags:
   - design
+serves:
+  - figma
 transport: stdio
 package:
   ecosystem: npm

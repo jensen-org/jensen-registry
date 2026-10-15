@@ -4,6 +4,8 @@ provider: Figma
 advised: false
 tags:
   - design
+serves:
+  - figma
 transport: http
 url: https://mcp.figma.com/mcp
 oauth: true

@@ -5,6 +5,8 @@ license: MIT
 advised: true
 tags:
   - diagrams
+serves:
+  - excalidraw
 transport: stdio
 package:
   ecosystem: npm

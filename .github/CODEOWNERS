@@ -1,10 +1,11 @@
 * @pallandir
 /.github/ @pallandir
-/scripts/ @pallandir
-/schema/ @pallandir
-/locks/ @pallandir
+/tools/ @pallandir
 /skills/ @pallandir
 /mcp/ @pallandir
+/integrations/ @pallandir
+/lib.mjs @pallandir
+/registry.mjs @pallandir
 /index.yaml @pallandir
 /tools.yaml @pallandir
 /upstreams.yaml @pallandir

@@ -20,10 +20,5 @@ auth:
       - name: ATLASSIAN_API_TOKEN
         secret: true
         description: A personal API token created in your Atlassian account.
-mcp:
-  - id: atlassian
-    note: Hosted by Atlassian, signed in with OAuth.
-    default: true
-  - id: atlassian-token
-    note: Hosted by Atlassian, signed in with a personal API token your admin has enabled.
+default_mcp: atlassian
 permissions: []

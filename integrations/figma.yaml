@@ -17,10 +17,5 @@ auth:
       - name: FIGMA_API_KEY
         secret: true
         description: A Figma personal access token.
-mcp:
-  - id: figma
-    note: Hosted by Figma, signed in with OAuth. The hosted server limits tool calls each month.
-    default: true
-  - id: figma-developer
-    note: Runs on your machine with your own token, with no monthly call limit.
+default_mcp: figma
 permissions: []

@@ -1,32 +1,66 @@
 # jensen-registry
 
-The one catalog Jensen reads for developer tools, skills and MCP servers. Everything is a static
-file on `main`, with a checksum, so a client verifies what it fetched and caches it on disk. There
-is no hosted service and no seed copy anywhere else.
+The one catalog Jensen reads for developer tools, skills, MCP servers and integrations. Everything is
+a static file on `main`, with a checksum, so a client verifies what it fetched and caches it on disk.
+There is no hosted service and no seed copy anywhere else. Jensen's code holds no catalog: what you
+publish here is what Jensen offers.
 
-## Files
+## Layout
 
-- `tools.yaml`: language servers, linters, formatters and debug adapters (`schema/tools.schema.json` in `jensen-org/jensen`).
-- `upstreams.yaml`: third party sources Jensen reads through this registry, such as the Mason registry.
-- `skills/<id>.yaml` and `mcp/<id>.yaml`: one hand written entry per item. A skill names the repo, path and ref it tracks. An MCP server names its package, or its url.
-- `integrations/<id>.yaml`: a service Jensen connects to (GitHub, Jira, Sentry, Excalidraw). It names its auth methods and their fields, the MCP servers in `mcp/` that can serve it, its permissions and an optional native protocol. `default_on: true` turns it on without setup and is accepted only when no credential is needed and an MCP server is marked default.
-- `icons/<slug>.svg`: one icon per integration, generated from the pinned `simple-icons` package by `track`, never hand edited. An integration with no Simple Icons slug supplies `icons/local/<id>.svg` in the same form. An icon is one `<path>` on a 24 by 24 canvas and nothing else: `track` rebuilds the file from the path data alone, `validate` refuses any byte that differs, and clients must check the sha256 in `index.yaml` and re-check the form before drawing it.
-- `index.yaml`: generated, never hand edited. Every entry resolved and pinned: skills carry the commit, each file's url and sha256, and a content hash; stdio servers carry an exact version and a hashed lockfile; every server lists the env it needs and the tools captured from it.
-- `locks/mcp/<id>/`: the lockfile each stdio server installs from. `package-lock.json` for npm, `requirements.txt` with hashes for pypi.
-- `checksums.txt`: `<sha256>  <file>` for `tools.yaml`, `index.yaml` and `upstreams.yaml`. A client checks it before trusting a fetched file.
+There are four folders. Each holds its entries, the assets generated from them, and the code that
+checks them.
 
-The content hash of a skill is the sha256 of its files' `path NUL sha256 NEWLINE` lines, sorted by path.
+| Folder | Entries | Assets | Code |
+|---|---|---|---|
+| `tools/` | `tools.yaml` (language servers, linters, formatters, debug adapters, schema in `jensen-org/jensen`), `upstreams.yaml` (third party sources such as the Mason registry) | | `track.mjs`, `validate.mjs` |
+| `skills/` | `<id>.yaml`: the repo, path and ref a skill tracks | | `schema.json`, `track.mjs`, `validate.mjs` |
+| `mcp/` | `<id>.yaml`: a server's package or url, its env, its auth, and the integrations it `serves` | `locks/<id>/`: the lockfile a stdio server installs from | `schema.json`, `track.mjs`, `checks.mjs`, `validate.mjs` |
+| `integrations/` | `<id>.yaml`: a service Jensen connects to | `icons/<name>.svg` | `schema.json`, `track.mjs`, `checks.mjs`, `validate.mjs`, `icons.mjs` |
 
-A client writes the npm manifest as `{"name":"jensen-mcp","private":true,"dependencies":{<name>:<version>}}`
+At the root: `index.yaml` (generated, never hand edited), `checksums.txt`, `registry.mjs` (runs the
+four folders), `lib.mjs` (shared helpers), `package.json`, and the two legacy copies below.
+
+- `index.yaml`: every entry resolved and pinned. Skills carry the commit, each file's url and sha256 and a content hash. Stdio servers carry an exact version and a hashed lockfile. Every server lists the env it needs and the tools captured from it. Every integration lists the servers that serve it and its pinned icon.
+- `checksums.txt`: `<sha256>  <file>` for `index.yaml`, the tools files and their legacy copies. A client checks it before trusting a fetched file.
+- `tools.yaml` and `upstreams.yaml` at the root are byte copies of the files in `tools/`, written by `track`, because released Jensen builds still fetch them from the root. Remove them once those builds are gone.
+
+## Binding an MCP server to an integration
+
+An MCP server is a candidate for an integration when it lists that integration in `serves`. Adding a
+server to `mcp/` is enough: it appears as a choice for the integrations it serves, and the integration
+file does not change. An integration only names its `default_mcp`, which must be one of the servers
+that serves it. `validate` rejects a server that no auth method of an integration can satisfy, a
+`serves` entry that names no integration, and a `default_mcp` that does not serve it.
+
+## Integrations
+
+An integration names its auth methods and their fields, its permissions, and an optional native
+protocol. `cli_login` is a bare flag and needs a native protocol: the entry never names a command to
+run, only the protocol in Jensen's code knows which binary to ask. `default_on: true` turns an
+integration on without setup, and is accepted only when no credential is needed and a `default_mcp`
+is set.
+
+Icons are one `<path>` on a 24 by 24 canvas and nothing else. `track` generates them from the pinned
+`simple-icons` package, rebuilding each file from the path data alone, and `validate` refuses any byte
+that differs. An integration with no Simple Icons slug supplies `integrations/icons/<id>.svg` in the
+same form and sets `icon: { local: true, hex: ... }`. Clients must check the sha256 in `index.yaml`,
+re-check the form, and draw the icon as an image or mask, never as inline markup.
+
+## How a client installs a server
+
+The content hash of a skill is the sha256 of its files' `path NUL sha256 NEWLINE` lines, sorted by
+path. A client writes the npm manifest as `{"name":"jensen-mcp","private":true,"dependencies":{<name>:<version>}}`
 and runs `npm ci --ignore-scripts` against the lockfile. For pypi it runs
 `pip install --require-hashes --no-deps -r requirements.txt` in a fresh venv.
 
 ## Adding an item
 
-1. Add `skills/<id>.yaml` or `mcp/<id>.yaml`.
-2. Run `npm ci && node scripts/track.mjs` (needs `uv` for pypi servers). It rewrites `index.yaml`, the lockfiles and `checksums.txt`.
-3. Open a pull request. `validate` checks the entries against `schema/registry.schema.json`, that `index.yaml` matches them, that every hash matches its file, and that every skill file still downloads to its pinned sha256.
+1. Add `skills/<id>.yaml`, `mcp/<id>.yaml` or `integrations/<id>.yaml`.
+2. Run `npm ci && npm run track` (needs `uv` for pypi servers). It rewrites `index.yaml`, the lockfiles, the icons, the legacy copies and `checksums.txt`.
+3. Open a pull request. `npm run validate` checks every entry against its folder's `schema.json`, that `index.yaml` matches them, that every hash matches its file, and that every skill file still downloads to its pinned sha256.
 
 ## Staying current
 
-`track` runs daily. It re-resolves each `ref` head and each package's latest version, re-pins, and opens a bump pull request. Nothing merges without review: the code owner approves every change to a trusted path.
+`track` runs daily. It re-resolves each `ref` head and each package's latest version, re-pins, and
+opens a bump pull request. Nothing merges without review: the code owner approves every change to a
+trusted path.
