@@ -2,7 +2,7 @@ id: playwright
 description: Drive a real browser to navigate pages, click, fill forms, read the page and take screenshots.
 provider: Microsoft
 license: Apache-2.0
-advised: true
+advised: false
 tags:
   - browser
   - testing

@@ -2,7 +2,7 @@ id: fetch
 description: Fetch a web page and return it as markdown for the model to read.
 provider: Model Context Protocol
 license: MIT
-advised: true
+advised: false
 tags:
   - web
 transport: stdio

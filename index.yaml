@@ -879,7 +879,7 @@ mcp:
     description: Fetch a web page and return it as markdown for the model to read.
     provider: Model Context Protocol
     license: MIT
-    advised: true
+    advised: false
     tags:
       - web
     transport: stdio
@@ -1128,7 +1128,7 @@ mcp:
     description: Drive a real browser to navigate pages, click, fill forms, read the page and take screenshots.
     provider: Microsoft
     license: Apache-2.0
-    advised: true
+    advised: false
     tags:
       - browser
       - testing
