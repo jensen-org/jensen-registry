@@ -1,6 +1,6 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { ROOT, loadEntries, sha256 } from "../lib.mjs";
+import { RAW_BASE, ROOT, loadEntries, sha256 } from "../lib.mjs";
 import { mcpProblems } from "./checks.mjs";
 
 export function validateMcp({ check, index, problems, same }) {
@@ -27,11 +27,13 @@ export function validateMcp({ check, index, problems, same }) {
       if (server.package.ecosystem !== source.package?.ecosystem || server.package.name !== source.package?.name) {
         fail(`index.yaml: mcp ${server.id} package differs from its entry file`);
       }
-      const expected = `mcp/locks/${server.id}/`;
-      if (!server.package.lockfile.path.startsWith(expected)) fail(`index.yaml: mcp ${server.id} lockfile must live under ${expected}`);
-      const lockPath = join(ROOT, server.package.lockfile.path);
-      if (!existsSync(lockPath)) fail(`index.yaml: mcp ${server.id} lockfile ${server.package.lockfile.path} is missing`);
-      else if (sha256(readFileSync(lockPath)) !== server.package.lockfile.sha256) fail(`index.yaml: mcp ${server.id} lockfile hash does not match`);
+      const lockfile = server.package.lockfile;
+      const expectedPath = `mcp/locks/${server.id}/${server.package.ecosystem === "npm" ? "package-lock.json" : "requirements.txt"}`;
+      if (lockfile.path !== expectedPath) fail(`index.yaml: mcp ${server.id} lockfile path must be ${expectedPath}`);
+      if (lockfile.url !== `${RAW_BASE}/main/${expectedPath}`) fail(`index.yaml: mcp ${server.id} lockfile url must be the registry's own ${expectedPath}`);
+      const lockPath = join(ROOT, expectedPath);
+      if (!existsSync(lockPath)) fail(`index.yaml: mcp ${server.id} lockfile ${expectedPath} is missing`);
+      else if (sha256(readFileSync(lockPath)) !== lockfile.sha256) fail(`index.yaml: mcp ${server.id} lockfile hash does not match`);
     }
   }
   for (const { entry } of entries) {

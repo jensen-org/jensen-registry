@@ -18,7 +18,11 @@ export async function validateSkills({ check, index, problems, same, online }) {
     if (contentHash(skill.files) !== skill.content_hash) fail(`index.yaml: skill ${skill.id} content_hash does not match its files`);
     if (!skill.files.some((file) => file.path === "SKILL.md")) fail(`index.yaml: skill ${skill.id} has no SKILL.md`);
     for (const file of skill.files) {
-      if (!file.url.includes(`/${skill.commit}/`)) fail(`index.yaml: skill ${skill.id} file ${file.path} is not pinned to ${skill.commit}`);
+      if (file.path.startsWith("/") || file.path.split("/").some((part) => part === "" || part === "." || part === "..")) {
+        fail(`index.yaml: skill ${skill.id} lists an unusable file path ${file.path}`);
+      }
+      const expected = `https://raw.githubusercontent.com/${skill.repo}/${skill.commit}/${skill.path}/${file.path}`;
+      if (file.url !== expected) fail(`index.yaml: skill ${skill.id} file ${file.path} must be fetched from ${expected}`);
     }
   }
   for (const { entry } of entries) {
