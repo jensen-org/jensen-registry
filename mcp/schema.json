@@ -39,6 +39,13 @@
           },
           "description": {
             "type": "string"
+          },
+          "from": {
+            "enum": [
+              "project_root",
+              "free_port",
+              "loopback_url"
+            ]
           }
         }
       }

@@ -19,6 +19,7 @@ export function integrationProblems(entry, label, mcpEntries) {
   const methods = new Set(entry.auth.map((auth) => auth.method));
   if (methods.size !== entry.auth.length) problems.push(`${label}: an auth method is listed twice`);
   for (const auth of entry.auth) {
+    if ((auth.fields ?? []).some((field) => field.from)) problems.push(`${label}: a credential field cannot take its value from the machine`);
     if (auth.method === "api_key" && !(auth.fields ?? []).some((field) => field.secret)) {
       problems.push(`${label}: api_key needs at least one secret field`);
     }

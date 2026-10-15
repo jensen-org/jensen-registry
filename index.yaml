@@ -967,11 +967,18 @@ mcp:
       - name: EXCALIDRAW_EXPORT_DIR
         secret: false
         optional: true
-        description: The only directory the server may write exported files to. Defaults to the working directory.
+        from: project_root
+        description: The only directory the server may write exported files to, set to the open project.
       - name: PORT
         secret: false
         optional: true
-        description: The local port of the canvas the server starts. Defaults to 3000.
+        from: free_port
+        description: The local port of the canvas the server starts, a free one chosen for each launch.
+      - name: EXPRESS_SERVER_URL
+        secret: false
+        optional: true
+        from: loopback_url
+        description: Where the server finds its own canvas, the loopback address of that port.
     tools:
       - name: create_element
         description: Create a new Excalidraw element. For arrows, use startElementId/endElementId to bind to shapes (auto-routes to edges).
