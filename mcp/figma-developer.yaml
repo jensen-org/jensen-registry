@@ -1,0 +1,18 @@
+id: figma-developer
+description: Read Figma designs with your own personal access token, so the hosted server's monthly call limit does not apply.
+provider: Framelink
+license: MIT
+advised: false
+tags:
+  - design
+transport: stdio
+package:
+  ecosystem: npm
+  name: figma-developer-mcp
+  bin: figma-developer-mcp
+  args:
+    - --stdio
+env:
+  - name: FIGMA_API_KEY
+    secret: true
+    description: A Figma personal access token.

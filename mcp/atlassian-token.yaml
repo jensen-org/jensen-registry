@@ -1,0 +1,22 @@
+id: atlassian-token
+description: Atlassian's hosted Jira and Confluence server, signed in with a personal API token. An organization admin must enable API token authentication first.
+provider: Atlassian
+license: Apache-2.0
+advised: false
+tags:
+  - work-tracking
+  - docs
+transport: http
+url: https://mcp.atlassian.com/v2/mcp
+headers:
+  - name: Authorization
+    scheme: basic
+    secret: ATLASSIAN_API_TOKEN
+    user: ATLASSIAN_EMAIL
+env:
+  - name: ATLASSIAN_EMAIL
+    secret: false
+    description: The email address of the Atlassian account that owns the token.
+  - name: ATLASSIAN_API_TOKEN
+    secret: true
+    description: A personal API token created in your Atlassian account.

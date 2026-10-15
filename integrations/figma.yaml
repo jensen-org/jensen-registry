@@ -1,0 +1,26 @@
+id: figma
+name: Figma
+description: Read Figma designs, components and variables so sessions can build from the real design.
+provider: Figma
+advised: false
+tags:
+  - design
+category: design
+icon:
+  simple_icons: figma
+auth:
+  - method: oauth
+    label: Sign in with Figma
+  - method: api_key
+    label: Personal access token
+    fields:
+      - name: FIGMA_API_KEY
+        secret: true
+        description: A Figma personal access token.
+mcp:
+  - id: figma
+    note: Hosted by Figma, signed in with OAuth. The hosted server limits tool calls each month.
+    default: true
+  - id: figma-developer
+    note: Runs on your machine with your own token, with no monthly call limit.
+permissions: []

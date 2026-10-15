@@ -1,0 +1,18 @@
+id: sentry
+name: Sentry
+description: Look up errors, events and releases so sessions can start from the real failure.
+provider: Sentry
+advised: false
+tags:
+  - observability
+category: observability
+icon:
+  simple_icons: sentry
+auth:
+  - method: oauth
+    label: Sign in with Sentry
+mcp:
+  - id: sentry
+    note: Hosted by Sentry, signed in with OAuth.
+    default: true
+permissions: []

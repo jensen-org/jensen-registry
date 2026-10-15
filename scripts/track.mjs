@@ -1,5 +1,5 @@
 import { spawn, spawnSync } from "node:child_process";
-import { existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync, copyFileSync } from "node:fs";
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync, copyFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
 import { parse } from "yaml";
@@ -11,13 +11,16 @@ import {
   checksumsText,
   contentHash,
   dump,
+  integrationProblems,
   loadEntries,
+  mcpProblems,
   purl,
   readYaml,
   sha256,
   validator,
   writeText,
 } from "./lib.mjs";
+import { canonicalSvg, fromCanonical, simpleIcons } from "./icons.mjs";
 
 const warnings = [];
 const warn = (message) => {
@@ -238,6 +241,11 @@ async function captureHttp(url) {
   return toolRows(listed.result.tools);
 }
 
+const httpAuth = (entry) => ({
+  ...(entry.headers?.length ? { headers: entry.headers } : {}),
+  ...(entry.oauth ? { oauth: true } : {}),
+});
+
 const needsSecret = (entry) => (entry.env ?? []).some((variable) => variable.secret && !variable.optional);
 
 async function trackMcp(entry, previous) {
@@ -260,7 +268,7 @@ async function trackMcp(entry, previous) {
         warn(`${entry.id}: could not capture tools: ${error.message}`);
       }
     }
-    return { ...base, url: entry.url, env, tools };
+    return { ...base, url: entry.url, env, ...httpAuth(entry), tools };
   }
   const pkg = entry.package;
   const version = await latestVersion(pkg);
@@ -306,6 +314,59 @@ async function trackMcp(entry, previous) {
   };
 }
 
+function iconFor(entry, icons) {
+  if (entry.icon.simple_icons) {
+    const slug = entry.icon.simple_icons;
+    const { d, hex } = icons.resolve(slug);
+    return { source: `simple-icons@${icons.version}`, path: `icons/${slug}.svg`, svg: canonicalSvg(d), hex };
+  }
+  const path = `icons/local/${entry.id}.svg`;
+  const svg = canonicalSvg(fromCanonical(readFileSync(join(ROOT, path), "utf8")));
+  return { source: "local", path, svg, hex: entry.icon.hex };
+}
+
+function trackIntegration(entry, icons, written) {
+  const icon = iconFor(entry, icons);
+  const bytes = Buffer.from(icon.svg);
+  if (!written.has(icon.path)) {
+    mkdirSync(join(ROOT, icon.path, ".."), { recursive: true });
+    writeFileSync(join(ROOT, icon.path), bytes);
+    written.add(icon.path);
+  }
+  return {
+    id: entry.id,
+    name: entry.name,
+    description: entry.description,
+    ...(entry.provider ? { provider: entry.provider } : {}),
+    advised: entry.advised,
+    ...(entry.default_on ? { default_on: true } : {}),
+    ...(entry.tags?.length ? { tags: entry.tags } : {}),
+    category: entry.category,
+    ...(entry.hosts?.length ? { hosts: entry.hosts } : {}),
+    ...(entry.native ? { native: entry.native } : {}),
+    auth: entry.auth,
+    mcp: entry.mcp ?? [],
+    permissions: entry.permissions ?? [],
+    icon: {
+      source: icon.source,
+      path: icon.path,
+      url: `${RAW_BASE}/main/${icon.path}`,
+      sha256: sha256(bytes),
+      size: bytes.length,
+      hex: icon.hex,
+    },
+  };
+}
+
+function removeOrphanIcons(kept) {
+  const walk = (dir) =>
+    readdirSync(join(ROOT, dir), { withFileTypes: true }).flatMap((item) =>
+      item.isDirectory() ? walk(`${dir}/${item.name}`) : [`${dir}/${item.name}`],
+    );
+  if (!existsSync(join(ROOT, "icons"))) return;
+  for (const path of walk("icons")) if (!kept.has(path)) rmSync(join(ROOT, path));
+}
+
 async function main() {
   const check = validator();
   const previous = existsSync(join(ROOT, "index.yaml")) ? readYaml("index.yaml") : { skills: [], mcp: [] };
@@ -317,18 +378,39 @@ async function main() {
     skills.push(await trackSkill(entry, previous.skills?.find((s) => s.id === entry.id)));
   }
   const mcp = [];
-  for (const { path, entry } of loadEntries("mcp")) {
+  const mcpEntries = loadEntries("mcp");
+  for (const { path, entry } of mcpEntries) {
     problems.push(...check.mcpEntry(entry, path));
     if (problems.length) continue;
+    problems.push(...mcpProblems(entry, path));
+    if (problems.length) continue;
     mcp.push(await trackMcp(entry, previous.mcp?.find((m) => m.id === entry.id)));
+  }
+  const mcpIds = new Map(mcpEntries.map(({ entry }) => [entry.id, entry]));
+  const integrations = [];
+  const icons = simpleIcons();
+  const written = new Set();
+  for (const { path, entry } of loadEntries("integrations")) {
+    problems.push(...check.integrationEntry(entry, path));
+    if (problems.length) continue;
+    problems.push(...integrationProblems(entry, path, mcpIds));
+    if (problems.length) continue;
+    try {
+      integrations.push(trackIntegration(entry, icons, written));
+    } catch (error) {
+      problems.push(`${path}: ${error.message}`);
+    }
   }
   if (problems.length) {
     console.error(problems.join("\n"));
     process.exit(1);
   }
-  writeText("index.yaml", dump({ schema_version: SCHEMA_VERSION, skills, mcp }));
+  removeOrphanIcons(written);
+  writeText("index.yaml", dump({ schema_version: SCHEMA_VERSION, skills, mcp, integrations }));
   writeText("checksums.txt", checksumsText(CHECKSUMMED));
-  console.log(`tracked ${skills.length} skills and ${mcp.length} mcp servers, ${warnings.length} warnings`);
+  console.log(
+    `tracked ${skills.length} skills, ${mcp.length} mcp servers and ${integrations.length} integrations, ${warnings.length} warnings`,
+  );
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) {

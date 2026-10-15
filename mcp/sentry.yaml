@@ -1,0 +1,10 @@
+id: sentry
+description: Look up Sentry issues, events and releases through Sentry's hosted server, signed in with OAuth.
+provider: Sentry
+advised: false
+tags:
+  - observability
+transport: http
+url: https://mcp.sentry.dev/mcp
+oauth: true
+env: []

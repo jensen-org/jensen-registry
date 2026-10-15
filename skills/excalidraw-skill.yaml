@@ -1,0 +1,8 @@
+id: excalidraw-skill
+repo: yctimlin/mcp_excalidraw
+path: skills/excalidraw-skill
+ref: main
+provider: yctimlin
+advised: true
+tags:
+  - diagrams

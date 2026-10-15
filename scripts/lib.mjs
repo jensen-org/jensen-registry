@@ -52,7 +52,87 @@ export function validator() {
     mcpEntry: check("mcpEntry"),
     indexSkill: check("indexSkill"),
     indexMcp: check("indexMcp"),
+    integrationEntry: check("integrationEntry"),
+    indexIntegration: check("indexIntegration"),
   };
+}
+
+const FORBIDDEN_HEADERS = new Set([
+  "host",
+  "content-length",
+  "content-type",
+  "transfer-encoding",
+  "connection",
+  "upgrade",
+  "cookie",
+  "set-cookie",
+  "proxy-authorization",
+  "mcp-session-id",
+]);
+
+export function mcpProblems(entry, label) {
+  const problems = [];
+  const env = new Map((entry.env ?? []).map((variable) => [variable.name, variable]));
+  for (const header of entry.headers ?? []) {
+    const where = `${label}: header ${header.name}`;
+    if (FORBIDDEN_HEADERS.has(header.name.toLowerCase())) problems.push(`${where} may not be set by an entry`);
+    if (!env.get(header.secret)?.secret) problems.push(`${where} must name a secret env variable`);
+    if (header.scheme === "basic") {
+      if (!header.user) problems.push(`${where} uses basic and needs a user`);
+      else if (!env.has(header.user)) problems.push(`${where} user must name an env variable`);
+      else if (env.get(header.user).secret) problems.push(`${where} user must not be a secret`);
+    } else if (header.user) {
+      problems.push(`${where} only basic takes a user`);
+    }
+  }
+  if (entry.oauth && (entry.headers ?? []).some((header) => header.name.toLowerCase() === "authorization")) {
+    problems.push(`${label}: oauth and an Authorization header cannot both be set`);
+  }
+  return problems;
+}
+
+function satisfiable(server, entry) {
+  const required = (server.env ?? []).filter((variable) => !variable.optional).map((variable) => variable.name);
+  return entry.auth.some((auth) => {
+    if (auth.method === "oauth") return Boolean(server.oauth);
+    if (server.oauth) return false;
+    if (auth.method === "api_key") {
+      const names = new Set((auth.fields ?? []).map((field) => field.name));
+      return required.every((name) => names.has(name));
+    }
+    return auth.method === "none" && required.length === 0;
+  });
+}
+
+export function integrationProblems(entry, label, mcpById) {
+  const problems = [];
+  const methods = new Set(entry.auth.map((auth) => auth.method));
+  if (methods.size !== entry.auth.length) problems.push(`${label}: an auth method is listed twice`);
+  for (const auth of entry.auth) {
+    if (auth.method === "api_key" && !(auth.fields ?? []).some((field) => field.secret)) {
+      problems.push(`${label}: api_key needs at least one secret field`);
+    }
+    if (auth.method !== "api_key" && auth.fields?.length) problems.push(`${label}: only api_key takes fields`);
+    if (auth.method === "cli_login" && !entry.native) problems.push(`${label}: cli_login needs a native protocol that knows the binary`);
+  }
+  const refs = entry.mcp ?? [];
+  const ids = new Set(refs.map((ref) => ref.id));
+  if (ids.size !== refs.length) problems.push(`${label}: an mcp server is listed twice`);
+  for (const ref of refs) {
+    const server = mcpById.get(ref.id);
+    if (!server) problems.push(`${label}: mcp server ${ref.id} has no entry in mcp/`);
+    else if (!satisfiable(server, entry)) problems.push(`${label}: no auth method can satisfy mcp server ${ref.id}`);
+  }
+  if (refs.filter((ref) => ref.default).length > 1) problems.push(`${label}: more than one default mcp server`);
+  if (entry.default_on) {
+    if (!entry.auth.every((auth) => auth.method === "none")) {
+      problems.push(`${label}: default_on is only for an integration that needs no credentials`);
+    }
+    if (!refs.some((ref) => ref.default)) problems.push(`${label}: default_on needs a default mcp server`);
+  }
+  const actions = (entry.permissions ?? []).map((permission) => permission.action);
+  if (new Set(actions).size !== actions.length) problems.push(`${label}: a permission action is listed twice`);
+  return problems;
 }
 
 export function purl(ecosystem, name, version) {

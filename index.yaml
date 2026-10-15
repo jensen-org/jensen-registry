@@ -134,6 +134,32 @@ skills:
         url: https://raw.githubusercontent.com/mattpocock/skills/49dd158d1076134a641b33efb035946536778336/skills/engineering/domain-modeling/agents/openai.yaml
         sha256: f6bf2aa996c6e6f53fdd0708e18a0d16a56aed8322cca59fedbe3c0d2c75f06b
         size: 101
+  - id: excalidraw-skill
+    name: excalidraw-skill
+    description: Excalidraw canvas toolkit for creating, editing, and refining diagrams on a live canvas. Use when an agent needs to (1) draw or lay out diagrams, (2) iteratively refine them by describing the scene and screenshotting its own work, (3) export/import .excalidraw files or PNG/SVG images, (4) save/restore canvas snapshots, (5) convert Mermaid to Excalidraw, or (6) perform element-level CRUD, alignment, distribution, grouping, duplication, and locking. Primary interface is the bundled CLI (npx -y mcp-excalidraw-server <command>) which auto-starts the canvas server; MCP tools and a REST API are equivalent alternatives.
+    provider: yctimlin
+    license: MIT
+    advised: true
+    tags:
+      - diagrams
+    repo: yctimlin/mcp_excalidraw
+    path: skills/excalidraw-skill
+    ref: main
+    commit: 8084a1c8b410d625fcfd59d5cffb32f3a86a2a6f
+    content_hash: 2f511e6dfe0411a97d0e261c67aac06e15202cac85ad14c7487df3969d65c0f2
+    files:
+      - path: SKILL.md
+        url: https://raw.githubusercontent.com/yctimlin/mcp_excalidraw/8084a1c8b410d625fcfd59d5cffb32f3a86a2a6f/skills/excalidraw-skill/SKILL.md
+        sha256: b218050cdf2a05375e80b1e162a5ebc3f3b40a99d7a626c5b9004ca5c3f95489
+        size: 18559
+      - path: evals/evals.json
+        url: https://raw.githubusercontent.com/yctimlin/mcp_excalidraw/8084a1c8b410d625fcfd59d5cffb32f3a86a2a6f/skills/excalidraw-skill/evals/evals.json
+        sha256: fea2f19e867e141cefb4fda970b91615c5e3a29a41eba6ca5d94cb1854919a57
+        size: 3388
+      - path: references/cheatsheet.md
+        url: https://raw.githubusercontent.com/yctimlin/mcp_excalidraw/8084a1c8b410d625fcfd59d5cffb32f3a86a2a6f/skills/excalidraw-skill/references/cheatsheet.md
+        sha256: 0f1cad393e3098654544844e6094c51d4a0181348ed178c81237dcf2083957d2
+        size: 10803
   - id: git-guardrails-claude-code
     name: git-guardrails-claude-code
     description: Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execute. Use when user wants to prevent destructive git operations, add git safety hooks, or block git push/reset in Claude Code.
@@ -787,6 +813,42 @@ skills:
         sha256: eacb24b2a618cfb81dacb0416f4fdd75ddf3a8060f8ddb99aae1b1e301907e4b
         size: 102
 mcp:
+  - id: atlassian-token
+    description: Atlassian's hosted Jira and Confluence server, signed in with a personal API token. An organization admin must enable API token authentication first.
+    provider: Atlassian
+    license: Apache-2.0
+    advised: false
+    tags:
+      - work-tracking
+      - docs
+    transport: http
+    url: https://mcp.atlassian.com/v2/mcp
+    env:
+      - name: ATLASSIAN_EMAIL
+        secret: false
+        description: The email address of the Atlassian account that owns the token.
+      - name: ATLASSIAN_API_TOKEN
+        secret: true
+        description: A personal API token created in your Atlassian account.
+    headers:
+      - name: Authorization
+        scheme: basic
+        secret: ATLASSIAN_API_TOKEN
+        user: ATLASSIAN_EMAIL
+    tools: []
+  - id: atlassian
+    description: Search and work with Jira and Confluence through Atlassian's hosted server, signed in with OAuth 2.1.
+    provider: Atlassian
+    license: Apache-2.0
+    advised: false
+    tags:
+      - work-tracking
+      - docs
+    transport: http
+    url: https://mcp.atlassian.com/v2/mcp
+    env: []
+    oauth: true
+    tools: []
   - id: context7
     description: Look up current library documentation and code examples by library name.
     provider: Upstash
@@ -875,6 +937,592 @@ mcp:
           required:
             - libraryId
             - query
+  - id: excalidraw
+    description: Draw, edit and export Excalidraw flowcharts and architecture diagrams on your machine, to .excalidraw, SVG or PNG files you can embed in Markdown.
+    provider: yctimlin
+    license: MIT
+    advised: true
+    tags:
+      - diagrams
+    transport: stdio
+    package:
+      ecosystem: npm
+      name: mcp-excalidraw-server
+      version: 2.1.2
+      purl: pkg:npm/mcp-excalidraw-server@2.1.2
+      bin: mcp-excalidraw-server
+      lockfile:
+        path: locks/mcp/excalidraw/package-lock.json
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/locks/mcp/excalidraw/package-lock.json
+        sha256: e34afb7ddd5fab1916626445d6b0006f05f0e664810b2bb2976966e3521db7fd
+    env:
+      - name: EXCALIDRAW_EXPORT_DIR
+        secret: false
+        optional: true
+        description: The only directory the server may write exported files to. Defaults to the working directory.
+      - name: PORT
+        secret: false
+        optional: true
+        description: The local port of the canvas the server starts. Defaults to 3000.
+    tools:
+      - name: create_element
+        description: Create a new Excalidraw element. For arrows, use startElementId/endElementId to bind to shapes (auto-routes to edges).
+        input_schema:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Custom element ID (optional, auto-generated if omitted). Use with startElementId/endElementId in batch_create_elements.
+            type:
+              type: string
+              enum:
+                - rectangle
+                - ellipse
+                - diamond
+                - arrow
+                - text
+                - freedraw
+                - line
+                - image
+                - frame
+            x:
+              type: number
+            y:
+              type: number
+            width:
+              type: number
+            height:
+              type: number
+            backgroundColor:
+              type: string
+            strokeColor:
+              type: string
+            strokeWidth:
+              type: number
+            strokeStyle:
+              type: string
+              description: "Stroke style: solid, dashed, dotted"
+            roughness:
+              type: number
+            opacity:
+              type: number
+            text:
+              type: string
+            fontSize:
+              type: number
+            fontFamily:
+              type:
+                - string
+                - number
+              description: "Font family: virgil/hand/handwritten (1), helvetica/sans/sans-serif (2), cascadia/mono/monospace (3), excalifont (5), nunito (6), lilita/lilita one (7), comic shanns/comic (8), or numeric ID"
+            startElementId:
+              type: string
+              description: "For arrows: ID of the element to bind the arrow start to. Arrow auto-routes to element edge."
+            endElementId:
+              type: string
+              description: "For arrows: ID of the element to bind the arrow end to. Arrow auto-routes to element edge."
+            endArrowhead:
+              type: string
+              description: "Arrowhead style at end: arrow, bar, dot, triangle, or null"
+            startArrowhead:
+              type: string
+              description: "Arrowhead style at start: arrow, bar, dot, triangle, or null"
+          required:
+            - type
+            - x
+            - y
+      - name: update_element
+        description: Update an existing Excalidraw element
+        input_schema:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+              enum:
+                - rectangle
+                - ellipse
+                - diamond
+                - arrow
+                - text
+                - freedraw
+                - line
+                - image
+                - frame
+            x:
+              type: number
+            y:
+              type: number
+            width:
+              type: number
+            height:
+              type: number
+            backgroundColor:
+              type: string
+            strokeColor:
+              type: string
+            strokeWidth:
+              type: number
+            strokeStyle:
+              type: string
+            roughness:
+              type: number
+            opacity:
+              type: number
+            text:
+              type: string
+            fontSize:
+              type: number
+            fontFamily:
+              type:
+                - string
+                - number
+              description: "Font family: virgil/hand/handwritten (1), helvetica/sans/sans-serif (2), cascadia/mono/monospace (3), excalifont (5), nunito (6), lilita/lilita one (7), comic shanns/comic (8), or numeric ID"
+          required:
+            - id
+      - name: delete_element
+        description: Delete an Excalidraw element
+        input_schema:
+          type: object
+          properties:
+            id:
+              type: string
+          required:
+            - id
+      - name: query_elements
+        description: Query Excalidraw elements with optional filters
+        input_schema:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - rectangle
+                - ellipse
+                - diamond
+                - arrow
+                - text
+                - freedraw
+                - line
+                - image
+                - frame
+            filter:
+              type: object
+              additionalProperties: true
+            bbox:
+              type: object
+              description: Bounding box filter — only return elements whose origin (x, y) falls within the given coordinate range
+              properties:
+                x_min:
+                  type: number
+                x_max:
+                  type: number
+                y_min:
+                  type: number
+                y_max:
+                  type: number
+      - name: get_resource
+        description: Get an Excalidraw resource
+        input_schema:
+          type: object
+          properties:
+            resource:
+              type: string
+              enum:
+                - scene
+                - library
+                - theme
+                - elements
+          required:
+            - resource
+      - name: group_elements
+        description: Group multiple elements together
+        input_schema:
+          type: object
+          properties:
+            elementIds:
+              type: array
+              items:
+                type: string
+          required:
+            - elementIds
+      - name: ungroup_elements
+        description: Ungroup a group of elements
+        input_schema:
+          type: object
+          properties:
+            groupId:
+              type: string
+          required:
+            - groupId
+      - name: align_elements
+        description: Align elements to a specific position
+        input_schema:
+          type: object
+          properties:
+            elementIds:
+              type: array
+              items:
+                type: string
+            alignment:
+              type: string
+              enum:
+                - left
+                - center
+                - right
+                - top
+                - middle
+                - bottom
+          required:
+            - elementIds
+            - alignment
+      - name: distribute_elements
+        description: Distribute elements evenly
+        input_schema:
+          type: object
+          properties:
+            elementIds:
+              type: array
+              items:
+                type: string
+            direction:
+              type: string
+              enum:
+                - horizontal
+                - vertical
+          required:
+            - elementIds
+            - direction
+      - name: lock_elements
+        description: Lock elements to prevent modification
+        input_schema:
+          type: object
+          properties:
+            elementIds:
+              type: array
+              items:
+                type: string
+          required:
+            - elementIds
+      - name: unlock_elements
+        description: Unlock elements to allow modification
+        input_schema:
+          type: object
+          properties:
+            elementIds:
+              type: array
+              items:
+                type: string
+          required:
+            - elementIds
+      - name: create_from_mermaid
+        description: Convert a Mermaid diagram to Excalidraw elements and render them on the canvas
+        input_schema:
+          type: object
+          properties:
+            mermaidDiagram:
+              type: string
+              description: The Mermaid diagram definition (e.g., "graph TD; A-->B; B-->C;")
+            config:
+              type: object
+              description: Optional Mermaid configuration
+              properties:
+                startOnLoad:
+                  type: boolean
+                flowchart:
+                  type: object
+                  properties:
+                    curve:
+                      type: string
+                      enum:
+                        - linear
+                        - basis
+                themeVariables:
+                  type: object
+                  properties:
+                    fontSize:
+                      type: string
+                maxEdges:
+                  type: number
+                maxTextSize:
+                  type: number
+          required:
+            - mermaidDiagram
+      - name: batch_create_elements
+        description: Create multiple Excalidraw elements at once. For arrows, use startElementId/endElementId to bind arrows to shapes — Excalidraw auto-routes to element edges. Assign custom id to shapes so arrows can reference them.
+        input_schema:
+          type: object
+          properties:
+            elements:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    description: Custom element ID. Arrows can reference this via startElementId/endElementId.
+                  type:
+                    type: string
+                    enum:
+                      - rectangle
+                      - ellipse
+                      - diamond
+                      - arrow
+                      - text
+                      - freedraw
+                      - line
+                      - image
+                      - frame
+                  x:
+                    type: number
+                  y:
+                    type: number
+                  width:
+                    type: number
+                  height:
+                    type: number
+                  backgroundColor:
+                    type: string
+                  strokeColor:
+                    type: string
+                  strokeWidth:
+                    type: number
+                  strokeStyle:
+                    type: string
+                    description: "Stroke style: solid, dashed, dotted"
+                  roughness:
+                    type: number
+                  opacity:
+                    type: number
+                  text:
+                    type: string
+                  fontSize:
+                    type: number
+                  fontFamily:
+                    type:
+                      - string
+                      - number
+                    description: "Font family: virgil/hand/handwritten (1), helvetica/sans/sans-serif (2), cascadia/mono/monospace (3), excalifont (5), nunito (6), lilita/lilita one (7), comic shanns/comic (8), or numeric ID"
+                  startElementId:
+                    type: string
+                    description: "For arrows: ID of element to bind arrow start to"
+                  endElementId:
+                    type: string
+                    description: "For arrows: ID of element to bind arrow end to"
+                  endArrowhead:
+                    type: string
+                    description: "Arrowhead style at end: arrow, bar, dot, triangle, or null"
+                  startArrowhead:
+                    type: string
+                    description: "Arrowhead style at start: arrow, bar, dot, triangle, or null"
+                required:
+                  - type
+                  - x
+                  - y
+          required:
+            - elements
+      - name: get_element
+        description: Get a single Excalidraw element by ID
+        input_schema:
+          type: object
+          properties:
+            id:
+              type: string
+              description: The element ID
+          required:
+            - id
+      - name: clear_canvas
+        description: Clear all elements from the canvas
+        input_schema:
+          type: object
+          properties: {}
+      - name: export_scene
+        description: Export the current canvas to .excalidraw JSON format. Optionally write to a file; a path ending in .md is written in the Obsidian Excalidraw plugin format (.excalidraw.md).
+        input_schema:
+          type: object
+          properties:
+            filePath:
+              type: string
+              description: Optional file path to write the scene to (.excalidraw for raw JSON, .excalidraw.md for the Obsidian Excalidraw plugin format)
+      - name: import_scene
+        description: Import elements from a .excalidraw JSON file, an Obsidian .excalidraw.md file, or raw JSON data
+        input_schema:
+          type: object
+          properties:
+            filePath:
+              type: string
+              description: Path to a .excalidraw JSON or Obsidian .excalidraw.md file
+            data:
+              type: string
+              description: Raw .excalidraw JSON string (alternative to filePath)
+            mode:
+              type: string
+              enum:
+                - replace
+                - merge
+              description: '"replace" clears canvas first, "merge" appends to existing elements'
+          required:
+            - mode
+      - name: export_to_image
+        description: Export the current canvas to a PNG or SVG image. Renders headless in the canvas server (no browser tab needed); SVGs embed the fonts they use.
+        input_schema:
+          type: object
+          properties:
+            format:
+              type: string
+              enum:
+                - png
+                - svg
+              description: Image format
+            filePath:
+              type: string
+              description: Optional file path to save the image
+            background:
+              type: boolean
+              description: "Include the background (default: true)"
+            renderer:
+              type: string
+              enum:
+                - auto
+                - node
+                - browser
+              description: '"auto" (default) renders headless in the canvas server, no browser needed. "browser" asks an open canvas tab to render with Excalidraw itself (reference rendering, slower).'
+            dark:
+              type: boolean
+              description: "Render in dark mode (default: false)"
+            scale:
+              type: number
+              description: "PNG pixel scale from 1 to 4 (default: 1)"
+            padding:
+              type: number
+              description: "Padding around the drawing in px (default: 10)"
+            elementIds:
+              type: array
+              items:
+                type: string
+              description: Render only these elements (their bound labels are included)
+            frameId:
+              type: string
+              description: Render a single frame, clipped to its bounds
+          required:
+            - format
+      - name: duplicate_elements
+        description: Duplicate elements with a configurable offset
+        input_schema:
+          type: object
+          properties:
+            elementIds:
+              type: array
+              items:
+                type: string
+              description: IDs of elements to duplicate
+            offsetX:
+              type: number
+              description: "Horizontal offset (default: 20)"
+            offsetY:
+              type: number
+              description: "Vertical offset (default: 20)"
+          required:
+            - elementIds
+      - name: snapshot_scene
+        description: Save a named snapshot of the current canvas state for later restoration
+        input_schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Name for this snapshot
+          required:
+            - name
+      - name: restore_snapshot
+        description: Restore the canvas from a previously saved named snapshot
+        input_schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Name of the snapshot to restore
+          required:
+            - name
+      - name: describe_scene
+        description: "Get an AI-readable description of the current canvas: element types, positions, connections, labels, spatial layout, and bounding box. Use this to understand what is on the canvas before making changes."
+        input_schema:
+          type: object
+          properties: {}
+      - name: get_canvas_screenshot
+        description: Render the current canvas to a PNG and return it as an image. Renders headless in the canvas server (no browser tab needed). Use this to visually verify what the diagram looks like.
+        input_schema:
+          type: object
+          properties:
+            background:
+              type: boolean
+              description: "Include the background (default: true)"
+            renderer:
+              type: string
+              enum:
+                - auto
+                - node
+                - browser
+              description: '"auto" (default) renders headless in the canvas server, no browser needed. "browser" asks an open canvas tab to render with Excalidraw itself (reference rendering, slower).'
+            dark:
+              type: boolean
+              description: "Render in dark mode (default: false)"
+            scale:
+              type: number
+              description: "PNG pixel scale from 1 to 4 (default: 1)"
+            padding:
+              type: number
+              description: "Padding around the drawing in px (default: 10)"
+            elementIds:
+              type: array
+              items:
+                type: string
+              description: Render only these elements (their bound labels are included)
+            frameId:
+              type: string
+              description: Render a single frame, clipped to its bounds
+      - name: read_diagram_guide
+        description: "Returns a comprehensive design guide for creating beautiful Excalidraw diagrams: color palette, sizing rules, layout patterns, arrow binding best practices, diagram templates, and anti-patterns. Call this before creating diagrams to produce professional results."
+        input_schema:
+          type: object
+          properties: {}
+      - name: export_to_excalidraw_url
+        description: Export the current canvas to a shareable excalidraw.com URL. The diagram is encrypted and uploaded; anyone with the URL can view it. Returns the shareable link.
+        input_schema:
+          type: object
+          properties: {}
+      - name: set_viewport
+        description: Control the canvas viewport (camera). Auto-fit all elements, zoom-to-fit a subset of elements, center on a specific element, or set zoom/scroll directly. Requires the canvas frontend open in a browser.
+        input_schema:
+          type: object
+          properties:
+            scrollToContent:
+              type: boolean
+              description: Auto-fit all elements in view (zoom-to-fit)
+            scrollToElementIds:
+              type: array
+              items:
+                type: string
+              minItems: 1
+              description: Zoom-to-fit the bounding box of one or more elements by ID; every ID must exist
+            viewportZoomFactor:
+              type: number
+              exclusiveMinimum: 0
+              maximum: 1
+              description: Optional fit-to-viewport zoom factor in the range (0, 1] for scrollToContent or scrollToElementIds; lower values leave more padding
+            scrollToElementId:
+              type: string
+              description: Center the view on a specific element by ID
+            zoom:
+              type: number
+              description: Zoom level (0.1–10, where 1 = 100%)
+            offsetX:
+              type: number
+              description: Horizontal scroll offset
+            offsetY:
+              type: number
+              description: Vertical scroll offset
   - id: fetch
     description: Fetch a web page and return it as markdown for the model to read.
     provider: Model Context Protocol
@@ -931,6 +1579,42 @@ mcp:
             - url
           title: Fetch
           type: object
+  - id: figma-developer
+    description: Read Figma designs with your own personal access token, so the hosted server's monthly call limit does not apply.
+    provider: Framelink
+    license: MIT
+    advised: false
+    tags:
+      - design
+    transport: stdio
+    package:
+      ecosystem: npm
+      name: figma-developer-mcp
+      version: 0.13.2
+      purl: pkg:npm/figma-developer-mcp@0.13.2
+      bin: figma-developer-mcp
+      args:
+        - --stdio
+      lockfile:
+        path: locks/mcp/figma-developer/package-lock.json
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/locks/mcp/figma-developer/package-lock.json
+        sha256: 22893864fcea2a7002660b4847d5353c5668dff4fa7b5d34f10c4a03192ff4f8
+    env:
+      - name: FIGMA_API_KEY
+        secret: true
+        description: A Figma personal access token.
+    tools: []
+  - id: figma
+    description: Read Figma designs through Figma's hosted server, signed in with OAuth. The hosted server limits how many tool calls a plan may make each month.
+    provider: Figma
+    advised: false
+    tags:
+      - design
+    transport: http
+    url: https://mcp.figma.com/mcp
+    env: []
+    oauth: true
+    tools: []
   - id: memory
     description: Keep a small knowledge graph of entities and relations that persists between sessions.
     provider: Model Context Protocol
@@ -1672,3 +2356,324 @@ mcp:
               description: The text to wait for to disappear
               type: string
           additionalProperties: false
+  - id: sentry
+    description: Look up Sentry issues, events and releases through Sentry's hosted server, signed in with OAuth.
+    provider: Sentry
+    advised: false
+    tags:
+      - observability
+    transport: http
+    url: https://mcp.sentry.dev/mcp
+    env: []
+    oauth: true
+    tools: []
+integrations:
+  - id: confluence
+    name: Confluence
+    description: Search and read Confluence pages and spaces so sessions can follow the team's written decisions.
+    provider: Atlassian
+    advised: false
+    tags:
+      - docs
+    category: docs
+    auth:
+      - method: oauth
+        label: Sign in with Atlassian
+      - method: api_key
+        label: Personal API token
+        fields:
+          - name: ATLASSIAN_EMAIL
+            secret: false
+            description: The email address of the Atlassian account that owns the token.
+          - name: ATLASSIAN_API_TOKEN
+            secret: true
+            description: A personal API token created in your Atlassian account.
+    mcp:
+      - id: atlassian
+        note: Hosted by Atlassian, signed in with OAuth.
+        default: true
+      - id: atlassian-token
+        note: Hosted by Atlassian, signed in with a personal API token your admin has enabled.
+    permissions: []
+    icon:
+      source: simple-icons@16.35.0
+      path: icons/confluence.svg
+      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/icons/confluence.svg
+      sha256: 230d2f9b756187e861d0dfc750a51a1c944a3c18f80196208fb435af05b7916d
+      size: 696
+      hex: 172B4D
+  - id: excalidraw
+    name: Excalidraw
+    description: Let agents draw clean flowcharts and architecture diagrams, then embed the exported SVG in your Markdown documentation.
+    provider: Excalidraw
+    advised: true
+    default_on: true
+    tags:
+      - diagrams
+    category: design
+    auth:
+      - method: none
+    mcp:
+      - id: excalidraw
+        note: Runs on your machine. Exports .excalidraw, SVG and PNG files into your project.
+        default: true
+    permissions: []
+    icon:
+      source: simple-icons@16.35.0
+      path: icons/excalidraw.svg
+      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/icons/excalidraw.svg
+      sha256: 8e998b918b7c212c61e58a46a65f2544cfcfd43362f05ea3f4c7878cf36b360a
+      size: 5232
+      hex: 6965DB
+  - id: figma
+    name: Figma
+    description: Read Figma designs, components and variables so sessions can build from the real design.
+    provider: Figma
+    advised: false
+    tags:
+      - design
+    category: design
+    auth:
+      - method: oauth
+        label: Sign in with Figma
+      - method: api_key
+        label: Personal access token
+        fields:
+          - name: FIGMA_API_KEY
+            secret: true
+            description: A Figma personal access token.
+    mcp:
+      - id: figma
+        note: Hosted by Figma, signed in with OAuth. The hosted server limits tool calls each month.
+        default: true
+      - id: figma-developer
+        note: Runs on your machine with your own token, with no monthly call limit.
+    permissions: []
+    icon:
+      source: simple-icons@16.35.0
+      path: icons/figma.svg
+      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/icons/figma.svg
+      sha256: 70cc881276c4869b21be94375d33f0f059a628ce31d136392faf57bd03041e5e
+      size: 1063
+      hex: F24E1E
+  - id: github
+    name: GitHub
+    description: Issues, pull requests, pipelines and scheduling for repositories on GitHub and GitHub Enterprise.
+    provider: GitHub
+    advised: true
+    tags:
+      - code-hosting
+    category: code-hosting
+    hosts:
+      - github.com
+    native: forge.github_rest
+    auth:
+      - method: api_key
+        label: Personal access token
+        fields:
+          - name: GITHUB_TOKEN
+            secret: true
+            description: A personal access token with the scopes listed.
+        scopes:
+          - repo
+          - project
+          - workflow
+      - method: cli_login
+        label: Use the command line login
+    mcp: []
+    permissions:
+      - action: issue create
+        label: Create issues
+        hint: Open issues from plans and triage.
+        group: Issues
+        write: true
+      - action: issue comment
+        label: Comment on issues
+        hint: Post comments to the tracker.
+        group: Issues
+        write: true
+      - action: issue labels
+        label: Change issue labels
+        hint: Add or remove issue labels.
+        group: Issues
+        write: true
+      - action: issue state
+        label: Close or reopen issues
+        hint: Mark issues done or reopen them.
+        group: Issues
+        write: true
+      - action: issue assign
+        label: Assign yourself to issues
+        hint: Take or drop issues and bugs.
+        group: Issues
+        write: true
+      - action: issue fields
+        label: Change issue fields
+        hint: Set type, priority, and parent.
+        group: Issues
+        write: true
+      - action: work item schedule
+        label: Schedule work items
+        hint: Set milestone, dates, weight, and health.
+        group: Issues
+        write: true
+      - action: merge request create
+        label: Create merge requests
+        hint: Open draft merge requests from sessions.
+        group: Merge requests
+        write: true
+      - action: merge request comment
+        label: Comment on merge requests
+        hint: Post reviews and notes.
+        group: Merge requests
+        write: true
+      - action: merge request approve
+        label: Approve merge requests
+        hint: Approve merge requests and pull requests.
+        group: Merge requests
+        write: true
+    icon:
+      source: simple-icons@16.35.0
+      path: icons/github.svg
+      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/icons/github.svg
+      sha256: e327163d1e9b90a52a53da7d8207e70d64c4ed90e3cd13f3eb1a8cc9939634de
+      size: 791
+      hex: "181717"
+  - id: gitlab
+    name: GitLab
+    description: Issues, merge requests, pipelines and scheduling for projects on GitLab and self hosted GitLab.
+    provider: GitLab
+    advised: true
+    tags:
+      - code-hosting
+    category: code-hosting
+    hosts:
+      - gitlab.com
+    native: forge.gitlab_rest
+    auth:
+      - method: api_key
+        label: Personal access token
+        fields:
+          - name: GITLAB_TOKEN
+            secret: true
+            description: A personal or project access token with the api scope.
+        scopes:
+          - api
+      - method: cli_login
+        label: Use the command line login
+    mcp: []
+    permissions:
+      - action: issue create
+        label: Create issues
+        hint: Open issues from plans and triage.
+        group: Issues
+        write: true
+      - action: issue comment
+        label: Comment on issues
+        hint: Post comments to the tracker.
+        group: Issues
+        write: true
+      - action: issue labels
+        label: Change issue labels
+        hint: Add or remove issue labels.
+        group: Issues
+        write: true
+      - action: issue state
+        label: Close or reopen issues
+        hint: Mark issues done or reopen them.
+        group: Issues
+        write: true
+      - action: issue assign
+        label: Assign yourself to issues
+        hint: Take or drop issues and bugs.
+        group: Issues
+        write: true
+      - action: issue fields
+        label: Change issue fields
+        hint: Set type, priority, and parent.
+        group: Issues
+        write: true
+      - action: work item schedule
+        label: Schedule work items
+        hint: Set milestone, dates, weight, and health.
+        group: Issues
+        write: true
+      - action: merge request create
+        label: Create merge requests
+        hint: Open draft merge requests from sessions.
+        group: Merge requests
+        write: true
+      - action: merge request comment
+        label: Comment on merge requests
+        hint: Post reviews and notes.
+        group: Merge requests
+        write: true
+      - action: merge request approve
+        label: Approve merge requests
+        hint: Approve merge requests and pull requests.
+        group: Merge requests
+        write: true
+    icon:
+      source: simple-icons@16.35.0
+      path: icons/gitlab.svg
+      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/icons/gitlab.svg
+      sha256: 7739dfcae6eea7517ee5f0f38a3f2a319cd0e14b3a8178147c72278ac71d7782
+      size: 542
+      hex: FC6D26
+  - id: jira
+    name: Jira
+    description: Search and read Jira issues, projects and boards to give sessions the context behind the work.
+    provider: Atlassian
+    advised: false
+    tags:
+      - work-tracking
+    category: work-tracking
+    auth:
+      - method: oauth
+        label: Sign in with Atlassian
+      - method: api_key
+        label: Personal API token
+        fields:
+          - name: ATLASSIAN_EMAIL
+            secret: false
+            description: The email address of the Atlassian account that owns the token.
+          - name: ATLASSIAN_API_TOKEN
+            secret: true
+            description: A personal API token created in your Atlassian account.
+    mcp:
+      - id: atlassian
+        note: Hosted by Atlassian, signed in with OAuth.
+        default: true
+      - id: atlassian-token
+        note: Hosted by Atlassian, signed in with a personal API token your admin has enabled.
+    permissions: []
+    icon:
+      source: simple-icons@16.35.0
+      path: icons/jira.svg
+      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/icons/jira.svg
+      sha256: 7ae70ef7bb541dee4f1d68760fe4bb1febf532f6d4311eeacbfe2bbe8a89b4e2
+      size: 449
+      hex: 0052CC
+  - id: sentry
+    name: Sentry
+    description: Look up errors, events and releases so sessions can start from the real failure.
+    provider: Sentry
+    advised: false
+    tags:
+      - observability
+    category: observability
+    auth:
+      - method: oauth
+        label: Sign in with Sentry
+    mcp:
+      - id: sentry
+        note: Hosted by Sentry, signed in with OAuth.
+        default: true
+    permissions: []
+    icon:
+      source: simple-icons@16.35.0
+      path: icons/sentry.svg
+      url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/icons/sentry.svg
+      sha256: bd18cc0f7802508cd8fbe1e9194767d1d41e6bc9457d56de1b838f87aaed6686
+      size: 655
+      hex: 362D59

@@ -1,0 +1,18 @@
+id: excalidraw
+name: Excalidraw
+description: Let agents draw clean flowcharts and architecture diagrams, then embed the exported SVG in your Markdown documentation.
+provider: Excalidraw
+advised: true
+default_on: true
+tags:
+  - diagrams
+category: design
+icon:
+  simple_icons: excalidraw
+auth:
+  - method: none
+mcp:
+  - id: excalidraw
+    note: Runs on your machine. Exports .excalidraw, SVG and PNG files into your project.
+    default: true
+permissions: []
