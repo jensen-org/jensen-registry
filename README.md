@@ -46,6 +46,14 @@ that differs. An integration with no Simple Icons slug supplies `integrations/ic
 same form and sets `icon: { local: true, hex: ... }`. Clients must check the sha256 in `index.yaml`,
 re-check the form, and draw the icon as an image or mask, never as inline markup.
 
+## Values the machine supplies
+
+A server run on this machine can have an optional, non secret env variable filled in by the client
+for each launch, with `from`: `project_root` is the open project, `free_port` is a free local port,
+and `loopback_url` is the loopback address of that port (it needs a `free_port` variable in the
+same entry). A value the user sets wins. Nothing but those three is possible, so an entry cannot ask
+the client to read anything else from the machine.
+
 ## How a client installs a server
 
 The content hash of a skill is the sha256 of its files' `path NUL sha256 NEWLINE` lines, sorted by

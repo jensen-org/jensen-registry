@@ -13,6 +13,18 @@ const FORBIDDEN_HEADERS = new Set([
 
 export function mcpProblems(entry, label) {
   const problems = [];
+  const sourced = (entry.env ?? []).filter((variable) => variable.from);
+  for (const variable of sourced) {
+    const where = `${label}: env ${variable.name}`;
+    if (variable.secret) problems.push(`${where} takes its value from the machine, so it cannot be a secret`);
+    if (!variable.optional) problems.push(`${where} takes its value from the machine, so it must be optional`);
+    if (entry.transport !== "stdio") problems.push(`${where}: only a server run on this machine can take a value from it`);
+  }
+  const sources = sourced.map((variable) => variable.from);
+  if (new Set(sources).size !== sources.length) problems.push(`${label}: two env variables take the same value from the machine`);
+  if (sources.includes("loopback_url") && !sources.includes("free_port")) {
+    problems.push(`${label}: a loopback_url variable needs a free_port variable to point at`);
+  }
   const env = new Map((entry.env ?? []).map((variable) => [variable.name, variable]));
   for (const header of entry.headers ?? []) {
     const where = `${label}: header ${header.name}`;
