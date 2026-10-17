@@ -44,6 +44,12 @@ export function integrationProblems(entry, label, mcpEntries) {
   return problems;
 }
 
+export function skillProblems(entry, label, skillIds) {
+  return (entry.skills ?? [])
+    .filter((id) => !skillIds.has(id))
+    .map((id) => `${label}: skill ${id} has no entry in skills/`);
+}
+
 export function servesProblems(mcpEntries, integrationIds) {
   const problems = [];
   for (const { path, entry } of mcpEntries) {
