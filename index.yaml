@@ -2438,6 +2438,8 @@ integrations:
     mcp:
       - id: excalidraw
         default: true
+    skills:
+      - excalidraw-skill
     permissions: []
     icon:
       source: simple-icons@16.35.0

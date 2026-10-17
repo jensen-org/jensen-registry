@@ -1,7 +1,7 @@
 import { existsSync, mkdirSync, readFileSync, readdirSync, rmSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { RAW_BASE, ROOT, loadEntries, sha256 } from "../lib.mjs";
-import { integrationProblems, serving, servesProblems } from "./checks.mjs";
+import { integrationProblems, serving, servesProblems, skillProblems } from "./checks.mjs";
 import { canonicalSvg, fromCanonical, simpleIcons } from "./icons.mjs";
 
 const ICONS = "integrations/icons";
@@ -44,6 +44,7 @@ function trackIntegration(entry, mcpEntries, icons, written) {
     auth: entry.auth,
     ...(entry.default_mcp ? { default_mcp: entry.default_mcp } : {}),
     mcp: servers,
+    ...(entry.skills?.length ? { skills: entry.skills } : {}),
     permissions: entry.permissions ?? [],
     icon: {
       source: icon.source,
@@ -65,6 +66,7 @@ function removeOrphanIcons(kept) {
 
 export function trackIntegrations({ check, problems, mcpEntries }) {
   const entries = loadEntries("integrations");
+  const skillIds = new Set(loadEntries("skills").map(({ entry }) => entry.id));
   problems.push(...servesProblems(mcpEntries, new Set(entries.map(({ entry }) => entry.id))));
   const icons = simpleIcons();
   const written = new Map();
@@ -72,7 +74,7 @@ export function trackIntegrations({ check, problems, mcpEntries }) {
   for (const { path, entry } of entries) {
     problems.push(...check("integrations", "integrationEntry")(entry, path));
     if (problems.length) continue;
-    problems.push(...integrationProblems(entry, path, mcpEntries));
+    problems.push(...integrationProblems(entry, path, mcpEntries), ...skillProblems(entry, path, skillIds));
     if (problems.length) continue;
     try {
       integrations.push(trackIntegration(entry, mcpEntries, icons, written));

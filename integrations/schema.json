@@ -190,6 +190,14 @@
         },
         "default_mcp": {
           "$ref": "#/$defs/id"
+        },
+        "skills": {
+          "type": "array",
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
         }
       }
     },
@@ -268,6 +276,14 @@
         },
         "permissions": {
           "type": "array"
+        },
+        "skills": {
+          "type": "array",
+          "maxItems": 16,
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
         },
         "icon": {
           "type": "object",

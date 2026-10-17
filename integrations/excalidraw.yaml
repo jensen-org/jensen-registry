@@ -12,4 +12,6 @@ icon:
 auth:
   - method: none
 default_mcp: excalidraw
+skills:
+  - excalidraw-skill
 permissions: []
