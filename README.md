@@ -7,22 +7,39 @@ publish here is what Jensen offers.
 
 ## Layout
 
-There are four folders. Each holds its entries, the assets generated from them, and the code that
+There are five folders. Each holds its entries, the assets generated from them, and the code that
 checks them.
 
 | Folder | Entries | Assets | Code |
 |---|---|---|---|
-| `tools/` | `tools.yaml` (language servers, linters, formatters, debug adapters, schema in `jensen-org/jensen`), `upstreams.yaml` (third party sources such as the Mason registry) | | `track.mjs`, `validate.mjs` |
+| `tools/` | `tools.yaml` (language servers, linters, formatters, debug adapters, and the `grammars` section `grammars/` writes, schema in `jensen-org/jensen`), `upstreams.yaml` (third party sources such as the Mason registry) | | `track.mjs`, `validate.mjs` |
+| `grammars/` | `sources.yaml`: the crates.io release each tree-sitter grammar is built from, and the CLI version that builds it | `wasm/<id>-<version>.wasm`: the built grammars | `track.mjs`, `validate.mjs` |
 | `skills/` | `<id>.yaml`: the repo, path and ref a skill tracks | | `schema.json`, `track.mjs`, `validate.mjs` |
 | `mcp/` | `<id>.yaml`: a server's package or url, its env, its auth, and the integrations it `serves` | `locks/<id>/`: the lockfile a stdio server installs from | `schema.json`, `track.mjs`, `checks.mjs`, `validate.mjs` |
 | `integrations/` | `<id>.yaml`: a service Jensen connects to | `icons/<name>.svg` | `schema.json`, `track.mjs`, `checks.mjs`, `validate.mjs`, `icons.mjs` |
 
 At the root: `index.yaml` (generated, never hand edited), `checksums.txt`, `registry.mjs` (runs the
-four folders), `lib.mjs` (shared helpers), `package.json`, and the two legacy copies below.
+five folders), `lib.mjs` (shared helpers), `package.json`, and the two legacy copies below.
 
 - `index.yaml`: every entry resolved and pinned. Skills carry the commit, each file's url and sha256 and a content hash. Stdio servers carry an exact version and a hashed lockfile. Every server lists the env it needs and the tools captured from it. Every integration lists the servers that serve it and its pinned icon.
 - `checksums.txt`: `<sha256>  <file>` for `index.yaml`, the tools files and their legacy copies. A client checks it before trusting a fetched file.
 - `tools.yaml` and `upstreams.yaml` at the root are byte copies of the files in `tools/`, written by `track`, because released Jensen builds still fetch them from the root. Remove them once those builds are gone.
+
+## Grammars
+
+Jensen reads imports through tree-sitter grammars and holds none itself. When a project holds a
+language, Jensen installs that language's grammar from here: it downloads
+`grammars/wasm/<id>-<version>.wasm`, checks it against the sha256 in the `grammars` section of
+`tools/tools.yaml`, and loads it into a sandboxed wasm runtime. Nothing native is loaded.
+
+`grammars/sources.yaml` pins each grammar to a crates.io release, whose checksum `track` verifies
+against what crates.io publishes, and pins the `tree-sitter` CLI version that builds it. To add or
+update a grammar, change `sources.yaml` and run `npm run track` with that CLI version installed. It
+builds only the files that are missing, records every file's sha256 in `tools/tools.yaml` below the
+generated marker, and refreshes the legacy copy and `checksums.txt`. A file under `grammars/wasm/`
+is never rewritten, because released clients pin it by hash. `validate` checks that every source has
+a wasm file, that the file is a wasm module, and that the recorded entries match the files. The build
+is not byte reproducible, so `validate` never rebuilds.
 
 ## Binding an MCP server to an integration
 

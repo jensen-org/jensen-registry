@@ -1,0 +1,66 @@
+schema_version: 1
+tree_sitter_cli: 0.26.7
+grammars:
+  - id: bash
+    crate: tree-sitter-bash
+    version: 0.25.1
+  - id: c
+    crate: tree-sitter-c
+    version: 0.24.2
+  - id: c_sharp
+    crate: tree-sitter-c-sharp
+    version: 0.23.5
+  - id: cpp
+    crate: tree-sitter-cpp
+    version: 0.23.4
+  - id: elixir
+    crate: tree-sitter-elixir
+    version: 0.3.5
+  - id: go
+    crate: tree-sitter-go
+    version: 0.25.0
+  - id: hcl
+    crate: tree-sitter-hcl
+    version: 1.1.0
+  - id: java
+    crate: tree-sitter-java
+    version: 0.23.5
+  - id: javascript
+    crate: tree-sitter-javascript
+    version: 0.25.0
+  - id: kotlin
+    crate: tree-sitter-kotlin-ng
+    version: 1.1.0
+  - id: objc
+    crate: tree-sitter-objc
+    version: 3.0.2
+  - id: php
+    crate: tree-sitter-php
+    version: 0.24.2
+    path: php
+  - id: python
+    crate: tree-sitter-python
+    version: 0.25.0
+  - id: ruby
+    crate: tree-sitter-ruby
+    version: 0.23.1
+  - id: rust
+    crate: tree-sitter-rust
+    version: 0.24.2
+  - id: scala
+    crate: tree-sitter-scala
+    version: 0.26.2
+  - id: swift
+    crate: tree-sitter-swift
+    version: 0.7.3
+  - id: tsx
+    crate: tree-sitter-typescript
+    version: 0.23.2
+    path: tsx
+  - id: typescript
+    crate: tree-sitter-typescript
+    version: 0.23.2
+    path: typescript
+  - id: zig
+    crate: tree-sitter-zig
+    version: 1.1.2
