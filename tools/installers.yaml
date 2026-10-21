@@ -48,17 +48,24 @@ sources:
 launchers:
   node:
     - node
+    - "{target}"
   python:
     - python3
+    - "{target}"
   ruby:
     - ruby
+    - "{target}"
   php:
     - php
+    - "{target}"
   dotnet:
     - dotnet
+    - "{target}"
   java-jar:
     - java
     - -jar
+    - "{target}"
   pyvenv:
     - "{dir}/venv/bin/python"
     - -m
+    - "{rest}"
