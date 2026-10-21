@@ -2075,7 +2075,7 @@ tools:
     package: bandit
   - id: basedpyright
     kind: languageserver
-    bin: basedpyright
+    bin: basedpyright-langserver
     args:
       - --stdio
     languages:
@@ -3003,7 +3003,7 @@ tools:
     package: glint
   - id: glint-lsp
     kind: languageserver
-    bin: glint
+    bin: glint-language-server
     args:
       - --stdio
     languages:
@@ -3346,7 +3346,7 @@ tools:
     package: kcl
   - id: kcl-lsp
     kind: languageserver
-    bin: kcl
+    bin: kcl-language-server
     args:
       - --stdio
     languages:
@@ -4040,7 +4040,7 @@ tools:
     package: protols
   - id: psalm
     kind: languageserver
-    bin: psalm
+    bin: psalm-language-server
     args:
       - --stdio
     languages:
@@ -4058,7 +4058,7 @@ tools:
     package: pug-lsp
   - id: puppet-editor-services-lsp
     kind: languageserver
-    bin: puppet-debugserver
+    bin: puppet-languageserver
     args:
       - --stdio
     languages:
@@ -5042,7 +5042,7 @@ tools:
     package: tclint
   - id: tclint-lsp
     kind: languageserver
-    bin: tclint
+    bin: tclsp
     args:
       - --stdio
     languages:
@@ -5396,7 +5396,7 @@ tools:
     package: verible
   - id: verible-lsp
     kind: languageserver
-    bin: verible-verilog-diff
+    bin: verible-verilog-ls
     args:
       - --stdio
     languages:

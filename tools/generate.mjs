@@ -30,9 +30,12 @@ const slug = (label) =>
     .replace(/\+/g, "plus")
     .replace(/[^a-z0-9]/g, "");
 
-function pickBin(package_, binKeys) {
-  if (binKeys.includes(package_.name)) return package_.name;
-  return [...binKeys].sort()[0];
+const SERVER_BIN = /(lsp|language-?server|langserver|-ls$)/i;
+
+function pickBin(package_, binKeys, kind) {
+  const pool = kind === "languageserver" && binKeys.some((key) => SERVER_BIN.test(key)) ? binKeys.filter((key) => SERVER_BIN.test(key)) : binKeys;
+  if (pool.includes(package_.name)) return package_.name;
+  return [...pool].sort()[0];
 }
 
 export function generate({ packages, overrides, installers }) {
@@ -53,7 +56,7 @@ export function generate({ packages, overrides, installers }) {
     const key = label.toLowerCase();
     if (!labels.has(key)) {
       const id = slug(label);
-      if (!id) return [];
+      if (!id || languages.some((language) => language.id === id)) return [];
       languages.push({ id, catalog_labels: [label] });
       labels.set(key, [id]);
     }
@@ -99,7 +102,7 @@ export function generate({ packages, overrides, installers }) {
       generated.push({
         id,
         kind,
-        bin: pickBin(package_, binKeys),
+        bin: pickBin(package_, binKeys, kind),
         args: [...args],
         languages: resolved,
         priority: GENERATED_PRIORITY,
