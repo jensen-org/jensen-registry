@@ -8,7 +8,6 @@ import { fetchPackages } from "./upstream.mjs";
 
 export async function validateTools({ problems, online }) {
   if (readYaml("tools/upstreams.yaml").schema_version !== SCHEMA_VERSION) problems.push("tools/upstreams.yaml: wrong schema_version");
-  if (readYaml("tools/sources.yaml").schema_version !== SCHEMA_VERSION) problems.push("tools/sources.yaml: wrong schema_version");
   for (const name of LEGACY_COPIES) {
     const copy = readFileSync(join(ROOT, name));
     const source = readFileSync(join(ROOT, "tools", name));
@@ -19,6 +18,6 @@ export async function validateTools({ problems, online }) {
   if (!online) return;
   const text = readFileSync(join(ROOT, "tools/tools.yaml"), "utf8");
   const head = text.includes(GENERATED_MARKER) ? text.slice(0, text.indexOf(GENERATED_MARKER)).trimEnd() : text.trimEnd();
-  const expected = renderHead(build(await fetchPackages(readYaml("tools/sources.yaml")))).trimEnd();
+  const expected = renderHead(build(await fetchPackages(readYaml("tools/upstreams.yaml")))).trimEnd();
   if (head !== expected) problems.push("tools/tools.yaml differs from what its pinned sources generate, run npm run track");
 }

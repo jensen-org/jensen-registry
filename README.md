@@ -12,7 +12,7 @@ checks them.
 
 | Folder | Entries | Assets | Code |
 |---|---|---|---|
-| `tools/` | `overrides.yaml` (the start lines we write by hand), `installers.yaml` (how to install and launch what Mason lists), `sources.yaml` (the pinned Mason release), `tools.yaml` (generated, plus the `grammars` section `grammars/` writes, schema in `jensen-org/jensen`), `upstreams.yaml` (where clients fetch Mason from) | | `track.mjs`, `generate.mjs`, `upstream.mjs`, `validate.mjs` |
+| `tools/` | `overrides.yaml` (the start lines we write by hand), `installers.yaml` (how to install and launch what Mason lists), `tools.yaml` (generated, plus the `grammars` section `grammars/` writes, schema in `jensen-org/jensen`), `upstreams.yaml` (the pinned Mason release and where clients fetch it) | | `track.mjs`, `generate.mjs`, `upstream.mjs`, `validate.mjs` |
 | `grammars/` | `sources.yaml`: the crates.io release each tree-sitter grammar is built from, and the CLI version that builds it | `wasm/<id>-<version>.wasm`: the built grammars | `track.mjs`, `validate.mjs` |
 | `skills/` | `<id>.yaml`: the repo, path and ref a skill tracks | | `schema.json`, `track.mjs`, `validate.mjs` |
 | `mcp/` | `<id>.yaml`: a server's package or url, its env, its auth, and the integrations it `serves` | `locks/<id>/`: the lockfile a stdio server installs from | `schema.json`, `track.mjs`, `checks.mjs`, `validate.mjs` |
@@ -27,7 +27,7 @@ five folders), `lib.mjs` (shared helpers), `package.json`, and the two legacy co
 
 ## Tools
 
-`tools/tools.yaml` mirrors the Mason registry. `track` pins the latest Mason release in `tools/sources.yaml`
+`tools/tools.yaml` mirrors the Mason registry. `track` pins the latest Mason release in `tools/upstreams.yaml`
 (tag and sha256) and turns every language server and linter Mason lists into a tool, so Jensen offers
 what Mason offers. A server gets `--stdio` and a linter gets `{path}` unless `tools/overrides.yaml` says
 otherwise. A formatter or debug adapter needs a start line, so it is listed only when `overrides.yaml`
