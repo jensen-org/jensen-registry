@@ -9,7 +9,7 @@ import { trackMcpServers } from "./mcp/track.mjs";
 import { validateMcp } from "./mcp/validate.mjs";
 import { trackSkills } from "./skills/track.mjs";
 import { validateSkills } from "./skills/validate.mjs";
-import { trackTools } from "./tools/track.mjs";
+import { copyLegacyTools, trackTools } from "./tools/track.mjs";
 import { validateTools } from "./tools/validate.mjs";
 
 const warnings = [];
@@ -29,8 +29,9 @@ async function track() {
     console.error(problems.join("\n"));
     process.exit(1);
   }
+  await trackTools({ warn });
   const grammars = await trackGrammars();
-  trackTools();
+  copyLegacyTools();
   writeText("index.yaml", dump({ schema_version: SCHEMA_VERSION, skills, mcp, integrations }));
   writeText("checksums.txt", checksumsText(CHECKSUMMED));
   console.log(`tracked ${skills.length} skills, ${mcp.length} mcp servers, ${integrations.length} integrations and ${grammars.length} grammars, ${warnings.length} warnings`);
@@ -45,7 +46,7 @@ async function validate(online) {
     if (JSON.stringify(left ?? null) !== JSON.stringify(right ?? null)) problems.push(`${label} differs from its entry file`);
   };
   const context = { check, index, problems, same, online };
-  validateTools(context);
+  await validateTools(context);
   validateGrammars(context);
   await validateSkills(context);
   validateMcp(context);

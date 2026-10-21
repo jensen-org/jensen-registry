@@ -1,0 +1,64 @@
+sources:
+  composer:
+    needs: composer
+    bin_root: vendor/bin
+    steps:
+      - - composer
+        - init
+        - --no-interaction
+        - --stability=stable
+        - --working-dir
+        - "{dir}"
+      - - composer
+        - require
+        - --working-dir
+        - "{dir}"
+        - "{coordinate}:{version}"
+  luarocks:
+    needs: luarocks
+    bin_root: bin
+    steps:
+      - - luarocks
+        - install
+        - --tree
+        - "{dir}"
+        - "{name}"
+        - "{version}"
+  nuget:
+    needs: dotnet
+    bin_root: ""
+    steps:
+      - - dotnet
+        - tool
+        - update
+        - --tool-path
+        - "{dir}"
+        - --version
+        - "{version}"
+        - "{name}"
+  opam:
+    needs: opam
+    bin_root: bin
+    steps:
+      - - opam
+        - install
+        - --destdir={dir}
+        - --yes
+        - "{name}.{version}"
+launchers:
+  node:
+    - node
+  python:
+    - python3
+  ruby:
+    - ruby
+  php:
+    - php
+  dotnet:
+    - dotnet
+  java-jar:
+    - java
+    - -jar
+  pyvenv:
+    - "{dir}/venv/bin/python"
+    - -m

@@ -12,7 +12,7 @@ checks them.
 
 | Folder | Entries | Assets | Code |
 |---|---|---|---|
-| `tools/` | `tools.yaml` (language servers, linters, formatters, debug adapters, and the `grammars` section `grammars/` writes, schema in `jensen-org/jensen`), `upstreams.yaml` (third party sources such as the Mason registry) | | `track.mjs`, `validate.mjs` |
+| `tools/` | `overrides.yaml` (the start lines we write by hand), `installers.yaml` (how to install and launch what Mason lists), `sources.yaml` (the pinned Mason release), `tools.yaml` (generated, plus the `grammars` section `grammars/` writes, schema in `jensen-org/jensen`), `upstreams.yaml` (where clients fetch Mason from) | | `track.mjs`, `generate.mjs`, `upstream.mjs`, `validate.mjs` |
 | `grammars/` | `sources.yaml`: the crates.io release each tree-sitter grammar is built from, and the CLI version that builds it | `wasm/<id>-<version>.wasm`: the built grammars | `track.mjs`, `validate.mjs` |
 | `skills/` | `<id>.yaml`: the repo, path and ref a skill tracks | | `schema.json`, `track.mjs`, `validate.mjs` |
 | `mcp/` | `<id>.yaml`: a server's package or url, its env, its auth, and the integrations it `serves` | `locks/<id>/`: the lockfile a stdio server installs from | `schema.json`, `track.mjs`, `checks.mjs`, `validate.mjs` |
@@ -24,6 +24,25 @@ five folders), `lib.mjs` (shared helpers), `package.json`, and the two legacy co
 - `index.yaml`: every entry resolved and pinned. Skills carry the commit, each file's url and sha256 and a content hash. Stdio servers carry an exact version and a hashed lockfile. Every server lists the env it needs and the tools captured from it. Every integration lists the servers that serve it and its pinned icon.
 - `checksums.txt`: `<sha256>  <file>` for `index.yaml`, the tools files and their legacy copies. A client checks it before trusting a fetched file.
 - `tools.yaml` and `upstreams.yaml` at the root are byte copies of the files in `tools/`, written by `track`, because released Jensen builds still fetch them from the root. Remove them once those builds are gone.
+
+## Tools
+
+`tools/tools.yaml` mirrors the Mason registry. `track` pins the latest Mason release in `tools/sources.yaml`
+(tag and sha256) and turns every language server and linter Mason lists into a tool, so Jensen offers
+what Mason offers. A server gets `--stdio` and a linter gets `{path}` unless `tools/overrides.yaml` says
+otherwise. A formatter or debug adapter needs a start line, so it is listed only when `overrides.yaml`
+has one.
+
+`tools/overrides.yaml` is where we write what Mason cannot say:
+
+- `languages`: the languages Jensen knows, with their file extensions. A Mason language not listed here is added without extensions.
+- `tools`: entries for tools Mason does not ship (gofmt, rustfmt, clippy) and patches for Mason tools, keyed by `package` and `kind`. A patch sets `args`, a linter `parser`, `settings`, `root_markers`, `priority` and the like.
+- `exclude`: Mason tools we do not offer.
+- `prefer`: tools that win over generated ones for a language. Generated tools have priority -10.
+
+A package is left out when Jensen cannot install it (its source has no entry in `tools/installers.yaml`), cannot launch it (its bin needs a launcher `installers.yaml` lacks), or has no language. `track` prints how many were left out and why.
+
+`tools/installers.yaml` holds the install commands for the package managers Jensen runs from data, and the launchers that start a tool through an interpreter (`node`, `java -jar` and so on).
 
 ## Grammars
 

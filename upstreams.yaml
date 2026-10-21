@@ -1,4 +1,4 @@
 schema_version: 1
 mason:
-  registry_url: https://github.com/mason-org/mason-registry/releases/latest/download/registry.json.zip
-  checksums_url: https://github.com/mason-org/mason-registry/releases/latest/download/checksums.txt
+  registry_url: https://github.com/mason-org/mason-registry/releases/download/2026-10-21-vexed-pest/registry.json.zip
+  checksums_url: https://github.com/mason-org/mason-registry/releases/download/2026-10-21-vexed-pest/checksums.txt
