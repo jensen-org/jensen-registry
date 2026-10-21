@@ -1,0 +1,42 @@
+id: prettier
+kind: formatter
+bin: prettier
+args:
+  - --stdin-filepath
+  - "{path}"
+languages:
+  - typescript
+  - typescriptreact
+  - javascript
+  - javascriptreact
+  - json
+  - jsonc
+  - css
+  - scss
+  - less
+  - html
+  - vue
+  - markdown
+  - yaml
+  - graphql
+config:
+  - name: .prettierrc
+    code_keys:
+      - plugins
+  - name: .prettierrc.json
+    code_keys:
+      - plugins
+  - name: .prettierrc.yaml
+    code_keys:
+      - plugins
+  - name: .prettierrc.yml
+    code_keys:
+      - plugins
+  - name: .prettierrc.js
+    executes: true
+  - name: prettier.config.js
+    executes: true
+  - name: prettier.config.mjs
+    executes: true
+priority: 10
+package: prettier

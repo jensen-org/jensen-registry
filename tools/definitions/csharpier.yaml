@@ -1,0 +1,9 @@
+id: csharpier
+kind: formatter
+bin: csharpier
+args:
+  - --write-stdout
+languages:
+  - csharp
+priority: 10
+package: csharpier

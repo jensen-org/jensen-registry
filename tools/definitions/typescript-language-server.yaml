@@ -1,0 +1,16 @@
+id: typescript-language-server
+kind: languageserver
+bin: typescript-language-server
+args:
+  - --stdio
+languages:
+  - typescript
+  - typescriptreact
+  - javascript
+  - javascriptreact
+root_markers:
+  - tsconfig.json
+  - jsconfig.json
+  - package.json
+package: typescript-language-server
+priority: 0

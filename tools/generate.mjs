@@ -38,10 +38,10 @@ function pickBin(package_, binKeys, kind) {
   return [...pool].sort()[0];
 }
 
-export function generate({ packages, overrides, installers }) {
+export function generate({ packages, languages: declared, definitions, installers }) {
   const skipped = {};
   const skip = (reason, name) => (skipped[reason] ??= []).push(name);
-  const languages = clone(overrides.languages);
+  const languages = clone(declared);
   const labels = new Map();
   for (const language of languages) {
     for (const label of language.catalog_labels ?? []) {
@@ -111,27 +111,24 @@ export function generate({ packages, overrides, installers }) {
     }
   }
 
-  const excluded = new Set(overrides.exclude ?? []);
-  let pool = generated.filter((tool) => !excluded.has(tool.id));
+  let pool = generated;
+  const claimed = new Set();
   const curated = [];
-  for (const override of overrides.tools) {
-    const match = override.package ? pool.find((tool) => tool.package === override.package && tool.kind === override.kind) : undefined;
+  for (const definition of definitions) {
+    claimed.add(definition.id);
+    if (definition.exclude) continue;
+    const match = definition.package ? pool.find((tool) => tool.package === definition.package && tool.kind === definition.kind) : undefined;
     if (match) {
       pool = pool.filter((tool) => tool !== match);
-      curated.push({ ...deepMerge(match, override), id: override.id ?? match.id });
+      curated.push({ ...deepMerge(match, definition), id: definition.id });
     } else {
-      curated.push(clone(override));
+      curated.push(clone(definition));
     }
   }
-  pool.sort((a, b) => a.id.localeCompare(b.id));
-
-  const preferred = new Set(overrides.prefer ?? []);
+  pool = pool.filter((tool) => !claimed.has(tool.id)).sort((a, b) => a.id.localeCompare(b.id));
   const tools = [...curated, ...pool];
-  for (const tool of tools) {
-    if (preferred.has(tool.id) && tool.priority === GENERATED_PRIORITY) delete tool.priority;
-  }
 
-  const fixed = overrides.languages.length;
+  const fixed = declared.length;
   const extra = languages.slice(fixed).sort((a, b) => a.id.localeCompare(b.id));
   return { languages: [...languages.slice(0, fixed), ...extra], tools, skipped };
 }

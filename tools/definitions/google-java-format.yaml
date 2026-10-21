@@ -1,0 +1,9 @@
+id: google-java-format
+kind: formatter
+bin: google-java-format
+args:
+  - "-"
+languages:
+  - java
+priority: 10
+package: google-java-format

@@ -1,0 +1,17 @@
+id: golangci-lint
+kind: linter
+bin: golangci-lint
+args:
+  - run
+  - "{path}"
+languages:
+  - go
+config:
+  - .golangci.yml
+  - .golangci.yaml
+  - .golangci.toml
+parser:
+  kind: pattern
+  regex: "^(?P<path>[^:]+):(?P<line>\\d+):(?P<column>\\d+): (?P<message>.*?) \\((?P<code>[^)]+)\\)$"
+package: golangci-lint
+priority: 0

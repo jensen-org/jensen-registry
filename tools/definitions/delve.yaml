@@ -1,0 +1,19 @@
+id: delve
+kind: debugadapter
+bin: dlv
+args:
+  - dap
+languages:
+  - go
+dap:
+  transport: stdio
+  program_kind: source
+  launch:
+    type: go
+    request: launch
+    mode: debug
+    program: "{program}"
+    cwd: "{cwd}"
+    args: "{args}"
+package: delve
+priority: 0

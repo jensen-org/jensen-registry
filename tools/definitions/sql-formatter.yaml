@@ -1,0 +1,8 @@
+id: sql-formatter
+kind: formatter
+bin: sql-formatter
+args: []
+languages:
+  - sql
+priority: 10
+package: sql-formatter

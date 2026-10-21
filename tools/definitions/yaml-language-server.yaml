@@ -1,0 +1,4 @@
+id: yaml-language-server
+kind: languageserver
+package: yaml-language-server
+priority: 0

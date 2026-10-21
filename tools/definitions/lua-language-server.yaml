@@ -1,0 +1,8 @@
+id: lua-language-server
+kind: languageserver
+bin: lua-language-server
+args: []
+languages:
+  - lua
+package: lua-language-server
+priority: 0

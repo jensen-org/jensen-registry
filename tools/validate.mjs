@@ -3,7 +3,7 @@ import { join } from "node:path";
 import { ROOT, SCHEMA_VERSION, readYaml } from "../lib.mjs";
 import { GENERATED_MARKER } from "../grammars/track.mjs";
 import { problemsIn } from "./generate.mjs";
-import { LEGACY_COPIES, build, renderHead } from "./track.mjs";
+import { LEGACY_COPIES, build, readDefinitions, renderHead } from "./track.mjs";
 import { fetchPackages } from "./upstream.mjs";
 
 export async function validateTools({ problems, online }) {
@@ -12,6 +12,10 @@ export async function validateTools({ problems, online }) {
     const copy = readFileSync(join(ROOT, name));
     const source = readFileSync(join(ROOT, "tools", name));
     if (!copy.equals(source)) problems.push(`${name}: the copy released clients read differs from tools/${name}, run npm run track`);
+  }
+  for (const { name, definition } of readDefinitions()) {
+    if (`${definition.id}.yaml` !== name) problems.push(`tools/definitions/${name}: the file name must be the tool id ${definition.id}`);
+    if (!definition.exclude && !definition.kind) problems.push(`tools/definitions/${name}: a definition needs a kind`);
   }
   const published = readYaml("tools/tools.yaml");
   for (const problem of problemsIn(published)) problems.push(`tools/tools.yaml: ${problem}`);

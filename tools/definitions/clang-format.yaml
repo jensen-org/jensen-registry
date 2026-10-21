@@ -1,0 +1,12 @@
+id: clang-format
+kind: formatter
+bin: clang-format
+args:
+  - --assume-filename={path}
+languages:
+  - c
+  - cpp
+config:
+  - .clang-format
+package: clang-format
+priority: 0

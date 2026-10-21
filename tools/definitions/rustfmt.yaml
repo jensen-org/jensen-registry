@@ -1,0 +1,13 @@
+id: rustfmt
+kind: formatter
+bin: rustfmt
+args:
+  - --emit
+  - stdout
+  - --quiet
+languages:
+  - rust
+config:
+  - rustfmt.toml
+  - .rustfmt.toml
+priority: 0

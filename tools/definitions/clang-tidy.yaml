@@ -1,0 +1,21 @@
+id: clang-tidy
+kind: linter
+bin: clang-tidy
+args:
+  - --quiet
+  - "{path}"
+languages:
+  - c
+  - cpp
+config:
+  - .clang-tidy
+priority: 10
+parser:
+  kind: pattern
+  regex: "^(?P<path>[^:]+):(?P<line>\\d+):(?P<column>\\d+): (?P<severity>error|warning|note): (?P<message>.*?)(?: \\[(?P<code>[^\\]]+)\\])?$"
+  severity:
+    map:
+      error: 1
+      warning: 2
+      note: 3
+    default: 2

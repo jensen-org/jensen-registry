@@ -1,0 +1,10 @@
+id: black
+kind: formatter
+bin: black
+args:
+  - -q
+  - "-"
+languages:
+  - python
+package: black
+priority: 0

@@ -1,0 +1,20 @@
+id: rust-analyzer
+kind: languageserver
+bin: rust-analyzer
+args: []
+languages:
+  - rust
+init_options:
+  check:
+    enable: false
+  checkOnSave: false
+  cargo:
+    buildScripts:
+      enable: false
+  procMacro:
+    enable: false
+root_markers:
+  - Cargo.toml
+package: rust-analyzer
+root_strategy: cargo-workspace
+priority: 0

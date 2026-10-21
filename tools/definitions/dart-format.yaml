@@ -1,0 +1,8 @@
+id: dart-format
+kind: formatter
+bin: dart
+args:
+  - format
+languages:
+  - dart
+priority: 10

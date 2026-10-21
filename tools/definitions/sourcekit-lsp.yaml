@@ -1,0 +1,9 @@
+id: sourcekit-lsp
+kind: languageserver
+bin: sourcekit-lsp
+args: []
+languages:
+  - swift
+root_markers:
+  - Package.swift
+priority: 0

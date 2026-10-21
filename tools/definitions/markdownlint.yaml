@@ -1,0 +1,22 @@
+id: markdownlint
+kind: linter
+bin: markdownlint
+args:
+  - --json
+  - "{path}"
+languages:
+  - markdown
+config:
+  - .markdownlint.json
+  - .markdownlint.yaml
+  - .markdownlintrc
+priority: 10
+package: markdownlint
+parser:
+  kind: json
+  items: $
+  field:
+    path: fileName
+    line: lineNumber
+    code: ruleNames.0
+    message: ruleDescription

@@ -1,0 +1,11 @@
+id: intelephense
+kind: languageserver
+bin: intelephense
+args:
+  - --stdio
+languages:
+  - php
+package: intelephense
+root_markers:
+  - composer.json
+priority: 0

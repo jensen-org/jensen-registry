@@ -12,7 +12,7 @@ checks them.
 
 | Folder | Entries | Assets | Code |
 |---|---|---|---|
-| `tools/` | `overrides.yaml` (the start lines we write by hand), `installers.yaml` (how to install and launch what Mason lists), `tools.yaml` (generated, plus the `grammars` section `grammars/` writes, schema in `jensen-org/jensen`), `upstreams.yaml` (the pinned Mason release and where clients fetch it) | | `track.mjs`, `generate.mjs`, `upstream.mjs`, `validate.mjs` |
+| `tools/` | `definitions/<id>.yaml` (one file per tool, the start lines we write by hand), `languages.yaml` (the languages and their file extensions), `installers.yaml` (how to install and launch what Mason lists), `tools.yaml` (generated, plus the `grammars` section `grammars/` writes, schema in `jensen-org/jensen`), `upstreams.yaml` (the pinned Mason release and where clients fetch it) | | `track.mjs`, `generate.mjs`, `upstream.mjs`, `validate.mjs` |
 | `grammars/` | `sources.yaml`: the crates.io release each tree-sitter grammar is built from, and the CLI version that builds it | `wasm/<id>-<version>.wasm`: the built grammars | `track.mjs`, `validate.mjs` |
 | `skills/` | `<id>.yaml`: the repo, path and ref a skill tracks | | `schema.json`, `track.mjs`, `validate.mjs` |
 | `mcp/` | `<id>.yaml`: a server's package or url, its env, its auth, and the integrations it `serves` | `locks/<id>/`: the lockfile a stdio server installs from | `schema.json`, `track.mjs`, `checks.mjs`, `validate.mjs` |
@@ -29,16 +29,19 @@ five folders), `lib.mjs` (shared helpers), `package.json`, and the two legacy co
 
 `tools/tools.yaml` mirrors the Mason registry. `track` pins the latest Mason release in `tools/upstreams.yaml`
 (tag and sha256) and turns every language server and linter Mason lists into a tool, so Jensen offers
-what Mason offers. A server gets `--stdio` and a linter gets `{path}` unless `tools/overrides.yaml` says
-otherwise. A formatter or debug adapter needs a start line, so it is listed only when `overrides.yaml`
+what Mason offers. A server gets `--stdio` and a linter gets `{path}` unless a definition says
+otherwise. A formatter or debug adapter needs a start line, so it is listed only when a definition
 has one.
 
-`tools/overrides.yaml` is where we write what Mason cannot say:
+`tools/definitions/<id>.yaml` is where we write what Mason cannot say, one file per tool, named after its id. It works like a conform definition, but in YAML and for every kind of tool: a formatter, a linter, a language server or a debug adapter.
 
-- `languages`: the languages Jensen knows, with their file extensions. A Mason language not listed here is added without extensions.
-- `tools`: entries for tools Mason does not ship (gofmt, rustfmt, clippy) and patches for Mason tools, keyed by `package` and `kind`. A patch sets `args`, a linter `parser`, `settings`, `root_markers`, `priority` and the like.
-- `exclude`: Mason tools we do not offer.
-- `prefer`: tools that win over generated ones for a language. Generated tools have priority -10.
+- A definition with a `package` and a `kind` patches the generated tool for that Mason package. Any field it sets wins: `args`, a linter `parser`, `settings`, `root_markers`, `config`, `priority` and the like. A different `id` renames the generated one.
+- A definition with no `package`, or for a package Mason does not ship (gofmt, rustfmt, clippy), is a whole tool entry.
+- `exclude: true` drops a Mason tool we do not offer, such as marksman.
+- Generated tools have priority -10, so a definition with `priority: 0` or higher is preferred for its language.
+- A definition's id also replaces any generated tool with the same id.
+
+`tools/languages.yaml` lists the languages Jensen knows with their file extensions. A Mason language not listed there is added without extensions.
 
 A package is left out when Jensen cannot install it (its source has no entry in `tools/installers.yaml`), cannot launch it (its bin needs a launcher `installers.yaml` lacks), or has no language. `track` prints how many were left out and why.
 

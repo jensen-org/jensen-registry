@@ -1,0 +1,7 @@
+id: sass-formatter
+kind: formatter
+bin: sass-formatter
+args: []
+languages:
+  - sass
+priority: 10

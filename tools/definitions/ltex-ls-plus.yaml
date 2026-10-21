@@ -1,0 +1,4 @@
+id: ltex-ls-plus
+kind: languageserver
+package: ltex-ls-plus
+args: []

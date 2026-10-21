@@ -1,0 +1,13 @@
+id: ruff-format
+kind: formatter
+bin: ruff
+args:
+  - format
+  - "-"
+languages:
+  - python
+config:
+  - ruff.toml
+  - .ruff.toml
+priority: 10
+package: ruff

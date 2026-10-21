@@ -1,0 +1,23 @@
+id: yamllint
+kind: linter
+bin: yamllint
+args:
+  - --format
+  - parsable
+  - "{path}"
+languages:
+  - yaml
+config:
+  - .yamllint
+  - .yamllint.yml
+  - .yamllint.yaml
+parser:
+  kind: pattern
+  regex: "^(?P<path>.+?):(?P<line>\\d+):(?P<column>\\d+): \\[(?P<severity>\\w+)\\] (?P<message>.*?)(?: \\((?P<code>[^)]+)\\))?$"
+  severity:
+    map:
+      error: 1
+      warning: 2
+    default: 2
+package: yamllint
+priority: 0

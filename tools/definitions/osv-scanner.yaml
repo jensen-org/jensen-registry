@@ -1,0 +1,11 @@
+id: osv-scanner
+kind: scanner
+bin: osv-scanner
+args:
+  - --format
+  - json
+  - --recursive
+  - "{path}"
+languages: []
+package: osv-scanner
+priority: 10

@@ -1,0 +1,11 @@
+id: shfmt
+kind: formatter
+bin: shfmt
+args:
+  - -filename={path}
+languages:
+  - shellscript
+config:
+  - .editorconfig
+package: shfmt
+priority: 0

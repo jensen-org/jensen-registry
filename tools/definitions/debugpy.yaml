@@ -1,0 +1,28 @@
+id: debugpy
+kind: debugadapter
+bin: python3
+args:
+  - -m
+  - debugpy.adapter
+languages:
+  - python
+venv: debugpy
+dap:
+  transport: stdio
+  program_kind: source
+  launch:
+    type: python
+    request: launch
+    program: "{program}"
+    cwd: "{cwd}"
+    args: "{args}"
+    console: internalConsole
+    justMyCode: true
+  attach:
+    type: python
+    request: attach
+    connect:
+      host: "{host}"
+      port: "{port}"
+package: debugpy
+priority: 0

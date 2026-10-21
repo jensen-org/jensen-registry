@@ -1,0 +1,9 @@
+id: bash-language-server
+kind: languageserver
+bin: bash-language-server
+args:
+  - start
+languages:
+  - shellscript
+package: bash-language-server
+priority: 0

@@ -1,0 +1,5 @@
+id: markdown-oxide
+kind: languageserver
+package: markdown-oxide
+args: []
+priority: 10

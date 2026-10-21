@@ -1,0 +1,7 @@
+id: gofmt
+kind: formatter
+bin: gofmt
+args: []
+languages:
+  - go
+priority: 0

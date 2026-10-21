@@ -1,0 +1,13 @@
+id: taplo
+kind: formatter
+bin: taplo
+args:
+  - format
+  - "-"
+languages:
+  - toml
+config:
+  - .taplo.toml
+  - taplo.toml
+package: taplo
+priority: 0

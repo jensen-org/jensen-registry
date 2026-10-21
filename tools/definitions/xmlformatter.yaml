@@ -1,0 +1,9 @@
+id: xmlformatter
+kind: formatter
+bin: xmlformat
+args:
+  - "-"
+languages:
+  - xml
+priority: 10
+package: xmlformatter

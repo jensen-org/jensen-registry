@@ -1,0 +1,8 @@
+id: goimports
+kind: formatter
+bin: goimports
+args: []
+languages:
+  - go
+priority: 10
+package: goimports

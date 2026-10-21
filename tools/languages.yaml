@@ -1,0 +1,189 @@
+languages:
+  - id: python
+    extensions:
+      - py
+      - pyi
+    catalog_labels:
+      - Python
+  - id: go
+    extensions:
+      - go
+    catalog_labels:
+      - Go
+  - id: rust
+    extensions:
+      - rs
+    catalog_labels:
+      - Rust
+  - id: typescript
+    extensions:
+      - ts
+      - mts
+      - cts
+    catalog_labels:
+      - TypeScript
+  - id: typescriptreact
+    extensions:
+      - tsx
+    catalog_labels:
+      - TypeScript
+      - TSX
+  - id: javascript
+    extensions:
+      - js
+      - cjs
+      - mjs
+    catalog_labels:
+      - JavaScript
+  - id: javascriptreact
+    extensions:
+      - jsx
+    catalog_labels:
+      - JavaScript
+      - JSX
+  - id: json
+    extensions:
+      - json
+    catalog_labels:
+      - JSON
+  - id: jsonc
+    extensions:
+      - jsonc
+  - id: css
+    extensions:
+      - css
+    catalog_labels:
+      - CSS
+  - id: scss
+    extensions:
+      - scss
+    catalog_labels:
+      - SCSS
+  - id: less
+    extensions:
+      - less
+    catalog_labels:
+      - Less
+  - id: html
+    extensions:
+      - htm
+      - html
+    catalog_labels:
+      - HTML
+  - id: vue
+    extensions:
+      - vue
+    catalog_labels:
+      - Vue
+  - id: markdown
+    extensions:
+      - markdown
+      - md
+    catalog_labels:
+      - Markdown
+  - id: yaml
+    extensions:
+      - yaml
+      - yml
+    catalog_labels:
+      - YAML
+  - id: graphql
+    extensions:
+      - gql
+      - graphql
+    catalog_labels:
+      - GraphQL
+  - id: toml
+    extensions:
+      - toml
+    catalog_labels:
+      - TOML
+  - id: c
+    extensions:
+      - c
+      - h
+    catalog_labels:
+      - C
+  - id: cpp
+    extensions:
+      - cc
+      - cpp
+      - cxx
+      - hh
+      - hpp
+      - hxx
+    catalog_labels:
+      - C++
+  - id: lua
+    extensions:
+      - lua
+    catalog_labels:
+      - Lua
+  - id: shellscript
+    extensions:
+      - bash
+      - sh
+      - zsh
+    catalog_labels:
+      - Shell
+      - Bash
+      - Sh
+      - Zsh
+  - id: dockerfile
+    extensions: []
+    filenames:
+      - Dockerfile
+      - Containerfile
+    catalog_labels:
+      - Docker
+  - id: java
+    extensions:
+      - java
+    catalog_labels:
+      - Java
+  - id: kotlin
+    extensions:
+      - kt
+      - kts
+    catalog_labels:
+      - Kotlin
+  - id: ruby
+    extensions:
+      - rb
+    catalog_labels:
+      - Ruby
+  - id: php
+    extensions:
+      - php
+    catalog_labels:
+      - PHP
+  - id: csharp
+    extensions:
+      - cs
+    catalog_labels:
+      - C#
+  - id: swift
+    extensions:
+      - swift
+    catalog_labels:
+      - Swift
+  - id: dart
+    extensions:
+      - dart
+    catalog_labels:
+      - Dart
+  - id: sql
+    extensions:
+      - sql
+    catalog_labels:
+      - SQL
+  - id: xml
+    extensions:
+      - xml
+    catalog_labels:
+      - XML
+  - id: sass
+    extensions:
+      - sass
+    catalog_labels:
+      - Sass

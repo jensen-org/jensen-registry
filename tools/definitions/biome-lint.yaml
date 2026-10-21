@@ -1,0 +1,60 @@
+id: biome-lint
+kind: linter
+bin: biome
+args:
+  - lint
+  - --reporter=json
+  - "{path}"
+languages:
+  - typescript
+  - typescriptreact
+  - javascript
+  - javascriptreact
+  - json
+  - jsonc
+  - css
+config:
+  - biome.json
+  - biome.jsonc
+priority: 20
+parser:
+  kind: json
+  items: diagnostics
+  field:
+    path: location.path.file||location.path
+    span: location.span
+    code: category
+    message: description||message
+    line: location.start.line
+    column: location.start.column
+    end_line: location.end.line
+    end_column: location.end.column
+    severity: severity
+  severity:
+    map:
+      error: 1
+      warning: 2
+      information: 3
+      hint: 4
+    default: 2
+package: biome
+remedies:
+  - match: nested root configuration
+    explain: Biome found another root configuration above this project and refused this one. Biome decides its project from the directory it runs in.
+    label: Copy biome's migration command
+    action:
+      kind: run
+      command:
+        - biome
+        - migrate
+        - --write
+  - match: unknown key
+    explain: Biome does not recognise a key in this configuration, which usually means it was written for a different version.
+    action:
+      kind: open
+      path: "{config}"
+  - match: configuration resulted in errors
+    explain: Biome stopped before reading the file because its configuration did not load.
+    action:
+      kind: open
+      path: "{config}"

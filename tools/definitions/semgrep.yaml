@@ -1,0 +1,13 @@
+id: semgrep
+kind: scanner
+bin: semgrep
+args:
+  - scan
+  - --json
+  - --quiet
+  - --config
+  - auto
+  - "{path}"
+languages: []
+package: semgrep
+priority: 10

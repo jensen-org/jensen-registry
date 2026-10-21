@@ -1,0 +1,48 @@
+id: stylelint
+kind: linter
+bin: stylelint
+args:
+  - --formatter
+  - json
+  - "{path}"
+languages:
+  - css
+  - scss
+  - less
+config:
+  - name: .stylelintrc
+    code_keys:
+      - plugins
+      - extends
+      - customSyntax
+      - processors
+      - overrides
+  - name: .stylelintrc.json
+    code_keys:
+      - plugins
+      - extends
+      - customSyntax
+      - processors
+      - overrides
+  - name: stylelint.config.js
+    executes: true
+parser:
+  kind: json
+  groups: $
+  items: warnings
+  field:
+    path: $group.source
+    line: line
+    column: column
+    end_line: endLine
+    end_column: endColumn
+    code: rule
+    message: text
+    severity: severity
+  severity:
+    map:
+      error: 1
+      warning: 2
+    default: 2
+package: stylelint
+priority: 0

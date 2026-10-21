@@ -1,0 +1,12 @@
+id: jdtls
+kind: languageserver
+bin: jdtls
+args: []
+languages:
+  - java
+package: jdtls
+root_markers:
+  - pom.xml
+  - build.gradle
+  - build.gradle.kts
+priority: 0

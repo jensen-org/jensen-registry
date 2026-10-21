@@ -1,0 +1,4 @@
+id: vale-ls
+kind: languageserver
+package: vale-ls
+args: []

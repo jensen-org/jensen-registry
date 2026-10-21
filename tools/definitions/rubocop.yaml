@@ -1,0 +1,16 @@
+id: rubocop
+kind: formatter
+bin: rubocop
+args:
+  - --stdin
+  - "{path}"
+  - --autocorrect
+  - --stderr
+  - --format
+  - quiet
+languages:
+  - ruby
+config:
+  - .rubocop.yml
+priority: 10
+package: rubocop

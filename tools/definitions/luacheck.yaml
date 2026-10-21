@@ -1,0 +1,17 @@
+id: luacheck
+kind: linter
+bin: luacheck
+args:
+  - --formatter
+  - plain
+  - --codes
+  - "{path}"
+languages:
+  - lua
+config:
+  - .luacheckrc
+priority: 10
+package: luacheck
+parser:
+  kind: pattern
+  regex: "^(?P<path>[^:]+):(?P<line>\\d+):(?P<column>\\d+): \\((?P<code>[EW]\\d+)\\) (?P<message>.*)$"

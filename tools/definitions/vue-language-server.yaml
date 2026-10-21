@@ -1,0 +1,11 @@
+id: vue-language-server
+kind: languageserver
+bin: vue-language-server
+args:
+  - --stdio
+languages:
+  - vue
+package: vue-language-server
+root_markers:
+  - package.json
+priority: 0

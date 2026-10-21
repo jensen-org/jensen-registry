@@ -1,0 +1,11 @@
+id: gopls
+kind: languageserver
+bin: gopls
+args: []
+languages:
+  - go
+root_markers:
+  - go.work
+  - go.mod
+package: gopls
+priority: 0

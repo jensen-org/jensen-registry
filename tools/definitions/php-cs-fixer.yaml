@@ -1,0 +1,17 @@
+id: php-cs-fixer
+kind: formatter
+bin: php-cs-fixer
+args:
+  - fix
+  - --using-cache=no
+  - --quiet
+  - "{path}"
+languages:
+  - php
+config:
+  - name: .php-cs-fixer.php
+    executes: true
+  - name: .php_cs
+    executes: true
+priority: 10
+package: php-cs-fixer

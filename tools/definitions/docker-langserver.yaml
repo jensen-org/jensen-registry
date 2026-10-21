@@ -1,0 +1,4 @@
+id: docker-langserver
+kind: languageserver
+package: dockerfile-language-server
+priority: 0

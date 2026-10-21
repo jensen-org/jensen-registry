@@ -1,0 +1,5 @@
+id: rumdl-lsp
+kind: languageserver
+package: rumdl
+args:
+  - server

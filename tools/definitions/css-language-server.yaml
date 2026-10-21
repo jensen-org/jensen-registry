@@ -1,0 +1,4 @@
+id: css-language-server
+kind: languageserver
+package: css-lsp
+priority: 0

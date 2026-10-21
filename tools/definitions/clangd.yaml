@@ -1,0 +1,12 @@
+id: clangd
+kind: languageserver
+bin: clangd
+args: []
+languages:
+  - c
+  - cpp
+root_markers:
+  - compile_commands.json
+  - compile_flags.txt
+package: clangd
+priority: 0

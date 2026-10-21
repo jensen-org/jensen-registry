@@ -1,0 +1,5 @@
+id: panache-lsp
+kind: languageserver
+package: panache
+args:
+  - lsp

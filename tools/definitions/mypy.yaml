@@ -1,0 +1,24 @@
+id: mypy
+kind: linter
+bin: mypy
+args:
+  - --no-error-summary
+  - --show-column-numbers
+  - "{path}"
+languages:
+  - python
+config:
+  - mypy.ini
+  - .mypy.ini
+  - setup.cfg
+priority: 5
+package: mypy
+parser:
+  kind: pattern
+  regex: "^(?P<path>[^:]+):(?P<line>\\d+):(?P<column>\\d+): (?P<severity>error|warning|note): (?P<message>.*?)(?:  \\[(?P<code>[^\\]]+)\\])?$"
+  severity:
+    map:
+      error: 1
+      warning: 2
+      note: 3
+    default: 2

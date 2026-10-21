@@ -1,0 +1,11 @@
+id: ruby-lsp
+kind: languageserver
+bin: ruby-lsp
+args: []
+languages:
+  - ruby
+package: ruby-lsp
+root_markers:
+  - Gemfile
+  - .ruby-version
+priority: 0

@@ -1,0 +1,11 @@
+id: kotlin-language-server
+kind: languageserver
+bin: kotlin-language-server
+args: []
+languages:
+  - kotlin
+package: kotlin-language-server
+root_markers:
+  - build.gradle.kts
+  - build.gradle
+priority: 0

@@ -1,0 +1,9 @@
+id: swift-format
+kind: formatter
+bin: swift-format
+args:
+  - format
+  - "-"
+languages:
+  - swift
+priority: 10

@@ -1,0 +1,11 @@
+id: yamlfmt
+kind: formatter
+bin: yamlfmt
+args:
+  - -in
+languages:
+  - yaml
+config:
+  - .yamlfmt
+priority: 20
+package: yamlfmt

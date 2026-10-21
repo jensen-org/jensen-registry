@@ -1,0 +1,12 @@
+id: omnisharp
+kind: languageserver
+bin: omnisharp
+args:
+  - -lsp
+languages:
+  - csharp
+package: omnisharp
+root_markers:
+  - "*.sln"
+  - "*.csproj"
+priority: 0

@@ -1,0 +1,5 @@
+id: codebook
+kind: languageserver
+package: codebook
+args:
+  - serve

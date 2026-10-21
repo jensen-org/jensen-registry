@@ -1,0 +1,10 @@
+id: taplo-lsp
+kind: languageserver
+bin: taplo
+args:
+  - lsp
+  - stdio
+languages:
+  - toml
+package: taplo
+priority: 0

@@ -1,0 +1,22 @@
+id: clippy
+kind: linter
+bin: cargo
+args:
+  - clippy
+  - --message-format
+  - short
+  - --quiet
+languages:
+  - rust
+config:
+  - clippy.toml
+  - .clippy.toml
+priority: 10
+parser:
+  kind: pattern
+  regex: "^(?P<path>[^:\\s]+):(?P<line>\\d+):(?P<column>\\d+): (?P<severity>error|warning)(?:\\[(?P<code>[^\\]]+)\\])?: (?P<message>.*)$"
+  severity:
+    map:
+      error: 1
+      warning: 2
+    default: 2

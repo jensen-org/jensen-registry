@@ -1,0 +1,13 @@
+id: js-debug-adapter
+kind: debugadapter
+bin: js-debug-adapter
+languages:
+  - javascript
+  - typescript
+  - javascriptreact
+  - typescriptreact
+dap:
+  transport: tcp
+  unsupported: js-debug drives child sessions; the single-session relay cannot host it yet
+package: js-debug-adapter
+priority: 0

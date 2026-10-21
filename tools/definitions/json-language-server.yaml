@@ -1,0 +1,10 @@
+id: json-language-server
+kind: languageserver
+bin: vscode-json-language-server
+args:
+  - --stdio
+languages:
+  - json
+  - jsonc
+package: json-lsp
+priority: 0

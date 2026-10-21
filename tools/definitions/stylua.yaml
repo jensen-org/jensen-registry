@@ -1,0 +1,12 @@
+id: stylua
+kind: formatter
+bin: stylua
+args:
+  - "-"
+languages:
+  - lua
+config:
+  - stylua.toml
+  - .stylua.toml
+package: stylua
+priority: 0

@@ -1,0 +1,10 @@
+id: ktlint
+kind: formatter
+bin: ktlint
+args:
+  - --format
+  - --stdin
+languages:
+  - kotlin
+priority: 10
+package: ktlint

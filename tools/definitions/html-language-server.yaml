@@ -1,0 +1,4 @@
+id: html-language-server
+kind: languageserver
+package: html-lsp
+priority: 0

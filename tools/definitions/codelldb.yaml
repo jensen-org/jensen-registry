@@ -1,0 +1,22 @@
+id: codelldb
+kind: debugadapter
+bin: codelldb
+args:
+  - --port
+  - "0"
+languages:
+  - rust
+  - c
+  - cpp
+dap:
+  transport: tcp
+  port_pattern: (?i)port\D*(?P<port>\d+)
+  program_kind: executable
+  launch:
+    type: lldb
+    request: launch
+    program: "{program}"
+    cwd: "{cwd}"
+    args: "{args}"
+package: codelldb
+priority: 0
