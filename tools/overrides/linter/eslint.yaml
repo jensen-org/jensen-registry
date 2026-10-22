@@ -40,4 +40,3 @@ parser:
       "1": 2
       "2": 1
     default: 2
-cmd: eslint

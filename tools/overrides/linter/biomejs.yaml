@@ -46,4 +46,3 @@ args:
   - lint
   - --reporter=json
   - "{file}"
-cmd: biome

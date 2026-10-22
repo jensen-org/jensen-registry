@@ -13,7 +13,7 @@ import { buildPackages } from "./sources/mason.mjs";
 
 export const SCHEMA_VERSION = 2;
 export const KINDS = { server: "servers", formatter: "formatters", linter: "linters", debugger: "debuggers" };
-export const OUTPUTS = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes"].map((name) => `tools/${name}.yaml`);
+export const OUTPUTS = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes", "unresolved"].map((name) => `tools/${name}.yaml`);
 
 export function deepMerge(base, override) {
   if (Array.isArray(override) || !override || typeof override !== "object") return override;
@@ -88,13 +88,17 @@ export async function generate(upstreams) {
   const merged = Object.fromEntries(
     Object.entries(generated).map(([kind, entries]) => [kind, entries.map((entry) => (overrides[kind].has(entry.id) ? deepMerge(entry, overrides[kind].get(entry.id).value) : entry))]),
   );
-  const runnable = { server: ["cmd"], formatter: ["command"], linter: ["cmd", "parser"], debugger: ["adapter"] };
-  const incomplete = {};
-  for (const [kind, field] of Object.entries(runnable)) {
-    const before = merged[kind].length;
-    merged[kind] = merged[kind].filter((entry) => field.every((name) => entry[name] !== undefined));
-    incomplete[kind] = before - merged[kind].length;
+  const required = { server: ["cmd"], formatter: ["command"], linter: ["cmd", "parser"], debugger: ["adapter"] };
+  const unresolved = [];
+  for (const [kind, fields] of Object.entries(required)) {
+    merged[kind] = merged[kind].map((entry) => {
+      const missing = fields.filter((name) => entry[name] === undefined);
+      if (!missing.length) return entry;
+      unresolved.push({ kind, id: entry.id, missing });
+      return { ...entry, runnable: false };
+    });
   }
+  unresolved.sort((a, b) => byText(a.kind, b.kind) || byText(a.id, b.id));
   const named = new Set([...merged.server, ...merged.debugger].flatMap((entry) => entry.filetypes ?? []));
   for (const entry of [...merged.formatter, ...merged.linter]) for (const type of entry.filetypes ?? []) named.add(type);
 
@@ -106,6 +110,7 @@ export async function generate(upstreams) {
     ["tools/linters.yaml", dump({ ...header(sources.lint), linters: merged.linter })],
     ["tools/debuggers.yaml", dump({ ...header(sources.dap), debuggers: merged.debugger })],
     ["tools/filetypes.yaml", dump({ ...header(sources.neovim), filetypes: filetypeEntries(table, [...named]) })],
+    ["tools/unresolved.yaml", dump({ schema_version: SCHEMA_VERSION, unresolved })],
   ]);
   const summary = {
     packages: built.summary,
@@ -114,7 +119,7 @@ export async function generate(upstreams) {
     linters: linters.summary,
     debuggers: debuggers.summary,
     filetypes: filetypeSummary,
-    incomplete_without_override: incomplete,
+    unresolved: Object.fromEntries(Object.keys(required).map((kind) => [kind, unresolved.filter((entry) => entry.kind === kind).length])),
     language_misses: [...missed].sort(byText),
   };
   return { files, generated, merged, overrides, summary };

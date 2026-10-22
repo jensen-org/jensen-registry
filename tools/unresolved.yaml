@@ -1,0 +1,483 @@
+schema_version: 2
+unresolved:
+  - kind: debugger
+    id: elixir
+    missing:
+      - adapter
+  - kind: debugger
+    id: javadbg
+    missing:
+      - adapter
+  - kind: debugger
+    id: javatest
+    missing:
+      - adapter
+  - kind: debugger
+    id: js
+    missing:
+      - adapter
+  - kind: debugger
+    id: mock
+    missing:
+      - adapter
+  - kind: debugger
+    id: puppet
+    missing:
+      - adapter
+  - kind: formatter
+    id: easy-coding-standard
+    missing:
+      - command
+  - kind: formatter
+    id: injected
+    missing:
+      - command
+  - kind: formatter
+    id: phpcbf
+    missing:
+      - command
+  - kind: formatter
+    id: phpinsights
+    missing:
+      - command
+  - kind: formatter
+    id: pint
+    missing:
+      - command
+  - kind: formatter
+    id: pretty-php
+    missing:
+      - command
+  - kind: formatter
+    id: styler
+    missing:
+      - command
+  - kind: formatter
+    id: tlint
+    missing:
+      - command
+  - kind: formatter
+    id: trim_newlines
+    missing:
+      - command
+  - kind: formatter
+    id: trim_whitespace
+    missing:
+      - command
+  - kind: formatter
+    id: twig-cs-fixer
+    missing:
+      - command
+  - kind: linter
+    id: actionlint
+    missing:
+      - parser
+  - kind: linter
+    id: ameba
+    missing:
+      - parser
+  - kind: linter
+    id: buf_lint
+    missing:
+      - parser
+  - kind: linter
+    id: buildifier
+    missing:
+      - parser
+  - kind: linter
+    id: cfn_nag
+    missing:
+      - parser
+  - kind: linter
+    id: checkpatch
+    missing:
+      - cmd
+  - kind: linter
+    id: checkstyle
+    missing:
+      - parser
+  - kind: linter
+    id: chktex
+    missing:
+      - parser
+  - kind: linter
+    id: clj-kondo
+    missing:
+      - parser
+  - kind: linter
+    id: codespell
+    missing:
+      - parser
+  - kind: linter
+    id: commitlint
+    missing:
+      - parser
+  - kind: linter
+    id: cspell
+    missing:
+      - parser
+  - kind: linter
+    id: cue
+    missing:
+      - parser
+  - kind: linter
+    id: deadnix
+    missing:
+      - parser
+  - kind: linter
+    id: deno
+    missing:
+      - parser
+  - kind: linter
+    id: detekt
+    missing:
+      - parser
+  - kind: linter
+    id: dialyxir
+    missing:
+      - parser
+  - kind: linter
+    id: droast
+    missing:
+      - parser
+  - kind: linter
+    id: eugene
+    missing:
+      - parser
+  - kind: linter
+    id: fennel
+    missing:
+      - parser
+  - kind: linter
+    id: fieldalignment
+    missing:
+      - parser
+  - kind: linter
+    id: fish
+    missing:
+      - parser
+  - kind: linter
+    id: fortitude
+    missing:
+      - parser
+  - kind: linter
+    id: gawk
+    missing:
+      - parser
+  - kind: linter
+    id: gitleaks
+    missing:
+      - parser
+  - kind: linter
+    id: gitlint
+    missing:
+      - parser
+  - kind: linter
+    id: glinter
+    missing:
+      - parser
+  - kind: linter
+    id: herb
+    missing:
+      - parser
+  - kind: linter
+    id: hledger
+    missing:
+      - parser
+  - kind: linter
+    id: hlint
+    missing:
+      - parser
+  - kind: linter
+    id: inko
+    missing:
+      - parser
+  - kind: linter
+    id: j2lint
+    missing:
+      - parser
+  - kind: linter
+    id: janet
+    missing:
+      - parser
+  - kind: linter
+    id: ktlint
+    missing:
+      - parser
+  - kind: linter
+    id: languagetool
+    missing:
+      - parser
+  - kind: linter
+    id: lint-openapi
+    missing:
+      - parser
+  - kind: linter
+    id: ls_lint
+    missing:
+      - parser
+  - kind: linter
+    id: luac
+    missing:
+      - parser
+  - kind: linter
+    id: markuplint
+    missing:
+      - parser
+  - kind: linter
+    id: mbake
+    missing:
+      - parser
+  - kind: linter
+    id: nagelfar
+    missing:
+      - parser
+  - kind: linter
+    id: npm-groovy-lint
+    missing:
+      - parser
+  - kind: linter
+    id: opa_check
+    missing:
+      - parser
+  - kind: linter
+    id: php
+    missing:
+      - parser
+  - kind: linter
+    id: phpcs
+    missing:
+      - parser
+  - kind: linter
+    id: phpinsights
+    missing:
+      - parser
+  - kind: linter
+    id: phpmd
+    missing:
+      - parser
+  - kind: linter
+    id: phpstan
+    missing:
+      - parser
+  - kind: linter
+    id: pmd
+    missing:
+      - parser
+  - kind: linter
+    id: prisma-lint
+    missing:
+      - parser
+  - kind: linter
+    id: proselint
+    missing:
+      - parser
+  - kind: linter
+    id: protolint
+    missing:
+      - parser
+  - kind: linter
+    id: psalm
+    missing:
+      - cmd
+      - parser
+  - kind: linter
+    id: pydocstyle
+    missing:
+      - parser
+  - kind: linter
+    id: pylint
+    missing:
+      - parser
+  - kind: linter
+    id: pyrefly
+    missing:
+      - parser
+  - kind: linter
+    id: redocly
+    missing:
+      - parser
+  - kind: linter
+    id: regal
+    missing:
+      - parser
+  - kind: linter
+    id: revive
+    missing:
+      - parser
+  - kind: linter
+    id: rpmlint
+    missing:
+      - parser
+  - kind: linter
+    id: rpmspec
+    missing:
+      - parser
+  - kind: linter
+    id: ruby
+    missing:
+      - parser
+  - kind: linter
+    id: rumdl
+    missing:
+      - parser
+  - kind: linter
+    id: saltlint
+    missing:
+      - parser
+  - kind: linter
+    id: selene
+    missing:
+      - parser
+  - kind: linter
+    id: snakemake
+    missing:
+      - parser
+  - kind: linter
+    id: snyk_iac
+    missing:
+      - parser
+  - kind: linter
+    id: spectral
+    missing:
+      - parser
+  - kind: linter
+    id: sqlfluff
+    missing:
+      - parser
+  - kind: linter
+    id: sqruff
+    missing:
+      - parser
+  - kind: linter
+    id: squawk
+    missing:
+      - parser
+  - kind: linter
+    id: standardrb
+    missing:
+      - parser
+  - kind: linter
+    id: staticcheck
+    missing:
+      - parser
+  - kind: linter
+    id: tflint
+    missing:
+      - parser
+  - kind: linter
+    id: tfsec
+    missing:
+      - parser
+  - kind: linter
+    id: tlint
+    missing:
+      - parser
+  - kind: linter
+    id: tombi
+    missing:
+      - parser
+  - kind: linter
+    id: trivy
+    missing:
+      - parser
+  - kind: linter
+    id: trivy_secret
+    missing:
+      - parser
+  - kind: linter
+    id: typos
+    missing:
+      - parser
+  - kind: linter
+    id: unmake
+    missing:
+      - parser
+  - kind: linter
+    id: vacuum
+    missing:
+      - parser
+  - kind: linter
+    id: vala_lint
+    missing:
+      - parser
+  - kind: linter
+    id: vale
+    missing:
+      - parser
+  - kind: linter
+    id: vint
+    missing:
+      - parser
+  - kind: linter
+    id: woke
+    missing:
+      - parser
+  - kind: linter
+    id: zizmor
+    missing:
+      - parser
+  - kind: linter
+    id: zsh
+    missing:
+      - parser
+  - kind: server
+    id: angularls
+    missing:
+      - cmd
+  - kind: server
+    id: apex_ls
+    missing:
+      - cmd
+  - kind: server
+    id: bicep
+    missing:
+      - cmd
+  - kind: server
+    id: bsl_ls
+    missing:
+      - cmd
+  - kind: server
+    id: flow
+    missing:
+      - cmd
+  - kind: server
+    id: gdscript
+    missing:
+      - cmd
+  - kind: server
+    id: nelua_lsp
+    missing:
+      - cmd
+  - kind: server
+    id: powershell_es
+    missing:
+      - cmd
+  - kind: server
+    id: raku_navigator
+    missing:
+      - cmd
+  - kind: server
+    id: roslyn_ls
+    missing:
+      - cmd
+  - kind: server
+    id: tblgen_lsp_server
+    missing:
+      - cmd
+  - kind: server
+    id: tsc
+    missing:
+      - cmd
+  - kind: server
+    id: turtle_ls
+    missing:
+      - cmd
+  - kind: server
+    id: unison
+    missing:
+      - cmd
+  - kind: server
+    id: visualforce_ls
+    missing:
+      - cmd

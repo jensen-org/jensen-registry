@@ -42,6 +42,7 @@ same bytes.
 | `linters.yaml` | nvim-lint | `cmd`, `args`, `stdin`, `append_file`, `stream`, `ignore_exitcode`, `env`, and `parser` |
 | `debuggers.yaml` | mason-nvim-dap | the adapter (`bin` names a package binary), its `filetypes` and its `configurations` |
 | `filetypes.yaml` | Neovim `runtime/lua/vim/filetype.lua` | a filetype id with its `extensions` and `filenames` |
+| `unresolved.yaml` | generated | each entry marked `runnable: false`, with the fields it lacks |
 
 Filetype ids are Neovim's (`sh`, `cs`, `typescriptreact`). A formatter, linter or debugger takes its
 `filetypes` from the languages of its package: a Mason language name is looked up in GitHub Linguist
@@ -66,9 +67,11 @@ and any that cannot be are left out and reported, never guessed.
 Lua is read statically: literal tables, string concatenation, a short list of helpers
 (`root_pattern`, `root_file`, `from_node_modules`, `exepath`, `from_pattern`, `from_errorformat`)
 and functions that only return the buffer path. A field set by any other function is skipped and
-counted, and `npm run track` prints the count for each kind. An entry that is not runnable after that
-(a server with no `cmd`, a formatter with no `command`, a linter with no `cmd` or `parser`) is left out
-of the published file unless an override supplies the field.
+counted, and `npm run track` prints the count for each kind. A `cmd` function is read when it only
+starts an rpc client with a literal command, or falls back to a literal binary. An entry still missing
+a required field (a server `cmd`, a formatter `command`, a linter `cmd` or `parser`, a debugger
+`adapter`) stays in its file with `runnable: false`, and `tools/unresolved.yaml` lists each one with
+the fields it lacks. A host must skip an entry marked `runnable: false`; an override completes it.
 
 ### Overrides
 

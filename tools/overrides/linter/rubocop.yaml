@@ -1,0 +1,24 @@
+config:
+  - .rubocop.yml
+parser:
+  kind: json
+  groups: files
+  items: offenses
+  field:
+    path: $group.path
+    line: location.start_line
+    column: location.start_column
+    end_line: location.last_line
+    end_column: location.last_column
+    code: cop_name
+    message: message
+    severity: severity
+  severity:
+    map:
+      fatal: 1
+      error: 1
+      warning: 2
+      convention: 4
+      refactor: 3
+      info: 3
+    default: 2

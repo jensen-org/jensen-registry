@@ -59,3 +59,19 @@ test("long bracket strings keep their content", () => {
   assert.equal(readModule("return { a = [[(%d+):(.*)]], b = [=[x[1]y]=] }").value.a, "(%d+):(.*)");
   assert.equal(readModule("return { b = [=[x[1]y]=] }").value.b, "x[1]y");
 });
+
+test("a cmd function that falls back to a literal reads as that literal", () => {
+  const { value } = readModule(`local bin = "eslint"\nreturn { cmd = function() local p = x() return fs(p) and p or bin end, other = function() return a or "b" end }`);
+  assert.equal(value.cmd, "eslint");
+  assert.equal(value.other, undefined);
+});
+
+test("a cmd function that starts an rpc client reads as its command", () => {
+  const { value } = readModule(`return { cmd = function(dispatchers, config) local cmd = 'biome' if config then cmd = 'x' end return vim.lsp.rpc.start({ cmd, 'lsp-proxy' }, dispatchers) end }`);
+  assert.deepEqual(value.cmd, ["biome", "lsp-proxy"]);
+});
+
+test("a command with an unreadable element is not guessed", () => {
+  const { value } = readModule(`return { cmd = function(d) local c = { 'jdtls', '-data', vim.fn.foo() } return vim.lsp.rpc.start(c, d) end }`);
+  assert.equal(value.cmd, undefined);
+});

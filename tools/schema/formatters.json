@@ -18,6 +18,7 @@
       "properties": {
         "id": { "type": "string" },
         "package": { "type": "string" },
+        "runnable": { "const": false },
         "filetypes": { "$ref": "#/$defs/strings" }, "command": { "type": "string" }, "args": { "$ref": "#/$defs/strings" }, "range_args": { "$ref": "#/$defs/strings" }, "stdin": { "type": "boolean" }, "cwd_markers": { "$ref": "#/$defs/strings" }, "require_cwd": { "type": "boolean" }, "exit_codes": { "type": "array", "items": { "type": "integer" } }, "env": { "type": "object" }, "config": { "type": "array" }, "priority": { "type": "integer" }, "remedies": { "type": "array" }
       }
     }

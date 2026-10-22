@@ -18,6 +18,7 @@
       "properties": {
         "id": { "type": "string" },
         "package": { "type": "string" },
+        "runnable": { "const": false },
         "filetypes": { "$ref": "#/$defs/strings" }, "adapter": { "type": "object" }, "configurations": { "type": "array", "items": { "type": "object" } }
       }
     }

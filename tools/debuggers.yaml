@@ -175,6 +175,21 @@ debuggers:
         request: launch
         mode: test
         program: ./${relativeFileDirname}
+  - id: elixir
+    package: elixir-ls
+    configurations:
+      - type: mix_task
+        name: mix test
+        task: test
+        taskArgs:
+          - --trace
+        request: launch
+        startApps: true
+        projectDir: ${workspaceFolder}
+        requireFiles:
+          - test/**/test_helper.exs
+          - test/**/*_test.exs
+    runnable: false
   - id: erlang
     package: erlang-debugger
     filetypes:
@@ -218,6 +233,15 @@ debuggers:
         logLevel: WARNING
         ghciPrompt: ghci>
         ghciInitialPrompt: ">"
+  - id: javadbg
+    package: java-debug-adapter
+    runnable: false
+  - id: javatest
+    package: java-test
+    runnable: false
+  - id: js
+    package: js-debug-adapter
+    runnable: false
   - id: kotlin
     package: kotlin-debug-adapter
     filetypes:
@@ -231,6 +255,9 @@ debuggers:
       - type: kotlin
         name: launch - kotlin
         request: launch
+  - id: mock
+    package: mockdebug
+    runnable: false
   - id: node2
     filetypes:
       - javascriptreact
@@ -263,6 +290,9 @@ debuggers:
         request: launch
         name: "PHP: Listen for Xdebug"
         port: 9003
+  - id: puppet
+    package: puppet-editor-services
+    runnable: false
   - id: python
     package: debugpy
     filetypes:

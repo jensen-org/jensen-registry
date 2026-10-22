@@ -552,6 +552,17 @@ formatters:
       - .dprint.json
       - dprint.jsonc
       - .dprint.jsonc
+  - id: easy-coding-standard
+    args:
+      - check
+      - "{file}"
+      - --fix
+      - --no-interaction
+    stdin: false
+    cwd_markers:
+      - ecs.php
+    require_cwd: true
+    runnable: false
   - id: efmt
     command: efmt
     args:
@@ -815,6 +826,8 @@ formatters:
   - id: indent
     command: indent
     stdin: true
+  - id: injected
+    runnable: false
   - id: inko
     command: inko
     args:
@@ -1291,6 +1304,30 @@ formatters:
         executes: true
     priority: 10
     command: php-cs-fixer
+  - id: phpcbf
+    args:
+      - "{file}"
+    stdin: false
+    exit_codes:
+      - 0
+      - 1
+      - 2
+    runnable: false
+  - id: phpinsights
+    args:
+      - fix
+      - "{file}"
+      - --no-interaction
+      - --quiet
+    stdin: false
+    cwd_markers:
+      - phpinsights.php
+    runnable: false
+  - id: pint
+    args:
+      - "{file}"
+    stdin: false
+    runnable: false
   - id: pkl
     command: pkl
     args:
@@ -1357,6 +1394,11 @@ formatters:
     command: prettierd
     args:
       - "{file}"
+  - id: pretty-php
+    args:
+      - "{file}"
+    stdin: false
+    runnable: false
   - id: prettypst
     package: prettypst
     filetypes:
@@ -1771,6 +1813,15 @@ formatters:
     exit_codes:
       - 0
       - 2
+  - id: styler
+    args:
+      - -s
+      - -e
+      - styler::style_file(commandArgs(TRUE))
+      - --args
+      - "{file}"
+    stdin: false
+    runnable: false
   - id: stylish-haskell
     command: stylish-haskell
     stdin: true
@@ -1906,6 +1957,12 @@ formatters:
     filetypes:
       - tex
     command: tex-fmt
+  - id: tlint
+    args:
+      - format
+      - "{file}"
+    stdin: false
+    runnable: false
   - id: tofu_fmt
     command: tofu
     args:
@@ -1931,12 +1988,30 @@ formatters:
       - treefmt.toml
       - .treefmt.toml
     require_cwd: true
+  - id: trim_newlines
+    runnable: false
+  - id: trim_whitespace
+    runnable: false
   - id: trunk
     command: trunk
     args:
       - fmt
       - "{file}"
     stdin: false
+  - id: twig-cs-fixer
+    args:
+      - lint
+      - "{file}"
+      - --fix
+      - --no-interaction
+      - --quiet
+    stdin: false
+    cwd_markers:
+      - .twig-cs-fixer.php
+      - .twig-cs-fixer.dist.php
+      - composer.json
+    require_cwd: false
+    runnable: false
   - id: txtpbfmt
     command: txtpbfmt
     args:

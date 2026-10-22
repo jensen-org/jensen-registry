@@ -3,6 +3,14 @@ upstream:
   repo: mfussenegger/nvim-lint
   sha: f6230a5c06ba59e6059c14637f1dbe29a7978b9b
 linters:
+  - id: actionlint
+    package: actionlint
+    filetypes:
+      - yaml
+    cmd: actionlint
+    stdin: true
+    ignore_exitcode: true
+    runnable: false
   - id: alex
     package: alex
     filetypes:
@@ -21,6 +29,15 @@ linters:
       defaults:
         severity: 2
         source: alex
+  - id: ameba
+    cmd: bin/ameba
+    args:
+      - --format
+      - json
+    stdin: false
+    append_file: true
+    ignore_exitcode: true
+    runnable: false
   - id: ansible_lint
     package: ansible-lint
     cmd: ansible-lint
@@ -88,6 +105,15 @@ linters:
         source: bean-check
         severity: 1
   - id: biomejs
+    package: biome
+    filetypes:
+      - javascript
+      - javascriptreact
+      - json
+      - jsonc
+      - jsonl
+      - typescript
+    cmd: biome
     args:
       - lint
       - --reporter=json
@@ -139,7 +165,6 @@ linters:
           information: 3
           hint: 4
         default: 2
-    cmd: biome
   - id: blocklint
     cmd: blocklint
     args:
@@ -153,6 +178,27 @@ linters:
       defaults:
         source: blocklint
         severity: 3
+  - id: buf_lint
+    package: buf
+    filetypes:
+      - proto
+    cmd: buf
+    args:
+      - lint
+      - --error-format
+      - json
+    stdin: false
+    ignore_exitcode: true
+    runnable: false
+  - id: buildifier
+    package: buildifier
+    filetypes:
+      - bzl
+    cmd: buildifier
+    stdin: true
+    append_file: false
+    stream: both
+    runnable: false
   - id: cfn_lint
     package: cfn-lint
     filetypes:
@@ -175,6 +221,14 @@ linters:
         E: 1
       defaults:
         source: cfn-lint
+  - id: cfn_nag
+    cmd: cfn_nag_scan
+    args:
+      - --output-format
+      - json
+      - --input-path
+    stdin: false
+    runnable: false
   - id: checkbashisms
     cmd: checkbashisms
     args:
@@ -209,6 +263,46 @@ linters:
       defaults:
         source: checkmake
         severity: 2
+  - id: checkpatch
+    args:
+      - --strict
+      - --terse
+      - --file
+    stdin: false
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "(?<path>[^:]+):(?<line>[0-9]+): (?<severity>[A-Za-z]+): (?<message>.+)"
+      severity:
+        ERROR: 1
+        WARNING: 2
+        CHECK: 3
+      defaults:
+        source: checkpatch
+    runnable: false
+  - id: checkstyle
+    package: checkstyle
+    filetypes:
+      - java
+    cmd: checkstyle
+    args:
+      - -f
+      - sarif
+      - -c
+    ignore_exitcode: true
+    runnable: false
+  - id: chktex
+    cmd: chktex
+    args:
+      - -v0
+      - -I0
+      - -s
+      - ":"
+      - -f
+      - "%l%b%c%b%d%b%k%b%n%b%m%b%b%b"
+    stdin: true
+    runnable: false
   - id: clangtidy
     cmd: clang-tidy
     args:
@@ -262,6 +356,15 @@ linters:
           error: 1
           warning: 2
         default: 2
+  - id: clj-kondo
+    package: clj-kondo
+    filetypes:
+      - clojure
+    cmd: clj-kondo
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
   - id: cmake_lint
     package: cmakelang
     filetypes:
@@ -299,6 +402,21 @@ linters:
       defaults:
         source: cmakelint
         severity: 2
+  - id: codespell
+    package: codespell
+    cmd: codespell
+    args:
+      - --stdin-single-line
+      - "-"
+    stdin: true
+    ignore_exitcode: true
+    runnable: false
+  - id: commitlint
+    package: commitlint
+    cmd: commitlint
+    stdin: true
+    ignore_exitcode: true
+    runnable: false
   - id: cppcheck
     cmd: cppcheck
     stdin: false
@@ -355,6 +473,24 @@ linters:
         ↓: 4
       defaults:
         source: credo
+  - id: cspell
+    package: cspell
+    cmd: cspell
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
+  - id: cue
+    package: cue
+    filetypes:
+      - cue
+    cmd: cue
+    args:
+      - vet
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    runnable: false
   - id: curlylint
     package: curlylint
     filetypes:
@@ -408,6 +544,49 @@ linters:
         warning: 2
       defaults:
         source: dclint
+  - id: deadnix
+    cmd: deadnix
+    args:
+      - --output-format=json
+    stdin: false
+    append_file: true
+    ignore_exitcode: false
+    runnable: false
+  - id: deno
+    package: deno
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+    cmd: deno
+    args:
+      - lint
+      - --json
+    stdin: false
+    ignore_exitcode: true
+    runnable: false
+  - id: detekt
+    package: detekt
+    filetypes:
+      - kotlin
+    cmd: detekt
+    args:
+      - "-bp "
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
+  - id: dialyxir
+    cmd: mix
+    args:
+      - dialyzer
+      - --format
+      - github
+      - --quiet-with-result
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+    runnable: false
   - id: djlint
     package: djlint
     filetypes:
@@ -467,6 +646,19 @@ linters:
       defaults:
         source: dotenv_linter
         severity: 3
+  - id: droast
+    cmd: droast
+    args:
+      - --format
+      - json
+      - --no-roast
+      - --no-fail
+      - --check-ignorefile=false
+    stdin: false
+    append_file: true
+    stream: both
+    ignore_exitcode: true
+    runnable: false
   - id: dxc
     cmd: dxc
     args:
@@ -516,6 +708,7 @@ linters:
         source: erb-lint
         severity: 2
   - id: eslint
+    cmd: eslint
     args:
       - --format
       - json
@@ -567,7 +760,98 @@ linters:
           "1": 2
           "2": 1
         default: 2
-    cmd: eslint
+  - id: eslint_d
+    package: eslint_d
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+    cmd: eslint_d
+    args:
+      - --format
+      - json
+      - --stdin
+      - --stdin-filename
+      - "{file}"
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+    config:
+      - name: eslint.config.js
+        executes: true
+      - name: eslint.config.mjs
+        executes: true
+      - name: eslint.config.cjs
+        executes: true
+      - name: .eslintrc
+        code_keys:
+          - plugins
+          - extends
+          - parser
+          - overrides
+      - name: .eslintrc.js
+        executes: true
+      - name: .eslintrc.json
+        code_keys:
+          - plugins
+          - extends
+          - parser
+          - overrides
+      - name: .eslintrc.cjs
+        executes: true
+    priority: 10
+    parser:
+      kind: json
+      groups: $
+      items: messages
+      field:
+        path: $group.filePath
+        line: line
+        column: column
+        end_line: endLine
+        end_column: endColumn
+        code: ruleId
+        message: message
+        severity: severity
+      severity:
+        map:
+          "1": 2
+          "2": 1
+        default: 2
+  - id: eugene
+    package: eugene
+    filetypes:
+      - sql
+    cmd: eugene
+    args:
+      - lint
+      - --format=json
+    stdin: false
+    runnable: false
+  - id: fennel
+    cmd: fennel
+    args:
+      - --globals
+      - --compile
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    runnable: false
+  - id: fieldalignment
+    cmd: fieldalignment
+    args:
+      - -json
+    stdin: false
+    ignore_exitcode: true
+    runnable: false
+  - id: fish
+    cmd: fish
+    args:
+      - --no-execute
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    runnable: false
   - id: flake8
     package: flake8
     filetypes:
@@ -610,6 +894,19 @@ linters:
         "5": 2
       defaults:
         source: flawfinder
+  - id: fortitude
+    package: fortitude
+    filetypes:
+      - fortran
+    cmd: fortitude
+    args:
+      - check
+      - --output-format
+      - json
+    stdin: false
+    append_file: true
+    ignore_exitcode: true
+    runnable: false
   - id: fsharplint
     cmd: dotnet-fsharplint
     args:
@@ -627,6 +924,15 @@ linters:
       defaults:
         source: fsharplint
         severity: 2
+  - id: gawk
+    cmd: gawk
+    args:
+      - -f-
+      - -L
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+    runnable: false
   - id: gdlint
     package: gdtoolkit
     filetypes:
@@ -661,6 +967,41 @@ linters:
         warning: 2
       defaults:
         source: ghdl
+  - id: gitleaks
+    package: gitleaks
+    cmd: gitleaks
+    args:
+      - stdin
+      - --report-format=json
+      - --report-path=-
+      - --exit-code=0
+    stdin: true
+    append_file: true
+    stream: stdout
+    ignore_exitcode: false
+    runnable: false
+  - id: gitlint
+    package: gitlint
+    cmd: gitlint
+    args:
+      - --staged
+      - --msg-filename
+      - "{file}"
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+    runnable: false
+  - id: glinter
+    cmd: gleam
+    args:
+      - run
+      - -m
+      - glinter
+      - --
+      - --format
+      - json
+    append_file: false
+    runnable: false
   - id: glslc
     cmd: glslc
     args:
@@ -726,6 +1067,36 @@ linters:
           info: 3
           style: 4
         default: 2
+  - id: herb
+    cmd: herb-lint
+    args:
+      - --no-timing
+      - --no-color
+      - --json
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
+  - id: hledger
+    cmd: hledger
+    args:
+      - check
+      - -s
+      - -f
+      - "-"
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+    runnable: false
+  - id: hlint
+    package: hlint
+    filetypes:
+      - haskell
+    cmd: hlint
+    args:
+      - --json
+      - --no-exit-code
+    runnable: false
   - id: htmlhint
     package: htmlhint
     filetypes:
@@ -747,6 +1118,32 @@ linters:
         warning: 2
       defaults:
         source: htmlhint
+  - id: inko
+    cmd: inko
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    runnable: false
+  - id: j2lint
+    package: j2lint
+    filetypes:
+      - jinja
+    cmd: j2lint
+    args:
+      - --json
+      - --stdin
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
+  - id: janet
+    cmd: janet
+    args:
+      - -k
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+    runnable: false
   - id: joker
     package: joker
     filetypes:
@@ -857,6 +1254,18 @@ linters:
         - ^ksh:\\\\ (?<severity>[A-Za-z]).*\\\\ line\\\\ (?<line>\d+):\\\\ (?<message>.*)$
       defaults:
         source: ksh
+  - id: ktlint
+    package: ktlint
+    filetypes:
+      - kotlin
+    cmd: ktlint
+    args:
+      - --reporter=json
+      - --stdin
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+    runnable: false
   - id: lacheck
     cmd: lacheck
     stdin: false
@@ -869,6 +1278,27 @@ linters:
       defaults:
         source: lacheck
         severity: 2
+  - id: languagetool
+    cmd: languagetool
+    args:
+      - --autoDetect
+      - --json
+    stream: stdout
+    runnable: false
+  - id: lint-openapi
+    cmd: lint-openapi
+    args:
+      - --json
+    append_file: true
+    ignore_exitcode: true
+    runnable: false
+  - id: ls_lint
+    cmd: ls-lint
+    stdin: false
+    append_file: false
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
   - id: lslint
     cmd: lslint
     args:
@@ -891,6 +1321,16 @@ linters:
         OTHER: 3
         DEBUG: 3
         source: lslint
+  - id: luac
+    cmd: luac
+    args:
+      - -p
+      - "-"
+    stdin: true
+    append_file: false
+    stream: stderr
+    ignore_exitcode: true
+    runnable: false
   - id: luacheck
     package: luacheck
     filetypes:
@@ -1012,6 +1452,31 @@ linters:
       - .markdownlint.yaml
       - .markdownlintrc
     priority: 10
+  - id: markuplint
+    package: markuplint
+    filetypes:
+      - html
+    cmd: markuplint
+    args:
+      - --format
+      - JSON
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
+  - id: mbake
+    package: mbake
+    filetypes:
+      - automake
+      - make
+    cmd: mbake
+    args:
+      - validate
+    stdin: false
+    append_file: true
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
   - id: mh_lint
     package: miss_hit
     filetypes:
@@ -1085,6 +1550,15 @@ linters:
       - .mypy.ini
       - setup.cfg
     priority: 5
+  - id: nagelfar
+    cmd: nagelfar
+    args:
+      - -H
+    stdin: false
+    append_file: true
+    stream: both
+    ignore_exitcode: true
+    runnable: false
   - id: nix
     cmd: nix-instantiate
     args:
@@ -1102,6 +1576,18 @@ linters:
       defaults:
         source: nix
         severity: 2
+  - id: npm-groovy-lint
+    package: npm-groovy-lint
+    filetypes:
+      - groovy
+    cmd: npm-groovy-lint
+    args:
+      - -o
+      - json
+      - "-"
+    stdin: true
+    ignore_exitcode: true
+    runnable: false
   - id: oelint-adv
     package: oelint-adv
     filetypes:
@@ -1125,6 +1611,43 @@ linters:
         info: 3
       defaults:
         source: oelint-adv
+  - id: opa_check
+    package: opa
+    filetypes:
+      - rego
+    cmd: opa
+    args:
+      - check
+      - --strict
+      - --format
+      - json
+    stdin: false
+    append_file: true
+    stream: stderr
+    ignore_exitcode: true
+    runnable: false
+  - id: oxlint
+    package: oxlint
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+    cmd: oxlint
+    args:
+      - --format
+      - github
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ::(?<severity>[^ ]+) file=(?<path>.*),line=(?<line>[0-9]+),endLine=(?<end_line>[0-9]+),col=(?<column>[0-9]+),endColumn=(?<end_column>[0-9]+),title=(?<code>.*)::(?<message>.*)
+      severity:
+        error: 1
+        warning: 2
+      defaults:
+        source: oxlint
   - id: panache
     package: panache
     filetypes:
@@ -1162,6 +1685,66 @@ linters:
       defaults:
         source: flake8
         severity: 2
+  - id: php
+    cmd: php
+    args:
+      - -d display_errors=stdout
+      - -l
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
+  - id: phpcs
+    package: phpcs
+    filetypes:
+      - php
+    cmd: phpcs
+    stdin: true
+    ignore_exitcode: true
+    runnable: false
+  - id: phpinsights
+    cmd: phpinsights
+    args:
+      - analyse
+      - --format
+      - json
+    stdin: false
+    runnable: false
+  - id: phpmd
+    package: phpmd
+    filetypes:
+      - php
+    cmd: phpmd
+    args:
+      - "-"
+      - json
+      - cleancode,codesize,controversial,design,naming,unusedcode
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
+  - id: phpstan
+    package: phpstan
+    filetypes:
+      - php
+    cmd: phpstan
+    args:
+      - analyze
+      - --error-format=json
+      - --no-progress
+    ignore_exitcode: true
+    runnable: false
+  - id: pmd
+    cmd: pmd
+    args:
+      - check
+      - --format
+      - sarif
+      - --rulesets
+      - --dir
+    stdin: false
+    ignore_exitcode: true
+    runnable: false
   - id: pony
     cmd: ponyc
     args:
@@ -1177,6 +1760,47 @@ linters:
       defaults:
         source: ponyc
         severity: 1
+  - id: prisma-lint
+    cmd: prisma-lint
+    args:
+      - --output-format
+      - json
+    stdin: false
+    append_file: true
+    stream: both
+    ignore_exitcode: true
+    runnable: false
+  - id: proselint
+    package: proselint
+    filetypes:
+      - markdown
+      - text
+    cmd: proselint
+    args:
+      - check
+      - --output-format=json
+    stdin: false
+    ignore_exitcode: true
+    runnable: false
+  - id: protolint
+    package: protolint
+    filetypes:
+      - proto
+    cmd: protolint
+    args:
+      - lint
+      - --reporter=json
+    stdin: false
+    append_file: true
+    stream: stderr
+    ignore_exitcode: true
+    runnable: false
+  - id: psalm
+    args:
+      - --output-format=json
+      - --show-info=true
+      - --no-progress
+    runnable: false
   - id: puppet-lint
     cmd: puppet-lint
     args:
@@ -1208,6 +1832,41 @@ linters:
       defaults:
         source: pycodestyle
         severity: 2
+  - id: pydocstyle
+    package: pydocstyle
+    filetypes:
+      - python
+    cmd: pydocstyle
+    stdin: false
+    ignore_exitcode: true
+    runnable: false
+  - id: pylint
+    package: pylint
+    filetypes:
+      - python
+    cmd: pylint
+    args:
+      - -f
+      - json
+      - --from-stdin
+      - "{file}"
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
+  - id: pyrefly
+    package: pyrefly
+    filetypes:
+      - python
+    cmd: pyrefly
+    args:
+      - check
+      - --output-format
+      - json
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
   - id: quick-lint-js
     package: quick-lint-js
     filetypes:
@@ -1230,6 +1889,16 @@ linters:
         warning: 2
       defaults:
         source: quick-lint-js
+  - id: redocly
+    cmd: redocly
+    args:
+      - lint
+      - --format
+      - codeclimate
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
   - id: refurb
     package: refurb
     filetypes:
@@ -1247,6 +1916,30 @@ linters:
         - ^(?<path>[^:]+):(?<line>[0-9]+):(?<column>[0-9]+)[\s]+\[(?<code>[^\]]+)\]:[\s]*(?<message>.*)$
       defaults:
         severity: 3
+  - id: regal
+    package: regal
+    filetypes:
+      - rego
+    cmd: regal
+    args:
+      - lint
+      - --format
+      - json
+    stdin: false
+    append_file: true
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
+  - id: revive
+    package: revive
+    filetypes:
+      - go
+    cmd: revive
+    args:
+      - -formatter
+      - json
+    stdin: false
+    runnable: false
   - id: rflint
     cmd: rflint
     args:
@@ -1275,6 +1968,25 @@ linters:
         - ^(?<path>.+?):(?<line>\d+):(?<column>\d+):(?<severity>[A-Za-z]):(?<code>\d+):(?<message>.*)$
       defaults:
         source: robocop
+  - id: rpmlint
+    package: rpmlint
+    filetypes:
+      - python
+    cmd: rpmlint
+    stdin: false
+    append_file: true
+    stream: both
+    ignore_exitcode: true
+    runnable: false
+  - id: rpmspec
+    cmd: rpmspec
+    args:
+      - -P
+    stdin: false
+    append_file: true
+    stream: stderr
+    ignore_exitcode: true
+    runnable: false
   - id: rstcheck
     package: rstcheck
     filetypes:
@@ -1308,6 +2020,53 @@ linters:
         ERROR: 1
       defaults:
         source: rstlint
+  - id: rubocop
+    package: rubocop
+    filetypes:
+      - ruby
+    cmd: rubocop
+    args:
+      - --format
+      - json
+      - --force-exclusion
+      - --server
+      - --stdin
+      - "{file}"
+    stdin: true
+    ignore_exitcode: true
+    config:
+      - .rubocop.yml
+    parser:
+      kind: json
+      groups: files
+      items: offenses
+      field:
+        path: $group.path
+        line: location.start_line
+        column: location.start_column
+        end_line: location.last_line
+        end_column: location.last_column
+        code: cop_name
+        message: message
+        severity: severity
+      severity:
+        map:
+          fatal: 1
+          error: 1
+          warning: 2
+          convention: 4
+          refactor: 3
+          info: 3
+        default: 2
+  - id: ruby
+    cmd: ruby
+    args:
+      - -w
+      - -c
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    runnable: false
   - id: ruff
     package: ruff
     filetypes:
@@ -1336,6 +2095,40 @@ linters:
       - --output-format
       - json
       - "{file}"
+  - id: rumdl
+    package: rumdl
+    filetypes:
+      - markdown
+    cmd: rumdl
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+    runnable: false
+  - id: saltlint
+    package: salt-lint
+    filetypes:
+      - salt
+    cmd: salt-lint
+    args:
+      - --json
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
+  - id: selene
+    package: selene
+    filetypes:
+      - lua
+      - luau
+    cmd: selene
+    args:
+      - --display-style
+      - json
+      - "-"
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
   - id: shellcheck
     package: shellcheck
     filetypes:
@@ -1383,6 +2176,51 @@ linters:
         warning: 2
       defaults:
         source: slang
+  - id: snakemake
+    cmd: snakemake
+    args:
+      - --lint
+      - text
+      - --snakefile
+    stdin: false
+    append_file: true
+    stream: stderr
+    ignore_exitcode: true
+    runnable: false
+  - id: snyk_iac
+    package: snyk
+    filetypes:
+      - apex
+      - cpp
+      - cs
+      - dart
+      - elixir
+      - go
+      - groovy
+      - helm
+      - java
+      - javascript
+      - javascriptreact
+      - kotlin
+      - php
+      - python
+      - ruby
+      - rust
+      - scala
+      - swift
+      - terraform
+      - terraform-vars
+      - typescript
+    cmd: snyk
+    args:
+      - iac
+      - test
+      - --json
+    stdin: false
+    append_file: true
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
   - id: solhint
     package: solhint
     filetypes:
@@ -1401,6 +2239,17 @@ linters:
         warning: 2
       defaults:
         source: solhint
+  - id: spectral
+    cmd: spectral
+    args:
+      - lint
+      - -f
+      - json
+    stdin: false
+    append_file: true
+    stream: both
+    ignore_exitcode: true
+    runnable: false
   - id: sphinx-lint
     package: sphinx-lint
     filetypes:
@@ -1416,6 +2265,84 @@ linters:
       defaults:
         source: sphinx-lint
         severity: 2
+  - id: sqlfluff
+    package: sqlfluff
+    filetypes:
+      - sql
+    cmd: sqlfluff
+    args:
+      - lint
+      - --format=json
+      - "-"
+    stdin: true
+    ignore_exitcode: true
+    runnable: false
+  - id: sqruff
+    package: sqruff
+    filetypes:
+      - sql
+    cmd: sqruff
+    args:
+      - lint
+      - --format=json
+      - "-"
+    stdin: true
+    ignore_exitcode: true
+    runnable: false
+  - id: squawk
+    package: squawk
+    filetypes:
+      - sql
+    cmd: squawk
+    args:
+      - --reporter=json
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
+  - id: standardjs
+    package: standardjs
+    filetypes:
+      - javascript
+      - javascriptreact
+    cmd: standard
+    args:
+      - --stdin
+    stdin: true
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "[^:]+:(?<line>[0-9]+):(?<column>[0-9]+):(?<message>[^\\.]+\\.?)[\\s]\\((?<code>[A-Za-z-]+)\\)[\\s]?\\(?(?<severity>[A-Za-z]*)\\)?"
+      severity:
+        "": 1
+        warning: 2
+      defaults:
+        source: standardjs
+  - id: standardrb
+    package: standardrb
+    filetypes:
+      - ruby
+    cmd: standardrb
+    args:
+      - --force-exclusion
+      - --stdin
+      - "%:p"
+      - --format
+      - json
+    stdin: true
+    runnable: false
+  - id: staticcheck
+    package: staticcheck
+    filetypes:
+      - go
+    cmd: staticcheck
+    args:
+      - -f
+      - json
+    stdin: false
+    ignore_exitcode: true
+    runnable: false
   - id: statix
     package: statix
     filetypes:
@@ -1546,6 +2473,32 @@ linters:
         - "[^:]+:(?<line>[0-9]+):(?<column>[0-9]+): (?<message>.+) \\[(?<code>[^\\]]+)\\]"
       defaults:
         source: tclint
+  - id: tflint
+    package: tflint
+    filetypes:
+      - terraform
+      - terraform-vars
+    cmd: tflint
+    args:
+      - --format=json
+      - --recursive
+    stdin: false
+    append_file: false
+    ignore_exitcode: true
+    runnable: false
+  - id: tfsec
+    package: tfsec
+    filetypes:
+      - terraform
+      - terraform-vars
+    cmd: tfsec
+    args:
+      - -s
+      - -f
+      - json
+    stdin: true
+    stream: stdout
+    runnable: false
   - id: tidy
     cmd: tidy
     args:
@@ -1575,6 +2528,133 @@ linters:
         Footnote: 3
       defaults:
         source: tidy
+  - id: tlint
+    package: tlint
+    filetypes:
+      - blade
+      - php
+    cmd: tlint
+    args:
+      - lint
+      - --json
+    stdin: false
+    runnable: false
+  - id: tombi
+    package: tombi
+    filetypes:
+      - toml
+    cmd: tombi
+    args:
+      - lint
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    env:
+      NO_COLOR: "1"
+    runnable: false
+  - id: trivy
+    package: trivy
+    filetypes:
+      - c
+      - cpp
+      - cs
+      - dart
+      - elixir
+      - go
+      - helm
+      - java
+      - javascript
+      - javascriptreact
+      - php
+      - python
+      - ruby
+      - rust
+      - terraform
+      - terraform-vars
+      - typescript
+    cmd: trivy
+    args:
+      - --scanners
+      - misconfig
+      - --format
+      - json
+      - fs
+    stdin: false
+    append_file: true
+    stream: stdout
+    ignore_exitcode: false
+    runnable: false
+  - id: trivy_secret
+    package: trivy
+    filetypes:
+      - c
+      - cpp
+      - cs
+      - dart
+      - elixir
+      - go
+      - helm
+      - java
+      - javascript
+      - javascriptreact
+      - php
+      - python
+      - ruby
+      - rust
+      - terraform
+      - terraform-vars
+      - typescript
+    cmd: trivy
+    args:
+      - --scanners
+      - secret
+      - --format
+      - json
+      - fs
+    stdin: false
+    append_file: true
+    stream: stdout
+    ignore_exitcode: false
+    runnable: false
+  - id: ts-standard
+    package: ts-standard
+    filetypes:
+      - typescript
+    cmd: ts-standard
+    args:
+      - --stdin
+    stdin: true
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "[^:]+:(?<line>[0-9]+):(?<column>[0-9]+):(?<message>[^\\.]+\\.?)[\\s]\\((?<code>[A-Za-z-]+)\\)[\\s]?\\(?(?<severity>[A-Za-z]*)\\)?"
+      severity:
+        "": 1
+        warning: 2
+      defaults:
+        source: ts-standard
+  - id: twig-cs-fixer
+    package: twig-cs-fixer
+    filetypes:
+      - twig
+    cmd: twig-cs-fixer
+    args:
+      - lint
+      - --report
+      - github
+      - --debug
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ^::(?<severity>[A-Za-z]+) file=(?<path>[^,]+),line=(?<line>[0-9]+),col=(?<column>[0-9]+)::(?<code>.+):[0-9]+:[0-9]+ \-\- (?<message>.+)
+      severity:
+        error: 1
+      defaults:
+        source: twig-cs-fixer
   - id: twigcs
     package: twigcs
     filetypes:
@@ -1591,6 +2671,52 @@ linters:
         - "^(?<path>.+?):(?<line>\\d+):(?<column>\\d+): (?<severity>[A-Za-z])rror \\- (?<message>.*)$"
       defaults:
         source: twigcs
+  - id: typos
+    package: typos
+    cmd: typos
+    args:
+      - --format=json
+      - --force-exclude
+    stdin: false
+    append_file: true
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
+  - id: unmake
+    cmd: unmake
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
+  - id: vacuum
+    package: vacuum
+    cmd: vacuum
+    args:
+      - report
+      - --no-pretty
+      - --no-style
+      - --stdin
+      - --stdout
+    stdin: true
+    runnable: false
+  - id: vala_lint
+    cmd: io.elementary.vala-lint
+    args:
+      - --json-output
+      - --print-end
+    stdin: false
+    append_file: true
+    ignore_exitcode: true
+    runnable: false
+  - id: vale
+    package: vale
+    filetypes:
+      - markdown
+      - tex
+      - text
+    cmd: vale
+    stdin: true
+    runnable: false
   - id: verilator
     cmd: verilator
     args:
@@ -1611,6 +2737,18 @@ linters:
         Warning: 2
       defaults:
         source: verilator
+  - id: vint
+    package: vint
+    filetypes:
+      - vim
+    cmd: vint
+    args:
+      - --enable-neovim
+      - --style-problem
+      - --json
+    stdin: false
+    ignore_exitcode: true
+    runnable: false
   - id: vulture
     package: vulture
     filetypes:
@@ -1626,6 +2764,14 @@ linters:
       defaults:
         source: vulture
         severity: 2
+  - id: woke
+    package: woke
+    cmd: woke
+    args:
+      - --stdin
+      - --output=json
+    stdin: true
+    runnable: false
   - id: write_good
     package: write-good
     filetypes:
@@ -1697,6 +2843,18 @@ linters:
         error: 1
       defaults:
         source: zig ast-check
+  - id: zizmor
+    package: zizmor
+    filetypes:
+      - yaml
+    cmd: zizmor
+    args:
+      - --format
+      - json-v1
+      - "-"
+    stdin: true
+    ignore_exitcode: true
+    runnable: false
   - id: zlint
     package: zlint
     filetypes:
@@ -1718,3 +2876,12 @@ linters:
         warning: 2
       defaults:
         source: zlint
+  - id: zsh
+    cmd: zsh
+    args:
+      - --no-exec
+      - --no-rcs
+      - --no-globalrcs
+    stream: stderr
+    ignore_exitcode: true
+    runnable: false

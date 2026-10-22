@@ -42,6 +42,35 @@ export function stringValue(node) {
   return long ? long[2] : node.raw.slice(1, -1);
 }
 
+function fallbackString(node, scope, run) {
+  const last = node.body.at(-1);
+  const result = last?.type === "ReturnStatement" ? last.arguments[0] : undefined;
+  if (result?.type !== "LogicalExpression" || result.operator !== "or") return null;
+  const value = run(result.right, scope, "", []);
+  return typeof value === "string" ? value : null;
+}
+
+function rpcCommand(node, scope, run) {
+  const local = new Map(scope);
+  for (const statement of node.body) {
+    if (statement.type === "LocalStatement") {
+      statement.variables.forEach((variable, index) => {
+        const init = statement.init[index];
+        const seen = [];
+        const value = init ? run(init, local, variable.name, seen) : MISSING;
+        if (value !== MISSING && !seen.length) local.set(variable.name, value);
+      });
+    } else if (statement.type === "ReturnStatement") {
+      const call = statement.arguments[0];
+      if (call?.type !== "CallExpression" || dotted(call.base) !== "vim.lsp.rpc.start") return null;
+      const seen = [];
+      const value = run(call.arguments[0], local, "cmd", seen);
+      return !seen.length && Array.isArray(value) && value.length && value.every((item) => typeof item === "string") ? value : null;
+    }
+  }
+  return null;
+}
+
 function evaluator(helpers) {
   const run = (node, scope, path, misses) => {
     const miss = () => {
@@ -125,7 +154,7 @@ function evaluator(helpers) {
         return value === MISSING ? miss() : value;
       }
       case "FunctionDeclaration":
-        return bufferPath(node) ?? miss();
+        return bufferPath(node) ?? (path === "cmd" ? rpcCommand(node, scope, run) : null) ?? (/(^|\.)(cmd|command)$/.test(path) ? fallbackString(node, scope, run) : null) ?? miss();
       default:
         return miss();
     }
