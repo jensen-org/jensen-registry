@@ -548,6 +548,7 @@ servers:
       - .git
     init_options:
       hostInfo: neovim
+    runnable: false
   - id: ccls
     cmd:
       - ccls
@@ -1317,6 +1318,7 @@ servers:
     root_markers:
       - package.er
       - .git
+    runnable: false
   - id: esbonio
     package: esbonio
     cmd:
@@ -2199,6 +2201,7 @@ servers:
     root_markers:
       - Project.toml
       - JuliaProject.toml
+    runnable: false
   - id: just
     package: just-lsp
     cmd:
@@ -2841,7 +2844,7 @@ servers:
       Sdk:
         IncludePrereleases: true
     cmd:
-      - omnisharp
+      - OmniSharp
       - -z
       - DotNet:enablePackageRestore=false
       - --encoding
@@ -3347,6 +3350,7 @@ servers:
       - r
       - rmd
       - quarto
+    runnable: false
   - id: racket_langserver
     cmd:
       - racket
@@ -3747,6 +3751,7 @@ servers:
       isHttpEnabled: true
       compilerOptions:
         snippetAutoIndent: false
+    runnable: false
   - id: snakeskin_ls
     package: snakeskin-cli
     cmd:
@@ -3805,6 +3810,7 @@ servers:
       activateSnykIac: "true"
       integrationName: Neovim
       trustedFolders: {}
+    runnable: false
   - id: solang
     package: solang
     cmd:
@@ -4867,6 +4873,7 @@ servers:
       - yql
     root_markers:
       - .git
+    runnable: false
   - id: vhdl_ls
     package: rust_hdl
     cmd:
@@ -4937,6 +4944,7 @@ servers:
     root_markers:
       - v.mod
       - .git
+    runnable: false
   - id: vsrocq
     cmd:
       - vsrocqtop

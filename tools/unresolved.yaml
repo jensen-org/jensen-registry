@@ -633,6 +633,10 @@ unresolved:
     missing:
       - cmd
   - kind: server
+    id: cairo_ls
+    missing:
+      - package_binary
+  - kind: server
     id: contextive
     missing:
       - filetypes
@@ -665,6 +669,10 @@ unresolved:
     missing:
       - filetypes
   - kind: server
+    id: erg_language_server
+    missing:
+      - package_binary
+  - kind: server
     id: flow
     missing:
       - cmd
@@ -680,6 +688,10 @@ unresolved:
     id: guile_ls
     missing:
       - reachable_filetype
+  - kind: server
+    id: julials
+    missing:
+      - package_binary
   - kind: server
     id: kakehashi
     missing:
@@ -709,6 +721,10 @@ unresolved:
     missing:
       - cmd
   - kind: server
+    id: r_language_server
+    missing:
+      - package_binary
+  - kind: server
     id: raku_navigator
     missing:
       - cmd
@@ -721,9 +737,17 @@ unresolved:
     missing:
       - reachable_filetype
   - kind: server
+    id: smithy_ls
+    missing:
+      - package_binary
+  - kind: server
     id: snakeskin_ls
     missing:
       - reachable_filetype
+  - kind: server
+    id: snyk_ls
+    missing:
+      - package_binary
   - kind: server
     id: tabby_ml
     missing:
@@ -761,6 +785,14 @@ unresolved:
     missing:
       - filetypes
   - kind: server
+    id: vespa_ls
+    missing:
+      - package_binary
+  - kind: server
     id: visualforce_ls
     missing:
       - cmd
+  - kind: server
+    id: vls
+    missing:
+      - package_binary

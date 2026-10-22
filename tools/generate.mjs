@@ -125,12 +125,30 @@ export async function generate(upstreams) {
     return Boolean(hit(id) || [...(related.get(id) ?? [])].some(hit));
   };
 
+  const bins = new Map(packages.map((pkg) => [pkg.id, Object.keys(pkg.bin ?? {})]));
+  const programOf = { server: (entry) => entry.cmd?.[0], formatter: (entry) => entry.command, linter: (entry) => entry.cmd };
+  const mismatched = new Set();
+  for (const [kind, read] of Object.entries(programOf)) {
+    merged[kind] = merged[kind].map((entry) => {
+      const program = read(entry);
+      const installed = entry.package && bins.get(entry.package);
+      if (!program || !installed?.length || installed.includes(program)) return entry;
+      const spelling = installed.find((bin) => bin.toLowerCase() === program.toLowerCase());
+      if (!spelling) {
+        mismatched.add(`${kind}:${entry.id}`);
+        return entry;
+      }
+      if (kind === "server") return { ...entry, cmd: [spelling, ...entry.cmd.slice(1)] };
+      return kind === "formatter" ? { ...entry, command: spelling } : { ...entry, cmd: spelling };
+    });
+  }
   const required = { server: ["cmd", "filetypes"], formatter: ["command", "filetypes"], linter: ["cmd", "parser", "filetypes"], debugger: ["adapter", "filetypes"] };
   const unresolved = [];
   for (const [kind, fields] of Object.entries(required)) {
     merged[kind] = merged[kind].map((entry) => {
       const missing = fields.filter((name) => entry[name] === undefined);
       if (entry.filetypes?.length && !entry.filetypes.some(reachable)) missing.push("reachable_filetype");
+      if (mismatched.has(`${kind}:${entry.id}`)) missing.push("package_binary");
       if (!missing.length) return entry;
       unresolved.push({ kind, id: entry.id, missing });
       return { ...entry, runnable: false };
