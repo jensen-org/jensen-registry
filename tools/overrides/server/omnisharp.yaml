@@ -5,3 +5,4 @@ cmd:
   - --encoding
   - utf-8
   - --languageserver
+priority: 10

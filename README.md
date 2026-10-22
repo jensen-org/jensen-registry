@@ -36,7 +36,7 @@ same bytes.
 
 | File | Source | Entry |
 |---|---|---|
-| `packages.yaml` | the Mason registry release (`registry.json.zip`, checked against its pinned sha256 and the checksum Mason publishes) | one package: `source` (the purl type), `coordinate`, `version`, `languages`, `categories`, `lspconfig`, `bin` (each name with its `client` and `target`), `share`, `opt`, and `artifacts` |
+| `packages.yaml` | the Mason registry release (`registry.json.zip`, checked against its pinned sha256 and the checksum Mason publishes) | one package: `source` (the purl type), `coordinate`, `version`, `description`, `homepage`, `languages` (Mason's names), `filetypes` (the Neovim filetypes those map to), `categories`, `lspconfig`, `bin` (each name with its `client` and `target`), `share`, `opt`, and `artifacts` |
 | `servers.yaml` | nvim-lspconfig `lsp/*.lua` | `cmd`, `filetypes`, `root_markers`, `settings`, `init_options`, joined to its package through Mason's `lspconfig` name |
 | `formatters.yaml` | conform.nvim | `command`, `args`, `range_args`, `stdin`, `cwd_markers`, `require_cwd`, `exit_codes`, `env`, joined to the package that ships `command` |
 | `linters.yaml` | nvim-lint | `cmd`, `args`, `stdin`, `append_file`, `stream`, `ignore_exitcode`, `env`, and `parser` |

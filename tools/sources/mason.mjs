@@ -118,6 +118,8 @@ export function normalizePackage(pkg, { miss }) {
     coordinate: purl.coordinate,
     version: purl.version,
     qualifiers: Object.keys(purl.qualifiers).length ? purl.qualifiers : undefined,
+    description: pkg.description?.trim() || undefined,
+    homepage: pkg.homepage,
     languages: pkg.languages,
     categories: pkg.categories,
     lspconfig: pkg.neovim?.lspconfig,

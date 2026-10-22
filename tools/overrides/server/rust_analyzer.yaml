@@ -1,1 +1,2 @@
 root_strategy: cargo-workspace
+priority: 10

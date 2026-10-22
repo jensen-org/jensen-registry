@@ -76,6 +76,11 @@ export async function generate(upstreams) {
   for (const id of [...servers.servers, ...debuggers.debuggers].flatMap((entry) => entry.filetypes ?? [])) {
     if (!table.has(id)) table.set(id, { extensions: new Set(), filenames: new Set() });
   }
+  for (const pkg of packages) {
+    const found = new Set();
+    for (const language of pkg.languages ?? []) for (const type of filetypesFor(language, lookup)) found.add(type);
+    if (found.size) pkg.filetypes = [...found].sort(byText);
+  }
   const generated = {
     server: servers.servers,
     formatter: withLanguages(formatters.formatters, packages, lookup).entries,

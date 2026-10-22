@@ -227,6 +227,7 @@ servers:
       - .git
     init_options:
       typescript: {}
+    priority: 10
   - id: atlas
     cmd:
       - atlas
@@ -364,6 +365,7 @@ servers:
     settings:
       bashIde:
         globPattern: "*@(.sh|.inc|.bash|.command)"
+    priority: 10
   - id: basics_ls
     package: basics-language-server
     cmd:
@@ -425,6 +427,7 @@ servers:
       - typescriptreact
       - vue
     workspace_required: true
+    priority: -10
   - id: bitbake_language_server
     cmd:
       - bitbake-language-server
@@ -602,6 +605,7 @@ servers:
       - compile_flags.txt
       - configure.ac
       - .git
+    priority: 10
   - id: clarinet
     cmd:
       - clarinet
@@ -835,6 +839,7 @@ servers:
         validate: true
     init_options:
       provideFormatter: true
+    priority: 10
   - id: cssmodules_ls
     package: cssmodules-language-server
     cmd:
@@ -1095,6 +1100,7 @@ servers:
       - dockerfile
     root_markers:
       - Dockerfile
+    priority: 10
   - id: dolmenls
     cmd:
       - dolmenls
@@ -1347,6 +1353,7 @@ servers:
           location: separateLine
         showDocumentation:
           enable: true
+    priority: -10
   - id: expert
     package: expert
     cmd:
@@ -1738,6 +1745,7 @@ servers:
     settings:
       gopls:
         semanticTokens: true
+    priority: 10
   - id: gradle_ls
     package: gradle-language-server
     cmd:
@@ -1943,6 +1951,7 @@ servers:
         - html
         - css
         - javascript
+    priority: 10
   - id: htmx
     package: htmx-lsp
     cmd:
@@ -2038,6 +2047,7 @@ servers:
       intelephense:
         telemetry:
           enabled: false
+    priority: 10
   - id: janet_lsp
     cmd:
       - janet-lsp
@@ -2064,6 +2074,7 @@ servers:
       - java
     cmd:
       - jdtls
+    priority: 10
   - id: jedi_language_server
     package: jedi-language-server
     cmd:
@@ -2127,6 +2138,7 @@ servers:
       - .git
     init_options:
       provideFormatter: true
+    priority: 10
   - id: jsonnet_ls
     package: jsonnet-language-server
     cmd:
@@ -2224,6 +2236,7 @@ servers:
       - pom.xml
       - build.gradle
       - build.gradle.kts
+    priority: 10
   - id: kotlin_lsp
     package: kotlin-lsp
     cmd:
@@ -2398,6 +2411,7 @@ servers:
         hint:
           enable: true
           semicolon: Disable
+    priority: 10
   - id: luau_lsp
     package: luau-lsp
     cmd:
@@ -2460,6 +2474,7 @@ servers:
       - .marksman.toml
       - .git
     root_strategy: document-dir
+    priority: 10
   - id: matlab_ls
     package: matlab-language-server
     cmd:
@@ -2813,6 +2828,7 @@ servers:
       - --encoding
       - utf-8
       - --languageserver
+    priority: 10
   - id: opencl_ls
     package: opencl-language-server
     cmd:
@@ -3266,6 +3282,7 @@ servers:
           autoSearchPaths: true
           useLibraryCodeForTypes: true
           diagnosticMode: openFilesOnly
+    priority: 10
   - id: pytest_language_server
     package: pytest-language-server
     cmd:
@@ -3502,6 +3519,7 @@ servers:
       - .git
     init_options:
       formatter: auto
+    priority: 10
   - id: ruff
     package: ruff
     cmd:
@@ -3567,6 +3585,7 @@ servers:
           updateTest:
             enable: true
     root_strategy: cargo-workspace
+    priority: 10
   - id: rust_glancer
     package: rust-glancer
     cmd:
@@ -3879,6 +3898,7 @@ servers:
       - objcpp
       - c
       - cpp
+    priority: 10
   - id: spade_ls
     cmd:
       - spade-language-server
@@ -4095,6 +4115,7 @@ servers:
             enabled: true
           enumMemberValues:
             enabled: true
+    priority: 10
   - id: svlangserver
     package: svlangserver
     cmd:
@@ -4282,6 +4303,7 @@ servers:
           heex: phoenix-heex
           htmlangular: html
           templ: html
+    priority: -10
   - id: taplo
     package: taplo
     cmd:
@@ -4294,6 +4316,7 @@ servers:
       - .taplo.toml
       - taplo.toml
       - .git
+    priority: 10
   - id: tblgen_lsp_server
     filetypes:
       - tablegen
@@ -4512,6 +4535,7 @@ servers:
       - typescriptreact
     init_options:
       hostInfo: neovim
+    priority: 10
   - id: ts_query_ls
     package: ts_query_ls
     cmd:
@@ -4916,6 +4940,7 @@ servers:
       - vue
     root_markers:
       - package.json
+    priority: 10
   - id: wasm_language_tools
     package: wasm-language-tools
     cmd:
@@ -4993,6 +5018,7 @@ servers:
       yaml:
         format:
           enable: true
+    priority: 10
   - id: yang_lsp
     cmd:
       - yang-language-server
@@ -5055,6 +5081,7 @@ servers:
       - build.zig
       - .git
     workspace_required: false
+    priority: 10
   - id: zuban
     package: zuban
     cmd:
