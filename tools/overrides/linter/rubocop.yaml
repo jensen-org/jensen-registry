@@ -1,5 +1,10 @@
 config:
-  - .rubocop.yml
+  - name: .rubocop.yml
+    code_keys:
+      - require
+      - plugins
+      - inherit_gem
+      - inherit_from
 parser:
   kind: json
   groups: files

@@ -1648,6 +1648,11 @@ linters:
         warning: 2
       defaults:
         source: oxlint
+    config:
+      - name: .oxlintrc.json
+        code_keys:
+          - jsPlugins
+          - plugins
   - id: panache
     package: panache
     filetypes:
@@ -2035,7 +2040,12 @@ linters:
     stdin: true
     ignore_exitcode: true
     config:
-      - .rubocop.yml
+      - name: .rubocop.yml
+        code_keys:
+          - require
+          - plugins
+          - inherit_gem
+          - inherit_from
     parser:
       kind: json
       groups: files
@@ -2319,6 +2329,10 @@ linters:
         warning: 2
       defaults:
         source: standardjs
+    config:
+      - name: package.json
+        code_keys:
+          - standard
   - id: standardrb
     package: standardrb
     filetypes:
@@ -2634,6 +2648,10 @@ linters:
         warning: 2
       defaults:
         source: ts-standard
+    config:
+      - name: package.json
+        code_keys:
+          - ts-standard
   - id: twig-cs-fixer
     package: twig-cs-fixer
     filetypes:
@@ -2655,6 +2673,11 @@ linters:
         error: 1
       defaults:
         source: twig-cs-fixer
+    config:
+      - name: .twig-cs-fixer.php
+        executes: true
+      - name: .twig-cs-fixer.dist.php
+        executes: true
   - id: twigcs
     package: twigcs
     filetypes:
