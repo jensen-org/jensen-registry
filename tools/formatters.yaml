@@ -60,6 +60,7 @@ formatters:
       - python
       - rust
       - typescript
+      - typescriptreact
     command: ast-grep
     args:
       - scan
@@ -167,6 +168,7 @@ formatters:
       - jsonc
       - jsonl
       - typescript
+      - typescriptreact
     command: biome
     args:
       - check
@@ -188,6 +190,7 @@ formatters:
       - jsonc
       - jsonl
       - typescript
+      - typescriptreact
     command: biome
     args:
       - check
@@ -212,6 +215,7 @@ formatters:
       - jsonc
       - jsonl
       - typescript
+      - typescriptreact
     command: biome
     stdin: true
     cwd_markers:
@@ -518,6 +522,7 @@ formatters:
       - javascript
       - javascriptreact
       - typescript
+      - typescriptreact
     command: deno
   - id: dfmt
     filetypes:
@@ -651,6 +656,7 @@ formatters:
       - javascript
       - javascriptreact
       - typescript
+      - typescriptreact
     command: eslint_d
     args:
       - --fix-to-stdout
@@ -1335,6 +1341,7 @@ formatters:
       - markdown
       - scss
       - typescript
+      - typescriptreact
       - vue
       - yaml
     command: oxfmt
@@ -1354,6 +1361,7 @@ formatters:
       - javascript
       - javascriptreact
       - typescript
+      - typescriptreact
     command: oxlint
     args:
       - --fix
@@ -1504,6 +1512,7 @@ formatters:
       - markdown
       - scss
       - typescript
+      - typescriptreact
       - vue
       - yaml
     command: prettier
@@ -1542,6 +1551,7 @@ formatters:
       - markdown
       - scss
       - typescript
+      - typescriptreact
       - vue
       - yaml
     command: prettierd
@@ -1843,6 +1853,7 @@ formatters:
       - javascript
       - javascriptreact
       - typescript
+      - typescriptreact
       - vue
     command: rustywind
     args:

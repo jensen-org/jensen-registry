@@ -285,6 +285,7 @@ filetypes:
       - c
       - cats
       - epro
+      - h
       - h.in
       - idc
       - mdh
@@ -1346,7 +1347,7 @@ filetypes:
       - helm
   - id: help
     extensions:
-      - txt
+      - help
   - id: hercules
     extensions:
       - errsum
@@ -2264,6 +2265,7 @@ filetypes:
     extensions:
       - nginx
       - nginxconf
+      - vhost
     filenames:
       - nginx.conf
   - id: nickel
@@ -3357,6 +3359,7 @@ filetypes:
     extensions:
       - pkb
       - pks
+      - sql
       - tab
       - tyb
       - tyc
@@ -3478,6 +3481,7 @@ filetypes:
       - swiftinterface
   - id: swig
     extensions:
+      - i
       - swg
       - swig
   - id: sysctl
@@ -3606,6 +3610,7 @@ filetypes:
     extensions:
       - no
       - text
+      - txt
     filenames:
       - AUTHORS
       - CITATION
@@ -3795,6 +3800,7 @@ filetypes:
       - uvl
   - id: v
     extensions:
+      - v
       - vsh
       - vv
     related:

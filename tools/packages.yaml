@@ -713,6 +713,7 @@ packages:
       - python
       - rust
       - typescript
+      - typescriptreact
   - id: astro-language-server
     source: npm
     coordinate: "@astrojs/language-server"
@@ -1126,6 +1127,7 @@ packages:
       - jsonc
       - jsonl
       - typescript
+      - typescriptreact
   - id: black
     source: pypi
     coordinate: black
@@ -2377,6 +2379,7 @@ packages:
       - rust
       - toml
       - typescript
+      - typescriptreact
   - id: codelldb
     source: github
     coordinate: vadimcn/vscode-lldb
@@ -3431,6 +3434,7 @@ packages:
       - javascript
       - javascriptreact
       - typescript
+      - typescriptreact
   - id: detekt
     source: github
     coordinate: detekt/detekt
@@ -4820,6 +4824,7 @@ packages:
       - javascript
       - javascriptreact
       - typescript
+      - typescriptreact
   - id: eslint_d
     source: npm
     coordinate: eslint_d
@@ -4839,6 +4844,7 @@ packages:
       - javascript
       - javascriptreact
       - typescript
+      - typescriptreact
   - id: eugene
     source: github
     coordinate: kaaveland/eugene
@@ -5063,6 +5069,7 @@ packages:
       - javascript
       - javascriptreact
       - typescript
+      - typescriptreact
   - id: fish-lsp
     source: npm
     coordinate: fish-lsp
@@ -5845,6 +5852,7 @@ packages:
       - javascript
       - javascriptreact
       - typescript
+      - typescriptreact
   - id: glow
     source: github
     coordinate: charmbracelet/glow
@@ -6724,6 +6732,7 @@ packages:
       - tex
       - toml
       - typescript
+      - typescriptreact
   - id: haskell-debug-adapter
     source: generic
     coordinate: phoityne/haskell-debug-adapter
@@ -7797,6 +7806,7 @@ packages:
       - javascript
       - javascriptreact
       - typescript
+      - typescriptreact
   - id: json-lsp
     source: npm
     coordinate: vscode-langservers-extracted
@@ -11461,6 +11471,7 @@ packages:
       - markdown
       - scss
       - typescript
+      - typescriptreact
       - vue
       - yaml
   - id: oxlint
@@ -11484,6 +11495,7 @@ packages:
       - javascript
       - javascriptreact
       - typescript
+      - typescriptreact
   - id: palantir-java-format
     source: generic
     coordinate: palantir/palantir-java-format
@@ -12181,6 +12193,7 @@ packages:
       - markdown
       - scss
       - typescript
+      - typescriptreact
       - vue
       - yaml
   - id: prettierd
@@ -12223,6 +12236,7 @@ packages:
       - markdown
       - scss
       - typescript
+      - typescriptreact
       - vue
       - yaml
   - id: pretty-php
@@ -13185,6 +13199,7 @@ packages:
       - javascript
       - javascriptreact
       - typescript
+      - typescriptreact
   - id: r-languageserver
     source: github
     coordinate: mason-org/r-languageserver
@@ -14245,6 +14260,7 @@ packages:
       - javascript
       - javascriptreact
       - typescript
+      - typescriptreact
       - vue
   - id: salt-lint
     source: pypi
@@ -14366,6 +14382,7 @@ packages:
       - ruby
       - scala
       - typescript
+      - typescriptreact
   - id: serve-d
     source: github
     coordinate: Pure-D/serve-d
@@ -15144,6 +15161,7 @@ packages:
       - terraform
       - terraform-vars
       - typescript
+      - typescriptreact
   - id: snyk-ls
     source: github
     coordinate: snyk/snyk-ls
@@ -15477,6 +15495,7 @@ packages:
       - terraform-vars
       - text
       - typescript
+      - typescriptreact
       - xml
       - yaml
   - id: sorbet
@@ -16384,6 +16403,7 @@ packages:
       - php
       - twig
       - typescript
+      - typescriptreact
       - yaml
   - id: systemd-lsp
     source: github
@@ -17941,6 +17961,7 @@ packages:
       - terraform
       - terraform-vars
       - typescript
+      - typescriptreact
   - id: trufflehog
     source: github
     coordinate: trufflesecurity/trufflehog
@@ -18018,6 +18039,7 @@ packages:
         target: ts-standard
     filetypes:
       - typescript
+      - typescriptreact
   - id: ts_query_ls
     source: github
     coordinate: ribru17/ts_query_ls
@@ -18099,6 +18121,7 @@ packages:
       - javascript
       - javascriptreact
       - typescript
+      - typescriptreact
   - id: tsp-server
     source: npm
     coordinate: "@typespec/compiler"
@@ -18231,6 +18254,7 @@ packages:
       - javascript
       - javascriptreact
       - typescript
+      - typescriptreact
   - id: typos
     source: github
     coordinate: crate-ci/typos
@@ -19323,6 +19347,7 @@ packages:
       - javascript
       - javascriptreact
       - typescript
+      - typescriptreact
   - id: vue-language-server
     source: npm
     coordinate: "@vue/language-server"
@@ -19505,6 +19530,7 @@ packages:
       - javascript
       - javascriptreact
       - typescript
+      - typescriptreact
   - id: wgsl-analyzer
     source: github
     coordinate: wgsl-analyzer/wgsl-analyzer

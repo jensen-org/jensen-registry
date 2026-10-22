@@ -27,11 +27,15 @@ export function supplementFromLinguist(table, linguist, popular = new Set()) {
     return ids.sort((a, b) => mapped(b) - mapped(a) || (a < b ? -1 : 1))[0];
   };
   const targets = new Map(linguist.all.map((language) => [language, targetOf(language)]));
-  const winner = (claimers) => {
+  const winner = (claimers, key = "") => {
     const known = claimers.filter((language) => targets.get(language));
     if (known.length === 1) return known[0];
     const favoured = known.filter((language) => popular.has(language.name));
     if (favoured.length === 1) return favoured[0];
+    const exact = known.filter((language) => table.has(language.names[0]));
+    if (exact.length === 1) return exact[0];
+    const named = known.filter((language) => targets.get(language) === key);
+    if (named.length === 1) return named[0];
     const narrow = [...known].sort((a, b) => a.extensions.length - b.extensions.length);
     return narrow.length > 1 && narrow[0].extensions.length * 3 <= narrow[1].extensions.length ? narrow[0] : null;
   };
@@ -49,7 +53,7 @@ export function supplementFromLinguist(table, linguist, popular = new Set()) {
   }
   let added = 0;
   for (const [ext, claimers] of claimed) {
-    const language = winner(claimers);
+    const language = winner(claimers, ext);
     const id = language && targets.get(language);
     if (id && !mappedExtensions.has(ext)) {
       table.get(id).extensions.add(ext);
@@ -58,7 +62,7 @@ export function supplementFromLinguist(table, linguist, popular = new Set()) {
     }
   }
   for (const [name, claimers] of claimedNames) {
-    const language = winner(claimers);
+    const language = winner(claimers, name);
     const id = language && targets.get(language);
     if (id && !mappedFilenames.has(name)) {
       table.get(id).filenames.add(name);
@@ -91,6 +95,7 @@ export function filetypesFor(language, { linguist, table }) {
   const winners = [...scores].filter(([, score]) => score === best).map(([id]) => id);
   const found = new Set(winners);
   for (const id of scores.keys()) if (winners.some((winner) => id.startsWith(winner) && id !== winner)) found.add(id);
+  for (const winner of winners) if (table.has(`${winner}react`)) found.add(`${winner}react`);
   return found;
 }
 
