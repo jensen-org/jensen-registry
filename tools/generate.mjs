@@ -1,4 +1,5 @@
 import { existsSync } from "node:fs";
+import { parse } from "yaml";
 import { join } from "node:path";
 import { ROOT, dump, entryFiles, readYaml } from "../lib.mjs";
 import { readFormatters } from "./sources/conform.mjs";
@@ -7,7 +8,7 @@ import { readDebuggers } from "./sources/dap.mjs";
 import { masonRegistry, rawText, releaseDigests, repoFiles } from "./sources/fetch.mjs";
 import { filetypeEntries, readFiletypes } from "./sources/filetype.mjs";
 import { readLinters } from "./sources/lint.mjs";
-import { filetypesFor, linguistLookup } from "./sources/linguist.mjs";
+import { filetypesFor, linguistLookup, supplementFromLinguist } from "./sources/linguist.mjs";
 import { readServers } from "./sources/lspconfig.mjs";
 import { buildPackages } from "./sources/mason.mjs";
 
@@ -76,6 +77,8 @@ export async function generate(upstreams) {
   for (const id of [...servers.servers, ...debuggers.debuggers].flatMap((entry) => entry.filetypes ?? [])) {
     if (!table.has(id)) table.set(id, { extensions: new Set(), filenames: new Set() });
   }
+  const popular = new Set(parse(await rawText(sources.linguist.repo, sources.linguist.sha, "lib/linguist/popular.yml")));
+  filetypeSummary.supplemented_from_linguist = supplementFromLinguist(table, linguist, popular);
   for (const pkg of packages) {
     const found = new Set();
     for (const language of pkg.languages ?? []) for (const type of filetypesFor(language, lookup)) found.add(type);

@@ -3,12 +3,67 @@ import { parse } from "yaml";
 export function linguistLookup(text) {
   const languages = parse(text);
   const byName = new Map();
+  const all = [];
   for (const [name, language] of Object.entries(languages)) {
     const entry = { extensions: (language.extensions ?? []).map((ext) => ext.replace(/^\./, "")), filenames: language.filenames ?? [] };
+    const names = [name, ...(language.aliases ?? [])].map((word) => word.toLowerCase().replace(/\s+/g, ""));
+    all.push({ ...entry, names, name });
     byName.set(name.toLowerCase(), entry);
     for (const alias of language.aliases ?? []) if (!byName.has(alias.toLowerCase())) byName.set(alias.toLowerCase(), entry);
   }
+  byName.all = all;
   return byName;
+}
+
+export function supplementFromLinguist(table, linguist, popular = new Set()) {
+  const mapped = (id) => {
+    const { extensions, filenames } = table.get(id);
+    return extensions.size + filenames.size;
+  };
+  const targetOf = (language) => {
+    const ids = [...new Set(language.names.filter((name) => table.has(name)))];
+    if (!ids.length) return null;
+    return ids.sort((a, b) => mapped(b) - mapped(a) || (a < b ? -1 : 1))[0];
+  };
+  const targets = new Map(linguist.all.map((language) => [language, targetOf(language)]));
+  const winner = (claimers) => {
+    const known = claimers.filter((language) => targets.get(language));
+    if (known.length === 1) return known[0];
+    const favoured = known.filter((language) => popular.has(language.name));
+    return favoured.length === 1 ? favoured[0] : null;
+  };
+  const claimed = new Map();
+  const claimedNames = new Map();
+  for (const language of linguist.all) {
+    for (const ext of language.extensions) claimed.set(ext, [...(claimed.get(ext) ?? []), language]);
+    for (const name of language.filenames) claimedNames.set(name, [...(claimedNames.get(name) ?? []), language]);
+  }
+  const mappedExtensions = new Set();
+  const mappedFilenames = new Set();
+  for (const { extensions, filenames } of table.values()) {
+    for (const ext of extensions) mappedExtensions.add(ext);
+    for (const name of filenames) mappedFilenames.add(name);
+  }
+  let added = 0;
+  for (const [ext, claimers] of claimed) {
+    const language = winner(claimers);
+    const id = language && targets.get(language);
+    if (id && !mappedExtensions.has(ext)) {
+      table.get(id).extensions.add(ext);
+      mappedExtensions.add(ext);
+      added += 1;
+    }
+  }
+  for (const [name, claimers] of claimedNames) {
+    const language = winner(claimers);
+    const id = language && targets.get(language);
+    if (id && !mappedFilenames.has(name)) {
+      table.get(id).filenames.add(name);
+      mappedFilenames.add(name);
+      added += 1;
+    }
+  }
+  return added;
 }
 
 export function filetypesFor(language, { linguist, table }) {

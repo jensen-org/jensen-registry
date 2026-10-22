@@ -1679,7 +1679,6 @@ packages:
         bin:
           checkmake: checkmake-v0.3.2.windows.amd64.exe
     filetypes:
-      - automake
       - make
   - id: checkstyle
     source: github
@@ -2532,7 +2531,7 @@ packages:
         client: npm
         target: coffeesense-language-server
     filetypes:
-      - cs
+      - coffee
   - id: colorgen-nvim
     source: cargo
     coordinate: colorgen-nvim
@@ -9524,6 +9523,8 @@ packages:
       m68k-lsp-server:
         client: npm
         target: m68k-lsp-server
+    filetypes:
+      - nasm
   - id: markdown-oxide
     source: github
     coordinate: feel-ix-343/markdown-oxide
@@ -9769,7 +9770,6 @@ packages:
         client: pypi
         target: mbake
     filetypes:
-      - automake
       - make
   - id: mdformat
     source: pypi
@@ -10015,7 +10015,6 @@ packages:
         bin:
           millet: millet-ls-x86_64-unknown-linux-gnu
     filetypes:
-      - ocaml
       - sml
   - id: miss_hit
     source: pypi
@@ -11337,6 +11336,8 @@ packages:
         files:
           - name: abl-lsp.jar
             url: https://github.com/vscode-abl/vscode-abl/releases/download/V1.4.21/abl-lsp.jar
+    filetypes:
+      - gnuplot
   - id: openscad-language-server
     source: cargo
     coordinate: openscad-language-server
@@ -14579,6 +14580,7 @@ packages:
           shfmt: shfmt_v3.14.1_windows_amd64.exe
     filetypes:
       - bash
+      - sh
       - zsh
   - id: shopify-cli
     source: npm

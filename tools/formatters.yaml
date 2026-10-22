@@ -110,7 +110,6 @@ formatters:
   - id: bake
     package: mbake
     filetypes:
-      - automake
       - make
     command: mbake
     args:
@@ -1689,6 +1688,7 @@ formatters:
     package: shfmt
     filetypes:
       - bash
+      - sh
       - zsh
     command: shfmt
     config:

@@ -41,6 +41,8 @@ filetypes:
       - ads
       - gpr
   - id: agda
+    extensions:
+      - agda
   - id: agentscript
   - id: ahdl
     extensions:
@@ -49,10 +51,14 @@ filetypes:
     extensions:
       - aidl
   - id: aiken
+    extensions:
+      - ak
   - id: algol68
     extensions:
       - a68
   - id: alloy
+    extensions:
+      - als
   - id: alsaconf
     filenames:
       - .asoundrc
@@ -63,18 +69,29 @@ filetypes:
       - aml
   - id: ampl
     extensions:
+      - ampl
       - run
   - id: ant
     filenames:
       - build.xml
   - id: antlers
+    extensions:
+      - antlers.html
+      - antlers.php
+      - antlers.xml
   - id: antlr4
     extensions:
       - g4
   - id: apache
+    extensions:
+      - apacheconf
     filenames:
       - .htaccess
+      - apache2.conf
+      - httpd.conf
   - id: apex
+    extensions:
+      - apex
   - id: apexcode
   - id: apkbuild
     filenames:
@@ -101,6 +118,7 @@ filetypes:
   - id: asciidoc
     extensions:
       - adoc
+      - asc
       - asciidoc
   - id: asm
   - id: asm68k
@@ -126,7 +144,10 @@ filetypes:
       - zed
   - id: autohotkey
     extensions:
+      - ah1
+      - ah2
       - ahk
+      - ahkl
   - id: autoit
     extensions:
       - au3
@@ -141,14 +162,20 @@ filetypes:
       - ave
   - id: awk
     extensions:
+      - auk
       - awk
       - gawk
+      - mawk
+      - nawk
   - id: b
     extensions:
+      - b
       - imp
       - mch
       - ref
   - id: ballerina
+    extensions:
+      - bal
   - id: bash
   - id: bass
     extensions:
@@ -187,6 +214,9 @@ filetypes:
       - bbappend
       - bbclass
   - id: blade
+    extensions:
+      - blade
+      - blade.php
   - id: blank
     extensions:
       - bl
@@ -225,11 +255,18 @@ filetypes:
     filenames:
       - BUCK
       - BUILD
+      - BUILD.bazel
+      - MODULE.bazel
       - WORKSPACE
+      - WORKSPACE.bazel
       - WORKSPACE.bzlmod
   - id: c
     extensions:
+      - c
+      - cats
       - epro
+      - h.in
+      - idc
       - mdh
       - qc
   - id: c.doxygen
@@ -276,6 +313,8 @@ filetypes:
       - /etc/default/cdrdao
       - /etc/defaults/cdrdao
   - id: cds
+    extensions:
+      - cds
   - id: cedar
     extensions:
       - cedar
@@ -320,26 +359,38 @@ filetypes:
       - ck
   - id: cir
   - id: circom
+    extensions:
+      - circom
   - id: cl
     extensions:
       - eni
   - id: clar
   - id: clarity
+    extensions:
+      - clar
   - id: clean
     extensions:
+      - dcl
       - icl
   - id: clojure
     extensions:
+      - boot
+      - cl2
       - clj
       - cljc
       - cljs
+      - cljs.hl
+      - cljscm
       - cljx
+      - hic
     filenames:
       - .trans
       - init.trans
+      - riemann.config
   - id: cmake
     extensions:
       - cmake
+      - cmake.in
     filenames:
       - CMakeLists.txt
   - id: cmakecache
@@ -352,7 +403,10 @@ filetypes:
   - id: cobol
     extensions:
       - cbl
+      - ccp
       - cob
+      - cobol
+      - cpy
   - id: coco
     extensions:
       - atg
@@ -360,6 +414,14 @@ filetypes:
     filenames:
       - CODEOWNERS
   - id: coffee
+    extensions:
+      - _coffee
+      - cjsx
+      - coffee
+      - coffee.erb
+      - iced
+    filenames:
+      - Cakefile
   - id: comp
   - id: conaryrecipe
     extensions:
@@ -401,6 +463,8 @@ filetypes:
     extensions:
       - cook
   - id: coq
+    extensions:
+      - coq
   - id: corn
     extensions:
       - corn
@@ -413,10 +477,14 @@ filetypes:
       - H
       - c++
       - c++m
+      - cc
       - ccm
+      - cp
+      - cpp
       - cppm
       - cxx
       - cxxm
+      - h++
       - hh
       - hpp
       - hxx
@@ -425,8 +493,10 @@ filetypes:
       - ixx
       - moc
       - mpp
+      - re
       - tcc
       - tlh
+      - txx
     filenames:
       - .cling_history
   - id: cpp.doxygen
@@ -470,6 +540,7 @@ filetypes:
   - id: cucumber
     extensions:
       - feature
+      - story
   - id: cuda
     extensions:
       - cu
@@ -491,8 +562,11 @@ filetypes:
       - cyn
   - id: cypher
     extensions:
+      - cyp
       - cypher
   - id: d
+    extensions:
+      - di
   - id: dafny
     extensions:
       - dfy
@@ -535,6 +609,7 @@ filetypes:
   - id: desktop
     extensions:
       - desktop
+      - desktop.in
       - directory
   - id: dfy
   - id: dhall
@@ -547,12 +622,19 @@ filetypes:
   - id: diff
     extensions:
       - diff
+      - patch
       - rej
   - id: dircolors
+    extensions:
+      - dircolors
     filenames:
       - .dir_colors
       - .dircolors
       - /etc/DIR_COLORS
+      - DIR_COLORS
+      - _dir_colors
+      - _dircolors
+      - dir_colors
   - id: django-html
   - id: djot
     extensions:
@@ -574,16 +656,36 @@ filetypes:
   - id: dosbatch
     extensions:
       - bat
+      - cmd
+    filenames:
+      - gradlew.bat
+      - mvnw.cmd
   - id: dosini
     extensions:
       - INI
+      - cfg
+      - cnf
+      - container
+      - dof
+      - frm
       - ini
+      - lektorproject
+      - mount
+      - network
+      - prefs
+      - service
+      - socket
+      - target
+      - timer
       - vbp
       - wrap
     filenames:
       - .alsoftrc
+      - .buckconfig
       - .coveragerc
+      - .flake8
       - .gitlint
+      - .gitreview
       - .notmuch-config
       - .npmrc
       - .oelint.cfg
@@ -592,9 +694,12 @@ filetypes:
       - .replyrc
       - .wakatime.cfg
       - /etc/yum.conf
+      - HOSTS
       - alsoft.conf
       - alsoft.ini
       - alsoftrc.sample
+      - buildozer.spec
+      - hosts
       - mimeapps.list
       - nfs.conf
       - nfsmount.conf
@@ -605,6 +710,7 @@ filetypes:
       - pylintrc
       - setup.cfg
       - sofficerc
+      - vlcrc
   - id: dot
     extensions:
       - dot
@@ -636,6 +742,7 @@ filetypes:
       - jbuild
   - id: dylan
     extensions:
+      - dyl
       - dylan
   - id: dylanintr
     extensions:
@@ -654,20 +761,31 @@ filetypes:
     extensions:
       - ed
   - id: edge
+    extensions:
+      - edge
   - id: edif
     extensions:
       - edf
       - edif
       - edo
   - id: editorconfig
+    extensions:
+      - editorconfig
     filenames:
       - .editorconfig
   - id: edn
+    extensions:
+      - edn
   - id: eelixir
     extensions:
       - eex
       - leex
   - id: ejs
+    extensions:
+      - ect
+      - ejs
+      - ejs.t
+      - jst
   - id: elf
     extensions:
       - am
@@ -676,6 +794,7 @@ filetypes:
       - elinks.conf
   - id: elixir
     extensions:
+      - ex
       - exs
     filenames:
       - mix.lock
@@ -700,20 +819,30 @@ filetypes:
     extensions:
       - epp
   - id: erb
+    extensions:
+      - erb.deface
   - id: erg
   - id: erlang
     extensions:
+      - app
+      - app.src
       - erl
+      - escript
       - hrl
       - yaws
+      - yrl
     filenames:
+      - Emakefile
       - rebar.config
+      - rebar.config.lock
+      - rebar.lock
   - id: eruby
     extensions:
       - erb
       - rhtml
   - id: esdl
     extensions:
+      - edgeql
       - esdl
   - id: esqlc
     extensions:
@@ -734,6 +863,9 @@ filetypes:
   - id: factor
     extensions:
       - factor
+    filenames:
+      - .factor-boot-rc
+      - .factor-rc
   - id: falcon
     extensions:
       - fal
@@ -743,6 +875,7 @@ filetypes:
       - fwt
   - id: faust
     extensions:
+      - dsp
       - lib
   - id: fennel
     extensions:
@@ -775,6 +908,8 @@ filetypes:
     extensions:
       - ftl
   - id: flux
+    extensions:
+      - flux
   - id: foam
   - id: focexec
     extensions:
@@ -783,6 +918,7 @@ filetypes:
   - id: forth
     extensions:
       - 4th
+      - forth
       - ft
       - fth
   - id: fortran
@@ -814,6 +950,8 @@ filetypes:
       - fsl
   - id: freebasic
     extensions:
+      - bas
+      - bi
       - fb
   - id: fsd
   - id: fsh
@@ -828,6 +966,9 @@ filetypes:
       - fstab
       - mtab
   - id: fstar
+    extensions:
+      - fst
+      - fsti
   - id: func
     extensions:
       - fc
@@ -836,9 +977,12 @@ filetypes:
       - fusion
   - id: fut
   - id: futhark
+    extensions:
+      - fut
   - id: gdb
     extensions:
       - gdb
+      - gdbinit
     filenames:
       - .cuda-gdbinit
       - .gdbearlyinit
@@ -860,6 +1004,7 @@ filetypes:
   - id: gdshader
     extensions:
       - gdshader
+      - gdshaderinc
       - shader
   - id: gdshaderinc
   - id: gedcom
@@ -887,27 +1032,51 @@ filetypes:
       - .gitattributes
   - id: gitcommit
     filenames:
+      - .gitmessage
       - COMMIT_EDITMSG
       - EDIT_DESCRIPTION
       - MERGE_MSG
       - NOTES_EDITMSG
       - TAG_EDITMSG
   - id: gitconfig
+    extensions:
+      - gitconfig
     filenames:
       - .gitconfig
       - .gitmodules
+      - .tgitconfig
+      - config.worktree
   - id: gitignore
     extensions:
+      - gitignore
       - prettierignore
     filenames:
+      - .agignore
+      - .atomignore
+      - .babelignore
+      - .bzrignore
+      - .ckignore
+      - .coffeelintignore
       - .containerignore
+      - .cvsignore
       - .dockerignore
+      - .easignore
+      - .eleventyignore
+      - .eslint-ignore
+      - .eslintignore
       - .fdignore
       - .gitignore
       - .ignore
+      - .markdownlintignore
+      - .nodemonignore
       - .npmignore
+      - .prettierignore
       - .rgignore
+      - .stylelintignore
+      - .vercelignore
       - .vscodeignore
+      - gitignore-global
+      - gitignore_global
   - id: gitolite
     filenames:
       - gitolite.conf
@@ -926,9 +1095,16 @@ filetypes:
   - id: glsl
     extensions:
       - comp
+      - fp
       - frag
+      - frg
+      - fshader
+      - geo
       - geom
       - glsl
+      - glslf
+      - glslv
+      - gshader
       - rahit
       - rcall
       - rchit
@@ -938,10 +1114,15 @@ filetypes:
       - tesc
       - tese
       - vert
+      - vrx
+      - vs
+      - vshader
   - id: gn
     extensions:
       - gn
       - gni
+    filenames:
+      - .gn
   - id: gnash
     filenames:
       - .gnashpluginrc
@@ -950,8 +1131,11 @@ filetypes:
       - gnashrc
   - id: gnuplot
     extensions:
+      - gnu
       - gnuplot
       - gpi
+      - p
+      - plot
     filenames:
       - .gnuplot_history
   - id: go
@@ -963,11 +1147,19 @@ filetypes:
   - id: gohtml
   - id: gohtmltmpl
   - id: gomod
+    filenames:
+      - go.mod
   - id: gosum
     filenames:
       - go.sum
       - go.work.sum
   - id: gotmpl
+    extensions:
+      - gohtml
+      - gotmpl
+      - html.tmpl
+    filenames:
+      - _helpers.tpl
   - id: gowork
     filenames:
       - go.work
@@ -999,6 +1191,9 @@ filetypes:
     extensions:
       - gradle
       - groovy
+      - grt
+      - gtpl
+      - gvy
     filenames:
       - Jenkinsfile
   - id: group
@@ -1020,9 +1215,12 @@ filetypes:
     extensions:
       - gsp
   - id: gtkrc
+    extensions:
+      - gtkrc
     filenames:
       - .gtkrc
       - gtkrc
+      - gtkrc-2.0
   - id: gyp
     extensions:
       - gyp
@@ -1031,14 +1229,17 @@ filetypes:
     extensions:
       - hack
       - hackpartial
+      - hhi
   - id: haml
     extensions:
       - haml
+      - haml.deface
   - id: hamster
     extensions:
       - hsm
   - id: handlebars
     extensions:
+      - handlebars
       - hbs
   - id: hare
     extensions:
@@ -1061,6 +1262,7 @@ filetypes:
   - id: haxe
     extensions:
       - hx
+      - hxsl
   - id: hb
     extensions:
       - hb
@@ -1068,11 +1270,15 @@ filetypes:
   - id: hcl
     extensions:
       - hcl
+      - nomad
+      - tf
+      - tofu
   - id: hcl.docker-bake
   - id: hcl.nomad
   - id: heex
     extensions:
       - heex
+      - html.eex
   - id: helm
   - id: help
   - id: hercules
@@ -1102,7 +1308,10 @@ filetypes:
   - id: hlasm
   - id: hlsl
     extensions:
+      - cginc
+      - fxh
       - hlsl
+      - hlsli
   - id: hlsplaylist
     extensions:
       - m3u
@@ -1161,6 +1370,7 @@ filetypes:
       - ibi
   - id: icalendar
     extensions:
+      - ical
       - ics
   - id: icemenu
     filenames:
@@ -1230,15 +1440,31 @@ filetypes:
       - jjt
   - id: javascript
     extensions:
+      - _js
+      - bones
       - cjs
       - es
+      - es6
+      - jake
       - javascript
       - js
+      - jsb
+      - jscad
+      - jsfl
+      - jslib
       - jsm
+      - jspre
+      - jss
       - mjs
+      - njs
+      - sjs
+      - ssjs
+      - xsjs
+      - xsjslib
     filenames:
       - .bun_repl_history
       - .node_repl_history
+      - Jakefile
       - deno_history.txt
   - id: javascript.glimmer
     extensions:
@@ -1254,7 +1480,9 @@ filetypes:
       - jgr
   - id: jinja
     extensions:
+      - j2
       - jinja
+      - jinja2
   - id: jjdescription
     extensions:
       - jjdescription
@@ -1271,32 +1499,61 @@ filetypes:
       - jq
   - id: json
     extensions:
+      - 4DForm
+      - 4DProject
+      - JSON-tmLanguage
+      - avsc
       - bd
       - bda
       - cps
       - geojson
+      - gltf
+      - har
       - ipynb
       - json
       - json-patch
+      - json.example
       - jsonp
       - jupyterlab-settings
       - mcmeta
+      - sarif
       - slnf
+      - slnlaunch
       - sublime-project
       - sublime-settings
       - sublime-workspace
+      - tact
+      - tfstate
+      - tfstate.backup
+      - topojson
+      - webapp
       - webmanifest
       - xci
+      - yyp
     filenames:
+      - .all-contributorsrc
+      - .arcconfig
+      - .auto-changelog
+      - .c8rc
       - .firebaserc
+      - .htmlhintrc
+      - .imgbotconfig
       - .lintstagedrc
+      - .nycrc
       - .prettierrc
+      - .secrets.baseline
       - .stylelintrc
       - .swcrc
+      - .tern-config
+      - .tern-project
+      - .watchmanconfig
+      - MODULE.bazel.lock
+      - Package.resolved
       - Pipfile.lock
       - composer.lock
       - deno.lock
       - flake.lock
+      - mcmod.info
       - symfony.lock
   - id: json.openapi
   - id: json5
@@ -1304,19 +1561,44 @@ filetypes:
       - json5
   - id: jsonc
     extensions:
+      - code-snippets
+      - code-workspace
+      - hujson
       - jsonc
+      - sublime-build
+      - sublime-color-scheme
+      - sublime-commands
+      - sublime-completions
+      - sublime-keymap
+      - sublime-macro
+      - sublime-menu
+      - sublime-mousemap
+      - sublime-theme
+      - sublime_metrics
+      - sublime_session
+      - tsconfig.json
     filenames:
       - .babelrc
+      - .devcontainer.json
       - .eslintrc
+      - .eslintrc.json
       - .hintrc
       - .jscsrc
       - .jsfmtrc
       - .jshintrc
+      - .jslintrc
       - .luaurc
+      - .oxlintrc.json
       - .swrc
       - .vsconfig
+      - api-extractor.json
       - bun.lock
+      - devcontainer.json
+      - jsconfig.json
+      - language-configuration.json
       - osquery.conf
+      - tsconfig.json
+      - tslint.json
   - id: jsonl
     extensions:
       - jsonl
@@ -1330,6 +1612,7 @@ filetypes:
   - id: jsp
     extensions:
       - jsp
+      - tag
   - id: julia
     extensions:
       - jl
@@ -1353,6 +1636,9 @@ filetypes:
     extensions:
       - pg
   - id: kcl
+    filenames:
+      - kcl.mod
+      - kcl.mod.lock
   - id: kconfig
     filenames:
       - Config.in
@@ -1388,6 +1674,7 @@ filetypes:
     extensions:
       - SUB
       - Sub
+      - krl
       - sub
   - id: kscript
     extensions:
@@ -1420,6 +1707,7 @@ filetypes:
   - id: leaf
   - id: lean
     extensions:
+      - hlean
       - lean
   - id: lean3
   - id: ledger
@@ -1442,6 +1730,9 @@ filetypes:
       - l++
       - lex
       - lxx
+    filenames:
+      - Lexer.x
+      - lexer.x
   - id: lf
     filenames:
       - lfrc
@@ -1483,6 +1774,8 @@ filetypes:
       - el
       - lisp
       - lsp
+      - ny
+      - podsl
     filenames:
       - .emacs
       - .sawfishrc
@@ -1505,6 +1798,7 @@ filetypes:
   - id: logtalk
     extensions:
       - lgt
+      - logtalk
   - id: lotos
     extensions:
       - lotos
@@ -1523,8 +1817,12 @@ filetypes:
     extensions:
       - lua
       - nse
+      - p8
+      - pd_lua
+      - rbxs
       - rockspec
       - tlu
+      - wlua
     filenames:
       - .busted
       - .lua_history
@@ -1550,11 +1848,15 @@ filetypes:
     filenames:
       - cm3.cfg
   - id: m4
+    extensions:
+      - m4
+      - mc
     filenames:
       - .m4_history
   - id: mail
     extensions:
       - eml
+      - mbox
     filenames:
       - .article
       - .followup
@@ -1568,8 +1870,26 @@ filetypes:
       - .mailcap
       - mailcap
   - id: make
+    extensions:
+      - mak
+      - make
+      - makefile
+      - mk
+      - mkfile
     filenames:
+      - BSDmakefile
+      - GNUmakefile
       - Kbuild
+      - Makefile
+      - Makefile.boot
+      - Makefile.frag
+      - Makefile.in
+      - Makefile.inc
+      - Makefile.pc
+      - Makefile.wat
+      - makefile
+      - makefile.sco
+      - mkfile
   - id: mallard
     extensions:
       - page
@@ -1615,11 +1935,17 @@ filetypes:
     filenames:
       - isyncrc
   - id: mcfunction
+    extensions:
+      - mcfunction
   - id: mdx
+    extensions:
+      - mdx
   - id: mediawiki
     extensions:
+      - mediawiki
       - mw
       - wiki
+      - wikitext
   - id: mel
     extensions:
       - mel
@@ -1650,6 +1976,8 @@ filetypes:
       - my
   - id: microcad
   - id: mint
+    extensions:
+      - mint
   - id: mix
     extensions:
       - mix
@@ -1659,8 +1987,14 @@ filetypes:
       - mlir
   - id: mma
     extensions:
+      - ma
+      - mathematica
+      - mt
       - nb
+      - nbp
       - wl
+      - wls
+      - wlt
   - id: mmp
     extensions:
       - mmp
@@ -1751,10 +2085,16 @@ filetypes:
     extensions:
       - nanorc
     filenames:
+      - .nanorc
       - /etc/nanorc
+      - nanorc
   - id: nasm
     extensions:
+      - a51
+      - asm
+      - nas
       - nasm
+      - s
   - id: natural
     extensions:
       - NSA
@@ -1784,17 +2124,28 @@ filetypes:
     filenames:
       - .netrc
   - id: nextflow
+    extensions:
+      - nf
+    filenames:
+      - nextflow.config
   - id: nginx
     extensions:
       - nginx
+      - nginxconf
+    filenames:
+      - nginx.conf
   - id: nickel
     extensions:
       - ncl
   - id: nim
     extensions:
       - nim
+      - nim.cfg
       - nimble
+      - nimrod
       - nims
+    filenames:
+      - nim.cfg
   - id: ninja
     extensions:
       - ninja
@@ -1802,6 +2153,8 @@ filetypes:
     extensions:
       - nix
   - id: njk
+    extensions:
+      - njk
   - id: nlp
   - id: nomad
   - id: norg
@@ -1815,11 +2168,40 @@ filetypes:
       - nqc
   - id: nroff
     extensions:
+      - "1"
+      - 1in
+      - 1m
+      - 1x
+      - "2"
+      - "3"
+      - 3in
+      - 3m
+      - 3p
+      - 3pm
+      - 3qt
+      - 3x
+      - "4"
+      - "5"
+      - "6"
+      - "7"
+      - "8"
+      - "9"
       - man
+      - mdoc
+      - me
+      - ms
+      - n
       - nr
+      - rno
       - roff
       - tmac
       - tr
+    filenames:
+      - eqnrc
+      - mmn
+      - mmt
+      - troffrc
+      - troffrc-end
   - id: nsis
     extensions:
       - nsh
@@ -1830,6 +2212,8 @@ filetypes:
   - id: nu
     extensions:
       - nu
+    filenames:
+      - Nukefile
   - id: numbat
     extensions:
       - nbt
@@ -1838,6 +2222,8 @@ filetypes:
     extensions:
       - obj
   - id: objc
+    extensions:
+      - m
   - id: objcpp
   - id: objdump
     extensions:
@@ -1854,7 +2240,10 @@ filetypes:
       - obse
   - id: ocaml
     extensions:
+      - eliom
+      - eliomi
       - ml
+      - ml4
       - mli
       - mlip
       - mll
@@ -1869,6 +2258,8 @@ filetypes:
     extensions:
       - occ
   - id: octave
+    extensions:
+      - matlab
     filenames:
       - .octaverc
       - octave.conf
@@ -1890,6 +2281,8 @@ filetypes:
       - opam
       - opam.locked
   - id: opencl
+    extensions:
+      - opencl
   - id: openroad
     extensions:
       - or
@@ -1923,6 +2316,8 @@ filetypes:
   - id: p
   - id: p8
   - id: pact
+    extensions:
+      - pact
   - id: pamconf
     filenames:
       - /etc/pam.conf
@@ -1932,10 +2327,21 @@ filetypes:
       - pam_env.conf
   - id: pandoc
     extensions:
+      - markdown
+      - md
+      - mdown
+      - mdwn
+      - mkd
+      - mkdn
+      - mkdown
       - pandoc
       - pd
       - pdc
       - pdk
+      - ronn
+      - workbook
+    filenames:
+      - contents.lr
   - id: papp
     extensions:
       - papp
@@ -1943,8 +2349,11 @@ filetypes:
       - pxsl
   - id: pascal
     extensions:
+      - dfm
       - dpr
+      - lpr
       - pas
+      - pascal
   - id: passwd
     filenames:
       - /etc/passwd
@@ -1981,11 +2390,21 @@ filetypes:
       - pem
   - id: perl
     extensions:
+      - al
+      - perl
+      - ph
+      - pl
       - plx
+      - pm
       - psgi
+      - t
     filenames:
       - .gitolite.rc
       - .latexmkrc
+      - Makefile.PL
+      - Rexfile
+      - ack
+      - cpanfile
       - example.gitolite.rc
       - gitolite.rc
       - latexmkrc
@@ -1999,6 +2418,7 @@ filetypes:
       - main.cf.proto
   - id: php
     extensions:
+      - aw
       - ctp
       - php
       - php0
@@ -2011,9 +2431,15 @@ filetypes:
       - php7
       - php8
       - php9
+      - phps
       - phpt
       - phtml
       - theme
+    filenames:
+      - .php
+      - .php_cs
+      - .php_cs.dist
+      - Phakefile
   - id: pike
     extensions:
       - pike
@@ -2052,8 +2478,17 @@ filetypes:
       - plp
   - id: plsql
     extensions:
+      - bdy
+      - fnc
+      - pck
+      - plb
       - pls
       - plsql
+      - spc
+      - tpb
+      - tps
+      - trg
+      - vw
   - id: po
     extensions:
       - po
@@ -2068,11 +2503,16 @@ filetypes:
     extensions:
       - pk
   - id: polar
+    extensions:
+      - polar
   - id: pony
     extensions:
       - pony
   - id: pory
   - id: postcss
+    extensions:
+      - pcss
+      - postcss
   - id: postscr
     extensions:
       - afm
@@ -2115,6 +2555,8 @@ filetypes:
   - id: prolog
     extensions:
       - pdb
+      - prolog
+      - yap
   - id: promela
     extensions:
       - pml
@@ -2147,8 +2589,11 @@ filetypes:
       - ptx
   - id: pug
     extensions:
+      - jade
       - pug
   - id: puppet
+    filenames:
+      - Modulefile
   - id: purescript
     extensions:
       - purs
@@ -2167,16 +2612,29 @@ filetypes:
   - id: python
     extensions:
       - ipy
+      - lmi
       - ptl
       - py
+      - py3
+      - pyde
       - pyi
+      - pyp
+      - pyt
       - pyw
+      - rpy
+      - tac
+      - wsgi
+      - xpy
     filenames:
+      - .gclient
       - .jline-jython.history
       - .python_history
       - .pythonrc
       - .pythonstartup
+      - DEPS
+      - SConscript
       - SConstruct
+      - wscript
   - id: ql
     extensions:
       - ql
@@ -2197,16 +2655,23 @@ filetypes:
     extensions:
       - bms
   - id: r
+    extensions:
+      - r
+      - rhistory
+      - rsx
     filenames:
+      - .Rapp.history
       - .Rhistory
       - .Rprofile
       - Rprofile
       - Rprofile.site
+      - expr-dist
   - id: racket
     extensions:
       - rkt
       - rktd
       - rktl
+      - scrbl
   - id: radiance
     extensions:
       - mat
@@ -2216,7 +2681,13 @@ filetypes:
       - radvd.conf
   - id: raku
     extensions:
+      - 6pl
+      - 6pm
+      - nqp
       - p6
+      - p6l
+      - p6m
+      - pl6
       - pm6
       - pod6
       - raku
@@ -2261,6 +2732,8 @@ filetypes:
       - .inputrc
       - inputrc
   - id: reason
+    extensions:
+      - rei
   - id: rego
     extensions:
       - rego
@@ -2291,6 +2764,7 @@ filetypes:
     extensions:
       - jrexx
       - orx
+      - pprx
       - rex
       - rexx
       - rexxj
@@ -2347,6 +2821,7 @@ filetypes:
     extensions:
       - rpgle
       - rpgleinc
+      - sqlrpgle
   - id: rpl
     extensions:
       - rpl
@@ -2358,31 +2833,64 @@ filetypes:
       - srst
   - id: rst
     extensions:
+      - rest
+      - rest.txt
       - rst
+      - rst.txt
   - id: rtf
     extensions:
       - rtf
   - id: ruby
     extensions:
       - builder
+      - eye
       - gemspec
+      - god
+      - jbuilder
+      - mspec
+      - pluginspec
+      - podspec
+      - prawn
+      - rabl
       - rake
       - rant
       - rb
       - rbi
+      - rbuild
       - rbw
+      - rbx
       - rjs
       - ru
+      - ruby
       - rxml
+      - thor
+      - watchr
     filenames:
       - .irb_history
       - .irbrc
+      - .pryrc
+      - .simplecov
+      - Appraisals
+      - Berksfile
       - Brewfile
+      - Buildfile
+      - Capfile
+      - Dangerfile
+      - Deliverfile
+      - Fastfile
       - Gemfile
+      - Guardfile
+      - Jarfile
+      - Mavenfile
+      - Podfile
       - Puppetfile
       - Rakefile
       - Rantfile
+      - Snapfile
+      - Steepfile
+      - Thorfile
       - Vagrantfile
+      - buildfile
       - irb_history
       - irbrc
       - rakefile
@@ -2391,9 +2899,11 @@ filetypes:
   - id: rust
     extensions:
       - rs
+      - rs.in
   - id: sage
     extensions:
       - sage
+      - sagews
   - id: salt
     extensions:
       - sls
@@ -2411,7 +2921,9 @@ filetypes:
       - sbt
   - id: scala
     extensions:
+      - kojo
       - mill
+      - sc
       - scala
   - id: scheme
     extensions:
@@ -2420,6 +2932,7 @@ filetypes:
       - scm
       - sld
       - sprite
+      - sps
       - ss
       - stcd
       - stcp
@@ -2437,6 +2950,7 @@ filetypes:
     extensions:
       - sce
       - sci
+      - tst
   - id: screen
     filenames:
       - .screenrc
@@ -2475,20 +2989,67 @@ filetypes:
       - sgf
   - id: sh
     extensions:
+      - bash
+      - bats
+      - command
+      - ksh
       - la
       - lai
       - lo
       - mdd
+      - pacscript
+      - sbatch
+      - sh
+      - sh.in
+      - slurm
+      - tmux
+      - tool
+      - trigger
     filenames:
       - .ash_history
+      - .bash_aliases
+      - .bash_functions
+      - .bash_history
+      - .bash_logout
+      - .bash_profile
+      - .bashrc
+      - .cshrc
       - .devscripts
+      - .envrc
+      - .flaskenv
+      - .kshrc
+      - .login
       - .makepkg.conf
+      - .profile
+      - .xinitrc
       - .xprofile
+      - .xsession
       - /etc/udev/cdsymlinks.conf
+      - 9fs
+      - PKGBUILD
+      - bash_aliases
+      - bash_logout
+      - bash_profile
+      - bashrc
+      - cshrc
       - devscripts.conf
+      - gradlew
+      - kshrc
+      - login
       - makepkg.conf
+      - man
+      - mvnw
+      - profile
+      - tmux.conf
       - user-dirs.defaults
       - user-dirs.dirs
+      - xinitrc
+      - xsession
+      - zlogin
+      - zlogout
+      - zprofile
+      - zshenv
+      - zshrc
   - id: shaderslang
     extensions:
       - slang
@@ -2527,6 +3088,8 @@ filetypes:
     extensions:
       - ice
   - id: slim
+    extensions:
+      - slim
   - id: slint
     extensions:
       - slint
@@ -2569,11 +3132,14 @@ filetypes:
       - smithy
   - id: sml
     extensions:
+      - fun
+      - sig
       - sml
   - id: smt2
   - id: snakemake
     extensions:
       - smk
+      - snakefile
     filenames:
       - Snakefile
   - id: snobol4
@@ -2614,8 +3180,11 @@ filetypes:
     extensions:
       - pkb
       - pks
+      - tab
       - tyb
       - tyc
+      - udf
+      - viw
     filenames:
       - .sqlite_history
   - id: sqlj
@@ -2653,7 +3222,11 @@ filetypes:
       - allowed_signers
   - id: sshconfig
     filenames:
+      - ssh-config
       - ssh_config
+      - sshconfig
+      - sshconfig.snip
+      - sshd-config
   - id: sshdconfig
     filenames:
       - sshd_config
@@ -2661,6 +3234,8 @@ filetypes:
     extensions:
       - st
   - id: stan
+    extensions:
+      - stan
   - id: star
   - id: starlark
     extensions:
@@ -2672,8 +3247,11 @@ filetypes:
     extensions:
       - ado
       - do
+      - doh
       - imata
       - mata
+      - matah
+      - sthlp
   - id: stp
     extensions:
       - stp
@@ -2686,6 +3264,8 @@ filetypes:
       - /etc/sudoers
       - sudoers.tmp
   - id: sugarss
+    extensions:
+      - sss
   - id: supercollider
     extensions:
       - quark
@@ -2721,6 +3301,7 @@ filetypes:
     extensions:
       - sv
       - svh
+      - vh
   - id: tablegen
     extensions:
       - td
@@ -2743,10 +3324,12 @@ filetypes:
       - task
   - id: tcl
     extensions:
+      - adp
       - itcl
       - itk
       - jacl
       - tcl
+      - tcl.in
       - tk
       - tm
       - xdc
@@ -2756,6 +3339,8 @@ filetypes:
       - .wishrc
       - .xsctcmdhistory
       - .xsdbcmdhistory
+      - owh
+      - starfield
       - tclsh.rc
   - id: teal
     extensions:
@@ -2792,6 +3377,7 @@ filetypes:
       - ind
       - ins
       - latex
+      - lbx
       - loe
       - lof
       - ltx
@@ -2803,8 +3389,10 @@ filetypes:
       - pygstyle
       - pygtex
       - sty
+      - tex
       - thm
       - tikz
+      - toc
       - vrb
   - id: texinfo
     extensions:
@@ -2816,11 +3404,36 @@ filetypes:
       - texmf.cnf
   - id: text
     extensions:
+      - no
       - text
     filenames:
       - AUTHORS
+      - CITATION
+      - CITATIONS
       - COPYING
+      - COPYING.regex
+      - COPYRIGHT.regex
+      - FONTLOG
+      - INSTALL
+      - INSTALL.mysql
       - LICENSE
+      - LICENSE.mysql
+      - NEWS
+      - README.me
+      - README.mysql
+      - README.nss
+      - README.pc
+      - click.me
+      - delete.me
+      - keep.me
+      - package.mask
+      - package.use.mask
+      - package.use.stable.mask
+      - read.me
+      - readme.1st
+      - test.me
+      - use.mask
+      - use.stable.mask
   - id: tf
     filenames:
       - .tfrc
@@ -2858,13 +3471,19 @@ filetypes:
   - id: toml
     extensions:
       - toml
+      - toml.example
     filenames:
       - .black
       - /.cargo/config
       - /.cargo/credentials
       - Cargo.lock
+      - Cargo.toml.orig
       - Gopkg.lock
       - Pipfile
+      - mise.local.lock
+      - mise.lock
+      - pdm.lock
+      - poetry.lock
       - uv.lock
   - id: tpp
     extensions:
@@ -2899,9 +3518,12 @@ filetypes:
   - id: tsv
     extensions:
       - tsv
+      - vcf
   - id: ttcn
   - id: ttl
   - id: turtle
+    extensions:
+      - ttl
   - id: tutor
     extensions:
       - tutor
@@ -2912,6 +3534,7 @@ filetypes:
     extensions:
       - cts
       - mts
+      - ts
     filenames:
       - .ts_node_repl_history
   - id: typescript.glimmer
@@ -2964,6 +3587,7 @@ filetypes:
   - id: vala
     extensions:
       - vala
+      - vapi
   - id: vb
     extensions:
       - ctl
@@ -2977,6 +3601,7 @@ filetypes:
   - id: vdf
     extensions:
       - vdf
+      - vmf
   - id: vdmpp
     extensions:
       - vdmpp
@@ -2997,6 +3622,8 @@ filetypes:
       - vrh
       - vri
   - id: verilog
+    extensions:
+      - veo
   - id: verilogams
     extensions:
       - va
@@ -3013,18 +3640,33 @@ filetypes:
       - vbe
       - vhd
       - vhdl
+      - vhf
+      - vhi
       - vho
+      - vhs
+      - vht
+      - vhw
       - vst
   - id: vhs
     extensions:
       - tape
   - id: vim
     extensions:
+      - vba
       - vim
+      - vimrc
+      - vmb
     filenames:
       - .exrc
+      - .gvimrc
       - .netrwhist
+      - .nvimrc
+      - .vimrc
       - _exrc
+      - _vimrc
+      - gvimrc
+      - nvimrc
+      - vimrc
   - id: viminfo
     filenames:
       - .viminfo
@@ -3097,6 +3739,8 @@ filetypes:
     filenames:
       - .XCompose
       - Compose
+      - XCompose
+      - xcompose
   - id: xdc
   - id: xdefaults
     extensions:
@@ -3108,6 +3752,10 @@ filetypes:
       - xdm-config
   - id: xhtml
     extensions:
+      - hta
+      - htm
+      - html
+      - html.hl
       - xht
       - xhtml
   - id: xinetd
@@ -3119,41 +3767,136 @@ filetypes:
       - msf
   - id: xml
     extensions:
+      - adml
+      - admx
+      - ant
       - atom
+      - axaml
+      - axml
+      - builds
       - bxml
+      - ccproj
+      - ccxml
       - cdxml
+      - clixml
+      - cproject
+      - cscfg
+      - csdef
+      - csl
       - csproj
+      - ct
+      - depproj
+      - dita
+      - ditamap
+      - ditaval
+      - dll.config
+      - dotsettings
+      - filters
       - fsproj
+      - fxml
+      - glade
+      - gml
+      - gmx
+      - gpx
+      - grxml
+      - gst
+      - hzp
+      - icls
+      - iml
+      - ivy
+      - jelly
+      - jsproj
+      - kml
+      - launch
+      - mdpolicy
+      - meta4
+      - mjml
+      - mm
       - mmi
       - mpd
+      - mxml
+      - natvis
+      - ndproj
+      - nproj
+      - nuspec
+      - odd
+      - osm
+      - pkgproj
+      - proj
+      - props
       - psc1
+      - pt
+      - pubxml
+      - qhelp
+      - rbxmx
+      - rdf
       - reanim
+      - resx
       - rss
+      - scxml
+      - sfproj
+      - shproj
       - slnx
       - spfm
+      - srdf
+      - storyboard
+      - sublime-snippet
+      - targets
+      - tml
       - tpm
       - ui
+      - urdf
+      - ux
       - vbproj
+      - vcxproj
+      - vsixmanifest
+      - vssettings
+      - vstemplate
+      - vxml
+      - wixproj
       - wpl
       - wsdl
+      - wxi
+      - wxl
+      - wxs
+      - x3d
+      - xacro
+      - xaml
       - xba
       - xcu
+      - xib
       - xlb
       - xlc
       - xlf
       - xliff
       - xmi
+      - xml
+      - xml.dist
+      - xmp
       - xpfm
       - xpr
+      - xproj
+      - xspec
       - xul
+      - zcml
     filenames:
+      - .classpath
+      - .cproject
+      - .project
       - /etc/blkid.tab
       - /etc/blkid.tab.old
+      - App.config
       - Directory.Build.props
       - Directory.Build.targets
       - Directory.Packages.props
+      - NuGet.config
+      - Settings.StyleCop
+      - Web.Debug.config
+      - Web.Release.config
+      - Web.config
       - fglrxrc
       - fonts.conf
+      - packages.config
   - id: xpm2
     extensions:
       - xpm2
@@ -3177,7 +3920,9 @@ filetypes:
       - xslt
   - id: yacc
     extensions:
+      - y
       - y++
+      - yacc
       - yxx
       - yy
   - id: yaml
@@ -3187,17 +3932,28 @@ filetypes:
       - ksy
       - kyaml
       - kyml
+      - mir
       - mplstyle
+      - reek
+      - rviz
+      - sublime-syntax
+      - syntax
       - yaml
+      - yaml-tmlanguage
+      - yaml.sed
       - yml
+      - yml.mysql
     filenames:
       - .clang-format
       - .clang-tidy
       - .clangd
       - .condarc
+      - .gemrc
       - .mambarc
+      - CITATION.cff
       - buf.lock
       - condarc
+      - glide.lock
       - mambarc
       - matplotlibrc
       - pixi.lock
@@ -3230,6 +3986,7 @@ filetypes:
   - id: zig
     extensions:
       - zig
+      - zig.zon
       - zon
   - id: ziggy
     extensions:
