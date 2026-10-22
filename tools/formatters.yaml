@@ -204,6 +204,30 @@ formatters:
       - biome.jsonc
       - .biome.json
       - .biome.jsonc
+    config:
+      - biome.json
+      - biome.jsonc
+    priority: 20
+    remedies:
+      - match: nested root configuration
+        explain: Biome found another root configuration above this project and refused this one. Biome decides its project from the directory it runs in.
+        label: Copy biome's migration command
+        action:
+          kind: run
+          command:
+            - biome
+            - migrate
+            - --write
+      - match: unknown key
+        explain: Biome does not recognise a key in this configuration, which usually means it was written for a different version.
+        action:
+          kind: open
+          path: "{config}"
+      - match: configuration resulted in errors
+        explain: Biome stopped before reading the file because its configuration did not load.
+        action:
+          kind: open
+          path: "{config}"
   - id: black
     package: black
     filetypes:
@@ -320,6 +344,8 @@ formatters:
     args:
       - -assume-filename
       - "{file}"
+    config:
+      - .clang-format
   - id: cljfmt
     package: cljfmt
     filetypes:
@@ -381,6 +407,12 @@ formatters:
       - format
       - "-"
     stdin: true
+  - id: csharpier
+    stdin: true
+    priority: 10
+    command: csharpier
+    args:
+      - --write-stdout
   - id: css_beautify
     command: css-beautify
     args:
@@ -417,6 +449,7 @@ formatters:
       - format
       - "{file}"
     stdin: false
+    priority: 10
   - id: dcm_fix
     package: dcm
     filetypes:
@@ -709,6 +742,7 @@ formatters:
     args:
       - -srcdir
       - "{dir}"
+    priority: 10
   - id: gojq
     command: gojq
   - id: golangci-lint
@@ -731,6 +765,7 @@ formatters:
     command: google-java-format
     args:
       - "-"
+    priority: 10
   - id: grain_format
     command: grain
     args:
@@ -883,6 +918,7 @@ formatters:
       - --format
       - --stdin
       - --log-level=none
+    priority: 10
   - id: kulala-fmt
     package: kulala-fmt
     filetypes:
@@ -1241,6 +1277,20 @@ formatters:
     filetypes:
       - sql
     command: pg_format
+  - id: php_cs_fixer
+    args:
+      - fix
+      - "{file}"
+    stdin: false
+    cwd_markers:
+      - composer.json
+    config:
+      - name: .php-cs-fixer.php
+        executes: true
+      - name: .php_cs
+        executes: true
+    priority: 10
+    command: php-cs-fixer
   - id: pkl
     command: pkl
     args:
@@ -1267,6 +1317,26 @@ formatters:
       - vue
       - yaml
     command: prettier
+    config:
+      - name: .prettierrc
+        code_keys:
+          - plugins
+      - name: .prettierrc.json
+        code_keys:
+          - plugins
+      - name: .prettierrc.yaml
+        code_keys:
+          - plugins
+      - name: .prettierrc.yml
+        code_keys:
+          - plugins
+      - name: .prettierrc.js
+        executes: true
+      - name: prettier.config.js
+        executes: true
+      - name: prettier.config.mjs
+        executes: true
+    priority: 10
   - id: prettierd
     package: prettierd
     filetypes:
@@ -1444,6 +1514,9 @@ formatters:
     exit_codes:
       - 0
       - 1
+    config:
+      - .rubocop.yml
+    priority: 10
   - id: rubyfmt
     package: rubyfmt
     filetypes:
@@ -1488,6 +1561,10 @@ formatters:
       - pyproject.toml
       - ruff.toml
       - .ruff.toml
+    config:
+      - ruff.toml
+      - .ruff.toml
+    priority: 10
   - id: ruff_organize_imports
     package: ruff
     filetypes:
@@ -1534,6 +1611,9 @@ formatters:
     cwd_markers:
       - rustfmt.toml
       - .rustfmt.toml
+    config:
+      - rustfmt.toml
+      - .rustfmt.toml
   - id: rustywind
     package: rustywind
     filetypes:
@@ -1569,6 +1649,8 @@ formatters:
       - bash
       - zsh
     command: shfmt
+    config:
+      - .editorconfig
   - id: sleek
     package: sleek
     filetypes:
@@ -1600,6 +1682,7 @@ formatters:
     filetypes:
       - sql
     command: sql-formatter
+    priority: 10
   - id: sqlfluff
     package: sqlfluff
     filetypes:
@@ -1706,6 +1789,9 @@ formatters:
     cwd_markers:
       - .stylua.toml
       - stylua.toml
+    config:
+      - stylua.toml
+      - .stylua.toml
   - id: superhtml
     package: superhtml
     filetypes:
@@ -1728,6 +1814,7 @@ formatters:
       - "{file}"
       - --in-place
     stdin: false
+    priority: 10
   - id: swiftformat
     package: swiftformat
     filetypes:
@@ -1776,6 +1863,9 @@ formatters:
       - --stdin-filepath
       - "{file}"
       - "-"
+    config:
+      - .taplo.toml
+      - taplo.toml
   - id: tclfmt
     package: tclint
     filetypes:
@@ -1928,6 +2018,7 @@ formatters:
     command: xmlformat
     args:
       - "-"
+    priority: 10
   - id: xmllint
     command: xmllint
     args:
@@ -1954,6 +2045,9 @@ formatters:
     command: yamlfmt
     args:
       - "-"
+    config:
+      - .yamlfmt
+    priority: 20
   - id: yapf
     package: yapf
     filetypes:

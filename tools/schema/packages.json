@@ -1,0 +1,71 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jensen-org/jensen-registry/tools/schema/packages.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "upstream", "packages"],
+  "properties": {
+    "schema_version": { "const": 2 },
+    "upstream": { "type": "object" },
+    "packages": { "type": "array", "items": { "$ref": "#/$defs/package" } }
+  },
+  "$defs": {
+    "strings": { "type": "array", "items": { "type": "string" } },
+    "file": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "url": { "type": "string", "pattern": "^https://" },
+        "dest": { "type": "string" },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+      }
+    },
+    "artifact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["targets"],
+      "properties": {
+        "targets": { "$ref": "#/$defs/strings" },
+        "files": { "type": "array", "items": { "$ref": "#/$defs/file" } },
+        "file": { "type": "string" },
+        "bin": { "type": "object", "additionalProperties": { "type": "string" } },
+        "run": { "type": "string" },
+        "env": { "type": "object", "additionalProperties": { "type": "string" } },
+        "staged": { "type": "boolean" },
+        "extra": { "type": "object" }
+      }
+    },
+    "package": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "source", "coordinate", "version"],
+      "properties": {
+        "id": { "type": "string" },
+        "source": { "type": "string" },
+        "coordinate": { "type": "string" },
+        "version": { "type": "string" },
+        "qualifiers": { "type": "object", "additionalProperties": { "type": "string" } },
+        "languages": { "$ref": "#/$defs/strings" },
+        "categories": { "$ref": "#/$defs/strings" },
+        "lspconfig": { "type": "string" },
+        "extra_packages": { "$ref": "#/$defs/strings" },
+        "supported_platforms": { "$ref": "#/$defs/strings" },
+        "runs_script": { "const": true },
+        "bin": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["client"],
+            "properties": { "client": { "type": "string" }, "target": { "type": "string" } }
+          }
+        },
+        "share": { "type": "object", "additionalProperties": { "type": "string" } },
+        "opt": { "type": "object", "additionalProperties": { "type": "string" } },
+        "artifacts": { "type": "array", "items": { "$ref": "#/$defs/artifact" } }
+      }
+    }
+  }
+}

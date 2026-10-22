@@ -1,0 +1,4 @@
+config:
+  - .yamllint
+  - .yamllint.yml
+  - .yamllint.yaml

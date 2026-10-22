@@ -1,0 +1,11 @@
+config:
+  - .golangci.yml
+  - .golangci.yaml
+  - .golangci.toml
+parser:
+  kind: regex
+  patterns:
+    - "^(?<path>[^:]+):(?<line>\\d+):(?<column>\\d+): (?<message>.*?) \\((?<code>[^)]+)\\)$"
+args:
+  - run
+  - "{file}"

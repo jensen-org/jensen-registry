@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jensen-org/jensen-registry/tools/schema/servers.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "upstream", "servers"],
+  "properties": {
+    "schema_version": { "const": 2 },
+    "upstream": { "type": "object" },
+    "servers": { "type": "array", "items": { "$ref": "#/$defs/entry" } }
+  },
+  "$defs": {
+    "strings": { "type": "array", "items": { "type": "string" } },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id"],
+      "properties": {
+        "id": { "type": "string" },
+        "package": { "type": "string" },
+        "cmd": { "$ref": "#/$defs/strings" }, "filetypes": { "$ref": "#/$defs/strings" }, "root_markers": { "$ref": "#/$defs/strings" }, "workspace_required": { "type": "boolean" }, "settings": { "type": "object" }, "init_options": { "type": "object" }, "root_strategy": { "type": "string" }
+      }
+    }
+  }
+}

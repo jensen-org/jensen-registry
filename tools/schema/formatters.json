@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jensen-org/jensen-registry/tools/schema/formatters.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "upstream", "formatters"],
+  "properties": {
+    "schema_version": { "const": 2 },
+    "upstream": { "type": "object" },
+    "formatters": { "type": "array", "items": { "$ref": "#/$defs/entry" } }
+  },
+  "$defs": {
+    "strings": { "type": "array", "items": { "type": "string" } },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id"],
+      "properties": {
+        "id": { "type": "string" },
+        "package": { "type": "string" },
+        "filetypes": { "$ref": "#/$defs/strings" }, "command": { "type": "string" }, "args": { "$ref": "#/$defs/strings" }, "range_args": { "$ref": "#/$defs/strings" }, "stdin": { "type": "boolean" }, "cwd_markers": { "$ref": "#/$defs/strings" }, "require_cwd": { "type": "boolean" }, "exit_codes": { "type": "array", "items": { "type": "integer" } }, "env": { "type": "object" }, "config": { "type": "array" }, "priority": { "type": "integer" }, "remedies": { "type": "array" }
+      }
+    }
+  }
+}

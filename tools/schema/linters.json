@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jensen-org/jensen-registry/tools/schema/linters.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "upstream", "linters"],
+  "properties": {
+    "schema_version": { "const": 2 },
+    "upstream": { "type": "object" },
+    "linters": { "type": "array", "items": { "$ref": "#/$defs/entry" } }
+  },
+  "$defs": {
+    "strings": { "type": "array", "items": { "type": "string" } },
+    "entry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id"],
+      "properties": {
+        "id": { "type": "string" },
+        "package": { "type": "string" },
+        "filetypes": { "$ref": "#/$defs/strings" }, "cmd": { "type": "string" }, "args": { "$ref": "#/$defs/strings" }, "stdin": { "type": "boolean" }, "append_file": { "type": "boolean" }, "stream": { "enum": ["stdout", "stderr", "both"] }, "ignore_exitcode": { "type": "boolean" }, "env": { "type": "object" }, "parser": { "type": "object", "required": ["kind"], "properties": { "kind": { "enum": ["regex", "json"] } } }, "config": { "type": "array" }, "priority": { "type": "integer" }, "remedies": { "type": "array" }
+      }
+    }
+  }
+}

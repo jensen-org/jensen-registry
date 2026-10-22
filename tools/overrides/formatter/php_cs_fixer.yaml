@@ -1,0 +1,7 @@
+config:
+  - name: .php-cs-fixer.php
+    executes: true
+  - name: .php_cs
+    executes: true
+priority: 10
+command: php-cs-fixer

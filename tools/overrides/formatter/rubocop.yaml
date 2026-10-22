@@ -1,0 +1,3 @@
+config:
+  - .rubocop.yml
+priority: 10

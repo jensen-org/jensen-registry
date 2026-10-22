@@ -2229,6 +2229,7 @@ servers:
     root_markers:
       - .marksman.toml
       - .git
+    root_strategy: document-dir
   - id: matlab_ls
     package: matlab-language-server
     cmd:
@@ -3188,6 +3189,7 @@ servers:
             enable: true
           updateTest:
             enable: true
+    root_strategy: cargo-workspace
   - id: rust_glancer
     package: rust-glancer
     cmd:

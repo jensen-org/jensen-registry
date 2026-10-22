@@ -1,0 +1,43 @@
+config:
+  - name: eslint.config.js
+    executes: true
+  - name: eslint.config.mjs
+    executes: true
+  - name: eslint.config.cjs
+    executes: true
+  - name: .eslintrc
+    code_keys:
+      - plugins
+      - extends
+      - parser
+      - overrides
+  - name: .eslintrc.js
+    executes: true
+  - name: .eslintrc.json
+    code_keys:
+      - plugins
+      - extends
+      - parser
+      - overrides
+  - name: .eslintrc.cjs
+    executes: true
+priority: 10
+parser:
+  kind: json
+  groups: $
+  items: messages
+  field:
+    path: $group.filePath
+    line: line
+    column: column
+    end_line: endLine
+    end_column: endColumn
+    code: ruleId
+    message: message
+    severity: severity
+  severity:
+    map:
+      "1": 2
+      "2": 1
+    default: 2
+cmd: eslint

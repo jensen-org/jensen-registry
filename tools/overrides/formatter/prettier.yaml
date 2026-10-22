@@ -1,0 +1,20 @@
+config:
+  - name: .prettierrc
+    code_keys:
+      - plugins
+  - name: .prettierrc.json
+    code_keys:
+      - plugins
+  - name: .prettierrc.yaml
+    code_keys:
+      - plugins
+  - name: .prettierrc.yml
+    code_keys:
+      - plugins
+  - name: .prettierrc.js
+    executes: true
+  - name: prettier.config.js
+    executes: true
+  - name: prettier.config.mjs
+    executes: true
+priority: 10

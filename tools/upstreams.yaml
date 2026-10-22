@@ -1,8 +1,8 @@
 schema_version: 2
 mason:
   repo: mason-org/mason-registry
-  tag: 2026-10-21-thorny-lawyer
-  sha256: 5cdb2493b621e4cc7023adedf0a40cd04c3763e96c75ca357d95dae1424cceea
+  tag: 2026-10-22-ill-fund
+  sha256: 4819746edb4b9e8644af23c058b716003291df06b746e5b5e5b9bedfdf603085
 sources:
   lspconfig:
     repo: neovim/nvim-lspconfig
@@ -18,7 +18,7 @@ sources:
     sha: 9a10e096703966335bd5c46c8c875d5b0690dade
   neovim:
     repo: neovim/neovim
-    sha: 1cfebe93d5f9463acda4aa6f69e4faa244734193
+    sha: 1681ff436a2f83c6e165cd554739fc1e586758f7
   linguist:
     repo: github-linguist/linguist
     sha: 73ee9a3b277f398c37ca4ab0dea0193849de6460

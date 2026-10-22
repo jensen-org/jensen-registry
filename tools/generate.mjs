@@ -88,11 +88,11 @@ export async function generate(upstreams) {
   const merged = Object.fromEntries(
     Object.entries(generated).map(([kind, entries]) => [kind, entries.map((entry) => (overrides[kind].has(entry.id) ? deepMerge(entry, overrides[kind].get(entry.id).value) : entry))]),
   );
-  const runnable = { server: "cmd", formatter: "command", linter: "cmd", debugger: "adapter" };
+  const runnable = { server: ["cmd"], formatter: ["command"], linter: ["cmd", "parser"], debugger: ["adapter"] };
   const incomplete = {};
   for (const [kind, field] of Object.entries(runnable)) {
     const before = merged[kind].length;
-    merged[kind] = merged[kind].filter((entry) => entry[field] !== undefined);
+    merged[kind] = merged[kind].filter((entry) => field.every((name) => entry[name] !== undefined));
     incomplete[kind] = before - merged[kind].length;
   }
   const named = new Set([...merged.server, ...merged.debugger].flatMap((entry) => entry.filetypes ?? []));
