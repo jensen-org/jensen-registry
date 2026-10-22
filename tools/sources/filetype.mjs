@@ -27,13 +27,14 @@ export function readFiletypes(source) {
   return { table, summary: { filetypes: table.size, unextractable } };
 }
 
-export const filetypeEntries = (table, extra = []) => {
+export const filetypeEntries = (table, extra = [], related = new Map()) => {
   for (const id of extra) if (!table.has(id)) table.set(id, { extensions: new Set(), filenames: new Set() });
   return [...table.keys()].sort(byText).map((id) => {
     const { extensions, filenames } = table.get(id);
     const out = { id };
     if (extensions.size) out.extensions = [...extensions].sort(byText);
     if (filenames.size) out.filenames = [...filenames].sort(byText);
+    if (related.get(id)?.size) out.related = [...related.get(id)].sort(byText);
     return out;
   });
 };

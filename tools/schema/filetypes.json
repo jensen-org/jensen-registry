@@ -13,7 +13,7 @@
         "type": "object",
         "additionalProperties": false,
         "required": ["id"],
-        "properties": { "id": { "type": "string" }, "extensions": { "type": "array", "items": { "type": "string" } }, "filenames": { "type": "array", "items": { "type": "string" } } }
+        "properties": { "id": { "type": "string" }, "related": { "type": "array", "items": { "type": "string" } }, "extensions": { "type": "array", "items": { "type": "string" } }, "filenames": { "type": "array", "items": { "type": "string" } } }
       }
     }
   }

@@ -31,7 +31,9 @@ export function supplementFromLinguist(table, linguist, popular = new Set()) {
     const known = claimers.filter((language) => targets.get(language));
     if (known.length === 1) return known[0];
     const favoured = known.filter((language) => popular.has(language.name));
-    return favoured.length === 1 ? favoured[0] : null;
+    if (favoured.length === 1) return favoured[0];
+    const narrow = [...known].sort((a, b) => a.extensions.length - b.extensions.length);
+    return narrow.length > 1 && narrow[0].extensions.length * 3 <= narrow[1].extensions.length ? narrow[0] : null;
   };
   const claimed = new Map();
   const claimedNames = new Map();
@@ -90,4 +92,18 @@ export function filetypesFor(language, { linguist, table }) {
   const found = new Set(winners);
   for (const id of scores.keys()) if (winners.some((winner) => id.startsWith(winner) && id !== winner)) found.add(id);
   return found;
+}
+
+export function relatedFiletypes(table, linguist) {
+  const related = new Map();
+  for (const language of linguist.all) {
+    const ids = [...new Set(language.names.filter((name) => table.has(name)))];
+    if (ids.length < 2 || ids.length > 4) continue;
+    for (const id of ids) {
+      const set = related.get(id) ?? new Set();
+      for (const other of ids) if (other !== id) set.add(other);
+      related.set(id, set);
+    }
+  }
+  return related;
 }

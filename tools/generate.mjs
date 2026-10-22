@@ -8,7 +8,7 @@ import { readDebuggers } from "./sources/dap.mjs";
 import { masonRegistry, rawText, releaseDigests, repoFiles } from "./sources/fetch.mjs";
 import { filetypeEntries, readFiletypes } from "./sources/filetype.mjs";
 import { readLinters } from "./sources/lint.mjs";
-import { filetypesFor, linguistLookup, supplementFromLinguist } from "./sources/linguist.mjs";
+import { filetypesFor, linguistLookup, relatedFiletypes, supplementFromLinguist } from "./sources/linguist.mjs";
 import { readServers } from "./sources/lspconfig.mjs";
 import { buildPackages } from "./sources/mason.mjs";
 
@@ -134,7 +134,7 @@ export async function generate(upstreams) {
     ["tools/formatters.yaml", dump({ ...header(sources.conform), formatters: merged.formatter })],
     ["tools/linters.yaml", dump({ ...header(sources.lint), linters: merged.linter })],
     ["tools/debuggers.yaml", dump({ ...header(sources.dap), debuggers: merged.debugger })],
-    ["tools/filetypes.yaml", dump({ ...header(sources.neovim), filetypes: filetypeEntries(table, [...named]) })],
+    ["tools/filetypes.yaml", dump({ ...header(sources.neovim), filetypes: filetypeEntries(table, [...named], relatedFiletypes(table, linguist)) })],
     ["tools/unresolved.yaml", dump({ schema_version: SCHEMA_VERSION, unresolved })],
   ]);
   const summary = {

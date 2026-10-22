@@ -70,6 +70,7 @@ filetypes:
   - id: ampl
     extensions:
       - ampl
+      - mod
       - run
   - id: ant
     filenames:
@@ -92,6 +93,7 @@ filetypes:
   - id: apex
     extensions:
       - apex
+      - cls
   - id: apexcode
   - id: apkbuild
     filenames:
@@ -121,6 +123,8 @@ filetypes:
       - asc
       - asciidoc
   - id: asm
+    related:
+      - nasm
   - id: asm68k
   - id: asn
     extensions:
@@ -177,6 +181,9 @@ filetypes:
     extensions:
       - bal
   - id: bash
+    related:
+      - sh
+      - zsh
   - id: bass
     extensions:
       - bass
@@ -257,6 +264,8 @@ filetypes:
       - BUILD
       - WORKSPACE
       - WORKSPACE.bzlmod
+    related:
+      - starlark
   - id: c
     extensions:
       - c
@@ -276,9 +285,13 @@ filetypes:
   - id: cabal
     extensions:
       - cabal
+    related:
+      - cabalconfig
   - id: cabalconfig
     filenames:
       - cabal.config
+    related:
+      - cabal
   - id: cabalproject
     filenames:
       - cabal.project
@@ -436,6 +449,8 @@ filetypes:
       - auto.master
       - ripgreprc
       - texdoc.cnf
+    related:
+      - dosini
   - id: config
     extensions:
       - at
@@ -563,6 +578,7 @@ filetypes:
       - cypher
   - id: d
     extensions:
+      - d
       - di
   - id: dafny
     extensions:
@@ -657,6 +673,8 @@ filetypes:
     filenames:
       - gradlew.bat
       - mvnw.cmd
+    related:
+      - winbatch
   - id: dosini
     extensions:
       - INI
@@ -708,6 +726,8 @@ filetypes:
       - setup.cfg
       - sofficerc
       - vlcrc
+    related:
+      - conf
   - id: dot
     extensions:
       - dot
@@ -1184,6 +1204,8 @@ filetypes:
     extensions:
       - groff
       - mom
+    related:
+      - nroff
   - id: groovy
     extensions:
       - gradle
@@ -1238,6 +1260,8 @@ filetypes:
     extensions:
       - handlebars
       - hbs
+    related:
+      - hbs
   - id: hare
     extensions:
       - ha
@@ -1264,20 +1288,30 @@ filetypes:
     extensions:
       - hb
   - id: hbs
+    related:
+      - handlebars
   - id: hcl
     extensions:
       - hcl
       - nomad
       - tf
       - tofu
+      - workflow
+    related:
+      - opentofu
+      - terraform
   - id: hcl.docker-bake
   - id: hcl.nomad
   - id: heex
     extensions:
       - heex
       - html.eex
+    related:
+      - leex
   - id: helm
   - id: help
+    extensions:
+      - txt
   - id: hercules
     extensions:
       - errsum
@@ -1338,10 +1372,14 @@ filetypes:
       - htm
       - html
       - html.hl
+    related:
+      - xhtml
   - id: html-eex
   - id: html.handlebars
   - id: htmlangular
   - id: htmldjango
+    related:
+      - jinja
   - id: httest
     extensions:
       - htb
@@ -1485,6 +1523,8 @@ filetypes:
       - j2
       - jinja
       - jinja2
+    related:
+      - htmldjango
   - id: jjdescription
     extensions:
       - jjdescription
@@ -1557,6 +1597,8 @@ filetypes:
       - flake.lock
       - mcmod.info
       - symfony.lock
+    related:
+      - jsonl
   - id: json.openapi
   - id: json5
     extensions:
@@ -1604,6 +1646,8 @@ filetypes:
   - id: jsonl
     extensions:
       - jsonl
+    related:
+      - json
   - id: jsonld
     extensions:
       - jsonld
@@ -1720,6 +1764,8 @@ filetypes:
   - id: leex
     extensions:
       - xrl
+    related:
+      - heex
   - id: leo
     extensions:
       - leo
@@ -1892,6 +1938,8 @@ filetypes:
       - makefile
       - makefile.sco
       - mkfile
+    related:
+      - mf
   - id: mallard
     extensions:
       - page
@@ -1917,6 +1965,8 @@ filetypes:
       - workbook
     filenames:
       - contents.lr
+    related:
+      - pandoc
   - id: markdown.mdx
   - id: marko
     extensions:
@@ -1935,6 +1985,8 @@ filetypes:
   - id: matlab
     extensions:
       - matlab
+    related:
+      - octave
   - id: maxima
     extensions:
       - demo
@@ -1980,6 +2032,8 @@ filetypes:
   - id: mf
     extensions:
       - mf
+    related:
+      - make
   - id: mgl
     extensions:
       - mgl
@@ -2111,6 +2165,8 @@ filetypes:
       - nas
       - nasm
       - s
+    related:
+      - asm
   - id: natural
     extensions:
       - NSA
@@ -2169,6 +2225,8 @@ filetypes:
     extensions:
       - nix
   - id: njk
+    related:
+      - nunjucks
   - id: nlp
   - id: nomad
   - id: norg
@@ -2216,6 +2274,8 @@ filetypes:
       - mmt
       - troffrc
       - troffrc-end
+    related:
+      - groff
   - id: nsis
     extensions:
       - nsh
@@ -2233,6 +2293,8 @@ filetypes:
       - nbt
   - id: nunjucks
     extensions:
+      - njk
+    related:
       - njk
   - id: obj
     extensions:
@@ -2278,6 +2340,8 @@ filetypes:
       - .octaverc
       - octave.conf
       - octaverc
+    related:
+      - matlab
   - id: odin
     extensions:
       - odin
@@ -2296,6 +2360,7 @@ filetypes:
       - opam.locked
   - id: opencl
     extensions:
+      - cl
       - opencl
   - id: openroad
     extensions:
@@ -2304,6 +2369,9 @@ filetypes:
     extensions:
       - scad
   - id: opentofu
+    related:
+      - hcl
+      - terraform
   - id: opentofu-vars
   - id: openvpn
     extensions:
@@ -2345,6 +2413,8 @@ filetypes:
       - pd
       - pdc
       - pdk
+    related:
+      - markdown
   - id: papp
     extensions:
       - papp
@@ -2558,6 +2628,7 @@ filetypes:
   - id: prolog
     extensions:
       - pdb
+      - pro
       - prolog
       - yap
   - id: promela
@@ -2595,6 +2666,8 @@ filetypes:
       - jade
       - pug
   - id: puppet
+    extensions:
+      - pp
     filenames:
       - Modulefile
   - id: purescript
@@ -2932,6 +3005,7 @@ filetypes:
     extensions:
       - music
       - satc
+      - sch
       - scm
       - sld
       - sprite
@@ -2967,6 +3041,9 @@ filetypes:
   - id: sdc
     extensions:
       - sdc
+    related:
+      - tcl
+      - xdc
   - id: sdl
     extensions:
       - pr
@@ -3053,6 +3130,9 @@ filetypes:
       - zprofile
       - zshenv
       - zshrc
+    related:
+      - bash
+      - zsh
   - id: shaderslang
     extensions:
       - slang
@@ -3230,9 +3310,13 @@ filetypes:
       - sshconfig
       - sshconfig.snip
       - sshd-config
+    related:
+      - sshdconfig
   - id: sshdconfig
     filenames:
       - sshd_config
+    related:
+      - sshconfig
   - id: st
     extensions:
       - st
@@ -3250,6 +3334,8 @@ filetypes:
       - BUILD.bazel
       - MODULE.bazel
       - WORKSPACE.bazel
+    related:
+      - bzl
   - id: stata
     extensions:
       - ado
@@ -3276,6 +3362,7 @@ filetypes:
   - id: supercollider
     extensions:
       - quark
+      - scd
   - id: superhtml
   - id: surface
     extensions:
@@ -3349,6 +3436,9 @@ filetypes:
       - owh
       - starfield
       - tclsh.rc
+    related:
+      - sdc
+      - xdc
   - id: teal
     extensions:
       - tl
@@ -3365,6 +3455,9 @@ filetypes:
     extensions:
       - ti
   - id: terraform
+    related:
+      - hcl
+      - opentofu
   - id: terraform-vars
     extensions:
       - tfvars
@@ -3554,6 +3647,8 @@ filetypes:
     extensions:
       - tsp
   - id: typst
+    extensions:
+      - typ
   - id: uc
     extensions:
       - uc
@@ -3591,6 +3686,8 @@ filetypes:
     extensions:
       - vsh
       - vv
+    related:
+      - vlang
   - id: vala
     extensions:
       - vala
@@ -3680,6 +3777,8 @@ filetypes:
       - _viminfo
   - id: visualforce
   - id: vlang
+    related:
+      - v
   - id: vmasm
     extensions:
       - mar
@@ -3722,6 +3821,8 @@ filetypes:
   - id: winbatch
     extensions:
       - wbt
+    related:
+      - dosbatch
   - id: wit
     extensions:
       - wit
@@ -3749,6 +3850,9 @@ filetypes:
       - XCompose
       - xcompose
   - id: xdc
+    related:
+      - sdc
+      - tcl
   - id: xdefaults
     extensions:
       - ad
@@ -3761,6 +3865,8 @@ filetypes:
     extensions:
       - xht
       - xhtml
+    related:
+      - html
   - id: xinetd
     filenames:
       - /etc/xinetd.conf
@@ -3900,6 +4006,8 @@ filetypes:
       - fglrxrc
       - fonts.conf
       - packages.config
+    related:
+      - xsd
   - id: xpm2
     extensions:
       - xpm2
@@ -3916,11 +4024,17 @@ filetypes:
   - id: xsd
     extensions:
       - xsd
+    related:
+      - xml
   - id: xsl
+    related:
+      - xslt
   - id: xslt
     extensions:
       - xsl
       - xslt
+    related:
+      - xsl
   - id: yacc
     extensions:
       - y
@@ -3961,6 +4075,8 @@ filetypes:
       - matplotlibrc
       - pixi.lock
       - yarn.lock
+    related:
+      - yml
   - id: yaml.ansible
   - id: yaml.docker-compose
   - id: yaml.gitlab
@@ -3975,6 +4091,8 @@ filetypes:
       - yar
       - yara
   - id: yml
+    related:
+      - yaml
   - id: yql
   - id: yuck
     extensions:
@@ -4022,3 +4140,6 @@ filetypes:
       - .zshenv
       - .zshrc
       - /etc/zprofile
+    related:
+      - bash
+      - sh

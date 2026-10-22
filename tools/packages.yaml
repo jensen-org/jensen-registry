@@ -11337,6 +11337,7 @@ packages:
           - name: abl-lsp.jar
             url: https://github.com/vscode-abl/vscode-abl/releases/download/V1.4.21/abl-lsp.jar
     filetypes:
+      - apex
       - gnuplot
   - id: openscad-language-server
     source: cargo
