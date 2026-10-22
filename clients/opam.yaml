@@ -1,0 +1,11 @@
+id: opam
+kind: package-manager
+source: opam
+requires:
+  program: opam
+  probe: [opam, --version]
+bin_root:
+  unix: bin
+  windows: bin
+install:
+  - run: [opam, install, --yes, --destdir, "{dir}", "{coordinate}.{version}"]

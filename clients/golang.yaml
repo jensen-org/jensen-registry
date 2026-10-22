@@ -1,0 +1,13 @@
+id: golang
+kind: package-manager
+source: golang
+requires:
+  program: go
+  probe: [go, version]
+bin_root:
+  unix: bin
+  windows: bin
+install:
+  - run: [go, install, "{coordinate}@{version}"]
+    env:
+      GOBIN: "{dir}/bin"

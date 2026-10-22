@@ -1,0 +1,12 @@
+id: pypi
+kind: package-manager
+source: pypi
+requires:
+  program: python3
+  probe: [python3, --version]
+bin_root:
+  unix: venv/bin
+  windows: venv/Scripts
+install:
+  - run: [python3, -m, venv, "{dir}/venv"]
+  - run: ["{bin_root}/python", -m, pip, install, --no-cache-dir, "{coordinate}=={version}", "{extra_packages}"]

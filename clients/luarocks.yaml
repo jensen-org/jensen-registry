@@ -1,0 +1,11 @@
+id: luarocks
+kind: package-manager
+source: luarocks
+requires:
+  program: luarocks
+  probe: [luarocks, --version]
+bin_root:
+  unix: bin
+  windows: bin
+install:
+  - run: [luarocks, install, --tree, "{dir}", "{coordinate}", "{version}"]

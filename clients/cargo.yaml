@@ -1,0 +1,14 @@
+id: cargo
+kind: package-manager
+source: cargo
+requires:
+  program: cargo
+  probe: [cargo, --version]
+bin_root:
+  unix: bin
+  windows: bin
+install:
+  - when: qualifier.repository_url
+    run: [cargo, install, --root, "{dir}", --locked, --git, "{qualifier.repository_url}", --tag, "{version}", "{coordinate}"]
+  - unless: qualifier.repository_url
+    run: [cargo, install, --root, "{dir}", --locked, --version, "{version}", "{coordinate}"]

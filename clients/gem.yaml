@@ -1,0 +1,14 @@
+id: gem
+kind: package-manager
+source: gem
+requires:
+  program: gem
+  probe: [gem, --version]
+bin_root:
+  unix: bin
+  windows: bin
+env:
+  GEM_HOME: "{dir}"
+  GEM_PATH: "{dir}"
+install:
+  - run: [gem, install, --no-document, --install-dir, "{dir}", --bindir, "{dir}/bin", "{coordinate}", -v, "{version}"]

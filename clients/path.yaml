@@ -1,0 +1,4 @@
+id: path
+kind: launcher
+launcher:
+  link: "{dir}/{target}"

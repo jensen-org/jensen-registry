@@ -1,0 +1,6 @@
+id: pyvenv
+kind: launcher
+uses: pypi
+launcher:
+  interpreter: ["{bin_root:pypi}/python", -m]
+  target: "{target}"

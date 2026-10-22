@@ -1,4 +1,24 @@
-schema_version: 1
+schema_version: 2
 mason:
-  registry_url: https://github.com/mason-org/mason-registry/releases/latest/download/registry.json.zip
-  checksums_url: https://github.com/mason-org/mason-registry/releases/latest/download/checksums.txt
+  repo: mason-org/mason-registry
+  tag: 2026-10-21-thorny-lawyer
+  sha256: 5cdb2493b621e4cc7023adedf0a40cd04c3763e96c75ca357d95dae1424cceea
+sources:
+  lspconfig:
+    repo: neovim/nvim-lspconfig
+    sha: 77b7432d4770d23b277d37923e5a08a442d8bb07
+  conform:
+    repo: stevearc/conform.nvim
+    sha: 016802de402556da54c36bd7359b441266b01cdd
+  lint:
+    repo: mfussenegger/nvim-lint
+    sha: f6230a5c06ba59e6059c14637f1dbe29a7978b9b
+  dap:
+    repo: jay-babu/mason-nvim-dap.nvim
+    sha: 9a10e096703966335bd5c46c8c875d5b0690dade
+  neovim:
+    repo: neovim/neovim
+    sha: 1cfebe93d5f9463acda4aa6f69e4faa244734193
+  linguist:
+    repo: github-linguist/linguist
+    sha: 73ee9a3b277f398c37ca4ab0dea0193849de6460

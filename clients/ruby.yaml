@@ -1,0 +1,8 @@
+id: ruby
+kind: launcher
+requires:
+  program: "ruby"
+  probe: [ruby, --version]
+launcher:
+  interpreter: [ruby]
+  target: "{dir}/{target}"
