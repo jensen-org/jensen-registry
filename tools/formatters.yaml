@@ -102,6 +102,8 @@ formatters:
     args:
       - "-"
   - id: awk
+    filetypes:
+      - awk
     command: awk
     args:
       - -f
@@ -116,6 +118,8 @@ formatters:
       - format
       - --stdin
   - id: bean-format
+    filetypes:
+      - bean
     command: bean-format
     args:
       - "-"
@@ -137,6 +141,9 @@ formatters:
       - --quiet
     stdin: true
   - id: bicep
+    filetypes:
+      - bicep
+      - bicep-params
     command: bicep
     args:
       - format
@@ -266,6 +273,8 @@ formatters:
       - tox.ini
       - .blue
   - id: bpfmt
+    filetypes:
+      - bp
     command: bpfmt
     args:
       - -w
@@ -302,6 +311,10 @@ formatters:
       - "{file}"
       - "-"
   - id: cabal_fmt
+    filetypes:
+      - cabal
+      - cabalconfig
+      - cabalproject
     command: cabal-fmt
     args:
       - --inplace
@@ -326,6 +339,8 @@ formatters:
     cwd_markers:
       - .cbfmt.toml
   - id: cedar
+    filetypes:
+      - cedar
     command: cedar
   - id: clang-format
     package: clang-format
@@ -400,6 +415,8 @@ formatters:
       - "{file}"
     stdin: false
   - id: crystal
+    filetypes:
+      - crystal
     command: crystal
     args:
       - tool
@@ -413,6 +430,8 @@ formatters:
     args:
       - --write-stdout
   - id: css_beautify
+    filetypes:
+      - css
     command: css-beautify
     args:
       - --editorconfig
@@ -443,6 +462,8 @@ formatters:
     cwd_markers:
       - pyproject.toml
   - id: dart_format
+    filetypes:
+      - dart
     command: dart
     args:
       - format
@@ -489,6 +510,8 @@ formatters:
     cwd_markers:
       - Dioxus.toml
   - id: djangofmt
+    filetypes:
+      - jinja
     command: djangofmt
     args:
       - --stdin-filename
@@ -583,6 +606,8 @@ formatters:
     args:
       - --stdin
   - id: erlfmt
+    filetypes:
+      - erlang
     command: erlfmt
     args:
       - -w
@@ -617,6 +642,9 @@ formatters:
     command: findent
     stdin: true
   - id: fish_indent
+    filetypes:
+      - fish
+      - indent
     command: fish_indent
   - id: fixjson
     package: fixjson
@@ -626,6 +654,8 @@ formatters:
       - jsonl
     command: fixjson
   - id: fnlfmt
+    filetypes:
+      - fennel
     command: fnlfmt
     args:
       - "-"
@@ -636,11 +666,15 @@ formatters:
       - "{file}"
     stdin: false
   - id: format-dune-file
+    filetypes:
+      - dune
     command: dune
     args:
       - format-dune-file
     stdin: true
   - id: format-queries
+    filetypes:
+      - vim
     command: nvim
     stdin: false
   - id: fourmolu
@@ -662,6 +696,8 @@ formatters:
       - "{file}"
     stdin: false
   - id: gawk
+    filetypes:
+      - awk
     command: gawk
     args:
       - -f
@@ -713,6 +749,8 @@ formatters:
       - stdout
       - "{file}"
   - id: gleam
+    filetypes:
+      - gleam
     command: gleam
     args:
       - format
@@ -724,11 +762,15 @@ formatters:
       - "{file}"
     stdin: false
   - id: gn
+    filetypes:
+      - gn
     command: gn
     args:
       - format
       - --stdin
   - id: gofmt
+    filetypes:
+      - go
     command: gofmt
   - id: gofumpt
     package: gofumpt
@@ -800,6 +842,8 @@ formatters:
       - "-"
     stdin: true
   - id: html_beautify
+    filetypes:
+      - html
     command: html-beautify
     args:
       - --editorconfig
@@ -814,6 +858,8 @@ formatters:
       - ruby
     command: htmlbeautifier
   - id: hurlfmt
+    filetypes:
+      - hurl
     command: hurlfmt
   - id: imba_fmt
     command: imba
@@ -823,11 +869,15 @@ formatters:
       - "{file}"
     stdin: false
   - id: indent
+    filetypes:
+      - indent
     command: indent
     stdin: true
   - id: injected
     runnable: false
   - id: inko
+    filetypes:
+      - inko
     command: inko
     args:
       - fmt
@@ -845,6 +895,8 @@ formatters:
       - tox.ini
       - .editorconfig
   - id: janet-format
+    filetypes:
+      - janet
     command: janet-format
     stdin: true
   - id: joker
@@ -864,6 +916,9 @@ formatters:
       - jsonl
     command: jq
   - id: js_beautify
+    filetypes:
+      - javascript
+      - javascriptreact
     command: js-beautify
     args:
       - --editorconfig
@@ -885,6 +940,8 @@ formatters:
       - "-"
     stdin: true
   - id: just
+    filetypes:
+      - just
     command: just
     args:
       - --fmt
@@ -953,6 +1010,8 @@ formatters:
     args:
       - --stdin
   - id: liquidsoap-prettier
+    filetypes:
+      - liquidsoap
     command: liquidsoap-prettier
     args:
       - -w
@@ -999,6 +1058,8 @@ formatters:
     command: markdown-toc
     stdin: false
   - id: markdownfmt
+    filetypes:
+      - markdown
     command: markdownfmt
   - id: markdownlint-cli2
     package: markdownlint-cli2
@@ -1046,6 +1107,8 @@ formatters:
       - markdown
     command: mdslw
   - id: meson
+    filetypes:
+      - meson
     command: meson
     args:
       - format
@@ -1066,6 +1129,8 @@ formatters:
       - 0
       - 1
   - id: mix
+    filetypes:
+      - mix
     command: mix
     args:
       - format
@@ -1075,6 +1140,8 @@ formatters:
     cwd_markers:
       - mix.exs
   - id: mojo_format
+    filetypes:
+      - mojo
     command: mojo
     args:
       - format
@@ -1089,6 +1156,8 @@ formatters:
     args:
       - "-"
   - id: nickel
+    filetypes:
+      - nickel
     command: nickel
     args:
       - format
@@ -1135,6 +1204,8 @@ formatters:
       - 0
       - 1
   - id: nufmt
+    filetypes:
+      - nu
     command: nufmt
     args:
       - "{file}"
@@ -1150,6 +1221,8 @@ formatters:
       - "{file}"
       - "-"
   - id: ocp-indent
+    filetypes:
+      - indent
     command: ocp-indent
   - id: odinfmt
     package: ols
@@ -1272,6 +1345,8 @@ formatters:
     command: pangu
     stdin: true
   - id: pasfmt
+    filetypes:
+      - pascal
     command: pasfmt
     stdin: true
   - id: perlimports
@@ -1281,6 +1356,8 @@ formatters:
       - --filename
       - "{file}"
   - id: perltidy
+    filetypes:
+      - perl
     command: perltidy
     args:
       - --quiet
@@ -1290,6 +1367,9 @@ formatters:
       - sql
     command: pg_format
   - id: php_cs_fixer
+    filetypes:
+      - cs
+      - php
     args:
       - fix
       - "{file}"
@@ -1328,6 +1408,8 @@ formatters:
     stdin: false
     runnable: false
   - id: pkl
+    filetypes:
+      - pkl
     command: pkl
     args:
       - format
@@ -1394,6 +1476,8 @@ formatters:
     args:
       - "{file}"
   - id: pretty-php
+    filetypes:
+      - php
     args:
       - "{file}"
     stdin: false
@@ -1408,6 +1492,8 @@ formatters:
       - --use-std-out
     stdin: true
   - id: prolog
+    filetypes:
+      - prolog
     command: swipl
     args:
       - formatter
@@ -1417,6 +1503,8 @@ formatters:
     command: pruner
     stdin: true
   - id: puppet-lint
+    filetypes:
+      - puppet
     command: puppet-lint
     args:
       - --fix
@@ -1477,6 +1565,9 @@ formatters:
       - 0
       - 1
   - id: python-ly
+    filetypes:
+      - lilypond
+      - python
     command: ly
     args:
       - reformat
@@ -1494,12 +1585,16 @@ formatters:
       - "{file}"
     stdin: false
   - id: qmlformat
+    filetypes:
+      - qml
     command: qmlformat
     args:
       - -i
       - "{file}"
     stdin: false
   - id: racketfmt
+    filetypes:
+      - racket
     command: raco
     args:
       - fmt
@@ -1521,6 +1616,8 @@ formatters:
       - "-"
     stdin: true
   - id: rescript-format
+    filetypes:
+      - rescript
     command: rescript
     stdin: true
     cwd_markers:
@@ -1528,6 +1625,8 @@ formatters:
       - bsconfig.json
     require_cwd: true
   - id: roc
+    filetypes:
+      - roc
     command: roc
     args:
       - format
@@ -1535,6 +1634,8 @@ formatters:
       - --stdout
     stdin: true
   - id: rstfmt
+    filetypes:
+      - rst
     command: rstfmt
     args:
       - "{file}"
@@ -1648,6 +1749,8 @@ formatters:
   - id: runic
     command: runic
   - id: rustfmt
+    filetypes:
+      - rust
     command: rustfmt
     cwd_markers:
       - rustfmt.toml
@@ -1667,6 +1770,8 @@ formatters:
     args:
       - --stdin
   - id: scalafmt
+    filetypes:
+      - scala
     command: scalafmt
     args:
       - --stdin
@@ -1700,6 +1805,8 @@ formatters:
     command: sleek
     stdin: true
   - id: smlfmt
+    filetypes:
+      - sml
     command: smlfmt
   - id: snakefmt
     package: snakefmt
@@ -1708,6 +1815,8 @@ formatters:
     command: snakefmt
     stdin: false
   - id: spotless_gradle
+    filetypes:
+      - groovy
     command: ./gradlew
     stdin: true
     cwd_markers:
@@ -1766,6 +1875,8 @@ formatters:
       - -s
     stdin: true
   - id: standard-clj
+    filetypes:
+      - clojure
     command: standard-clj
     args:
       - fix
@@ -1823,6 +1934,8 @@ formatters:
     stdin: false
     runnable: false
   - id: stylish-haskell
+    filetypes:
+      - haskell
     command: stylish-haskell
     stdin: true
   - id: stylua
@@ -1853,6 +1966,8 @@ formatters:
       - fmt
       - --stdin
   - id: swift
+    filetypes:
+      - swift
     command: swift
     args:
       - format
@@ -1860,6 +1975,8 @@ formatters:
       - --in-place
     stdin: false
   - id: swift_format
+    filetypes:
+      - swift
     command: swift-format
     args:
       - "{file}"
@@ -1945,6 +2062,8 @@ formatters:
       - -no-color
       - "-"
   - id: terragrunt_hclfmt
+    filetypes:
+      - hcl
     command: terragrunt
     args:
       - hcl
@@ -1964,6 +2083,8 @@ formatters:
     stdin: false
     runnable: false
   - id: tofu_fmt
+    filetypes:
+      - hcl
     command: tofu
     args:
       - fmt
@@ -1999,6 +2120,9 @@ formatters:
       - "{file}"
     stdin: false
   - id: twig-cs-fixer
+    filetypes:
+      - cs
+      - twig
     args:
       - lint
       - "{file}"
@@ -2013,11 +2137,15 @@ formatters:
     require_cwd: false
     runnable: false
   - id: txtpbfmt
+    filetypes:
+      - pbtxt
     command: txtpbfmt
     args:
       - -stdin_display_path
       - "{file}"
   - id: typespec
+    filetypes:
+      - typespec
     command: tsp
     args:
       - format
@@ -2037,6 +2165,8 @@ formatters:
       - 0
       - 2
   - id: typstfmt
+    filetypes:
+      - typst
     command: typstfmt
     stdin: true
   - id: typstyle
@@ -2095,6 +2225,8 @@ formatters:
       - "-"
     priority: 10
   - id: xmllint
+    filetypes:
+      - xml
     command: xmllint
     args:
       - --format
@@ -2145,16 +2277,22 @@ formatters:
       - "-"
     stdin: true
   - id: zigfmt
+    filetypes:
+      - zig
     command: zig
     args:
       - fmt
       - --stdin
   - id: ziggy
+    filetypes:
+      - ziggy
     command: ziggy
     args:
       - fmt
       - --stdin
   - id: ziggy_schema
+    filetypes:
+      - ziggy
     command: ziggy
     args:
       - fmt

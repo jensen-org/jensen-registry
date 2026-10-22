@@ -40,17 +40,34 @@ const previousDigests = () => {
   return known;
 };
 
+const NOISE = ["formatter", "format", "fmt", "linter", "lint", "check", "tidy", "fixer", "ls"];
+
+function named(entry, lookup) {
+  const words = [entry.id, entry.command, entry.cmd].filter((word) => typeof word === "string");
+  const found = new Set();
+  for (const word of words) {
+    for (const token of word.toLowerCase().split(/[-_.\s]+/)) {
+      let base = token;
+      for (const noise of NOISE) if (base.endsWith(noise) && base.length > noise.length) base = base.slice(0, -noise.length);
+      if (base.length < 2 || NOISE.includes(base)) continue;
+      for (const type of filetypesFor(base, lookup)) found.add(type);
+    }
+    if (found.size) break;
+  }
+  return found;
+}
+
 const withLanguages = (entries, packages, lookup) => {
   const byId = new Map(packages.map((pkg) => [pkg.id, pkg]));
   const missed = new Set();
   const out = entries.map((entry) => {
-    if (!entry.package) return entry;
     const found = new Set();
-    for (const language of byId.get(entry.package)?.languages ?? []) {
+    for (const language of entry.package ? (byId.get(entry.package)?.languages ?? []) : []) {
       const types = filetypesFor(language, lookup);
       if (!types.size) missed.add(language);
       for (const type of types) found.add(type);
     }
+    if (!found.size) for (const type of named(entry, lookup)) found.add(type);
     if (!found.size) return entry;
     const { id, package: pkg, ...rest } = entry;
     return { id, package: pkg, filetypes: [...found].sort(byText), ...rest };

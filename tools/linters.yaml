@@ -77,6 +77,8 @@ linters:
       defaults:
         source: bandit
   - id: bash
+    filetypes:
+      - bash
     cmd: bash
     args:
       - -n
@@ -93,6 +95,8 @@ linters:
         source: bash
         severity: 1
   - id: bean_check
+    filetypes:
+      - bean
     cmd: bean-check
     stdin: false
     stream: stderr
@@ -355,6 +359,8 @@ linters:
           error: 1
           warning: 2
         default: 2
+    filetypes:
+      - rust
   - id: clj-kondo
     package: clj-kondo
     filetypes:
@@ -412,11 +418,15 @@ linters:
     runnable: false
   - id: commitlint
     package: commitlint
+    filetypes:
+      - gitcommit
     cmd: commitlint
     stdin: true
     ignore_exitcode: true
     runnable: false
   - id: cppcheck
+    filetypes:
+      - cpp
     cmd: cppcheck
     stdin: false
     stream: stderr
@@ -449,6 +459,8 @@ linters:
         source: cpplint
         severity: 2
   - id: credo
+    filetypes:
+      - mix
     cmd: mix
     args:
       - credo
@@ -576,6 +588,8 @@ linters:
     ignore_exitcode: true
     runnable: false
   - id: dialyxir
+    filetypes:
+      - mix
     cmd: mix
     args:
       - dialyzer
@@ -678,6 +692,8 @@ linters:
         severity: 2
   - id: editorconfig-checker
     package: editorconfig-checker
+    filetypes:
+      - editorconfig
     cmd: editorconfig-checker
     args:
       - -no-color
@@ -691,6 +707,8 @@ linters:
         severity: 3
         source: editorconfig-checker
   - id: erb_lint
+    filetypes:
+      - erb
     cmd: bundle
     args:
       - exec
@@ -707,6 +725,8 @@ linters:
         source: erb-lint
         severity: 2
   - id: eslint
+    filetypes:
+      - javascript
     cmd: eslint
     args:
       - --format
@@ -828,6 +848,8 @@ linters:
     stdin: false
     runnable: false
   - id: fennel
+    filetypes:
+      - fennel
     cmd: fennel
     args:
       - --globals
@@ -844,6 +866,8 @@ linters:
     ignore_exitcode: true
     runnable: false
   - id: fish
+    filetypes:
+      - fish
     cmd: fish
     args:
       - --no-execute
@@ -907,6 +931,8 @@ linters:
     ignore_exitcode: true
     runnable: false
   - id: fsharplint
+    filetypes:
+      - fsharp
     cmd: dotnet-fsharplint
     args:
       - --format
@@ -924,6 +950,8 @@ linters:
         source: fsharplint
         severity: 2
   - id: gawk
+    filetypes:
+      - awk
     cmd: gawk
     args:
       - -f-
@@ -991,6 +1019,8 @@ linters:
     ignore_exitcode: true
     runnable: false
   - id: glinter
+    filetypes:
+      - gleam
     cmd: gleam
     args:
       - run
@@ -1118,6 +1148,8 @@ linters:
       defaults:
         source: htmlhint
   - id: inko
+    filetypes:
+      - inko
     cmd: inko
     stdin: false
     stream: stderr
@@ -1136,6 +1168,8 @@ linters:
     ignore_exitcode: true
     runnable: false
   - id: janet
+    filetypes:
+      - janet
     cmd: janet
     args:
       - -k
@@ -1191,6 +1225,8 @@ linters:
         source: jshint
         severity: 2
   - id: json5
+    filetypes:
+      - json5
     cmd: json5
     args:
       - --validate
@@ -1206,6 +1242,11 @@ linters:
         source: json5
         severity: 1
   - id: json_tool
+    filetypes:
+      - json
+      - jsonc
+      - jsonl
+      - sh
     cmd: python3
     args:
       - -m
@@ -1237,6 +1278,8 @@ linters:
         source: jsonlint
         severity: 1
   - id: ksh
+    filetypes:
+      - sh
     cmd: ksh
     args:
       - -o
@@ -1266,6 +1309,8 @@ linters:
     ignore_exitcode: true
     runnable: false
   - id: lacheck
+    filetypes:
+      - sh
     cmd: lacheck
     stdin: false
     stream: stdout
@@ -1558,6 +1603,8 @@ linters:
     ignore_exitcode: true
     runnable: false
   - id: nix
+    filetypes:
+      - nix
     cmd: nix-instantiate
     args:
       - --parse
@@ -1689,6 +1736,8 @@ linters:
         source: flake8
         severity: 2
   - id: php
+    filetypes:
+      - php
     cmd: php
     args:
       - -d display_errors=stdout
@@ -1749,6 +1798,8 @@ linters:
     ignore_exitcode: true
     runnable: false
   - id: pony
+    filetypes:
+      - pony
     cmd: ponyc
     args:
       - --pass=verify
@@ -1764,6 +1815,8 @@ linters:
         source: ponyc
         severity: 1
   - id: prisma-lint
+    filetypes:
+      - prisma
     cmd: prisma-lint
     args:
       - --output-format
@@ -1805,6 +1858,8 @@ linters:
       - --no-progress
     runnable: false
   - id: puppet-lint
+    filetypes:
+      - puppet
     cmd: puppet-lint
     args:
       - --no-autoloader_layout-check
@@ -2010,6 +2065,8 @@ linters:
       defaults:
         source: rstcheck
   - id: rstlint
+    filetypes:
+      - rst
     cmd: restructuredtext-lint
     stdin: false
     ignore_exitcode: true
@@ -2067,6 +2124,8 @@ linters:
           info: 3
         default: 2
   - id: ruby
+    filetypes:
+      - ruby
     cmd: ruby
     args:
       - -w
@@ -2169,6 +2228,8 @@ linters:
       - --format=json
       - "{file}"
   - id: slang
+    filetypes:
+      - slang
     cmd: slang
     args:
       - -Weverything
@@ -2185,6 +2246,8 @@ linters:
       defaults:
         source: slang
   - id: snakemake
+    filetypes:
+      - snakemake
     cmd: snakemake
     args:
       - --lint
@@ -2421,6 +2484,8 @@ linters:
         default: 2
     cmd: stylelint
   - id: svlint
+    filetypes:
+      - systemverilog
     cmd: svlint
     args:
       - --oneline
@@ -2436,6 +2501,8 @@ linters:
       defaults:
         source: svlint
   - id: systemd-analyze
+    filetypes:
+      - systemd
     cmd: systemd-analyze
     args:
       - verify
@@ -2721,6 +2788,8 @@ linters:
     stdin: true
     runnable: false
   - id: vala_lint
+    filetypes:
+      - vala
     cmd: io.elementary.vala-lint
     args:
       - --json-output
@@ -2850,6 +2919,8 @@ linters:
       defaults:
         source: yq
   - id: zig
+    filetypes:
+      - zig
     cmd: zig
     args:
       - ast-check
@@ -2898,6 +2969,8 @@ linters:
       defaults:
         source: zlint
   - id: zsh
+    filetypes:
+      - zsh
     cmd: zsh
     args:
       - --no-exec

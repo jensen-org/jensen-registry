@@ -16,3 +16,5 @@ args:
   - --message-format
   - short
   - --quiet
+filetypes:
+  - rust
