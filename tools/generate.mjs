@@ -36,7 +36,7 @@ const previousDigests = () => {
   const known = new Map();
   if (!existsSync(join(ROOT, "tools/packages.yaml"))) return known;
   for (const pkg of readYaml("tools/packages.yaml").packages ?? []) {
-    for (const artifact of pkg.artifacts ?? []) for (const file of artifact.files ?? []) if (file.url && file.sha256) known.set(file.url, file.sha256);
+    for (const artifact of pkg.artifacts ?? []) for (const file of artifact.files ?? []) if (file.url) known.set(file.url, file.sha256 ?? null);
   }
   return known;
 };

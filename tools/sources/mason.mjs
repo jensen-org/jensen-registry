@@ -148,7 +148,9 @@ export async function buildPackages(registry, { digests, known = new Map(), conc
         for (const file of artifact.files ?? []) {
           if (!file.url) continue;
           if (known.has(file.url)) {
-            file.sha256 = known.get(file.url);
+            const recorded = known.get(file.url);
+            if (recorded) file.sha256 = recorded;
+            else unhashed += 1;
             continue;
           }
           const found = (await digests(pkg.coordinate, pkg.version)).get(file.name);
