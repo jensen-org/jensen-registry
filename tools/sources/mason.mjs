@@ -133,7 +133,7 @@ export function normalizePackage(pkg, { miss }) {
   });
 }
 
-export async function buildPackages(registry, { digests, known = new Map(), concurrency = 8 }) {
+export async function buildPackages(registry, { digests, known = new Map(), concurrency = 4 }) {
   const misses = [];
   const miss = (message) => misses.push(message);
   const live = registry.filter((pkg) => !pkg.deprecation).sort((a, b) => byText(a.name, b.name));

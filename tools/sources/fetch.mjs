@@ -47,17 +47,23 @@ export async function masonRegistry({ repo, tag, sha256: pinned }) {
   });
 }
 
+const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+
 export const releaseDigests = (repo, tag) =>
   once(`release:${repo}@${tag}`, async () => {
-    try {
-      const release = await github(`/repos/${repo}/releases/tags/${encodeURIComponent(tag)}`);
-      return new Map(
-        (release.assets ?? [])
-          .filter((asset) => asset.digest?.startsWith("sha256:"))
-          .map((asset) => [asset.name, asset.digest.slice("sha256:".length)]),
-      );
-    } catch (error) {
-      if (/answered (403|404|451)$/.test(String(error.message))) return new Map();
-      throw error;
+    for (let attempt = 0; ; attempt += 1) {
+      try {
+        const release = await github(`/repos/${repo}/releases/tags/${encodeURIComponent(tag)}`);
+        return new Map(
+          (release.assets ?? [])
+            .filter((asset) => asset.digest?.startsWith("sha256:"))
+            .map((asset) => [asset.name, asset.digest.slice("sha256:".length)]),
+        );
+      } catch (error) {
+        const message = String(error.message);
+        if (/answered (404|451)$/.test(message)) return new Map();
+        if (!/answered (403|429|502|503)$/.test(message) || attempt >= 4) throw error;
+        await pause(2000 * 2 ** attempt);
+      }
     }
   });

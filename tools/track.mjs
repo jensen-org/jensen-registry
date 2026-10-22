@@ -23,7 +23,7 @@ async function newestPins(current) {
 export async function trackTools({ log = console.log, move = true } = {}) {
   const pins = move ? await newestPins(upstreams()) : upstreams();
   if (move) writeText("tools/upstreams.yaml", dump(pins));
-  const { files, summary } = await generate(pins);
+  const { files, summary } = await generate(pins, { retryMissing: true });
   for (const [path, text] of files) writeText(path, text);
   const brief = (key, value) => (["template_misses", "unreadable", "untranslatable", "language_misses"].includes(key) && Array.isArray(value) ? { count: value.length, first: value.slice(0, 5) } : value);
   log(JSON.stringify(summary, brief, 2));

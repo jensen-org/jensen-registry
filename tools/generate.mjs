@@ -32,11 +32,11 @@ export function loadOverrides() {
   return overrides;
 }
 
-const previousDigests = () => {
+const previousDigests = (retryMissing) => {
   const known = new Map();
   if (!existsSync(join(ROOT, "tools/packages.yaml"))) return known;
   for (const pkg of readYaml("tools/packages.yaml").packages ?? []) {
-    for (const artifact of pkg.artifacts ?? []) for (const file of artifact.files ?? []) if (file.url) known.set(file.url, file.sha256 ?? null);
+    for (const artifact of pkg.artifacts ?? []) for (const file of artifact.files ?? []) if (file.url && (file.sha256 || !retryMissing)) known.set(file.url, file.sha256 ?? null);
   }
   return known;
 };
@@ -77,10 +77,10 @@ const withLanguages = (entries, packages, lookup, declared = new Map()) => {
   return { entries: out, missed };
 };
 
-export async function generate(upstreams) {
+export async function generate(upstreams, { retryMissing = false } = {}) {
   const { mason, sources } = upstreams;
   const registry = await masonRegistry(mason);
-  const built = await buildPackages(registry, { digests: (repo, tag) => releaseDigests(repo, tag), known: previousDigests() });
+  const built = await buildPackages(registry, { digests: (repo, tag) => releaseDigests(repo, tag), known: previousDigests(retryMissing) });
   const { packages } = built;
   const archives = Object.fromEntries(
     await Promise.all(["lspconfig", "conform", "lint", "dap", "nonels"].map(async (name) => [name, await repoFiles(sources[name].repo, sources[name].sha)])),
