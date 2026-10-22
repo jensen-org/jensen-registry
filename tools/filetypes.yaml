@@ -1,0 +1,3264 @@
+schema_version: 2
+upstream:
+  repo: neovim/neovim
+  sha: 1cfebe93d5f9463acda4aa6f69e4faa244734193
+filetypes:
+  - id: 8th
+    extensions:
+      - 8th
+  - id: BUILD.bazel
+  - id: OpenFOAM
+  - id: a2ps
+    filenames:
+      - .a2psrc
+      - /etc/a2ps.cfg
+      - a2psrc
+  - id: a65
+    extensions:
+      - a65
+  - id: aap
+    extensions:
+      - aap
+  - id: abap
+    extensions:
+      - abap
+  - id: abc
+    extensions:
+      - abc
+  - id: abel
+    extensions:
+      - abl
+  - id: abnf
+    extensions:
+      - abnf
+  - id: acedb
+    extensions:
+      - wrm
+  - id: ada
+    extensions:
+      - ada
+      - adb
+      - ads
+      - gpr
+  - id: agda
+  - id: agentscript
+  - id: ahdl
+    extensions:
+      - tdf
+  - id: aidl
+    extensions:
+      - aidl
+  - id: aiken
+  - id: algol68
+    extensions:
+      - a68
+  - id: alloy
+  - id: alsaconf
+    filenames:
+      - .asoundrc
+      - /etc/asound.conf
+      - /usr/share/alsa/alsa.conf
+  - id: aml
+    extensions:
+      - aml
+  - id: ampl
+    extensions:
+      - run
+  - id: ant
+    filenames:
+      - build.xml
+  - id: antlers
+  - id: antlr4
+    extensions:
+      - g4
+  - id: apache
+    filenames:
+      - .htaccess
+  - id: apex
+  - id: apexcode
+  - id: apkbuild
+    filenames:
+      - APKBUILD
+  - id: applescript
+    extensions:
+      - applescript
+      - scpt
+  - id: aptconf
+    filenames:
+      - /.aptitude/config
+      - apt.conf
+  - id: arch
+    filenames:
+      - .arch-inventory
+      - =tagging-method
+  - id: arduino
+    extensions:
+      - ino
+      - pde
+  - id: art
+    extensions:
+      - art
+  - id: asciidoc
+    extensions:
+      - adoc
+      - asciidoc
+  - id: asm
+  - id: asm68k
+  - id: asn
+    extensions:
+      - asn
+      - asn1
+  - id: aspnetcorerazor
+  - id: astro
+    extensions:
+      - astro
+  - id: astro-markdown
+  - id: asy
+    extensions:
+      - asy
+  - id: atlas
+    extensions:
+      - atl
+  - id: atlas-*
+  - id: ato
+  - id: authzed
+    extensions:
+      - zed
+  - id: autohotkey
+    extensions:
+      - ahk
+  - id: autoit
+    extensions:
+      - au3
+  - id: automake
+    filenames:
+      - GNUmakefile.am
+      - Makefile.am
+      - makefile.am
+  - id: autopkgtest
+  - id: ave
+    extensions:
+      - ave
+  - id: awk
+    extensions:
+      - awk
+      - gawk
+  - id: b
+    extensions:
+      - imp
+      - mch
+      - ref
+  - id: ballerina
+  - id: bash
+  - id: bass
+    extensions:
+      - bass
+  - id: bazelrc
+    extensions:
+      - bazelrc
+  - id: bc
+    extensions:
+      - bc
+  - id: bdf
+    extensions:
+      - bdf
+  - id: bean
+  - id: beancount
+    extensions:
+      - bean
+      - beancount
+  - id: bib
+    extensions:
+      - bib
+  - id: bicep
+    extensions:
+      - bicep
+  - id: bicep-params
+    extensions:
+      - bicepparam
+  - id: bindzone
+    extensions:
+      - zone
+    filenames:
+      - named.root
+  - id: bitbake
+    extensions:
+      - bb
+      - bbappend
+      - bbclass
+  - id: blade
+  - id: blank
+    extensions:
+      - bl
+  - id: blueprint
+    extensions:
+      - blp
+  - id: bp
+    extensions:
+      - bp
+  - id: bpftrace
+    extensions:
+      - bt
+  - id: brighterscript
+    extensions:
+      - bs
+  - id: brightscript
+    extensions:
+      - brs
+  - id: brioche
+  - id: brs
+  - id: bsdl
+    extensions:
+      - bsd
+      - bsdl
+  - id: bsl
+  - id: bst
+    extensions:
+      - bst
+  - id: buf-config
+  - id: bzl
+    extensions:
+      - BUILD
+      - bazel
+      - bxl
+      - bzl
+    filenames:
+      - BUCK
+      - BUILD
+      - WORKSPACE
+      - WORKSPACE.bzlmod
+  - id: c
+    extensions:
+      - epro
+      - mdh
+      - qc
+  - id: c.doxygen
+  - id: c3
+    extensions:
+      - c3
+      - c3i
+      - c3t
+  - id: c3i
+  - id: cabal
+    extensions:
+      - cabal
+  - id: cabalconfig
+    filenames:
+      - cabal.config
+  - id: cabalproject
+    filenames:
+      - cabal.project
+  - id: cairo
+    extensions:
+      - cairo
+  - id: calendar
+    filenames:
+      - calendar
+  - id: cangjie
+    extensions:
+      - cj
+  - id: capnp
+    extensions:
+      - capnp
+  - id: catalog
+    filenames:
+      - catalog
+  - id: cdc
+    extensions:
+      - cdc
+  - id: cdl
+    extensions:
+      - cdl
+  - id: cdrdaoconf
+    filenames:
+      - .cdrdao
+      - /etc/cdrdao.conf
+      - /etc/default/cdrdao
+      - /etc/defaults/cdrdao
+  - id: cds
+  - id: cedar
+    extensions:
+      - cedar
+  - id: cel
+    extensions:
+      - cel
+  - id: cf
+    extensions:
+      - cfc
+      - cfi
+      - cfm
+  - id: cfengine
+    filenames:
+      - cfengine.conf
+  - id: cfg
+    extensions:
+      - hgrc
+  - id: cgdbrc
+    filenames:
+      - cgdbrc
+  - id: ch
+    extensions:
+      - chf
+  - id: chaiscript
+    extensions:
+      - chai
+  - id: chaskell
+    extensions:
+      - chs
+  - id: chatito
+    extensions:
+      - chatito
+  - id: chordpro
+    extensions:
+      - cho
+      - chopro
+      - chordpro
+      - crd
+      - crdpro
+  - id: chuck
+    extensions:
+      - ck
+  - id: cir
+  - id: circom
+  - id: cl
+    extensions:
+      - eni
+  - id: clar
+  - id: clarity
+  - id: clean
+    extensions:
+      - icl
+  - id: clojure
+    extensions:
+      - clj
+      - cljc
+      - cljs
+      - cljx
+    filenames:
+      - .trans
+      - init.trans
+  - id: cmake
+    extensions:
+      - cmake
+    filenames:
+      - CMakeLists.txt
+  - id: cmakecache
+    filenames:
+      - CMakeCache.txt
+  - id: cmod
+    extensions:
+      - cmod
+  - id: cnf
+  - id: cobol
+    extensions:
+      - cbl
+      - cob
+  - id: coco
+    extensions:
+      - atg
+  - id: codeowners
+    filenames:
+      - CODEOWNERS
+  - id: coffee
+  - id: comp
+  - id: conaryrecipe
+    extensions:
+      - recipe
+  - id: concerto
+    extensions:
+      - cto
+  - id: conf
+    extensions:
+      - ctags
+    filenames:
+      - .chktexrc
+      - .ripgreprc
+      - .x11vncrc
+      - auto.master
+      - ripgreprc
+      - texdoc.cnf
+  - id: config
+    extensions:
+      - at
+    filenames:
+      - configure.ac
+      - configure.in
+  - id: confini
+    extensions:
+      - nmconnection
+    filenames:
+      - mpv.conf
+      - pacman.conf
+      - paru.conf
+  - id: context
+    extensions:
+      - mkii
+      - mkiv
+      - mklx
+      - mkvi
+      - mkxl
+  - id: cook
+    extensions:
+      - cook
+  - id: coq
+  - id: corn
+    extensions:
+      - corn
+  - id: cpon
+    extensions:
+      - cpon
+  - id: cpp
+    extensions:
+      - C
+      - H
+      - c++
+      - c++m
+      - ccm
+      - cppm
+      - cxx
+      - cxxm
+      - hh
+      - hpp
+      - hxx
+      - inl
+      - ipp
+      - ixx
+      - moc
+      - mpp
+      - tcc
+      - tlh
+    filenames:
+      - .cling_history
+  - id: cpp.doxygen
+  - id: cql
+  - id: cqlang
+    extensions:
+      - cql
+  - id: crm
+    extensions:
+      - crm
+  - id: crontab
+    filenames:
+      - crontab
+  - id: crystal
+    extensions:
+      - cr
+  - id: cs
+    extensions:
+      - cake
+      - cs
+      - csx
+  - id: csc
+    extensions:
+      - csc
+  - id: csdl
+    extensions:
+      - csdl
+  - id: csp
+    extensions:
+      - csp
+      - fdr
+  - id: css
+    extensions:
+      - css
+  - id: csv
+    extensions:
+      - csv
+  - id: cterm
+    extensions:
+      - con
+  - id: cucumber
+    extensions:
+      - feature
+  - id: cuda
+    extensions:
+      - cu
+      - cuh
+  - id: cue
+    extensions:
+      - cue
+  - id: cupl
+    extensions:
+      - pld
+  - id: cuplsim
+    extensions:
+      - si
+  - id: cvsrc
+    filenames:
+      - .cvsrc
+  - id: cynpp
+    extensions:
+      - cyn
+  - id: cypher
+    extensions:
+      - cypher
+  - id: d
+  - id: dafny
+    extensions:
+      - dfy
+  - id: dart
+    extensions:
+      - dart
+      - drt
+  - id: datascript
+    extensions:
+      - ds
+  - id: dax
+    extensions:
+      - dax
+  - id: dcd
+    extensions:
+      - dcd
+  - id: debchangelog
+    filenames:
+      - /debian/changelog
+      - NEWS.Debian
+      - NEWS.dch
+      - changelog.Debian
+      - changelog.dch
+  - id: debcontrol
+    filenames:
+      - /DEBIAN/control
+      - /debian/control
+  - id: debcopyright
+    filenames:
+      - /debian/copyright
+  - id: debsources
+    filenames:
+      - /etc/apt/sources.list
+  - id: denyhosts
+    filenames:
+      - denyhosts.conf
+  - id: desc
+    extensions:
+      - desc
+  - id: desktop
+    extensions:
+      - desktop
+      - directory
+  - id: dfy
+  - id: dhall
+    extensions:
+      - dhall
+  - id: dictconf
+    filenames:
+      - .dictrc
+      - dict.conf
+  - id: diff
+    extensions:
+      - diff
+      - rej
+  - id: dircolors
+    filenames:
+      - .dir_colors
+      - .dircolors
+      - /etc/DIR_COLORS
+  - id: django-html
+  - id: djot
+    extensions:
+      - dj
+      - djot
+  - id: dnsmasq
+    filenames:
+      - /etc/dnsmasq.conf
+  - id: dockerfile
+    extensions:
+      - Containerfile
+      - Dockerfile
+      - containerfile
+      - dockerfile
+    filenames:
+      - Containerfile
+      - Dockerfile
+      - dockerfile
+  - id: dosbatch
+    extensions:
+      - bat
+  - id: dosini
+    extensions:
+      - INI
+      - ini
+      - vbp
+      - wrap
+    filenames:
+      - .alsoftrc
+      - .coveragerc
+      - .gitlint
+      - .notmuch-config
+      - .npmrc
+      - .oelint.cfg
+      - .pylintrc
+      - .pypirc
+      - .replyrc
+      - .wakatime.cfg
+      - /etc/yum.conf
+      - alsoft.conf
+      - alsoft.ini
+      - alsoftrc.sample
+      - mimeapps.list
+      - nfs.conf
+      - nfsmount.conf
+      - npmrc
+      - pip.conf
+      - psprint.conf
+      - pudb.cfg
+      - pylintrc
+      - setup.cfg
+      - sofficerc
+  - id: dot
+    extensions:
+      - dot
+      - gv
+  - id: dracula
+    extensions:
+      - drac
+      - drc
+      - lpe
+      - lvs
+  - id: dtd
+    extensions:
+      - dtd
+  - id: dts
+    extensions:
+      - dts
+      - dtsi
+      - dtso
+      - its
+      - keymap
+      - overlay
+  - id: dtsi
+  - id: dune
+    filenames:
+      - dune
+      - dune-file
+      - dune-project
+      - dune-workspace
+      - jbuild
+  - id: dylan
+    extensions:
+      - dylan
+  - id: dylanintr
+    extensions:
+      - intr
+  - id: dylanlid
+    extensions:
+      - lid
+  - id: earthfile
+    filenames:
+      - Earthfile
+  - id: ecd
+    extensions:
+      - ecd
+  - id: ecsact
+  - id: ed
+    extensions:
+      - ed
+  - id: edge
+  - id: edif
+    extensions:
+      - edf
+      - edif
+      - edo
+  - id: editorconfig
+    filenames:
+      - .editorconfig
+  - id: edn
+  - id: eelixir
+    extensions:
+      - eex
+      - leex
+  - id: ejs
+  - id: elf
+    extensions:
+      - am
+  - id: elinks
+    filenames:
+      - elinks.conf
+  - id: elixir
+    extensions:
+      - exs
+    filenames:
+      - mix.lock
+  - id: elm
+    extensions:
+      - elm
+  - id: elmfilt
+    filenames:
+      - filter-rules
+  - id: elsa
+    extensions:
+      - lc
+  - id: elvish
+    extensions:
+      - elv
+  - id: env
+    extensions:
+      - env
+    filenames:
+      - .env
+  - id: epuppet
+    extensions:
+      - epp
+  - id: erb
+  - id: erg
+  - id: erlang
+    extensions:
+      - erl
+      - hrl
+      - yaws
+    filenames:
+      - rebar.config
+  - id: eruby
+    extensions:
+      - erb
+      - rhtml
+  - id: esdl
+    extensions:
+      - esdl
+  - id: esqlc
+    extensions:
+      - EC
+      - ec
+  - id: esterel
+    extensions:
+      - strl
+  - id: exim
+    filenames:
+      - exim.conf
+  - id: expect
+    extensions:
+      - exp
+  - id: exports
+    filenames:
+      - exports
+  - id: factor
+    extensions:
+      - factor
+  - id: falcon
+    extensions:
+      - fal
+  - id: fan
+    extensions:
+      - fan
+      - fwt
+  - id: faust
+    extensions:
+      - lib
+  - id: fennel
+    extensions:
+      - fnl
+      - fnlm
+    filenames:
+      - .fennelrc
+      - fennelrc
+  - id: fetchmail
+    filenames:
+      - .fetchmailrc
+  - id: fga
+    extensions:
+      - fga
+  - id: fgl
+    extensions:
+      - 4gh
+      - 4gl
+      - m4gl
+  - id: firrtl
+    extensions:
+      - fir
+  - id: fish
+    extensions:
+      - fish
+  - id: flix
+    extensions:
+      - flix
+  - id: fluent
+    extensions:
+      - ftl
+  - id: flux
+  - id: foam
+  - id: focexec
+    extensions:
+      - fex
+      - focexec
+  - id: forth
+    extensions:
+      - 4th
+      - ft
+      - fth
+  - id: fortran
+    extensions:
+      - F
+      - F03
+      - F08
+      - F77
+      - F90
+      - F95
+      - FOR
+      - FPP
+      - FTN
+      - f03
+      - f08
+      - f77
+      - f90
+      - f95
+      - for
+      - fortran
+      - fpp
+      - ftn
+  - id: fpcmake
+    extensions:
+      - fpc
+  - id: frag
+  - id: framescript
+    extensions:
+      - fsl
+  - id: freebasic
+    extensions:
+      - fb
+  - id: fsd
+  - id: fsh
+    extensions:
+      - fsh
+  - id: fsharp
+    extensions:
+      - fsi
+      - fsx
+  - id: fstab
+    filenames:
+      - fstab
+      - mtab
+  - id: fstar
+  - id: func
+    extensions:
+      - fc
+  - id: fusion
+    extensions:
+      - fusion
+  - id: fut
+  - id: futhark
+  - id: gdb
+    extensions:
+      - gdb
+    filenames:
+      - .cuda-gdbinit
+      - .gdbearlyinit
+      - .gdbinit
+      - cuda-gdbinit
+      - gdbearlyinit
+      - gdbinit
+  - id: gdmo
+    extensions:
+      - gdmo
+      - mo
+  - id: gdresource
+    extensions:
+      - tres
+      - tscn
+  - id: gdscript
+    extensions:
+      - gd
+  - id: gdshader
+    extensions:
+      - gdshader
+      - shader
+  - id: gdshaderinc
+  - id: gedcom
+    extensions:
+      - ged
+    filenames:
+      - lltxxxxx.txt
+  - id: gel
+    extensions:
+      - gel
+  - id: gemtext
+    extensions:
+      - gemini
+      - gmi
+  - id: genie
+  - id: geom
+  - id: ghostty
+    extensions:
+      - ghostty
+  - id: gift
+    extensions:
+      - gift
+  - id: gitattributes
+    filenames:
+      - .gitattributes
+  - id: gitcommit
+    filenames:
+      - COMMIT_EDITMSG
+      - EDIT_DESCRIPTION
+      - MERGE_MSG
+      - NOTES_EDITMSG
+      - TAG_EDITMSG
+  - id: gitconfig
+    filenames:
+      - .gitconfig
+      - .gitmodules
+  - id: gitignore
+    extensions:
+      - prettierignore
+    filenames:
+      - .containerignore
+      - .dockerignore
+      - .fdignore
+      - .gitignore
+      - .ignore
+      - .npmignore
+      - .rgignore
+      - .vscodeignore
+  - id: gitolite
+    filenames:
+      - gitolite.conf
+  - id: gitrebase
+    filenames:
+      - git-rebase-todo
+  - id: gitrevlist
+    filenames:
+      - .git-blame-ignore-revs
+  - id: gkrellmrc
+    filenames:
+      - gkrellmrc
+  - id: gleam
+    extensions:
+      - gleam
+  - id: glsl
+    extensions:
+      - comp
+      - frag
+      - geom
+      - glsl
+      - rahit
+      - rcall
+      - rchit
+      - rgen
+      - rint
+      - rmiss
+      - tesc
+      - tese
+      - vert
+  - id: gn
+    extensions:
+      - gn
+      - gni
+  - id: gnash
+    filenames:
+      - .gnashpluginrc
+      - .gnashrc
+      - gnashpluginrc
+      - gnashrc
+  - id: gnuplot
+    extensions:
+      - gnuplot
+      - gpi
+    filenames:
+      - .gnuplot_history
+  - id: go
+    extensions:
+      - go
+  - id: goaccess
+    filenames:
+      - goaccess.conf
+  - id: gohtml
+  - id: gohtmltmpl
+  - id: gomod
+  - id: gosum
+    filenames:
+      - go.sum
+      - go.work.sum
+  - id: gotmpl
+  - id: gowork
+    filenames:
+      - go.work
+  - id: gp
+    extensions:
+      - gp
+    filenames:
+      - .gprc
+  - id: gpg
+    filenames:
+      - /.gnupg/gpg.conf
+      - /.gnupg/options
+  - id: grads
+    extensions:
+      - gs
+  - id: graphql
+    extensions:
+      - gql
+      - graphql
+      - graphqls
+  - id: gretl
+    extensions:
+      - gretl
+  - id: groff
+    extensions:
+      - groff
+      - mom
+  - id: groovy
+    extensions:
+      - gradle
+      - groovy
+    filenames:
+      - Jenkinsfile
+  - id: group
+    filenames:
+      - /etc/group
+      - /etc/group-
+      - /etc/group.edit
+      - /etc/gshadow
+      - /etc/gshadow-
+      - /etc/gshadow.edit
+      - /var/backups/group.bak
+      - /var/backups/gshadow.bak
+  - id: grub
+    filenames:
+      - /boot/grub/grub.conf
+      - /boot/grub/menu.lst
+      - /etc/grub.conf
+  - id: gsp
+    extensions:
+      - gsp
+  - id: gtkrc
+    filenames:
+      - .gtkrc
+      - gtkrc
+  - id: gyp
+    extensions:
+      - gyp
+      - gypi
+  - id: hack
+    extensions:
+      - hack
+      - hackpartial
+  - id: haml
+    extensions:
+      - haml
+  - id: hamster
+    extensions:
+      - hsm
+  - id: handlebars
+    extensions:
+      - hbs
+  - id: hare
+    extensions:
+      - ha
+  - id: haskell
+    extensions:
+      - hs
+      - hs-boot
+      - hsc
+      - hsig
+  - id: haskellpersistent
+    extensions:
+      - persistentmodels
+  - id: haste
+    extensions:
+      - ht
+  - id: hastepreproc
+    extensions:
+      - htpp
+  - id: haxe
+    extensions:
+      - hx
+  - id: hb
+    extensions:
+      - hb
+  - id: hbs
+  - id: hcl
+    extensions:
+      - hcl
+  - id: hcl.docker-bake
+  - id: hcl.nomad
+  - id: heex
+    extensions:
+      - heex
+  - id: helm
+  - id: help
+  - id: hercules
+    extensions:
+      - errsum
+      - ev
+      - sum
+      - vc
+  - id: hex
+    extensions:
+      - a43
+      - a90
+      - h32
+      - h80
+      - h86
+      - hex
+      - ihe
+      - ihex
+      - ihx
+      - mcs
+  - id: hip
+    extensions:
+      - hip
+  - id: hjson
+    extensions:
+      - hjson
+  - id: hlasm
+  - id: hlsl
+    extensions:
+      - hlsl
+  - id: hlsplaylist
+    extensions:
+      - m3u
+      - m3u8
+  - id: hog
+    extensions:
+      - hog
+    filenames:
+      - snort.conf
+      - vision.conf
+  - id: hollywood
+    extensions:
+      - hws
+  - id: hoon
+    extensions:
+      - hoon
+  - id: hostconf
+    filenames:
+      - /etc/host.conf
+  - id: hostsaccess
+    filenames:
+      - /etc/hosts.allow
+      - /etc/hosts.deny
+  - id: html
+  - id: html-eex
+  - id: html.handlebars
+  - id: htmlangular
+  - id: htmldjango
+  - id: httest
+    extensions:
+      - htb
+      - htt
+  - id: http
+    extensions:
+      - http
+  - id: hurl
+    extensions:
+      - hurl
+  - id: hy
+    extensions:
+      - hy
+    filenames:
+      - .hy-history
+  - id: hylo
+    extensions:
+      - hylo
+  - id: hyprlang
+    filenames:
+      - hypridle.conf
+      - hyprland.conf
+      - hyprlock.conf
+      - hyprpaper.conf
+  - id: ibasic
+    extensions:
+      - iba
+      - ibi
+  - id: icalendar
+    extensions:
+      - ics
+  - id: icemenu
+    filenames:
+      - /.icewm/menu
+  - id: icnf
+  - id: icon
+    extensions:
+      - icn
+  - id: idris2
+    extensions:
+      - idr
+  - id: indent
+    filenames:
+      - .indent.pro
+      - indentrc
+  - id: inform
+    extensions:
+      - INF
+      - inf
+  - id: initng
+    extensions:
+      - ii
+  - id: inittab
+    filenames:
+      - inittab
+  - id: inko
+    extensions:
+      - inko
+  - id: ipfilter
+    filenames:
+      - ipf.conf
+      - ipf.rules
+      - ipf6.conf
+  - id: ipkg
+    extensions:
+      - ipkg
+  - id: iss
+    extensions:
+      - iss
+  - id: ist
+    extensions:
+      - ist
+      - mst
+  - id: j
+    extensions:
+      - ijs
+  - id: jade
+  - id: jal
+    extensions:
+      - JAL
+      - jal
+  - id: jam
+    extensions:
+      - jpl
+      - jpr
+  - id: janet
+    extensions:
+      - janet
+  - id: java
+    extensions:
+      - jav
+      - java
+      - jsh
+  - id: javacc
+    extensions:
+      - jj
+      - jjt
+  - id: javascript
+    extensions:
+      - cjs
+      - es
+      - javascript
+      - js
+      - jsm
+      - mjs
+    filenames:
+      - .bun_repl_history
+      - .node_repl_history
+      - deno_history.txt
+  - id: javascript.glimmer
+    extensions:
+      - gjs
+  - id: javascriptreact
+    extensions:
+      - jsx
+  - id: jess
+    extensions:
+      - clp
+  - id: jgraph
+    extensions:
+      - jgr
+  - id: jinja
+    extensions:
+      - jinja
+  - id: jjdescription
+    extensions:
+      - jjdescription
+  - id: jovial
+    extensions:
+      - j73
+      - jov
+      - jovial
+  - id: jproperties
+    extensions:
+      - properties
+  - id: jq
+    extensions:
+      - jq
+  - id: json
+    extensions:
+      - bd
+      - bda
+      - cps
+      - geojson
+      - ipynb
+      - json
+      - json-patch
+      - jsonp
+      - jupyterlab-settings
+      - mcmeta
+      - slnf
+      - sublime-project
+      - sublime-settings
+      - sublime-workspace
+      - webmanifest
+      - xci
+    filenames:
+      - .firebaserc
+      - .lintstagedrc
+      - .prettierrc
+      - .stylelintrc
+      - .swcrc
+      - Pipfile.lock
+      - composer.lock
+      - deno.lock
+      - flake.lock
+      - symfony.lock
+  - id: json.openapi
+  - id: json5
+    extensions:
+      - json5
+  - id: jsonc
+    extensions:
+      - jsonc
+    filenames:
+      - .babelrc
+      - .eslintrc
+      - .hintrc
+      - .jscsrc
+      - .jsfmtrc
+      - .jshintrc
+      - .luaurc
+      - .swrc
+      - .vsconfig
+      - bun.lock
+      - osquery.conf
+  - id: jsonl
+    extensions:
+      - jsonl
+  - id: jsonld
+    extensions:
+      - jsonld
+  - id: jsonnet
+    extensions:
+      - jsonnet
+      - libsonnet
+  - id: jsp
+    extensions:
+      - jsp
+  - id: julia
+    extensions:
+      - jl
+  - id: just
+    extensions:
+      - JUST
+      - Just
+      - just
+    filenames:
+      - .JUSTFILE
+      - .Justfile
+      - .justfile
+      - JUSTFILE
+      - Justfile
+      - justfile
+  - id: karel
+    extensions:
+      - KL
+      - kl
+  - id: kawasaki_as
+    extensions:
+      - pg
+  - id: kcl
+  - id: kconfig
+    filenames:
+      - Config.in
+      - Kconfig
+      - Kconfig.debug
+  - id: kdl
+    extensions:
+      - kdl
+  - id: kerml
+    extensions:
+      - kerml
+  - id: kitty
+    filenames:
+      - kitty.conf
+  - id: kivy
+    extensions:
+      - kv
+  - id: kix
+    extensions:
+      - kix
+  - id: koka
+    extensions:
+      - kk
+  - id: kos
+    extensions:
+      - kos
+  - id: kotlin
+    extensions:
+      - kt
+      - ktm
+      - kts
+  - id: krl
+    extensions:
+      - SUB
+      - Sub
+      - sub
+  - id: kscript
+    extensions:
+      - ks
+  - id: kwt
+    extensions:
+      - k
+  - id: lace
+    extensions:
+      - ACE
+      - ace
+  - id: lalrpop
+    extensions:
+      - lalrpop
+  - id: latte
+    extensions:
+      - latte
+      - lte
+  - id: ld
+    extensions:
+      - ld
+  - id: ldapconf
+    filenames:
+      - .ldaprc
+      - ldap.conf
+      - ldaprc
+  - id: ldif
+    extensions:
+      - ldif
+  - id: leaf
+  - id: lean
+    extensions:
+      - lean
+  - id: lean3
+  - id: ledger
+    extensions:
+      - journal
+      - ldg
+      - ledger
+  - id: leex
+    extensions:
+      - xrl
+  - id: leo
+    extensions:
+      - leo
+  - id: less
+    extensions:
+      - less
+  - id: lex
+    extensions:
+      - l
+      - l++
+      - lex
+      - lxx
+  - id: lf
+    filenames:
+      - lfrc
+  - id: lftp
+    filenames:
+      - .lftprc
+      - lftp.conf
+  - id: lhaskell
+    extensions:
+      - lhs
+  - id: libao
+    filenames:
+      - /.libao
+      - /etc/libao.conf
+  - id: libsonnet
+  - id: lidris2
+    extensions:
+      - lidr
+  - id: lilo
+    filenames:
+      - lilo.conf
+  - id: lilypond
+    extensions:
+      - ily
+      - ly
+  - id: limits
+    filenames:
+      - /etc/limits
+  - id: liquid
+    extensions:
+      - liquid
+  - id: liquidsoap
+    extensions:
+      - liq
+  - id: lisp
+    extensions:
+      - L
+      - asd
+      - el
+      - lisp
+      - lsp
+    filenames:
+      - .emacs
+      - .sawfishrc
+      - .sbclrc
+      - sbclrc
+  - id: lite
+    extensions:
+      - lite
+      - lt
+  - id: livebook
+    extensions:
+      - livemd
+  - id: llw
+  - id: loginaccess
+    filenames:
+      - /etc/login.access
+  - id: logindefs
+    filenames:
+      - /etc/login.defs
+  - id: logtalk
+    extensions:
+      - lgt
+  - id: lotos
+    extensions:
+      - lotos
+  - id: lout
+    extensions:
+      - lou
+      - lout
+  - id: lpc
+    extensions:
+      - lpc
+      - ulpc
+  - id: lss
+    extensions:
+      - lss
+  - id: lua
+    extensions:
+      - lua
+      - nse
+      - rockspec
+      - tlu
+    filenames:
+      - .busted
+      - .lua_history
+      - .luacheckrc
+      - config.ld
+      - rock_manifest
+  - id: luau
+    extensions:
+      - luau
+  - id: lynx
+    filenames:
+      - lynx.cfg
+  - id: lyrics
+    extensions:
+      - lrc
+  - id: m3build
+    filenames:
+      - m3makefile
+      - m3overrides
+  - id: m3quake
+    extensions:
+      - quake
+    filenames:
+      - cm3.cfg
+  - id: m4
+    filenames:
+      - .m4_history
+  - id: mail
+    extensions:
+      - eml
+    filenames:
+      - .article
+      - .followup
+      - .letter
+  - id: mailaliases
+    filenames:
+      - /etc/aliases
+      - /etc/mail/aliases
+  - id: mailcap
+    filenames:
+      - .mailcap
+      - mailcap
+  - id: make
+    filenames:
+      - Kbuild
+  - id: mallard
+    extensions:
+      - page
+  - id: manconf
+    filenames:
+      - /etc/man.conf
+      - man.config
+  - id: maple
+    extensions:
+      - mpl
+      - mv
+      - mws
+  - id: markdown
+  - id: markdown.mdx
+  - id: marko
+    extensions:
+      - marko
+  - id: masm
+    extensions:
+      - masm
+  - id: mason
+    extensions:
+      - mason
+      - mhtml
+  - id: master
+    extensions:
+      - mas
+      - master
+  - id: matlab
+  - id: maxima
+    extensions:
+      - demo
+      - dm1
+      - dm2
+      - dm3
+      - dmt
+      - wxm
+    filenames:
+      - maxima-init.mac
+  - id: mbsync
+    extensions:
+      - mbsyncrc
+    filenames:
+      - isyncrc
+  - id: mcfunction
+  - id: mdx
+  - id: mediawiki
+    extensions:
+      - mw
+      - wiki
+  - id: mel
+    extensions:
+      - mel
+  - id: menhir
+  - id: mermaid
+    extensions:
+      - mermaid
+      - mmd
+      - mmdc
+  - id: meson
+    filenames:
+      - meson.build
+      - meson.options
+      - meson_options.txt
+  - id: metamath-zero
+  - id: mf
+    extensions:
+      - mf
+  - id: mgl
+    extensions:
+      - mgl
+  - id: mgp
+    extensions:
+      - mgp
+  - id: mib
+    extensions:
+      - mib
+      - my
+  - id: microcad
+  - id: mint
+  - id: mix
+    extensions:
+      - mix
+      - mixal
+  - id: mlir
+    extensions:
+      - mlir
+  - id: mma
+    extensions:
+      - nb
+      - wl
+  - id: mmp
+    extensions:
+      - mmp
+  - id: modconf
+    filenames:
+      - /etc/conf.modules
+      - /etc/modules
+      - /etc/modules.conf
+  - id: modula2
+    extensions:
+      - DEF
+  - id: modula3
+    extensions:
+      - i3
+      - ig
+      - lm3
+      - m3
+      - mg
+  - id: mojo
+    extensions:
+      - mojo
+      - 🔥
+  - id: monk
+    extensions:
+      - isc
+      - monk
+      - ssc
+      - tsc
+  - id: moo
+    extensions:
+      - moo
+  - id: moonscript
+    extensions:
+      - moon
+  - id: motoko
+  - id: move
+    extensions:
+      - move
+  - id: mp
+    extensions:
+      - mp
+  - id: mplayerconf
+    filenames:
+      - /.mplayer/config
+      - mplayer.conf
+  - id: mrxvtrc
+    filenames:
+      - .mrxvtrc
+      - mrxvtrc
+  - id: msbuild
+  - id: msidl
+    extensions:
+      - mof
+      - odl
+  - id: msmtp
+    filenames:
+      - .msmtprc
+      - msmtprc
+  - id: msql
+    extensions:
+      - msql
+  - id: mss
+    extensions:
+      - mss
+  - id: mupad
+    extensions:
+      - mu
+  - id: mush
+    extensions:
+      - mush
+  - id: mustache
+    extensions:
+      - mustache
+  - id: muttrc
+    filenames:
+      - Muttngrc
+      - Muttrc
+  - id: mysql
+    extensions:
+      - mysql
+    filenames:
+      - .mysql_history
+  - id: n1ql
+    extensions:
+      - n1ql
+      - nql
+  - id: nanorc
+    extensions:
+      - nanorc
+    filenames:
+      - /etc/nanorc
+  - id: nasm
+    extensions:
+      - nasm
+  - id: natural
+    extensions:
+      - NSA
+      - NSC
+      - NSG
+      - NSL
+      - NSM
+      - NSN
+      - NSP
+      - NSS
+  - id: ncf
+    extensions:
+      - ncf
+  - id: ncl
+  - id: nelua
+  - id: neomuttrc
+    filenames:
+      - Neomuttrc
+  - id: neon
+    extensions:
+      - neon
+  - id: netlinx
+    extensions:
+      - axi
+      - axs
+  - id: netrc
+    filenames:
+      - .netrc
+  - id: nextflow
+  - id: nginx
+    extensions:
+      - nginx
+  - id: nickel
+    extensions:
+      - ncl
+  - id: nim
+    extensions:
+      - nim
+      - nimble
+      - nims
+  - id: ninja
+    extensions:
+      - ninja
+  - id: nix
+    extensions:
+      - nix
+  - id: njk
+  - id: nlp
+  - id: nomad
+  - id: norg
+    extensions:
+      - norg
+  - id: nq
+    extensions:
+      - nq
+  - id: nqc
+    extensions:
+      - nqc
+  - id: nroff
+    extensions:
+      - man
+      - nr
+      - roff
+      - tmac
+      - tr
+  - id: nsis
+    extensions:
+      - nsh
+      - nsi
+  - id: ntriples
+    extensions:
+      - nt
+  - id: nu
+    extensions:
+      - nu
+  - id: numbat
+    extensions:
+      - nbt
+  - id: nunjucks
+  - id: obj
+    extensions:
+      - obj
+  - id: objc
+  - id: objcpp
+  - id: objdump
+    extensions:
+      - cppobjdump
+      - objdump
+  - id: objectscript_routine
+    extensions:
+      - rtn
+  - id: obse
+    extensions:
+      - obl
+      - oblivion
+      - obscript
+      - obse
+  - id: ocaml
+    extensions:
+      - ml
+      - mli
+      - mlip
+      - mll
+      - mlp
+      - mlt
+      - mly
+    filenames:
+      - .ocamlinit
+  - id: ocamlinterface
+  - id: ocamllex
+  - id: occam
+    extensions:
+      - occ
+  - id: octave
+    filenames:
+      - .octaverc
+      - octave.conf
+      - octaverc
+  - id: odin
+    extensions:
+      - odin
+  - id: omnimark
+    extensions:
+      - xin
+      - xom
+  - id: ondir
+    filenames:
+      - .ondirrc
+  - id: opam
+    extensions:
+      - opam
+    filenames:
+      - opam
+      - opam.locked
+  - id: opencl
+  - id: openroad
+    extensions:
+      - or
+  - id: openscad
+    extensions:
+      - scad
+  - id: opentofu
+  - id: opentofu-vars
+  - id: openvpn
+    extensions:
+      - ovpn
+  - id: opl
+    extensions:
+      - OPL
+      - OPl
+      - OpL
+      - Opl
+      - oPL
+      - oPl
+      - opL
+      - opl
+  - id: ora
+    extensions:
+      - ora
+  - id: org
+    extensions:
+      - org
+      - org_archive
+  - id: os
+  - id: overlay
+  - id: p
+  - id: p8
+  - id: pact
+  - id: pamconf
+    filenames:
+      - /etc/pam.conf
+  - id: pamenv
+    filenames:
+      - .pam_environment
+      - pam_env.conf
+  - id: pandoc
+    extensions:
+      - pandoc
+      - pd
+      - pdc
+      - pdk
+  - id: papp
+    extensions:
+      - papp
+      - pxml
+      - pxsl
+  - id: pascal
+    extensions:
+      - dpr
+      - pas
+  - id: passwd
+    filenames:
+      - /etc/passwd
+      - /etc/passwd-
+      - /etc/passwd.edit
+      - /etc/shadow
+      - /etc/shadow-
+      - /etc/shadow.edit
+      - /var/backups/passwd.bak
+      - /var/backups/shadow.bak
+  - id: pbtxt
+    extensions:
+      - aconfig
+      - pbtxt
+      - textpb
+      - textproto
+      - txtpb
+  - id: pccts
+    extensions:
+      - g
+  - id: pcf
+  - id: pcmk
+    extensions:
+      - pcmk
+  - id: pdf
+    extensions:
+      - pdf
+  - id: pdll
+  - id: pem
+    extensions:
+      - cer
+      - crt
+      - csr
+      - pem
+  - id: perl
+    extensions:
+      - plx
+      - psgi
+    filenames:
+      - .gitolite.rc
+      - .latexmkrc
+      - example.gitolite.rc
+      - gitolite.rc
+      - latexmkrc
+  - id: pest
+  - id: pf
+    filenames:
+      - pf.conf
+  - id: pfmain
+    filenames:
+      - main.cf
+      - main.cf.proto
+  - id: php
+    extensions:
+      - ctp
+      - php
+      - php0
+      - php1
+      - php2
+      - php3
+      - php4
+      - php5
+      - php6
+      - php7
+      - php8
+      - php9
+      - phpt
+      - phtml
+      - theme
+  - id: pike
+    extensions:
+      - pike
+      - pmod
+  - id: pilrc
+    extensions:
+      - rcp
+  - id: pine
+    filenames:
+      - .pinerc
+      - .pinercex
+      - pinerc
+      - pinercex
+  - id: pinfo
+    filenames:
+      - /.pinforc
+      - /etc/pinforc
+  - id: pkl
+    extensions:
+      - pcf
+      - pkl
+    filenames:
+      - PklProject
+  - id: plaintex
+  - id: pli
+    extensions:
+      - pl1
+      - pli
+  - id: plm
+    extensions:
+      - p36
+      - pac
+      - plm
+  - id: plp
+    extensions:
+      - plp
+  - id: plsql
+    extensions:
+      - pls
+      - plsql
+  - id: po
+    extensions:
+      - po
+      - pot
+  - id: pod
+    extensions:
+      - pod
+  - id: poefilter
+    extensions:
+      - filter
+  - id: poke
+    extensions:
+      - pk
+  - id: polar
+  - id: pony
+    extensions:
+      - pony
+  - id: pory
+  - id: postcss
+  - id: postscr
+    extensions:
+      - afm
+      - ai
+      - eps
+      - epsf
+      - epsi
+      - pfa
+      - ps
+  - id: pov
+    extensions:
+      - pov
+  - id: povini
+    filenames:
+      - .povrayrc
+  - id: ppd
+    extensions:
+      - ppd
+  - id: ppwiz
+    extensions:
+      - ih
+      - it
+  - id: pq
+    extensions:
+      - pq
+  - id: prisma
+    extensions:
+      - prisma
+  - id: privoxy
+    extensions:
+      - action
+  - id: proc
+    extensions:
+      - pc
+  - id: procmail
+    filenames:
+      - .procmail
+      - .procmailrc
+  - id: profile
+  - id: prolog
+    extensions:
+      - pdb
+  - id: promela
+    extensions:
+      - pml
+  - id: proto
+    extensions:
+      - proto
+  - id: protocols
+    filenames:
+      - /etc/protocols
+  - id: prql
+    extensions:
+      - prql
+  - id: ps1
+    extensions:
+      - ps1
+      - psd1
+      - psm1
+      - pssc
+  - id: ps1xml
+    extensions:
+      - ps1xml
+  - id: psf
+    extensions:
+      - psf
+  - id: psl
+    extensions:
+      - psl
+  - id: ptx
+    extensions:
+      - ptx
+  - id: pug
+    extensions:
+      - pug
+  - id: puppet
+  - id: purescript
+    extensions:
+      - purs
+  - id: pymanifest
+    filenames:
+      - MANIFEST.in
+  - id: pyret
+    extensions:
+      - arr
+  - id: pyrex
+    extensions:
+      - pxd
+      - pxi
+      - pyx
+      - pyx+
+  - id: python
+    extensions:
+      - ipy
+      - ptl
+      - py
+      - pyi
+      - pyw
+    filenames:
+      - .jline-jython.history
+      - .python_history
+      - .pythonrc
+      - .pythonstartup
+      - SConstruct
+  - id: ql
+    extensions:
+      - ql
+      - qll
+  - id: qml
+    extensions:
+      - qbs
+      - qml
+  - id: qmldir
+    filenames:
+      - qmldir
+  - id: qmljs
+  - id: quarto
+    extensions:
+      - qmd
+  - id: query
+  - id: quickbms
+    extensions:
+      - bms
+  - id: r
+    filenames:
+      - .Rhistory
+      - .Rprofile
+      - Rprofile
+      - Rprofile.site
+  - id: racket
+    extensions:
+      - rkt
+      - rktd
+      - rktl
+  - id: radiance
+    extensions:
+      - mat
+      - rad
+  - id: radvd
+    filenames:
+      - radvd.conf
+  - id: raku
+    extensions:
+      - p6
+      - pm6
+      - pod6
+      - raku
+      - rakudoc
+      - rakumod
+      - rakutest
+      - t6
+  - id: raml
+    extensions:
+      - raml
+  - id: rapid
+    extensions:
+      - MODX
+      - MODx
+      - ModX
+      - Modx
+      - SYSX
+      - SYSx
+      - SysX
+      - Sysx
+      - modX
+      - modx
+      - sysX
+      - sysx
+  - id: rasi
+    extensions:
+      - rasi
+      - rasinc
+  - id: ratpoison
+    filenames:
+      - .ratpoisonrc
+      - ratpoisonrc
+  - id: razor
+    extensions:
+      - cshtml
+      - razor
+  - id: rbs
+    extensions:
+      - rbs
+  - id: readline
+    filenames:
+      - .inputrc
+      - inputrc
+  - id: reason
+  - id: rego
+    extensions:
+      - rego
+  - id: remind
+    extensions:
+      - rem
+      - remind
+    filenames:
+      - .reminders
+  - id: requirements
+    extensions:
+      - pip
+    filenames:
+      - constraints.txt
+      - requirements.in
+      - requirements.txt
+  - id: rescript
+    extensions:
+      - res
+      - resi
+  - id: resolv
+    filenames:
+      - resolv.conf
+  - id: reva
+    extensions:
+      - frt
+  - id: rexx
+    extensions:
+      - jrexx
+      - orx
+      - rex
+      - rexx
+      - rexxj
+      - rxj
+      - rxo
+      - testGroup
+      - testUnit
+  - id: rhelp
+    extensions:
+      - Rd
+      - rd
+  - id: rib
+    extensions:
+      - rib
+  - id: rmd
+    extensions:
+      - Rmd
+      - Smd
+      - rmd
+      - smd
+  - id: rnc
+    extensions:
+      - rnc
+  - id: rng
+    extensions:
+      - rng
+  - id: rnoweb
+    extensions:
+      - Rnw
+      - Snw
+      - rnw
+      - snw
+  - id: robot
+    extensions:
+      - resource
+      - robot
+  - id: robots
+    filenames:
+      - robots.txt
+  - id: roc
+    extensions:
+      - roc
+  - id: ron
+    extensions:
+      - ron
+  - id: roslyn
+  - id: routeros
+    extensions:
+      - rsc
+  - id: rpcgen
+    extensions:
+      - x
+  - id: rpgle
+    extensions:
+      - rpgle
+      - rpgleinc
+  - id: rpl
+    extensions:
+      - rpl
+  - id: rrst
+    extensions:
+      - Rrst
+      - Srst
+      - rrst
+      - srst
+  - id: rst
+    extensions:
+      - rst
+  - id: rtf
+    extensions:
+      - rtf
+  - id: ruby
+    extensions:
+      - builder
+      - gemspec
+      - rake
+      - rant
+      - rb
+      - rbi
+      - rbw
+      - rjs
+      - ru
+      - rxml
+    filenames:
+      - .irb_history
+      - .irbrc
+      - Brewfile
+      - Gemfile
+      - Puppetfile
+      - Rakefile
+      - Rantfile
+      - Vagrantfile
+      - irb_history
+      - irbrc
+      - rakefile
+      - rantfile
+  - id: rune
+  - id: rust
+    extensions:
+      - rs
+  - id: sage
+    extensions:
+      - sage
+  - id: salt
+    extensions:
+      - sls
+  - id: samba
+    filenames:
+      - smb.conf
+  - id: sas
+    extensions:
+      - sas
+  - id: sass
+    extensions:
+      - sass
+  - id: sbt
+    extensions:
+      - sbt
+  - id: scala
+    extensions:
+      - mill
+      - scala
+  - id: scheme
+    extensions:
+      - music
+      - satc
+      - scm
+      - sld
+      - sprite
+      - ss
+      - stcd
+      - stcp
+      - stf
+      - stl
+      - strf
+      - stsg
+      - stwm
+      - stxt
+    filenames:
+      - .guile
+      - .lips_repl_history
+  - id: scheme.guile
+  - id: scilab
+    extensions:
+      - sce
+      - sci
+  - id: screen
+    filenames:
+      - .screenrc
+      - screenrc
+  - id: scss
+    extensions:
+      - scss
+  - id: sd
+    extensions:
+      - sd
+  - id: sdc
+    extensions:
+      - sdc
+  - id: sdl
+    extensions:
+      - pr
+      - sdl
+  - id: sed
+    extensions:
+      - sed
+  - id: sensors
+    filenames:
+      - /etc/sensors.conf
+      - /etc/sensors3.conf
+  - id: services
+    filenames:
+      - /etc/services
+  - id: setserial
+    filenames:
+      - /etc/serial.conf
+  - id: sexplib
+    extensions:
+      - sexp
+  - id: sgf
+    extensions:
+      - sgf
+  - id: sh
+    extensions:
+      - la
+      - lai
+      - lo
+      - mdd
+    filenames:
+      - .ash_history
+      - .devscripts
+      - .makepkg.conf
+      - .xprofile
+      - /etc/udev/cdsymlinks.conf
+      - devscripts.conf
+      - makepkg.conf
+      - user-dirs.defaults
+      - user-dirs.dirs
+  - id: shaderslang
+    extensions:
+      - slang
+  - id: sieve
+    extensions:
+      - sieve
+      - siv
+  - id: simula
+    extensions:
+      - sim
+  - id: sinda
+    extensions:
+      - s85
+      - sin
+  - id: sisu
+    extensions:
+      - -sst
+      - _sst
+      - ssi
+      - ssm
+      - sst
+  - id: sixtyfps
+  - id: skhd
+    filenames:
+      - .skhdrc
+      - skhdrc
+  - id: skill
+    extensions:
+      - cdf
+      - il
+      - ils
+  - id: slang
+    extensions:
+      - sl
+  - id: slice
+    extensions:
+      - ice
+  - id: slim
+  - id: slint
+    extensions:
+      - slint
+  - id: slpconf
+    filenames:
+      - /etc/slp.conf
+  - id: slpreg
+    filenames:
+      - /etc/slp.reg
+  - id: slpspi
+    filenames:
+      - /etc/slp.spi
+  - id: slrnrc
+    filenames:
+      - .slrnrc
+  - id: slrnsc
+    extensions:
+      - score
+  - id: sls
+  - id: sm
+    filenames:
+      - sendmail.cf
+  - id: smali
+    extensions:
+      - smali
+  - id: smarty
+    extensions:
+      - tpl
+  - id: smcl
+    extensions:
+      - hlp
+      - ihlp
+      - smcl
+  - id: smith
+    extensions:
+      - smith
+      - smt
+  - id: smithy
+    extensions:
+      - smithy
+  - id: sml
+    extensions:
+      - sml
+  - id: smt2
+  - id: snakemake
+    extensions:
+      - smk
+    filenames:
+      - Snakefile
+  - id: snobol4
+    extensions:
+      - sno
+      - spt
+  - id: solidity
+    extensions:
+      - sol
+  - id: solution
+    extensions:
+      - sln
+  - id: soy
+    extensions:
+      - soy
+  - id: spade
+  - id: sparql
+    extensions:
+      - rq
+      - sparql
+  - id: spec
+    extensions:
+      - spec
+  - id: spice
+    extensions:
+      - sp
+      - spice
+  - id: spup
+    extensions:
+      - spd
+      - spdata
+      - speedup
+  - id: spyce
+    extensions:
+      - spi
+      - spy
+  - id: sql
+    extensions:
+      - pkb
+      - pks
+      - tyb
+      - tyc
+    filenames:
+      - .sqlite_history
+  - id: sqlj
+    extensions:
+      - sqlj
+  - id: sqr
+    extensions:
+      - sqi
+      - sqr
+  - id: squid
+    filenames:
+      - squid.conf
+  - id: squirrel
+    extensions:
+      - nut
+  - id: srec
+    extensions:
+      - mot
+      - s19
+      - s28
+      - s37
+      - srec
+  - id: srt
+    extensions:
+      - srt
+  - id: ss
+  - id: ssa
+    extensions:
+      - ass
+      - ssa
+  - id: sshallowedsigners
+    extensions:
+      - allowed_signers
+    filenames:
+      - allowed_signers
+  - id: sshconfig
+    filenames:
+      - ssh_config
+  - id: sshdconfig
+    filenames:
+      - sshd_config
+  - id: st
+    extensions:
+      - st
+  - id: stan
+  - id: star
+  - id: starlark
+    extensions:
+      - ipd
+      - sky
+      - star
+      - starlark
+  - id: stata
+    extensions:
+      - ado
+      - do
+      - imata
+      - mata
+  - id: stp
+    extensions:
+      - stp
+  - id: stylus
+    extensions:
+      - styl
+      - stylus
+  - id: sudoers
+    filenames:
+      - /etc/sudoers
+      - sudoers.tmp
+  - id: sugarss
+  - id: supercollider
+    extensions:
+      - quark
+  - id: superhtml
+  - id: surface
+    extensions:
+      - sface
+  - id: svelte
+    extensions:
+      - svelte
+  - id: svg
+    extensions:
+      - svg
+  - id: sway
+    extensions:
+      - sw
+  - id: swift
+    extensions:
+      - swift
+      - swiftinterface
+  - id: swig
+    extensions:
+      - swg
+      - swig
+  - id: sysctl
+    filenames:
+      - /etc/sysctl.conf
+  - id: sysml
+    extensions:
+      - sysml
+  - id: systemd
+  - id: systemverilog
+    extensions:
+      - sv
+      - svh
+  - id: tablegen
+    extensions:
+      - td
+  - id: tags
+    filenames:
+      - tags
+  - id: tak
+    extensions:
+      - tak
+  - id: tal
+    extensions:
+      - tal
+  - id: taskdata
+    filenames:
+      - completed.data
+      - pending.data
+      - undo.data
+  - id: taskedit
+    extensions:
+      - task
+  - id: tcl
+    extensions:
+      - itcl
+      - itk
+      - jacl
+      - tcl
+      - tk
+      - tm
+      - xdc
+    filenames:
+      - .tclsh-history
+      - .tclshrc
+      - .wishrc
+      - .xsctcmdhistory
+      - .xsdbcmdhistory
+      - tclsh.rc
+  - id: teal
+    extensions:
+      - tl
+  - id: templ
+    extensions:
+      - templ
+  - id: template
+    extensions:
+      - tmpl
+  - id: tera
+    extensions:
+      - tera
+  - id: terminfo
+    extensions:
+      - ti
+  - id: terraform
+  - id: terraform-vars
+    extensions:
+      - tfvars
+  - id: tesc
+  - id: tese
+  - id: tex
+    extensions:
+      - aux
+      - bbl
+      - bbx
+      - beamer
+      - brf
+      - cbx
+      - clo
+      - dtx
+      - eps_tex
+      - ind
+      - ins
+      - latex
+      - loe
+      - lof
+      - ltx
+      - nav
+      - nlo
+      - nls
+      - pdf_tex
+      - pgf
+      - pygstyle
+      - pygtex
+      - sty
+      - thm
+      - tikz
+      - vrb
+  - id: texinfo
+    extensions:
+      - texi
+      - texinfo
+      - txi
+  - id: texmf
+    filenames:
+      - texmf.cnf
+  - id: text
+    extensions:
+      - text
+    filenames:
+      - AUTHORS
+      - COPYING
+      - LICENSE
+  - id: tf
+    filenames:
+      - .tfrc
+      - tfrc
+  - id: thrift
+    extensions:
+      - thrift
+  - id: tidy
+    filenames:
+      - .tidyrc
+      - tidy.conf
+      - tidyrc
+  - id: tiger
+    extensions:
+      - tig
+  - id: tiltfile
+    extensions:
+      - Tiltfile
+      - tiltfile
+    filenames:
+      - Tiltfile
+      - tiltfile
+  - id: tla
+    extensions:
+      - tla
+  - id: tli
+    extensions:
+      - tli
+  - id: tmux
+    filenames:
+      - .tmux.conf
+  - id: tolk
+    extensions:
+      - tolk
+  - id: toml
+    extensions:
+      - toml
+    filenames:
+      - .black
+      - /.cargo/config
+      - /.cargo/credentials
+      - Cargo.lock
+      - Gopkg.lock
+      - Pipfile
+      - uv.lock
+  - id: tpp
+    extensions:
+      - tpp
+  - id: tptp
+  - id: trace32
+    extensions:
+      - cmm
+      - cmmt
+      - t32
+  - id: treetop
+    extensions:
+      - treetop
+  - id: trig
+    extensions:
+      - trig
+  - id: trustees
+    filenames:
+      - trustees.conf
+  - id: tsalt
+    extensions:
+      - slt
+  - id: tsscl
+    extensions:
+      - tsscl
+  - id: tssgm
+    extensions:
+      - tssgm
+  - id: tssop
+    extensions:
+      - tssop
+  - id: tsv
+    extensions:
+      - tsv
+  - id: ttcn
+  - id: ttl
+  - id: turtle
+  - id: tutor
+    extensions:
+      - tutor
+  - id: twig
+    extensions:
+      - twig
+  - id: typescript
+    extensions:
+      - cts
+      - mts
+    filenames:
+      - .ts_node_repl_history
+  - id: typescript.glimmer
+    extensions:
+      - gts
+  - id: typescriptreact
+    extensions:
+      - tsx
+  - id: typespec
+    extensions:
+      - tsp
+  - id: typst
+  - id: uc
+    extensions:
+      - uc
+  - id: udevconf
+    filenames:
+      - /etc/udev/udev.conf
+  - id: uil
+    extensions:
+      - uil
+      - uit
+  - id: uiua
+  - id: ungrammar
+    extensions:
+      - ungram
+  - id: unison
+    extensions:
+      - u
+      - uu
+  - id: updatedb
+    filenames:
+      - /etc/updatedb.conf
+  - id: upf
+  - id: upstreamlog
+    filenames:
+      - fdrupstream.log
+  - id: urlshortcut
+    extensions:
+      - url
+  - id: usd
+    extensions:
+      - usd
+      - usda
+  - id: uvl
+  - id: v
+    extensions:
+      - vsh
+      - vv
+  - id: vala
+    extensions:
+      - vala
+  - id: vb
+    extensions:
+      - ctl
+      - dob
+      - dsm
+      - dsr
+      - pag
+      - sba
+      - vb
+      - vbs
+  - id: vdf
+    extensions:
+      - vdf
+  - id: vdmpp
+    extensions:
+      - vdmpp
+      - vpp
+  - id: vdmrt
+    extensions:
+      - vdmrt
+  - id: vdmsl
+    extensions:
+      - vdm
+      - vdmsl
+  - id: vento
+    extensions:
+      - vto
+  - id: vera
+    extensions:
+      - vr
+      - vrh
+      - vri
+  - id: verilog
+  - id: verilogams
+    extensions:
+      - va
+      - vams
+  - id: vert
+  - id: veryl
+  - id: vgrindefs
+    filenames:
+      - vgrindefs
+  - id: vhd
+  - id: vhdl
+    extensions:
+      - hdl
+      - vbe
+      - vhd
+      - vhdl
+      - vho
+      - vst
+  - id: vhs
+    extensions:
+      - tape
+  - id: vim
+    extensions:
+      - vim
+    filenames:
+      - .exrc
+      - .netrwhist
+      - _exrc
+  - id: viminfo
+    filenames:
+      - .viminfo
+      - _viminfo
+  - id: visualforce
+  - id: vlang
+  - id: vmasm
+    extensions:
+      - mar
+  - id: voscm
+    extensions:
+      - cm
+  - id: vrml
+    extensions:
+      - wrl
+  - id: vroom
+    extensions:
+      - vroom
+  - id: vsh
+  - id: vue
+    extensions:
+      - vue
+  - id: vue-html
+  - id: vv
+  - id: wat
+    extensions:
+      - wast
+      - wat
+  - id: wdl
+    extensions:
+      - wdl
+  - id: webmacro
+    extensions:
+      - wm
+  - id: wget
+    filenames:
+      - .wgetrc
+      - wgetrc
+  - id: wget2
+    filenames:
+      - .wget2rc
+      - wget2rc
+  - id: wgsl
+    extensions:
+      - wgsl
+  - id: winbatch
+    extensions:
+      - wbt
+  - id: wit
+    extensions:
+      - wit
+  - id: wks
+    extensions:
+      - wks
+  - id: wml
+    extensions:
+      - wml
+  - id: wsh
+    extensions:
+      - wsc
+      - wsf
+  - id: wsml
+    extensions:
+      - wsml
+  - id: wvdial
+    filenames:
+      - .wvdialrc
+      - wvdial.conf
+  - id: xcompose
+    filenames:
+      - .XCompose
+      - Compose
+  - id: xdc
+  - id: xdefaults
+    extensions:
+      - ad
+    filenames:
+      - .Xdefaults
+      - .Xpdefaults
+      - .Xresources
+      - xdm-config
+  - id: xhtml
+    extensions:
+      - xht
+      - xhtml
+  - id: xinetd
+    filenames:
+      - /etc/xinetd.conf
+  - id: xmath
+    extensions:
+      - msc
+      - msf
+  - id: xml
+    extensions:
+      - atom
+      - bxml
+      - cdxml
+      - csproj
+      - fsproj
+      - mmi
+      - mpd
+      - psc1
+      - reanim
+      - rss
+      - slnx
+      - spfm
+      - tpm
+      - ui
+      - vbproj
+      - wpl
+      - wsdl
+      - xba
+      - xcu
+      - xlb
+      - xlc
+      - xlf
+      - xliff
+      - xmi
+      - xpfm
+      - xpr
+      - xul
+    filenames:
+      - /etc/blkid.tab
+      - /etc/blkid.tab.old
+      - Directory.Build.props
+      - Directory.Build.targets
+      - Directory.Packages.props
+      - fglrxrc
+      - fonts.conf
+  - id: xpm2
+    extensions:
+      - xpm2
+  - id: xquery
+    extensions:
+      - xq
+      - xql
+      - xqm
+      - xquery
+      - xqy
+  - id: xs
+    extensions:
+      - xs
+  - id: xsd
+    extensions:
+      - xsd
+  - id: xsl
+  - id: xslt
+    extensions:
+      - xsl
+      - xslt
+  - id: yacc
+    extensions:
+      - y++
+      - yxx
+      - yy
+  - id: yaml
+    extensions:
+      - cff
+      - eyaml
+      - ksy
+      - kyaml
+      - kyml
+      - mplstyle
+      - yaml
+      - yml
+    filenames:
+      - .clang-format
+      - .clang-tidy
+      - .clangd
+      - .condarc
+      - .mambarc
+      - buf.lock
+      - condarc
+      - mambarc
+      - matplotlibrc
+      - pixi.lock
+      - yarn.lock
+  - id: yaml.ansible
+  - id: yaml.docker-compose
+  - id: yaml.gitlab
+  - id: yaml.helm-values
+  - id: yaml.openapi
+  - id: yang
+    extensions:
+      - yang
+  - id: yar
+  - id: yara
+    extensions:
+      - yar
+      - yara
+  - id: yml
+  - id: yql
+  - id: yuck
+    extensions:
+      - yuck
+  - id: z8a
+    extensions:
+      - z8a
+  - id: zathurarc
+    filenames:
+      - zathurarc
+  - id: zf
+  - id: zig
+    extensions:
+      - zig
+      - zon
+  - id: ziggy
+    extensions:
+      - ziggy
+  - id: ziggy_schema
+    extensions:
+      - ziggy-schema
+  - id: zimbu
+    extensions:
+      - zu
+  - id: zimbutempl
+    extensions:
+      - zut
+  - id: zir
+  - id: zserio
+    extensions:
+      - zs
+  - id: zsh
+    extensions:
+      - zsh
+      - zsh-theme
+      - zunit
+    filenames:
+      - .zcompdump
+      - .zfbfmarks
+      - .zlogin
+      - .zlogout
+      - .zprofile
+      - .zsh_history
+      - .zshenv
+      - .zshrc
+      - /etc/zprofile

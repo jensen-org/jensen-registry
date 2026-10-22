@@ -1,0 +1,1997 @@
+schema_version: 2
+upstream:
+  repo: stevearc/conform.nvim
+  sha: 016802de402556da54c36bd7359b441266b01cdd
+formatters:
+  - id: air
+    package: air
+    filetypes:
+      - r
+      - rhelp
+    command: air
+    args:
+      - format
+      - "{file}"
+    stdin: false
+    cwd_markers:
+      - air.toml
+      - .air.toml
+  - id: alejandra
+    package: alejandra
+    filetypes:
+      - nix
+    command: alejandra
+  - id: ansible-lint
+    package: ansible-lint
+    command: ansible-lint
+    args:
+      - -f
+      - codeclimate
+      - -q
+      - --fix=all
+      - "{file}"
+    stdin: false
+    exit_codes:
+      - 0
+      - 2
+      - 8
+  - id: asmfmt
+    package: asmfmt
+    filetypes:
+      - nasm
+    command: asmfmt
+    stdin: true
+  - id: ast-grep
+    package: ast-grep
+    filetypes:
+      - c
+      - cpp
+      - cs
+      - css
+      - dart
+      - go
+      - html
+      - java
+      - javascript
+      - javascriptreact
+      - kotlin
+      - lua
+      - python
+      - rust
+      - typescript
+    command: ast-grep
+    args:
+      - scan
+      - --update-all
+      - "{file}"
+    stdin: false
+    exit_codes:
+      - 0
+      - 5
+  - id: astyle
+    command: astyle
+    args:
+      - --quiet
+    cwd_markers:
+      - .astylerc
+      - _astylerc
+  - id: auto_optional
+    command: auto-optional
+    args:
+      - "{file}"
+    stdin: false
+  - id: autocorrect
+    command: autocorrect
+    args:
+      - --stdin
+    stdin: true
+  - id: autoflake
+    package: autoflake
+    filetypes:
+      - python
+    command: autoflake
+    args:
+      - --stdin-display-name
+      - "{file}"
+      - "-"
+  - id: autopep8
+    package: autopep8
+    filetypes:
+      - python
+    command: autopep8
+    args:
+      - "-"
+  - id: awk
+    command: awk
+    args:
+      - -f
+      - "-"
+      - -o-
+  - id: bake
+    package: mbake
+    filetypes:
+      - automake
+      - make
+    command: mbake
+    args:
+      - format
+      - --stdin
+  - id: bean-format
+    command: bean-format
+    args:
+      - "-"
+  - id: beautysh
+    package: beautysh
+    filetypes:
+      - bash
+      - sh
+      - zsh
+    command: beautysh
+    args:
+      - "-"
+  - id: bibtex-tidy
+    package: bibtex-tidy
+    filetypes:
+      - tex
+    command: bibtex-tidy
+    args:
+      - --quiet
+    stdin: true
+  - id: bicep
+    command: bicep
+    args:
+      - format
+      - --stdout
+      - "{file}"
+  - id: biome-check
+    package: biome
+    filetypes:
+      - javascript
+      - javascriptreact
+      - json
+      - jsonc
+      - jsonl
+      - typescript
+    command: biome
+    args:
+      - check
+      - --write
+      - --stdin-file-path
+      - "{file}"
+    stdin: true
+    cwd_markers:
+      - biome.json
+      - biome.jsonc
+      - .biome.json
+      - .biome.jsonc
+  - id: biome-organize-imports
+    package: biome
+    filetypes:
+      - javascript
+      - javascriptreact
+      - json
+      - jsonc
+      - jsonl
+      - typescript
+    command: biome
+    args:
+      - check
+      - --write
+      - --formatter-enabled=false
+      - --linter-enabled=false
+      - --assist-enabled=true
+      - --stdin-file-path
+      - "{file}"
+    stdin: true
+    cwd_markers:
+      - biome.json
+      - biome.jsonc
+      - .biome.json
+      - .biome.jsonc
+  - id: biome
+    package: biome
+    filetypes:
+      - javascript
+      - javascriptreact
+      - json
+      - jsonc
+      - jsonl
+      - typescript
+    command: biome
+    stdin: true
+    cwd_markers:
+      - biome.json
+      - biome.jsonc
+      - .biome.json
+      - .biome.jsonc
+  - id: black
+    package: black
+    filetypes:
+      - python
+    command: black
+    args:
+      - --stdin-filename
+      - "{file}"
+      - --quiet
+      - "-"
+    cwd_markers:
+      - pyproject.toml
+  - id: blade-formatter
+    package: blade-formatter
+    filetypes:
+      - blade
+    command: blade-formatter
+    args:
+      - --stdin
+    stdin: true
+    cwd_markers:
+      - composer.json
+      - composer.lock
+  - id: blue
+    package: blue
+    filetypes:
+      - python
+    command: blue
+    args:
+      - --stdin-filename
+      - "{file}"
+      - --quiet
+      - "-"
+    cwd_markers:
+      - setup.cfg
+      - pyproject.toml
+      - tox.ini
+      - .blue
+  - id: bpfmt
+    command: bpfmt
+    args:
+      - -w
+      - "{file}"
+    stdin: false
+  - id: bsfmt
+    package: brighterscript-formatter
+    filetypes:
+      - brighterscript
+    command: bsfmt
+    args:
+      - "{file}"
+      - --write
+    stdin: false
+  - id: buf
+    package: buf
+    filetypes:
+      - proto
+    command: buf
+    args:
+      - format
+      - -w
+      - "{file}"
+    stdin: false
+    cwd_markers:
+      - buf.yaml
+  - id: buildifier
+    package: buildifier
+    filetypes:
+      - bzl
+    command: buildifier
+    args:
+      - -path
+      - "{file}"
+      - "-"
+  - id: cabal_fmt
+    command: cabal-fmt
+    args:
+      - --inplace
+      - "{file}"
+    stdin: false
+  - id: caramel_fmt
+    command: caramel
+    args:
+      - fmt
+      - "{file}"
+    stdin: false
+  - id: cbfmt
+    package: cbfmt
+    filetypes:
+      - markdown
+    command: cbfmt
+    args:
+      - --write
+      - --best-effort
+      - "{file}"
+    stdin: false
+    cwd_markers:
+      - .cbfmt.toml
+  - id: cedar
+    command: cedar
+  - id: clang-format
+    package: clang-format
+    filetypes:
+      - c
+      - cpp
+      - cs
+      - java
+      - javascript
+      - javascriptreact
+      - json
+      - jsonc
+      - jsonl
+    command: clang-format
+    args:
+      - -assume-filename
+      - "{file}"
+  - id: cljfmt
+    package: cljfmt
+    filetypes:
+      - clojure
+    command: cljfmt
+    args:
+      - fix
+      - "-"
+    stdin: true
+  - id: cljstyle
+    command: cljstyle
+    args:
+      - pipe
+    cwd_markers:
+      - .cljstyle
+  - id: cmake_format
+    package: cmakelang
+    filetypes:
+      - cmake
+    command: cmake-format
+    args:
+      - "-"
+  - id: codeql
+    package: codeql
+    filetypes:
+      - ql
+    command: codeql
+    args:
+      - query
+      - format
+      - "-"
+  - id: codespell
+    package: codespell
+    command: codespell
+    args:
+      - "{file}"
+      - --write-changes
+      - --check-hidden
+    stdin: false
+    exit_codes:
+      - 0
+      - 65
+  - id: commitmsgfmt
+    command: commitmsgfmt
+    stdin: true
+  - id: crlfmt
+    package: crlfmt
+    filetypes:
+      - go
+    command: crlfmt
+    args:
+      - -w
+      - "{file}"
+    stdin: false
+  - id: crystal
+    command: crystal
+    args:
+      - tool
+      - format
+      - "-"
+    stdin: true
+  - id: css_beautify
+    command: css-beautify
+    args:
+      - --editorconfig
+      - --file
+      - "-"
+    cwd_markers:
+      - .jsbeautifyrc
+  - id: cue_fmt
+    package: cue
+    filetypes:
+      - cue
+    command: cue
+    args:
+      - fmt
+      - "-"
+    stdin: true
+  - id: d2
+    command: d2
+    args:
+      - fmt
+      - "{file}"
+    stdin: false
+  - id: darker
+    package: darker
+    filetypes:
+      - python
+    command: darker
+    cwd_markers:
+      - pyproject.toml
+  - id: dart_format
+    command: dart
+    args:
+      - format
+      - "{file}"
+    stdin: false
+  - id: dcm_fix
+    package: dcm
+    filetypes:
+      - dart
+    command: dcm
+    args:
+      - fix
+      - "{file}"
+    stdin: false
+  - id: dcm_format
+    package: dcm
+    filetypes:
+      - dart
+    command: dcm
+    args:
+      - format
+      - "{file}"
+    stdin: false
+    exit_codes:
+      - 0
+      - 2
+  - id: deno_fmt
+    package: deno
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+    command: deno
+  - id: dfmt
+    command: dfmt
+  - id: dioxus
+    command: dx
+    args:
+      - fmt
+      - --file
+      - "{file}"
+    stdin: false
+    cwd_markers:
+      - Dioxus.toml
+  - id: djangofmt
+    command: djangofmt
+    args:
+      - --stdin-filename
+      - "{file}"
+    stdin: true
+  - id: djlint
+    package: djlint
+    filetypes:
+      - go
+      - handlebars
+      - jinja
+      - mustache
+      - nunjucks
+      - twig
+    command: djlint
+    args:
+      - --reformat
+      - "-"
+    cwd_markers:
+      - .djlintrc
+  - id: docformatter
+    package: docformatter
+    filetypes:
+      - python
+    command: docformatter
+    args:
+      - --in-place
+      - "{file}"
+    stdin: false
+    exit_codes:
+      - 0
+      - 3
+  - id: dockerfmt
+    package: dockerfmt
+    filetypes:
+      - dockerfile
+    command: dockerfmt
+  - id: docstrfmt
+    command: docstrfmt
+    args:
+      - "-"
+    stdin: true
+  - id: doctoc
+    package: doctoc
+    filetypes:
+      - markdown
+    command: doctoc
+    args:
+      - "{file}"
+    stdin: false
+  - id: dprint
+    package: dprint
+    command: dprint
+    args:
+      - fmt
+      - --stdin
+      - "{file}"
+    cwd_markers:
+      - dprint.json
+      - .dprint.json
+      - dprint.jsonc
+      - .dprint.jsonc
+  - id: efmt
+    command: efmt
+    args:
+      - "-"
+    stdin: true
+  - id: elm_format
+    package: elm-format
+    filetypes:
+      - elm
+    command: elm-format
+    args:
+      - --stdin
+  - id: erb_format
+    package: erb-formatter
+    filetypes:
+      - html
+      - ruby
+    command: erb-format
+    args:
+      - --stdin
+  - id: erlfmt
+    command: erlfmt
+    args:
+      - -w
+      - "{file}"
+    stdin: false
+  - id: eslint_d
+    package: eslint_d
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+    command: eslint_d
+    args:
+      - --fix-to-stdout
+      - --stdin
+      - --stdin-filename
+      - "{file}"
+    cwd_markers:
+      - package.json
+  - id: fantomas
+    package: fantomas
+    filetypes:
+      - fsharp
+    command: fantomas
+    args:
+      - "{file}"
+    stdin: false
+  - id: findent
+    package: findent
+    filetypes:
+      - fortran
+    command: findent
+    stdin: true
+  - id: fish_indent
+    command: fish_indent
+  - id: fixjson
+    package: fixjson
+    filetypes:
+      - json
+      - jsonc
+      - jsonl
+    command: fixjson
+  - id: fnlfmt
+    command: fnlfmt
+    args:
+      - "-"
+  - id: forge_fmt
+    command: forge
+    args:
+      - fmt
+      - "{file}"
+    stdin: false
+  - id: format-dune-file
+    command: dune
+    args:
+      - format-dune-file
+    stdin: true
+  - id: format-queries
+    command: nvim
+    stdin: false
+  - id: fourmolu
+    package: fourmolu
+    filetypes:
+      - haskell
+    command: fourmolu
+    args:
+      - --stdin-input-file
+      - "{file}"
+    stdin: true
+  - id: fprettify
+    package: fprettify
+    filetypes:
+      - fortran
+    command: fprettify
+    args:
+      - --silent
+      - "{file}"
+    stdin: false
+  - id: gawk
+    command: gawk
+    args:
+      - -f
+      - "-"
+      - -o-
+  - id: gci
+    package: gci
+    filetypes:
+      - go
+    command: gci
+    args:
+      - write
+      - --skip-generated
+      - --skip-vendor
+      - "{file}"
+    stdin: false
+  - id: gdformat
+    package: gdtoolkit
+    filetypes:
+      - gdscript
+    command: gdformat
+    args:
+      - "-"
+  - id: gdscript-formatter
+    package: gdscript-formatter
+    filetypes:
+      - gdscript
+    command: gdscript-formatter
+  - id: gersemi
+    package: gersemi
+    filetypes:
+      - cmake
+    command: gersemi
+    args:
+      - --quiet
+      - "-"
+    cwd_markers:
+      - .gersemirc
+  - id: ghdl
+    command: ghdl
+    args:
+      - fmt
+      - --std=08
+      - "{file}"
+  - id: ghokin
+    command: ghokin
+    args:
+      - fmt
+      - stdout
+      - "{file}"
+  - id: gleam
+    command: gleam
+    args:
+      - format
+      - --stdin
+  - id: gluon_fmt
+    command: gluon
+    args:
+      - fmt
+      - "{file}"
+    stdin: false
+  - id: gn
+    command: gn
+    args:
+      - format
+      - --stdin
+  - id: gofmt
+    command: gofmt
+  - id: gofumpt
+    package: gofumpt
+    filetypes:
+      - go
+    command: gofumpt
+  - id: goimports-reviser
+    package: goimports-reviser
+    filetypes:
+      - go
+    command: goimports-reviser
+    args:
+      - -format
+      - "{file}"
+    stdin: false
+  - id: goimports
+    package: goimports
+    filetypes:
+      - go
+    command: goimports
+    args:
+      - -srcdir
+      - "{dir}"
+  - id: gojq
+    command: gojq
+  - id: golangci-lint
+    package: golangci-lint
+    filetypes:
+      - go
+    command: golangci-lint
+    args:
+      - fmt
+      - --stdin
+  - id: golines
+    package: golines
+    filetypes:
+      - go
+    command: golines
+  - id: google-java-format
+    package: google-java-format
+    filetypes:
+      - java
+    command: google-java-format
+    args:
+      - "-"
+  - id: grain_format
+    command: grain
+    args:
+      - format
+      - "{file}"
+    stdin: true
+  - id: hcl
+    package: hclfmt
+    filetypes:
+      - hcl
+    command: hclfmt
+  - id: hindent
+    command: hindent
+    args:
+      - "{file}"
+    stdin: false
+  - id: hledger-fmt
+    command: hledger-fmt
+    args:
+      - --no-diff
+      - --exit-zero-on-changes
+      - "-"
+    stdin: true
+  - id: html_beautify
+    command: html-beautify
+    args:
+      - --editorconfig
+      - --file
+      - "-"
+    cwd_markers:
+      - .jsbeautifyrc
+  - id: htmlbeautifier
+    package: htmlbeautifier
+    filetypes:
+      - html
+      - ruby
+    command: htmlbeautifier
+  - id: hurlfmt
+    command: hurlfmt
+  - id: imba_fmt
+    command: imba
+    args:
+      - fmt
+      - -f
+      - "{file}"
+    stdin: false
+  - id: indent
+    command: indent
+    stdin: true
+  - id: inko
+    command: inko
+    args:
+      - fmt
+      - "-"
+  - id: isort
+    package: isort
+    filetypes:
+      - python
+    command: isort
+    cwd_markers:
+      - .isort.cfg
+      - pyproject.toml
+      - setup.py
+      - setup.cfg
+      - tox.ini
+      - .editorconfig
+  - id: janet-format
+    command: janet-format
+    stdin: true
+  - id: joker
+    package: joker
+    filetypes:
+      - clojure
+    command: joker
+    args:
+      - --format
+      - --write
+      - "-"
+  - id: jq
+    package: jq
+    filetypes:
+      - json
+      - jsonc
+      - jsonl
+    command: jq
+  - id: js_beautify
+    command: js-beautify
+    args:
+      - --editorconfig
+      - --file
+      - "-"
+    cwd_markers:
+      - .jsbeautifyrc
+  - id: json_repair
+    package: json-repair
+    filetypes:
+      - python
+    command: json_repair
+  - id: jsonnetfmt
+    package: jsonnetfmt
+    filetypes:
+      - jsonnet
+    command: jsonnetfmt
+    args:
+      - "-"
+    stdin: true
+  - id: just
+    command: just
+    args:
+      - --fmt
+      - --unstable
+      - -f
+      - "{file}"
+    stdin: false
+  - id: kcl
+    package: kcl
+    filetypes:
+      - kcl
+    command: kcl
+    args:
+      - fmt
+      - "{file}"
+    stdin: false
+  - id: kdlfmt
+    package: kdlfmt
+    filetypes:
+      - kdl
+    command: kdlfmt
+    args:
+      - format
+      - "-"
+    stdin: true
+  - id: keep-sorted
+    command: keep-sorted
+    args:
+      - "-"
+  - id: ktfmt
+    package: ktfmt
+    filetypes:
+      - kotlin
+    command: ktfmt
+    args:
+      - "-"
+  - id: ktlint
+    package: ktlint
+    filetypes:
+      - kotlin
+    command: ktlint
+    args:
+      - --format
+      - --stdin
+      - --log-level=none
+  - id: kulala-fmt
+    package: kulala-fmt
+    filetypes:
+      - http
+    command: kulala-fmt
+    args:
+      - format
+      - "{file}"
+    stdin: false
+  - id: latexindent
+    package: latexindent
+    filetypes:
+      - tex
+    command: latexindent
+    args:
+      - "-"
+    stdin: true
+  - id: leptosfmt
+    command: leptosfmt
+    args:
+      - --stdin
+  - id: liquidsoap-prettier
+    command: liquidsoap-prettier
+    args:
+      - -w
+      - "{file}"
+    stdin: false
+  - id: llf
+    command: llf
+    stdin: true
+  - id: lua-format
+    package: luaformatter
+    filetypes:
+      - lua
+    command: lua-format
+    stdin: true
+  - id: luafmt
+    package: luafmt
+    filetypes:
+      - lua
+    command: luafmt
+    args:
+      - --stdin
+    stdin: true
+    cwd_markers:
+      - .luafmt.toml
+      - luafmt.toml
+  - id: mago_format
+    command: mago
+    args:
+      - format
+      - --stdin-input
+    stdin: true
+  - id: mago_lint
+    command: mago
+    args:
+      - lint
+      - --fix
+      - --format-after-fix
+      - "{file}"
+    stdin: false
+  - id: markdown-toc
+    package: markdown-toc
+    filetypes:
+      - markdown
+    command: markdown-toc
+    stdin: false
+  - id: markdownfmt
+    command: markdownfmt
+  - id: markdownlint-cli2
+    package: markdownlint-cli2
+    filetypes:
+      - markdown
+    command: markdownlint-cli2
+    args:
+      - --fix
+      - "{file}"
+    stdin: false
+    exit_codes:
+      - 0
+      - 1
+  - id: markdownlint
+    package: markdownlint
+    filetypes:
+      - markdown
+    command: markdownlint
+    args:
+      - --fix
+      - "{file}"
+    stdin: false
+    exit_codes:
+      - 0
+      - 1
+  - id: mdformat
+    package: mdformat
+    filetypes:
+      - markdown
+    command: mdformat
+    args:
+      - "-"
+  - id: mdsf
+    package: mdsf
+    filetypes:
+      - markdown
+    command: mdsf
+    args:
+      - format
+      - "{file}"
+    stdin: false
+  - id: mdslw
+    package: mdslw
+    filetypes:
+      - markdown
+    command: mdslw
+  - id: meson
+    command: meson
+    args:
+      - format
+      - --source-file-path
+      - "{file}"
+      - "-"
+  - id: mh_style
+    package: miss_hit
+    filetypes:
+      - matlab
+      - octave
+    command: mh_style
+    args:
+      - --fix
+      - "{file}"
+    stdin: false
+    exit_codes:
+      - 0
+      - 1
+  - id: mix
+    command: mix
+    args:
+      - format
+      - --stdin-filename
+      - "{file}"
+      - "-"
+    cwd_markers:
+      - mix.exs
+  - id: mojo_format
+    command: mojo
+    args:
+      - format
+      - -q
+      - "{file}"
+    stdin: false
+  - id: nginxfmt
+    package: nginx-config-formatter
+    filetypes:
+      - nginx
+    command: nginxfmt
+    args:
+      - "-"
+  - id: nickel
+    command: nickel
+    args:
+      - format
+      - "{file}"
+    stdin: false
+  - id: nimpretty
+    command: nimpretty
+    args:
+      - "{file}"
+    stdin: false
+  - id: nixfmt
+    package: nixfmt
+    filetypes:
+      - nix
+    command: nixfmt
+  - id: nixpkgs_fmt
+    package: nixpkgs-fmt
+    filetypes:
+      - nix
+    command: nixpkgs-fmt
+  - id: nomad_fmt
+    package: nomad
+    filetypes:
+      - nomad
+    command: nomad
+    args:
+      - fmt
+      - "-"
+  - id: nph
+    command: nph
+    args:
+      - "-"
+    stdin: true
+  - id: npm-groovy-lint
+    package: npm-groovy-lint
+    filetypes:
+      - groovy
+    command: npm-groovy-lint
+    args:
+      - --fix
+      - "{file}"
+    stdin: false
+    exit_codes:
+      - 0
+      - 1
+  - id: nufmt
+    command: nufmt
+    args:
+      - "{file}"
+    stdin: false
+  - id: ocamlformat
+    package: ocamlformat
+    filetypes:
+      - ocaml
+    command: ocamlformat
+    args:
+      - --enable-outside-detected-project
+      - --name
+      - "{file}"
+      - "-"
+  - id: ocp-indent
+    command: ocp-indent
+  - id: odinfmt
+    package: ols
+    filetypes:
+      - odin
+    command: odinfmt
+    args:
+      - -stdin
+    stdin: true
+  - id: opa_fmt
+    package: opa
+    filetypes:
+      - rego
+    command: opa
+    args:
+      - fmt
+  - id: openapi_format
+    command: openapi-format
+    args:
+      - "{file}"
+      - --output
+      - "{file}"
+    stdin: false
+    cwd_markers:
+      - .openapiformatrc
+  - id: ormolu
+    package: ormolu
+    filetypes:
+      - haskell
+    command: ormolu
+    args:
+      - --stdin-input-file
+      - "{file}"
+    stdin: true
+  - id: oxfmt
+    package: oxfmt
+    filetypes:
+      - css
+      - graphql
+      - html
+      - javascript
+      - javascriptreact
+      - json
+      - jsonc
+      - jsonl
+      - less
+      - markdown
+      - scss
+      - typescript
+      - vue
+      - yaml
+    command: oxfmt
+    args:
+      - --stdin-filepath
+      - "{file}"
+    stdin: true
+    cwd_markers:
+      - .oxfmtrc.json
+      - .oxfmtrc.jsonc
+      - oxfmt.config.ts
+      - vite.config.ts
+      - vite.config.js
+  - id: oxlint
+    package: oxlint
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+    command: oxlint
+    args:
+      - --fix
+      - "{file}"
+    stdin: false
+    exit_codes:
+      - 0
+      - 1
+  - id: packer_fmt
+    command: packer
+    args:
+      - fmt
+      - "-"
+  - id: palantir-java-format
+    package: palantir-java-format
+    filetypes:
+      - java
+    command: palantir-java-format
+    args:
+      - --palantir
+      - "-"
+  - id: panache-fix
+    package: panache
+    filetypes:
+      - markdown
+      - quarto
+    command: panache
+    args:
+      - --stdin-filename
+      - "{file}"
+      - lint
+      - --fix
+    stdin: true
+    cwd_markers:
+      - .panache.toml
+      - panache.toml
+  - id: panache
+    package: panache
+    filetypes:
+      - markdown
+      - quarto
+    command: panache
+    args:
+      - --stdin-filename
+      - "{file}"
+      - format
+    stdin: true
+    cwd_markers:
+      - .panache.toml
+      - panache.toml
+  - id: pangu
+    command: pangu
+    stdin: true
+  - id: pasfmt
+    command: pasfmt
+    stdin: true
+  - id: perlimports
+    command: perlimports
+    args:
+      - --read-stdin
+      - --filename
+      - "{file}"
+  - id: perltidy
+    command: perltidy
+    args:
+      - --quiet
+  - id: pg_format
+    package: pgformatter
+    filetypes:
+      - sql
+    command: pg_format
+  - id: pkl
+    command: pkl
+    args:
+      - format
+      - "-"
+    exit_codes:
+      - 0
+      - 11
+  - id: prettier
+    package: prettier
+    filetypes:
+      - css
+      - graphql
+      - html
+      - javascript
+      - javascriptreact
+      - json
+      - jsonc
+      - jsonl
+      - less
+      - markdown
+      - scss
+      - typescript
+      - vue
+      - yaml
+    command: prettier
+  - id: prettierd
+    package: prettierd
+    filetypes:
+      - css
+      - graphql
+      - html
+      - javascript
+      - javascriptreact
+      - json
+      - jsonc
+      - jsonl
+      - less
+      - markdown
+      - scss
+      - typescript
+      - vue
+      - yaml
+    command: prettierd
+    args:
+      - "{file}"
+  - id: prettypst
+    package: prettypst
+    filetypes:
+      - typst
+    command: prettypst
+    args:
+      - --use-std-in
+      - --use-std-out
+    stdin: true
+  - id: prolog
+    command: swipl
+    args:
+      - formatter
+      - "{file}"
+    stdin: false
+  - id: pruner
+    command: pruner
+    stdin: true
+  - id: puppet-lint
+    command: puppet-lint
+    args:
+      - --fix
+      - "{file}"
+    stdin: false
+    exit_codes:
+      - 0
+      - 1
+  - id: purs-tidy
+    package: purescript-tidy
+    filetypes:
+      - purescript
+    command: purs-tidy
+    args:
+      - format
+    stdin: true
+  - id: pycln
+    command: pycln
+    args:
+      - --silence
+      - "-"
+    cwd_markers:
+      - pyproject.toml
+      - setup.cfg
+  - id: pyink
+    package: pyink
+    filetypes:
+      - python
+    command: pyink
+    args:
+      - --stdin-filename
+      - "{file}"
+      - --quiet
+      - "-"
+    stdin: true
+  - id: pymarkdownlnt
+    package: pymarkdownlnt
+    filetypes:
+      - markdown
+    command: pymarkdownlnt
+    args:
+      - --return-code-scheme
+      - minimal
+      - fix
+      - "{file}"
+    stdin: false
+  - id: pyproject-fmt
+    package: pyproject-fmt
+    filetypes:
+      - python
+      - toml
+    command: pyproject-fmt
+    args:
+      - "-"
+    cwd_markers:
+      - pyproject.toml
+    exit_codes:
+      - 0
+      - 1
+  - id: python-ly
+    command: ly
+    args:
+      - reformat
+      - "{file}"
+      - -o
+      - "{file}"
+    stdin: false
+  - id: pyupgrade
+    package: pyupgrade
+    filetypes:
+      - python
+    command: pyupgrade
+    args:
+      - --exit-zero-even-if-changed
+      - "{file}"
+    stdin: false
+  - id: qmlformat
+    command: qmlformat
+    args:
+      - -i
+      - "{file}"
+    stdin: false
+  - id: racketfmt
+    command: raco
+    args:
+      - fmt
+  - id: reformat-gherkin
+    package: reformat-gherkin
+    filetypes:
+      - cucumber
+    command: reformat-gherkin
+    args:
+      - "-"
+    stdin: true
+  - id: reorder-python-imports
+    package: reorder-python-imports
+    filetypes:
+      - python
+    command: reorder-python-imports
+    args:
+      - --exit-zero-even-if-changed
+      - "-"
+    stdin: true
+  - id: rescript-format
+    command: rescript
+    stdin: true
+    cwd_markers:
+      - rescript.json
+      - bsconfig.json
+    require_cwd: true
+  - id: roc
+    command: roc
+    args:
+      - format
+      - --stdin
+      - --stdout
+    stdin: true
+  - id: rstfmt
+    command: rstfmt
+    args:
+      - "{file}"
+    stdin: false
+  - id: rubocop
+    package: rubocop
+    filetypes:
+      - ruby
+    command: rubocop
+    args:
+      - --server
+      - -a
+      - -f
+      - quiet
+      - --stderr
+      - --stdin
+      - "{file}"
+    exit_codes:
+      - 0
+      - 1
+  - id: rubyfmt
+    package: rubyfmt
+    filetypes:
+      - ruby
+    command: rubyfmt
+    args:
+      - --stdin-filepath
+      - "{file}"
+    stdin: true
+  - id: ruff_fix
+    package: ruff
+    filetypes:
+      - python
+    command: ruff
+    args:
+      - check
+      - --fix
+      - --force-exclude
+      - --exit-zero
+      - --no-cache
+      - --stdin-filename
+      - "{file}"
+      - "-"
+    stdin: true
+    cwd_markers:
+      - pyproject.toml
+      - ruff.toml
+      - .ruff.toml
+  - id: ruff_format
+    package: ruff
+    filetypes:
+      - python
+    command: ruff
+    args:
+      - format
+      - --force-exclude
+      - --stdin-filename
+      - "{file}"
+      - "-"
+    stdin: true
+    cwd_markers:
+      - pyproject.toml
+      - ruff.toml
+      - .ruff.toml
+  - id: ruff_organize_imports
+    package: ruff
+    filetypes:
+      - python
+    command: ruff
+    args:
+      - check
+      - --fix
+      - --force-exclude
+      - --select=I001
+      - --exit-zero
+      - --no-cache
+      - --stdin-filename
+      - "{file}"
+      - "-"
+    stdin: true
+    cwd_markers:
+      - pyproject.toml
+      - ruff.toml
+      - .ruff.toml
+  - id: rufo
+    package: rufo
+    filetypes:
+      - ruby
+    command: rufo
+    exit_codes:
+      - 0
+      - 3
+  - id: rumdl
+    package: rumdl
+    filetypes:
+      - markdown
+    command: rumdl
+    args:
+      - fmt
+      - --stdin-filename
+      - "{file}"
+      - "-"
+    stdin: true
+  - id: runic
+    command: runic
+  - id: rustfmt
+    command: rustfmt
+    cwd_markers:
+      - rustfmt.toml
+      - .rustfmt.toml
+  - id: rustywind
+    package: rustywind
+    filetypes:
+      - html
+      - javascript
+      - javascriptreact
+      - typescript
+      - vue
+    command: rustywind
+    args:
+      - --stdin
+  - id: scalafmt
+    command: scalafmt
+    args:
+      - --stdin
+  - id: shellcheck
+    package: shellcheck
+    filetypes:
+      - bash
+    command: shellcheck
+    stdin: false
+  - id: shellharden
+    package: shellharden
+    filetypes:
+      - bash
+    command: shellharden
+    args:
+      - --transform
+      - ""
+  - id: shfmt
+    package: shfmt
+    filetypes:
+      - bash
+      - zsh
+    command: shfmt
+  - id: sleek
+    package: sleek
+    filetypes:
+      - sql
+    command: sleek
+    stdin: true
+  - id: smlfmt
+    command: smlfmt
+  - id: snakefmt
+    package: snakefmt
+    filetypes:
+      - snakemake
+    command: snakefmt
+    stdin: false
+  - id: spotless_gradle
+    command: ./gradlew
+    stdin: true
+    cwd_markers:
+      - gradlew
+    require_cwd: true
+  - id: spotless_maven
+    command: ./mvnw
+    stdin: true
+    cwd_markers:
+      - mvnw
+    require_cwd: true
+  - id: sql_formatter
+    package: sql-formatter
+    filetypes:
+      - sql
+    command: sql-formatter
+  - id: sqlfluff
+    package: sqlfluff
+    filetypes:
+      - sql
+    command: sqlfluff
+    args:
+      - fix
+      - "-"
+    stdin: true
+    cwd_markers:
+      - .sqlfluff
+      - pep8.ini
+      - pyproject.toml
+      - setup.cfg
+      - tox.ini
+    require_cwd: true
+  - id: sqlfmt
+    package: sqlfmt
+    filetypes:
+      - sql
+    command: sqlfmt
+    args:
+      - "-"
+  - id: sqruff
+    package: sqruff
+    filetypes:
+      - sql
+    command: sqruff
+    args:
+      - fix
+      - "{file}"
+    stdin: false
+    cwd_markers:
+      - .sqruff
+    require_cwd: false
+  - id: squeeze_blanks
+    command: cat
+    args:
+      - -s
+    stdin: true
+  - id: standard-clj
+    command: standard-clj
+    args:
+      - fix
+      - "-"
+  - id: standardjs
+    package: standardjs
+    filetypes:
+      - javascript
+      - javascriptreact
+    command: standard
+    args:
+      - --fix
+      - --stdin
+  - id: standardrb
+    package: standardrb
+    filetypes:
+      - ruby
+    command: standardrb
+    args:
+      - --fix
+      - -f
+      - quiet
+      - --stderr
+      - --stdin
+      - "{file}"
+    exit_codes:
+      - 0
+      - 1
+  - id: stylelint
+    package: stylelint
+    filetypes:
+      - css
+      - less
+      - sass
+      - scss
+    command: stylelint
+    args:
+      - --stdin
+      - --stdin-filename
+      - "{file}"
+      - --fix
+    stdin: true
+    cwd_markers:
+      - package.json
+    exit_codes:
+      - 0
+      - 2
+  - id: stylish-haskell
+    command: stylish-haskell
+    stdin: true
+  - id: stylua
+    package: stylua
+    filetypes:
+      - lua
+      - luau
+    command: stylua
+    args:
+      - --search-parent-directories
+      - --respect-ignores
+      - --stdin-filepath
+      - "{file}"
+      - "-"
+    cwd_markers:
+      - .stylua.toml
+      - stylua.toml
+  - id: superhtml
+    package: superhtml
+    filetypes:
+      - html
+      - superhtml
+    command: superhtml
+    args:
+      - fmt
+      - --stdin
+  - id: swift
+    command: swift
+    args:
+      - format
+      - "{file}"
+      - --in-place
+    stdin: false
+  - id: swift_format
+    command: swift-format
+    args:
+      - "{file}"
+      - --in-place
+    stdin: false
+  - id: swiftformat
+    package: swiftformat
+    filetypes:
+      - swift
+    command: swiftformat
+    args:
+      - --stdinpath
+      - "{file}"
+    stdin: true
+    cwd_markers:
+      - .swiftformat
+      - Package.swift
+      - buildServer.json
+  - id: swiftlint
+    package: swiftlint
+    filetypes:
+      - swift
+    command: swiftlint
+    args:
+      - lint
+      - --use-stdin
+      - --fix
+      - --format
+    stdin: true
+    cwd_markers:
+      - .swiftlint.yml
+      - Package.swift
+  - id: syntax_tree
+    package: stree
+    filetypes:
+      - ruby
+    command: stree
+    args:
+      - write
+      - "{file}"
+    stdin: false
+    cwd_markers:
+      - .streerc
+  - id: taplo
+    package: taplo
+    filetypes:
+      - toml
+    command: taplo
+    args:
+      - format
+      - --stdin-filepath
+      - "{file}"
+      - "-"
+  - id: tclfmt
+    package: tclint
+    filetypes:
+      - tcl
+    command: tclfmt
+    args:
+      - "-"
+  - id: templ
+    package: templ
+    filetypes:
+      - go
+      - html
+    command: templ
+    args:
+      - fmt
+      - -stdin-filepath
+      - "{file}"
+  - id: terraform_fmt
+    package: terraform
+    filetypes:
+      - terraform
+      - terraform-vars
+    command: terraform
+    args:
+      - fmt
+      - -no-color
+      - "-"
+  - id: terragrunt_hclfmt
+    command: terragrunt
+    args:
+      - hcl
+      - fmt
+      - --file
+      - "{file}"
+    stdin: false
+  - id: tex-fmt
+    package: tex-fmt
+    filetypes:
+      - tex
+    command: tex-fmt
+  - id: tofu_fmt
+    command: tofu
+    args:
+      - fmt
+      - "-"
+  - id: tombi
+    package: tombi
+    filetypes:
+      - toml
+    command: tombi
+    args:
+      - format
+      - --stdin-filename
+      - "{file}"
+      - "-"
+    stdin: true
+  - id: treefmt
+    command: treefmt
+    args:
+      - "{file}"
+    stdin: false
+    cwd_markers:
+      - treefmt.toml
+      - .treefmt.toml
+    require_cwd: true
+  - id: trunk
+    command: trunk
+    args:
+      - fmt
+      - "{file}"
+    stdin: false
+  - id: txtpbfmt
+    command: txtpbfmt
+    args:
+      - -stdin_display_path
+      - "{file}"
+  - id: typespec
+    command: tsp
+    args:
+      - format
+      - "{file}"
+    stdin: false
+    cwd_markers:
+      - tspconfig.yaml
+  - id: typos
+    package: typos
+    command: typos
+    args:
+      - --write-changes
+      - --force-exclude
+      - "{file}"
+    stdin: false
+    exit_codes:
+      - 0
+      - 2
+  - id: typstfmt
+    command: typstfmt
+    stdin: true
+  - id: typstyle
+    package: typstyle
+    filetypes:
+      - typst
+    command: typstyle
+    stdin: true
+  - id: ufmt
+    command: ufmt
+    args:
+      - format
+      - "{file}"
+    stdin: false
+  - id: uncrustify
+    command: uncrustify
+  - id: usort
+    package: usort
+    filetypes:
+      - python
+    command: usort
+    args:
+      - format
+      - "-"
+    stdin: true
+    cwd_markers:
+      - pyproject.toml
+  - id: v
+    command: v
+    args:
+      - fmt
+      - -w
+      - "{file}"
+    stdin: false
+  - id: verible
+    package: verible
+    filetypes:
+      - systemverilog
+    command: verible-verilog-format
+    args:
+      - --stdin_name
+      - "{file}"
+      - "-"
+  - id: vsg
+    package: vhdl-style-guide
+    filetypes:
+      - vhdl
+    command: vsg
+    stdin: false
+  - id: xmlformatter
+    package: xmlformatter
+    filetypes:
+      - xml
+    command: xmlformat
+    args:
+      - "-"
+  - id: xmllint
+    command: xmllint
+    args:
+      - --format
+      - "-"
+  - id: xmlstarlet
+    command: xmlstarlet
+    args:
+      - format
+      - --indent-spaces
+      - "2"
+      - "-"
+  - id: yamlfix
+    package: yamlfix
+    filetypes:
+      - yaml
+    command: yamlfix
+    args:
+      - "-"
+  - id: yamlfmt
+    package: yamlfmt
+    filetypes:
+      - yaml
+    command: yamlfmt
+    args:
+      - "-"
+  - id: yapf
+    package: yapf
+    filetypes:
+      - python
+    command: yapf
+    args:
+      - --quiet
+  - id: yew-fmt
+    command: yew-fmt
+    cwd_markers:
+      - rustfmt.toml
+      - .rustfmt.toml
+  - id: yq
+    package: yq
+    filetypes:
+      - yaml
+    command: yq
+    args:
+      - -P
+      - "-"
+    stdin: true
+  - id: zigfmt
+    command: zig
+    args:
+      - fmt
+      - --stdin
+  - id: ziggy
+    command: ziggy
+    args:
+      - fmt
+      - --stdin
+  - id: ziggy_schema
+    command: ziggy
+    args:
+      - fmt
+      - --stdin-schema
+  - id: zprint
+    package: zprint
+    filetypes:
+      - clojure
+    command: zprint

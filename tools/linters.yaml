@@ -1,0 +1,2280 @@
+schema_version: 2
+upstream:
+  repo: mfussenegger/nvim-lint
+  sha: f6230a5c06ba59e6059c14637f1dbe29a7978b9b
+linters:
+  - id: actionlint
+    package: actionlint
+    filetypes:
+      - yaml
+    cmd: actionlint
+    stdin: true
+    ignore_exitcode: true
+  - id: alex
+    package: alex
+    filetypes:
+      - markdown
+    cmd: alex
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "[\\s]*(?<line>[0-9]+):(?<column>[0-9]+)\\-(?<end_line>[0-9]+):(?<end_column>[0-9]+)[\\s]+(?<severity>[A-Za-z0-9]+)[\\s]+(?<message>.*?)[\\s]+[\\s]+(?<code>[!-~]+)[\\s]+[!-~]+"
+      severity:
+        warning: 2
+        error: 1
+      defaults:
+        severity: 2
+        source: alex
+  - id: ameba
+    cmd: bin/ameba
+    args:
+      - --format
+      - json
+    stdin: false
+    append_file: true
+    ignore_exitcode: true
+  - id: ansible_lint
+    package: ansible-lint
+    cmd: ansible-lint
+    args:
+      - -p
+      - --nocolor
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "^(?<path>.+?):(?<line>\\d+):(?<column>\\d+): (?<message>.*)$"
+        - "^(?<path>.+?):(?<line>\\d+): (?<message>.*)$"
+      defaults:
+        source: ansible-lint
+        severity: 3
+  - id: bandit
+    package: bandit
+    filetypes:
+      - python
+    cmd: bandit
+    args:
+      - -f
+      - custom
+      - --msg-template
+      - "{line}:{col}:{severity}:{test_id} {msg}"
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - (?<line>[0-9]+):(?<column>[0-9]+):(?<severity>[A-Z]+):(?<code>[A-Za-z0-9]+) (?<message>.*)
+      severity:
+        HIGH: 1
+        MEDIUM: 2
+        LOW: 3
+      defaults:
+        source: bandit
+  - id: bash
+    cmd: bash
+    args:
+      - -n
+      - -s
+    stdin: true
+    append_file: false
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ^bash:\\\\ line\\\\ (?<line>\d+):\\\\ (?<message>.*)$
+      defaults:
+        source: bash
+        severity: 1
+  - id: bean_check
+    cmd: bean-check
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "^(?<path>.+?):(?<line>\\d+): (?<message>.*)$"
+      defaults:
+        source: bean-check
+        severity: 1
+  - id: blocklint
+    cmd: blocklint
+    args:
+      - --stdin
+      - --end-pos
+    stdin: true
+    parser:
+      kind: regex
+      patterns:
+        - "^stdin:(?<line>\\d+):(?<column>\\d+):(?<end_column>\\d+): (?<message>.*)$"
+      defaults:
+        source: blocklint
+        severity: 3
+  - id: buf_lint
+    package: buf
+    filetypes:
+      - proto
+    cmd: buf
+    args:
+      - lint
+      - --error-format
+      - json
+    stdin: false
+    ignore_exitcode: true
+  - id: buildifier
+    package: buildifier
+    filetypes:
+      - bzl
+    cmd: buildifier
+    stdin: true
+    append_file: false
+    stream: both
+  - id: cfn_lint
+    package: cfn-lint
+    filetypes:
+      - json
+      - jsonc
+      - jsonl
+      - yaml
+    cmd: cfn-lint
+    args:
+      - --format
+      - parseable
+    stdin: true
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "[^:]+:(?<line>[0-9]+):(?<column>[0-9]+):(?<end_line>[0-9]+):(?<end_column>[0-9]+):(?<severity>[A-Za-z0-9])(?<code>[0-9]+):(?<message>.*)"
+      severity:
+        W: 2
+        E: 1
+      defaults:
+        source: cfn-lint
+  - id: cfn_nag
+    cmd: cfn_nag_scan
+    args:
+      - --output-format
+      - json
+      - --input-path
+    stdin: false
+  - id: checkbashisms
+    cmd: checkbashisms
+    args:
+      - --lint
+      - "-"
+    stdin: true
+    append_file: true
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "^\\(stdin\\):(?<line>\\d+):1: warning: possible bashism; (?<message>.*)$"
+      defaults:
+        source: checkbashisms
+        severity: 2
+  - id: checkmake
+    package: checkmake
+    filetypes:
+      - automake
+      - make
+    cmd: checkmake
+    args:
+      - --format='{{.LineNumber}}:{{.Rule}}:{{.Violation}}\n'
+    stdin: false
+    append_file: true
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - (?<line>[0-9]+):(?<code>[A-Za-z0-9]+):(?<message>.+)
+      defaults:
+        source: checkmake
+        severity: 2
+  - id: checkstyle
+    package: checkstyle
+    filetypes:
+      - java
+    cmd: checkstyle
+    args:
+      - -f
+      - sarif
+      - -c
+    ignore_exitcode: true
+  - id: chktex
+    cmd: chktex
+    args:
+      - -v0
+      - -I0
+      - -s
+      - ":"
+      - -f
+      - "%l%b%c%b%d%b%k%b%n%b%m%b%b%b"
+    stdin: true
+  - id: clangtidy
+    cmd: clang-tidy
+    args:
+      - --quiet
+    stdin: false
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "(?<path>[^:]*):(?<line>[0-9]+):(?<column>[0-9]+): (?<severity>[A-Za-z0-9]+): (?<message>[^\\[]+) \\[(?<code>.*)\\]"
+      severity:
+        error: 1
+        warning: 2
+        information: 3
+        hint: 4
+        note: 4
+      defaults:
+        source: clang-tidy
+  - id: clazy
+    cmd: clazy-standalone
+    stdin: false
+    stream: stderr
+    parser:
+      kind: regex
+      patterns:
+        - "(?<path>[^:]*):(?<line>[0-9]+):(?<column>[0-9]+): (?<severity>[A-Za-z0-9]+): (?<message>[^\\[]+) \\[\\-Wclazy\\-(?<code>.*)\\]"
+      defaults:
+        source: clazy
+  - id: clippy
+    cmd: cargo
+    args:
+      - clippy
+      - --message-format=json
+    stdin: false
+    append_file: false
+  - id: clj-kondo
+    package: clj-kondo
+    filetypes:
+      - clojure
+    cmd: clj-kondo
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+  - id: cmake_lint
+    package: cmakelang
+    filetypes:
+      - cmake
+    cmd: cmake-lint
+    args:
+      - --suppress-decorations
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - (?<path>[^:]+):(?<line>[0-9]+),?(?<column>[0-9]*):[\s]\[(?<code>(?<severity>[A-Za-z0-9])[0-9]+)\][\s](?<message>.+)
+      severity:
+        E: 1
+        W: 2
+        R: 3
+        C: 4
+      defaults:
+        source: cmake-lint
+  - id: cmakelint
+    package: cmakelint
+    filetypes:
+      - cmake
+    cmd: cmakelint
+    args:
+      - --quiet
+    stdin: false
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "(?<path>[^:]+):(?<line>[0-9]+): (?<message>.+) \\[(?<code>.+)\\]"
+      defaults:
+        source: cmakelint
+        severity: 2
+  - id: codespell
+    package: codespell
+    cmd: codespell
+    args:
+      - --stdin-single-line
+      - "-"
+    stdin: true
+    ignore_exitcode: true
+  - id: commitlint
+    package: commitlint
+    cmd: commitlint
+    stdin: true
+    ignore_exitcode: true
+  - id: cppcheck
+    cmd: cppcheck
+    stdin: false
+    stream: stderr
+    parser:
+      kind: regex
+      patterns:
+        - "(?<path>[^:]*):(?<line>[0-9]*):(?<column>[^:]*): \\[(?<code>[^\\]\\\\]*)\\] (?<severity>[^:]*): (?<message>.*)"
+      severity:
+        error: 1
+        warning: 2
+        performance: 2
+        style: 3
+        information: 3
+      defaults:
+        source: cppcheck
+  - id: cpplint
+    package: cpplint
+    filetypes:
+      - c
+      - cpp
+    cmd: cpplint
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "(?<path>[^:]+):(?<line>[0-9]+):  (?<message>.+)  (?<code>.+)"
+      defaults:
+        source: cpplint
+        severity: 2
+  - id: credo
+    cmd: mix
+    args:
+      - credo
+      - list
+      - "{file}"
+      - --read-from-stdin
+      - --strict
+      - --format=oneline
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - \[[A-Za-z]\][\s]+(?<severity>.+)[\s]+[^:]+:(?<line>[0-9]+):?(?<column>[0-9]*)[\s]+(?<message>.*)
+      severity:
+        ↑: 1
+        ↗: 2
+        →: 3
+        ↘: 4
+        ↓: 4
+      defaults:
+        source: credo
+  - id: cspell
+    package: cspell
+    cmd: cspell
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+  - id: cue
+    package: cue
+    filetypes:
+      - cue
+    cmd: cue
+    args:
+      - vet
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+  - id: curlylint
+    package: curlylint
+    filetypes:
+      - jinja
+      - liquid
+      - nunjucks
+      - twig
+    cmd: curlylint
+    args:
+      - --format
+      - compact
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "^(?<path>.+?):(?<line>\\d+):(?<column>\\d+): (?<message>.*)$"
+      defaults:
+        source: curlylint
+        severity: 2
+  - id: dash
+    cmd: dash
+    args:
+      - -n
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "(?<path>.+): (?<line>[0-9]+): (?<message>.+)"
+      defaults:
+        source: dash
+        severity: 1
+  - id: dclint
+    package: docker-compose-linter
+    filetypes:
+      - yaml.docker-compose
+    cmd: dclint
+    stdin: false
+    append_file: true
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ^[\s]*(?<line>[0-9]+):(?<column>[0-9]+)[\s]+(?<severity>[A-Za-z0-9]+)[\s]+(?<message>.+)[\s]+\S+$
+      severity:
+        error: 1
+        warning: 2
+      defaults:
+        source: dclint
+  - id: deadnix
+    cmd: deadnix
+    args:
+      - --output-format=json
+    stdin: false
+    append_file: true
+    ignore_exitcode: false
+  - id: deno
+    package: deno
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+    cmd: deno
+    args:
+      - lint
+      - --json
+    stdin: false
+    ignore_exitcode: true
+  - id: detekt
+    package: detekt
+    filetypes:
+      - kotlin
+    cmd: detekt
+    args:
+      - "-bp "
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+  - id: dialyxir
+    cmd: mix
+    args:
+      - dialyzer
+      - --format
+      - github
+      - --quiet-with-result
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+  - id: djlint
+    package: djlint
+    filetypes:
+      - go
+      - handlebars
+      - jinja
+      - mustache
+      - nunjucks
+      - twig
+    cmd: djlint
+    args:
+      - --linter-output-format
+      - "{line}:{code}: {message}"
+      - "-"
+    stdin: true
+    stream: both
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "(?<line>[0-9]+):(?<column>[0-9]+):(?<code>[A-Za-z][0-9]+): (?<message>.*)"
+      defaults:
+        source: djlint
+        severity: 3
+  - id: dmypy
+    package: mypy
+    filetypes:
+      - python
+    cmd: dmypy
+    stdin: false
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "(?<path>[^:]+):(?<line>[0-9]+):(?<column>[0-9]+):(?<end_line>[0-9]+):(?<end_column>[0-9]+): (?<severity>[A-Za-z]+): (?<message>.*) \\[(?<code>[A-Za-z][A-Za-z-]+)\\]"
+      severity:
+        error: 1
+        warning: 2
+        note: 4
+      defaults:
+        source: dmypy
+  - id: dotenv_linter
+    package: dotenv-linter
+    filetypes:
+      - env
+    cmd: dotenv-linter
+    args:
+      - check
+      - --quiet
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "[A-Za-z0-9]+:(?<line>[0-9]+) (?<code>[A-Za-z0-9]+): (?<message>.*)"
+      defaults:
+        source: dotenv_linter
+        severity: 3
+  - id: droast
+    cmd: droast
+    args:
+      - --format
+      - json
+      - --no-roast
+      - --no-fail
+      - --check-ignorefile=false
+    stdin: false
+    append_file: true
+    stream: both
+    ignore_exitcode: true
+  - id: dxc
+    cmd: dxc
+    args:
+      - -T
+      - cs_6_5
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "[\\s]*(?<path>[^:]+):(?<line>[0-9]+):(?<column>[0-9]+): (?<severity>.+): (?<message>.+)"
+      severity:
+        error: 1
+        warning: 2
+      defaults:
+        source: dxc
+        severity: 2
+  - id: editorconfig-checker
+    package: editorconfig-checker
+    cmd: editorconfig-checker
+    args:
+      - -no-color
+    stdin: false
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "[\\s]*(?<line>[0-9]+): (?<message>.+)"
+      defaults:
+        severity: 3
+        source: editorconfig-checker
+  - id: erb_lint
+    cmd: bundle
+    args:
+      - exec
+      - erblint
+      - --format
+      - compact
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "^(?<path>.+?):(?<line>\\d+):(?<column>\\d+): (?<message>.*)$"
+      defaults:
+        source: erb-lint
+        severity: 2
+  - id: eugene
+    package: eugene
+    filetypes:
+      - sql
+    cmd: eugene
+    args:
+      - lint
+      - --format=json
+    stdin: false
+  - id: fennel
+    cmd: fennel
+    args:
+      - --globals
+      - --compile
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+  - id: fieldalignment
+    cmd: fieldalignment
+    args:
+      - -json
+    stdin: false
+    ignore_exitcode: true
+  - id: fish
+    cmd: fish
+    args:
+      - --no-execute
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+  - id: flake8
+    package: flake8
+    filetypes:
+      - python
+    cmd: flake8
+    args:
+      - --format=%(path)s:%(row)d:%(col)d:%(code)s:%(text)s
+      - --no-show-source
+      - --stdin-display-name
+      - "{file}"
+      - "-"
+    stdin: true
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "[^:]+:(?<line>[0-9]+):(?<column>[0-9]+):(?<code>[A-Za-z0-9]+):(?<message>.+)"
+      defaults:
+        source: flake8
+        severity: 2
+  - id: flawfinder
+    cmd: flawfinder
+    args:
+      - -S
+      - -Q
+      - -D
+      - -C
+      - --
+    stdin: false
+    stream: stdout
+    parser:
+      kind: regex
+      patterns:
+        - "^(?<path>.*):(?<line>[0-9]+):(?<column>[0-9]+): *\\[(?<severity>[0-5])\\] (?<message>.*)$"
+      severity:
+        "1": 2
+        "2": 2
+        "3": 2
+        "4": 2
+        "5": 2
+      defaults:
+        source: flawfinder
+  - id: fortitude
+    package: fortitude
+    filetypes:
+      - fortran
+    cmd: fortitude
+    args:
+      - check
+      - --output-format
+      - json
+    stdin: false
+    append_file: true
+    ignore_exitcode: true
+  - id: fsharplint
+    cmd: dotnet-fsharplint
+    args:
+      - --format
+      - msbuild
+      - lint
+    stdin: false
+    append_file: true
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ^(?<path>.+?)\(.*,.*,(?<line>\d+),(?<column>\d+)\):FSharpLint\\ (?<severity>[A-Za-z])arning (?<message>.*)$
+      defaults:
+        source: fsharplint
+        severity: 2
+  - id: gawk
+    cmd: gawk
+    args:
+      - -f-
+      - -L
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+  - id: gdlint
+    package: gdtoolkit
+    filetypes:
+      - gdscript
+    cmd: gdlint
+    stdin: false
+    append_file: true
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - (?<path>.+):(?<line>[0-9]+):[\s](?<severity>[A-Za-z]+):[\s](?<message>.*)
+      severity:
+        Error: 2
+      defaults:
+        source: gdlint
+  - id: ghdl
+    cmd: ghdl
+    args:
+      - -s
+      - --std=08
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - (?<path>[^:]+):(?<line>[0-9]+):(?<column>[0-9]+):(?<severity>[a-z]+):[\s]*(?<message>.+)
+      severity:
+        error: 1
+        warning: 2
+      defaults:
+        source: ghdl
+  - id: gitleaks
+    package: gitleaks
+    cmd: gitleaks
+    args:
+      - stdin
+      - --report-format=json
+      - --report-path=-
+      - --exit-code=0
+    stdin: true
+    append_file: true
+    stream: stdout
+    ignore_exitcode: false
+  - id: gitlint
+    package: gitlint
+    cmd: gitlint
+    args:
+      - --staged
+      - --msg-filename
+      - "{file}"
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+  - id: glinter
+    cmd: gleam
+    args:
+      - run
+      - -m
+      - glinter
+      - --
+      - --format
+      - json
+    append_file: false
+  - id: glslc
+    cmd: glslc
+    args:
+      - -o
+      - "-"
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "[\\s]*(?<path>[^:]+):(?<line>[0-9]+): (?<severity>.+): (?<message>.+: .+)"
+      severity:
+        error: 1
+        warning: 2
+      defaults:
+        source: glslc
+        severity: 2
+  - id: golangcilint
+    package: golangci-lint
+    filetypes:
+      - go
+    cmd: golangci-lint
+    append_file: false
+    stream: stdout
+  - id: hadolint
+    package: hadolint
+    cmd: hadolint
+    args:
+      - -f
+      - json
+      - "-"
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+  - id: herb
+    cmd: herb-lint
+    args:
+      - --no-timing
+      - --no-color
+      - --json
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+  - id: hledger
+    cmd: hledger
+    args:
+      - check
+      - -s
+      - -f
+      - "-"
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+  - id: hlint
+    package: hlint
+    filetypes:
+      - haskell
+    cmd: hlint
+    args:
+      - --json
+      - --no-exit-code
+  - id: htmlhint
+    package: htmlhint
+    filetypes:
+      - html
+    cmd: htmlhint
+    args:
+      - stdin
+      - -f
+      - compact
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ".*: line (?<line>[0-9]+), col (?<column>[0-9]+), (?<severity>[A-Za-z]+) \\- (?<message>.+) \\((?<code>.+)\\)"
+      severity:
+        error: 1
+        warning: 2
+      defaults:
+        source: htmlhint
+  - id: inko
+    cmd: inko
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+  - id: j2lint
+    package: j2lint
+    filetypes:
+      - jinja
+    cmd: j2lint
+    args:
+      - --json
+      - --stdin
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+  - id: janet
+    cmd: janet
+    args:
+      - -k
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+  - id: joker
+    package: joker
+    filetypes:
+      - clojure
+    cmd: joker
+    args:
+      - --lint
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "^(?<path>.+?):(?<line>\\d+):(?<column>\\d+): (?<message>.*)$"
+      defaults:
+        source: joker
+  - id: jq
+    package: jq
+    filetypes:
+      - json
+      - jsonc
+      - jsonl
+    cmd: jq
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "^(?<code>.+): (?<message>.+) at line (?<line>[0-9]+), column (?<column>[0-9]+)"
+  - id: jshint
+    cmd: jshint
+    args:
+      - --reporter
+      - unix
+      - --extract
+      - auto
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "^(?<path>.+?):(?<line>\\d+):(?<column>\\d+): (?<message>.*)$"
+      defaults:
+        source: jshint
+        severity: 2
+  - id: json5
+    cmd: json5
+    args:
+      - --validate
+    stdin: true
+    append_file: false
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ^JSON5:\\\\ (?<message>.*)\\\\ at\\\\ (?<line>\d+):(?<column>\d+)$
+      defaults:
+        source: json5
+        severity: 1
+  - id: json_tool
+    cmd: python3
+    args:
+      - -m
+      - json.tool
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "^(?<message>.+): line (?<line>[0-9]+) column (?<column>[0-9]+) .+"
+  - id: jsonlint
+    package: jsonlint
+    filetypes:
+      - json
+      - jsonc
+      - jsonl
+    cmd: jsonlint
+    args:
+      - --compact
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - line (?<line>[0-9]+), col (?<column>[0-9]+), (?<message>.*)
+      defaults:
+        source: jsonlint
+        severity: 1
+  - id: ksh
+    cmd: ksh
+    args:
+      - -o
+      - noexec
+      - -s
+    stdin: true
+    append_file: false
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ^ksh:\\\\ syntax\\\\ (?<severity>[A-Za-z]).*\\\\ at\\\\ line\\\\ (?<line>\d+):\\\\ (?<message>.*)$
+        - ^ksh:\\\\ (?<severity>[A-Za-z]).*\\\\ line\\\\ (?<line>\d+):\\\\ (?<message>.*)$
+      defaults:
+        source: ksh
+  - id: ktlint
+    package: ktlint
+    filetypes:
+      - kotlin
+    cmd: ktlint
+    args:
+      - --reporter=json
+      - --stdin
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+  - id: lacheck
+    cmd: lacheck
+    stdin: false
+    stream: stdout
+    ignore_exitcode: false
+    parser:
+      kind: regex
+      patterns:
+        - "[^:]+, line (?<line>[0-9]+):(?<message>.+)"
+      defaults:
+        source: lacheck
+        severity: 2
+  - id: languagetool
+    cmd: languagetool
+    args:
+      - --autoDetect
+      - --json
+    stream: stdout
+  - id: lint-openapi
+    cmd: lint-openapi
+    args:
+      - --json
+    append_file: true
+    ignore_exitcode: true
+  - id: ls_lint
+    cmd: ls-lint
+    stdin: false
+    append_file: false
+    stream: stdout
+    ignore_exitcode: true
+  - id: lslint
+    cmd: lslint
+    args:
+      - -w
+      - -m
+      - -u
+      - -z
+      - -i
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "(?<severity>[A-Z]+):: \\([\\s]*(?<line>[0-9]+),[\\s]*(?<column>[0-9]+)\\): (?<message>.+)"
+      severity:
+        ERROR: 1
+        WARN: 2
+        INFO: 3
+        OTHER: 3
+        DEBUG: 3
+        source: lslint
+  - id: luac
+    cmd: luac
+    args:
+      - -p
+      - "-"
+    stdin: true
+    append_file: false
+    stream: stderr
+    ignore_exitcode: true
+  - id: luacheck
+    package: luacheck
+    filetypes:
+      - lua
+    cmd: luacheck
+    args:
+      - --formatter
+      - plain
+      - --codes
+      - --ranges
+      - "-"
+    stdin: true
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "[^:]+:(?<line>[0-9]+):(?<column>[0-9]+)\\-(?<end_column>[0-9]+): \\((?<severity>[A-Za-z])(?<code>[0-9]+)\\) (?<message>.*)"
+      severity:
+        W: 2
+        E: 1
+      defaults:
+        source: luacheck
+  - id: mado
+    cmd: mado
+    args:
+      - check
+      - --quiet
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - \(stdin\):(?<line>[0-9]+):(?<column>[0-9]+):[\s]*(?<code>[A-Z0-9]+)[\s]+(?<message>.+)
+      defaults:
+        source: mado
+        severity: 2
+  - id: mago_analyze
+    cmd: mago
+    args:
+      - --colors=never
+      - analyze
+      - --reporting-format=short
+    stdin: false
+    append_file: true
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "[^:]+:(?<line>[0-9]+):(?<column>[0-9]+):[\\s]?(?<severity>[a-z]+)\\[(?<code>[A-Za-z0-9-]+)\\]:[\\s]?(?<message>.+)"
+      severity:
+        error: 1
+        warning: 2
+        note: 3
+        help: 4
+      defaults:
+        source: mago_analyze
+  - id: mago_lint
+    cmd: mago
+    args:
+      - --colors=never
+      - lint
+      - --reporting-format=short
+    stdin: false
+    append_file: true
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "[^:]+:(?<line>[0-9]+):(?<column>[0-9]+):[\\s]?(?<severity>[a-z]+)\\[(?<code>[A-Za-z0-9-]+)\\]:[\\s]?(?<message>.+)"
+      severity:
+        error: 1
+        warning: 2
+        note: 3
+        help: 4
+      defaults:
+        source: mago_lint
+  - id: markdownlint-cli2
+    package: markdownlint-cli2
+    filetypes:
+      - markdown
+    cmd: markdownlint-cli2
+    args:
+      - "-"
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ^stdin:(?<line>\d+):(?<column>\d+) (?<message>.*)$
+        - ^stdin:(?<line>\d+) (?<message>.*)$
+      defaults:
+        source: markdownlint
+        severity: 2
+  - id: markdownlint
+    package: markdownlint
+    filetypes:
+      - markdown
+    cmd: markdownlint
+    args:
+      - --stdin
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ^stdin:(?<line>\d+):(?<column>\d+) (?<message>.*)$
+        - ^stdin:(?<line>\d+) (?<message>.*)$
+      defaults:
+        source: markdownlint
+        severity: 2
+  - id: mbake
+    package: mbake
+    filetypes:
+      - automake
+      - make
+    cmd: mbake
+    args:
+      - validate
+    stdin: false
+    append_file: true
+    stream: stdout
+    ignore_exitcode: true
+  - id: mh_lint
+    package: miss_hit
+    filetypes:
+      - matlab
+      - octave
+    cmd: mh_lint
+    args:
+      - --brief
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ^(?<path>.*?):(?<line>[0-9]+):(?<column>[0-9]+):[\s]*(?<severity>[^:]+):[\s]*(?<message>.*)$
+      severity:
+        check (high): 1
+        check (medium): 2
+        check (low): 3
+      defaults:
+        source: mh_lint
+  - id: mlint
+    cmd: mlint
+    args:
+      - -cyc
+      - -id
+      - -severity
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "L (?<line>[0-9]+) \\(C (?<column>[0-9]+)[-]?(?<end_column>[0-9]*)\\): (?<code>.*?): (?<severity>.*?): (?<message>.*)"
+      severity:
+        ML2: 1
+        ML3: 1
+        ML4: 1
+        ML1: 2
+        ML0: 3
+        ML5: 4
+      defaults:
+        source: mlint
+  - id: mypy
+    package: mypy
+    filetypes:
+      - python
+    cmd: mypy
+    args:
+      - --show-column-numbers
+      - --show-error-end
+      - --hide-error-context
+      - --no-color-output
+      - --no-error-summary
+      - --no-pretty
+    stdin: false
+    stream: both
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "(?<path>[^:]+):(?<line>[0-9]+):(?<column>[0-9]+):(?<end_line>[0-9]+):(?<end_column>[0-9]+): (?<severity>[A-Za-z]+): (?<message>.*) \\[(?<code>[A-Za-z][A-Za-z-]+)\\]"
+      severity:
+        error: 1
+        warning: 2
+        note: 4
+      defaults:
+        source: mypy
+  - id: nagelfar
+    cmd: nagelfar
+    args:
+      - -H
+    stdin: false
+    append_file: true
+    stream: both
+    ignore_exitcode: true
+  - id: nix
+    cmd: nix-instantiate
+    args:
+      - --parse
+      - "-"
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "^(?<severity>[A-Za-z0-9]+): (?<message>.+) at .+:(?<line>[0-9]+):(?<column>[0-9]+)$"
+      severity:
+        error: 1
+      defaults:
+        source: nix
+        severity: 2
+  - id: npm-groovy-lint
+    package: npm-groovy-lint
+    filetypes:
+      - groovy
+    cmd: npm-groovy-lint
+    args:
+      - -o
+      - json
+      - "-"
+    stdin: true
+    ignore_exitcode: true
+  - id: oelint-adv
+    package: oelint-adv
+    filetypes:
+      - bitbake
+    cmd: oelint-adv
+    args:
+      - --quiet
+      - --messageformat={path}:{line}:{severity}:{id}:{msg}
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    env:
+      NO_COLOR: "1"
+    parser:
+      kind: regex
+      patterns:
+        - (?<path>[^:]+):(?<line>[0-9]+):(?<severity>[A-Za-z]+):(?<code>[^:]+):(?<message>.+)
+      severity:
+        error: 1
+        warning: 2
+        info: 3
+      defaults:
+        source: oelint-adv
+  - id: opa_check
+    package: opa
+    filetypes:
+      - rego
+    cmd: opa
+    args:
+      - check
+      - --strict
+      - --format
+      - json
+    stdin: false
+    append_file: true
+    stream: stderr
+    ignore_exitcode: true
+  - id: panache
+    package: panache
+    filetypes:
+      - markdown
+      - quarto
+    cmd: panache
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ^(?<severity>[A-Za-z0-9]+)\[(?<code>[A-Za-z0-9\-_]+)\]:[\s]+(?<message>.*?) at .*?:(?<line>[0-9]+):(?<column>[0-9]+)$
+      severity:
+        error: 1
+        warning: 2
+        info: 3
+      defaults:
+        source: panache
+  - id: pflake8
+    package: pyproject-flake8
+    filetypes:
+      - python
+    cmd: pflake8
+    args:
+      - --format=%(path)s:%(row)d:%(col)d:%(code)s:%(text)s
+      - --no-show-source
+      - "-"
+    stdin: true
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "[^:]+:(?<line>[0-9]+):(?<column>[0-9]+):(?<code>[A-Za-z0-9]+):(?<message>.+)"
+      defaults:
+        source: flake8
+        severity: 2
+  - id: php
+    cmd: php
+    args:
+      - -d display_errors=stdout
+      - -l
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+  - id: pmd
+    cmd: pmd
+    args:
+      - check
+      - --format
+      - sarif
+      - --rulesets
+      - --dir
+    stdin: false
+    ignore_exitcode: true
+  - id: pony
+    cmd: ponyc
+    args:
+      - --pass=verify
+    stdin: false
+    append_file: false
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "(?<path>[^:]*):(?<line>[0-9]+):(?<column>[0-9]+): (?<message>[^\\[]+)"
+      defaults:
+        source: ponyc
+        severity: 1
+  - id: proselint
+    package: proselint
+    filetypes:
+      - markdown
+      - text
+    cmd: proselint
+    args:
+      - check
+      - --output-format=json
+    stdin: false
+    ignore_exitcode: true
+  - id: protolint
+    package: protolint
+    filetypes:
+      - proto
+    cmd: protolint
+    args:
+      - lint
+      - --reporter=json
+    stdin: false
+    append_file: true
+    stream: stderr
+    ignore_exitcode: true
+  - id: puppet-lint
+    cmd: puppet-lint
+    args:
+      - --no-autoloader_layout-check
+      - --log-format
+      - "%{path}:%{line}:%{column}:%{kind}:%{check}:%{message}"
+    stdin: false
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - (?<path>.+):(?<line>[0-9]+):(?<column>[0-9]+):(?<severity>[a-z]+):(?<code>.+):(?<message>.+)
+      severity:
+        error: 1
+        warning: 2
+      defaults:
+        source: puppet-lint
+  - id: pycodestyle
+    cmd: pycodestyle
+    args:
+      - --format=%(path)s:%(row)d:%(col)d:%(code)s:%(text)s
+      - "-"
+    stdin: true
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "[^:]+:(?<line>[0-9]+):(?<column>[0-9]+):(?<code>[A-Za-z0-9]+):(?<message>.+)"
+      defaults:
+        source: pycodestyle
+        severity: 2
+  - id: pydocstyle
+    package: pydocstyle
+    filetypes:
+      - python
+    cmd: pydocstyle
+    stdin: false
+    ignore_exitcode: true
+  - id: pylint
+    package: pylint
+    filetypes:
+      - python
+    cmd: pylint
+    args:
+      - -f
+      - json
+      - --from-stdin
+      - "{file}"
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+  - id: pyrefly
+    package: pyrefly
+    filetypes:
+      - python
+    cmd: pyrefly
+    args:
+      - check
+      - --output-format
+      - json
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+  - id: quick-lint-js
+    package: quick-lint-js
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+    cmd: quick-lint-js
+    args:
+      - --stdin
+      - --stdin-path
+      - "{file}"
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "[^:]+:(?<line>[0-9]+):(?<column>[0-9]+): (?<severity>[A-Za-z0-9]+): (?<message>.+)"
+      severity:
+        error: 1
+        warning: 2
+      defaults:
+        source: quick-lint-js
+  - id: redocly
+    cmd: redocly
+    args:
+      - lint
+      - --format
+      - codeclimate
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+  - id: refurb
+    package: refurb
+    filetypes:
+      - python
+    cmd: refurb
+    args:
+      - --quiet
+    stdin: false
+    append_file: true
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ^(?<path>[^:]+):(?<line>[0-9]+):(?<column>[0-9]+)[\s]+\[(?<code>[^\]]+)\]:[\s]*(?<message>.*)$
+      defaults:
+        severity: 3
+  - id: regal
+    package: regal
+    filetypes:
+      - rego
+    cmd: regal
+    args:
+      - lint
+      - --format
+      - json
+    stdin: false
+    append_file: true
+    stream: stdout
+    ignore_exitcode: true
+  - id: revive
+    package: revive
+    filetypes:
+      - go
+    cmd: revive
+    args:
+      - -formatter
+      - json
+    stdin: false
+  - id: rflint
+    cmd: rflint
+    args:
+      - --format
+      - "{filename}:{severity}:{linenumber}:{char}:{message}"
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ^(?<path>.+?):(?<severity>[A-Za-z]):(?<line>\d+):(?<column>\d+):(?<message>.*)$
+      defaults:
+        source: rflint
+  - id: robocop
+    cmd: robocop
+    args:
+      - --format
+      - "{source}:{line}:{col}:{severity}:{rule_id}:{desc}"
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ^(?<path>.+?):(?<line>\d+):(?<column>\d+):(?<severity>[A-Za-z]):(?<code>\d+):(?<message>.*)$
+      defaults:
+        source: robocop
+  - id: rpmlint
+    package: rpmlint
+    filetypes:
+      - python
+    cmd: rpmlint
+    stdin: false
+    append_file: true
+    stream: both
+    ignore_exitcode: true
+  - id: rpmspec
+    cmd: rpmspec
+    args:
+      - -P
+    stdin: false
+    append_file: true
+    stream: stderr
+    ignore_exitcode: true
+  - id: rstcheck
+    package: rstcheck
+    filetypes:
+      - rst
+    cmd: rstcheck
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "(?<path>[^:]+):(?<line>[0-9]+): \\((?<severity>.+)\\/[0-9]\\) (?<message>.+)"
+      severity:
+        INFO: 3
+        WARNING: 2
+        ERROR: 1
+        SEVERE: 1
+      defaults:
+        source: rstcheck
+  - id: rstlint
+    cmd: restructuredtext-lint
+    stdin: false
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - (?<severity>.*) (?<path>.*):(?<line>[0-9]+) (?<message>.*)
+      severity:
+        INFO: 3
+        WARNING: 2
+        ERROR: 1
+      defaults:
+        source: rstlint
+  - id: rubocop
+    package: rubocop
+    filetypes:
+      - ruby
+    cmd: rubocop
+    args:
+      - --format
+      - json
+      - --force-exclusion
+      - --server
+      - --stdin
+      - "{file}"
+    stdin: true
+    ignore_exitcode: true
+  - id: ruby
+    cmd: ruby
+    args:
+      - -w
+      - -c
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+  - id: ruff
+    package: ruff
+    filetypes:
+      - python
+    cmd: ruff
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+  - id: rumdl
+    package: rumdl
+    filetypes:
+      - markdown
+    cmd: rumdl
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+  - id: saltlint
+    package: salt-lint
+    filetypes:
+      - salt
+    cmd: salt-lint
+    args:
+      - --json
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+  - id: selene
+    package: selene
+    filetypes:
+      - lua
+      - luau
+    cmd: selene
+    args:
+      - --display-style
+      - json
+      - "-"
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+  - id: shellcheck
+    package: shellcheck
+    filetypes:
+      - bash
+    cmd: shellcheck
+    stdin: true
+    ignore_exitcode: true
+  - id: slang
+    cmd: slang
+    args:
+      - -Weverything
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "^(?<path>[^:]+):(?<line>[0-9]+):(?<column>[0-9]+): (?<severity>[A-Za-z0-9]+): (?<message>.+)"
+      severity:
+        error: 1
+        warning: 2
+      defaults:
+        source: slang
+  - id: snakemake
+    cmd: snakemake
+    args:
+      - --lint
+      - text
+      - --snakefile
+    stdin: false
+    append_file: true
+    stream: stderr
+    ignore_exitcode: true
+  - id: snyk_iac
+    package: snyk
+    filetypes:
+      - apex
+      - cpp
+      - cs
+      - dart
+      - elixir
+      - go
+      - groovy
+      - helm
+      - java
+      - javascript
+      - javascriptreact
+      - kotlin
+      - php
+      - python
+      - ruby
+      - rust
+      - scala
+      - swift
+      - terraform
+      - terraform-vars
+      - typescript
+    cmd: snyk
+    args:
+      - iac
+      - test
+      - --json
+    stdin: false
+    append_file: true
+    stream: stdout
+    ignore_exitcode: true
+  - id: solhint
+    package: solhint
+    filetypes:
+      - solidity
+    cmd: solhint
+    args:
+      - stdin
+    stdin: true
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - (?<line>[0-9]+):(?<column>[0-9]+)[\s]+(?<severity>[A-Za-z0-9]+)[\s]+(?<message>.*?)[\s]+(?<code>\S+)$
+      severity:
+        error: 1
+        warning: 2
+      defaults:
+        source: solhint
+  - id: spectral
+    cmd: spectral
+    args:
+      - lint
+      - -f
+      - json
+    stdin: false
+    append_file: true
+    stream: both
+    ignore_exitcode: true
+  - id: sphinx-lint
+    package: sphinx-lint
+    filetypes:
+      - python
+      - rst
+    cmd: sphinx-lint
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "^(?<path>.+?):(?<line>\\d+): (?<message>.*)$"
+      defaults:
+        source: sphinx-lint
+        severity: 2
+  - id: sqlfluff
+    package: sqlfluff
+    filetypes:
+      - sql
+    cmd: sqlfluff
+    args:
+      - lint
+      - --format=json
+      - "-"
+    stdin: true
+    ignore_exitcode: true
+  - id: sqruff
+    package: sqruff
+    filetypes:
+      - sql
+    cmd: sqruff
+    args:
+      - lint
+      - --format=json
+      - "-"
+    stdin: true
+    ignore_exitcode: true
+  - id: squawk
+    package: squawk
+    filetypes:
+      - sql
+    cmd: squawk
+    args:
+      - --reporter=json
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+  - id: standardrb
+    package: standardrb
+    filetypes:
+      - ruby
+    cmd: standardrb
+    args:
+      - --force-exclusion
+      - --stdin
+      - "%:p"
+      - --format
+      - json
+    stdin: true
+  - id: staticcheck
+    package: staticcheck
+    filetypes:
+      - go
+    cmd: staticcheck
+    args:
+      - -f
+      - json
+    stdin: false
+    ignore_exitcode: true
+  - id: statix
+    package: statix
+    filetypes:
+      - nix
+    cmd: statix
+    args:
+      - check
+      - -o
+      - errfmt
+      - --stdin
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ^<stdin>>(?<line>\d+):(?<column>\d+):(?<severity>[A-Za-z]):(?<code>\d+):(?<message>.*)$
+      defaults:
+        source: statix
+  - id: svlint
+    cmd: svlint
+    args:
+      - --oneline
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ".*(?<severity>Fail)......(?<path>[^:]+):(?<line>[0-9]+):(?<column>[0-9]+).*hint: (?<message>.+)\\."
+      severity:
+        Fail: 2
+      defaults:
+        source: svlint
+  - id: systemd-analyze
+    cmd: systemd-analyze
+    args:
+      - verify
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ^(?<path>.+?):(?<line>\d+):(?<message>.*)$
+      defaults:
+        source: systemd
+        severity: 2
+  - id: systemdlint
+    package: systemdlint
+    filetypes:
+      - systemd
+    cmd: systemdlint
+    args:
+      - --messageformat={path}:{line}:{severity}:{id}:{msg}
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - (?<path>[^:]+):(?<line>[0-9]+):(?<severity>[A-Za-z]+):(?<code>.+):(?<message>.+)
+      severity:
+        error: 1
+        warning: 2
+        info: 3
+      defaults:
+        source: systemdlint
+  - id: tclint
+    package: tclint
+    filetypes:
+      - tcl
+    cmd: tclint
+    args:
+      - "-"
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "[^:]+:(?<line>[0-9]+):(?<column>[0-9]+): (?<message>.+) \\[(?<code>[^\\]]+)\\]"
+      defaults:
+        source: tclint
+  - id: tflint
+    package: tflint
+    filetypes:
+      - terraform
+      - terraform-vars
+    cmd: tflint
+    args:
+      - --format=json
+      - --recursive
+    stdin: false
+    append_file: false
+    ignore_exitcode: true
+  - id: tfsec
+    package: tfsec
+    filetypes:
+      - terraform
+      - terraform-vars
+    cmd: tfsec
+    args:
+      - -s
+      - -f
+      - json
+    stdin: true
+    stream: stdout
+  - id: tidy
+    cmd: tidy
+    args:
+      - -quiet
+      - -errors
+      - -language
+      - en
+      - --gnu-emacs
+      - yes
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "line (?<line>[0-9]+) column (?<column>[0-9]+) \\- (?<severity>[A-Za-z]+): (?<message>.+)"
+      severity:
+        Info: 3
+        Warning: 2
+        Config: 1
+        Access: 3
+        Error: 1
+        Document: 1
+        Panic: 1
+        Summary: 3
+        Information: 3
+        Footnote: 3
+      defaults:
+        source: tidy
+  - id: tombi
+    package: tombi
+    filetypes:
+      - toml
+    cmd: tombi
+    args:
+      - lint
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    env:
+      NO_COLOR: "1"
+  - id: trivy
+    package: trivy
+    filetypes:
+      - c
+      - cpp
+      - cs
+      - dart
+      - elixir
+      - go
+      - helm
+      - java
+      - javascript
+      - javascriptreact
+      - php
+      - python
+      - ruby
+      - rust
+      - terraform
+      - terraform-vars
+      - typescript
+    cmd: trivy
+    args:
+      - --scanners
+      - misconfig
+      - --format
+      - json
+      - fs
+    stdin: false
+    append_file: true
+    stream: stdout
+    ignore_exitcode: false
+  - id: trivy_secret
+    package: trivy
+    filetypes:
+      - c
+      - cpp
+      - cs
+      - dart
+      - elixir
+      - go
+      - helm
+      - java
+      - javascript
+      - javascriptreact
+      - php
+      - python
+      - ruby
+      - rust
+      - terraform
+      - terraform-vars
+      - typescript
+    cmd: trivy
+    args:
+      - --scanners
+      - secret
+      - --format
+      - json
+      - fs
+    stdin: false
+    append_file: true
+    stream: stdout
+    ignore_exitcode: false
+  - id: twigcs
+    package: twigcs
+    filetypes:
+      - twig
+    cmd: twigcs
+    args:
+      - --reporter=emacs
+    stdin: false
+    stream: both
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "^(?<path>.+?):(?<line>\\d+):(?<column>\\d+): (?<severity>[A-Za-z])rror \\- (?<message>.*)$"
+      defaults:
+        source: twigcs
+  - id: typos
+    package: typos
+    cmd: typos
+    args:
+      - --format=json
+      - --force-exclude
+    stdin: false
+    append_file: true
+    stream: stdout
+    ignore_exitcode: true
+  - id: unmake
+    cmd: unmake
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+  - id: vacuum
+    package: vacuum
+    cmd: vacuum
+    args:
+      - report
+      - --no-pretty
+      - --no-style
+      - --stdin
+      - --stdout
+    stdin: true
+  - id: vala_lint
+    cmd: io.elementary.vala-lint
+    args:
+      - --json-output
+      - --print-end
+    stdin: false
+    append_file: true
+    ignore_exitcode: true
+  - id: vale
+    package: vale
+    filetypes:
+      - markdown
+      - tex
+      - text
+    cmd: vale
+    stdin: true
+  - id: verilator
+    cmd: verilator
+    args:
+      - -sv
+      - -Wall
+      - --bbox-sys
+      - --bbox-unsup
+      - --lint-only
+    stdin: false
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "^%(?<severity>.*?)\\-?(?<code>[A-Z]*): (?<path>.*?):(?<line>[0-9]+):(?<column>[0-9]+): (?<message>.*)"
+      severity:
+        Error: 1
+        Warning: 2
+      defaults:
+        source: verilator
+  - id: vint
+    package: vint
+    filetypes:
+      - vim
+    cmd: vint
+    args:
+      - --enable-neovim
+      - --style-problem
+      - --json
+    stdin: false
+    ignore_exitcode: true
+  - id: vulture
+    package: vulture
+    filetypes:
+      - python
+    cmd: vulture
+    stdin: false
+    append_file: false
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "(?<path>[^:]+):(?<line>[0-9]+): (?<message>.*)"
+      defaults:
+        source: vulture
+        severity: 2
+  - id: woke
+    package: woke
+    cmd: woke
+    args:
+      - --stdin
+      - --output=json
+    stdin: true
+  - id: write_good
+    package: write-good
+    filetypes:
+      - markdown
+    cmd: write-good
+    args:
+      - --parse
+    stdin: false
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "[A-Za-z0-9]+:(?<line>[0-9]+):(?<column>[0-9]+):(?<message>.*)"
+      defaults:
+        source: write_good
+        severity: 3
+  - id: yamllint
+    package: yamllint
+    filetypes:
+      - yaml
+    cmd: yamllint
+    args:
+      - --format
+      - parsable
+      - "-"
+    stdin: true
+    stream: stdout
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "stdin:(?<line>[0-9]+):(?<column>[0-9]+): \\[(?<severity>.+)\\] (?<message>.+) \\((?<code>.+)\\)"
+      severity:
+        error: 1
+        warning: 2
+      defaults:
+        source: yamllint
+  - id: yq
+    package: yq
+    filetypes:
+      - yaml
+    cmd: yq
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "line (?<line>[0-9]+): (?<message>.+)"
+      defaults:
+        source: yq
+  - id: zig
+    cmd: zig
+    args:
+      - ast-check
+    stdin: true
+    stream: stderr
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - "^<stdin>:(?<line>[0-9]+):(?<column>[0-9]+): (?<severity>[A-Za-z0-9]+): (?<message>.+)$"
+      severity:
+        error: 1
+      defaults:
+        source: zig ast-check
+  - id: zizmor
+    package: zizmor
+    filetypes:
+      - yaml
+    cmd: zizmor
+    args:
+      - --format
+      - json-v1
+      - "-"
+    stdin: true
+    ignore_exitcode: true
+  - id: zlint
+    package: zlint
+    filetypes:
+      - zig
+    cmd: zlint
+    args:
+      - --format
+      - github
+    stdin: false
+    append_file: false
+    stream: both
+    ignore_exitcode: true
+    parser:
+      kind: regex
+      patterns:
+        - ^::(?<severity>[A-Za-z0-9]+) file=(?<path>[^,]+),line=(?<line>[0-9]+),col=(?<column>[0-9]+),title=(?<code>[^:]+)::(?<message>.+)$
+      severity:
+        error: 1
+        warning: 2
+      defaults:
+        source: zlint
+  - id: zsh
+    cmd: zsh
+    args:
+      - --no-exec
+      - --no-rcs
+      - --no-globalrcs
+    stream: stderr
+    ignore_exitcode: true

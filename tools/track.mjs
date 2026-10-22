@@ -1,9 +1,11 @@
-import { copyFileSync } from "node:fs";
-import { join } from "node:path";
-import { ROOT } from "../lib.mjs";
+import { writeText, readYaml } from "../lib.mjs";
+import { generate } from "./generate.mjs";
 
-export const LEGACY_COPIES = ["tools.yaml", "upstreams.yaml"];
+export const upstreams = () => readYaml("tools/upstreams.yaml");
 
-export function trackTools() {
-  for (const name of LEGACY_COPIES) copyFileSync(join(ROOT, "tools", name), join(ROOT, name));
+export async function trackTools({ log = console.log } = {}) {
+  const { files, summary } = await generate(upstreams());
+  for (const [path, text] of files) writeText(path, text);
+  log(JSON.stringify(summary, (key, value) => (key === "template_misses" || key === "unreadable" || key === "untranslatable" || key === "language_misses" ? { count: value.length, first: value.slice(0, 5) } : value), 2));
+  return summary;
 }

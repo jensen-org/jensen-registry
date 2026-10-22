@@ -1,0 +1,279 @@
+schema_version: 2
+upstream:
+  repo: jay-babu/mason-nvim-dap.nvim
+  sha: 9a10e096703966335bd5c46c8c875d5b0690dade
+debuggers:
+  - id: bash
+    package: bash-debug-adapter
+    filetypes:
+      - sh
+    adapter:
+      type: executable
+      bin: bash-debug-adapter
+    configurations:
+      - type: bash
+        request: launch
+        name: "Bash: Launch file"
+        program: ${file}
+        cwd: ${fileDirname}
+        pathBashdb: /bashdb
+        pathBashdbLib: ""
+        pathBash: bash
+        pathCat: cat
+        pathMkfifo: mkfifo
+        pathPkill: pkill
+        env: {}
+        args: {}
+        terminalKind: integrated
+  - id: chrome
+    filetypes:
+      - javascriptreact
+      - typescriptreact
+      - typescript
+      - javascript
+    adapter:
+      type: executable
+      bin: chrome-debug-adapter
+    configurations:
+      - name: "Chrome: Debug"
+        type: chrome
+        request: attach
+        program: ${file}
+        sourceMaps: true
+        protocol: inspector
+        port: 9222
+        webRoot: ${workspaceFolder}
+  - id: codelldb
+    package: codelldb
+    filetypes:
+      - c
+      - cpp
+      - rust
+      - swift
+      - zig
+    adapter:
+      type: server
+      port: ${port}
+      executable:
+        command:
+          bin: codelldb
+        args:
+          - --port
+          - ${port}
+    configurations:
+      - name: "LLDB: Launch"
+        type: codelldb
+        request: launch
+        cwd: ${workspaceFolder}
+        stopOnEntry: false
+        args: {}
+        console: integratedTerminal
+      - name: "LLDB: Launch (args)"
+        type: codelldb
+        request: launch
+        cwd: ${workspaceFolder}
+        stopOnEntry: false
+        console: integratedTerminal
+  - id: coreclr
+    package: netcoredbg
+    filetypes:
+      - cs
+      - fsharp
+    adapter:
+      type: executable
+      args:
+        - --interpreter=vscode
+      bin: netcoredbg
+    configurations:
+      - type: coreclr
+        name: "NetCoreDbg: Launch"
+        request: launch
+        cwd: ${fileDirname}
+  - id: cppdbg
+    package: cpptools
+    filetypes:
+      - c
+      - cpp
+      - rust
+      - asm
+      - swift
+    adapter:
+      id: cppdbg
+      type: executable
+      bin: OpenDebugAD7
+    configurations:
+      - name: Launch file
+        type: cppdbg
+        request: launch
+        cwd: ${workspaceFolder}
+        stopAtEntry: true
+      - name: Attach to gdbserver :1234
+        type: cppdbg
+        request: launch
+        MIMode: gdb
+        miDebuggerServerAddress: localhost:1234
+        miDebuggerPath:
+          bin: gdb
+        cwd: ${workspaceFolder}
+      - name: Launch file (args)
+        type: cppdbg
+        request: launch
+        cwd: ${workspaceFolder}
+        stopAtEntry: true
+      - name: Attach to gdbserver (port)
+        type: cppdbg
+        request: launch
+        MIMode: gdb
+        miDebuggerPath:
+          bin: gdb
+        cwd: ${workspaceFolder}
+  - id: dart
+    package: dart-debug-adapter
+    filetypes:
+      - dart
+    adapter:
+      type: executable
+      args:
+        - flutter
+      bin: dart-debug-adapter
+    configurations:
+      - type: dart
+        request: launch
+        name: Launch flutter
+        program: ${workspaceFolder}/lib/main.dart
+        cwd: ${workspaceFolder}
+  - id: delve
+    package: delve
+    filetypes:
+      - go
+    adapter:
+      type: server
+      port: ${port}
+      executable:
+        command:
+          bin: dlv
+        args:
+          - dap
+          - -l
+          - 127.0.0.1:${port}
+    configurations:
+      - type: delve
+        name: "Delve: Debug"
+        request: launch
+        program: ${workspaceFolder}
+      - type: delve
+        name: "Delve: Debug (Arguments)"
+        request: launch
+        program: ${workspaceFolder}
+      - type: delve
+        name: "Delve: Debug test"
+        request: launch
+        mode: test
+        program: ${file}
+      - type: delve
+        name: "Delve: Debug test (go.mod)"
+        request: launch
+        mode: test
+        program: ./${relativeFileDirname}
+  - id: erlang
+    package: erlang-debugger
+    filetypes:
+      - erlang
+    adapter:
+      type: executable
+      bin: els_dap
+  - id: firefox
+    package: firefox-debug-adapter
+    filetypes:
+      - javascriptreact
+      - typescriptreact
+      - typescript
+      - javascript
+    adapter:
+      type: executable
+      bin: firefox-debug-adapter
+    configurations:
+      - name: "Firefox: Debug"
+        type: firefox
+        request: launch
+        reAttach: true
+        url: http://localhost:3000
+        webRoot: ${workspaceFolder}
+        firefoxExecutable:
+          bin: firefox
+  - id: haskell
+    package: haskell-debug-adapter
+    filetypes:
+      - haskell
+    adapter:
+      type: executable
+      bin: haskell-debug-adapter
+    configurations:
+      - type: haskell
+        request: launch
+        name: Debug
+        workspace: ${workspaceFolder}
+        startup: ${file}
+        stopOnEntry: true
+        logLevel: WARNING
+        ghciPrompt: ghci>
+        ghciInitialPrompt: ">"
+  - id: kotlin
+    package: kotlin-debug-adapter
+    filetypes:
+      - kotlin
+    adapter:
+      type: executable
+      args:
+        - --interpreter=vscode
+      bin: kotlin-debug-adapter
+    configurations:
+      - type: kotlin
+        name: launch - kotlin
+        request: launch
+  - id: node2
+    filetypes:
+      - javascriptreact
+      - typescriptreact
+      - typescript
+      - javascript
+    adapter:
+      type: executable
+      bin: node-debug2-adapter
+    configurations:
+      - name: "Node2: Launch"
+        type: node2
+        request: launch
+        program: ${file}
+        sourceMaps: true
+        protocol: inspector
+        console: integratedTerminal
+      - name: "Node2: Attach to process"
+        type: node2
+        request: attach
+  - id: php
+    package: php-debug-adapter
+    filetypes:
+      - php
+    adapter:
+      type: executable
+      bin: php-debug-adapter
+    configurations:
+      - type: php
+        request: launch
+        name: "PHP: Listen for Xdebug"
+        port: 9003
+  - id: python
+    package: debugpy
+    filetypes:
+      - python
+    adapter:
+      type: executable
+      bin: debugpy-adapter
+    configurations:
+      - type: python
+        request: launch
+        name: "Python: Launch file"
+        program: ${file}
+        pythonPath: null
+        console: integratedTerminal

@@ -56,7 +56,8 @@ export const releaseDigests = (repo, tag) =>
           .filter((asset) => asset.digest?.startsWith("sha256:"))
           .map((asset) => [asset.name, asset.digest.slice("sha256:".length)]),
       );
-    } catch {
-      return new Map();
+    } catch (error) {
+      if (String(error.message).endsWith("answered 404")) return new Map();
+      throw error;
     }
   });
