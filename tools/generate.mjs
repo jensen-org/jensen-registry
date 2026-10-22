@@ -8,7 +8,8 @@ import { readDebuggers } from "./sources/dap.mjs";
 import { masonRegistry, rawText, releaseDigests, repoFiles } from "./sources/fetch.mjs";
 import { filetypeEntries, readFiletypes } from "./sources/filetype.mjs";
 import { readLinters } from "./sources/lint.mjs";
-import { filetypesFor, linguistLookup, relatedFiletypes, supplementFromLinguist } from "./sources/linguist.mjs";
+import { readNoneLs } from "./sources/nonels.mjs";
+import { filetypesFor, linguistLookup, nameByExtension, relatedFiletypes, supplementFromLinguist } from "./sources/linguist.mjs";
 import { readServers } from "./sources/lspconfig.mjs";
 import { buildPackages } from "./sources/mason.mjs";
 
@@ -57,7 +58,7 @@ function named(entry, lookup) {
   return found;
 }
 
-const withLanguages = (entries, packages, lookup) => {
+const withLanguages = (entries, packages, lookup, declared = new Map()) => {
   const byId = new Map(packages.map((pkg) => [pkg.id, pkg]));
   const missed = new Set();
   const out = entries.map((entry) => {
@@ -67,6 +68,7 @@ const withLanguages = (entries, packages, lookup) => {
       if (!types.size) missed.add(language);
       for (const type of types) found.add(type);
     }
+    if (!found.size) for (const word of [entry.command, entry.cmd, entry.id]) for (const type of declared.get(word) ?? []) found.add(type);
     if (!found.size) for (const type of named(entry, lookup)) found.add(type);
     if (!found.size) return entry;
     const { id, package: pkg, ...rest } = entry;
@@ -81,12 +83,13 @@ export async function generate(upstreams) {
   const built = await buildPackages(registry, { digests: (repo, tag) => releaseDigests(repo, tag), known: previousDigests() });
   const { packages } = built;
   const archives = Object.fromEntries(
-    await Promise.all(["lspconfig", "conform", "lint", "dap"].map(async (name) => [name, await repoFiles(sources[name].repo, sources[name].sha)])),
+    await Promise.all(["lspconfig", "conform", "lint", "dap", "nonels"].map(async (name) => [name, await repoFiles(sources[name].repo, sources[name].sha)])),
   );
   const filetypeSource = await rawText(sources.neovim.repo, sources.neovim.sha, "runtime/lua/vim/filetype.lua");
   const linguist = linguistLookup(await rawText(sources.linguist.repo, sources.linguist.sha, "lib/linguist/languages.yml"));
   const { table, summary: filetypeSummary } = readFiletypes(filetypeSource);
   const lookup = { linguist, table };
+  const noneLs = readNoneLs(archives.nonels);
   const servers = readServers(archives.lspconfig, packages);
   const formatters = readFormatters(archives.conform, packages);
   const linters = readLinters(archives.lint, packages);
@@ -103,29 +106,37 @@ export async function generate(upstreams) {
   }
   const generated = {
     server: servers.servers,
-    formatter: withLanguages(formatters.formatters, packages, lookup).entries,
-    linter: withLanguages(linters.linters, packages, lookup).entries,
+    formatter: withLanguages(formatters.formatters, packages, lookup, noneLs.formatting).entries,
+    linter: withLanguages(linters.linters, packages, lookup, noneLs.diagnostics).entries,
     debugger: debuggers.debuggers,
   };
-  const missed = new Set([...withLanguages(formatters.formatters, packages, lookup).missed, ...withLanguages(linters.linters, packages, lookup).missed]);
+  const missed = new Set([...withLanguages(formatters.formatters, packages, lookup, noneLs.formatting).missed, ...withLanguages(linters.linters, packages, lookup, noneLs.diagnostics).missed]);
 
   const overrides = loadOverrides();
   const merged = Object.fromEntries(
     Object.entries(generated).map(([kind, entries]) => [kind, entries.map((entry) => (overrides[kind].has(entry.id) ? deepMerge(entry, overrides[kind].get(entry.id).value) : entry))]),
   );
-  const required = { server: ["cmd"], formatter: ["command"], linter: ["cmd", "parser"], debugger: ["adapter"] };
+  const named = new Set([...merged.server, ...merged.debugger].flatMap((entry) => entry.filetypes ?? []));
+  for (const entry of [...merged.formatter, ...merged.linter]) for (const type of entry.filetypes ?? []) named.add(type);
+  filetypeSummary.named_by_extension = nameByExtension(table, named);
+  const related = relatedFiletypes(table, linguist);
+  const reachable = (id) => {
+    const hit = (type) => table.get(type)?.extensions.size || table.get(type)?.filenames.size;
+    return Boolean(hit(id) || [...(related.get(id) ?? [])].some(hit));
+  };
+
+  const required = { server: ["cmd", "filetypes"], formatter: ["command", "filetypes"], linter: ["cmd", "parser", "filetypes"], debugger: ["adapter", "filetypes"] };
   const unresolved = [];
   for (const [kind, fields] of Object.entries(required)) {
     merged[kind] = merged[kind].map((entry) => {
       const missing = fields.filter((name) => entry[name] === undefined);
+      if (entry.filetypes?.length && !entry.filetypes.some(reachable)) missing.push("reachable_filetype");
       if (!missing.length) return entry;
       unresolved.push({ kind, id: entry.id, missing });
       return { ...entry, runnable: false };
     });
   }
   unresolved.sort((a, b) => byText(a.kind, b.kind) || byText(a.id, b.id));
-  const named = new Set([...merged.server, ...merged.debugger].flatMap((entry) => entry.filetypes ?? []));
-  for (const entry of [...merged.formatter, ...merged.linter]) for (const type of entry.filetypes ?? []) named.add(type);
 
   const header = (pin) => ({ schema_version: SCHEMA_VERSION, upstream: pin });
   const files = new Map([
@@ -134,7 +145,7 @@ export async function generate(upstreams) {
     ["tools/formatters.yaml", dump({ ...header(sources.conform), formatters: merged.formatter })],
     ["tools/linters.yaml", dump({ ...header(sources.lint), linters: merged.linter })],
     ["tools/debuggers.yaml", dump({ ...header(sources.dap), debuggers: merged.debugger })],
-    ["tools/filetypes.yaml", dump({ ...header(sources.neovim), filetypes: filetypeEntries(table, [...named], relatedFiletypes(table, linguist)) })],
+    ["tools/filetypes.yaml", dump({ ...header(sources.neovim), filetypes: filetypeEntries(table, [...named], related) })],
     ["tools/unresolved.yaml", dump({ schema_version: SCHEMA_VERSION, unresolved })],
   ]);
   const summary = {

@@ -22,3 +22,6 @@ sources:
   linguist:
     repo: github-linguist/linguist
     sha: 73ee9a3b277f398c37ca4ab0dea0193849de6460
+  nonels:
+    repo: nvimtools/none-ls.nvim
+    sha: c4b82bb63b13856ba4d6b971b7aad3bb38fc6fe2

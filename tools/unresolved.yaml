@@ -4,34 +4,125 @@ unresolved:
     id: elixir
     missing:
       - adapter
+      - filetypes
   - kind: debugger
     id: javadbg
     missing:
       - adapter
+      - filetypes
   - kind: debugger
     id: javatest
     missing:
       - adapter
+      - filetypes
   - kind: debugger
     id: js
     missing:
       - adapter
+      - filetypes
   - kind: debugger
     id: mock
     missing:
       - adapter
+      - filetypes
   - kind: debugger
     id: puppet
     missing:
       - adapter
+      - filetypes
+  - kind: formatter
+    id: ansible-lint
+    missing:
+      - filetypes
+  - kind: formatter
+    id: auto_optional
+    missing:
+      - filetypes
+  - kind: formatter
+    id: autocorrect
+    missing:
+      - filetypes
+  - kind: formatter
+    id: caramel_fmt
+    missing:
+      - reachable_filetype
+  - kind: formatter
+    id: codespell
+    missing:
+      - filetypes
+  - kind: formatter
+    id: commitmsgfmt
+    missing:
+      - filetypes
+  - kind: formatter
+    id: d2
+    missing:
+      - reachable_filetype
+  - kind: formatter
+    id: dprint
+    missing:
+      - filetypes
   - kind: formatter
     id: easy-coding-standard
     missing:
       - command
   - kind: formatter
+    id: ghdl
+    missing:
+      - filetypes
+  - kind: formatter
+    id: ghokin
+    missing:
+      - filetypes
+  - kind: formatter
+    id: gluon_fmt
+    missing:
+      - reachable_filetype
+  - kind: formatter
+    id: gojq
+    missing:
+      - filetypes
+  - kind: formatter
+    id: grain_format
+    missing:
+      - reachable_filetype
+  - kind: formatter
+    id: hledger-fmt
+    missing:
+      - filetypes
+  - kind: formatter
+    id: imba_fmt
+    missing:
+      - reachable_filetype
+  - kind: formatter
     id: injected
     missing:
       - command
+      - filetypes
+  - kind: formatter
+    id: keep-sorted
+    missing:
+      - filetypes
+  - kind: formatter
+    id: llf
+    missing:
+      - filetypes
+  - kind: formatter
+    id: mago_lint
+    missing:
+      - filetypes
+  - kind: formatter
+    id: nomad_fmt
+    missing:
+      - reachable_filetype
+  - kind: formatter
+    id: openapi_format
+    missing:
+      - filetypes
+  - kind: formatter
+    id: perlimports
+    missing:
+      - filetypes
   - kind: formatter
     id: phpcbf
     missing:
@@ -40,6 +131,7 @@ unresolved:
     id: phpinsights
     missing:
       - command
+      - filetypes
   - kind: formatter
     id: pint
     missing:
@@ -49,6 +141,18 @@ unresolved:
     missing:
       - command
   - kind: formatter
+    id: pruner
+    missing:
+      - filetypes
+  - kind: formatter
+    id: spotless_maven
+    missing:
+      - filetypes
+  - kind: formatter
+    id: squeeze_blanks
+    missing:
+      - filetypes
+  - kind: formatter
     id: styler
     missing:
       - command
@@ -57,17 +161,39 @@ unresolved:
     missing:
       - command
   - kind: formatter
+    id: treefmt
+    missing:
+      - filetypes
+  - kind: formatter
     id: trim_newlines
     missing:
       - command
+      - filetypes
   - kind: formatter
     id: trim_whitespace
     missing:
       - command
+      - filetypes
+  - kind: formatter
+    id: trunk
+    missing:
+      - filetypes
   - kind: formatter
     id: twig-cs-fixer
     missing:
       - command
+  - kind: formatter
+    id: typos
+    missing:
+      - filetypes
+  - kind: formatter
+    id: v
+    missing:
+      - filetypes
+  - kind: formatter
+    id: xmlstarlet
+    missing:
+      - filetypes
   - kind: linter
     id: actionlint
     missing:
@@ -76,6 +202,14 @@ unresolved:
     id: ameba
     missing:
       - parser
+  - kind: linter
+    id: ansible_lint
+    missing:
+      - reachable_filetype
+  - kind: linter
+    id: blocklint
+    missing:
+      - filetypes
   - kind: linter
     id: buf_lint
     missing:
@@ -88,10 +222,12 @@ unresolved:
     id: cfn_nag
     missing:
       - parser
+      - filetypes
   - kind: linter
     id: checkpatch
     missing:
       - cmd
+      - filetypes
   - kind: linter
     id: checkstyle
     missing:
@@ -108,6 +244,7 @@ unresolved:
     id: codespell
     missing:
       - parser
+      - filetypes
   - kind: linter
     id: commitlint
     missing:
@@ -116,10 +253,15 @@ unresolved:
     id: cspell
     missing:
       - parser
+      - filetypes
   - kind: linter
     id: cue
     missing:
       - parser
+  - kind: linter
+    id: dclint
+    missing:
+      - reachable_filetype
   - kind: linter
     id: deadnix
     missing:
@@ -140,6 +282,11 @@ unresolved:
     id: droast
     missing:
       - parser
+      - filetypes
+  - kind: linter
+    id: dxc
+    missing:
+      - filetypes
   - kind: linter
     id: eugene
     missing:
@@ -152,10 +299,15 @@ unresolved:
     id: fieldalignment
     missing:
       - parser
+      - filetypes
   - kind: linter
     id: fish
     missing:
       - parser
+  - kind: linter
+    id: flawfinder
+    missing:
+      - filetypes
   - kind: linter
     id: fortitude
     missing:
@@ -165,9 +317,14 @@ unresolved:
     missing:
       - parser
   - kind: linter
+    id: ghdl
+    missing:
+      - filetypes
+  - kind: linter
     id: gitleaks
     missing:
       - parser
+      - filetypes
   - kind: linter
     id: gitlint
     missing:
@@ -180,10 +337,12 @@ unresolved:
     id: herb
     missing:
       - parser
+      - filetypes
   - kind: linter
     id: hledger
     missing:
       - parser
+      - filetypes
   - kind: linter
     id: hlint
     missing:
@@ -208,18 +367,29 @@ unresolved:
     id: languagetool
     missing:
       - parser
+      - filetypes
   - kind: linter
     id: lint-openapi
     missing:
       - parser
+      - filetypes
   - kind: linter
     id: ls_lint
     missing:
       - parser
+      - filetypes
+  - kind: linter
+    id: lslint
+    missing:
+      - filetypes
   - kind: linter
     id: luac
     missing:
       - parser
+  - kind: linter
+    id: mado
+    missing:
+      - filetypes
   - kind: linter
     id: markuplint
     missing:
@@ -232,6 +402,7 @@ unresolved:
     id: nagelfar
     missing:
       - parser
+      - filetypes
   - kind: linter
     id: npm-groovy-lint
     missing:
@@ -297,6 +468,7 @@ unresolved:
     id: redocly
     missing:
       - parser
+      - filetypes
   - kind: linter
     id: regal
     missing:
@@ -389,10 +561,12 @@ unresolved:
     id: typos
     missing:
       - parser
+      - filetypes
   - kind: linter
     id: unmake
     missing:
       - parser
+      - filetypes
   - kind: linter
     id: vacuum
     missing:
@@ -413,6 +587,7 @@ unresolved:
     id: woke
     missing:
       - parser
+      - filetypes
   - kind: linter
     id: zizmor
     missing:
@@ -426,17 +601,69 @@ unresolved:
     missing:
       - cmd
   - kind: server
+    id: ansiblels
+    missing:
+      - reachable_filetype
+  - kind: server
     id: apex_ls
     missing:
       - cmd
+  - kind: server
+    id: atlas
+    missing:
+      - reachable_filetype
+  - kind: server
+    id: autocorrect
+    missing:
+      - filetypes
+  - kind: server
+    id: basics_ls
+    missing:
+      - filetypes
   - kind: server
     id: bicep
     missing:
       - cmd
   - kind: server
+    id: bright_script
+    missing:
+      - reachable_filetype
+  - kind: server
     id: bsl_ls
     missing:
       - cmd
+  - kind: server
+    id: contextive
+    missing:
+      - filetypes
+  - kind: server
+    id: copilot
+    missing:
+      - filetypes
+  - kind: server
+    id: cspell_ls
+    missing:
+      - filetypes
+  - kind: server
+    id: ctags_lsp
+    missing:
+      - filetypes
+  - kind: server
+    id: custom_elements_ls
+    missing:
+      - filetypes
+  - kind: server
+    id: diagnosticls
+    missing:
+      - filetypes
+  - kind: server
+    id: docker_compose_language_service
+    missing:
+      - reachable_filetype
+  - kind: server
+    id: efm
+    missing:
+      - filetypes
   - kind: server
     id: flow
     missing:
@@ -446,9 +673,37 @@ unresolved:
     missing:
       - cmd
   - kind: server
+    id: gitlab_ci_ls
+    missing:
+      - reachable_filetype
+  - kind: server
+    id: guile_ls
+    missing:
+      - reachable_filetype
+  - kind: server
+    id: kakehashi
+    missing:
+      - filetypes
+  - kind: server
+    id: lsp_ai
+    missing:
+      - filetypes
+  - kind: server
+    id: mm0_ls
+    missing:
+      - reachable_filetype
+  - kind: server
     id: nelua_lsp
     missing:
       - cmd
+  - kind: server
+    id: nomad_lsp
+    missing:
+      - reachable_filetype
+  - kind: server
+    id: pico8_ls
+    missing:
+      - reachable_filetype
   - kind: server
     id: powershell_es
     missing:
@@ -462,9 +717,25 @@ unresolved:
     missing:
       - cmd
   - kind: server
+    id: salt_ls
+    missing:
+      - reachable_filetype
+  - kind: server
+    id: snakeskin_ls
+    missing:
+      - reachable_filetype
+  - kind: server
+    id: tabby_ml
+    missing:
+      - filetypes
+  - kind: server
     id: tblgen_lsp_server
     missing:
       - cmd
+  - kind: server
+    id: termux_language_server
+    missing:
+      - filetypes
   - kind: server
     id: tsc
     missing:
@@ -474,9 +745,21 @@ unresolved:
     missing:
       - cmd
   - kind: server
+    id: typos_lsp
+    missing:
+      - filetypes
+  - kind: server
     id: unison
     missing:
       - cmd
+  - kind: server
+    id: vacuum
+    missing:
+      - reachable_filetype
+  - kind: server
+    id: vectorcode_server
+    missing:
+      - filetypes
   - kind: server
     id: visualforce_ls
     missing:

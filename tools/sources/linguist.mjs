@@ -107,3 +107,19 @@ export function relatedFiletypes(table, linguist) {
   }
   return related;
 }
+
+export function nameByExtension(table, ids) {
+  const mapped = new Set();
+  for (const { extensions } of table.values()) for (const ext of extensions) mapped.add(ext);
+  let added = 0;
+  for (const id of ids) {
+    const entry = table.get(id);
+    if (!entry || entry.extensions.size || entry.filenames.size) continue;
+    if (/^[a-z0-9]{2,12}$/.test(id) && !mapped.has(id)) {
+      entry.extensions.add(id);
+      mapped.add(id);
+      added += 1;
+    }
+  }
+  return added;
+}

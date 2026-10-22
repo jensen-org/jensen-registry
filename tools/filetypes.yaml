@@ -44,6 +44,8 @@ filetypes:
     extensions:
       - agda
   - id: agentscript
+    extensions:
+      - agentscript
   - id: ahdl
     extensions:
       - tdf
@@ -95,6 +97,8 @@ filetypes:
       - apex
       - cls
   - id: apexcode
+    extensions:
+      - apexcode
   - id: apkbuild
     filenames:
       - APKBUILD
@@ -126,6 +130,8 @@ filetypes:
     related:
       - nasm
   - id: asm68k
+    extensions:
+      - asm68k
   - id: asn
     extensions:
       - asn
@@ -143,6 +149,8 @@ filetypes:
       - atl
   - id: atlas-*
   - id: ato
+    extensions:
+      - ato
   - id: authzed
     extensions:
       - zed
@@ -161,6 +169,8 @@ filetypes:
       - Makefile.am
       - makefile.am
   - id: autopkgtest
+    extensions:
+      - autopkgtest
   - id: ave
     extensions:
       - ave
@@ -243,12 +253,16 @@ filetypes:
     extensions:
       - brs
   - id: brioche
+    extensions:
+      - brioche
   - id: brs
   - id: bsdl
     extensions:
       - bsd
       - bsdl
   - id: bsl
+    extensions:
+      - bsl
   - id: bst
     extensions:
       - bst
@@ -307,6 +321,7 @@ filetypes:
   - id: capnp
     extensions:
       - capnp
+  - id: caramel
   - id: catalog
     filenames:
       - catalog
@@ -368,6 +383,8 @@ filetypes:
     extensions:
       - ck
   - id: cir
+    extensions:
+      - cir
   - id: circom
     extensions:
       - circom
@@ -580,6 +597,7 @@ filetypes:
     extensions:
       - d
       - di
+  - id: d2
   - id: dafny
     extensions:
       - dfy
@@ -774,6 +792,8 @@ filetypes:
     extensions:
       - ecd
   - id: ecsact
+    extensions:
+      - ecsact
   - id: ed
     extensions:
       - ed
@@ -839,6 +859,8 @@ filetypes:
     extensions:
       - erb.deface
   - id: erg
+    extensions:
+      - erg
   - id: erlang
     extensions:
       - app
@@ -927,7 +949,10 @@ filetypes:
   - id: flux
     extensions:
       - flux
+  - id: fnl
   - id: foam
+    extensions:
+      - foam
   - id: focexec
     extensions:
       - fex
@@ -971,6 +996,8 @@ filetypes:
       - bi
       - fb
   - id: fsd
+    extensions:
+      - fsd
   - id: fsh
     extensions:
       - fsh
@@ -1037,6 +1064,8 @@ filetypes:
       - gemini
       - gmi
   - id: genie
+    extensions:
+      - genie
   - id: geom
   - id: ghostty
     extensions:
@@ -1134,6 +1163,7 @@ filetypes:
       - vrx
       - vs
       - vshader
+  - id: gluon
   - id: gn
     extensions:
       - gn
@@ -1163,6 +1193,8 @@ filetypes:
       - goaccess.conf
   - id: gohtml
   - id: gohtmltmpl
+    extensions:
+      - gohtmltmpl
   - id: gomod
     filenames:
       - go.mod
@@ -1192,6 +1224,7 @@ filetypes:
   - id: grads
     extensions:
       - gs
+  - id: grain
   - id: graphql
     extensions:
       - gql
@@ -1309,6 +1342,8 @@ filetypes:
     related:
       - leex
   - id: helm
+    extensions:
+      - helm
   - id: help
     extensions:
       - txt
@@ -1337,6 +1372,8 @@ filetypes:
     extensions:
       - hjson
   - id: hlasm
+    extensions:
+      - hlasm
   - id: hlsl
     extensions:
       - cginc
@@ -1377,7 +1414,11 @@ filetypes:
   - id: html-eex
   - id: html.handlebars
   - id: htmlangular
+    extensions:
+      - htmlangular
   - id: htmldjango
+    extensions:
+      - htmldjango
     related:
       - jinja
   - id: httest
@@ -1416,12 +1457,15 @@ filetypes:
     filenames:
       - /.icewm/menu
   - id: icnf
+    extensions:
+      - icnf
   - id: icon
     extensions:
       - icn
   - id: idris2
     extensions:
       - idr
+  - id: imba
   - id: indent
     filenames:
       - .indent.pro
@@ -1751,11 +1795,15 @@ filetypes:
     extensions:
       - ldif
   - id: leaf
+    extensions:
+      - leaf
   - id: lean
     extensions:
       - hlean
       - lean
   - id: lean3
+    extensions:
+      - lean3
   - id: ledger
     extensions:
       - journal
@@ -1837,6 +1885,8 @@ filetypes:
     extensions:
       - livemd
   - id: llw
+    extensions:
+      - llw
   - id: loginaccess
     filenames:
       - /etc/login.access
@@ -2018,6 +2068,8 @@ filetypes:
     extensions:
       - mel
   - id: menhir
+    extensions:
+      - menhir
   - id: mermaid
     extensions:
       - mermaid
@@ -2045,6 +2097,8 @@ filetypes:
       - mib
       - my
   - id: microcad
+    extensions:
+      - microcad
   - id: mint
     extensions:
       - mint
@@ -2100,6 +2154,8 @@ filetypes:
     extensions:
       - moon
   - id: motoko
+    extensions:
+      - motoko
   - id: move
     extensions:
       - move
@@ -2115,6 +2171,8 @@ filetypes:
       - .mrxvtrc
       - mrxvtrc
   - id: msbuild
+    extensions:
+      - msbuild
   - id: msidl
     extensions:
       - mof
@@ -2182,6 +2240,8 @@ filetypes:
       - ncf
   - id: ncl
   - id: nelua
+    extensions:
+      - nelua
   - id: neomuttrc
     filenames:
       - Neomuttrc
@@ -2228,6 +2288,8 @@ filetypes:
     related:
       - nunjucks
   - id: nlp
+    extensions:
+      - nlp
   - id: nomad
   - id: norg
     extensions:
@@ -2303,6 +2365,8 @@ filetypes:
     extensions:
       - m
   - id: objcpp
+    extensions:
+      - objcpp
   - id: objdump
     extensions:
       - cppobjdump
@@ -2332,6 +2396,8 @@ filetypes:
       - .ocamlinit
   - id: ocamlinterface
   - id: ocamllex
+    extensions:
+      - ocamllex
   - id: occam
     extensions:
       - occ
@@ -2369,6 +2435,8 @@ filetypes:
     extensions:
       - scad
   - id: opentofu
+    extensions:
+      - opentofu
     related:
       - hcl
       - terraform
@@ -2394,6 +2462,8 @@ filetypes:
       - org
       - org_archive
   - id: os
+    extensions:
+      - os
   - id: overlay
   - id: p
   - id: p8
@@ -2455,6 +2525,8 @@ filetypes:
     extensions:
       - pdf
   - id: pdll
+    extensions:
+      - pdll
   - id: pem
     extensions:
       - cer
@@ -2482,6 +2554,8 @@ filetypes:
       - gitolite.rc
       - latexmkrc
   - id: pest
+    extensions:
+      - pest
   - id: pf
     filenames:
       - pf.conf
@@ -2537,6 +2611,8 @@ filetypes:
     filenames:
       - PklProject
   - id: plaintex
+    extensions:
+      - plaintex
   - id: pli
     extensions:
       - pl1
@@ -2582,6 +2658,8 @@ filetypes:
     extensions:
       - pony
   - id: pory
+    extensions:
+      - pory
   - id: postcss
     extensions:
       - pcss
@@ -2625,6 +2703,8 @@ filetypes:
       - .procmail
       - .procmailrc
   - id: profile
+    extensions:
+      - profile
   - id: prolog
     extensions:
       - pdb
@@ -2723,10 +2803,14 @@ filetypes:
     filenames:
       - qmldir
   - id: qmljs
+    extensions:
+      - qmljs
   - id: quarto
     extensions:
       - qmd
   - id: query
+    extensions:
+      - query
   - id: quickbms
     extensions:
       - bms
@@ -2887,6 +2971,8 @@ filetypes:
     extensions:
       - ron
   - id: roslyn
+    extensions:
+      - roslyn
   - id: routeros
     extensions:
       - rsc
@@ -2972,6 +3058,8 @@ filetypes:
       - rakefile
       - rantfile
   - id: rune
+    extensions:
+      - rune
   - id: rust
     extensions:
       - rs
@@ -3155,6 +3243,8 @@ filetypes:
       - ssm
       - sst
   - id: sixtyfps
+    extensions:
+      - sixtyfps
   - id: skhd
     filenames:
       - .skhdrc
@@ -3219,6 +3309,8 @@ filetypes:
       - sig
       - sml
   - id: smt2
+    extensions:
+      - smt2
   - id: snakemake
     extensions:
       - smk
@@ -3239,6 +3331,8 @@ filetypes:
     extensions:
       - soy
   - id: spade
+    extensions:
+      - spade
   - id: sparql
     extensions:
       - rq
@@ -3364,6 +3458,8 @@ filetypes:
       - quark
       - scd
   - id: superhtml
+    extensions:
+      - superhtml
   - id: surface
     extensions:
       - sface
@@ -3391,6 +3487,8 @@ filetypes:
     extensions:
       - sysml
   - id: systemd
+    extensions:
+      - systemd
   - id: systemverilog
     extensions:
       - sv
@@ -3455,6 +3553,8 @@ filetypes:
     extensions:
       - ti
   - id: terraform
+    extensions:
+      - terraform
     related:
       - hcl
       - opentofu
@@ -3589,6 +3689,8 @@ filetypes:
     extensions:
       - tpp
   - id: tptp
+    extensions:
+      - tptp
   - id: trace32
     extensions:
       - cmm
@@ -3620,6 +3722,8 @@ filetypes:
       - tsv
       - vcf
   - id: ttcn
+    extensions:
+      - ttcn
   - id: ttl
   - id: turtle
     extensions:
@@ -3630,6 +3734,7 @@ filetypes:
   - id: twig
     extensions:
       - twig
+  - id: typ
   - id: typescript
     extensions:
       - cts
@@ -3660,6 +3765,8 @@ filetypes:
       - uil
       - uit
   - id: uiua
+    extensions:
+      - uiua
   - id: ungrammar
     extensions:
       - ungram
@@ -3671,6 +3778,8 @@ filetypes:
     filenames:
       - /etc/updatedb.conf
   - id: upf
+    extensions:
+      - upf
   - id: upstreamlog
     filenames:
       - fdrupstream.log
@@ -3682,6 +3791,8 @@ filetypes:
       - usd
       - usda
   - id: uvl
+    extensions:
+      - uvl
   - id: v
     extensions:
       - vsh
@@ -3734,6 +3845,8 @@ filetypes:
       - vams
   - id: vert
   - id: veryl
+    extensions:
+      - veryl
   - id: vgrindefs
     filenames:
       - vgrindefs
@@ -3776,7 +3889,11 @@ filetypes:
       - .viminfo
       - _viminfo
   - id: visualforce
+    extensions:
+      - visualforce
   - id: vlang
+    extensions:
+      - vlang
     related:
       - v
   - id: vmasm
@@ -4094,6 +4211,8 @@ filetypes:
     related:
       - yaml
   - id: yql
+    extensions:
+      - yql
   - id: yuck
     extensions:
       - yuck
@@ -4104,6 +4223,8 @@ filetypes:
     filenames:
       - zathurarc
   - id: zf
+    extensions:
+      - zf
   - id: zig
     extensions:
       - zig
@@ -4122,6 +4243,8 @@ filetypes:
     extensions:
       - zut
   - id: zir
+    extensions:
+      - zir
   - id: zserio
     extensions:
       - zs

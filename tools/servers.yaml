@@ -130,6 +130,7 @@ servers:
           lint:
             enabled: true
             path: ansible-lint
+    runnable: false
   - id: antlersls
     package: antlers-language-server
     cmd:
@@ -238,6 +239,7 @@ servers:
       - atlas-*
     root_markers:
       - atlas.hcl
+    runnable: false
   - id: atopile
     cmd:
       - ato
@@ -257,6 +259,7 @@ servers:
       - .autocorrectrc
       - .autocorrectignore
       - .git
+    runnable: false
   - id: autohotkey_lsp
     package: autohotkey_lsp
     cmd:
@@ -379,6 +382,7 @@ servers:
       snippet:
         enable: false
         sources: {}
+    runnable: false
   - id: bazelrc_lsp
     package: bazelrc-lsp
     cmd:
@@ -463,6 +467,7 @@ servers:
       - makefile
       - Makefile
       - .git
+    runnable: false
   - id: brioche
     cmd:
       - brioche
@@ -709,6 +714,7 @@ servers:
     root_markers:
       - .contextive
       - .git
+    runnable: false
   - id: copilot
     package: copilot-language-server
     cmd:
@@ -724,6 +730,7 @@ servers:
         name: Neovim
       editorPluginInfo:
         name: Neovim
+    runnable: false
   - id: coq_lsp
     package: coq-lsp
     cmd:
@@ -779,6 +786,7 @@ servers:
       - cspell.config.yml
       - cspell.yaml
       - cspell.yml
+    runnable: false
   - id: css_variables
     package: css-variables-language-server
     cmd:
@@ -859,6 +867,7 @@ servers:
       - tags
       - .tags
       - .git
+    runnable: false
   - id: cucumber_language_server
     package: cucumber-language-server
     cmd:
@@ -890,6 +899,7 @@ servers:
       - .git
     init_options:
       hostInfo: neovim
+    runnable: false
   - id: cypher_ls
     package: cypher-language-server
     cmd:
@@ -1028,6 +1038,7 @@ servers:
       - --stdio
     root_markers:
       - .git
+    runnable: false
   - id: digestif
     cmd:
       - digestif
@@ -1071,6 +1082,7 @@ servers:
       - docker-compose.yml
       - compose.yaml
       - compose.yml
+    runnable: false
   - id: docker_language_server
     package: docker-language-server
     cmd:
@@ -1192,6 +1204,7 @@ servers:
       - efm-langserver
     root_markers:
       - .git
+    runnable: false
   - id: elixirls
     package: elixir-ls
     cmd:
@@ -1567,6 +1580,7 @@ servers:
       - gitlab-ci-ls
     filetypes:
       - yaml.gitlab
+    runnable: false
   - id: gitlab_duo
     cmd:
       - npx
@@ -1796,6 +1810,7 @@ servers:
     root_markers:
       - guix.scm
       - .git
+    runnable: false
   - id: hare_lsp
     cmd:
       - hare-lsp
@@ -2199,6 +2214,7 @@ servers:
     root_markers:
       - kakehashi.toml
       - .git
+    runnable: false
   - id: kcl
     package: kcl
     cmd:
@@ -2323,6 +2339,7 @@ servers:
       - lsp-ai
     init_options:
       memory: {}
+    runnable: false
   - id: ltex
     package: ltex-ls
     cmd:
@@ -2571,6 +2588,7 @@ servers:
       - metamath-zero
     root_markers:
       - .git
+    runnable: false
   - id: mojo
     cmd:
       - mojo-lsp-server
@@ -2758,6 +2776,7 @@ servers:
     filetypes:
       - hcl.nomad
       - nomad
+    runnable: false
   - id: ntt
     cmd:
       - ntt
@@ -3054,6 +3073,7 @@ servers:
       - --stdio
     filetypes:
       - p8
+    runnable: false
   - id: pkl
     cmd:
       - pkl-lsp
@@ -3601,6 +3621,7 @@ servers:
       - sls
     root_markers:
       - .git
+    runnable: false
   - id: scheme_langserver
     cmd:
       - scheme-langserver
@@ -3736,6 +3757,7 @@ servers:
       - ss
     root_markers:
       - package.json
+    runnable: false
   - id: snyk_ls
     package: snyk-ls
     cmd:
@@ -4222,6 +4244,7 @@ servers:
       - --stdio
     root_markers:
       - .git
+    runnable: false
   - id: tailwindcss
     package: tailwindcss-language-server
     cmd:
@@ -4361,6 +4384,7 @@ servers:
     package: termux-language-server
     cmd:
       - termux-language-server
+    runnable: false
   - id: terraform_lsp
     cmd:
       - terraform-lsp
@@ -4679,6 +4703,7 @@ servers:
       - .typos.toml
       - pyproject.toml
       - Cargo.toml
+    runnable: false
   - id: typst_lsp
     cmd:
       - typst-lsp
@@ -4777,6 +4802,7 @@ servers:
       - json.openapi
     root_markers:
       - .git
+    runnable: false
   - id: vala_ls
     package: vala-language-server
     cmd:
@@ -4802,6 +4828,7 @@ servers:
     package: vectorcode
     cmd:
       - vectorcode-server
+    runnable: false
   - id: verible
     package: verible
     cmd:

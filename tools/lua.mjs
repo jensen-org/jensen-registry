@@ -8,6 +8,7 @@ export const HELPERS = {
   root_pattern: (args) => ({ root_markers: args.flat() }),
   root_file: (args) => ({ root_markers: args.flat() }),
   from_node_modules: (args) => (typeof args[0] === "string" ? args[0] : MISSING),
+  make_builtin: (args) => (args[0] && typeof args[0] === "object" ? args[0] : MISSING),
   exepath: (args) => (typeof args[0] === "string" ? { bin: args[0] } : MISSING),
   from_pattern: (args) => ({ parser: "pattern", pattern: args[0], groups: args[1], severity: args[2], defaults: args[3], opts: args[4] }),
   from_errorformat: (args) => ({ parser: "errorformat", errorformat: args[0], skeleton: args[1] }),

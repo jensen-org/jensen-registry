@@ -37,9 +37,13 @@ linters:
     stdin: false
     append_file: true
     ignore_exitcode: true
+    filetypes:
+      - crystal
     runnable: false
   - id: ansible_lint
     package: ansible-lint
+    filetypes:
+      - yaml.ansible
     cmd: ansible-lint
     args:
       - -p
@@ -53,6 +57,7 @@ linters:
       defaults:
         source: ansible-lint
         severity: 3
+    runnable: false
   - id: bandit
     package: bandit
     filetypes:
@@ -96,7 +101,7 @@ linters:
         severity: 1
   - id: bean_check
     filetypes:
-      - bean
+      - beancount
     cmd: bean-check
     stdin: false
     stream: stderr
@@ -182,6 +187,7 @@ linters:
       defaults:
         source: blocklint
         severity: 3
+    runnable: false
   - id: buf_lint
     package: buf
     filetypes:
@@ -249,6 +255,8 @@ linters:
       defaults:
         source: checkbashisms
         severity: 2
+    filetypes:
+      - sh
   - id: checkmake
     package: checkmake
     filetypes:
@@ -305,6 +313,8 @@ linters:
       - -f
       - "%l%b%c%b%d%b%k%b%n%b%m%b%b%b"
     stdin: true
+    filetypes:
+      - tex
     runnable: false
   - id: clangtidy
     cmd: clang-tidy
@@ -327,7 +337,12 @@ linters:
     config:
       - .clang-tidy
     priority: 10
+    filetypes:
+      - c
+      - cpp
   - id: clazy
+    filetypes:
+      - cpp
     cmd: clazy-standalone
     stdin: false
     stream: stderr
@@ -426,6 +441,7 @@ linters:
     runnable: false
   - id: cppcheck
     filetypes:
+      - c
       - cpp
     cmd: cppcheck
     stdin: false
@@ -460,7 +476,7 @@ linters:
         severity: 2
   - id: credo
     filetypes:
-      - mix
+      - elixir
     cmd: mix
     args:
       - credo
@@ -537,6 +553,8 @@ linters:
       defaults:
         source: dash
         severity: 1
+    filetypes:
+      - sh
   - id: dclint
     package: docker-compose-linter
     filetypes:
@@ -555,7 +573,10 @@ linters:
         warning: 2
       defaults:
         source: dclint
+    runnable: false
   - id: deadnix
+    filetypes:
+      - nix
     cmd: deadnix
     args:
       - --output-format=json
@@ -589,7 +610,7 @@ linters:
     runnable: false
   - id: dialyxir
     filetypes:
-      - mix
+      - elixir
     cmd: mix
     args:
       - dialyzer
@@ -690,6 +711,7 @@ linters:
       defaults:
         source: dxc
         severity: 2
+    runnable: false
   - id: editorconfig-checker
     package: editorconfig-checker
     filetypes:
@@ -708,7 +730,7 @@ linters:
         source: editorconfig-checker
   - id: erb_lint
     filetypes:
-      - erb
+      - eruby
     cmd: bundle
     args:
       - exec
@@ -917,6 +939,7 @@ linters:
         "5": 2
       defaults:
         source: flawfinder
+    runnable: false
   - id: fortitude
     package: fortitude
     filetypes:
@@ -994,6 +1017,7 @@ linters:
         warning: 2
       defaults:
         source: ghdl
+    runnable: false
   - id: gitleaks
     package: gitleaks
     cmd: gitleaks
@@ -1009,6 +1033,8 @@ linters:
     runnable: false
   - id: gitlint
     package: gitlint
+    filetypes:
+      - gitcommit
     cmd: gitlint
     args:
       - --staged
@@ -1032,6 +1058,8 @@ linters:
     append_file: false
     runnable: false
   - id: glslc
+    filetypes:
+      - glsl
     cmd: glslc
     args:
       - -o
@@ -1069,6 +1097,8 @@ linters:
       - "{file}"
   - id: hadolint
     package: hadolint
+    filetypes:
+      - dockerfile
     cmd: hadolint
     args:
       - -f
@@ -1224,6 +1254,8 @@ linters:
       defaults:
         source: jshint
         severity: 2
+    filetypes:
+      - javascript
   - id: json5
     filetypes:
       - json5
@@ -1365,6 +1397,7 @@ linters:
         OTHER: 3
         DEBUG: 3
         source: lslint
+    runnable: false
   - id: luac
     cmd: luac
     args:
@@ -1374,6 +1407,8 @@ linters:
     append_file: false
     stream: stderr
     ignore_exitcode: true
+    filetypes:
+      - lua
     runnable: false
   - id: luacheck
     package: luacheck
@@ -1415,6 +1450,7 @@ linters:
       defaults:
         source: mado
         severity: 2
+    runnable: false
   - id: mago_analyze
     cmd: mago
     args:
@@ -1435,6 +1471,8 @@ linters:
         help: 4
       defaults:
         source: mago_analyze
+    filetypes:
+      - php
   - id: mago_lint
     cmd: mago
     args:
@@ -1455,6 +1493,8 @@ linters:
         help: 4
       defaults:
         source: mago_lint
+    filetypes:
+      - php
   - id: markdownlint-cli2
     package: markdownlint-cli2
     filetypes:
@@ -1542,6 +1582,9 @@ linters:
       defaults:
         source: mh_lint
   - id: mlint
+    filetypes:
+      - matlab
+      - octave
     cmd: mlint
     args:
       - -cyc
@@ -1761,6 +1804,8 @@ linters:
       - --format
       - json
     stdin: false
+    filetypes:
+      - php
     runnable: false
   - id: phpmd
     package: phpmd
@@ -1787,6 +1832,9 @@ linters:
     ignore_exitcode: true
     runnable: false
   - id: pmd
+    filetypes:
+      - java
+      - jsp
     cmd: pmd
     args:
       - check
@@ -1856,9 +1904,12 @@ linters:
       - --output-format=json
       - --show-info=true
       - --no-progress
+    filetypes:
+      - php
     runnable: false
   - id: puppet-lint
     filetypes:
+      - epuppet
       - puppet
     cmd: puppet-lint
     args:
@@ -1890,6 +1941,8 @@ linters:
       defaults:
         source: pycodestyle
         severity: 2
+    filetypes:
+      - python
   - id: pydocstyle
     package: pydocstyle
     filetypes:
@@ -2012,6 +2065,8 @@ linters:
         - ^(?<path>.+?):(?<severity>[A-Za-z]):(?<line>\d+):(?<column>\d+):(?<message>.*)$
       defaults:
         source: rflint
+    filetypes:
+      - robot
   - id: robocop
     cmd: robocop
     args:
@@ -2026,6 +2081,8 @@ linters:
         - ^(?<path>.+?):(?<line>\d+):(?<column>\d+):(?<severity>[A-Za-z]):(?<code>\d+):(?<message>.*)$
       defaults:
         source: robocop
+    filetypes:
+      - robot
   - id: rpmlint
     package: rpmlint
     filetypes:
@@ -2037,6 +2094,8 @@ linters:
     ignore_exitcode: true
     runnable: false
   - id: rpmspec
+    filetypes:
+      - spec
     cmd: rpmspec
     args:
       - -P
@@ -2311,6 +2370,9 @@ linters:
       defaults:
         source: solhint
   - id: spectral
+    filetypes:
+      - json
+      - yaml
     cmd: spectral
     args:
       - lint
@@ -2438,6 +2500,11 @@ linters:
       defaults:
         source: statix
   - id: stylelint
+    filetypes:
+      - css
+      - less
+      - sass
+      - scss
     args:
       - -f
       - json
@@ -2579,6 +2646,9 @@ linters:
     stream: stdout
     runnable: false
   - id: tidy
+    filetypes:
+      - html
+      - xml
     cmd: tidy
     args:
       - -quiet
@@ -2778,6 +2848,9 @@ linters:
     runnable: false
   - id: vacuum
     package: vacuum
+    filetypes:
+      - json
+      - yaml
     cmd: vacuum
     args:
       - report
@@ -2808,6 +2881,9 @@ linters:
     stdin: true
     runnable: false
   - id: verilator
+    filetypes:
+      - systemverilog
+      - verilog
     cmd: verilator
     args:
       - -sv

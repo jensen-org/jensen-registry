@@ -35,6 +35,7 @@ formatters:
       - 0
       - 2
       - 8
+    runnable: false
   - id: asmfmt
     package: asmfmt
     filetypes:
@@ -69,6 +70,12 @@ formatters:
       - 0
       - 5
   - id: astyle
+    filetypes:
+      - arduino
+      - c
+      - cpp
+      - cs
+      - java
     command: astyle
     args:
       - --quiet
@@ -80,11 +87,13 @@ formatters:
     args:
       - "{file}"
     stdin: false
+    runnable: false
   - id: autocorrect
     command: autocorrect
     args:
       - --stdin
     stdin: true
+    runnable: false
   - id: autoflake
     package: autoflake
     filetypes:
@@ -119,7 +128,7 @@ formatters:
       - --stdin
   - id: bean-format
     filetypes:
-      - bean
+      - beancount
     command: bean-format
     args:
       - "-"
@@ -326,6 +335,9 @@ formatters:
       - fmt
       - "{file}"
     stdin: false
+    filetypes:
+      - caramel
+    runnable: false
   - id: cbfmt
     package: cbfmt
     filetypes:
@@ -370,6 +382,8 @@ formatters:
       - "-"
     stdin: true
   - id: cljstyle
+    filetypes:
+      - clojure
     command: cljstyle
     args:
       - pipe
@@ -402,9 +416,11 @@ formatters:
     exit_codes:
       - 0
       - 65
+    runnable: false
   - id: commitmsgfmt
     command: commitmsgfmt
     stdin: true
+    runnable: false
   - id: crlfmt
     package: crlfmt
     filetypes:
@@ -424,6 +440,8 @@ formatters:
       - "-"
     stdin: true
   - id: csharpier
+    filetypes:
+      - cs
     stdin: true
     priority: 10
     command: csharpier
@@ -449,11 +467,14 @@ formatters:
       - "-"
     stdin: true
   - id: d2
+    filetypes:
+      - d2
     command: d2
     args:
       - fmt
       - "{file}"
     stdin: false
+    runnable: false
   - id: darker
     package: darker
     filetypes:
@@ -499,8 +520,12 @@ formatters:
       - typescript
     command: deno
   - id: dfmt
+    filetypes:
+      - d
     command: dfmt
   - id: dioxus
+    filetypes:
+      - rust
     command: dx
     args:
       - fmt
@@ -554,6 +579,8 @@ formatters:
     args:
       - "-"
     stdin: true
+    filetypes:
+      - rst
   - id: doctoc
     package: doctoc
     filetypes:
@@ -574,6 +601,7 @@ formatters:
       - .dprint.json
       - dprint.jsonc
       - .dprint.jsonc
+    runnable: false
   - id: easy-coding-standard
     args:
       - check
@@ -584,12 +612,16 @@ formatters:
     cwd_markers:
       - ecs.php
     require_cwd: true
+    filetypes:
+      - php
     runnable: false
   - id: efmt
     command: efmt
     args:
       - "-"
     stdin: true
+    filetypes:
+      - erlang
   - id: elm_format
     package: elm-format
     filetypes:
@@ -644,7 +676,6 @@ formatters:
   - id: fish_indent
     filetypes:
       - fish
-      - indent
     command: fish_indent
   - id: fixjson
     package: fixjson
@@ -656,10 +687,13 @@ formatters:
   - id: fnlfmt
     filetypes:
       - fennel
+      - fnl
     command: fnlfmt
     args:
       - "-"
   - id: forge_fmt
+    filetypes:
+      - solidity
     command: forge
     args:
       - fmt
@@ -742,12 +776,14 @@ formatters:
       - fmt
       - --std=08
       - "{file}"
+    runnable: false
   - id: ghokin
     command: ghokin
     args:
       - fmt
       - stdout
       - "{file}"
+    runnable: false
   - id: gleam
     filetypes:
       - gleam
@@ -761,6 +797,9 @@ formatters:
       - fmt
       - "{file}"
     stdin: false
+    filetypes:
+      - gluon
+    runnable: false
   - id: gn
     filetypes:
       - gn
@@ -797,6 +836,7 @@ formatters:
     priority: 10
   - id: gojq
     command: gojq
+    runnable: false
   - id: golangci-lint
     package: golangci-lint
     filetypes:
@@ -824,6 +864,9 @@ formatters:
       - format
       - "{file}"
     stdin: true
+    filetypes:
+      - grain
+    runnable: false
   - id: hcl
     package: hclfmt
     filetypes:
@@ -834,6 +877,8 @@ formatters:
     args:
       - "{file}"
     stdin: false
+    filetypes:
+      - haskell
   - id: hledger-fmt
     command: hledger-fmt
     args:
@@ -841,6 +886,7 @@ formatters:
       - --exit-zero-on-changes
       - "-"
     stdin: true
+    runnable: false
   - id: html_beautify
     filetypes:
       - html
@@ -868,6 +914,9 @@ formatters:
       - -f
       - "{file}"
     stdin: false
+    filetypes:
+      - imba
+    runnable: false
   - id: indent
     filetypes:
       - indent
@@ -971,6 +1020,7 @@ formatters:
     command: keep-sorted
     args:
       - "-"
+    runnable: false
   - id: ktfmt
     package: ktfmt
     filetypes:
@@ -1006,6 +1056,8 @@ formatters:
       - "-"
     stdin: true
   - id: leptosfmt
+    filetypes:
+      - rust
     command: leptosfmt
     args:
       - --stdin
@@ -1020,6 +1072,7 @@ formatters:
   - id: llf
     command: llf
     stdin: true
+    runnable: false
   - id: lua-format
     package: luaformatter
     filetypes:
@@ -1043,6 +1096,8 @@ formatters:
       - format
       - --stdin-input
     stdin: true
+    filetypes:
+      - php
   - id: mago_lint
     command: mago
     args:
@@ -1051,6 +1106,7 @@ formatters:
       - --format-after-fix
       - "{file}"
     stdin: false
+    runnable: false
   - id: markdown-toc
     package: markdown-toc
     filetypes:
@@ -1130,7 +1186,8 @@ formatters:
       - 1
   - id: mix
     filetypes:
-      - mix
+      - elixir
+      - surface
     command: mix
     args:
       - format
@@ -1164,6 +1221,8 @@ formatters:
       - "{file}"
     stdin: false
   - id: nimpretty
+    filetypes:
+      - nim
     command: nimpretty
     args:
       - "{file}"
@@ -1186,11 +1245,14 @@ formatters:
     args:
       - fmt
       - "-"
+    runnable: false
   - id: nph
     command: nph
     args:
       - "-"
     stdin: true
+    filetypes:
+      - nim
   - id: npm-groovy-lint
     package: npm-groovy-lint
     filetypes:
@@ -1248,6 +1310,7 @@ formatters:
     stdin: false
     cwd_markers:
       - .openapiformatrc
+    runnable: false
   - id: ormolu
     package: ormolu
     filetypes:
@@ -1300,6 +1363,8 @@ formatters:
       - 0
       - 1
   - id: packer_fmt
+    filetypes:
+      - hcl
     command: packer
     args:
       - fmt
@@ -1344,6 +1409,8 @@ formatters:
   - id: pangu
     command: pangu
     stdin: true
+    filetypes:
+      - markdown
   - id: pasfmt
     filetypes:
       - pascal
@@ -1355,6 +1422,7 @@ formatters:
       - --read-stdin
       - --filename
       - "{file}"
+    runnable: false
   - id: perltidy
     filetypes:
       - perl
@@ -1384,6 +1452,8 @@ formatters:
     priority: 10
     command: php-cs-fixer
   - id: phpcbf
+    filetypes:
+      - php
     args:
       - "{file}"
     stdin: false
@@ -1403,6 +1473,8 @@ formatters:
       - phpinsights.php
     runnable: false
   - id: pint
+    filetypes:
+      - php
     args:
       - "{file}"
     stdin: false
@@ -1502,8 +1574,10 @@ formatters:
   - id: pruner
     command: pruner
     stdin: true
+    runnable: false
   - id: puppet-lint
     filetypes:
+      - epuppet
       - puppet
     command: puppet-lint
     args:
@@ -1529,6 +1603,8 @@ formatters:
     cwd_markers:
       - pyproject.toml
       - setup.cfg
+    filetypes:
+      - python
   - id: pyink
     package: pyink
     filetypes:
@@ -1748,6 +1824,8 @@ formatters:
     stdin: true
   - id: runic
     command: runic
+    filetypes:
+      - julia
   - id: rustfmt
     filetypes:
       - rust
@@ -1828,6 +1906,7 @@ formatters:
     cwd_markers:
       - mvnw
     require_cwd: true
+    runnable: false
   - id: sql_formatter
     package: sql-formatter
     filetypes:
@@ -1874,6 +1953,7 @@ formatters:
     args:
       - -s
     stdin: true
+    runnable: false
   - id: standard-clj
     filetypes:
       - clojure
@@ -1925,6 +2005,9 @@ formatters:
       - 0
       - 2
   - id: styler
+    filetypes:
+      - r
+      - rmd
     args:
       - -s
       - -e
@@ -2081,10 +2164,14 @@ formatters:
       - format
       - "{file}"
     stdin: false
+    filetypes:
+      - php
     runnable: false
   - id: tofu_fmt
     filetypes:
-      - hcl
+      - terraform
+      - terraform-vars
+      - tf
     command: tofu
     args:
       - fmt
@@ -2109,6 +2196,7 @@ formatters:
       - treefmt.toml
       - .treefmt.toml
     require_cwd: true
+    runnable: false
   - id: trim_newlines
     runnable: false
   - id: trim_whitespace
@@ -2119,6 +2207,7 @@ formatters:
       - fmt
       - "{file}"
     stdin: false
+    runnable: false
   - id: twig-cs-fixer
     filetypes:
       - cs
@@ -2164,8 +2253,10 @@ formatters:
     exit_codes:
       - 0
       - 2
+    runnable: false
   - id: typstfmt
     filetypes:
+      - typ
       - typst
     command: typstfmt
     stdin: true
@@ -2181,7 +2272,14 @@ formatters:
       - format
       - "{file}"
     stdin: false
+    filetypes:
+      - python
   - id: uncrustify
+    filetypes:
+      - c
+      - cpp
+      - cs
+      - java
     command: uncrustify
   - id: usort
     package: usort
@@ -2201,6 +2299,7 @@ formatters:
       - -w
       - "{file}"
     stdin: false
+    runnable: false
   - id: verible
     package: verible
     filetypes:
@@ -2238,6 +2337,7 @@ formatters:
       - --indent-spaces
       - "2"
       - "-"
+    runnable: false
   - id: yamlfix
     package: yamlfix
     filetypes:
@@ -2267,6 +2367,8 @@ formatters:
     cwd_markers:
       - rustfmt.toml
       - .rustfmt.toml
+    filetypes:
+      - rust
   - id: yq
     package: yq
     filetypes:

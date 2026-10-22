@@ -1,3 +1,6 @@
 config:
   - .clang-tidy
 priority: 10
+filetypes:
+  - c
+  - cpp
