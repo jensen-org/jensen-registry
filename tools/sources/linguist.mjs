@@ -21,6 +21,7 @@ export function supplementFromLinguist(table, linguist, popular = new Set()) {
     return extensions.size + filenames.size;
   };
   const targetOf = (language) => {
+    if (table.has(language.names[0])) return language.names[0];
     const ids = [...new Set(language.names.filter((name) => table.has(name)))];
     if (!ids.length) return null;
     return ids.sort((a, b) => mapped(b) - mapped(a) || (a < b ? -1 : 1))[0];
