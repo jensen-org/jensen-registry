@@ -1,0 +1,24 @@
+config:
+  - .shellcheckrc
+parser:
+  kind: json
+  items: $
+  field:
+    path: file
+    line: line
+    column: column
+    end_line: endLine
+    end_column: endColumn
+    code: code
+    message: message
+    severity: level
+  severity:
+    map:
+      error: 1
+      warning: 2
+      info: 3
+      style: 4
+    default: 2
+args:
+  - --format=json
+  - "{file}"

@@ -1,0 +1,5 @@
+config:
+  - name: .oxlintrc.json
+    code_keys:
+      - jsPlugins
+      - plugins

@@ -1,0 +1,4 @@
+priority: 10
+command: csharpier
+args:
+  - --write-stdout

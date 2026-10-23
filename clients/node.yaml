@@ -1,0 +1,8 @@
+id: node
+kind: launcher
+requires:
+  program: "node"
+  probe: [node, --version]
+launcher:
+  interpreter: [node]
+  target: "{dir}/{target}"

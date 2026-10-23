@@ -1,0 +1,11 @@
+id: nuget
+kind: package-manager
+source: nuget
+requires:
+  program: dotnet
+  probe: [dotnet, --version]
+bin_root:
+  unix: "."
+  windows: "."
+install:
+  - run: [dotnet, tool, install, --tool-path, "{dir}", "{coordinate}", --version, "{version}"]

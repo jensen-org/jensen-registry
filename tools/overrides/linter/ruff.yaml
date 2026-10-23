@@ -1,0 +1,20 @@
+config:
+  - ruff.toml
+  - .ruff.toml
+priority: 10
+parser:
+  kind: json
+  items: $
+  field:
+    path: filename
+    line: location.row
+    column: location.column
+    end_line: end_location.row
+    end_column: end_location.column
+    code: code
+    message: message
+args:
+  - check
+  - --output-format
+  - json
+  - "{file}"

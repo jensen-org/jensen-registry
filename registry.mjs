@@ -1,6 +1,6 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
-import { CHECKSUMMED, ROOT, SCHEMA_VERSION, checksumsText, dump, loadEntries, readYaml, validator, writeText } from "./lib.mjs";
+import { ROOT, SCHEMA_VERSION, checksumsText, checksummed, dump, loadEntries, readYaml, validator, writeText } from "./lib.mjs";
 import { trackGrammars } from "./grammars/track.mjs";
 import { validateGrammars } from "./grammars/validate.mjs";
 import { trackIntegrations } from "./integrations/track.mjs";
@@ -30,9 +30,9 @@ async function track() {
     process.exit(1);
   }
   const grammars = await trackGrammars();
-  trackTools();
+  await trackTools();
   writeText("index.yaml", dump({ schema_version: SCHEMA_VERSION, skills, mcp, integrations }));
-  writeText("checksums.txt", checksumsText(CHECKSUMMED));
+  writeText("checksums.txt", checksumsText(checksummed()));
   console.log(`tracked ${skills.length} skills, ${mcp.length} mcp servers, ${integrations.length} integrations and ${grammars.length} grammars, ${warnings.length} warnings`);
 }
 
@@ -45,12 +45,12 @@ async function validate(online) {
     if (JSON.stringify(left ?? null) !== JSON.stringify(right ?? null)) problems.push(`${label} differs from its entry file`);
   };
   const context = { check, index, problems, same, online };
-  validateTools(context);
+  await validateTools(context);
   validateGrammars(context);
   await validateSkills(context);
   validateMcp(context);
   validateIntegrations({ ...context, mcpEntries: loadEntries("mcp") });
-  if (readFileSync(join(ROOT, "checksums.txt"), "utf8") !== checksumsText(CHECKSUMMED)) problems.push("checksums.txt does not match the published files");
+  if (readFileSync(join(ROOT, "checksums.txt"), "utf8") !== checksumsText(checksummed())) problems.push("checksums.txt does not match the published files");
   if (problems.length) {
     console.error(problems.join("\n"));
     process.exit(1);

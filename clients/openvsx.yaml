@@ -1,0 +1,11 @@
+id: openvsx
+kind: package-manager
+source: openvsx
+bin_root:
+  unix: "."
+  windows: "."
+install:
+  - download: "https://open-vsx.org/api/{namespace}/{leaf}/{version}/file/{namespace}.{leaf}-{version}.vsix"
+    to: "{dir}/{leaf}.vsix"
+  - extract: "{dir}/{leaf}.vsix"
+    to: "{dir}"

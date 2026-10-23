@@ -1,0 +1,82 @@
+schema_version: 1
+grammars:
+  - id: bash
+    version: 0.25.1
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/bash-0.25.1.wasm
+    sha256: 129620b8be2bb2bd13ba1b00b7ff9331125cc75c0503921a2de0a14d7cc88560
+  - id: c
+    version: 0.24.2
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/c-0.24.2.wasm
+    sha256: b99567dc9f606d70e6f3ac2d835de1ea5d1fb4a82ea3f25cb718fd0f5edb0a97
+  - id: c_sharp
+    version: 0.23.5
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/c_sharp-0.23.5.wasm
+    sha256: fe5b9d95e437d29635af05ed410a7e62054d5e0d3e7513a3c59c49baf661f5fb
+  - id: cpp
+    version: 0.23.4
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/cpp-0.23.4.wasm
+    sha256: b2e8ba688ebfaa7e5f7966360605bba69fff908f361547aaeae4b77b0bd604f8
+  - id: elixir
+    version: 0.3.5
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/elixir-0.3.5.wasm
+    sha256: f2997af568932fc8f0f4567d6750e0e449fd8aca18777bf3780cf4ea9f57ab4f
+  - id: go
+    version: 0.25.0
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/go-0.25.0.wasm
+    sha256: 99c9c0436de2701584e018fac1d5911845dbf76f7f68ad0c0ebff31e4d0cb80a
+  - id: hcl
+    version: 1.1.0
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/hcl-1.1.0.wasm
+    sha256: f1ff1a7d8972d869cfef95b4aa17a5266e1f0c3bf12114a662dba4698351e714
+  - id: java
+    version: 0.23.5
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/java-0.23.5.wasm
+    sha256: 8dc3e487a6cc3ae8d581674f5cc4768ee1c0961f24db9c148d10138d4940281e
+  - id: javascript
+    version: 0.25.0
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/javascript-0.25.0.wasm
+    sha256: 20197722345f2d783df947216be446d4d37a791d999e461e6aafe93112056a3f
+  - id: kotlin
+    version: 1.1.0
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/kotlin-1.1.0.wasm
+    sha256: b0234dac88fd1d7253764a1d8f66787e40c0b0068b0c6412edde98d1af9d33fc
+  - id: objc
+    version: 3.0.2
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/objc-3.0.2.wasm
+    sha256: 058f55cf739eebd9723ae4636ade1285a88a5c2daf5b8d00ab0c03b6fd6eda9a
+  - id: php
+    version: 0.24.2
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/php-0.24.2.wasm
+    sha256: 7b0e9c85cdee0778522a31f07ad293c7051b05980b5708041727aa15c3b0f3b8
+  - id: python
+    version: 0.25.0
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/python-0.25.0.wasm
+    sha256: 806e87de52c3f10bd871ef3c106b0df47f4ac6d92f51c0bcfd12a20b68cafda5
+  - id: ruby
+    version: 0.23.1
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/ruby-0.23.1.wasm
+    sha256: f0389f8c097c077d6c4a495fee5157d9ad9519f02bedcdbcfe2a7d9f97827329
+  - id: rust
+    version: 0.24.2
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/rust-0.24.2.wasm
+    sha256: 167505465f0d7fcbe33a30435626dbdca07963673a8616f39ed7ea0d88014933
+  - id: scala
+    version: 0.26.2
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/scala-0.26.2.wasm
+    sha256: 8ed389cce5391f00c1414e1db09b73972fb4219594ad17f5768fd223c73b2314
+  - id: swift
+    version: 0.7.3
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/swift-0.7.3.wasm
+    sha256: 12002fd3f889954fc07e574d90f859a8ddc1c6e5a89dc584475d2ddcff8fc952
+  - id: tsx
+    version: 0.23.2
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/tsx-0.23.2.wasm
+    sha256: f50f36e3bfcb5b0e42fc2d4268f04db834b3cb046fe9ac9abe4e0887ee5d29cc
+  - id: typescript
+    version: 0.23.2
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/typescript-0.23.2.wasm
+    sha256: 06083349954c223c1a92bcf4e2f8bbf6ff79eb8283a60da59157671884a38703
+  - id: zig
+    version: 1.1.2
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/zig-1.1.2.wasm
+    sha256: 98f21709a2c489a8b78d07814bd2baa4c7d4b0116ce03b8c3496d8e50393e12d

@@ -1,0 +1,9 @@
+id: github
+kind: package-manager
+source: github
+bin_root:
+  unix: "."
+  windows: "."
+install:
+  - download_files: true
+  - extract_files: true

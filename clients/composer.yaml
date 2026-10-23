@@ -1,0 +1,12 @@
+id: composer
+kind: package-manager
+source: composer
+requires:
+  program: composer
+  probe: [composer, --version]
+bin_root:
+  unix: vendor/bin
+  windows: vendor/bin
+install:
+  - run: [composer, init, --no-interaction, --stability=stable, "--working-dir={dir}"]
+  - run: [composer, require, --no-interaction, "--working-dir={dir}", "{coordinate}:{version}"]

@@ -7,8 +7,8 @@
 /lib.mjs @pallandir
 /registry.mjs @pallandir
 /index.yaml @pallandir
-/tools.yaml @pallandir
-/upstreams.yaml @pallandir
+/clients/ @pallandir
+/grammars/ @pallandir
 /checksums.txt @pallandir
 /package.json @pallandir
 /package-lock.json @pallandir

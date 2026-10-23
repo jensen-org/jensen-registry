@@ -1,0 +1,5 @@
+config:
+  - name: .twig-cs-fixer.php
+    executes: true
+  - name: .twig-cs-fixer.dist.php
+    executes: true

@@ -1,0 +1,3 @@
+config:
+  - .taplo.toml
+  - taplo.toml

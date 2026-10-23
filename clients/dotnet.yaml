@@ -1,0 +1,8 @@
+id: dotnet
+kind: launcher
+requires:
+  program: "dotnet"
+  probe: [dotnet, --version]
+launcher:
+  interpreter: [dotnet]
+  target: "{dir}/{target}"

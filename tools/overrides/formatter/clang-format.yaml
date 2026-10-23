@@ -1,0 +1,2 @@
+config:
+  - .clang-format

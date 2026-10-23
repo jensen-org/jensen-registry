@@ -7,6 +7,7 @@ import { parse, stringify } from "yaml";
 
 export const ROOT = dirname(fileURLToPath(import.meta.url));
 export const SCHEMA_VERSION = 1;
+export const TOOLS_SCHEMA_VERSION = 2;
 export const RAW_BASE = "https://raw.githubusercontent.com/jensen-org/jensen-registry";
 export const SCHEMA_BASE = "https://github.com/jensen-org/jensen-registry";
 
@@ -77,8 +78,22 @@ const githubHeaders = process.env.GITHUB_TOKEN
 
 export const github = (path) => getJson(`https://api.github.com${path}`, githubHeaders);
 
-export const CHECKSUMMED = ["index.yaml", "tools/tools.yaml", "tools/upstreams.yaml", "tools.yaml", "upstreams.yaml"];
+const TOOL_FILES = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes", "unresolved"].map((name) => `tools/${name}.yaml`);
 
-export function checksumsText(files = CHECKSUMMED) {
+export const checksummed = () => [
+  "index.yaml",
+  "grammars/grammars.yaml",
+  "tools/upstreams.yaml",
+  ...TOOL_FILES,
+  ...TOOL_FILES.map((file) => file.replace("tools/", "tools/schema/").replace(".yaml", ".json")),
+  "clients/schema.json",
+  ...entryFiles("clients"),
+  ...entryFiles("tools/overrides/server"),
+  ...entryFiles("tools/overrides/formatter"),
+  ...entryFiles("tools/overrides/linter"),
+  ...entryFiles("tools/overrides/debugger"),
+];
+
+export function checksumsText(files = checksummed()) {
   return files.map((name) => `${sha256(readFileSync(join(ROOT, name)))}  ${name}\n`).join("");
 }

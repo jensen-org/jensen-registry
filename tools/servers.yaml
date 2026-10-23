@@ -1,0 +1,5133 @@
+schema_version: 2
+upstream:
+  repo: neovim/nvim-lspconfig
+  sha: 77b7432d4770d23b277d37923e5a08a442d8bb07
+servers:
+  - id: ada_ls
+    cmd:
+      - ada_language_server
+    filetypes:
+      - ada
+  - id: agda_ls
+    cmd:
+      - als
+    filetypes:
+      - agda
+  - id: agentscript
+    cmd:
+      - agentscript-lsp
+      - --stdio
+    filetypes:
+      - agentscript
+    root_markers:
+      - package.json
+      - .git
+  - id: aiken
+    cmd:
+      - aiken
+      - lsp
+    filetypes:
+      - aiken
+    root_markers:
+      - aiken.toml
+      - .git
+  - id: air
+    package: air
+    cmd:
+      - air
+      - language-server
+    filetypes:
+      - r
+    root_markers:
+      - air.toml
+      - .air.toml
+      - .git
+  - id: alloy_ls
+    cmd:
+      - alloy
+      - lsp
+    filetypes:
+      - alloy
+    root_markers:
+      - .git
+  - id: anakin_language_server
+    cmd:
+      - anakinls
+    filetypes:
+      - python
+    root_markers:
+      - pyproject.toml
+      - setup.py
+      - setup.cfg
+      - requirements.txt
+      - Pipfile
+      - .git
+    settings:
+      anakinls:
+        pyflakes_errors:
+          - ImportStarNotPermitted
+          - UndefinedExport
+          - UndefinedLocal
+          - UndefinedName
+          - DuplicateArgument
+          - MultiValueRepeatedKeyLiteral
+          - MultiValueRepeatedKeyVariable
+          - FutureFeatureNotDefined
+          - LateFutureImport
+          - ReturnOutsideFunction
+          - YieldOutsideFunction
+          - ContinueOutsideLoop
+          - BreakOutsideLoop
+          - TwoStarredExpressions
+          - TooManyExpressionsInStarredAssignment
+          - ForwardAnnotationSyntaxError
+          - RaiseNotImplemented
+          - StringDotFormatExtraPositionalArguments
+          - StringDotFormatExtraNamedArguments
+          - StringDotFormatMissingArgument
+          - StringDotFormatMixingAutomatic
+          - StringDotFormatInvalidFormat
+          - PercentFormatInvalidFormat
+          - PercentFormatMixedPositionalAndNamed
+          - PercentFormatUnsupportedFormat
+          - PercentFormatPositionalCountMismatch
+          - PercentFormatExtraNamedArguments
+          - PercentFormatMissingArgument
+          - PercentFormatExpectedMapping
+          - PercentFormatExpectedSequence
+          - PercentFormatStarRequiresSequence
+  - id: angularls
+    package: angular-language-server
+    filetypes:
+      - typescript
+      - html
+      - typescriptreact
+      - htmlangular
+    root_markers:
+      - angular.json
+      - nx.json
+    runnable: false
+  - id: ansiblels
+    package: ansible-language-server
+    cmd:
+      - ansible-language-server
+      - --stdio
+    filetypes:
+      - yaml.ansible
+    root_markers:
+      - ansible.cfg
+      - .ansible-lint
+    settings:
+      ansible:
+        python:
+          interpreterPath: python
+        ansible:
+          path: ansible
+        executionEnvironment:
+          enabled: false
+        validation:
+          enabled: true
+          lint:
+            enabled: true
+            path: ansible-lint
+    runnable: false
+  - id: antlersls
+    package: antlers-language-server
+    cmd:
+      - antlersls
+      - --stdio
+    filetypes:
+      - html
+      - antlers
+    root_markers:
+      - composer.json
+  - id: apex_ls
+    filetypes:
+      - apex
+      - apexcode
+    root_markers:
+      - sfdx-project.json
+    runnable: false
+  - id: arduino_language_server
+    package: arduino-language-server
+    cmd:
+      - arduino-language-server
+    filetypes:
+      - arduino
+  - id: armls
+    cmd:
+      - armls
+    filetypes:
+      - asm
+    settings:
+      armls:
+        diagnostics:
+          enable: true
+          disableCategories:
+            - invalidOperand
+            - tooManyOperands
+            - tooFewOperands
+  - id: asm_lsp
+    package: asm-lsp
+    cmd:
+      - asm-lsp
+    filetypes:
+      - asm
+      - vmasm
+    root_markers:
+      - .asm-lsp.toml
+      - .git
+  - id: ast_grep
+    package: ast-grep
+    cmd:
+      - ast-grep
+      - lsp
+    filetypes:
+      - bash
+      - c
+      - cpp
+      - cs
+      - css
+      - elixir
+      - go
+      - haskell
+      - html
+      - java
+      - javascript
+      - javascriptreact
+      - json
+      - kotlin
+      - lua
+      - nix
+      - php
+      - python
+      - ruby
+      - rust
+      - scala
+      - sh
+      - solidity
+      - swift
+      - typescript
+      - typescriptreact
+      - yaml
+    root_markers:
+      - sgconfig.yaml
+      - sgconfig.yml
+    workspace_required: true
+  - id: astro
+    package: astro-language-server
+    cmd:
+      - astro-ls
+      - --stdio
+    filetypes:
+      - astro
+    root_markers:
+      - package.json
+      - tsconfig.json
+      - jsconfig.json
+      - .git
+    init_options:
+      typescript: {}
+    priority: 10
+  - id: atlas
+    cmd:
+      - atlas
+      - tool
+      - lsp
+      - --stdio
+    filetypes:
+      - atlas-*
+    root_markers:
+      - atlas.hcl
+    runnable: false
+  - id: atopile
+    cmd:
+      - ato
+      - lsp
+      - start
+    filetypes:
+      - ato
+    root_markers:
+      - ato.yaml
+      - .ato
+      - .git
+  - id: autocorrect
+    cmd:
+      - autocorrect
+      - server
+    root_markers:
+      - .autocorrectrc
+      - .autocorrectignore
+      - .git
+    runnable: false
+  - id: autohotkey_lsp
+    package: autohotkey_lsp
+    cmd:
+      - autohotkey_lsp
+      - --stdio
+    filetypes:
+      - autohotkey
+    root_markers:
+      - package.json
+    init_options:
+      locale: en-us
+      AutoLibInclude: All
+      CommentTags: ^;;\\s*(?<tag>.+)
+      CompleteFunctionParens: false
+      SymbolFoldinFromOpenBrace: false
+      Diagnostics:
+        ClassStaticMemberCheck: true
+        ParamsCheck: true
+      ActionWhenV1IsDetected: Continue
+      FormatOptions:
+        array_style: expand
+        break_chained_methods: false
+        ignore_comment: false
+        indent_string: \t
+        max_preserve_newlines: 2
+        brace_style: One True Brace
+        object_style: none
+        preserve_newlines: true
+        space_after_double_colon: true
+        space_before_conditional: true
+        space_in_empty_paren: false
+        space_in_other: true
+        space_in_paren: false
+        wrap_line_length: 0
+  - id: autotools_ls
+    package: autotools-language-server
+    cmd:
+      - autotools-language-server
+    filetypes:
+      - config
+      - automake
+      - make
+  - id: awk_ls
+    package: awk-language-server
+    cmd:
+      - awk-language-server
+    filetypes:
+      - awk
+  - id: azure_pipelines_ls
+    package: azure-pipelines-language-server
+    cmd:
+      - azure-pipelines-language-server
+      - --stdio
+    filetypes:
+      - yaml
+    root_markers:
+      - azure-pipelines.yml
+  - id: bacon_ls
+    package: bacon-ls
+    cmd:
+      - bacon-ls
+    filetypes:
+      - rust
+    root_markers:
+      - .bacon-locations
+      - Cargo.toml
+  - id: ballerina
+    cmd:
+      - bal
+      - start-language-server
+    filetypes:
+      - ballerina
+    root_markers:
+      - Ballerina.toml
+  - id: basedpyright
+    package: basedpyright
+    cmd:
+      - basedpyright-langserver
+      - --stdio
+    filetypes:
+      - python
+    root_markers:
+      - pyrightconfig.json
+      - pyproject.toml
+      - setup.py
+      - setup.cfg
+      - requirements.txt
+      - Pipfile
+      - .git
+    settings:
+      basedpyright:
+        analysis:
+          autoSearchPaths: true
+          diagnosticMode: openFilesOnly
+        disableTaggedHints: true
+  - id: bashls
+    package: bash-language-server
+    cmd:
+      - bash-language-server
+      - start
+    filetypes:
+      - bash
+      - sh
+    root_markers:
+      - .git
+    settings:
+      bashIde:
+        globPattern: "*@(.sh|.inc|.bash|.command)"
+    priority: 10
+  - id: basics_ls
+    package: basics-language-server
+    cmd:
+      - basics-language-server
+    settings:
+      buffer:
+        enable: true
+        minCompletionLength: 4
+      path:
+        enable: true
+      snippet:
+        enable: false
+        sources: {}
+    runnable: false
+  - id: bazelrc_lsp
+    package: bazelrc-lsp
+    cmd:
+      - bazelrc-lsp
+      - lsp
+    filetypes:
+      - bazelrc
+    root_markers:
+      - WORKSPACE
+      - WORKSPACE.bazel
+      - MODULE.bazel
+  - id: beancount
+    package: beancount-language-server
+    cmd:
+      - beancount-language-server
+      - --stdio
+    filetypes:
+      - beancount
+      - bean
+    root_markers:
+      - .git
+  - id: bicep
+    package: bicep-lsp
+    filetypes:
+      - bicep
+      - bicep-params
+    root_markers:
+      - .git
+    runnable: false
+  - id: biome
+    package: biome
+    cmd:
+      - biome
+      - lsp-proxy
+    filetypes:
+      - astro
+      - css
+      - graphql
+      - html
+      - javascript
+      - javascriptreact
+      - json
+      - jsonc
+      - svelte
+      - typescript
+      - typescriptreact
+      - vue
+    workspace_required: true
+    priority: -10
+  - id: bitbake_language_server
+    cmd:
+      - bitbake-language-server
+    filetypes:
+      - bitbake
+    root_markers:
+      - .git
+  - id: blueprint_ls
+    cmd:
+      - blueprint-compiler
+      - lsp
+    filetypes:
+      - blueprint
+    root_markers:
+      - .git
+  - id: bqls
+    package: bqls
+    cmd:
+      - bqls
+    filetypes:
+      - sql
+    root_markers:
+      - .git
+  - id: bright_script
+    package: brighterscript
+    cmd:
+      - bsc
+      - --lsp
+      - --stdio
+    filetypes:
+      - brs
+    root_markers:
+      - makefile
+      - Makefile
+      - .git
+    runnable: false
+  - id: brioche
+    cmd:
+      - brioche
+      - lsp
+    filetypes:
+      - brioche
+    root_markers:
+      - project.bri
+  - id: bsl_ls
+    package: bsl-language-server
+    filetypes:
+      - bsl
+      - os
+    root_markers:
+      - .git
+    runnable: false
+  - id: buck2
+    cmd:
+      - buck2
+      - lsp
+    filetypes:
+      - bzl
+    root_markers:
+      - .buckconfig
+  - id: buddy_ls
+    cmd:
+      - buddy-lsp-server
+    filetypes:
+      - mlir
+    root_markers:
+      - .git
+  - id: buf_ls
+    package: buf
+    cmd:
+      - buf
+      - lsp
+      - serve
+      - --log-format=text
+    filetypes:
+      - proto
+      - buf-config
+    root_markers:
+      - buf.yaml
+      - .git
+  - id: bzl
+    cmd:
+      - bzl
+      - lsp
+      - serve
+    filetypes:
+      - bzl
+    root_markers:
+      - WORKSPACE
+      - WORKSPACE.bazel
+  - id: c3_lsp
+    package: c3-lsp
+    cmd:
+      - c3lsp
+    filetypes:
+      - c3
+      - c3i
+    root_markers:
+      - project.json
+      - manifest.json
+      - .git
+  - id: cairo_ls
+    package: cairo-language-server
+    cmd:
+      - scarb
+      - cairo-language-server
+      - /C
+      - --node-ipc
+    filetypes:
+      - cairo
+    root_markers:
+      - Scarb.toml
+      - cairo_project.toml
+      - .git
+    init_options:
+      hostInfo: neovim
+    runnable: false
+  - id: ccls
+    cmd:
+      - ccls
+    filetypes:
+      - c
+      - cpp
+      - objc
+      - objcpp
+      - cuda
+    root_markers:
+      - compile_commands.json
+      - .ccls
+      - .git
+    workspace_required: true
+  - id: cds_lsp
+    package: cds-lsp
+    cmd:
+      - cds-lsp
+      - --stdio
+    filetypes:
+      - cds
+    root_markers:
+      - package.json
+      - db
+      - srv
+    settings:
+      cds:
+        validate: true
+  - id: cir_lsp_server
+    cmd:
+      - cir-lsp-server
+    filetypes:
+      - cir
+    root_markers:
+      - .git
+  - id: circom-lsp
+    cmd:
+      - circom-lsp
+    filetypes:
+      - circom
+    root_markers:
+      - .git
+  - id: clangd
+    package: clangd
+    cmd:
+      - clangd
+    filetypes:
+      - c
+      - c.doxygen
+      - cpp
+      - cpp.doxygen
+      - objc
+      - objcpp
+      - cuda
+    root_markers:
+      - .clangd
+      - .clang-tidy
+      - .clang-format
+      - compile_commands.json
+      - compile_flags.txt
+      - configure.ac
+      - .git
+    priority: 10
+  - id: clarinet
+    cmd:
+      - clarinet
+      - lsp
+    filetypes:
+      - clar
+      - clarity
+    root_markers:
+      - Clarinet.toml
+  - id: clice
+    package: clice
+    cmd:
+      - clice
+      - serve
+    filetypes:
+      - c
+      - cpp
+      - cuda
+    root_markers:
+      - clice.toml
+      - compile_commands.json
+      - .git
+  - id: clojure_lsp
+    package: clojure-lsp
+    cmd:
+      - clojure-lsp
+    filetypes:
+      - clojure
+      - edn
+    root_markers:
+      - project.clj
+      - deps.edn
+      - build.boot
+      - shadow-cljs.edn
+      - .git
+      - bb.edn
+  - id: cmake
+    package: cmake-language-server
+    cmd:
+      - cmake-language-server
+    filetypes:
+      - cmake
+    root_markers:
+      - CMakePresets.json
+      - CTestConfig.cmake
+      - .git
+      - build
+      - cmake
+    init_options:
+      buildDirectory: build
+  - id: cobol_ls
+    package: cobol-language-support
+    cmd:
+      - cobol-language-support
+    filetypes:
+      - cobol
+    root_markers:
+      - .git
+  - id: codebook
+    package: codebook
+    cmd:
+      - codebook-lsp
+      - serve
+    filetypes:
+      - c
+      - css
+      - gitcommit
+      - go
+      - haskell
+      - html
+      - java
+      - javascript
+      - javascriptreact
+      - lua
+      - markdown
+      - php
+      - python
+      - ruby
+      - rust
+      - swift
+      - toml
+      - text
+      - typescript
+      - typescriptreact
+      - zig
+    root_markers:
+      - .git
+      - codebook.toml
+      - .codebook.toml
+  - id: coffeesense
+    cmd:
+      - coffeesense-language-server
+      - --stdio
+    filetypes:
+      - coffee
+    root_markers:
+      - package.json
+  - id: contextive
+    cmd:
+      - Contextive.LanguageServer
+    root_markers:
+      - .contextive
+      - .git
+    runnable: false
+  - id: copilot
+    package: copilot-language-server
+    cmd:
+      - copilot-language-server
+      - --stdio
+    root_markers:
+      - .git
+    settings:
+      telemetry:
+        telemetryLevel: off
+    init_options:
+      editorInfo:
+        name: Neovim
+      editorPluginInfo:
+        name: Neovim
+    runnable: false
+  - id: coq_lsp
+    package: coq-lsp
+    cmd:
+      - coq-lsp
+    filetypes:
+      - coq
+    root_markers:
+      - _CoqProject
+      - .git
+  - id: cqlls
+    package: cqlls
+    cmd:
+      - cqlls
+    filetypes:
+      - cql
+      - cqlang
+    root_markers:
+      - .cqlls
+      - .git
+  - id: crystalline
+    package: crystalline
+    cmd:
+      - crystalline
+    filetypes:
+      - crystal
+    root_markers:
+      - shard.yml
+      - .git
+  - id: csharp_ls
+    package: csharp-language-server
+    cmd:
+      - csharp-ls
+    filetypes:
+      - cs
+    init_options:
+      AutomaticWorkspaceInit: true
+  - id: cspell_ls
+    package: cspell-lsp
+    cmd:
+      - cspell-lsp
+      - --stdio
+    root_markers:
+      - .git
+      - cspell.json
+      - .cspell.json
+      - cspell.json
+      - .cSpell.json
+      - cSpell.json
+      - cspell.config.js
+      - cspell.config.cjs
+      - cspell.config.json
+      - cspell.config.yaml
+      - cspell.config.yml
+      - cspell.yaml
+      - cspell.yml
+    runnable: false
+  - id: css_variables
+    package: css-variables-language-server
+    cmd:
+      - css-variables-language-server
+      - --stdio
+    filetypes:
+      - css
+      - scss
+      - less
+    settings:
+      cssVariables:
+        lookupFiles:
+          - "**/*.less"
+          - "**/*.scss"
+          - "**/*.sass"
+          - "**/*.css"
+        blacklistFolders:
+          - "**/.cache"
+          - "**/.DS_Store"
+          - "**/.git"
+          - "**/.hg"
+          - "**/.next"
+          - "**/.svn"
+          - "**/bower_components"
+          - "**/CVS"
+          - "**/dist"
+          - "**/node_modules"
+          - "**/tests"
+          - "**/tmp"
+  - id: csskit
+    package: csskit
+    cmd:
+      - csskit
+      - lsp
+    filetypes:
+      - css
+    root_markers:
+      - package.json
+      - .git
+  - id: cssls
+    package: css-lsp
+    cmd:
+      - vscode-css-language-server
+      - --stdio
+    filetypes:
+      - css
+      - scss
+      - less
+    root_markers:
+      - package.json
+      - .git
+    settings:
+      css:
+        validate: true
+      scss:
+        validate: true
+      less:
+        validate: true
+    init_options:
+      provideFormatter: true
+    priority: 10
+  - id: cssmodules_ls
+    package: cssmodules-language-server
+    cmd:
+      - cssmodules-language-server
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+      - typescriptreact
+    root_markers:
+      - package.json
+  - id: ctags_lsp
+    package: ctags-lsp
+    cmd:
+      - ctags-lsp
+    root_markers:
+      - tags
+      - .tags
+      - .git
+    runnable: false
+  - id: cucumber_language_server
+    package: cucumber-language-server
+    cmd:
+      - cucumber-language-server
+      - --stdio
+    filetypes:
+      - cucumber
+    root_markers:
+      - .git
+  - id: cue
+    package: cue
+    cmd:
+      - cue
+      - lsp
+    filetypes:
+      - cue
+    root_markers:
+      - cue.mod
+      - .git
+  - id: custom_elements_ls
+    package: custom-elements-languageserver
+    cmd:
+      - custom-elements-languageserver
+      - --stdio
+    root_markers:
+      - tsconfig.json
+      - package.json
+      - jsconfig.json
+      - .git
+    init_options:
+      hostInfo: neovim
+    runnable: false
+  - id: cypher_ls
+    package: cypher-language-server
+    cmd:
+      - cypher-language-server
+      - --stdio
+    filetypes:
+      - cypher
+    root_markers:
+      - .git
+  - id: daedalus_ls
+    cmd:
+      - DaedalusLanguageServer
+    filetypes:
+      - d
+    root_markers:
+      - Gothic.src
+      - Camera.src
+      - Menu.src
+      - Music.src
+      - ParticleFX.src
+      - SFX.src
+      - VisualFX.src
+    settings:
+      DaedalusLanguageServer:
+        loglevel: debug
+        inlayHints:
+          constants: true
+        numParserThreads: 16
+        fileEncoding: Windows-1252
+        srcFileEncoding: Windows-1252
+  - id: dafny
+    cmd:
+      - dafny
+      - server
+    filetypes:
+      - dfy
+      - dafny
+    root_markers:
+      - .git
+  - id: dagger
+    package: cuelsp
+    cmd:
+      - cuelsp
+    filetypes:
+      - cue
+    root_markers:
+      - cue.mod
+      - .git
+  - id: dartls
+    cmd:
+      - dart
+      - language-server
+      - --protocol=lsp
+    filetypes:
+      - dart
+    root_markers:
+      - pubspec.yaml
+    settings:
+      dart:
+        completeFunctionCalls: true
+        showTodos: true
+    init_options:
+      onlyAnalyzeProjectsWithOpenFiles: true
+      suggestFromUnimportedLibraries: true
+      closingLabels: true
+      outline: true
+      flutterOutline: true
+  - id: dcmls
+    cmd:
+      - dcm
+      - start-server
+      - --client=neovim
+    filetypes:
+      - dart
+    root_markers:
+      - pubspec.yaml
+  - id: debputy
+    cmd:
+      - debputy
+      - lsp
+      - server
+    filetypes:
+      - debcontrol
+      - debcopyright
+      - debchangelog
+      - autopkgtest
+      - make
+      - yaml
+    root_markers:
+      - debian
+  - id: denols
+    package: deno
+    cmd:
+      - deno
+      - lsp
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+      - typescriptreact
+    settings:
+      deno:
+        enable: true
+        suggest:
+          imports:
+            hosts:
+              https://deno.land: true
+  - id: dexter
+    package: dexter
+    cmd:
+      - dexter
+      - lsp
+    filetypes:
+      - elixir
+      - eelixir
+      - heex
+    root_markers:
+      - .dexter/dexter.db
+      - .dexter.db
+      - .git
+      - mix.exs
+    init_options:
+      followDelegates: true
+  - id: dhall_lsp_server
+    package: dhall-lsp
+    cmd:
+      - dhall-lsp-server
+    filetypes:
+      - dhall
+    root_markers:
+      - .git
+  - id: diagnosticls
+    package: diagnostic-languageserver
+    cmd:
+      - diagnostic-languageserver
+      - --stdio
+    root_markers:
+      - .git
+    runnable: false
+  - id: digestif
+    cmd:
+      - digestif
+    filetypes:
+      - tex
+      - plaintex
+      - context
+    root_markers:
+      - .git
+  - id: djls
+    package: django-language-server
+    cmd:
+      - djls
+      - serve
+    filetypes:
+      - htmldjango
+      - html
+      - python
+    root_markers:
+      - manage.py
+      - pyproject.toml
+      - .git
+  - id: djlsp
+    package: django-template-lsp
+    cmd:
+      - djlsp
+    filetypes:
+      - html
+      - htmldjango
+    root_markers:
+      - .git
+  - id: docker_compose_language_service
+    package: docker-compose-language-service
+    cmd:
+      - docker-compose-langserver
+      - --stdio
+    filetypes:
+      - yaml.docker-compose
+    root_markers:
+      - docker-compose.yaml
+      - docker-compose.yml
+      - compose.yaml
+      - compose.yml
+    runnable: false
+  - id: docker_language_server
+    package: docker-language-server
+    cmd:
+      - docker-language-server
+      - start
+      - --stdio
+    filetypes:
+      - dockerfile
+      - yaml.docker-compose
+      - hcl.docker-bake
+    root_markers:
+      - Dockerfile
+      - docker-compose.yaml
+      - docker-compose.yml
+      - compose.yaml
+      - compose.yml
+      - docker-bake.json
+      - docker-bake.hcl
+      - docker-bake.override.json
+      - docker-bake.override.hcl
+  - id: dockerls
+    package: dockerfile-language-server
+    cmd:
+      - docker-langserver
+      - --stdio
+    filetypes:
+      - dockerfile
+    root_markers:
+      - Dockerfile
+    priority: 10
+  - id: dolmenls
+    cmd:
+      - dolmenls
+    filetypes:
+      - smt2
+      - tptp
+      - p
+      - cnf
+      - icnf
+      - zf
+    root_markers:
+      - .git
+  - id: dotls
+    package: dot-language-server
+    cmd:
+      - dot-language-server
+      - --stdio
+    filetypes:
+      - dot
+    root_markers:
+      - .git
+  - id: dprint
+    package: dprint
+    cmd:
+      - dprint
+      - lsp
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+      - typescriptreact
+      - json
+      - jsonc
+      - markdown
+      - python
+      - toml
+      - rust
+      - roslyn
+      - graphql
+    root_markers:
+      - dprint.json
+      - .dprint.json
+      - dprint.jsonc
+      - .dprint.jsonc
+  - id: ds_pinyin_lsp
+    cmd:
+      - ds-pinyin-lsp
+    filetypes:
+      - markdown
+      - org
+    root_markers:
+      - .git
+    init_options:
+      completion_on: true
+      show_symbols: true
+      show_symbols_only_follow_by_hanzi: false
+      show_symbols_by_n_times: 0
+      match_as_same_as_input: true
+      match_long_input: true
+      max_suggest: 15
+  - id: dts_lsp
+    cmd:
+      - dts-lsp
+    filetypes:
+      - dts
+      - dtsi
+      - overlay
+    root_markers:
+      - .git
+  - id: earthlyls
+    package: earthlyls
+    cmd:
+      - earthlyls
+    filetypes:
+      - earthfile
+    root_markers:
+      - Earthfile
+  - id: ecsact
+    cmd:
+      - ecsact_lsp_server
+      - --stdio
+    filetypes:
+      - ecsact
+    root_markers:
+      - .git
+  - id: efm
+    package: efm
+    cmd:
+      - efm-langserver
+    root_markers:
+      - .git
+    runnable: false
+  - id: elixirls
+    package: elixir-ls
+    cmd:
+      - elixir-ls
+    filetypes:
+      - elixir
+      - eelixir
+      - heex
+      - surface
+  - id: elmls
+    package: elm-language-server
+    cmd:
+      - elm-language-server
+    filetypes:
+      - elm
+    init_options:
+      elmReviewDiagnostics: off
+      skipInstallPackageConfirmation: false
+      disableElmLSDiagnostics: false
+      onlyUpdateDiagnosticsOnSave: false
+  - id: elp
+    package: elp
+    cmd:
+      - elp
+      - server
+    filetypes:
+      - erlang
+    root_markers:
+      - rebar.config
+      - erlang.mk
+      - .git
+  - id: ember
+    package: ember-language-server
+    cmd:
+      - ember-language-server
+      - --stdio
+    filetypes:
+      - handlebars
+      - typescript
+      - javascript
+      - typescript.glimmer
+      - javascript.glimmer
+    root_markers:
+      - ember-cli-build.js
+      - .git
+  - id: emmet_language_server
+    package: emmet-language-server
+    cmd:
+      - emmet-language-server
+      - --stdio
+    filetypes:
+      - astro
+      - css
+      - eruby
+      - html
+      - htmlangular
+      - htmldjango
+      - javascriptreact
+      - less
+      - sass
+      - scss
+      - svelte
+      - typescriptreact
+      - vue
+    root_markers:
+      - .git
+  - id: emmet_ls
+    package: emmet-ls
+    cmd:
+      - emmet-ls
+      - --stdio
+    filetypes:
+      - astro
+      - css
+      - eruby
+      - html
+      - htmlangular
+      - htmldjango
+      - javascriptreact
+      - less
+      - pug
+      - sass
+      - scss
+      - svelte
+      - templ
+      - typescriptreact
+      - vue
+    root_markers:
+      - .git
+  - id: emmylua_ls
+    package: emmylua_ls
+    cmd:
+      - emmylua_ls
+    filetypes:
+      - lua
+    workspace_required: false
+    settings:
+      emmylua:
+        codeLens:
+          enable: true
+        hint:
+          enable: true
+  - id: erg_language_server
+    package: erg-language-server
+    cmd:
+      - erg
+      - --language-server
+    filetypes:
+      - erg
+    root_markers:
+      - package.er
+      - .git
+    runnable: false
+  - id: esbonio
+    package: esbonio
+    cmd:
+      - esbonio
+      - server
+    filetypes:
+      - rst
+    root_markers:
+      - conf.py
+      - .git
+  - id: eslint
+    package: eslint-lsp
+    cmd:
+      - vscode-eslint-language-server
+      - --stdio
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+      - typescriptreact
+      - vue
+      - svelte
+      - astro
+      - htmlangular
+    workspace_required: true
+    settings:
+      validate: on
+      packageManager: null
+      useESLintClass: false
+      experimental: {}
+      codeActionOnSave:
+        enable: false
+        mode: all
+      format: true
+      quiet: false
+      onIgnoredFiles: off
+      rulesCustomizations: {}
+      run: onType
+      problems:
+        shortenToSingleLine: false
+      nodePath: ""
+      workingDirectory:
+        mode: auto
+      codeAction:
+        disableRuleComment:
+          enable: true
+          location: separateLine
+        showDocumentation:
+          enable: true
+    priority: -10
+  - id: expert
+    package: expert
+    cmd:
+      - expert
+      - --stdio
+    filetypes:
+      - elixir
+      - eelixir
+      - heex
+      - surface
+  - id: facility_language_server
+    package: facility-language-server
+    cmd:
+      - facility-language-server
+    filetypes:
+      - fsd
+    root_markers:
+      - .git
+  - id: fallow
+    cmd:
+      - fallow-lsp
+    filetypes:
+      - javascript
+      - typescript
+      - javascriptreact
+      - typescriptreact
+    root_markers:
+      - .fallowrc.json
+      - .git
+  - id: fennel_language_server
+    package: fennel-language-server
+    cmd:
+      - fennel-language-server
+    filetypes:
+      - fennel
+    root_markers:
+      - .git
+  - id: fennel_ls
+    package: fennel-ls
+    cmd:
+      - fennel-ls
+    filetypes:
+      - fennel
+  - id: fish_lsp
+    package: fish-lsp
+    cmd:
+      - fish-lsp
+      - start
+    filetypes:
+      - fish
+    root_markers:
+      - config.fish
+      - .git
+  - id: flow
+    filetypes:
+      - javascript
+      - javascriptreact
+    root_markers:
+      - .flowconfig
+    runnable: false
+  - id: flux_lsp
+    package: flux-lsp
+    cmd:
+      - flux-lsp
+    filetypes:
+      - flux
+    root_markers:
+      - .git
+  - id: foam_ls
+    package: foam-language-server
+    cmd:
+      - foam-ls
+      - --stdio
+    filetypes:
+      - foam
+      - OpenFOAM
+  - id: fortitude
+    package: fortitude
+    cmd:
+      - fortitude
+      - server
+    filetypes:
+      - fortran
+    root_markers:
+      - fpm.toml
+      - fortitude.toml
+      - .fortitude.toml
+      - .git
+  - id: fortls
+    package: fortls
+    cmd:
+      - fortls
+      - --notify_init
+      - --hover_signature
+      - --hover_language=fortran
+      - --use_signature_help
+    filetypes:
+      - fortran
+    root_markers:
+      - .fortls
+      - .fortlsrc
+      - .fortls.json
+      - .git
+  - id: fsautocomplete
+    package: fsautocomplete
+    cmd:
+      - fsautocomplete
+      - --adaptive-lsp-server-enabled
+    filetypes:
+      - fsharp
+    settings:
+      FSharp:
+        keywordsAutocomplete: true
+        ExternalAutocomplete: false
+        Linter: true
+        UnionCaseStubGeneration: true
+        UnionCaseStubGenerationBody: failwith "Not Implemented"
+        RecordStubGeneration: true
+        RecordStubGenerationBody: failwith "Not Implemented"
+        InterfaceStubGeneration: true
+        InterfaceStubGenerationObjectIdentifier: this
+        InterfaceStubGenerationMethodBody: failwith "Not Implemented"
+        UnusedOpensAnalyzer: true
+        UnusedDeclarationsAnalyzer: true
+        UseSdkScripts: true
+        SimplifyNameAnalyzer: true
+        ResolveNamespaces: true
+        EnableReferenceCodeLens: true
+    init_options:
+      AutomaticWorkspaceInit: true
+  - id: fsharp_language_server
+    cmd:
+      - dotnet
+      - FSharpLanguageServer.dll
+    filetypes:
+      - fsharp
+    init_options:
+      AutomaticWorkspaceInit: true
+  - id: fstar
+    cmd:
+      - fstar.exe
+      - --lsp
+    filetypes:
+      - fstar
+    root_markers:
+      - .git
+  - id: futhark_lsp
+    cmd:
+      - futhark
+      - lsp
+    filetypes:
+      - futhark
+      - fut
+    root_markers:
+      - .git
+  - id: gdscript
+    filetypes:
+      - gdscript
+    root_markers:
+      - project.godot
+      - .git
+    runnable: false
+  - id: gdshader_lsp
+    cmd:
+      - gdshader-lsp
+      - --stdio
+    filetypes:
+      - gdshader
+      - gdshaderinc
+    root_markers:
+      - project.godot
+  - id: gh_actions_ls
+    package: gh-actions-language-server
+    cmd:
+      - gh-actions-language-server
+      - --stdio
+    filetypes:
+      - yaml
+  - id: ghcide
+    cmd:
+      - ghcide
+      - --lsp
+    filetypes:
+      - haskell
+      - lhaskell
+    root_markers:
+      - stack.yaml
+      - hie-bios
+      - BUILD.bazel
+      - cabal.config
+      - package.yaml
+  - id: ghdl_ls
+    cmd:
+      - ghdl-ls
+    filetypes:
+      - vhdl
+    root_markers:
+      - hdl-prj.json
+      - .git
+  - id: ginko_ls
+    package: ginko_ls
+    cmd:
+      - ginko_ls
+    filetypes:
+      - dts
+    root_markers:
+      - .git
+  - id: gitlab_ci_ls
+    package: gitlab-ci-ls
+    cmd:
+      - gitlab-ci-ls
+    filetypes:
+      - yaml.gitlab
+    runnable: false
+  - id: gitlab_duo
+    cmd:
+      - npx
+      - --@gitlab-org:registry=https://gitlab.com/api/v4/packages/npm/
+      - "@gitlab-org/gitlab-lsp"
+      - --stdio
+    filetypes:
+      - ruby
+      - go
+      - javascript
+      - typescript
+      - typescriptreact
+      - javascriptreact
+      - rust
+      - lua
+      - python
+      - java
+      - cpp
+      - c
+      - php
+      - cs
+      - kotlin
+      - swift
+      - scala
+      - vue
+      - svelte
+      - html
+      - css
+      - scss
+      - json
+      - yaml
+    root_markers:
+      - .git
+    settings:
+      baseUrl: https://gitlab.com
+      logLevel: info
+      codeCompletion:
+        enableSecretRedaction: true
+      telemetry:
+        enabled: false
+      featureFlags:
+        streamCodeGenerations: false
+    init_options:
+      editorInfo:
+        name: Neovim
+      editorPluginInfo:
+        name: Neovim LSP
+      ide:
+        name: Neovim
+        vendor: Neovim
+      extension:
+        name: Neovim LSP Client
+  - id: glasgow
+    cmd:
+      - glasgow
+    filetypes:
+      - wgsl
+    root_markers:
+      - .git
+  - id: gleam
+    cmd:
+      - gleam
+      - lsp
+    filetypes:
+      - gleam
+    root_markers:
+      - gleam.toml
+      - .git
+  - id: glint
+    package: glint
+    cmd:
+      - glint-language-server
+    filetypes:
+      - html.handlebars
+      - handlebars
+      - typescript
+      - typescript.glimmer
+      - javascript
+      - javascript.glimmer
+    root_markers:
+      - .glintrc.yml
+      - .glintrc
+      - .glintrc.json
+      - .glintrc.js
+      - glint.config.js
+      - package.json
+    workspace_required: true
+    init_options:
+      glint:
+        useGlobal: false
+  - id: glsl_analyzer
+    package: glsl_analyzer
+    cmd:
+      - glsl_analyzer
+    filetypes:
+      - glsl
+      - vert
+      - tesc
+      - tese
+      - frag
+      - geom
+      - comp
+    root_markers:
+      - .git
+  - id: glslls
+    package: glslls
+    cmd:
+      - glslls
+      - --stdin
+    filetypes:
+      - glsl
+      - vert
+      - tesc
+      - tese
+      - frag
+      - geom
+      - comp
+    root_markers:
+      - .git
+  - id: gn_language_server
+    package: gn-language-server
+    cmd:
+      - gn-language-server
+      - --stdio
+    filetypes:
+      - gn
+    root_markers:
+      - .gn
+      - .git
+  - id: gnls
+    cmd:
+      - gnls
+      - --stdio
+    filetypes:
+      - gn
+    root_markers:
+      - .gn
+      - .git
+  - id: golangci_lint_ls
+    package: golangci-lint-langserver
+    cmd:
+      - golangci-lint-langserver
+    filetypes:
+      - go
+      - gomod
+    root_markers:
+      - .golangci.yml
+      - .golangci.yaml
+      - .golangci.toml
+      - .golangci.json
+      - go.work
+      - go.mod
+      - .git
+    init_options:
+      command:
+        - golangci-lint
+        - run
+        - --output.text.path=
+        - --output.tab.path=
+        - --output.html.path=
+        - --output.checkstyle.path=
+        - --output.junit-xml.path=
+        - --output.teamcity.path=
+        - --output.sarif.path=
+        - --show-stats=false
+        - --output.json.path=stdout
+  - id: gopls
+    package: gopls
+    cmd:
+      - gopls
+    filetypes:
+      - go
+      - gomod
+      - gowork
+      - gotmpl
+    settings:
+      gopls:
+        semanticTokens: true
+    priority: 10
+  - id: gradle_ls
+    package: gradle-language-server
+    cmd:
+      - gradle-language-server
+    filetypes:
+      - groovy
+    root_markers:
+      - settings.gradle
+      - build.gradle
+    init_options:
+      settings:
+        gradleWrapperEnabled: true
+  - id: grammarly
+    cmd:
+      - grammarly-languageserver
+      - --stdio
+    filetypes:
+      - markdown
+    root_markers:
+      - .git
+    init_options:
+      clientId: client_BaDkMgx4X19X9UxxYRCXZo
+  - id: graphql
+    package: graphql-language-service-cli
+    cmd:
+      - graphql-lsp
+      - server
+      - -m
+      - stream
+    filetypes:
+      - graphql
+      - typescriptreact
+      - javascriptreact
+  - id: groovyls
+    package: groovy-language-server
+    cmd:
+      - groovy-language-server
+    filetypes:
+      - groovy
+    root_markers:
+      - Jenkinsfile
+      - .git
+  - id: guile_ls
+    cmd:
+      - guile-lsp-server
+    filetypes:
+      - scheme.guile
+    root_markers:
+      - guix.scm
+      - .git
+    runnable: false
+  - id: hare_lsp
+    cmd:
+      - hare-lsp
+      - -S
+    filetypes:
+      - hare
+    root_markers:
+      - .git
+    workspace_required: false
+  - id: harper_ls
+    package: harper-ls
+    cmd:
+      - harper-ls
+      - --stdio
+    filetypes:
+      - asciidoc
+      - c
+      - cpp
+      - cs
+      - gitcommit
+      - go
+      - html
+      - java
+      - javascript
+      - jjdescription
+      - lua
+      - markdown
+      - nix
+      - python
+      - ruby
+      - rust
+      - swift
+      - tex
+      - toml
+      - typescript
+      - typescriptreact
+      - haskell
+      - cmake
+      - typst
+      - php
+      - dart
+      - clojure
+      - sh
+    root_markers:
+      - .harper-dictionary.txt
+      - .git
+  - id: hdl_checker
+    package: hdl-checker
+    cmd:
+      - hdl_checker
+      - --lsp
+    filetypes:
+      - vhdl
+      - verilog
+      - systemverilog
+    root_markers:
+      - .git
+  - id: helm_ls
+    package: helm-ls
+    cmd:
+      - helm_ls
+      - serve
+    filetypes:
+      - helm
+      - yaml.helm-values
+    root_markers:
+      - Chart.yaml
+  - id: herb_ls
+    package: herb-language-server
+    cmd:
+      - herb-language-server
+      - --stdio
+    filetypes:
+      - html
+      - eruby
+    root_markers:
+      - Gemfile
+      - .git
+  - id: hhvm
+    cmd:
+      - hh_client
+      - lsp
+      - --from
+      - neovim
+    filetypes:
+      - php
+      - hack
+    root_markers:
+      - .hhconfig
+  - id: hie
+    cmd:
+      - hie-wrapper
+      - --lsp
+    filetypes:
+      - haskell
+    root_markers:
+      - stack.yaml
+      - package.yaml
+      - .git
+  - id: hlasm
+    cmd:
+      - hlasm_language_server
+    filetypes:
+      - hlasm
+    root_markers:
+      - .hlasmplugin
+  - id: hls
+    package: haskell-language-server
+    cmd:
+      - haskell-language-server-wrapper
+      - --lsp
+    filetypes:
+      - haskell
+      - lhaskell
+    settings:
+      haskell:
+        formattingProvider: ormolu
+        cabalFormattingProvider: cabal-fmt
+  - id: home_assistant
+    package: vscode-home-assistant
+    cmd:
+      - vscode-home-assistant
+      - --stdio
+    filetypes:
+      - yaml
+    root_markers:
+      - configuration.yaml
+      - configuration.yml
+  - id: hoon_ls
+    package: hoon-language-server
+    cmd:
+      - hoon-language-server
+    filetypes:
+      - hoon
+    root_markers:
+      - .git
+  - id: html
+    package: html-lsp
+    cmd:
+      - vscode-html-language-server
+      - --stdio
+    filetypes:
+      - html
+    root_markers:
+      - package.json
+      - .git
+    init_options:
+      provideFormatter: true
+      embeddedLanguages:
+        css: true
+        javascript: true
+      configurationSection:
+        - html
+        - css
+        - javascript
+    priority: 10
+  - id: htmx
+    package: htmx-lsp
+    cmd:
+      - htmx-lsp
+    filetypes:
+      - aspnetcorerazor
+      - astro
+      - astro-markdown
+      - blade
+      - clojure
+      - django-html
+      - htmldjango
+      - edge
+      - eelixir
+      - elixir
+      - ejs
+      - erb
+      - eruby
+      - gohtml
+      - gohtmltmpl
+      - haml
+      - handlebars
+      - hbs
+      - html
+      - htmlangular
+      - html-eex
+      - heex
+      - jade
+      - leaf
+      - liquid
+      - markdown
+      - mdx
+      - mustache
+      - njk
+      - nunjucks
+      - php
+      - razor
+      - slim
+      - twig
+      - javascript
+      - javascriptreact
+      - reason
+      - rescript
+      - typescript
+      - typescriptreact
+      - vue
+      - svelte
+      - templ
+    root_markers:
+      - .git
+  - id: hydra_lsp
+    package: hydra-lsp
+    cmd:
+      - hydra-lsp
+    filetypes:
+      - yaml
+    root_markers:
+      - .git
+  - id: hylo_ls
+    package: hylo-language-server
+    cmd:
+      - hylo-language-server
+      - --stdio
+    filetypes:
+      - hylo
+    root_markers:
+      - .git
+  - id: hyprls
+    package: hyprls
+    cmd:
+      - hyprls
+      - --stdio
+    filetypes:
+      - hyprlang
+    root_markers:
+      - .git
+  - id: idris2_lsp
+    cmd:
+      - idris2-lsp
+    filetypes:
+      - idris2
+  - id: intelephense
+    package: intelephense
+    cmd:
+      - intelephense
+      - --stdio
+    filetypes:
+      - php
+    root_markers:
+      - .git
+      - composer.json
+    settings:
+      intelephense:
+        telemetry:
+          enabled: false
+    priority: 10
+  - id: janet_lsp
+    cmd:
+      - janet-lsp
+      - --stdio
+    filetypes:
+      - janet
+    root_markers:
+      - project.janet
+      - .git
+  - id: java_language_server
+    package: java-language-server
+    cmd:
+      - java-language-server
+    filetypes:
+      - java
+    root_markers:
+      - build.gradle
+      - build.gradle.kts
+      - pom.xml
+      - .git
+  - id: jdtls
+    package: jdtls
+    filetypes:
+      - java
+    cmd:
+      - jdtls
+    priority: 10
+  - id: jedi_language_server
+    package: jedi-language-server
+    cmd:
+      - jedi-language-server
+    filetypes:
+      - python
+    root_markers:
+      - pyproject.toml
+      - setup.py
+      - setup.cfg
+      - requirements.txt
+      - Pipfile
+      - .git
+  - id: jetls
+    cmd:
+      - jetls
+      - serve
+    filetypes:
+      - julia
+    root_markers:
+      - Project.toml
+  - id: jinja_lsp
+    package: jinja-lsp
+    cmd:
+      - jinja-lsp
+    filetypes:
+      - jinja
+    root_markers:
+      - .git
+  - id: jls
+    cmd:
+      - jls
+    filetypes:
+      - java
+    root_markers:
+      - pom.xml
+      - build.gradle
+      - build.gradle.kts
+      - settings.gradle
+      - settings.gradle.kts
+      - WORKSPACE
+      - WORKSPACE.bazel
+      - .java-version
+  - id: jqls
+    package: jq-lsp
+    cmd:
+      - jq-lsp
+    filetypes:
+      - jq
+    root_markers:
+      - .git
+  - id: jsonls
+    package: json-lsp
+    cmd:
+      - vscode-json-language-server
+      - --stdio
+    filetypes:
+      - json
+      - jsonc
+    root_markers:
+      - .git
+    init_options:
+      provideFormatter: true
+    priority: 10
+  - id: jsonnet_ls
+    package: jsonnet-language-server
+    cmd:
+      - jsonnet-language-server
+    filetypes:
+      - jsonnet
+      - libsonnet
+    root_markers:
+      - jsonnetfile.json
+      - .git
+  - id: julials
+    package: julia-lsp
+    cmd:
+      - julia
+      - --startup-file=no
+      - --history-file=no
+      - -e
+      - "    # Load LanguageServer.jl: attempt to load from ~/.julia/environments/nvim-lspconfig
+
+        \    # with the regular load path as a fallback
+
+        \    ls_install_path = joinpath(
+
+        \        get(DEPOT_PATH, 1, joinpath(homedir(), \".julia\")),
+
+        \        \"environments\", \"nvim-lspconfig\"
+
+        \    )
+
+        \    pushfirst!(LOAD_PATH, ls_install_path)
+
+        \    using LanguageServer
+
+        \    popfirst!(LOAD_PATH)
+
+        \    @info \"Running language server\" VERSION pwd()
+
+        \    LanguageServer.runserver()
+
+        \  "
+    filetypes:
+      - julia
+    root_markers:
+      - Project.toml
+      - JuliaProject.toml
+    runnable: false
+  - id: just
+    package: just-lsp
+    cmd:
+      - just-lsp
+    filetypes:
+      - just
+    root_markers:
+      - .git
+  - id: kakehashi
+    package: kakehashi
+    cmd:
+      - kakehashi
+    root_markers:
+      - kakehashi.toml
+      - .git
+    runnable: false
+  - id: kcl
+    package: kcl
+    cmd:
+      - kcl-language-server
+    filetypes:
+      - kcl
+    root_markers:
+      - .git
+  - id: kdl_lsp
+    cmd:
+      - kdl-lsp
+    filetypes:
+      - kdl
+    root_markers:
+      - .git
+  - id: koka
+    cmd:
+      - koka
+      - --language-server
+      - --lsstdio
+    filetypes:
+      - koka
+    root_markers:
+      - .git
+  - id: kotlin_language_server
+    package: kotlin-language-server
+    cmd:
+      - kotlin-language-server
+    filetypes:
+      - kotlin
+    root_markers:
+      - settings.gradle
+      - settings.gradle.kts
+      - build.xml
+      - pom.xml
+      - build.gradle
+      - build.gradle.kts
+    priority: 10
+  - id: kotlin_lsp
+    package: kotlin-lsp
+    cmd:
+      - intellij-server
+      - --stdio
+    filetypes:
+      - kotlin
+    root_markers:
+      - settings.gradle
+      - settings.gradle.kts
+      - pom.xml
+      - build.gradle
+      - build.gradle.kts
+      - workspace.json
+  - id: kulala_ls
+    cmd:
+      - kulala-ls
+      - --stdio
+    filetypes:
+      - http
+    root_markers:
+      - .git
+  - id: laravel_ls
+    package: laravel-ls
+    cmd:
+      - laravel-ls
+    filetypes:
+      - php
+      - blade
+    root_markers:
+      - artisan
+  - id: laravel_lsp
+    package: laravel_lsp
+    cmd:
+      - laravel-lsp
+    filetypes:
+      - php
+      - blade
+  - id: lean3ls
+    cmd:
+      - lean-language-server
+      - --stdio
+      - --
+      - -M
+      - "4096"
+      - -T
+      - "100000"
+    filetypes:
+      - lean3
+  - id: lelwel_ls
+    package: lelwel
+    cmd:
+      - lelwel-ls
+    filetypes:
+      - llw
+    root_markers:
+      - .git
+  - id: lemminx
+    package: lemminx
+    cmd:
+      - lemminx
+    filetypes:
+      - xml
+      - xsd
+      - xsl
+      - xslt
+      - svg
+    root_markers:
+      - .git
+  - id: lexical
+    package: lexical
+    cmd:
+      - lexical
+    filetypes:
+      - elixir
+      - eelixir
+      - heex
+      - surface
+    root_markers:
+      - mix.exs
+      - .git
+  - id: lsp_ai
+    cmd:
+      - lsp-ai
+    init_options:
+      memory: {}
+    runnable: false
+  - id: ltex
+    package: ltex-ls
+    cmd:
+      - ltex-ls
+    filetypes:
+      - bib
+      - gitcommit
+      - markdown
+      - org
+      - plaintex
+      - rst
+      - rnoweb
+      - tex
+      - pandoc
+      - quarto
+      - rmd
+      - context
+      - html
+      - xhtml
+      - mail
+      - text
+    root_markers:
+      - .git
+    settings:
+      ltex:
+        enabled: {}
+  - id: ltex_plus
+    package: ltex-ls-plus
+    cmd:
+      - ltex-ls-plus
+    filetypes:
+      - asciidoc
+      - bib
+      - context
+      - gitcommit
+      - html
+      - markdown
+      - org
+      - pandoc
+      - plaintex
+      - quarto
+      - mail
+      - mdx
+      - rmd
+      - rnoweb
+      - rst
+      - tex
+      - text
+      - typst
+      - xhtml
+    root_markers:
+      - .git
+    settings:
+      ltex:
+        enabled:
+          - asciidoc
+          - bib
+          - context
+          - gitcommit
+          - html
+          - markdown
+          - org
+          - pandoc
+          - plaintex
+          - quarto
+          - mail
+          - mdx
+          - rmd
+          - rnoweb
+          - rst
+          - tex
+          - latex
+          - text
+          - typst
+          - xhtml
+  - id: lua_ls
+    package: lua-language-server
+    cmd:
+      - lua-language-server
+    filetypes:
+      - lua
+    settings:
+      Lua:
+        codeLens:
+          enable: true
+        hint:
+          enable: true
+          semicolon: Disable
+    priority: 10
+  - id: luau_lsp
+    package: luau-lsp
+    cmd:
+      - luau-lsp
+      - lsp
+    filetypes:
+      - luau
+    root_markers:
+      - .git
+  - id: lwc_ls
+    package: lwc-language-server
+    cmd:
+      - lwc-language-server
+      - --stdio
+    filetypes:
+      - javascript
+      - html
+    root_markers:
+      - sfdx-project.json
+    init_options:
+      embeddedLanguages:
+        javascript: true
+  - id: m68k
+    cmd:
+      - m68k-lsp-server
+      - --stdio
+    filetypes:
+      - asm68k
+    root_markers:
+      - Makefile
+      - .git
+  - id: markdown_oxide
+    package: markdown-oxide
+    cmd:
+      - markdown-oxide
+    filetypes:
+      - markdown
+    root_markers:
+      - .git
+      - .obsidian
+      - .moxide.toml
+  - id: marko-js
+    package: marko-language-server
+    cmd:
+      - marko-language-server
+      - --stdio
+    filetypes:
+      - marko
+    root_markers:
+      - .git
+  - id: marksman
+    package: marksman
+    cmd:
+      - marksman
+      - server
+    filetypes:
+      - markdown
+      - markdown.mdx
+    root_markers:
+      - .marksman.toml
+      - .git
+    root_strategy: document-dir
+    priority: 10
+  - id: matlab_ls
+    package: matlab-language-server
+    cmd:
+      - matlab-language-server
+      - --stdio
+    filetypes:
+      - matlab
+    settings:
+      MATLAB:
+        indexWorkspace: true
+        installPath: ""
+        matlabConnectionTiming: onStart
+        telemetry: true
+  - id: mdx_analyzer
+    package: mdx-analyzer
+    cmd:
+      - mdx-language-server
+      - --stdio
+    filetypes:
+      - mdx
+    root_markers:
+      - package.json
+    init_options:
+      typescript: {}
+  - id: mesonlsp
+    package: mesonlsp
+    cmd:
+      - mesonlsp
+      - --lsp
+    filetypes:
+      - meson
+  - id: metals
+    cmd:
+      - metals
+    filetypes:
+      - scala
+    root_markers:
+      - build.sbt
+      - build.sc
+      - build.gradle
+      - build.gradle.kts
+      - pom.xml
+    init_options:
+      statusBarProvider: show-message
+      isHttpEnabled: true
+      compilerOptions:
+        snippetAutoIndent: false
+  - id: microcad_lsp
+    cmd:
+      - microcad-lsp
+      - --stdio
+    filetypes:
+      - microcad
+    root_markers:
+      - .git
+  - id: millet
+    package: millet
+    cmd:
+      - millet
+    filetypes:
+      - sml
+    root_markers:
+      - millet.toml
+  - id: mint
+    cmd:
+      - mint
+      - ls
+    filetypes:
+      - mint
+    root_markers:
+      - mint.json
+      - .git
+  - id: mlir_lsp_server
+    cmd:
+      - mlir-lsp-server
+    filetypes:
+      - mlir
+    root_markers:
+      - .git
+  - id: mlir_pdll_lsp_server
+    cmd:
+      - mlir-pdll-lsp-server
+    filetypes:
+      - pdll
+    root_markers:
+      - pdll_compile_commands.yml
+      - .git
+  - id: mm0_ls
+    package: metamath-zero-lsp
+    cmd:
+      - mm0-rs
+      - server
+    filetypes:
+      - metamath-zero
+    root_markers:
+      - .git
+    runnable: false
+  - id: mojo
+    cmd:
+      - mojo-lsp-server
+    filetypes:
+      - mojo
+    root_markers:
+      - pixi.toml
+      - pixi.lock
+      - .git
+  - id: motoko_lsp
+    package: motoko-lsp
+    cmd:
+      - motoko-lsp
+      - --stdio
+    filetypes:
+      - motoko
+    root_markers:
+      - dfx.json
+      - .git
+    init_options:
+      formatter: auto
+  - id: move_analyzer
+    package: move-analyzer
+    cmd:
+      - move-analyzer
+    filetypes:
+      - move
+    root_markers:
+      - Move.toml
+  - id: mpls
+    package: mpls
+    cmd:
+      - mpls
+      - --theme
+      - dark
+      - --enable-emoji
+      - --enable-footnotes
+      - --no-auto
+    filetypes:
+      - markdown
+    root_markers:
+      - .marksman.toml
+      - .git
+  - id: ms_terraform_lsp
+    package: ms-terraform-lsp
+    cmd:
+      - ms-terraform-lsp
+      - serve
+    filetypes:
+      - terraform
+    root_markers:
+      - .terraform
+      - .git
+  - id: msbuild_project_tools_server
+    cmd:
+      - dotnet
+      - MSBuildProjectTools.LanguageServer.Host.dll
+    filetypes:
+      - msbuild
+  - id: muon
+    cmd:
+      - muon
+      - analyze
+      - lsp
+    filetypes:
+      - meson
+  - id: mutt_ls
+    package: mutt-language-server
+    cmd:
+      - mutt-language-server
+    filetypes:
+      - muttrc
+      - neomuttrc
+    root_markers:
+      - .git
+  - id: nelua_lsp
+    filetypes:
+      - nelua
+    root_markers:
+      - Makefile
+      - .git
+      - "*.nelua"
+    runnable: false
+  - id: neocmake
+    package: neocmakelsp
+    cmd:
+      - neocmakelsp
+      - stdio
+    filetypes:
+      - cmake
+    root_markers:
+      - .neocmake.toml
+      - .git
+      - build
+      - cmake
+  - id: nextflow_ls
+    package: nextflow-language-server
+    cmd:
+      - nextflow-language-server
+    filetypes:
+      - nextflow
+    root_markers:
+      - nextflow.config
+      - .git
+    settings:
+      nextflow:
+        files:
+          exclude:
+            - .git
+            - .nf-test
+            - work
+  - id: nextls
+    package: nextls
+    cmd:
+      - nextls
+      - --stdio
+    filetypes:
+      - elixir
+      - eelixir
+      - heex
+      - surface
+    root_markers:
+      - mix.exs
+      - .git
+  - id: nginx_language_server
+    package: nginx-language-server
+    cmd:
+      - nginx-language-server
+    filetypes:
+      - nginx
+    root_markers:
+      - nginx.conf
+      - .git
+  - id: nickel_ls
+    package: nickel-lang-lsp
+    cmd:
+      - nls
+    filetypes:
+      - ncl
+      - nickel
+    root_markers:
+      - .git
+  - id: nil_ls
+    package: nil
+    cmd:
+      - nil
+    filetypes:
+      - nix
+    root_markers:
+      - flake.nix
+      - .git
+  - id: nim_langserver
+    package: nimlangserver
+    cmd:
+      - nimlangserver
+    filetypes:
+      - nim
+  - id: nimls
+    package: nimlsp
+    cmd:
+      - nimlsp
+    filetypes:
+      - nim
+  - id: nixd
+    cmd:
+      - nixd
+    filetypes:
+      - nix
+    root_markers:
+      - flake.nix
+      - .git
+  - id: nlpplus_ls
+    package: nlpplus-language-server
+    cmd:
+      - nlpplus-language-server
+      - --stdio
+    filetypes:
+      - nlp
+    root_markers:
+      - spec
+      - .git
+  - id: nomad_lsp
+    cmd:
+      - nomad-lsp
+    filetypes:
+      - hcl.nomad
+      - nomad
+    runnable: false
+  - id: ntt
+    cmd:
+      - ntt
+      - langserver
+    filetypes:
+      - ttcn
+    root_markers:
+      - .git
+  - id: nushell
+    cmd:
+      - nu
+      - --lsp
+    filetypes:
+      - nu
+  - id: nxls
+    cmd:
+      - nxls
+      - --stdio
+    filetypes:
+      - json
+      - jsonc
+    root_markers:
+      - nx.json
+      - .git
+  - id: ocamllsp
+    package: ocaml-lsp
+    cmd:
+      - ocamllsp
+    filetypes:
+      - ocaml
+      - menhir
+      - ocamlinterface
+      - ocamllex
+      - reason
+      - dune
+  - id: ols
+    package: ols
+    cmd:
+      - ols
+    filetypes:
+      - odin
+  - id: omnisharp
+    package: omnisharp
+    filetypes:
+      - cs
+      - vb
+    settings:
+      FormattingOptions:
+        EnableEditorConfigSupport: true
+        OrganizeImports: null
+      MsBuild:
+        LoadProjectsOnDemand: null
+      RoslynExtensionsOptions:
+        EnableAnalyzersSupport: null
+        EnableImportCompletion: null
+        AnalyzeOpenDocumentsOnly: null
+        EnableDecompilationSupport: null
+      RenameOptions:
+        RenameInComments: null
+        RenameOverloads: null
+        RenameInStrings: null
+      Sdk:
+        IncludePrereleases: true
+    cmd:
+      - OmniSharp
+      - -z
+      - DotNet:enablePackageRestore=false
+      - --encoding
+      - utf-8
+      - --languageserver
+    priority: 10
+  - id: opencl_ls
+    package: opencl-language-server
+    cmd:
+      - opencl-language-server
+    filetypes:
+      - opencl
+    root_markers:
+      - .git
+  - id: openscad_ls
+    cmd:
+      - openscad-language-server
+    filetypes:
+      - openscad
+    root_markers:
+      - .git
+  - id: openscad_lsp
+    package: openscad-lsp
+    cmd:
+      - openscad-lsp
+      - --stdio
+    filetypes:
+      - openscad
+    root_markers:
+      - .git
+  - id: oso
+    cmd:
+      - oso-cloud
+      - lsp
+    filetypes:
+      - polar
+  - id: oxfmt
+    package: oxfmt
+    cmd:
+      - oxfmt
+      - --lsp
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+      - typescriptreact
+      - toml
+      - json
+      - jsonc
+      - json5
+      - yaml
+      - html
+      - vue
+      - handlebars
+      - css
+      - scss
+      - less
+      - graphql
+      - markdown
+      - svelte
+  - id: oxlint
+    package: oxlint
+    cmd:
+      - oxlint
+      - --lsp
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+      - typescriptreact
+      - vue
+      - svelte
+      - astro
+  - id: pact_ls
+    cmd:
+      - pact-lsp
+    filetypes:
+      - pact
+    root_markers:
+      - .git
+  - id: panache
+    package: panache
+    cmd:
+      - panache
+      - lsp
+    filetypes:
+      - markdown
+      - quarto
+      - rmd
+    root_markers:
+      - .panache.toml
+      - panache.toml
+      - _quarto.yml
+      - _bookdown.yml
+      - .git
+  - id: pasls
+    cmd:
+      - pasls
+    filetypes:
+      - pascal
+  - id: pbls
+    package: pbls
+    cmd:
+      - pbls
+    filetypes:
+      - proto
+    root_markers:
+      - .pbls.toml
+      - .git
+  - id: perl_lsp
+    cmd:
+      - perl-lsp
+    filetypes:
+      - perl
+    root_markers:
+      - cpanfile
+      - Makefile.PL
+      - Build.PL
+      - .git
+  - id: perlls
+    cmd:
+      - perl
+      - -MPerl::LanguageServer
+      - -e
+      - Perl::LanguageServer::run
+      - --
+      - --port 13603
+      - --nostdio 0
+    filetypes:
+      - perl
+    root_markers:
+      - .git
+    settings:
+      perl:
+        perlCmd: perl
+        perlInc: " "
+        fileFilter:
+          - .pm
+          - .pl
+        ignoreDirs: .git
+  - id: perlnavigator
+    package: perlnavigator
+    cmd:
+      - perlnavigator
+    filetypes:
+      - perl
+    root_markers:
+      - .git
+  - id: perlpls
+    cmd:
+      - pls
+    filetypes:
+      - perl
+    root_markers:
+      - .git
+    settings:
+      perl:
+        perlcritic:
+          enabled: false
+        syntax:
+          enabled: true
+  - id: pest_ls
+    package: pest-language-server
+    cmd:
+      - pest-language-server
+    filetypes:
+      - pest
+    root_markers:
+      - .git
+  - id: phan
+    cmd:
+      - phan
+      - -m
+      - json
+      - --no-color
+      - --no-progress-bar
+      - -x
+      - -u
+      - -S
+      - --language-server-on-stdin
+      - --allow-polyfill-parser
+    filetypes:
+      - php
+  - id: php_lsp
+    cmd:
+      - php-lsp
+    filetypes:
+      - php
+    root_markers:
+      - composer.json
+      - .git
+    workspace_required: true
+  - id: phpactor
+    package: phpactor
+    cmd:
+      - phpactor
+      - language-server
+    filetypes:
+      - php
+    root_markers:
+      - .git
+      - composer.json
+      - .phpactor.json
+      - .phpactor.yml
+    workspace_required: true
+  - id: phpantom_lsp
+    package: phpantom_lsp
+    cmd:
+      - phpantom_lsp
+    filetypes:
+      - php
+      - blade
+    root_markers:
+      - .phpantom.toml
+      - .git
+      - composer.json
+  - id: phptools
+    cmd:
+      - devsense-php-ls
+      - --stdio
+    filetypes:
+      - php
+    init_options:
+      "0": "{}"
+  - id: pico8_ls
+    package: pico8-ls
+    cmd:
+      - pico8-ls
+      - --stdio
+    filetypes:
+      - p8
+    runnable: false
+  - id: pkl
+    cmd:
+      - pkl-lsp
+    filetypes:
+      - pkl
+      - pcf
+    root_markers:
+      - PklProject
+      - .git
+  - id: please
+    cmd:
+      - plz
+      - tool
+      - lps
+    filetypes:
+      - bzl
+    root_markers:
+      - .plzconfig
+  - id: pli
+    cmd:
+      - pli_language_server
+    filetypes:
+      - pli
+    root_markers:
+      - .pliplugin
+  - id: pony_lsp
+    cmd:
+      - pony-lsp
+    filetypes:
+      - pony
+    root_markers:
+      - corral.json
+      - .git
+  - id: poryscript_pls
+    cmd:
+      - poryscript-pls
+    filetypes:
+      - pory
+    root_markers:
+      - .git
+  - id: postgres_lsp
+    package: postgres-language-server
+    cmd:
+      - postgres-language-server
+      - lsp-proxy
+    filetypes:
+      - sql
+    root_markers:
+      - postgres-language-server.jsonc
+    workspace_required: true
+  - id: powershell_es
+    package: powershell-editor-services
+    filetypes:
+      - ps1
+    root_markers:
+      - PSScriptAnalyzerSettings.psd1
+      - .git
+    init_options:
+      enableProfileLoading: false
+    runnable: false
+  - id: prismals
+    package: prisma-language-server
+    cmd:
+      - prisma-language-server
+      - --stdio
+    filetypes:
+      - prisma
+    root_markers:
+      - .git
+      - package.json
+    settings:
+      prisma:
+        prismaFmtBinPath: ""
+  - id: prolog_ls
+    cmd:
+      - swipl
+      - -g
+      - use_module(library(lsp_server)).
+      - -g
+      - lsp_server:main
+      - -t
+      - halt
+      - --
+      - stdio
+    filetypes:
+      - prolog
+    root_markers:
+      - pack.pl
+  - id: prosemd_lsp
+    package: prosemd-lsp
+    cmd:
+      - prosemd-lsp
+      - --stdio
+    filetypes:
+      - markdown
+    root_markers:
+      - .git
+  - id: protols
+    package: protols
+    cmd:
+      - protols
+    filetypes:
+      - proto
+    root_markers:
+      - .git
+  - id: psalm
+    package: psalm
+    cmd:
+      - psalm
+      - --language-server
+    filetypes:
+      - php
+    root_markers:
+      - psalm.xml
+      - psalm.xml.dist
+  - id: pug
+    cmd:
+      - pug-lsp
+    filetypes:
+      - pug
+    root_markers:
+      - package.json
+  - id: puppet
+    package: puppet-editor-services
+    cmd:
+      - puppet-languageserver
+      - --stdio
+    filetypes:
+      - puppet
+    root_markers:
+      - manifests
+      - .puppet-lint.rc
+      - hiera.yaml
+      - .git
+  - id: purescriptls
+    package: purescript-language-server
+    cmd:
+      - purescript-language-server
+      - --stdio
+    filetypes:
+      - purescript
+    root_markers:
+      - bower.json
+      - flake.nix
+      - psc-package.json
+      - shell.nix
+      - spago.dhall
+      - spago.yaml
+  - id: pylsp
+    package: python-lsp-server
+    cmd:
+      - pylsp
+    filetypes:
+      - python
+    root_markers:
+      - pyproject.toml
+      - setup.py
+      - setup.cfg
+      - requirements.txt
+      - Pipfile
+      - .git
+  - id: pylyzer
+    package: pylyzer
+    cmd:
+      - pylyzer
+      - --server
+    filetypes:
+      - python
+    root_markers:
+      - setup.py
+      - tox.ini
+      - requirements.txt
+      - Pipfile
+      - pyproject.toml
+      - .git
+    settings:
+      python:
+        diagnostics: true
+        inlayHints: true
+        smartCompletion: true
+        checkOnType: false
+  - id: pyre
+    package: pyre
+    cmd:
+      - pyre
+      - persistent
+    filetypes:
+      - python
+    root_markers:
+      - .pyre_configuration
+  - id: pyrefly
+    package: pyrefly
+    cmd:
+      - pyrefly
+      - lsp
+    filetypes:
+      - python
+    root_markers:
+      - pyrefly.toml
+      - pyproject.toml
+      - setup.py
+      - setup.cfg
+      - requirements.txt
+      - Pipfile
+      - .git
+  - id: pyright
+    package: pyright
+    cmd:
+      - pyright-langserver
+      - --stdio
+    filetypes:
+      - python
+    root_markers:
+      - pyrightconfig.json
+      - pyproject.toml
+      - setup.py
+      - setup.cfg
+      - requirements.txt
+      - Pipfile
+      - .git
+    settings:
+      pyright:
+        disableTaggedHints: true
+      python:
+        analysis:
+          autoSearchPaths: true
+          useLibraryCodeForTypes: true
+          diagnosticMode: openFilesOnly
+    priority: 10
+  - id: pytest_language_server
+    package: pytest-language-server
+    cmd:
+      - pytest-language-server
+    filetypes:
+      - python
+    root_markers:
+      - pytest.ini
+      - pyproject.toml
+      - setup.py
+      - setup.cfg
+      - .git
+  - id: qmlls
+    package: qmlls
+    cmd:
+      - qmlls
+    filetypes:
+      - qml
+      - qmljs
+    root_markers:
+      - .git
+  - id: quick_lint_js
+    package: quick-lint-js
+    cmd:
+      - quick-lint-js
+      - --lsp-server
+    filetypes:
+      - javascript
+      - typescript
+    root_markers:
+      - package.json
+      - jsconfig.json
+      - .git
+  - id: r_language_server
+    package: r-languageserver
+    cmd:
+      - R
+      - --no-echo
+      - -e
+      - languageserver::run()
+    filetypes:
+      - r
+      - rmd
+      - quarto
+    runnable: false
+  - id: racket_langserver
+    cmd:
+      - racket
+      - --lib
+      - racket-langserver
+    filetypes:
+      - racket
+      - scheme
+    root_markers:
+      - .git
+  - id: raku_navigator
+    package: raku-navigator
+    filetypes:
+      - raku
+    root_markers:
+      - .git
+    runnable: false
+  - id: reason_ls
+    package: reason-language-server
+    cmd:
+      - reason-language-server
+    filetypes:
+      - reason
+    root_markers:
+      - bsconfig.json
+      - .git
+  - id: regal
+    package: regal
+    cmd:
+      - regal
+      - language-server
+    filetypes:
+      - rego
+  - id: regols
+    package: regols
+    cmd:
+      - regols
+    filetypes:
+      - rego
+  - id: remark_ls
+    package: remark-language-server
+    cmd:
+      - remark-language-server
+      - --stdio
+    filetypes:
+      - markdown
+    root_markers:
+      - .remarkrc
+      - .remarkrc.json
+      - .remarkrc.js
+      - .remarkrc.cjs
+      - .remarkrc.mjs
+      - .remarkrc.yml
+      - .remarkrc.yaml
+      - .remarkignore
+  - id: rescriptls
+    package: rescript-language-server
+    cmd:
+      - rescript-language-server
+      - --stdio
+    filetypes:
+      - rescript
+    root_markers:
+      - bsconfig.json
+      - rescript.json
+      - .git
+    init_options:
+      extensionConfiguration:
+        askToStartBuild: false
+        allowBuiltInFormatter: true
+        incrementalTypechecking:
+          enable: true
+          acrossFiles: true
+        cache:
+          projectConfig:
+            enabled: true
+        codeLens: true
+        inlayHints:
+          enable: true
+  - id: rnix
+    package: rnix-lsp
+    cmd:
+      - rnix-lsp
+    filetypes:
+      - nix
+  - id: robotcode
+    package: robotcode
+    cmd:
+      - robotcode
+      - language-server
+    filetypes:
+      - robot
+    root_markers:
+      - robot.toml
+      - pyproject.toml
+      - Pipfile
+      - .git
+  - id: robotframework_ls
+    package: robotframework-lsp
+    cmd:
+      - robotframework_ls
+    filetypes:
+      - robot
+    root_markers:
+      - robotidy.toml
+      - pyproject.toml
+      - conda.yaml
+      - robot.yaml
+      - .git
+  - id: roc_ls
+    package: roc_language_server
+    cmd:
+      - roc_language_server
+    filetypes:
+      - roc
+    root_markers:
+      - .git
+  - id: rome
+    cmd:
+      - rome
+      - lsp-proxy
+    filetypes:
+      - javascript
+      - javascriptreact
+      - json
+      - typescript
+      - typescriptreact
+    root_markers:
+      - package.json
+      - node_modules
+      - .git
+  - id: roslyn_ls
+    package: roslyn-language-server
+    filetypes:
+      - cs
+    settings:
+      csharp|background_analysis:
+        dotnet_analyzer_diagnostics_scope: fullSolution
+        dotnet_compiler_diagnostics_scope: fullSolution
+      csharp|inlay_hints:
+        csharp_enable_inlay_hints_for_implicit_object_creation: true
+        csharp_enable_inlay_hints_for_implicit_variable_types: true
+        csharp_enable_inlay_hints_for_lambda_parameter_types: true
+        csharp_enable_inlay_hints_for_types: true
+        dotnet_enable_inlay_hints_for_indexer_parameters: true
+        dotnet_enable_inlay_hints_for_literal_parameters: true
+        dotnet_enable_inlay_hints_for_object_creation_parameters: true
+        dotnet_enable_inlay_hints_for_other_parameters: true
+        dotnet_enable_inlay_hints_for_parameters: true
+        dotnet_suppress_inlay_hints_for_parameters_that_differ_only_by_suffix: true
+        dotnet_suppress_inlay_hints_for_parameters_that_match_argument_name: true
+        dotnet_suppress_inlay_hints_for_parameters_that_match_method_intent: true
+      csharp|symbol_search:
+        dotnet_search_reference_assemblies: true
+      csharp|completion:
+        dotnet_show_name_completion_suggestions: true
+        dotnet_show_completion_items_from_unimported_namespaces: true
+        dotnet_provide_regex_completions: true
+      csharp|code_lens:
+        dotnet_enable_references_code_lens: true
+    runnable: false
+  - id: rpmspec
+    package: rpm_lsp_server
+    cmd:
+      - rpm_lsp_server
+      - --stdio
+    filetypes:
+      - spec
+    root_markers:
+      - .git
+  - id: rubocop
+    package: rubocop
+    cmd:
+      - rubocop
+      - --lsp
+    filetypes:
+      - ruby
+    root_markers:
+      - Gemfile
+      - .git
+  - id: ruby_lsp
+    package: ruby-lsp
+    cmd:
+      - ruby-lsp
+    filetypes:
+      - ruby
+      - eruby
+    root_markers:
+      - Gemfile
+      - .git
+    init_options:
+      formatter: auto
+    priority: 10
+  - id: ruff
+    package: ruff
+    cmd:
+      - ruff
+      - server
+    filetypes:
+      - python
+    root_markers:
+      - pyproject.toml
+      - ruff.toml
+      - .ruff.toml
+      - .git
+  - id: ruff_lsp
+    cmd:
+      - ruff-lsp
+    filetypes:
+      - python
+    root_markers:
+      - pyproject.toml
+      - ruff.toml
+      - .git
+  - id: rumdl
+    package: rumdl
+    cmd:
+      - rumdl
+      - server
+    filetypes:
+      - markdown
+    root_markers:
+      - .git
+  - id: rune_languageserver
+    cmd:
+      - rune-languageserver
+    filetypes:
+      - rune
+    root_markers:
+      - .git
+  - id: rust_analyzer
+    package: rust-analyzer
+    cmd:
+      - rust-analyzer
+    filetypes:
+      - rust
+    settings:
+      rust-analyzer:
+        lens:
+          debug:
+            enable: true
+          enable: true
+          implementations:
+            enable: true
+          references:
+            adt:
+              enable: true
+            enumVariant:
+              enable: true
+            method:
+              enable: true
+            trait:
+              enable: true
+          run:
+            enable: true
+          updateTest:
+            enable: true
+    root_strategy: cargo-workspace
+    priority: 10
+  - id: rust_glancer
+    package: rust-glancer
+    cmd:
+      - rust-glancer
+      - lsp
+    filetypes:
+      - rust
+  - id: salt_ls
+    package: salt-lsp
+    cmd:
+      - salt_lsp_server
+    filetypes:
+      - sls
+    root_markers:
+      - .git
+    runnable: false
+  - id: scheme_langserver
+    cmd:
+      - scheme-langserver
+      - ~/.scheme-langserver.log
+      - enable
+      - disable
+    filetypes:
+      - scheme
+    root_markers:
+      - Akku.manifest
+      - .git
+  - id: scry
+    cmd:
+      - scry
+    filetypes:
+      - crystal
+    root_markers:
+      - shard.yml
+      - .git
+  - id: selene3p_ls
+    cmd:
+      - selene-3p-language-server
+    filetypes:
+      - lua
+    root_markers:
+      - selene.toml
+  - id: serve_d
+    package: serve-d
+    cmd:
+      - serve-d
+    filetypes:
+      - d
+    root_markers:
+      - dub.json
+      - dub.sdl
+      - .git
+  - id: shopify_theme_ls
+    package: shopify-cli
+    cmd:
+      - shopify
+      - theme
+      - language-server
+    filetypes:
+      - liquid
+    root_markers:
+      - .shopifyignore
+      - .theme-check.yml
+      - .theme-check.yaml
+      - shopify.theme.toml
+  - id: shuck
+    package: shuck
+    cmd:
+      - shuck
+      - server
+    filetypes:
+      - bash
+      - sh
+      - zsh
+    root_markers:
+      - .shuck.toml
+      - .git
+  - id: sixtyfps
+    cmd:
+      - sixtyfps-lsp
+    filetypes:
+      - sixtyfps
+  - id: slang_server
+    package: slang-server
+    cmd:
+      - slang-server
+    filetypes:
+      - systemverilog
+      - verilog
+    root_markers:
+      - .git
+      - .slang
+  - id: slangd
+    package: slang
+    cmd:
+      - slangd
+    filetypes:
+      - hlsl
+      - shaderslang
+    root_markers:
+      - slangdconfig.json
+      - .clang-format
+      - .git
+  - id: slint_lsp
+    package: slint-lsp
+    cmd:
+      - slint-lsp
+    filetypes:
+      - slint
+    root_markers:
+      - .git
+  - id: smarty_ls
+    cmd:
+      - smarty-language-server
+      - --stdio
+    filetypes:
+      - smarty
+    settings:
+      smarty:
+        pluginDirs: {}
+      css:
+        validate: true
+  - id: smithy_ls
+    package: smithy-language-server
+    cmd:
+      - cs
+      - launch
+      - --contrib
+      - smithy-language-server:0.8.0
+    filetypes:
+      - smithy
+    root_markers:
+      - smithy-build.json
+      - build.gradle
+      - build.gradle.kts
+      - .git
+    init_options:
+      statusBarProvider: show-message
+      isHttpEnabled: true
+      compilerOptions:
+        snippetAutoIndent: false
+    runnable: false
+  - id: snakeskin_ls
+    package: snakeskin-cli
+    cmd:
+      - snakeskin-cli
+      - lsp
+      - --stdio
+    filetypes:
+      - ss
+    root_markers:
+      - package.json
+    runnable: false
+  - id: snyk_ls
+    package: snyk-ls
+    cmd:
+      - snyk
+      - language-server
+      - -l
+      - info
+    filetypes:
+      - apex
+      - apexcode
+      - c
+      - cpp
+      - cs
+      - dart
+      - dockerfile
+      - elixir
+      - eelixir
+      - go
+      - gomod
+      - groovy
+      - helm
+      - java
+      - javascript
+      - json
+      - kotlin
+      - objc
+      - objcpp
+      - php
+      - python
+      - requirements
+      - ruby
+      - rust
+      - scala
+      - swift
+      - terraform
+      - terraform-vars
+      - typescript
+      - yaml
+    root_markers:
+      - .git
+      - .snyk
+    init_options:
+      activateSnykOpenSource: "true"
+      activateSnykCode: "false"
+      activateSnykIac: "true"
+      integrationName: Neovim
+      trustedFolders: {}
+    runnable: false
+  - id: solang
+    package: solang
+    cmd:
+      - solang
+      - language-server
+      - --target
+      - evm
+    filetypes:
+      - solidity
+    root_markers:
+      - .git
+  - id: solargraph
+    package: solargraph
+    cmd:
+      - solargraph
+      - stdio
+    filetypes:
+      - ruby
+    root_markers:
+      - Gemfile
+      - .git
+    settings:
+      solargraph:
+        diagnostics: true
+    init_options:
+      formatting: true
+  - id: solc
+    package: solidity
+    cmd:
+      - solc
+      - --lsp
+    filetypes:
+      - solidity
+  - id: solidity
+    package: solidity-ls
+    cmd:
+      - solidity-ls
+      - --stdio
+    filetypes:
+      - solidity
+    root_markers:
+      - .git
+      - package.json
+    settings:
+      solidity:
+        includePath: ""
+        remapping: {}
+  - id: solidity_ls
+    package: vscode-solidity-server
+    cmd:
+      - vscode-solidity-server
+      - --stdio
+    filetypes:
+      - solidity
+    root_markers:
+      - hardhat.config.js
+      - hardhat.config.ts
+      - foundry.toml
+      - remappings.txt
+      - truffle.js
+      - truffle-config.js
+      - ape-config.yaml
+      - .git
+      - package.json
+  - id: solidity_ls_nomicfoundation
+    package: nomicfoundation-solidity-language-server
+    cmd:
+      - nomicfoundation-solidity-language-server
+      - --stdio
+    filetypes:
+      - solidity
+    root_markers:
+      - hardhat.config.js
+      - hardhat.config.ts
+      - foundry.toml
+      - remappings.txt
+      - truffle.js
+      - truffle-config.js
+      - ape-config.yaml
+      - .git
+      - package.json
+  - id: somesass_ls
+    package: some-sass-language-server
+    cmd:
+      - some-sass-language-server
+      - --stdio
+    filetypes:
+      - scss
+      - sass
+    root_markers:
+      - .git
+      - .package.json
+    settings:
+      somesass:
+        suggestAllFromOpenDocument: true
+  - id: sorbet
+    package: sorbet
+    cmd:
+      - srb
+      - tc
+      - --lsp
+    filetypes:
+      - ruby
+    root_markers:
+      - Gemfile
+      - .git
+  - id: sourcekit
+    cmd:
+      - sourcekit-lsp
+    filetypes:
+      - swift
+      - objc
+      - objcpp
+      - c
+      - cpp
+    priority: 10
+  - id: spade_ls
+    cmd:
+      - spade-language-server
+    filetypes:
+      - spade
+    root_markers:
+      - swim.toml
+  - id: spectral
+    package: spectral-language-server
+    cmd:
+      - spectral-language-server
+      - --stdio
+    filetypes:
+      - yaml
+      - json
+      - yml
+    root_markers:
+      - .spectral.yaml
+      - .spectral.yml
+      - .spectral.json
+      - .spectral.js
+    settings:
+      enable: true
+      run: onType
+      validateLanguages:
+        - yaml
+        - json
+        - yml
+  - id: spyglassmc_language_server
+    package: spyglassmc-language-server
+    cmd:
+      - spyglassmc-language-server
+      - --stdio
+    filetypes:
+      - mcfunction
+    root_markers:
+      - pack.mcmeta
+  - id: sqlls
+    package: sqlls
+    cmd:
+      - sql-language-server
+      - up
+      - --method
+      - stdio
+    filetypes:
+      - sql
+      - mysql
+    root_markers:
+      - .sqllsrc.json
+  - id: sqls
+    package: sqls
+    cmd:
+      - sqls
+    filetypes:
+      - sql
+      - mysql
+    root_markers:
+      - config.yml
+  - id: sqruff
+    package: sqruff
+    cmd:
+      - sqruff
+      - lsp
+    filetypes:
+      - sql
+    root_markers:
+      - .sqruff
+      - .git
+  - id: stan_ls
+    package: stan-language-server
+    cmd:
+      - stan-language-server
+      - --stdio
+    filetypes:
+      - stan
+    root_markers:
+      - .git
+  - id: standardrb
+    package: standardrb
+    cmd:
+      - standardrb
+      - --lsp
+    filetypes:
+      - ruby
+    root_markers:
+      - Gemfile
+      - .git
+  - id: starlark_rust
+    package: starlark-rust
+    cmd:
+      - starlark
+      - --lsp
+    filetypes:
+      - star
+      - bzl
+      - BUILD.bazel
+    root_markers:
+      - .git
+  - id: starpls
+    package: starpls
+    cmd:
+      - starpls
+    filetypes:
+      - bzl
+    root_markers:
+      - WORKSPACE
+      - WORKSPACE.bazel
+      - MODULE.bazel
+  - id: statix
+    package: statix
+    cmd:
+      - statix
+      - check
+      - --stdin
+    filetypes:
+      - nix
+    root_markers:
+      - flake.nix
+      - .git
+  - id: steep
+    package: steep
+    cmd:
+      - steep
+      - langserver
+    filetypes:
+      - ruby
+      - eruby
+    root_markers:
+      - Steepfile
+      - .git
+  - id: stimulus_ls
+    package: stimulus-language-server
+    cmd:
+      - stimulus-language-server
+      - --stdio
+    filetypes:
+      - html
+      - ruby
+      - eruby
+      - blade
+      - php
+    root_markers:
+      - Gemfile
+      - .git
+  - id: stylelint_lsp
+    package: stylelint-language-server
+    cmd:
+      - stylelint-language-server
+      - --stdio
+    filetypes:
+      - astro
+      - css
+      - html
+      - less
+      - scss
+      - vue
+    settings:
+      stylelint:
+        validate:
+          - css
+          - postcss
+        snippet:
+          - css
+          - postcss
+  - id: stylua
+    package: stylua
+    cmd:
+      - stylua
+      - --lsp
+    filetypes:
+      - lua
+    root_markers:
+      - .stylua.toml
+      - stylua.toml
+      - .editorconfig
+  - id: stylua3p_ls
+    cmd:
+      - stylua-3p-language-server
+    filetypes:
+      - lua
+    root_markers:
+      - .stylua.toml
+      - stylua.toml
+  - id: superhtml
+    package: superhtml
+    cmd:
+      - superhtml
+      - lsp
+    filetypes:
+      - superhtml
+      - html
+    root_markers:
+      - .git
+  - id: svelte
+    package: svelte-language-server
+    cmd:
+      - svelteserver
+      - --stdio
+    filetypes:
+      - svelte
+    settings:
+      typescript:
+        inlayHints:
+          parameterNames:
+            enabled: literals
+            suppressWhenArgumentMatchesName: true
+          parameterTypes:
+            enabled: true
+          variableTypes:
+            enabled: true
+          propertyDeclarationTypes:
+            enabled: true
+          functionLikeReturnTypes:
+            enabled: true
+          enumMemberValues:
+            enabled: true
+    priority: 10
+  - id: svlangserver
+    package: svlangserver
+    cmd:
+      - svlangserver
+    filetypes:
+      - verilog
+      - systemverilog
+    root_markers:
+      - .svlangserver
+      - .git
+    settings:
+      systemverilog:
+        includeIndexing:
+          - "*.{v,vh,sv,svh}"
+          - "**/*.{v,vh,sv,svh}"
+  - id: svls
+    package: svls
+    cmd:
+      - svls
+    filetypes:
+      - verilog
+      - systemverilog
+    root_markers:
+      - .git
+  - id: swift_mesonls
+    cmd:
+      - Swift-MesonLSP
+      - --lsp
+    filetypes:
+      - meson
+    root_markers:
+      - meson.build
+      - meson_options.txt
+      - meson.options
+      - .git
+  - id: symfony_lsp
+    package: symfony-lsp
+    cmd:
+      - symfony-lsp
+    filetypes:
+      - php
+      - twig
+      - yaml
+      - json
+      - xml
+      - javascript
+      - typescript
+      - env
+    root_markers:
+      - composer.json
+      - .git
+    workspace_required: true
+    settings:
+      symfonyLsp:
+        phpCommand:
+          - php
+        containerProjectRoot: ""
+        consolePath: bin/console
+        environment: dev
+        debug: true
+        runtimeIndexing: true
+        projectRoots: {}
+        translationDiagnostics: false
+    init_options:
+      phpCommand:
+        - php
+      containerProjectRoot: ""
+      consolePath: bin/console
+      environment: dev
+      debug: true
+      runtimeIndexing: true
+      projectRoots: {}
+      trace: off
+  - id: syntax_tree
+    cmd:
+      - stree
+      - lsp
+    filetypes:
+      - ruby
+    root_markers:
+      - .streerc
+      - Gemfile
+      - .git
+  - id: sysml_lsp
+    cmd:
+      - sysml-lsp
+      - --stdio
+    filetypes:
+      - sysml
+      - kerml
+    root_markers:
+      - .git
+    workspace_required: false
+  - id: systemd_lsp
+    package: systemd-lsp
+    cmd:
+      - systemd-lsp
+    filetypes:
+      - systemd
+  - id: tabby_ml
+    cmd:
+      - tabby-agent
+      - --lsp
+      - --stdio
+    root_markers:
+      - .git
+    runnable: false
+  - id: tailwindcss
+    package: tailwindcss-language-server
+    cmd:
+      - tailwindcss-language-server
+      - --stdio
+    filetypes:
+      - aspnetcorerazor
+      - astro
+      - astro-markdown
+      - blade
+      - clojure
+      - django-html
+      - htmldjango
+      - edge
+      - eelixir
+      - elixir
+      - ejs
+      - erb
+      - eruby
+      - gohtml
+      - gohtmltmpl
+      - haml
+      - handlebars
+      - hbs
+      - html
+      - htmlangular
+      - html-eex
+      - heex
+      - jade
+      - leaf
+      - liquid
+      - markdown
+      - mdx
+      - mustache
+      - njk
+      - nunjucks
+      - php
+      - razor
+      - slim
+      - twig
+      - css
+      - less
+      - postcss
+      - sass
+      - scss
+      - stylus
+      - sugarss
+      - javascript
+      - javascriptreact
+      - reason
+      - rescript
+      - typescript
+      - typescriptreact
+      - vue
+      - svelte
+      - templ
+    workspace_required: true
+    settings:
+      tailwindCSS:
+        validate: true
+        lint:
+          cssConflict: warning
+          invalidApply: error
+          invalidScreen: error
+          invalidVariant: error
+          invalidConfigPath: error
+          invalidTailwindDirective: error
+          recommendedVariantOrder: warning
+        classAttributes:
+          - class
+          - className
+          - class:list
+          - classList
+          - ngClass
+        includeLanguages:
+          eelixir: html-eex
+          elixir: phoenix-heex
+          eruby: erb
+          heex: phoenix-heex
+          htmlangular: html
+          templ: html
+    priority: -10
+  - id: taplo
+    package: taplo
+    cmd:
+      - taplo
+      - lsp
+      - stdio
+    filetypes:
+      - toml
+    root_markers:
+      - .taplo.toml
+      - taplo.toml
+      - .git
+    priority: 10
+  - id: tblgen_lsp_server
+    filetypes:
+      - tablegen
+    root_markers:
+      - tablegen_compile_commands.yml
+      - .git
+    runnable: false
+  - id: tclsp
+    package: tclint
+    cmd:
+      - tclsp
+    filetypes:
+      - tcl
+      - sdc
+      - xdc
+      - upf
+    root_markers:
+      - tclint.toml
+      - .tclint
+      - pyproject.toml
+      - .git
+  - id: teal_ls
+    package: teal-language-server
+    cmd:
+      - teal-language-server
+    filetypes:
+      - teal
+    root_markers:
+      - tlconfig.lua
+  - id: templ
+    package: templ
+    cmd:
+      - templ
+      - lsp
+    filetypes:
+      - templ
+    root_markers:
+      - go.work
+      - go.mod
+      - .git
+  - id: termux_language_server
+    package: termux-language-server
+    cmd:
+      - termux-language-server
+    runnable: false
+  - id: terraform_lsp
+    cmd:
+      - terraform-lsp
+    filetypes:
+      - terraform
+      - hcl
+    root_markers:
+      - .terraform
+      - .git
+  - id: terraformls
+    package: terraform-ls
+    cmd:
+      - terraform-ls
+      - serve
+    filetypes:
+      - terraform
+      - terraform-vars
+    root_markers:
+      - .terraform
+      - .git
+  - id: terragrunt_ls
+    package: terragrunt-ls
+    cmd:
+      - terragrunt-ls
+    filetypes:
+      - hcl
+    root_markers:
+      - terragrunt.hcl
+      - .git
+  - id: texlab
+    package: texlab
+    cmd:
+      - texlab
+    filetypes:
+      - tex
+      - plaintex
+      - bib
+    root_markers:
+      - .git
+      - .latexmkrc
+      - latexmkrc
+      - .texlabroot
+      - texlabroot
+      - Tectonic.toml
+    settings:
+      texlab:
+        rootDirectory: null
+        build:
+          executable: latexmk
+          args:
+            - -pdf
+            - -interaction=nonstopmode
+            - -synctex=1
+            - "%f"
+          onSave: false
+          forwardSearchAfter: false
+        forwardSearch:
+          executable: null
+          args: {}
+        chktex:
+          onOpenAndSave: false
+          onEdit: false
+        diagnosticsDelay: 300
+        latexFormatter: latexindent
+        latexindent:
+          local: null
+          modifyLineBreaks: false
+        bibtexFormatter: texlab
+        formatterLineLength: 80
+  - id: textlsp
+    package: textlsp
+    cmd:
+      - textlsp
+    filetypes:
+      - text
+      - tex
+      - org
+    root_markers:
+      - .git
+    settings:
+      textLSP:
+        analysers:
+          languagetool:
+            enabled: true
+            check_text:
+              on_open: true
+              on_save: true
+              on_change: false
+        documents:
+          org:
+            org_todo_keywords:
+              - TODO
+              - IN_PROGRESS
+              - DONE
+  - id: tflint
+    package: tflint
+    cmd:
+      - tflint
+      - --langserver
+    filetypes:
+      - terraform
+    root_markers:
+      - .terraform
+      - .git
+      - .tflint.hcl
+  - id: theme_check
+    cmd:
+      - theme-check-language-server
+      - --stdio
+    filetypes:
+      - liquid
+    root_markers:
+      - .theme-check.yml
+  - id: thriftls
+    package: thriftls
+    cmd:
+      - thriftls
+    filetypes:
+      - thrift
+    root_markers:
+      - .thrift
+  - id: tilt_ls
+    cmd:
+      - tilt
+      - lsp
+      - start
+    filetypes:
+      - tiltfile
+    root_markers:
+      - .git
+  - id: tinymist
+    package: tinymist
+    cmd:
+      - tinymist
+    filetypes:
+      - typst
+    root_markers:
+      - .git
+  - id: tofu_ls
+    package: tofu-ls
+    cmd:
+      - tofu-ls
+      - serve
+    filetypes:
+      - opentofu
+      - opentofu-vars
+      - terraform
+      - terraform-vars
+    root_markers:
+      - .terraform
+      - .git
+  - id: tombi
+    package: tombi
+    cmd:
+      - tombi
+      - lsp
+    filetypes:
+      - toml
+    root_markers:
+      - tombi.toml
+      - pyproject.toml
+      - .git
+  - id: ts_ls
+    package: typescript-language-server
+    cmd:
+      - typescript-language-server
+      - --stdio
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+      - typescriptreact
+    init_options:
+      hostInfo: neovim
+    priority: 10
+  - id: ts_query_ls
+    package: ts_query_ls
+    cmd:
+      - ts_query_ls
+    filetypes:
+      - query
+    root_markers:
+      - .tsqueryrc.json
+      - .git
+    init_options:
+      parser_aliases:
+        ecma: javascript
+        jsx: javascript
+        php_only: php
+      parser_install_directories: []
+  - id: tsc
+    package: tsc
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+      - typescriptreact
+    settings:
+      js/ts:
+        inlayHints:
+          parameterNames:
+            enabled: literals
+            suppressWhenArgumentMatchesName: true
+          parameterTypes:
+            enabled: true
+          variableTypes:
+            enabled: true
+          propertyDeclarationTypes:
+            enabled: true
+          functionLikeReturnTypes:
+            enabled: true
+          enumMemberValues:
+            enabled: true
+        referencesCodeLens:
+          enabled: true
+          showOnAllFunctions: true
+        implementationsCodeLens:
+          enabled: true
+          showOnInterfaceMethods: true
+          showOnAllClassMethods: true
+    runnable: false
+  - id: tsp_server
+    package: tsp-server
+    cmd:
+      - tsp-server
+      - --stdio
+    filetypes:
+      - typespec
+    root_markers:
+      - tspconfig.yaml
+      - .git
+  - id: ttags
+    cmd:
+      - ttags
+      - lsp
+    filetypes:
+      - ruby
+      - rust
+      - javascript
+      - haskell
+    root_markers:
+      - .git
+  - id: turbo_ls
+    cmd:
+      - turbo-language-server
+      - --stdio
+    filetypes:
+      - html
+      - ruby
+      - eruby
+      - blade
+      - php
+    root_markers:
+      - Gemfile
+      - .git
+  - id: turtle_ls
+    filetypes:
+      - turtle
+      - ttl
+    root_markers:
+      - .git
+    runnable: false
+  - id: tvm_ffi_navigator
+    cmd:
+      - python
+      - -m
+      - ffi_navigator.langserver
+    filetypes:
+      - python
+      - cpp
+    root_markers:
+      - pyproject.toml
+      - .git
+  - id: twiggy_language_server
+    package: twiggy-language-server
+    cmd:
+      - twiggy-language-server
+      - --stdio
+    filetypes:
+      - twig
+    root_markers:
+      - composer.json
+      - .git
+  - id: ty
+    package: ty
+    cmd:
+      - ty
+      - server
+    filetypes:
+      - python
+    root_markers:
+      - ty.toml
+      - pyproject.toml
+      - setup.py
+      - setup.cfg
+      - requirements.txt
+      - .git
+  - id: typeprof
+    cmd:
+      - typeprof
+      - --lsp
+      - --stdio
+    filetypes:
+      - ruby
+      - eruby
+    root_markers:
+      - Gemfile
+      - .git
+  - id: typos_lsp
+    package: typos-lsp
+    cmd:
+      - typos-lsp
+    root_markers:
+      - typos.toml
+      - _typos.toml
+      - .typos.toml
+      - pyproject.toml
+      - Cargo.toml
+    runnable: false
+  - id: typst_lsp
+    cmd:
+      - typst-lsp
+    filetypes:
+      - typst
+    root_markers:
+      - .git
+  - id: uiua
+    cmd:
+      - uiua
+      - lsp
+    filetypes:
+      - uiua
+    root_markers:
+      - main.ua
+      - .fmt.ua
+      - .git
+  - id: ungrammar_languageserver
+    cmd:
+      - ungrammar-languageserver
+      - --stdio
+    filetypes:
+      - ungrammar
+    root_markers:
+      - .git
+    settings:
+      ungrammar:
+        validate:
+          enable: true
+        format:
+          enable: true
+  - id: unison
+    filetypes:
+      - unison
+    runnable: false
+  - id: unocss
+    package: unocss-language-server
+    cmd:
+      - unocss-language-server
+      - --stdio
+    filetypes:
+      - erb
+      - haml
+      - hbs
+      - html
+      - css
+      - postcss
+      - javascript
+      - javascriptreact
+      - markdown
+      - ejs
+      - php
+      - svelte
+      - typescript
+      - typescriptreact
+      - vue-html
+      - vue
+      - sass
+      - scss
+      - less
+      - stylus
+      - astro
+      - rescript
+      - rust
+    root_markers:
+      - unocss.config.js
+      - unocss.config.ts
+      - uno.config.js
+      - uno.config.ts
+    workspace_required: true
+  - id: uvls
+    cmd:
+      - uvls
+    filetypes:
+      - uvl
+    root_markers:
+      - .git
+  - id: v_analyzer
+    package: v-analyzer
+    cmd:
+      - v-analyzer
+    filetypes:
+      - v
+      - vsh
+      - vv
+    root_markers:
+      - v.mod
+      - .git
+  - id: vacuum
+    package: vacuum
+    cmd:
+      - vacuum
+      - language-server
+    filetypes:
+      - yaml.openapi
+      - json.openapi
+    root_markers:
+      - .git
+    runnable: false
+  - id: vala_ls
+    package: vala-language-server
+    cmd:
+      - vala-language-server
+    filetypes:
+      - vala
+      - genie
+  - id: vale_ls
+    package: vale-ls
+    cmd:
+      - vale-ls
+    filetypes:
+      - asciidoc
+      - markdown
+      - text
+      - tex
+      - rst
+      - html
+      - xml
+    root_markers:
+      - .vale.ini
+  - id: vectorcode_server
+    package: vectorcode
+    cmd:
+      - vectorcode-server
+    runnable: false
+  - id: verible
+    package: verible
+    cmd:
+      - verible-verilog-ls
+    filetypes:
+      - systemverilog
+      - verilog
+    root_markers:
+      - verible.filelist
+      - .git
+  - id: veridian
+    cmd:
+      - veridian
+    filetypes:
+      - systemverilog
+      - verilog
+    root_markers:
+      - .git
+  - id: veryl_ls
+    package: veryl-ls
+    cmd:
+      - veryl-ls
+    filetypes:
+      - veryl
+    root_markers:
+      - .git
+  - id: vespa_ls
+    package: vespa-language-server
+    cmd:
+      - java
+      - -jar
+      - vespa-language-server.jar
+    filetypes:
+      - sd
+      - profile
+      - yql
+    root_markers:
+      - .git
+    runnable: false
+  - id: vhdl_ls
+    package: rust_hdl
+    cmd:
+      - vhdl_ls
+    filetypes:
+      - vhd
+      - vhdl
+    root_markers:
+      - vhdl_ls.toml
+    workspace_required: true
+  - id: vimdoc_ls
+    cmd:
+      - vimdoc-language-server
+    filetypes:
+      - help
+    root_markers:
+      - doc
+      - .git
+    workspace_required: false
+  - id: vimls
+    package: vim-language-server
+    cmd:
+      - vim-language-server
+      - --stdio
+    filetypes:
+      - vim
+    root_markers:
+      - .git
+    init_options:
+      isNeovim: true
+      iskeyword: "@,48-57,_,192-255,-#"
+      vimruntime: ""
+      runtimepath: ""
+      diagnostic:
+        enable: true
+      indexes:
+        runtimepath: true
+        gap: 100
+        count: 3
+        projectRootPatterns:
+          - runtime
+          - nvim
+          - .git
+          - autoload
+          - plugin
+      suggest:
+        fromVimruntime: true
+        fromRuntimepath: true
+  - id: visualforce_ls
+    package: visualforce-language-server
+    filetypes:
+      - visualforce
+    root_markers:
+      - sfdx-project.json
+    init_options:
+      embeddedLanguages:
+        css: true
+        javascript: true
+    runnable: false
+  - id: vls
+    package: vls
+    cmd:
+      - v
+      - ls
+    filetypes:
+      - v
+      - vlang
+    root_markers:
+      - v.mod
+      - .git
+    runnable: false
+  - id: vsrocq
+    cmd:
+      - vsrocqtop
+    filetypes:
+      - coq
+    root_markers:
+      - _RocqProject
+      - _CoqProject
+      - .git
+  - id: vtsls
+    package: vtsls
+    cmd:
+      - vtsls
+      - --stdio
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+      - typescriptreact
+    init_options:
+      hostInfo: neovim
+  - id: vue_ls
+    package: vue-language-server
+    cmd:
+      - vue-language-server
+      - --stdio
+    filetypes:
+      - vue
+    root_markers:
+      - package.json
+    priority: 10
+  - id: wasm_language_tools
+    package: wasm-language-tools
+    cmd:
+      - wat_server
+    filetypes:
+      - wat
+  - id: wc_language_server
+    cmd:
+      - wc-language-server
+      - --stdio
+    filetypes:
+      - html
+      - javascriptreact
+      - typescriptreact
+      - astro
+      - svelte
+      - vue
+      - markdown
+      - mdx
+      - javascript
+      - typescript
+      - css
+      - scss
+      - less
+    root_markers:
+      - wc.config.js
+      - wc.config.ts
+      - wc.config.mjs
+      - wc.config.cjs
+      - custom-elements.json
+      - package.json
+      - .git
+    init_options:
+      hostInfo: neovim
+  - id: wgsl_analyzer
+    package: wgsl-analyzer
+    cmd:
+      - wgsl-analyzer
+    filetypes:
+      - wgsl
+    root_markers:
+      - .git
+  - id: wolfram_lsp
+    cmd:
+      - WolframKernel
+      - -noinit
+      - -noprompt
+      - -nopaclet
+      - -noicon
+      - -nostartuppaclets
+      - -run
+      - Needs["LSPServer`"];LSPServer`StartServer[]
+    filetypes:
+      - mma
+    root_markers:
+      - .git
+    init_options:
+      semanticTokens: true
+  - id: yamlls
+    package: yaml-language-server
+    cmd:
+      - yaml-language-server
+      - --stdio
+    filetypes:
+      - yaml
+      - yaml.docker-compose
+      - yaml.gitlab
+      - yaml.helm-values
+    root_markers:
+      - .git
+    settings:
+      redhat:
+        telemetry:
+          enabled: false
+      yaml:
+        format:
+          enable: true
+    priority: 10
+  - id: yang_lsp
+    cmd:
+      - yang-language-server
+    filetypes:
+      - yang
+    root_markers:
+      - .git
+  - id: yls
+    cmd:
+      - yls
+      - -vv
+    filetypes:
+      - yar
+      - yara
+    root_markers:
+      - .git
+  - id: ziggy
+    cmd:
+      - ziggy
+      - lsp
+    filetypes:
+      - ziggy
+    root_markers:
+      - .git
+  - id: ziggy_schema
+    cmd:
+      - ziggy
+      - lsp
+      - --schema
+    filetypes:
+      - ziggy_schema
+    root_markers:
+      - .git
+  - id: zizmor
+    package: zizmor
+    cmd:
+      - zizmor
+      - --lsp
+    filetypes:
+      - yaml
+  - id: zk
+    package: zk
+    cmd:
+      - zk
+      - lsp
+    filetypes:
+      - markdown
+    root_markers:
+      - .zk
+    workspace_required: true
+  - id: zls
+    package: zls
+    cmd:
+      - zls
+    filetypes:
+      - zig
+      - zir
+    root_markers:
+      - zls.json
+      - build.zig
+      - .git
+    workspace_required: false
+    priority: 10
+  - id: zuban
+    package: zuban
+    cmd:
+      - zuban
+      - server
+    filetypes:
+      - python
+    root_markers:
+      - pyproject.toml
+      - setup.py
+      - setup.cfg
+      - requirements.txt
+      - Pipfile
+      - .git
