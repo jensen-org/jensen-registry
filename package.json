@@ -7,10 +7,14 @@
   },
   "scripts": {
     "validate": "node registry.mjs validate",
-    "track": "node registry.mjs track"
+    "track": "node registry.mjs track",
+    "discover": "node registry.mjs discover",
+    "test": "node --test"
   },
   "dependencies": {
     "ajv": "8.20.0",
+    "fflate": "0.8.3",
+    "luaparse": "0.3.1",
     "simple-icons": "16.35.0",
     "yaml": "2.9.1"
   }

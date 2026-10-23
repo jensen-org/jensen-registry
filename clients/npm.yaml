@@ -1,0 +1,11 @@
+id: npm
+kind: package-manager
+source: npm
+requires:
+  program: npm
+  probe: [npm, --version]
+bin_root:
+  unix: node_modules/.bin
+  windows: node_modules/.bin
+install:
+  - run: [npm, install, --prefix, "{dir}", --no-audit, --no-fund, "{coordinate}@{version}", "{extra_packages}"]

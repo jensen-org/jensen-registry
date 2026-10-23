@@ -1,0 +1,4 @@
+config:
+  - name: package.json
+    code_keys:
+      - ts-standard

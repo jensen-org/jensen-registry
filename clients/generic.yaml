@@ -1,0 +1,9 @@
+id: generic
+kind: package-manager
+source: generic
+bin_root:
+  unix: "."
+  windows: "."
+install:
+  - download_files: true
+  - extract_files: true

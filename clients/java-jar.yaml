@@ -1,0 +1,8 @@
+id: java-jar
+kind: launcher
+requires:
+  program: "java"
+  probe: [java, --version]
+launcher:
+  interpreter: [java, -jar]
+  target: "{dir}/{target}"

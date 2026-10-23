@@ -1,0 +1,5 @@
+config:
+  - .markdownlint.json
+  - .markdownlint.yaml
+  - .markdownlintrc
+priority: 10

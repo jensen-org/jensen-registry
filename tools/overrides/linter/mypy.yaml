@@ -1,0 +1,5 @@
+config:
+  - mypy.ini
+  - .mypy.ini
+  - setup.cfg
+priority: 5

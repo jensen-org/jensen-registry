@@ -1,0 +1,8 @@
+id: python
+kind: launcher
+requires:
+  program: "python3"
+  probe: [python3, --version]
+launcher:
+  interpreter: [python3]
+  target: "{dir}/{target}"

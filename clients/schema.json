@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jensen-org/jensen-registry/clients/schema.json",
+  "$ref": "#/$defs/client",
+  "$defs": {
+    "argv": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "platforms": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["unix", "windows"],
+      "properties": { "unix": { "type": "string" }, "windows": { "type": "string" } }
+    },
+    "step": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "run": { "$ref": "#/$defs/argv" },
+        "env": { "type": "object", "additionalProperties": { "type": "string" } },
+        "cwd": { "type": "string" },
+        "when": { "type": "string" },
+        "unless": { "type": "string" },
+        "platform": { "enum": ["unix", "windows"] },
+        "download": { "type": "string" },
+        "extract": { "type": "string" },
+        "to": { "type": "string" },
+        "download_files": { "const": true },
+        "extract_files": { "const": true }
+      },
+      "oneOf": [
+        { "required": ["run"] },
+        { "required": ["download", "to"] },
+        { "required": ["extract", "to"] },
+        { "required": ["download_files"] },
+        { "required": ["extract_files"] }
+      ]
+    },
+    "client": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "kind"],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z][a-z0-9-]*$" },
+        "kind": { "enum": ["package-manager", "builder", "launcher"] },
+        "source": { "type": "string" },
+        "uses": { "type": "string" },
+        "runs_script": { "const": true },
+        "requires": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["program"],
+          "properties": { "program": { "type": "string", "minLength": 1 }, "probe": { "$ref": "#/$defs/argv" } }
+        },
+        "bin_root": { "$ref": "#/$defs/platforms" },
+        "env": { "type": "object", "additionalProperties": { "type": "string" } },
+        "install": { "type": "array", "items": { "$ref": "#/$defs/step" }, "minItems": 1 },
+        "launcher": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "interpreter": { "$ref": "#/$defs/argv" },
+            "target": { "type": "string" },
+            "link": { "type": "string" }
+          },
+          "oneOf": [{ "required": ["interpreter", "target"] }, { "required": ["link"] }]
+        }
+      },
+      "allOf": [
+        { "if": { "properties": { "kind": { "const": "launcher" } } }, "then": { "required": ["launcher"], "not": { "required": ["install"] } }, "else": { "required": ["install", "bin_root"] } },
+        { "if": { "properties": { "kind": { "const": "package-manager" } } }, "then": { "required": ["source"] } }
+      ]
+    }
+  }
+}

@@ -1,0 +1,8 @@
+id: php
+kind: launcher
+requires:
+  program: "php"
+  probe: [php, --version]
+launcher:
+  interpreter: [php]
+  target: "{dir}/{target}"

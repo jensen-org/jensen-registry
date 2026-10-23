@@ -1,0 +1,16 @@
+id: shell
+kind: builder
+requires:
+  program: sh
+  probe: [sh, -c, "exit 0"]
+runs_script: true
+bin_root:
+  unix: "."
+  windows: "."
+install:
+  - platform: unix
+    run: [sh, -c, "{script}"]
+    cwd: "{dir}"
+  - platform: windows
+    run: [pwsh, -NoProfile, -Command, "{script}"]
+    cwd: "{dir}"

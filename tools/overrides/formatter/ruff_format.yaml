@@ -1,0 +1,4 @@
+config:
+  - ruff.toml
+  - .ruff.toml
+priority: 10

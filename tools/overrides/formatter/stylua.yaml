@@ -1,0 +1,3 @@
+config:
+  - stylua.toml
+  - .stylua.toml
