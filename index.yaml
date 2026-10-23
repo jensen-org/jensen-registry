@@ -145,19 +145,19 @@ skills:
     repo: yctimlin/mcp_excalidraw
     path: skills/excalidraw-skill
     ref: main
-    commit: 8084a1c8b410d625fcfd59d5cffb32f3a86a2a6f
-    content_hash: 2f511e6dfe0411a97d0e261c67aac06e15202cac85ad14c7487df3969d65c0f2
+    commit: 774a70c1b3f0c7b9901fbbbf66b432d1a8dbbfe7
+    content_hash: aaddee853b39de23e00ea86f1b9bf9de4060d788f5caf9e748ecc0ae533d0886
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/yctimlin/mcp_excalidraw/8084a1c8b410d625fcfd59d5cffb32f3a86a2a6f/skills/excalidraw-skill/SKILL.md
-        sha256: b218050cdf2a05375e80b1e162a5ebc3f3b40a99d7a626c5b9004ca5c3f95489
-        size: 18559
+        url: https://raw.githubusercontent.com/yctimlin/mcp_excalidraw/774a70c1b3f0c7b9901fbbbf66b432d1a8dbbfe7/skills/excalidraw-skill/SKILL.md
+        sha256: 8496041f8764742cc694866603f37c6ec5b78227e6e98003d4fe953bcecb6a44
+        size: 18660
       - path: evals/evals.json
-        url: https://raw.githubusercontent.com/yctimlin/mcp_excalidraw/8084a1c8b410d625fcfd59d5cffb32f3a86a2a6f/skills/excalidraw-skill/evals/evals.json
+        url: https://raw.githubusercontent.com/yctimlin/mcp_excalidraw/774a70c1b3f0c7b9901fbbbf66b432d1a8dbbfe7/skills/excalidraw-skill/evals/evals.json
         sha256: fea2f19e867e141cefb4fda970b91615c5e3a29a41eba6ca5d94cb1854919a57
         size: 3388
       - path: references/cheatsheet.md
-        url: https://raw.githubusercontent.com/yctimlin/mcp_excalidraw/8084a1c8b410d625fcfd59d5cffb32f3a86a2a6f/skills/excalidraw-skill/references/cheatsheet.md
+        url: https://raw.githubusercontent.com/yctimlin/mcp_excalidraw/774a70c1b3f0c7b9901fbbbf66b432d1a8dbbfe7/skills/excalidraw-skill/references/cheatsheet.md
         sha256: 0f1cad393e3098654544844e6094c51d4a0181348ed178c81237dcf2083957d2
         size: 10803
   - id: git-guardrails-claude-code
