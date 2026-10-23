@@ -9,6 +9,7 @@ export const WASM_DIR = "grammars/wasm";
 
 export const wasmFile = (grammar) => `${grammar.id}-${grammar.version}.wasm`;
 export const wasmUrl = (grammar) => `${RAW_BASE}/main/${WASM_DIR}/${wasmFile(grammar)}`;
+export const wasmPath = (grammar) => `${WASM_DIR}/${wasmFile(grammar)}`;
 
 export function expectedEntries() {
   const sources = readYaml("grammars/sources.yaml");
@@ -21,6 +22,7 @@ export function expectedEntries() {
         id: grammar.id,
         version: grammar.version,
         url: wasmUrl(grammar),
+        path: wasmPath(grammar),
         sha256: existsSync(file) ? sha256(readFileSync(file)) : null,
       },
     };
