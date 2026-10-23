@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ROOT, SCHEMA_VERSION, checksumsText, checksummed, dump, loadEntries, readYaml, validator, writeText } from "./lib.mjs";
+import { discoverGrammars } from "./grammars/discover.mjs";
 import { trackGrammars } from "./grammars/track.mjs";
 import { validateGrammars } from "./grammars/validate.mjs";
 import { trackIntegrations } from "./integrations/track.mjs";
@@ -59,9 +60,9 @@ async function validate(online) {
 }
 
 const [command, flag] = process.argv.slice(2);
-const commands = { track, validate: () => validate(flag === "--online") };
+const commands = { track, discover: () => discoverGrammars(), validate: () => validate(flag === "--online") };
 if (!commands[command]) {
-  console.error("usage: node registry.mjs track | validate [--online]");
+  console.error("usage: node registry.mjs track | discover | validate [--online]");
   process.exit(2);
 }
 commands[command]().catch((error) => {

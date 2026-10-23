@@ -8,6 +8,7 @@
   "scripts": {
     "validate": "node registry.mjs validate",
     "track": "node registry.mjs track",
+    "discover": "node registry.mjs discover",
     "test": "node --test"
   },
   "dependencies": {

@@ -10,7 +10,7 @@ const once = (key, make) => {
 export const rawText = (repo, sha, path) =>
   once(`raw:${repo}@${sha}:${path}`, async () => (await getBytes(`https://raw.githubusercontent.com/${repo}/${sha}/${path}`)).toString("utf8"));
 
-function untar(bytes) {
+export function untar(bytes) {
   const files = new Map();
   let offset = 0;
   let longName = null;
