@@ -2,7 +2,7 @@ import { execFileSync } from "node:child_process";
 import { copyFileSync, existsSync, lstatSync, mkdirSync, mkdtempSync, readFileSync, realpathSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, sep } from "node:path";
-import { RAW_BASE, ROOT, SCHEMA_VERSION, dump, getBytes, getJson, readYaml, sha256, writeText } from "../lib.mjs";
+import { RAW_BASE, REF, ROOT, SCHEMA_VERSION, dump, getBytes, getJson, readYaml, sha256, writeText } from "../lib.mjs";
 
 export const GRAMMARS_FILE = "grammars/grammars.yaml";
 export const WASM_DIR = "grammars/wasm";
@@ -11,11 +11,11 @@ export const QUERY_NAMES = ["tags", "locals"];
 const MAX_QUERY_BYTES = 256 * 1024;
 
 export const wasmFile = (grammar) => `${grammar.id}-${grammar.version}.wasm`;
-export const wasmUrl = (grammar) => `${RAW_BASE}/main/${WASM_DIR}/${wasmFile(grammar)}`;
+export const wasmUrl = (grammar) => `${RAW_BASE}/${REF}/${WASM_DIR}/${wasmFile(grammar)}`;
 export const wasmPath = (grammar) => `${WASM_DIR}/${wasmFile(grammar)}`;
 
 export const queryPath = (grammar, name) => `${QUERIES_DIR}/${grammar.id}-${grammar.version}/${name}.scm`;
-export const queryUrl = (grammar, name) => `${RAW_BASE}/main/${queryPath(grammar, name)}`;
+export const queryUrl = (grammar, name) => `${RAW_BASE}/${REF}/${queryPath(grammar, name)}`;
 
 function queryEntries(grammar) {
   return QUERY_NAMES.filter((name) => existsSync(join(ROOT, queryPath(grammar, name)))).map((name) => ({
