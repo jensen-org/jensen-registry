@@ -101,7 +101,23 @@ const githubHeaders = process.env.GITHUB_TOKEN
   ? { authorization: `Bearer ${process.env.GITHUB_TOKEN}`, accept: "application/vnd.github+json" }
   : { accept: "application/vnd.github+json" };
 
-export const github = (path) => getJson(`https://api.github.com${path}`, githubHeaders);
+const anonymousHeaders = { accept: "application/vnd.github+json" };
+const anonymousOwners = new Set();
+
+export const refusedByAllowList = (error) => error?.status === 403 && /IP allow list/i.test(String(error.message));
+
+export async function github(path) {
+  const url = `https://api.github.com${path}`;
+  const owner = path.split("/")[2] ?? "";
+  if (!githubHeaders.authorization || anonymousOwners.has(owner)) return getJson(url, anonymousHeaders);
+  try {
+    return await getJson(url, githubHeaders);
+  } catch (error) {
+    if (!refusedByAllowList(error)) throw error;
+    anonymousOwners.add(owner);
+    return getJson(url, anonymousHeaders);
+  }
+}
 
 const TOOL_FILES = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes"].map((name) => `tools/${name}.yaml`);
 
