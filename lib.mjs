@@ -68,9 +68,18 @@ export function retryAfterSeconds(headers, now = Date.now()) {
   return null;
 }
 
-export function answeredError(url, response) {
+const BODY_LIMIT = 240;
+
+export async function answeredError(url, response) {
   const retryAfter = retryAfterSeconds(response.headers);
-  const error = new Error(`${url} answered ${response.status}${retryAfter ? `, retry in ${retryAfter}s` : ""}`);
+  const detail = (await response.text().catch(() => "")).replace(/\s+/g, " ").trim().slice(0, BODY_LIMIT);
+  const remaining = response.headers.get("x-ratelimit-remaining");
+  const hints = [
+    retryAfter ? `retry in ${retryAfter}s` : null,
+    remaining !== null ? `${remaining} requests left` : null,
+    detail ? `said: ${detail}` : null,
+  ].filter(Boolean);
+  const error = new Error(`${url} answered ${response.status}${hints.length ? ` (${hints.join(", ")})` : ""}`);
   error.status = response.status;
   error.retryAfter = retryAfter;
   return error;
@@ -78,13 +87,13 @@ export function answeredError(url, response) {
 
 export async function getJson(url, headers = {}) {
   const response = await fetch(url, { headers: { "user-agent": "jensen-registry", ...headers } });
-  if (!response.ok) throw answeredError(url, response);
+  if (!response.ok) throw await answeredError(url, response);
   return response.json();
 }
 
 export async function getBytes(url) {
   const response = await fetch(url, { headers: { "user-agent": "jensen-registry" } });
-  if (!response.ok) throw answeredError(url, response);
+  if (!response.ok) throw await answeredError(url, response);
   return Buffer.from(await response.arrayBuffer());
 }
 
@@ -92,7 +101,23 @@ const githubHeaders = process.env.GITHUB_TOKEN
   ? { authorization: `Bearer ${process.env.GITHUB_TOKEN}`, accept: "application/vnd.github+json" }
   : { accept: "application/vnd.github+json" };
 
-export const github = (path) => getJson(`https://api.github.com${path}`, githubHeaders);
+const anonymousHeaders = { accept: "application/vnd.github+json" };
+const anonymousOwners = new Set();
+
+export const refusedByAllowList = (error) => error?.status === 403 && /IP allow list/i.test(String(error.message));
+
+export async function github(path) {
+  const url = `https://api.github.com${path}`;
+  const owner = path.split("/")[2] ?? "";
+  if (!githubHeaders.authorization || anonymousOwners.has(owner)) return getJson(url, anonymousHeaders);
+  try {
+    return await getJson(url, githubHeaders);
+  } catch (error) {
+    if (!refusedByAllowList(error)) throw error;
+    anonymousOwners.add(owner);
+    return getJson(url, anonymousHeaders);
+  }
+}
 
 const TOOL_FILES = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes"].map((name) => `tools/${name}.yaml`);
 
