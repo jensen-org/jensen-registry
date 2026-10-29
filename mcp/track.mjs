@@ -141,6 +141,8 @@ const httpAuth = (entry) => ({
 
 const needsSecret = (entry) => (entry.env ?? []).some((variable) => variable.secret && !variable.optional);
 
+export const needsSignIn = (entry) => Boolean(entry.oauth) || (entry.headers ?? []).length > 0 || needsSecret(entry);
+
 async function trackMcp(entry, previous, warn) {
   const base = {
     id: entry.id,
@@ -155,7 +157,7 @@ async function trackMcp(entry, previous, warn) {
   const env = entry.env ?? [];
   if (entry.transport === "http") {
     let tools = previous?.tools ?? [];
-    if (!needsSecret(entry)) {
+    if (!needsSignIn(entry)) {
       try {
         tools = await captureHttp(entry.url);
       } catch (error) {
