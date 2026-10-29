@@ -60,10 +60,12 @@ grammars:
     crate: tree-sitter-typescript
     version: 0.23.2
     path: tsx
+    inherit_queries: [javascript]
   - id: typescript
     crate: tree-sitter-typescript
     version: 0.23.2
     path: typescript
+    inherit_queries: [javascript]
   - id: zig
     crate: tree-sitter-zig
     version: 1.1.2
