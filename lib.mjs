@@ -9,6 +9,7 @@ export const ROOT = dirname(fileURLToPath(import.meta.url));
 export const SCHEMA_VERSION = 1;
 export const TOOLS_SCHEMA_VERSION = 2;
 export const RAW_BASE = "https://raw.githubusercontent.com/jensen-org/jensen-registry";
+export const REF = process.env.REGISTRY_REF || "main";
 export const SCHEMA_BASE = "https://github.com/jensen-org/jensen-registry";
 
 export const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
