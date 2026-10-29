@@ -20,8 +20,6 @@ auth:
         description: A personal or project access token with the api scope.
     scopes:
       - api
-  - method: cli_login
-    label: Use the command line login
 permissions:
   - action: issue create
     label: Create issues
