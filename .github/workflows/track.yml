@@ -20,18 +20,6 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 24
-      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
-        with:
-          path: ~/.cache/tree-sitter
-          key: tree-sitter-wasi-sdk-29-${{ runner.os }}
-      - name: Install the wasi-sdk the tree-sitter build needs
-        run: |
-          dir="$HOME/.cache/tree-sitter/wasi-sdk"
-          if [ ! -x "$dir/bin/clang" ]; then
-            mkdir -p "$dir"
-            curl -fsSL --retry 3 --retry-delay 5 "https://github.com/WebAssembly/wasi-sdk/releases/download/wasi-sdk-29/wasi-sdk-29.0-x86_64-linux.tar.gz" | tar -xz --strip-components=1 -C "$dir"
-          fi
-          test -x "$dir/bin/clang"
       - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npm install --global --ignore-scripts=false --no-audit --no-fund tree-sitter-cli@0.26.7

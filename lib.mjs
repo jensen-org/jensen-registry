@@ -78,20 +78,13 @@ const githubHeaders = process.env.GITHUB_TOKEN
 
 export const github = (path) => getJson(`https://api.github.com${path}`, githubHeaders);
 
-const TOOL_FILES = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes", "unresolved"].map((name) => `tools/${name}.yaml`);
+const TOOL_FILES = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes"].map((name) => `tools/${name}.yaml`);
 
 export const checksummed = () => [
   "index.yaml",
   "grammars/grammars.yaml",
-  "tools/upstreams.yaml",
   ...TOOL_FILES,
-  ...TOOL_FILES.map((file) => file.replace("tools/", "tools/schema/").replace(".yaml", ".json")),
-  "clients/schema.json",
   ...entryFiles("clients"),
-  ...entryFiles("tools/overrides/server"),
-  ...entryFiles("tools/overrides/formatter"),
-  ...entryFiles("tools/overrides/linter"),
-  ...entryFiles("tools/overrides/debugger"),
 ];
 
 export function checksumsText(files = checksummed()) {

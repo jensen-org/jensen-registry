@@ -8,7 +8,7 @@ import { KINDS, OUTPUTS, generate, loadOverrides } from "./generate.mjs";
 const POLICY = new Set(["config", "priority", "root_strategy", "remedies"]);
 const WITH_PARSER = new Set(["args", "stdin", "stream", "append_file", "ignore_exitcode"]);
 const LEGACY = ["tools.yaml", "upstreams.yaml", "tools/tools.yaml"];
-const FILES = { packages: "packages", servers: "servers", formatters: "formatters", linters: "linters", debuggers: "debuggers", filetypes: "filetypes", unresolved: "unresolved" };
+const FILES = { packages: "packages", servers: "servers", formatters: "formatters", linters: "linters", debuggers: "debuggers", filetypes: "filetypes" };
 const FULL_SHA = /^[0-9a-f]{40}$/;
 const SHA256 = /^[0-9a-f]{64}$/;
 
@@ -79,13 +79,6 @@ export function validateOffline({ problems }) {
     for (const entry of data[name] ?? []) {
       if (entry.package && !packageIds.has(entry.package)) problems.push(`tools/${name}.yaml: ${entry.id} names package ${entry.package}, which does not exist`);
       for (const type of entry.filetypes ?? []) if (!filetypeIds.has(type)) problems.push(`tools/${name}.yaml: ${entry.id} names filetype ${type}, which does not exist`);
-    }
-  }
-  const listed = new Set(data.unresolved.map((entry) => `${entry.kind}:${entry.id}`));
-  for (const [kind, plural] of Object.entries(KINDS)) {
-    for (const entry of data[plural]) {
-      const flagged = listed.has(`${kind}:${entry.id}`);
-      if (flagged !== (entry.runnable === false)) problems.push(`tools/${plural}.yaml: ${entry.id} and tools/unresolved.yaml disagree about whether it is runnable`);
     }
   }
   validateClients({ problems, packages: data.packages });

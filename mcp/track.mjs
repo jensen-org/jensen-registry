@@ -1,4 +1,4 @@
-import { spawn, spawnSync } from "node:child_process";
+import { spawnSync } from "node:child_process";
 import { copyFileSync, existsSync, mkdirSync, mkdtempSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -41,109 +41,12 @@ function lockPypi(pkg, version, dir) {
   return "requirements.txt";
 }
 
-function installForCapture(pkg, version, lockName, dir) {
-  if (pkg.ecosystem === "npm") {
-    run("npm", ["ci", "--ignore-scripts", "--no-audit", "--no-fund"], { cwd: dir });
-    return join(dir, "node_modules", ".bin", pkg.bin);
-  }
-  run("uv", ["venv", "--python", "3.12", "venv"], { cwd: dir });
-  run("uv", ["pip", "install", "--python", join(dir, "venv", "bin", "python"), "--require-hashes", "--no-deps", "-r", lockName], { cwd: dir });
-  return join(dir, "venv", "bin", pkg.bin);
-}
-
-function rpcSession(child) {
-  let buffer = "";
-  const waiting = new Map();
-  child.stdout.on("data", (chunk) => {
-    buffer += chunk.toString("utf8");
-    let newline;
-    while ((newline = buffer.indexOf("\n")) >= 0) {
-      const line = buffer.slice(0, newline).trim();
-      buffer = buffer.slice(newline + 1);
-      if (!line) continue;
-      try {
-        const message = JSON.parse(line);
-        waiting.get(message.id)?.(message);
-      } catch {
-        continue;
-      }
-    }
-  });
-  const send = (message) => child.stdin.write(`${JSON.stringify(message)}\n`);
-  const call = (id, method, params) =>
-    new Promise((resolve, reject) => {
-      const timer = setTimeout(() => reject(new Error(`${method} timed out`)), 30000);
-      waiting.set(id, (message) => {
-        clearTimeout(timer);
-        message.error ? reject(new Error(JSON.stringify(message.error))) : resolve(message.result);
-      });
-      send({ jsonrpc: "2.0", id, method, params });
-    });
-  return { send, call };
-}
-
-const INIT = {
-  protocolVersion: "2025-06-18",
-  capabilities: {},
-  clientInfo: { name: "jensen-registry", version: "1" },
-};
-
-const toolRows = (tools) =>
-  tools.map((tool) => ({
-    name: tool.name,
-    description: tool.description ?? "",
-    ...(tool.inputSchema ? { input_schema: tool.inputSchema } : {}),
-  }));
-
-async function captureStdio(binary, args) {
-  const child = spawn(binary, args ?? [], { stdio: ["pipe", "pipe", "ignore"], env: { PATH: process.env.PATH, HOME: process.env.HOME } });
-  try {
-    const session = rpcSession(child);
-    await session.call(1, "initialize", INIT);
-    session.send({ jsonrpc: "2.0", method: "notifications/initialized" });
-    const listed = await session.call(2, "tools/list", {});
-    return toolRows(listed.tools);
-  } finally {
-    child.kill("SIGKILL");
-  }
-}
-
-async function postRpc(url, id, method, params, sessionId) {
-  const response = await fetch(url, {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      accept: "application/json, text/event-stream",
-      ...(sessionId ? { "mcp-session-id": sessionId } : {}),
-    },
-    body: JSON.stringify({ jsonrpc: "2.0", id, method, params }),
-  });
-  if (!response.ok) throw new Error(`${url} answered ${response.status}`);
-  const text = await response.text();
-  const payload = text.startsWith("event:") || text.includes("\ndata:") || text.startsWith("data:")
-    ? text.split("\n").filter((line) => line.startsWith("data:")).map((line) => line.slice(5).trim()).pop()
-    : text;
-  const message = JSON.parse(payload);
-  if (message.error) throw new Error(JSON.stringify(message.error));
-  return { result: message.result, sessionId: response.headers.get("mcp-session-id") ?? sessionId };
-}
-
-async function captureHttp(url) {
-  const init = await postRpc(url, 1, "initialize", INIT);
-  const listed = await postRpc(url, 2, "tools/list", {}, init.sessionId);
-  return toolRows(listed.result.tools);
-}
-
 const httpAuth = (entry) => ({
   ...(entry.headers?.length ? { headers: entry.headers } : {}),
   ...(entry.oauth ? { oauth: true } : {}),
 });
 
-const needsSecret = (entry) => (entry.env ?? []).some((variable) => variable.secret && !variable.optional);
-
-export const needsSignIn = (entry) => Boolean(entry.oauth) || (entry.headers ?? []).length > 0 || needsSecret(entry);
-
-async function trackMcp(entry, previous, warn) {
+async function trackMcp(entry, previous) {
   const base = {
     id: entry.id,
     description: entry.description,
@@ -156,15 +59,7 @@ async function trackMcp(entry, previous, warn) {
   };
   const env = entry.env ?? [];
   if (entry.transport === "http") {
-    let tools = previous?.tools ?? [];
-    if (!needsSignIn(entry)) {
-      try {
-        tools = await captureHttp(entry.url);
-      } catch (error) {
-        warn(`${entry.id}: could not capture tools: ${error.message}`);
-      }
-    }
-    return { ...base, url: entry.url, env, ...httpAuth(entry), tools };
+    return { ...base, url: entry.url, env, ...httpAuth(entry) };
   }
   const pkg = entry.package;
   const version = await latestVersion(pkg);
@@ -172,7 +67,6 @@ async function trackMcp(entry, previous, warn) {
   const lockPath = `mcp/locks/${entry.id}/${lockName}`;
   const same = previous?.package?.version === version && existsSync(join(ROOT, lockPath));
   let lockSha;
-  let tools = same ? previous.tools : [];
   if (same) {
     lockSha = sha256(readFileSync(join(ROOT, lockPath)));
   } else {
@@ -182,14 +76,6 @@ async function trackMcp(entry, previous, warn) {
       mkdirSync(join(ROOT, "mcp/locks", entry.id), { recursive: true });
       copyFileSync(join(dir, produced), join(ROOT, lockPath));
       lockSha = sha256(readFileSync(join(ROOT, lockPath)));
-      if (!needsSecret(entry)) {
-        try {
-          const binary = installForCapture(pkg, version, produced, dir);
-          tools = await captureStdio(binary, pkg.args);
-        } catch (error) {
-          warn(`${entry.id}: could not capture tools: ${error.message}`);
-        }
-      }
     } finally {
       rmSync(dir, { recursive: true, force: true });
     }
@@ -206,11 +92,10 @@ async function trackMcp(entry, previous, warn) {
       lockfile: { path: lockPath, url: `${RAW_BASE}/main/${lockPath}`, sha256: lockSha },
     },
     env,
-    tools,
   };
 }
 
-export async function trackMcpServers({ check, previous, problems, warn }) {
+export async function trackMcpServers({ check, previous, problems }) {
   const entries = loadEntries("mcp");
   const mcp = [];
   for (const { path, entry } of entries) {
@@ -218,7 +103,7 @@ export async function trackMcpServers({ check, previous, problems, warn }) {
     if (problems.length) continue;
     problems.push(...mcpProblems(entry, path));
     if (problems.length) continue;
-    mcp.push(await trackMcp(entry, previous.mcp?.find((server) => server.id === entry.id), warn));
+    mcp.push(await trackMcp(entry, previous.mcp?.find((server) => server.id === entry.id)));
   }
   return { mcp, entries };
 }
