@@ -13,18 +13,12 @@ import { validateSkills } from "./skills/validate.mjs";
 import { trackTools } from "./tools/track.mjs";
 import { validateTools } from "./tools/validate.mjs";
 
-const warnings = [];
-const warn = (message) => {
-  warnings.push(message);
-  console.warn(`warning: ${message}`);
-};
-
 async function track() {
   const check = validator();
   const previous = existsSync(join(ROOT, "index.yaml")) ? readYaml("index.yaml") : {};
   const problems = [];
   const skills = await trackSkills({ check, previous, problems });
-  const { mcp, entries: mcpEntries } = await trackMcpServers({ check, previous, problems, warn });
+  const { mcp, entries: mcpEntries } = await trackMcpServers({ check, previous, problems });
   const integrations = trackIntegrations({ check, problems, mcpEntries });
   if (problems.length) {
     console.error(problems.join("\n"));
@@ -34,7 +28,7 @@ async function track() {
   await trackTools();
   writeText("index.yaml", dump({ schema_version: SCHEMA_VERSION, skills, mcp, integrations }));
   writeText("checksums.txt", checksumsText(checksummed()));
-  console.log(`tracked ${skills.length} skills, ${mcp.length} mcp servers, ${integrations.length} integrations and ${grammars.length} grammars, ${warnings.length} warnings`);
+  console.log(`tracked ${skills.length} skills, ${mcp.length} mcp servers, ${integrations.length} integrations and ${grammars.length} grammars`);
 }
 
 async function validate(online) {

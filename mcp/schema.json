@@ -224,8 +224,7 @@
         "description",
         "advised",
         "transport",
-        "env",
-        "tools"
+        "env"
       ],
       "properties": {
         "id": {
@@ -326,28 +325,6 @@
         },
         "oauth": {
           "type": "boolean"
-        },
-        "tools": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "additionalProperties": false,
-            "required": [
-              "name",
-              "description"
-            ],
-            "properties": {
-              "name": {
-                "type": "string"
-              },
-              "description": {
-                "type": "string"
-              },
-              "input_schema": {
-                "type": "object"
-              }
-            }
-          }
         },
         "serves": {
           "type": "array",

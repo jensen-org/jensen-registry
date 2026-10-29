@@ -22,7 +22,7 @@ checks them.
 At the root: `index.yaml` (generated, never hand edited), `checksums.txt`, `registry.mjs` (runs the
 folders), `lib.mjs` (shared helpers) and `package.json`.
 
-- `index.yaml`: every entry resolved and pinned. Skills carry the commit, each file's url and sha256 and a content hash. Stdio servers carry an exact version and a hashed lockfile. Every server lists the env it needs and the tools captured from it. Every integration lists the servers that serve it and its pinned icon.
+- `index.yaml`: every entry resolved and pinned. Skills carry the commit, each file's url and sha256 and a content hash. Stdio servers carry an exact version and a hashed lockfile. Every server lists the env it needs. Tools are not captured: a server lists them itself once it is connected. Every integration lists the servers that serve it and its pinned icon.
 - `checksums.txt`: `<sha256>  <file>` for `index.yaml`, `grammars/grammars.yaml`, every file under `tools/` that clients read, and every file in `clients/`. A client checks it before trusting a fetched file.
 
 ## Tools
