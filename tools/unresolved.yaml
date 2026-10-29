@@ -207,6 +207,11 @@ unresolved:
     missing:
       - reachable_filetype
   - kind: linter
+    id: bloc
+    missing:
+      - parser
+      - filetypes
+  - kind: linter
     id: blocklint
     missing:
       - filetypes
@@ -720,6 +725,10 @@ unresolved:
     id: powershell_es
     missing:
       - cmd
+  - kind: server
+    id: prolog_ls
+    missing:
+      - package_binary
   - kind: server
     id: r_language_server
     missing:

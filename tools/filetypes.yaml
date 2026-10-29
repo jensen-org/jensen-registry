@@ -1,7 +1,7 @@
 schema_version: 2
 upstream:
   repo: neovim/neovim
-  sha: 1681ff436a2f83c6e165cd554739fc1e586758f7
+  sha: 9290926ccf55ba3f55e4b48f5b94cad403017688
 filetypes:
   - id: 8th
     extensions:
@@ -612,6 +612,9 @@ filetypes:
   - id: dax
     extensions:
       - dax
+  - id: dbt
+    extensions:
+      - dbt
   - id: dcd
     extensions:
       - dcd
@@ -1492,6 +1495,10 @@ filetypes:
   - id: ipkg
     extensions:
       - ipkg
+  - id: ispc
+    extensions:
+      - ispc
+      - isph
   - id: iss
     extensions:
       - iss
