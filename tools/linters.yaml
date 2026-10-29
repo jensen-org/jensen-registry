@@ -1,7 +1,7 @@
 schema_version: 2
 upstream:
   repo: mfussenegger/nvim-lint
-  sha: f6230a5c06ba59e6059c14637f1dbe29a7978b9b
+  sha: 52107ce2076a27a285af781248e2c59bad817cd0
 linters:
   - id: actionlint
     package: actionlint
@@ -175,6 +175,15 @@ linters:
           information: 3
           hint: 4
         default: 2
+  - id: bloc
+    cmd: bloc
+    args:
+      - lint
+    stdin: false
+    append_file: true
+    stream: stdout
+    ignore_exitcode: true
+    runnable: false
   - id: blocklint
     cmd: blocklint
     args:
@@ -318,6 +327,10 @@ linters:
       - tex
     runnable: false
   - id: clangtidy
+    package: clang-tidy
+    filetypes:
+      - c
+      - cpp
     cmd: clang-tidy
     args:
       - --quiet
@@ -338,9 +351,6 @@ linters:
     config:
       - .clang-tidy
     priority: 10
-    filetypes:
-      - c
-      - cpp
   - id: clazy
     filetypes:
       - cpp

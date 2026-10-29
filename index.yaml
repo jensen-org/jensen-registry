@@ -11,19 +11,19 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/ask-matt
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: 4883bf7b2a2937c8daab1af2bdccfe4f5920a8837e3ddb4729e2787c8fbba78a
     files:
       - path: PHASE-BOUNDARIES.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/ask-matt/PHASE-BOUNDARIES.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/ask-matt/PHASE-BOUNDARIES.md
         sha256: a8aa20158609ef39e2b308b6ba0660c91066838d07a867202e63a7744a88a3ed
         size: 4249
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/ask-matt/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/ask-matt/SKILL.md
         sha256: 1371f5ce005de0992a44b137748bfb960a56948aa9871b405fe9d90b24332e3c
         size: 12594
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/ask-matt/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/ask-matt/agents/openai.yaml
         sha256: bdffbc5a0a99ed1b6ef3253d251d755fd18162b9845972e380007f844b09b05c
         size: 137
   - id: code-review
@@ -37,15 +37,15 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/code-review
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
-    content_hash: d8ea925a0be487470db65c58a5a2606c3bda9e61ad7a66cc72f59c3d6ed0b3b6
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
+    content_hash: 5cf1a4aca73fc2fc8eaeab0dbddf280b0a4e355d2243fab96abf549414789702
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/code-review/SKILL.md
-        sha256: 09eb147f793e4647949edd32dbad278f0554dfb56e0d46b699cd4c2c55bf0357
-        size: 6670
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/code-review/SKILL.md
+        sha256: 9c921a8d88138a41401d8897ca1bb852088ab1b7b605cdd04edc13e3e8aab6dd
+        size: 6721
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/code-review/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/code-review/agents/openai.yaml
         sha256: 8229ca854e11dc8e6aef2131ee03f31fb1561cf905fab9ccc325180cf3331352
         size: 100
   - id: codebase-design
@@ -59,23 +59,23 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/codebase-design
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
-    content_hash: 855f80059b2c4fbb47e97e96c2ebd5166e835efbbcae7a9b51cfacb34532c1a8
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
+    content_hash: 66b6f0d1cbc584ae17931ee414f8812d11738de55c8097cb8673bc01cb29ca1a
     files:
       - path: DEEPENING.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/codebase-design/DEEPENING.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/codebase-design/DEEPENING.md
         sha256: f3dd099ce99289bd213914d8ee3e2429b78309c3957ca4583f7659551b1d53c1
         size: 2553
       - path: DESIGN-IT-TWICE.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/codebase-design/DESIGN-IT-TWICE.md
-        sha256: 52b52e75655a27aea59c6966b410bac82448968ad46ef1ebb9f07c274e3ae010
-        size: 2665
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/codebase-design/DESIGN-IT-TWICE.md
+        sha256: c222ab5a82e0405672eb9062d62496139a08828e45d07fc5f18e4952c10fac1a
+        size: 2699
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/codebase-design/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/codebase-design/SKILL.md
         sha256: 2c20617f87ec8af6a434859f381b2f061a69b530444e74eb39e78bb016a6d1e2
         size: 6446
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/codebase-design/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/codebase-design/agents/openai.yaml
         sha256: edebc9e4fcfe102114012575eaa9600b9b5fd08c311664f389c36e7bc717740f
         size: 102
   - id: diagnosing-bugs
@@ -89,19 +89,19 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/diagnosing-bugs
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: 3314cd62e50cf688d13abdc4eb4cedcbcfdfe6f053fe3331f4a79928a0fe3c7f
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/diagnosing-bugs/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/diagnosing-bugs/SKILL.md
         sha256: 849198df88cdb65fd0d97236604c1fca7ff2f22d2f705f9724a800d0266b118d
         size: 8664
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/diagnosing-bugs/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/diagnosing-bugs/agents/openai.yaml
         sha256: 3e430dbe4334a87597488c060cb3dc3786bb00c9182877d6f5ec41f62490e90b
         size: 103
       - path: scripts/hitl-loop.template.sh
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/diagnosing-bugs/scripts/hitl-loop.template.sh
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/diagnosing-bugs/scripts/hitl-loop.template.sh
         sha256: 35103539fc36873eea36074769ad454f9379d6fc8b2dc0e26ce987fd3bfe5503
         size: 1316
   - id: domain-modeling
@@ -115,23 +115,23 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/domain-modeling
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: c25c0fbd89c5df79a01e7c820e2a7b2ae894f6c44206a50b0cb90e0db5613eb9
     files:
       - path: ADR-FORMAT.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/domain-modeling/ADR-FORMAT.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/domain-modeling/ADR-FORMAT.md
         sha256: 944c92aa790e8fbdc9199640b170979abb8a34ba8d0fe18c2a01a63bce140ca0
         size: 2733
       - path: GLOSSARY-FORMAT.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/domain-modeling/GLOSSARY-FORMAT.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/domain-modeling/GLOSSARY-FORMAT.md
         sha256: 21dcc40cdec8e151a829b98ab1517c1867bc444e3665134a98c6983411996801
         size: 2300
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/domain-modeling/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/domain-modeling/SKILL.md
         sha256: 7b925d7b1e341a2eeae33ad68a8a8c0ab889a38ddd22a7598e4c240e5a7556a3
         size: 3346
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/domain-modeling/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/domain-modeling/agents/openai.yaml
         sha256: f6bf2aa996c6e6f53fdd0708e18a0d16a56aed8322cca59fedbe3c0d2c75f06b
         size: 101
   - id: excalidraw-skill
@@ -171,19 +171,19 @@ skills:
     repo: mattpocock/skills
     path: skills/misc/git-guardrails-claude-code
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: e003cea1f2a81a56d118e177e7101a3fc322015a9bf40b05dab2d00376a82c56
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/misc/git-guardrails-claude-code/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/misc/git-guardrails-claude-code/SKILL.md
         sha256: 69b291d655626a01602b998a1836fcb93c058ede68dfafddfd71e87f17074764
         size: 2313
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/misc/git-guardrails-claude-code/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/misc/git-guardrails-claude-code/agents/openai.yaml
         sha256: d53cd783fc0ac208dec9a4c267989284384785aab6422dccdaed42f9e40243ec
         size: 112
       - path: scripts/block-dangerous-git.sh
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/misc/git-guardrails-claude-code/scripts/block-dangerous-git.sh
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/misc/git-guardrails-claude-code/scripts/block-dangerous-git.sh
         sha256: 234922b83c0a1737ee7300806c21ac0f389b07aaeb65c2d71ccedafbc5e1ea4b
         size: 507
   - id: grill-me
@@ -197,15 +197,15 @@ skills:
     repo: mattpocock/skills
     path: skills/productivity/grill-me
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: 8d501635f6935280c1e493a7551658038fef32a346fb3a4acd21a727ceee3b64
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/grill-me/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/grill-me/SKILL.md
         sha256: caaf8b8de1684f96e26b28f3c29189db5c89cce4b73e1c93d86164f66ef88637
         size: 157
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/grill-me/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/grill-me/agents/openai.yaml
         sha256: c061e39c3e0f9d865fb1b97556d485704af2a8a58f4b8221a8917a5c2074a32b
         size: 137
   - id: grill-with-docs
@@ -219,15 +219,15 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/grill-with-docs
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: d6882d18cf3c2ebcd5f7175ac732b3a0685122ea934b463272949d25657332bc
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/grill-with-docs/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/grill-with-docs/SKILL.md
         sha256: 7de372c13488f1ee96cc11cd8907b56b6809cc93eef776eeddd37de6b6cbe3fe
         size: 247
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/grill-with-docs/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/grill-with-docs/agents/openai.yaml
         sha256: 94cd0ab161fb468a836349f5ed482ba58ce8e709a05c57ce533d739dbd35cca9
         size: 145
   - id: grilling
@@ -241,15 +241,15 @@ skills:
     repo: mattpocock/skills
     path: skills/productivity/grilling
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
-    content_hash: 21571fb2b60e88d625905fc944ddbcf5069160542b814521e5ec2cb2ba2755ef
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
+    content_hash: f051b560a2efc6885696401f41575e3814eaab4078190dca2dfa656b7fda9ffd
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/grilling/SKILL.md
-        sha256: befdff1e27a1dfe2a294d5871169ac1afe16d983911daa4f32627514a48c1e15
-        size: 2049
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/grilling/SKILL.md
+        sha256: a146842ed93ca43d833550fa9adf02e58cb63c83fea9d4b4522995b82242d4e2
+        size: 2077
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/grilling/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/grilling/agents/openai.yaml
         sha256: 1411d7df7d99b7e621a1ff8283c8133cc2464be63d064e52d8ce169c6800ee9b
         size: 113
   - id: handoff
@@ -263,15 +263,15 @@ skills:
     repo: mattpocock/skills
     path: skills/productivity/handoff
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: ec3e8c462e35745d5349384c25b2ee761d6b681004121499f90d9df2e50da5ce
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/handoff/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/handoff/SKILL.md
         sha256: 4cbb043950dad2ffd3662ff1a5a0b51ae676004b5cae10e3787e8ee7a4ee69d3
         size: 940
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/handoff/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/handoff/agents/openai.yaml
         sha256: 5c479fd562c691851690e8b18c8501045bef0943c10743d636b2fae26add1d28
         size: 141
   - id: implement-spec
@@ -285,15 +285,15 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/implement-spec
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
-    content_hash: a104be9b1919f13fffd1b68792076d2f33fd8ed1370cc2c9338cb228e17babcc
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
+    content_hash: 15cb6a1ca802f22670ca248093c72cb2c3b121e20456cab8854fc857146c291e
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/implement-spec/SKILL.md
-        sha256: 7a22dd2e60b8fcece478ced9d2533582adf3520d695acd3ab715341535c9e56d
-        size: 2780
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/implement-spec/SKILL.md
+        sha256: 1993a473cec40ac85d081c112cdffdc63ec3267c2e412055ad09e013a2f623d1
+        size: 2835
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/implement-spec/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/implement-spec/agents/openai.yaml
         sha256: fd41efb42c60c96320d6531be7e4bf15cbf5518cd652d57dff27ccffa46988e9
         size: 168
   - id: implement
@@ -307,15 +307,15 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/implement
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: e90dd3a5cadf32cc4f847857c29f7acb7d6eb288fdc01e49246917c61bc378c1
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/implement/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/implement/SKILL.md
         sha256: 483bdc4ccf4ac31d86ac7beeaa0d0db80313e71e120bb8c59b3196ae5decd53d
         size: 622
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/implement/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/implement/agents/openai.yaml
         sha256: 8970a8596ade0c28ab427f41a4ea242d6bdf6186c59ebf55e1238dbecaab79dc
         size: 139
   - id: improve-codebase-architecture
@@ -329,19 +329,19 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/improve-codebase-architecture
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
-    content_hash: d15e658a232ad79fa58891ef3e418071b28e942e5e95fa17969053e9db1601ce
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
+    content_hash: 2bdbbc880293b3c87e2489b4ea116d1232578c7ce48edf6d82264e5359ebe34d
     files:
       - path: HTML-REPORT.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/improve-codebase-architecture/HTML-REPORT.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/improve-codebase-architecture/HTML-REPORT.md
         sha256: 581e8bb5a521e46bbda8ca7e19b15948bed882187108092ebb90c62513b77528
         size: 6641
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/improve-codebase-architecture/SKILL.md
-        sha256: 552240a5ab5cec6b67c15dd1ad6e9f6962b1bca6ce870059a8c2713760c20392
-        size: 6000
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/improve-codebase-architecture/SKILL.md
+        sha256: 35b03a3db61e0f5aa333ea59b54963e45a3d2ace6649b2ef4f9576603e2582a6
+        size: 6028
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/improve-codebase-architecture/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/improve-codebase-architecture/agents/openai.yaml
         sha256: c8cb20f68ebf0edb4e497bc11ae5fcaa196004e661cd189015b04f4109ced7f1
         size: 166
   - id: migrate-to-shoehorn
@@ -355,15 +355,15 @@ skills:
     repo: mattpocock/skills
     path: skills/misc/migrate-to-shoehorn
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: 8d7641ac349444a3e8958dee71c300cc9a822e8a271c6da32247cd229fd93971
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/misc/migrate-to-shoehorn/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/misc/migrate-to-shoehorn/SKILL.md
         sha256: de4da4c11d924fac79c924b2ee3d2db4a5cb98386eb490a599119463d036ae72
         size: 2795
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/misc/migrate-to-shoehorn/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/misc/migrate-to-shoehorn/agents/openai.yaml
         sha256: 395c2db852e66a199f1cd07f7ed92d66cb6f0787460c5475926f1a5e778b699d
         size: 110
   - id: pr
@@ -377,19 +377,19 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/pr
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: f5d91d590a0f2c50a99d767e1050c58f8aa7d897efb77dcc010b4404a86fe15b
     files:
       - path: CREDITS.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/pr/CREDITS.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/pr/CREDITS.md
         sha256: a7a087127665d7298a72280ef6e19c41ad8404523712a788c8dc3ab414bc2497
         size: 604
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/pr/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/pr/SKILL.md
         sha256: ab63f1cf78647389edcd386c9427c5dfca27ed2836930c24773ffee834c19bcd
         size: 4169
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/pr/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/pr/agents/openai.yaml
         sha256: 2295b586624db4ef546f3fd4695492f039d941a46d8a1593a702ce3ca511b8ad
         size: 93
   - id: prototype
@@ -403,23 +403,23 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/prototype
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: e86eb0efd570ab11acc4bfe064888e3a1ab56d956404edc27f19645b69b29a7e
     files:
       - path: LOGIC.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/prototype/LOGIC.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/prototype/LOGIC.md
         sha256: f61c7d249e786a79ef289018901c348271e1798dd0b0bc5607b5c6f4d4a01ab9
         size: 6036
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/prototype/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/prototype/SKILL.md
         sha256: 714de632d116bb73f65cdb5a882db15b9369a6713b9a47c0fad827848f0bfbe3
         size: 2931
       - path: UI.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/prototype/UI.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/prototype/UI.md
         sha256: 723211e878acbc7b6ff09755263f3295cde724ba902ff0064da41eed51d45ad3
         size: 6913
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/prototype/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/prototype/agents/openai.yaml
         sha256: 5af65e43ab41a350436697b81e27b7f848d36782043b73c322bb2c9fa9cc55dc
         size: 100
   - id: research
@@ -433,15 +433,15 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/research
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
-    content_hash: 1a5c408b1843aba2ef8e67faa23bb02d83ddc6ac3e414101c555c938f5fc9033
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
+    content_hash: d627265245975305bef67a2ad8db9ba47ca1fef32c193b9b3f3b5fbd4fe13569
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/research/SKILL.md
-        sha256: 985569f15739c713d6784887c3d186d4ef9ac85bec5ad9c068d25bf0739928e4
-        size: 794
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/research/SKILL.md
+        sha256: 1f629e18ab899412683bc6a1c4efb4339999e27c2fdac328f26ee10a8c031d33
+        size: 832
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/research/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/research/agents/openai.yaml
         sha256: 9b4c470d63221c1f68f22df70b83e2f12401b317babe0d1b7b5f24a974474d0d
         size: 94
   - id: retro
@@ -455,15 +455,15 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/retro
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: 38a906d27ea2af642d0e15ba3a3a68228da1509e1c8dbd9011088fa75b96627d
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/retro/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/retro/SKILL.md
         sha256: 33fbc28568e3146f20fd908b12998bc0ab30aa4f4c87288199a40793efa94696
         size: 4369
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/retro/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/retro/agents/openai.yaml
         sha256: cb6fb9d7e6b4be5975f41f6def1dd00a1255bad5d9b02696b124c924a8b8745c
         size: 146
   - id: scaffold-exercises
@@ -477,15 +477,15 @@ skills:
     repo: mattpocock/skills
     path: skills/misc/scaffold-exercises
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: 19ddaf51170e20c0b6539030ef55d98b16effc7d458ebeed31153f6de134c2cf
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/misc/scaffold-exercises/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/misc/scaffold-exercises/SKILL.md
         sha256: 75f5c9d771606fb9762f16522efc954df11c324f87148d8ff069bce166257de9
         size: 3589
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/misc/scaffold-exercises/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/misc/scaffold-exercises/agents/openai.yaml
         sha256: 525b33913340bea7947ad2de17f2a7c5fb94be543345fe80ae753b9a44ba601d
         size: 108
   - id: setup-matt-pocock-skills
@@ -499,35 +499,35 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/setup-matt-pocock-skills
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
-    content_hash: 5daeb8bfade7ca15a2ee3df6d84a368cc0ea86017e3ce0a0ce136369fe3f6359
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
+    content_hash: 774efd7ec312e8e082393332ff12421b208fbdf2519e8ea0b341c330a7ac4bc1
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/setup-matt-pocock-skills/SKILL.md
-        sha256: f148858ffb7f63c03c06fca06e6fdb1d91a35c6b293244b8fdfacd5f4cc028c4
-        size: 6978
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/setup-matt-pocock-skills/SKILL.md
+        sha256: b01e05bfe8c323171275c6ceec78b12f1bd4c62dfd26c2cfe8be806d3883f1ed
+        size: 7526
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/setup-matt-pocock-skills/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/setup-matt-pocock-skills/agents/openai.yaml
         sha256: 9527de0110541c45712319025155aeab8dc7d77c6ed6e5e83271bab1851ab939
         size: 152
       - path: domain.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/setup-matt-pocock-skills/domain.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/setup-matt-pocock-skills/domain.md
         sha256: 593a7042218689f1d24df89df14eaf0a20e19e0d0a7d479a01947ac78f0784b9
         size: 2042
       - path: issue-tracker-github.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/setup-matt-pocock-skills/issue-tracker-github.md
-        sha256: f0653fe106dd8ee7b33be27bd7fe3104b40555896cb45f61997aed20467020c3
-        size: 4117
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/setup-matt-pocock-skills/issue-tracker-github.md
+        sha256: 6fdb3e9b00b7b0b115ecac3b1c00e3790f637f190abf598815368722c0a94692
+        size: 5082
       - path: issue-tracker-gitlab.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/setup-matt-pocock-skills/issue-tracker-gitlab.md
-        sha256: 591a9e7057382aaccdfbed3f7ea3f2ad07e0cd29f012d18b82ee4e485fd81e24
-        size: 3816
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/setup-matt-pocock-skills/issue-tracker-gitlab.md
+        sha256: 947602d33a80f98f939fb990995b8f95a3459b114b919c4221d08bd75d7cffe0
+        size: 3979
       - path: issue-tracker-local.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/setup-matt-pocock-skills/issue-tracker-local.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/setup-matt-pocock-skills/issue-tracker-local.md
         sha256: 7dcda20a2eb4bdc89b95d1143423c0691309921cadae3132e6424f371030506e
         size: 1810
       - path: triage-labels.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/setup-matt-pocock-skills/triage-labels.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/setup-matt-pocock-skills/triage-labels.md
         sha256: ae512af838c78b8750471c42cd2b20fa32319553e61d84c9a23d171b40ce14aa
         size: 1057
   - id: setup-pre-commit
@@ -541,15 +541,15 @@ skills:
     repo: mattpocock/skills
     path: skills/misc/setup-pre-commit
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: 62b7558d8aa3e8c24c6148dbc1ffa129f614894658c2a97f9fd8c7a445bc0c4e
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/misc/setup-pre-commit/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/misc/setup-pre-commit/SKILL.md
         sha256: c9819d7f1e3b198064edc1faa3154224ed67395e9f07f5d3cea4b67cf0a11a98
         size: 2258
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/misc/setup-pre-commit/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/misc/setup-pre-commit/agents/openai.yaml
         sha256: acf41db398c5c43afe504008bb7d615a97b6498b0f1f6c5b2395254c0bfb57d1
         size: 99
   - id: tdd
@@ -563,23 +563,23 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/tdd
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: 09207778457604cc26b57047a3bb31378f8318085a5fb4e8b6eb38657898e04d
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/tdd/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/tdd/SKILL.md
         sha256: 5505d25bbaa8fc14a79e4d20163936958992a2995b7f1dd1d6197edc9ed722e0
         size: 3629
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/tdd/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/tdd/agents/openai.yaml
         sha256: ea6f01cf1b8c06a4b0f5b649d74b1b8ce8685e72af1b38d70d877693e092af0b
         size: 87
       - path: mocking.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/tdd/mocking.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/tdd/mocking.md
         sha256: 3ceb807fdf4a47d6a93d4d9a891e5ba6d362a6247bd08adc451feebfc17361ef
         size: 1481
       - path: tests.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/tdd/tests.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/tdd/tests.md
         sha256: 859f9e592c188fda4fc7277dd180e4ce9c7a2e13f6efe1f6f29eccc9d28c106a
         size: 2214
   - id: teach
@@ -593,31 +593,31 @@ skills:
     repo: mattpocock/skills
     path: skills/productivity/teach
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: 9c267db10c829b7da5abbca18b86a03c2bd05a4637d2bd05ba337fe4dcb18f64
     files:
       - path: GLOSSARY-FORMAT.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/teach/GLOSSARY-FORMAT.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/teach/GLOSSARY-FORMAT.md
         sha256: 9b99859ec28437668130d8f2ce5a342938970f8a1ed4fd38c3eab4f4b5fff210
         size: 2122
       - path: LEARNING-RECORD-FORMAT.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/teach/LEARNING-RECORD-FORMAT.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/teach/LEARNING-RECORD-FORMAT.md
         sha256: 701fa34b6748aa89e6c960ffb815257f481a7d77fb2900f9028f7edf3fdd6052
         size: 2747
       - path: MISSION-FORMAT.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/teach/MISSION-FORMAT.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/teach/MISSION-FORMAT.md
         sha256: 8cacbb3c0644d3ae0ea4965564797099401a6930a23f7cf462918576587f2418
         size: 1540
       - path: RESOURCES-FORMAT.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/teach/RESOURCES-FORMAT.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/teach/RESOURCES-FORMAT.md
         sha256: e9cacf34026e11a8d1c8f9de88abe5bcbf654f4ebdb25cae8c0de0d5f48f44ec
         size: 1924
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/teach/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/teach/SKILL.md
         sha256: 550482c2d674b085c9043b87bfdc14a8f2ec453c736119e7fcbb1e9332bffeba
         size: 9733
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/teach/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/teach/agents/openai.yaml
         sha256: 5856f3ae8aec742f1499c640aecdd5f1d6af5fa210a7c6ec794de8263a6f733f
         size: 139
   - id: to-questionnaire
@@ -631,15 +631,15 @@ skills:
     repo: mattpocock/skills
     path: skills/productivity/to-questionnaire
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: bea06bbc77c5a926ad61ae63eb6bca55d485ee9546cf41e8d0b7911843bd09b6
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/to-questionnaire/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/to-questionnaire/SKILL.md
         sha256: b5eb929842ee0e93d867c5e906d183d350f2f2d149eaeaa86967d94d8eda1d3b
         size: 2904
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/to-questionnaire/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/to-questionnaire/agents/openai.yaml
         sha256: 9e8a06c38c8842eea8d4922cb9d1ead8e3ace647bab259b943c994a1b4742bc2
         size: 166
   - id: to-spec
@@ -653,15 +653,15 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/to-spec
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: 96cbcd0ab4c97bcb858703fc85cf15147f5cdb618b3924d26366f32fbc079ee2
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/to-spec/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/to-spec/SKILL.md
         sha256: 43ad9cf318e5e7d3d1fa360253a37021796dc87a0c2e595ad262661a10f85088
         size: 3043
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/to-spec/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/to-spec/agents/openai.yaml
         sha256: 1c5b4d1e3d8e52287ef19cc2742fdbbfae1914ac75d33af3e4c8174f08cc55bb
         size: 135
   - id: to-tickets
@@ -675,15 +675,15 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/to-tickets
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: 8801e56a6f241103596123bce32c341f16fe4c06bad22c85177cc36677f072b2
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/to-tickets/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/to-tickets/SKILL.md
         sha256: 56ec23c5b2782785d4e65bff9e315b6d3aeb4ef977c174a219e99489fada1995
         size: 5812
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/to-tickets/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/to-tickets/agents/openai.yaml
         sha256: 21bc6215fffcd7614e9f772bb1760e87cc5fc7dcc707e7d282bc9414267a6090
         size: 146
   - id: triage
@@ -697,23 +697,23 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/triage
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: b26fcea03379789ace2e8292b66f366487973879c1f60775eb628c51d90fefb7
     files:
       - path: AGENT-BRIEF.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/triage/AGENT-BRIEF.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/triage/AGENT-BRIEF.md
         sha256: 7f5f87fed3033df1b06e083c480f3e847b1fbb0647746b8a4c6a50f9f26ef44f
         size: 7942
       - path: OUT-OF-SCOPE.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/triage/OUT-OF-SCOPE.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/triage/OUT-OF-SCOPE.md
         sha256: 1fbf9b432130c6380aa65813b55553cfda150309b27c595e183f8e335b8a190d
         size: 4667
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/triage/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/triage/SKILL.md
         sha256: 917b0baf74be583e74f110857ed45df2766617f75c00baf61fd136d7af515edf
         size: 6558
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/triage/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/triage/agents/openai.yaml
         sha256: 2e683717720cf456d165d0bb1a68bb600d0b6a8ccb61841c172e50d26f95351c
         size: 135
   - id: wait-what
@@ -727,15 +727,15 @@ skills:
     repo: mattpocock/skills
     path: skills/productivity/wait-what
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: b36c091368ac4a212fc22f1684f38278a44d0aa9eedc94e23f316170682ea5d6
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/wait-what/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/wait-what/SKILL.md
         sha256: d961bb37defd975c539427edb8f450cdbccdcdd552e213c1ece46676a7970905
         size: 396
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/wait-what/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/wait-what/agents/openai.yaml
         sha256: b41faadf741d51e4ea184148b2d1854d93f947aaf754c7844f70a00f04194999
         size: 158
   - id: wayfinder
@@ -749,15 +749,15 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/wayfinder
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
-    content_hash: ec4467c21e1c803f9b189b680967fd35905ae5f34240483961dbc75e08370de4
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
+    content_hash: 72573037606941f754392fc66d88164f01e2bc32c22863a48f9d7a2763bb287e
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/wayfinder/SKILL.md
-        sha256: 9be7b478c389605a24517d27752f278933588da97a1b5921b165f455edf4c5b7
-        size: 12380
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/wayfinder/SKILL.md
+        sha256: 0c9fa96791aebf3b7d654cf35c6aadde97d81f57c17b07d13b27c14d9c46561f
+        size: 12408
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/wayfinder/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/wayfinder/agents/openai.yaml
         sha256: 88bc81a11a6d52ac67aeaa76b8b619e387020d47c5133a4dd4927fd15c4ad073
         size: 144
   - id: wizard
@@ -771,19 +771,19 @@ skills:
     repo: mattpocock/skills
     path: skills/engineering/wizard
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: 618c71e734c2c04c9904fc6b9fb2668c8d9603902434e41203128f4a3802c219
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/wizard/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/wizard/SKILL.md
         sha256: bdf31d48211ea559878f95a4f344aeabf8d85897488ba564382bab0b000daac1
         size: 4123
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/wizard/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/wizard/agents/openai.yaml
         sha256: 98f44d682d58e262f160dc59a8befc365e0aa65820dd0261864af26aa8e59d83
         size: 96
       - path: template.sh
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/engineering/wizard/template.sh
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/engineering/wizard/template.sh
         sha256: 6566f147299bc6f1d941e64591ed04385416d543e11f96f564c7228f5018d0ed
         size: 9498
   - id: writing-for-agents
@@ -797,19 +797,19 @@ skills:
     repo: mattpocock/skills
     path: skills/productivity/writing-for-agents
     ref: main
-    commit: 5beb35b040e3de97e54fa9e386d7e42d15c295c2
+    commit: a496f5513d4a4cf889bc48e189e579f4b0bdf6aa
     content_hash: 78c41feba8e14079c320faa34e76395bcd0a74739580999e7cbad8988fefe533
     files:
       - path: SKILL-MECHANICS.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/writing-for-agents/SKILL-MECHANICS.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/writing-for-agents/SKILL-MECHANICS.md
         sha256: c768e6307c7c10728c401c213f2c4ba71c542127eeb7ad2956aabd15a0fa0059
         size: 2629
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/writing-for-agents/SKILL.md
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/writing-for-agents/SKILL.md
         sha256: 551adca942227b44192edba88acd4e8db911f0121ce58ad16944ccf6a896a74a
         size: 10886
       - path: agents/openai.yaml
-        url: https://raw.githubusercontent.com/mattpocock/skills/5beb35b040e3de97e54fa9e386d7e42d15c295c2/skills/productivity/writing-for-agents/agents/openai.yaml
+        url: https://raw.githubusercontent.com/mattpocock/skills/a496f5513d4a4cf889bc48e189e579f4b0bdf6aa/skills/productivity/writing-for-agents/agents/openai.yaml
         sha256: eacb24b2a618cfb81dacb0416f4fdd75ddf3a8060f8ddb99aae1b1e301907e4b
         size: 102
 mcp:
@@ -1549,13 +1549,13 @@ mcp:
     package:
       ecosystem: pypi
       name: mcp-server-fetch
-      version: 2026.10.19
-      purl: pkg:pypi/mcp-server-fetch@2026.10.19
+      version: 2026.10.28
+      purl: pkg:pypi/mcp-server-fetch@2026.10.28
       bin: mcp-server-fetch
       lockfile:
         path: mcp/locks/fetch/requirements.txt
         url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/mcp/locks/fetch/requirements.txt
-        sha256: 1fc43b241a0c24c307ead55291134051d8a6f3cb25a07e7dcbc8aedc4d5f42ec
+        sha256: ab01217f86931bc69c605aeb3a8ade00f1477eceea5e13b218e07ae8cae0134b
     env: []
     tools:
       - name: fetch
@@ -1644,13 +1644,13 @@ mcp:
     package:
       ecosystem: npm
       name: "@modelcontextprotocol/server-memory"
-      version: 2.0.0
-      purl: pkg:npm/%40modelcontextprotocol/server-memory@2.0.0
+      version: 2.0.1
+      purl: pkg:npm/%40modelcontextprotocol/server-memory@2.0.1
       bin: mcp-server-memory
       lockfile:
         path: mcp/locks/memory/package-lock.json
         url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/mcp/locks/memory/package-lock.json
-        sha256: 15e75826f1e3c04d31809eacc56bf9c37f53e931ed064f1b3bf761eca562ad34
+        sha256: c0f81223d907e535b3ce36fdc7c1906b25990d0edbccb838050ba24b97f61498
     env: []
     tools:
       - name: create_entities
@@ -2498,10 +2498,8 @@ integrations:
             description: A personal access token with the scopes listed.
         scopes:
           - repo
-          - project
           - workflow
-      - method: cli_login
-        label: Use the command line login
+          - project
     mcp: []
     permissions:
       - action: issue create
@@ -2581,8 +2579,6 @@ integrations:
             description: A personal or project access token with the api scope.
         scopes:
           - api
-      - method: cli_login
-        label: Use the command line login
     mcp: []
     permissions:
       - action: issue create

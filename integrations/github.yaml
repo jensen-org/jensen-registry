@@ -20,10 +20,8 @@ auth:
         description: A personal access token with the scopes listed.
     scopes:
       - repo
-      - project
       - workflow
-  - method: cli_login
-    label: Use the command line login
+      - project
 permissions:
   - action: issue create
     label: Create issues

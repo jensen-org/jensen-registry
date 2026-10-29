@@ -1,6 +1,7 @@
 import { readFileSync } from "node:fs";
-import { SCHEMA_VERSION, readYaml } from "../lib.mjs";
-import { GRAMMARS_FILE, expectedEntries, wasmFile } from "./track.mjs";
+import { join } from "node:path";
+import { ROOT, SCHEMA_VERSION, readYaml } from "../lib.mjs";
+import { GRAMMARS_FILE, expectedEntries, queryPath, wasmFile } from "./track.mjs";
 
 const WASM_MAGIC = Buffer.from([0x00, 0x61, 0x73, 0x6d]);
 
@@ -16,6 +17,9 @@ export function validateGrammars({ problems }) {
       continue;
     }
     if (!readFileSync(file).subarray(0, 4).equals(WASM_MAGIC)) problems.push(`grammars/wasm/${wasmFile(grammar)} is not a wasm module`);
+    for (const query of entry.queries) {
+      if (readFileSync(join(ROOT, queryPath(grammar, query.name)), "utf8").trim() === "") problems.push(`${queryPath(grammar, query.name)} is empty`);
+    }
   }
   const published = readYaml(GRAMMARS_FILE);
   if (published.schema_version !== SCHEMA_VERSION) problems.push(`${GRAMMARS_FILE}: wrong schema_version`);

@@ -1,7 +1,7 @@
 schema_version: 2
 upstream:
   repo: neovim/nvim-lspconfig
-  sha: 77b7432d4770d23b277d37923e5a08a442d8bb07
+  sha: 4b2b045b8ceb035f5c8bc9cab19b95706bfa6a19
 servers:
   - id: ada_ls
     cmd:
@@ -326,6 +326,17 @@ servers:
     root_markers:
       - .bacon-locations
       - Cargo.toml
+  - id: badness
+    cmd:
+      - badness
+      - lsp
+    filetypes:
+      - tex
+      - plaintex
+      - bib
+    root_markers:
+      - badness.toml
+      - .git
   - id: ballerina
     cmd:
       - bal
@@ -968,6 +979,14 @@ servers:
       closingLabels: true
       outline: true
       flutterOutline: true
+  - id: dbt
+    package: dbt
+    cmd:
+      - dbt
+      - lsp
+    filetypes:
+      - sql
+      - dbt
   - id: dcmls
     cmd:
       - dcm
@@ -2567,6 +2586,20 @@ servers:
     root_markers:
       - mint.json
       - .git
+  - id: mise
+    cmd:
+      - mise
+      - lsp
+    filetypes:
+      - toml
+    root_markers:
+      - mise.toml
+      - .mise.toml
+      - mise.local.toml
+      - .mise.local.toml
+      - mise/config.toml
+      - .mise/config.toml
+      - .config/mise/config.toml
   - id: mlir_lsp_server
     cmd:
       - mlir-lsp-server
@@ -2955,6 +2988,7 @@ servers:
       - .pbls.toml
       - .git
   - id: perl_lsp
+    package: perl-lsp
     cmd:
       - perl-lsp
     filetypes:
@@ -3062,6 +3096,7 @@ servers:
       - .git
       - composer.json
   - id: phptools
+    package: devsense-php-ls
     cmd:
       - devsense-php-ls
       - --stdio
@@ -3151,6 +3186,7 @@ servers:
       prisma:
         prismaFmtBinPath: ""
   - id: prolog_ls
+    package: prolog-lsp
     cmd:
       - swipl
       - -g
@@ -3165,6 +3201,7 @@ servers:
       - prolog
     root_markers:
       - pack.pl
+    runnable: false
   - id: prosemd_lsp
     package: prosemd-lsp
     cmd:
@@ -4513,6 +4550,7 @@ servers:
     root_markers:
       - .thrift
   - id: tilt_ls
+    package: tilt
     cmd:
       - tilt
       - lsp
