@@ -60,15 +60,31 @@ export function validator() {
   };
 }
 
+export function retryAfterSeconds(headers, now = Date.now()) {
+  const wait = Number(headers.get("retry-after"));
+  if (Number.isFinite(wait) && wait > 0) return wait;
+  const reset = Number(headers.get("x-ratelimit-reset"));
+  if (headers.get("x-ratelimit-remaining") === "0" && Number.isFinite(reset)) return Math.max(1, Math.ceil(reset - now / 1000));
+  return null;
+}
+
+export function answeredError(url, response) {
+  const retryAfter = retryAfterSeconds(response.headers);
+  const error = new Error(`${url} answered ${response.status}${retryAfter ? `, retry in ${retryAfter}s` : ""}`);
+  error.status = response.status;
+  error.retryAfter = retryAfter;
+  return error;
+}
+
 export async function getJson(url, headers = {}) {
   const response = await fetch(url, { headers: { "user-agent": "jensen-registry", ...headers } });
-  if (!response.ok) throw new Error(`${url} answered ${response.status}`);
+  if (!response.ok) throw answeredError(url, response);
   return response.json();
 }
 
 export async function getBytes(url) {
   const response = await fetch(url, { headers: { "user-agent": "jensen-registry" } });
-  if (!response.ok) throw new Error(`${url} answered ${response.status}`);
+  if (!response.ok) throw answeredError(url, response);
   return Buffer.from(await response.arrayBuffer());
 }
 
