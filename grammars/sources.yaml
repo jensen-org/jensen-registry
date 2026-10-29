@@ -25,15 +25,33 @@ grammars:
   - id: bicep
     crate: tree-sitter-bicep
     version: 1.1.0
+  - id: bpftrace
+    crate: tree-sitter-bpftrace
+    version: 0.5.0
   - id: c
     crate: tree-sitter-c
     version: 0.24.2
   - id: c_sharp
     crate: tree-sitter-c-sharp
     version: 0.23.5
+  - id: cmake
+    crate: tree-sitter-cmake
+    version: 0.7.5
   - id: cpp
     crate: tree-sitter-cpp
     version: 0.23.4
+  - id: css
+    crate: tree-sitter-css
+    version: 0.25.0
+  - id: cuda
+    crate: tree-sitter-cuda
+    version: 0.21.2
+  - id: cue
+    crate: tree-sitter-cue
+    version: 0.0.1
+  - id: d
+    crate: tree-sitter-d
+    version: 0.8.2
   - id: elixir
     crate: tree-sitter-elixir
     version: 0.3.5

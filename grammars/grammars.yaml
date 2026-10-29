@@ -54,6 +54,12 @@ grammars:
         url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/queries/bicep-1.1.0/locals.scm
         path: grammars/queries/bicep-1.1.0/locals.scm
         sha256: 9099ae35ed38c97787c16271ec509474106e516ffaed856b16238fbb9e1eeb81
+  - id: bpftrace
+    version: 0.5.0
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/bpftrace-0.5.0.wasm
+    path: grammars/wasm/bpftrace-0.5.0.wasm
+    sha256: 02cf18c7b2b3ca5bfb8e493efcd00bbcfae9a0c0aedca6010ea26f55e9fada07
+    queries: []
   - id: c
     version: 0.24.2
     url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/c-0.24.2.wasm
@@ -74,6 +80,12 @@ grammars:
         url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/queries/c_sharp-0.23.5/tags.scm
         path: grammars/queries/c_sharp-0.23.5/tags.scm
         sha256: 4ed08da0162ecd48206ac34bebe7ea9757a8c7b617f6ad8f70c168d685d514fe
+  - id: cmake
+    version: 0.7.5
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/cmake-0.7.5.wasm
+    path: grammars/wasm/cmake-0.7.5.wasm
+    sha256: e824bbb389f61144a49e05981d2414e7f2e5fe6492ad7afaa937d60495a4117a
+    queries: []
   - id: cpp
     version: 0.23.4
     url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/cpp-0.23.4.wasm
@@ -84,6 +96,38 @@ grammars:
         url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/queries/cpp-0.23.4/tags.scm
         path: grammars/queries/cpp-0.23.4/tags.scm
         sha256: 029731ca946e32f919491d9f76c85a50e5deb5ad1934e37fd6849312c0d4a705
+  - id: css
+    version: 0.25.0
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/css-0.25.0.wasm
+    path: grammars/wasm/css-0.25.0.wasm
+    sha256: 4bd7da6477e9e772b4ed8c2212d66a0dd0929fbd20c0be98c2a09155c43af95c
+    queries: []
+  - id: cuda
+    version: 0.21.2
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/cuda-0.21.2.wasm
+    path: grammars/wasm/cuda-0.21.2.wasm
+    sha256: 87616b0924eafcd7f84711b94949fbfd6377a15926679d5445e83ca3975b8b7e
+    queries: []
+  - id: cue
+    version: 0.0.1
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/cue-0.0.1.wasm
+    path: grammars/wasm/cue-0.0.1.wasm
+    sha256: 85d0195e0776e86980c19b67a1f3c80c5bbb4c9b1c1b590a0ea8302ac97bf0ab
+    queries:
+      - name: locals
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/queries/cue-0.0.1/locals.scm
+        path: grammars/queries/cue-0.0.1/locals.scm
+        sha256: 263c1d91bd644f07b1138cbc070a3bec7e6c7d248ccc0820bc6010665ada6781
+  - id: d
+    version: 0.8.2
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/d-0.8.2.wasm
+    path: grammars/wasm/d-0.8.2.wasm
+    sha256: 0257916feeec93e85b18b126a1a9fd6dad65c045ac3871ceb737ebde8f8ed4f1
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/queries/d-0.8.2/tags.scm
+        path: grammars/queries/d-0.8.2/tags.scm
+        sha256: 8296a2b79c22c541b9173434cc12be5160dd01e77c4dca956fae088f26c7c786
   - id: elixir
     version: 0.3.5
     url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/elixir-0.3.5.wasm
