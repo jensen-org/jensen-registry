@@ -49,6 +49,15 @@ export async function masonRegistry({ repo, tag, sha256: pinned }) {
 
 const pause = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
+export const RETRY_ATTEMPTS = 6;
+export const LONGEST_WAIT_MS = 15 * 60 * 1000;
+
+export function retryDelay(error, attempt) {
+  if (![403, 429, 502, 503].includes(error.status) || attempt >= RETRY_ATTEMPTS) return null;
+  const wait = error.retryAfter ? error.retryAfter * 1000 : 2000 * 2 ** attempt;
+  return wait <= LONGEST_WAIT_MS ? wait : null;
+}
+
 export const releaseDigests = (repo, tag) =>
   once(`release:${repo}@${tag}`, async () => {
     for (let attempt = 0; ; attempt += 1) {
@@ -60,10 +69,10 @@ export const releaseDigests = (repo, tag) =>
             .map((asset) => [asset.name, asset.digest.slice("sha256:".length)]),
         );
       } catch (error) {
-        const message = String(error.message);
-        if (/answered (404|451)$/.test(message)) return new Map();
-        if (!/answered (403|429|502|503)$/.test(message) || attempt >= 4) throw error;
-        await pause(2000 * 2 ** attempt);
+        if ([404, 451].includes(error.status)) return new Map();
+        const wait = retryDelay(error, attempt);
+        if (wait === null) throw error;
+        await pause(wait);
       }
     }
   });
