@@ -62,6 +62,16 @@ grammars:
     path: grammars/wasm/hcl-1.1.0.wasm
     sha256: f1ff1a7d8972d869cfef95b4aa17a5266e1f0c3bf12114a662dba4698351e714
     queries: []
+  - id: html
+    version: 0.23.2
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/html-0.23.2.wasm
+    path: grammars/wasm/html-0.23.2.wasm
+    sha256: 50c0e9a1db26188e5c12a828aada366f973b3c6c5484a8a4a70a4c64b2d6d245
+    queries:
+      - name: injections
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/queries/html-0.23.2/injections.scm
+        path: grammars/queries/html-0.23.2/injections.scm
+        sha256: 80f024e53bf25d07e78b7a9303527966117047c0e8966175a1c13291f4fa7828
   - id: java
     version: 0.23.5
     url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/java-0.23.5.wasm

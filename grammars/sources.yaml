@@ -25,6 +25,10 @@ grammars:
   - id: hcl
     crate: tree-sitter-hcl
     version: 1.1.0
+  - id: html
+    crate: tree-sitter-html
+    version: 0.23.2
+    own_queries: [injections]
   - id: java
     crate: tree-sitter-java
     version: 0.23.5
