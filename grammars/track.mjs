@@ -7,7 +7,8 @@ import { RAW_BASE, REF, ROOT, SCHEMA_VERSION, dump, getBytes, getJson, readYaml,
 export const GRAMMARS_FILE = "grammars/grammars.yaml";
 export const WASM_DIR = "grammars/wasm";
 export const QUERIES_DIR = "grammars/queries";
-export const QUERY_NAMES = ["tags", "locals"];
+export const QUERY_NAMES = ["tags", "locals", "injections"];
+export const OWN_QUERIES_DIR = "grammars/own";
 const MAX_QUERY_BYTES = 256 * 1024;
 
 export const wasmFile = (grammar) => `${grammar.id}-${grammar.version}.wasm`;
@@ -80,7 +81,18 @@ function inheritedQueries(grammar, name) {
     .filter((text) => text !== "");
 }
 
+function copyOwnQueries(grammar) {
+  for (const name of grammar.own_queries ?? []) {
+    const from = join(ROOT, OWN_QUERIES_DIR, grammar.id, `${name}.scm`);
+    if (!existsSync(from)) throw new Error(`${from} is listed in own_queries of ${grammar.id} and does not exist`);
+    regularFileWithin(from, join(ROOT, OWN_QUERIES_DIR));
+    mkdirSync(dirname(join(ROOT, queryPath(grammar, name))), { recursive: true });
+    copyFileSync(from, join(ROOT, queryPath(grammar, name)));
+  }
+}
+
 async function extractQueries(grammar) {
+  copyOwnQueries(grammar);
   const { work, source } = await fetchCrate(grammar);
   try {
     const folders = grammar.path ? [join(source, grammar.path, "queries"), join(source, "queries")] : [join(source, "queries")];
@@ -90,6 +102,7 @@ async function extractQueries(grammar) {
       throw new Error(`${folder} is not a folder inside the crate, refusing to publish it`);
     }
     for (const name of QUERY_NAMES) {
+      if ((grammar.own_queries ?? []).includes(name)) continue;
       const from = join(folder, `${name}.scm`);
       if (!existsSync(from)) continue;
       regularFileWithin(from, source);
