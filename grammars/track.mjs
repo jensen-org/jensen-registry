@@ -7,7 +7,7 @@ import { RAW_BASE, ROOT, SCHEMA_VERSION, dump, getBytes, getJson, readYaml, sha2
 export const GRAMMARS_FILE = "grammars/grammars.yaml";
 export const WASM_DIR = "grammars/wasm";
 export const QUERIES_DIR = "grammars/queries";
-export const QUERY_NAMES = ["tags", "locals"];
+export const QUERY_NAMES = ["tags", "locals", "metrics"];
 const MAX_QUERY_BYTES = 256 * 1024;
 
 export const wasmFile = (grammar) => `${grammar.id}-${grammar.version}.wasm`;

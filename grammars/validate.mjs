@@ -3,6 +3,8 @@ import { join } from "node:path";
 import { ROOT, SCHEMA_VERSION, readYaml } from "../lib.mjs";
 import { GRAMMARS_FILE, expectedEntries, queryPath, wasmFile } from "./track.mjs";
 
+const METRIC_CAPTURES = new Set(["function", "parameter", "branch", "loop", "boolean", "nesting"]);
+
 const WASM_MAGIC = Buffer.from([0x00, 0x61, 0x73, 0x6d]);
 
 export function validateGrammars({ problems }) {
@@ -18,7 +20,12 @@ export function validateGrammars({ problems }) {
     }
     if (!readFileSync(file).subarray(0, 4).equals(WASM_MAGIC)) problems.push(`grammars/wasm/${wasmFile(grammar)} is not a wasm module`);
     for (const query of entry.queries) {
-      if (readFileSync(join(ROOT, queryPath(grammar, query.name)), "utf8").trim() === "") problems.push(`${queryPath(grammar, query.name)} is empty`);
+      const text = readFileSync(join(ROOT, queryPath(grammar, query.name)), "utf8");
+      if (text.trim() === "") problems.push(`${queryPath(grammar, query.name)} is empty`);
+      if (query.name !== "metrics") continue;
+      for (const [, capture] of text.matchAll(/@([A-Za-z_][\w.-]*)/g)) {
+        if (!METRIC_CAPTURES.has(capture) && capture !== "op") problems.push(`${queryPath(grammar, query.name)} captures @${capture}, which is not a metrics capture`);
+      }
     }
   }
   const published = readYaml(GRAMMARS_FILE);

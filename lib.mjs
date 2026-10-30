@@ -78,7 +78,7 @@ const githubHeaders = process.env.GITHUB_TOKEN
 
 export const github = (path) => getJson(`https://api.github.com${path}`, githubHeaders);
 
-const TOOL_FILES = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes", "unresolved"].map((name) => `tools/${name}.yaml`);
+const TOOL_FILES = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes", "unresolved", "testrunners", "entrypoints"].map((name) => `tools/${name}.yaml`);
 
 export const checksummed = () => [
   "index.yaml",
