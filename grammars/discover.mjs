@@ -2,6 +2,13 @@ import { gunzipSync } from "fflate";
 import { dump, getBytes, getJson, readYaml, writeText } from "../lib.mjs";
 import { rawText, untar } from "../tools/sources/fetch.mjs";
 
+export const BATCH_DEFAULT = 6;
+
+export function batchLimit(value) {
+  const parsed = Number.parseInt(value ?? "", 10);
+  return Number.isInteger(parsed) && parsed > 0 ? parsed : BATCH_DEFAULT;
+}
+
 export const SOURCES_FILE = "grammars/sources.yaml";
 const PARSERS_FILE = "lua/nvim-treesitter/parsers.lua";
 const CRATES_PAUSE_MS = 1100;
@@ -57,15 +64,20 @@ async function buildsFromTheRoot(crate, version) {
   return untar(gunzipSync(archive)).has("src/parser.c");
 }
 
-export async function discoverGrammars({ log = console.log } = {}) {
+export async function discoverGrammars({ log = console.log, limit = batchLimit(process.env.DISCOVER_BATCH) } = {}) {
   const sources = readYaml(SOURCES_FILE);
   const lua = await rawText(sources.upstream.repo, sources.upstream.sha, PARSERS_FILE);
   const wanted = wantedParsers(parseParsers(lua), readYaml("tools/filetypes.yaml"));
   const known = new Set(sources.grammars.map((grammar) => grammar.id));
   const added = [];
   const skipped = [];
+  let deferred = 0;
   for (const [name, parser] of wanted) {
     if (known.has(name)) continue;
+    if (added.length >= limit) {
+      deferred += 1;
+      continue;
+    }
     let chosen = null;
     for (const crate of crateNames(name, parser)) {
       await pause(CRATES_PAUSE_MS);
@@ -86,7 +98,7 @@ export async function discoverGrammars({ log = console.log } = {}) {
     added.push({ id: name, ...chosen });
   }
   if (added.length) writeText(SOURCES_FILE, dump(withDiscovered(sources, added)));
-  log(`discovered ${added.length} grammars, left ${skipped.length} out`);
+  log(`discovered ${added.length} grammars, left ${skipped.length} out, ${deferred} more wait for the next run`);
   for (const line of skipped) log(`  skipped ${line}`);
   return { added, skipped };
 }

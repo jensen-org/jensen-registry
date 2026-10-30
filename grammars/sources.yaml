@@ -4,18 +4,54 @@ upstream:
   repo: nvim-treesitter/nvim-treesitter
   sha: 29212d826054bb2948fa9d3a99eca9bf6a050eb2
 grammars:
+  - id: ada
+    crate: tree-sitter-ada
+    version: 0.9.2
+  - id: agda
+    crate: tree-sitter-agda
+    version: 1.3.3
+  - id: arduino
+    crate: tree-sitter-arduino
+    version: 0.24.0
+  - id: asm
+    crate: tree-sitter-asm
+    version: 0.24.0
   - id: bash
     crate: tree-sitter-bash
     version: 0.25.1
+  - id: beancount
+    crate: tree-sitter-beancount
+    version: 2.5.1
+  - id: bicep
+    crate: tree-sitter-bicep
+    version: 1.1.0
+  - id: bpftrace
+    crate: tree-sitter-bpftrace
+    version: 0.5.0
   - id: c
     crate: tree-sitter-c
     version: 0.24.2
   - id: c_sharp
     crate: tree-sitter-c-sharp
     version: 0.23.5
+  - id: cmake
+    crate: tree-sitter-cmake
+    version: 0.7.5
   - id: cpp
     crate: tree-sitter-cpp
     version: 0.23.4
+  - id: css
+    crate: tree-sitter-css
+    version: 0.25.0
+  - id: cuda
+    crate: tree-sitter-cuda
+    version: 0.21.2
+  - id: cue
+    crate: tree-sitter-cue
+    version: 0.0.1
+  - id: d
+    crate: tree-sitter-d
+    version: 0.8.2
   - id: elixir
     crate: tree-sitter-elixir
     version: 0.3.5
@@ -64,12 +100,14 @@ grammars:
     crate: tree-sitter-typescript
     version: 0.23.2
     path: tsx
-    inherit_queries: [javascript]
+    inherit_queries:
+      - javascript
   - id: typescript
     crate: tree-sitter-typescript
     version: 0.23.2
     path: typescript
-    inherit_queries: [javascript]
+    inherit_queries:
+      - javascript
   - id: zig
     crate: tree-sitter-zig
     version: 1.1.2
