@@ -1,0 +1,121 @@
+schema_version: 2
+upstream:
+  source: hand maintained in jensen-registry
+testrunners:
+  - id: cargo-nextest
+    filetypes:
+      - rust
+    root_markers:
+      - Cargo.toml
+    cmd:
+      - cargo
+      - nextest
+      - list
+      - --message-format
+      - oneline
+    pattern: '^\S+ (?P<name>\S.*)$'
+    coverage:
+      path: lcov.info
+      format: lcov
+  - id: cargo-test
+    filetypes:
+      - rust
+    root_markers:
+      - Cargo.toml
+    cmd:
+      - cargo
+      - test
+      - --
+      - --list
+    pattern: '^(?P<name>\S+): test$'
+    coverage:
+      path: lcov.info
+      format: lcov
+  - id: go-test
+    filetypes:
+      - go
+    root_markers:
+      - go.mod
+    cmd:
+      - go
+      - test
+      - -list
+      - .*
+      - ./...
+    pattern: '^(?P<name>(Test|Benchmark|Example|Fuzz)\w*)$'
+    coverage:
+      path: coverage.out
+      format: go_cover
+  - id: pytest
+    filetypes:
+      - python
+    root_markers:
+      - pytest.ini
+      - pyproject.toml
+      - setup.cfg
+      - tox.ini
+    cmd:
+      - pytest
+      - --collect-only
+      - -q
+    pattern: '^(?P<file>[^:\s]+\.py)::(?P<name>\S+)$'
+    coverage:
+      path: coverage.xml
+      format: cobertura
+  - id: jest
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+      - typescriptreact
+    root_markers:
+      - jest.config.js
+      - jest.config.ts
+      - jest.config.mjs
+      - jest.config.cjs
+    cmd:
+      - jest
+      - --listTests
+    pattern: '^(?P<file>/\S+)$'
+    coverage:
+      path: coverage/lcov.info
+      format: lcov
+  - id: vitest
+    filetypes:
+      - javascript
+      - javascriptreact
+      - typescript
+      - typescriptreact
+      - vue
+    root_markers:
+      - vitest.config.ts
+      - vitest.config.js
+      - vitest.config.mts
+    cmd:
+      - vitest
+      - list
+    pattern: '^(?P<file>\S+?) > (?P<name>.+)$'
+    coverage:
+      path: coverage/lcov.info
+      format: lcov
+  - id: phpunit
+    filetypes:
+      - php
+    root_markers:
+      - phpunit.xml
+      - phpunit.xml.dist
+    cmd:
+      - phpunit
+      - --list-tests
+    pattern: '^ - (?P<name>\S+)$'
+    coverage:
+      path: build/logs/clover.xml
+      format: clover
+  - id: dotnet-test
+    filetypes:
+      - cs
+    cmd:
+      - dotnet
+      - test
+      - --list-tests
+    pattern: '^    (?P<name>\S.*)$'

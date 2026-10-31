@@ -1,0 +1,22 @@
+(method_declaration) @function
+(constructor_declaration) @function
+(lambda_expression) @function
+(formal_parameter) @parameter
+(spread_parameter) @parameter
+(if_statement) @branch
+(switch_block_statement_group) @branch
+(switch_rule) @branch
+(catch_clause) @branch
+(ternary_expression) @branch
+(for_statement) @loop
+(enhanced_for_statement) @loop
+(while_statement) @loop
+(do_statement) @loop
+(binary_expression operator: ["&&" "||"]) @boolean
+(if_statement) @nesting
+(switch_expression) @nesting
+(catch_clause) @nesting
+(for_statement) @nesting
+(enhanced_for_statement) @nesting
+(while_statement) @nesting
+(do_statement) @nesting

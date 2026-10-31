@@ -1,102 +1,456 @@
 schema_version: 1
 grammars:
+  - id: ada
+    version: 0.9.2
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/ada-0.9.2.wasm
+    path: grammars/wasm/ada-0.9.2.wasm
+    sha256: 9055f4c3241a82ec0b872ca7bb7b2755300db9f36c07479a3eac78fbaebf979e
+    queries:
+      - name: locals
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/ada-0.9.2/locals.scm
+        path: grammars/queries/ada-0.9.2/locals.scm
+        sha256: a4da6105c4304197738d97aeae9363e11d5588199aba338977c66ac6d2753328
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/ada-0.9.2/metrics.scm
+        path: grammars/queries/ada-0.9.2/metrics.scm
+        sha256: 0b130c836b259cb6026bd6557169ac3edb975b95752b91354994bb74ca296017
+  - id: agda
+    version: 1.3.3
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/agda-1.3.3.wasm
+    path: grammars/wasm/agda-1.3.3.wasm
+    sha256: aa8fce4f2ab0e1979a47e389372e863994eac2e18525461e33b2adece3f41936
+    queries:
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/agda-1.3.3/metrics.scm
+        path: grammars/queries/agda-1.3.3/metrics.scm
+        sha256: e27b6f73df140d9a36a287c444682c1014871f8efade609127a371041922aa18
+  - id: arduino
+    version: 0.24.0
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/arduino-0.24.0.wasm
+    path: grammars/wasm/arduino-0.24.0.wasm
+    sha256: b328777a8e0e8068c82de4015503d5fa7e9abb6a126992c7887b4ab06ef20055
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/arduino-0.24.0/tags.scm
+        path: grammars/queries/arduino-0.24.0/tags.scm
+        sha256: b0b6a398deacca2273216379c6337238e6236662dcfb22e95d28b758f660d047
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/arduino-0.24.0/metrics.scm
+        path: grammars/queries/arduino-0.24.0/metrics.scm
+        sha256: 1cc1e5c95a0d890c96ec316f2ffd49467f4e21bd28c390194cb79ac165275cef
+  - id: asm
+    version: 0.24.0
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/asm-0.24.0.wasm
+    path: grammars/wasm/asm-0.24.0.wasm
+    sha256: 90eb990c56713e4a347adc189a6ddfa6213a7f9b83fd89b23ded22fd9a3b07a7
+    queries:
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/asm-0.24.0/metrics.scm
+        path: grammars/queries/asm-0.24.0/metrics.scm
+        sha256: 8f08c3536ec96bd3d16c232e8e9220631ea9f46ca715b0dc2997387a6857fe4f
   - id: bash
     version: 0.25.1
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/bash-0.25.1.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/bash-0.25.1.wasm
     path: grammars/wasm/bash-0.25.1.wasm
     sha256: 129620b8be2bb2bd13ba1b00b7ff9331125cc75c0503921a2de0a14d7cc88560
+    queries:
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/bash-0.25.1/metrics.scm
+        path: grammars/queries/bash-0.25.1/metrics.scm
+        sha256: a19315ebfcd4b2da783c4ff9aeeaa07ad31fb5f9ab10f007b7d529060c1cb8fa
+  - id: beancount
+    version: 2.5.1
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/beancount-2.5.1.wasm
+    path: grammars/wasm/beancount-2.5.1.wasm
+    sha256: 26b1272cd497cdffd8c2804519727271457c4ca351256f73ceeccc2570f15f4b
+    queries:
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/beancount-2.5.1/metrics.scm
+        path: grammars/queries/beancount-2.5.1/metrics.scm
+        sha256: f84a3b74589e22f0a0eb63798c6ffcaf927bea4a9b1509601443e5147886066c
+  - id: bicep
+    version: 1.1.0
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/bicep-1.1.0.wasm
+    path: grammars/wasm/bicep-1.1.0.wasm
+    sha256: 99a00ac7c6673de6e7f2a48975ef12e85ec294e1104869f536810f0fa4c1c925
+    queries:
+      - name: locals
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/bicep-1.1.0/locals.scm
+        path: grammars/queries/bicep-1.1.0/locals.scm
+        sha256: 9099ae35ed38c97787c16271ec509474106e516ffaed856b16238fbb9e1eeb81
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/bicep-1.1.0/metrics.scm
+        path: grammars/queries/bicep-1.1.0/metrics.scm
+        sha256: 581eaa9b6102e9585ecfdb4ebaa23c7f84e00c7be44f2b2a1159646774b3c734
+  - id: bpftrace
+    version: 0.5.0
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/bpftrace-0.5.0.wasm
+    path: grammars/wasm/bpftrace-0.5.0.wasm
+    sha256: 02cf18c7b2b3ca5bfb8e493efcd00bbcfae9a0c0aedca6010ea26f55e9fada07
+    queries:
+      - name: injections
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/bpftrace-0.5.0/injections.scm
+        path: grammars/queries/bpftrace-0.5.0/injections.scm
+        sha256: da9c42e6f00200fe3a1fbbcecc67c114242db645a2ea0c2c327bd28e2a3e2d78
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/bpftrace-0.5.0/metrics.scm
+        path: grammars/queries/bpftrace-0.5.0/metrics.scm
+        sha256: 24c421f82a65767644eb2d80d52f2c4561f858cfed95d4e860788d45c25f6832
   - id: c
     version: 0.24.2
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/c-0.24.2.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/c-0.24.2.wasm
     path: grammars/wasm/c-0.24.2.wasm
     sha256: b99567dc9f606d70e6f3ac2d835de1ea5d1fb4a82ea3f25cb718fd0f5edb0a97
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/c-0.24.2/tags.scm
+        path: grammars/queries/c-0.24.2/tags.scm
+        sha256: 774ca67cfe23b0e0d1d3a4f01788049a822beb1311feee72b20a595a37be1e28
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/c-0.24.2/metrics.scm
+        path: grammars/queries/c-0.24.2/metrics.scm
+        sha256: e467329293af19582555259cb8994cdffe7cb4e729c34e27791fc044c771b9bd
   - id: c_sharp
     version: 0.23.5
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/c_sharp-0.23.5.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/c_sharp-0.23.5.wasm
     path: grammars/wasm/c_sharp-0.23.5.wasm
     sha256: fe5b9d95e437d29635af05ed410a7e62054d5e0d3e7513a3c59c49baf661f5fb
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/c_sharp-0.23.5/tags.scm
+        path: grammars/queries/c_sharp-0.23.5/tags.scm
+        sha256: 4ed08da0162ecd48206ac34bebe7ea9757a8c7b617f6ad8f70c168d685d514fe
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/c_sharp-0.23.5/metrics.scm
+        path: grammars/queries/c_sharp-0.23.5/metrics.scm
+        sha256: 004e450b3467cc780726d9cea36d142a25a269646a441aaf3ace506c3f24cd75
+  - id: cmake
+    version: 0.7.5
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/cmake-0.7.5.wasm
+    path: grammars/wasm/cmake-0.7.5.wasm
+    sha256: e824bbb389f61144a49e05981d2414e7f2e5fe6492ad7afaa937d60495a4117a
+    queries:
+      - name: injections
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/cmake-0.7.5/injections.scm
+        path: grammars/queries/cmake-0.7.5/injections.scm
+        sha256: e1610c4b058fc5b3b646c4dffcc7327ceaa1a049cdd2058471eb845bd2f08d4d
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/cmake-0.7.5/metrics.scm
+        path: grammars/queries/cmake-0.7.5/metrics.scm
+        sha256: c15e7b470aa4b449b7db5daab96e94ed59f619432a7ea15b6afa0b65c8d11f61
   - id: cpp
     version: 0.23.4
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/cpp-0.23.4.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/cpp-0.23.4.wasm
     path: grammars/wasm/cpp-0.23.4.wasm
     sha256: b2e8ba688ebfaa7e5f7966360605bba69fff908f361547aaeae4b77b0bd604f8
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/cpp-0.23.4/tags.scm
+        path: grammars/queries/cpp-0.23.4/tags.scm
+        sha256: 029731ca946e32f919491d9f76c85a50e5deb5ad1934e37fd6849312c0d4a705
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/cpp-0.23.4/metrics.scm
+        path: grammars/queries/cpp-0.23.4/metrics.scm
+        sha256: 1cc1e5c95a0d890c96ec316f2ffd49467f4e21bd28c390194cb79ac165275cef
+  - id: css
+    version: 0.25.0
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/css-0.25.0.wasm
+    path: grammars/wasm/css-0.25.0.wasm
+    sha256: 4bd7da6477e9e772b4ed8c2212d66a0dd0929fbd20c0be98c2a09155c43af95c
+    queries:
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/css-0.25.0/metrics.scm
+        path: grammars/queries/css-0.25.0/metrics.scm
+        sha256: 1999c75aedf0fc9078a6e2b3b75b0d4f9bb949e1097d8af4960c496fa3a66d2a
+  - id: cuda
+    version: 0.21.2
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/cuda-0.21.2.wasm
+    path: grammars/wasm/cuda-0.21.2.wasm
+    sha256: 87616b0924eafcd7f84711b94949fbfd6377a15926679d5445e83ca3975b8b7e
+    queries:
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/cuda-0.21.2/metrics.scm
+        path: grammars/queries/cuda-0.21.2/metrics.scm
+        sha256: 1cc1e5c95a0d890c96ec316f2ffd49467f4e21bd28c390194cb79ac165275cef
+  - id: cue
+    version: 0.0.1
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/cue-0.0.1.wasm
+    path: grammars/wasm/cue-0.0.1.wasm
+    sha256: 85d0195e0776e86980c19b67a1f3c80c5bbb4c9b1c1b590a0ea8302ac97bf0ab
+    queries:
+      - name: locals
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/cue-0.0.1/locals.scm
+        path: grammars/queries/cue-0.0.1/locals.scm
+        sha256: 263c1d91bd644f07b1138cbc070a3bec7e6c7d248ccc0820bc6010665ada6781
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/cue-0.0.1/metrics.scm
+        path: grammars/queries/cue-0.0.1/metrics.scm
+        sha256: 617a263ee6e4f89b8bcd64dcb2a867d53dc647edaf00c4116f8f807d2af654bb
+  - id: d
+    version: 0.8.2
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/d-0.8.2.wasm
+    path: grammars/wasm/d-0.8.2.wasm
+    sha256: 0257916feeec93e85b18b126a1a9fd6dad65c045ac3871ceb737ebde8f8ed4f1
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/d-0.8.2/tags.scm
+        path: grammars/queries/d-0.8.2/tags.scm
+        sha256: 8296a2b79c22c541b9173434cc12be5160dd01e77c4dca956fae088f26c7c786
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/d-0.8.2/metrics.scm
+        path: grammars/queries/d-0.8.2/metrics.scm
+        sha256: 92f48ceea6392c3e36e060c51740ad241efff56d8f157d08c3b77f50a09be0cc
   - id: elixir
     version: 0.3.5
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/elixir-0.3.5.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/elixir-0.3.5.wasm
     path: grammars/wasm/elixir-0.3.5.wasm
     sha256: f2997af568932fc8f0f4567d6750e0e449fd8aca18777bf3780cf4ea9f57ab4f
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/elixir-0.3.5/tags.scm
+        path: grammars/queries/elixir-0.3.5/tags.scm
+        sha256: 5456eeebf3bfcd8d13cec8bb7638a258523ba2a0e6b8d799e51d27c11e679b49
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/elixir-0.3.5/metrics.scm
+        path: grammars/queries/elixir-0.3.5/metrics.scm
+        sha256: 5429cfd8168aaa0308e83cd7719d991170b607ba5cdba4e19696d09cf28d7152
   - id: go
     version: 0.25.0
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/go-0.25.0.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/go-0.25.0.wasm
     path: grammars/wasm/go-0.25.0.wasm
     sha256: 99c9c0436de2701584e018fac1d5911845dbf76f7f68ad0c0ebff31e4d0cb80a
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/go-0.25.0/tags.scm
+        path: grammars/queries/go-0.25.0/tags.scm
+        sha256: d1a9b1f678fe0278b85054e2dc56a28ef26aa478b8c88fb2b0dd83cdcdb9db35
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/go-0.25.0/metrics.scm
+        path: grammars/queries/go-0.25.0/metrics.scm
+        sha256: e92e4b9dafd8f53c456aef9488f0e04204c889c868a3f9dadcc178a564a1d9cc
   - id: hcl
     version: 1.1.0
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/hcl-1.1.0.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/hcl-1.1.0.wasm
     path: grammars/wasm/hcl-1.1.0.wasm
     sha256: f1ff1a7d8972d869cfef95b4aa17a5266e1f0c3bf12114a662dba4698351e714
+    queries:
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/hcl-1.1.0/metrics.scm
+        path: grammars/queries/hcl-1.1.0/metrics.scm
+        sha256: 10ae1461a69304a495fcc0c87b6a625fff7837b161e6d1abefbfeacf36dfd6d3
+  - id: html
+    version: 0.23.2
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/html-0.23.2.wasm
+    path: grammars/wasm/html-0.23.2.wasm
+    sha256: 50c0e9a1db26188e5c12a828aada366f973b3c6c5484a8a4a70a4c64b2d6d245
+    queries:
+      - name: injections
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/html-0.23.2/injections.scm
+        path: grammars/queries/html-0.23.2/injections.scm
+        sha256: 80f024e53bf25d07e78b7a9303527966117047c0e8966175a1c13291f4fa7828
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/html-0.23.2/metrics.scm
+        path: grammars/queries/html-0.23.2/metrics.scm
+        sha256: 228ed072acdcaa4f84323e55f75e2f5bfa94b6f65e964b49aa8785547fc4a21e
   - id: java
     version: 0.23.5
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/java-0.23.5.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/java-0.23.5.wasm
     path: grammars/wasm/java-0.23.5.wasm
     sha256: 8dc3e487a6cc3ae8d581674f5cc4768ee1c0961f24db9c148d10138d4940281e
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/java-0.23.5/tags.scm
+        path: grammars/queries/java-0.23.5/tags.scm
+        sha256: bcb22147b8582d92743fc973864cefb894a4c12b3957f16f3d472b2ec7cd4c49
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/java-0.23.5/metrics.scm
+        path: grammars/queries/java-0.23.5/metrics.scm
+        sha256: 03d7728f621c7a8e7f62f2240f4d5c3e414c578a72595f9934b365b7c1b38559
   - id: javascript
     version: 0.25.0
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/javascript-0.25.0.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/javascript-0.25.0.wasm
     path: grammars/wasm/javascript-0.25.0.wasm
     sha256: 20197722345f2d783df947216be446d4d37a791d999e461e6aafe93112056a3f
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/javascript-0.25.0/tags.scm
+        path: grammars/queries/javascript-0.25.0/tags.scm
+        sha256: 6ef988cce5a428a15b5460e3ee96f1478705f965fc6e848a91a18bfa6c6f0212
+      - name: locals
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/javascript-0.25.0/locals.scm
+        path: grammars/queries/javascript-0.25.0/locals.scm
+        sha256: c1dd2cfa1400d397fa974208fc9edfe817be4a3c8b42bb99af5c8d193b1bb753
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/javascript-0.25.0/metrics.scm
+        path: grammars/queries/javascript-0.25.0/metrics.scm
+        sha256: 71189d9ccc25109b5ff9876ce49d9c5b2e54b031d597cb4760fdc79675db8b82
   - id: kotlin
     version: 1.1.0
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/kotlin-1.1.0.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/kotlin-1.1.0.wasm
     path: grammars/wasm/kotlin-1.1.0.wasm
     sha256: b0234dac88fd1d7253764a1d8f66787e40c0b0068b0c6412edde98d1af9d33fc
+    queries:
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/kotlin-1.1.0/metrics.scm
+        path: grammars/queries/kotlin-1.1.0/metrics.scm
+        sha256: ab661207d45faf353fbfb66536b173839fffd81d447258d57576853cb3d1bae1
   - id: objc
     version: 3.0.2
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/objc-3.0.2.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/objc-3.0.2.wasm
     path: grammars/wasm/objc-3.0.2.wasm
     sha256: 058f55cf739eebd9723ae4636ade1285a88a5c2daf5b8d00ab0c03b6fd6eda9a
+    queries:
+      - name: locals
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/objc-3.0.2/locals.scm
+        path: grammars/queries/objc-3.0.2/locals.scm
+        sha256: e721d3ecb16a6bb63c84329693d5756b63e1aa3d3732f03631921bfa0d13d536
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/objc-3.0.2/metrics.scm
+        path: grammars/queries/objc-3.0.2/metrics.scm
+        sha256: 181073287f0ce3d932e315ed375649e951c9b814464c017952b05403be30f477
   - id: php
     version: 0.24.2
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/php-0.24.2.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/php-0.24.2.wasm
     path: grammars/wasm/php-0.24.2.wasm
     sha256: 7b0e9c85cdee0778522a31f07ad293c7051b05980b5708041727aa15c3b0f3b8
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/php-0.24.2/tags.scm
+        path: grammars/queries/php-0.24.2/tags.scm
+        sha256: 4ac5e30f99f3abe5417dcb42219e0790c66f9b4bb3be071bc60160dd012f3cd8
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/php-0.24.2/metrics.scm
+        path: grammars/queries/php-0.24.2/metrics.scm
+        sha256: 4394ace936847236fcff2bbfb40d2728b9d300ae607b9e6dc1d19a681a2fd21f
   - id: python
     version: 0.25.0
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/python-0.25.0.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/python-0.25.0.wasm
     path: grammars/wasm/python-0.25.0.wasm
     sha256: 806e87de52c3f10bd871ef3c106b0df47f4ac6d92f51c0bcfd12a20b68cafda5
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/python-0.25.0/tags.scm
+        path: grammars/queries/python-0.25.0/tags.scm
+        sha256: d0f3e577878167bfabc30e526e497bce58d1699b9bcabf8ab3a50698efb5ca3e
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/python-0.25.0/metrics.scm
+        path: grammars/queries/python-0.25.0/metrics.scm
+        sha256: eeeb8284d1a71e62366a8260a5b83602ee4f9680b9cad0700f04b36c8632d54b
   - id: ruby
     version: 0.23.1
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/ruby-0.23.1.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/ruby-0.23.1.wasm
     path: grammars/wasm/ruby-0.23.1.wasm
     sha256: f0389f8c097c077d6c4a495fee5157d9ad9519f02bedcdbcfe2a7d9f97827329
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/ruby-0.23.1/tags.scm
+        path: grammars/queries/ruby-0.23.1/tags.scm
+        sha256: ed1e7dc07a95b87aef267e7f9715c6717a70f09efbd7b6f48bbd51c7b7510cf3
+      - name: locals
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/ruby-0.23.1/locals.scm
+        path: grammars/queries/ruby-0.23.1/locals.scm
+        sha256: f00178e94b9c2ea672fd4ee2e60ac5d7d90be59c72e86292e22620358ac9dbb0
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/ruby-0.23.1/metrics.scm
+        path: grammars/queries/ruby-0.23.1/metrics.scm
+        sha256: c8f06cd8491d8204c9dabcb92709f19c270e489c1c9cac71f33c936ae32617a9
   - id: rust
     version: 0.24.2
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/rust-0.24.2.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/rust-0.24.2.wasm
     path: grammars/wasm/rust-0.24.2.wasm
     sha256: 167505465f0d7fcbe33a30435626dbdca07963673a8616f39ed7ea0d88014933
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/rust-0.24.2/tags.scm
+        path: grammars/queries/rust-0.24.2/tags.scm
+        sha256: f22867fdebde5cb091861c08d34690dc2540f4318068bf81be9f6b0d348ab8c1
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/rust-0.24.2/metrics.scm
+        path: grammars/queries/rust-0.24.2/metrics.scm
+        sha256: f826ada61da61c029edb934750effdbb0de462cb3f043090ddb550052786d0cc
   - id: scala
     version: 0.26.2
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/scala-0.26.2.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/scala-0.26.2.wasm
     path: grammars/wasm/scala-0.26.2.wasm
     sha256: 8ed389cce5391f00c1414e1db09b73972fb4219594ad17f5768fd223c73b2314
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/scala-0.26.2/tags.scm
+        path: grammars/queries/scala-0.26.2/tags.scm
+        sha256: f56794ad2bc9ae5c7ffd332a40fa67a3af65880e18ba4124a0053f0bfff54757
+      - name: locals
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/scala-0.26.2/locals.scm
+        path: grammars/queries/scala-0.26.2/locals.scm
+        sha256: 809c455e32a921b4f9f7c8e02ddfd14bd7fad700aa0b5ecf7e74cb0d8c8f78a4
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/scala-0.26.2/metrics.scm
+        path: grammars/queries/scala-0.26.2/metrics.scm
+        sha256: 0fbba4cb87e6896a459fe2801fb93b9a371d549e12b338d2df6f09ab899a6981
   - id: swift
     version: 0.7.3
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/swift-0.7.3.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/swift-0.7.3.wasm
     path: grammars/wasm/swift-0.7.3.wasm
     sha256: 12002fd3f889954fc07e574d90f859a8ddc1c6e5a89dc584475d2ddcff8fc952
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/swift-0.7.3/tags.scm
+        path: grammars/queries/swift-0.7.3/tags.scm
+        sha256: 6d3884e3f785d621128356a23ac81dfc438d9a853b8ee24b8070dc2caaf631ca
+      - name: locals
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/swift-0.7.3/locals.scm
+        path: grammars/queries/swift-0.7.3/locals.scm
+        sha256: 430a7d71c30212e1e0e21eb1b3ed71959fb71bf74a6fea27a0efbf491ebda1c7
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/swift-0.7.3/metrics.scm
+        path: grammars/queries/swift-0.7.3/metrics.scm
+        sha256: 2d42570bb7aa40fa075224789bafdc3a6845292b7d0482e1a03039f9d7b616eb
   - id: tsx
     version: 0.23.2
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/tsx-0.23.2.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/tsx-0.23.2.wasm
     path: grammars/wasm/tsx-0.23.2.wasm
     sha256: f50f36e3bfcb5b0e42fc2d4268f04db834b3cb046fe9ac9abe4e0887ee5d29cc
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/tsx-0.23.2/tags.scm
+        path: grammars/queries/tsx-0.23.2/tags.scm
+        sha256: 728fc4a6738d5abc809ab9331b11311a8cebf73f299c42b37f8c88c9eb327c05
+      - name: locals
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/tsx-0.23.2/locals.scm
+        path: grammars/queries/tsx-0.23.2/locals.scm
+        sha256: 8cffe2473278d0ebbc67b121f0518d920522b4775c9efb353a7dcc37955fcdf7
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/tsx-0.23.2/metrics.scm
+        path: grammars/queries/tsx-0.23.2/metrics.scm
+        sha256: 2ba3cca558e9a388844c3f3314f0192a19fc23f0322cb3e7ebdc8823893dcf2b
   - id: typescript
     version: 0.23.2
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/typescript-0.23.2.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/typescript-0.23.2.wasm
     path: grammars/wasm/typescript-0.23.2.wasm
     sha256: 06083349954c223c1a92bcf4e2f8bbf6ff79eb8283a60da59157671884a38703
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/typescript-0.23.2/tags.scm
+        path: grammars/queries/typescript-0.23.2/tags.scm
+        sha256: 728fc4a6738d5abc809ab9331b11311a8cebf73f299c42b37f8c88c9eb327c05
+      - name: locals
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/typescript-0.23.2/locals.scm
+        path: grammars/queries/typescript-0.23.2/locals.scm
+        sha256: 8cffe2473278d0ebbc67b121f0518d920522b4775c9efb353a7dcc37955fcdf7
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/typescript-0.23.2/metrics.scm
+        path: grammars/queries/typescript-0.23.2/metrics.scm
+        sha256: 2ba3cca558e9a388844c3f3314f0192a19fc23f0322cb3e7ebdc8823893dcf2b
   - id: zig
     version: 1.1.2
-    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/grammars/wasm/zig-1.1.2.wasm
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/zig-1.1.2.wasm
     path: grammars/wasm/zig-1.1.2.wasm
     sha256: 98f21709a2c489a8b78d07814bd2baa4c7d4b0116ce03b8c3496d8e50393e12d
+    queries:
+      - name: injections
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/zig-1.1.2/injections.scm
+        path: grammars/queries/zig-1.1.2/injections.scm
+        sha256: 6c68bd360ae39e7e04e64ca647d925a0eae1dc9ce98de6088b8af34956f5c6a0
+      - name: metrics
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/zig-1.1.2/metrics.scm
+        path: grammars/queries/zig-1.1.2/metrics.scm
+        sha256: 2ea904e04ec7b41b97ea828d17eb95606da0335fdb52dde53c0a4bd11af9d6a5

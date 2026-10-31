@@ -1,0 +1,25 @@
+(function_definition) @function
+(method_declaration) @function
+(anonymous_function) @function
+(arrow_function) @function
+(simple_parameter) @parameter
+(variadic_parameter) @parameter
+(property_promotion_parameter) @parameter
+(if_statement) @branch
+(else_if_clause) @branch
+(case_statement) @branch
+(catch_clause) @branch
+(conditional_expression) @branch
+(match_conditional_expression) @branch
+(for_statement) @loop
+(foreach_statement) @loop
+(while_statement) @loop
+(do_statement) @loop
+(binary_expression operator: ["&&" "||" "and" "or" "??"]) @boolean
+(if_statement) @nesting
+(switch_statement) @nesting
+(catch_clause) @nesting
+(for_statement) @nesting
+(foreach_statement) @nesting
+(while_statement) @nesting
+(do_statement) @nesting

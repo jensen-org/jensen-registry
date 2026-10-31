@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import test from "node:test";
-import { crateNames, parseParsers, wantedParsers, withDiscovered } from "./discover.mjs";
+import { BATCH_DEFAULT, batchLimit, crateNames, parseParsers, wantedParsers, withDiscovered } from "./discover.mjs";
 
 const LUA = `---@type nvim-ts.parsers
 return {
@@ -50,4 +50,11 @@ test("discovered grammars join the existing ones in id order and never replace o
   const merged = withDiscovered(sources, [{ id: "ada", crate: "tree-sitter-ada", version: "1.0.0" }]);
   assert.deepEqual(merged.grammars.map((grammar) => grammar.id), ["ada", "go", "rust"]);
   assert.equal(merged.grammars.find((grammar) => grammar.id === "go").version, "0.25.0");
+});
+
+test("a run takes a bounded batch of new grammars so the job can finish building them", () => {
+  assert.equal(batchLimit(undefined), BATCH_DEFAULT);
+  assert.equal(batchLimit("3"), 3);
+  assert.equal(batchLimit("0"), BATCH_DEFAULT);
+  assert.equal(batchLimit("many"), BATCH_DEFAULT);
 });

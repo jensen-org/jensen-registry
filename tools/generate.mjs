@@ -15,7 +15,7 @@ import { buildPackages } from "./sources/mason.mjs";
 
 export const SCHEMA_VERSION = 2;
 export const KINDS = { server: "servers", formatter: "formatters", linter: "linters", debugger: "debuggers" };
-export const OUTPUTS = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes", "unresolved"].map((name) => `tools/${name}.yaml`);
+export const OUTPUTS = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes"].map((name) => `tools/${name}.yaml`);
 
 export function deepMerge(base, override) {
   if (Array.isArray(override) || !override || typeof override !== "object") return override;
@@ -164,7 +164,6 @@ export async function generate(upstreams, { retryMissing = false } = {}) {
     ["tools/linters.yaml", dump({ ...header(sources.lint), linters: merged.linter })],
     ["tools/debuggers.yaml", dump({ ...header(sources.dap), debuggers: merged.debugger })],
     ["tools/filetypes.yaml", dump({ ...header(sources.neovim), filetypes: filetypeEntries(table, [...named], related) })],
-    ["tools/unresolved.yaml", dump({ schema_version: SCHEMA_VERSION, unresolved })],
   ]);
   const summary = {
     packages: built.summary,

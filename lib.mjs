@@ -9,6 +9,7 @@ export const ROOT = dirname(fileURLToPath(import.meta.url));
 export const SCHEMA_VERSION = 1;
 export const TOOLS_SCHEMA_VERSION = 2;
 export const RAW_BASE = "https://raw.githubusercontent.com/jensen-org/jensen-registry";
+export const REF = process.env.REGISTRY_REF || "main";
 export const SCHEMA_BASE = "https://github.com/jensen-org/jensen-registry";
 
 export const sha256 = (bytes) => createHash("sha256").update(bytes).digest("hex");
@@ -60,15 +61,40 @@ export function validator() {
   };
 }
 
+export function retryAfterSeconds(headers, now = Date.now()) {
+  const wait = Number(headers.get("retry-after"));
+  if (Number.isFinite(wait) && wait > 0) return wait;
+  const reset = Number(headers.get("x-ratelimit-reset"));
+  if (headers.get("x-ratelimit-remaining") === "0" && Number.isFinite(reset)) return Math.max(1, Math.ceil(reset - now / 1000));
+  return null;
+}
+
+const BODY_LIMIT = 240;
+
+export async function answeredError(url, response) {
+  const retryAfter = retryAfterSeconds(response.headers);
+  const detail = (await response.text().catch(() => "")).replace(/\s+/g, " ").trim().slice(0, BODY_LIMIT);
+  const remaining = response.headers.get("x-ratelimit-remaining");
+  const hints = [
+    retryAfter ? `retry in ${retryAfter}s` : null,
+    remaining !== null ? `${remaining} requests left` : null,
+    detail ? `said: ${detail}` : null,
+  ].filter(Boolean);
+  const error = new Error(`${url} answered ${response.status}${hints.length ? ` (${hints.join(", ")})` : ""}`);
+  error.status = response.status;
+  error.retryAfter = retryAfter;
+  return error;
+}
+
 export async function getJson(url, headers = {}) {
   const response = await fetch(url, { headers: { "user-agent": "jensen-registry", ...headers } });
-  if (!response.ok) throw new Error(`${url} answered ${response.status}`);
+  if (!response.ok) throw await answeredError(url, response);
   return response.json();
 }
 
 export async function getBytes(url) {
   const response = await fetch(url, { headers: { "user-agent": "jensen-registry" } });
-  if (!response.ok) throw new Error(`${url} answered ${response.status}`);
+  if (!response.ok) throw await answeredError(url, response);
   return Buffer.from(await response.arrayBuffer());
 }
 
@@ -76,22 +102,31 @@ const githubHeaders = process.env.GITHUB_TOKEN
   ? { authorization: `Bearer ${process.env.GITHUB_TOKEN}`, accept: "application/vnd.github+json" }
   : { accept: "application/vnd.github+json" };
 
-export const github = (path) => getJson(`https://api.github.com${path}`, githubHeaders);
+const anonymousHeaders = { accept: "application/vnd.github+json" };
+const anonymousOwners = new Set();
 
-const TOOL_FILES = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes", "unresolved"].map((name) => `tools/${name}.yaml`);
+export const refusedByAllowList = (error) => error?.status === 403 && /IP allow list/i.test(String(error.message));
+
+export async function github(path) {
+  const url = `https://api.github.com${path}`;
+  const owner = path.split("/")[2] ?? "";
+  if (!githubHeaders.authorization || anonymousOwners.has(owner)) return getJson(url, anonymousHeaders);
+  try {
+    return await getJson(url, githubHeaders);
+  } catch (error) {
+    if (!refusedByAllowList(error)) throw error;
+    anonymousOwners.add(owner);
+    return getJson(url, anonymousHeaders);
+  }
+}
+
+const TOOL_FILES = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes", "testrunners", "entrypoints"].map((name) => `tools/${name}.yaml`);
 
 export const checksummed = () => [
   "index.yaml",
   "grammars/grammars.yaml",
-  "tools/upstreams.yaml",
   ...TOOL_FILES,
-  ...TOOL_FILES.map((file) => file.replace("tools/", "tools/schema/").replace(".yaml", ".json")),
-  "clients/schema.json",
   ...entryFiles("clients"),
-  ...entryFiles("tools/overrides/server"),
-  ...entryFiles("tools/overrides/formatter"),
-  ...entryFiles("tools/overrides/linter"),
-  ...entryFiles("tools/overrides/debugger"),
 ];
 
 export function checksumsText(files = checksummed()) {

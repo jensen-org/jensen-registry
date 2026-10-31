@@ -1,0 +1,22 @@
+(method_declaration) @function
+(constructor_declaration) @function
+(local_function_statement) @function
+(lambda_expression) @function
+(anonymous_method_expression) @function
+(parameter) @parameter
+(if_statement) @branch
+(switch_section) @branch
+(catch_clause) @branch
+(conditional_expression) @branch
+(for_statement) @loop
+(foreach_statement) @loop
+(while_statement) @loop
+(do_statement) @loop
+(binary_expression operator: ["&&" "||" "??"]) @boolean
+(if_statement) @nesting
+(switch_statement) @nesting
+(catch_clause) @nesting
+(for_statement) @nesting
+(foreach_statement) @nesting
+(while_statement) @nesting
+(do_statement) @nesting

@@ -4,66 +4,143 @@ upstream:
   repo: nvim-treesitter/nvim-treesitter
   sha: 29212d826054bb2948fa9d3a99eca9bf6a050eb2
 grammars:
+  - id: ada
+    crate: tree-sitter-ada
+    version: 0.9.2
+    own_queries: [metrics]
+  - id: agda
+    crate: tree-sitter-agda
+    version: 1.3.3
+    own_queries: [metrics]
+  - id: arduino
+    crate: tree-sitter-arduino
+    version: 0.24.0
+    own_queries: [metrics]
+  - id: asm
+    crate: tree-sitter-asm
+    version: 0.24.0
+    own_queries: [metrics]
   - id: bash
     crate: tree-sitter-bash
     version: 0.25.1
+    own_queries: [metrics]
+  - id: beancount
+    crate: tree-sitter-beancount
+    version: 2.5.1
+    own_queries: [metrics]
+  - id: bicep
+    crate: tree-sitter-bicep
+    version: 1.1.0
+    own_queries: [metrics]
+  - id: bpftrace
+    crate: tree-sitter-bpftrace
+    version: 0.5.0
+    own_queries: [metrics]
   - id: c
     crate: tree-sitter-c
     version: 0.24.2
+    own_queries: [metrics]
   - id: c_sharp
     crate: tree-sitter-c-sharp
     version: 0.23.5
+    own_queries: [metrics]
+  - id: cmake
+    crate: tree-sitter-cmake
+    version: 0.7.5
+    own_queries: [metrics]
   - id: cpp
     crate: tree-sitter-cpp
     version: 0.23.4
+    own_queries: [metrics]
+  - id: css
+    crate: tree-sitter-css
+    version: 0.25.0
+    own_queries: [metrics]
+  - id: cuda
+    crate: tree-sitter-cuda
+    version: 0.21.2
+    own_queries: [metrics]
+  - id: cue
+    crate: tree-sitter-cue
+    version: 0.0.1
+    own_queries: [metrics]
+  - id: d
+    crate: tree-sitter-d
+    version: 0.8.2
+    own_queries: [metrics]
   - id: elixir
     crate: tree-sitter-elixir
     version: 0.3.5
+    own_queries: [metrics]
   - id: go
     crate: tree-sitter-go
     version: 0.25.0
+    own_queries: [metrics]
   - id: hcl
     crate: tree-sitter-hcl
     version: 1.1.0
+    own_queries: [metrics]
+  - id: html
+    crate: tree-sitter-html
+    version: 0.23.2
+    own_queries: [injections, metrics]
   - id: java
     crate: tree-sitter-java
     version: 0.23.5
+    own_queries: [metrics]
   - id: javascript
     crate: tree-sitter-javascript
     version: 0.25.0
+    own_queries: [metrics]
   - id: kotlin
     crate: tree-sitter-kotlin-ng
     version: 1.1.0
+    own_queries: [metrics]
   - id: objc
     crate: tree-sitter-objc
     version: 3.0.2
+    own_queries: [metrics]
   - id: php
     crate: tree-sitter-php
     version: 0.24.2
     path: php
+    own_queries: [metrics]
   - id: python
     crate: tree-sitter-python
     version: 0.25.0
+    own_queries: [metrics]
   - id: ruby
     crate: tree-sitter-ruby
     version: 0.23.1
+    own_queries: [metrics]
   - id: rust
     crate: tree-sitter-rust
     version: 0.24.2
+    own_queries: [metrics]
   - id: scala
     crate: tree-sitter-scala
     version: 0.26.2
+    own_queries: [metrics]
   - id: swift
     crate: tree-sitter-swift
     version: 0.7.3
+    own_queries: [metrics]
   - id: tsx
     crate: tree-sitter-typescript
     version: 0.23.2
     path: tsx
+    own_queries: [metrics]
+    inherit_queries:
+      - javascript
   - id: typescript
     crate: tree-sitter-typescript
     version: 0.23.2
     path: typescript
+    own_queries: [metrics]
+    inherit_queries:
+      - javascript
   - id: zig
     crate: tree-sitter-zig
     version: 1.1.2
+
+    own_queries: [metrics]

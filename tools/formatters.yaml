@@ -2028,6 +2028,7 @@ formatters:
     stdin: false
     runnable: false
   - id: stylish-haskell
+    package: stylish-haskell
     filetypes:
       - haskell
     command: stylish-haskell
