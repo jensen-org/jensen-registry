@@ -1,0 +1,20 @@
+(function_definition) @function
+(method_definition) @function
+(block_literal) @function
+(parameter_declaration) @parameter
+(method_parameter) @parameter
+(if_statement) @branch
+(case_statement) @branch
+(conditional_expression) @branch
+(catch_clause) @branch
+(for_statement) @loop
+(while_statement) @loop
+(do_statement) @loop
+(binary_expression operator: ["&&" "||"]) @boolean
+(if_statement) @nesting
+(for_statement) @nesting
+(while_statement) @nesting
+(do_statement) @nesting
+(switch_statement) @nesting
+(try_statement) @nesting
+(synchronized_statement) @nesting

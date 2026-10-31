@@ -1,0 +1,107 @@
+schema_version: 2
+upstream:
+  source: hand maintained in jensen-registry
+entrypoints:
+  - id: cargo
+    manifest: Cargo.toml
+    format: toml
+    declarations:
+      - kind: binary
+        selector: bin.*.path
+      - kind: main
+        selector: lib.path
+      - kind: test_target
+        selector: test.*.path
+    implicit:
+      - src/main.rs
+      - src/lib.rs
+      - src/bin/*.rs
+      - tests/*.rs
+      - benches/*.rs
+      - examples/*.rs
+  - id: npm
+    manifest: package.json
+    format: json
+    declarations:
+      - kind: main
+        selector: main
+      - kind: main
+        selector: module
+      - kind: binary
+        selector: bin
+      - kind: binary
+        selector: bin.*
+      - kind: export
+        selector: exports
+      - kind: export
+        selector: exports.*
+      - kind: script
+        selector: scripts.*
+    implicit:
+      - index.js
+      - index.ts
+  - id: pyproject
+    manifest: pyproject.toml
+    format: toml
+    declarations:
+      - kind: script
+        selector: project.scripts.*
+      - kind: script
+        selector: tool.poetry.scripts.*
+      - kind: export
+        selector: project.entry-points.*.*
+    implicit:
+      - __main__.py
+      - main.py
+      - app.py
+      - tests/test_*.py
+  - id: go
+    manifest: go.mod
+    format: toml
+    declarations: []
+    implicit:
+      - main.go
+      - cmd/*/main.go
+      - '**/*_test.go'
+  - id: maven
+    manifest: pom.xml
+    format: xml
+    declarations: []
+    implicit:
+      - src/main/java/**/Main.java
+      - src/main/java/**/Application.java
+      - src/test/java/**/*Test.java
+  - id: gradle
+    manifest: build.gradle
+    format: gradle
+    declarations: []
+    implicit:
+      - src/main/java/**/Main.java
+      - src/main/kotlin/**/Main.kt
+      - src/test/java/**/*Test.java
+  - id: composer
+    manifest: composer.json
+    format: json
+    declarations:
+      - kind: binary
+        selector: bin.*
+      - kind: script
+        selector: scripts.*
+    implicit:
+      - index.php
+      - tests/**/*Test.php
+  - id: gemspec
+    manifest: '*.gemspec'
+    format: ruby
+    declarations: []
+    implicit:
+      - exe/*
+      - bin/*
+      - spec/**/*_spec.rb
+  - id: csproj
+    manifest: '*.csproj'
+    format: xml
+    declarations: []
+    implicit:
+      - Program.cs
+      - '**/*Tests.cs'

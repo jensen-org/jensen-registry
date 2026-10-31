@@ -120,7 +120,7 @@ export async function github(path) {
   }
 }
 
-const TOOL_FILES = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes"].map((name) => `tools/${name}.yaml`);
+const TOOL_FILES = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes", "testrunners", "entrypoints"].map((name) => `tools/${name}.yaml`);
 
 export const checksummed = () => [
   "index.yaml",
