@@ -7,7 +7,7 @@ import { RAW_BASE, REF, ROOT, SCHEMA_VERSION, dump, getBytes, getJson, readYaml,
 export const GRAMMARS_FILE = "grammars/grammars.yaml";
 export const WASM_DIR = "grammars/wasm";
 export const QUERIES_DIR = "grammars/queries";
-export const QUERY_NAMES = ["tags", "locals", "injections"];
+export const QUERY_NAMES = ["tags", "locals", "injections", "metrics"];
 export const OWN_QUERIES_DIR = "grammars/own";
 const MAX_QUERY_BYTES = 256 * 1024;
 
@@ -138,7 +138,9 @@ export async function trackGrammars() {
   const ordered = expectedEntries().sort((a, b) => (a.grammar.inherit_queries ? 1 : 0) - (b.grammar.inherit_queries ? 1 : 0));
   for (const { grammar, file } of ordered) {
     if (!existsSync(file)) await build(grammar, sources.tree_sitter_cli);
-    if (queryEntries(grammar).length === 0) await extractQueries(grammar);
+    const fromCrate = QUERY_NAMES.filter((name) => !(grammar.own_queries ?? []).includes(name));
+    if (fromCrate.some((name) => existsSync(join(ROOT, queryPath(grammar, name))))) copyOwnQueries(grammar);
+    else await extractQueries(grammar);
   }
   const entries = expectedEntries().map(({ entry }) => entry);
   writeText(GRAMMARS_FILE, dump({ schema_version: SCHEMA_VERSION, grammars: entries }));

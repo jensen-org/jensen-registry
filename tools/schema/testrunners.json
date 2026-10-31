@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jensen-org/jensen-registry/tools/schema/testrunners.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "testrunners"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 2
+    },
+    "upstream": {
+      "type": "object"
+    },
+    "testrunners": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "cmd",
+          "pattern"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "package": {
+            "type": "string"
+          },
+          "filetypes": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "root_markers": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "cmd": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "string"
+            }
+          },
+          "pattern": {
+            "type": "string"
+          },
+          "coverage": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "format"
+            ],
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "format": {
+                "enum": [
+                  "lcov",
+                  "go_cover",
+                  "istanbul_json",
+                  "cobertura",
+                  "jacoco",
+                  "clover"
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

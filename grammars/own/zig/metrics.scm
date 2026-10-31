@@ -1,0 +1,19 @@
+(function_declaration) @function
+(test_declaration) @function
+(parameter) @parameter
+(if_statement) @branch
+(if_expression) @branch
+(switch_case) @branch
+(catch_expression) @branch
+(try_expression) @branch
+(for_statement) @loop
+(for_expression) @loop
+(while_statement) @loop
+(while_expression) @loop
+(binary_expression operator: ["and" "or"]) @boolean
+(if_statement) @nesting
+(for_statement) @nesting
+(while_statement) @nesting
+(switch_expression) @nesting
+(defer_statement) @nesting
+(errdefer_statement) @nesting

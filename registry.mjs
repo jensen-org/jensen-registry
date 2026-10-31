@@ -41,7 +41,7 @@ async function validate(online) {
   };
   const context = { check, index, problems, same, online };
   await validateTools(context);
-  validateGrammars(context);
+  await validateGrammars(context);
   await validateSkills(context);
   validateMcp(context);
   validateIntegrations({ ...context, mcpEntries: loadEntries("mcp") });

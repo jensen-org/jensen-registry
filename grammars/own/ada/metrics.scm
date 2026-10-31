@@ -1,0 +1,19 @@
+(subprogram_body) @function
+(expression_function_declaration) @function
+(null_procedure_declaration) @function
+(parameter_specification) @parameter
+(if_statement) @branch
+(elsif_statement_item) @branch
+(if_expression) @branch
+(elsif_expression_item) @branch
+(case_statement_alternative) @branch
+(case_expression_alternative) @branch
+(exception_handler) @branch
+(loop_statement) @loop
+(expression ["and" "or" "xor" "then" "else"]) @boolean
+(if_statement) @nesting
+(case_statement) @nesting
+(loop_statement) @nesting
+(block_statement) @nesting
+(selective_accept) @nesting
+(handled_sequence_of_statements) @nesting
