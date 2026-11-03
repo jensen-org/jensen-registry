@@ -1,5 +1,5 @@
 import { execFileSync, spawn } from "node:child_process";
-import { copyFileSync, existsSync, lstatSync, mkdirSync, mkdtempSync, readFileSync, realpathSync, rmSync, writeFileSync } from "node:fs";
+import { copyFileSync, existsSync, lstatSync, mkdirSync, mkdtempSync, readFileSync, realpathSync, rmSync, statSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, sep } from "node:path";
 import { RAW_BASE, REF, ROOT, SCHEMA_VERSION, dump, getBytes, getJson, readYaml, sha256, writeText } from "../lib.mjs";
@@ -11,6 +11,9 @@ export const QUERY_NAMES = ["tags", "locals", "injections", "metrics"];
 export const OWN_QUERIES_DIR = "grammars/own";
 const MAX_QUERY_BYTES = 256 * 1024;
 export const BUILD_TIMEOUT_MS = 5 * 60 * 1000;
+export const MAX_WASM_BYTES = 5 * 1024 * 1024;
+
+export const oversize = (bytes) => (bytes > MAX_WASM_BYTES ? `its wasm is ${(bytes / 1024 / 1024).toFixed(1)} MB, above the ${MAX_WASM_BYTES / 1024 / 1024} MB the repository accepts` : null);
 
 export const wasmFile = (grammar) => `${grammar.id}-${grammar.version}.wasm`;
 export const wasmUrl = (grammar) => `${RAW_BASE}/${REF}/${WASM_DIR}/${wasmFile(grammar)}`;
@@ -149,8 +152,10 @@ export async function attemptBuild(grammar, wanted, { timeoutMs = BUILD_TIMEOUT_
   const output = join(ROOT, WASM_DIR, wasmFile(grammar));
   try {
     mkdirSync(join(ROOT, WASM_DIR), { recursive: true });
-    const result = await runWithTimeout("tree-sitter", ["build", "--wasm", "-o", output, grammar.path ?? "."], { cwd: source, timeoutMs });
+    let result = await runWithTimeout("tree-sitter", ["build", "--wasm", "-o", output, grammar.path ?? "."], { cwd: source, timeoutMs });
     const seconds = Math.round((Date.now() - started) / 1000);
+    const tooBig = result.ok ? oversize(statSync(output).size) : null;
+    if (tooBig) result = { ok: false, reason: tooBig };
     if (result.ok) console.log(`  built ${grammar.id} in ${seconds}s`);
     else {
       rmSync(output, { force: true });

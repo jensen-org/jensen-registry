@@ -1,7 +1,7 @@
 schema_version: 2
 upstream:
   repo: neovim/nvim-lspconfig
-  sha: 460bb34e7be114f1fda7815781696bc701e60f83
+  sha: adfbb74472f6c231b651b650a89f414c2680fb31
 servers:
   - id: ada_ls
     cmd:
@@ -327,6 +327,7 @@ servers:
       - .bacon-locations
       - Cargo.toml
   - id: badness
+    package: badness
     cmd:
       - badness
       - lsp
@@ -2245,6 +2246,14 @@ servers:
       - kcl
     root_markers:
       - .git
+  - id: kconfig_lsp
+    cmd:
+      - kconfig-lsp
+    filetypes:
+      - kconfig
+    root_markers:
+      - .git
+      - Kconfig
   - id: kdl_lsp
     cmd:
       - kdl-lsp
@@ -2252,6 +2261,21 @@ servers:
       - kdl
     root_markers:
       - .git
+  - id: kmp_lsp
+    cmd:
+      - kmp-lsp
+    filetypes:
+      - kotlin
+      - java
+      - swift
+    root_markers:
+      - .git
+      - settings.gradle
+      - settings.gradle.kts
+      - pom.xml
+      - build.gradle
+      - build.gradle.kts
+      - Package.swift
   - id: koka
     cmd:
       - koka
