@@ -4,6 +4,9 @@ source: composer
 requires:
   program: composer
   probe: [composer, --version]
+hosts:
+  - repo.packagist.org
+  - packagist.org
 bin_root:
   unix: vendor/bin
   windows: vendor/bin

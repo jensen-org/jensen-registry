@@ -1,7 +1,7 @@
 schema_version: 2
 upstream:
   repo: neovim/neovim
-  sha: 9290926ccf55ba3f55e4b48f5b94cad403017688
+  sha: 1d5c87b845646cfdb67c3061280582a031878334
 filetypes:
   - id: 8th
     extensions:
@@ -197,6 +197,9 @@ filetypes:
   - id: bass
     extensions:
       - bass
+  - id: bats
+    extensions:
+      - bats
   - id: bazelrc
     extensions:
       - bazelrc
@@ -3167,7 +3170,6 @@ filetypes:
   - id: sh
     extensions:
       - bash
-      - bats
       - command
       - ksh
       - la

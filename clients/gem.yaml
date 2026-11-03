@@ -4,6 +4,8 @@ source: gem
 requires:
   program: gem
   probe: [gem, --version]
+hosts:
+  - rubygems.org
 bin_root:
   unix: bin
   windows: bin

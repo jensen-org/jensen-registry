@@ -22,3 +22,17 @@ test("the scheduled track runs on the branch its pull request targets", () => {
   assert.equal(checkout.with.ref, pullRequest.with.base);
   assert.equal(track.env.REGISTRY_REF, pullRequest.with.base);
 });
+
+test("the track job provides the wasi-sdk before it builds a grammar", () => {
+  const steps = load("track.yml").jobs.track.steps;
+  const install = steps.findIndex((step) => /wasi-sdk-29[\s\S]*bin\/clang/.test(step.run ?? ""));
+  const track = steps.findIndex((step) => step.run === "node registry.mjs track");
+  assert.ok(install >= 0, "no step installs the wasi-sdk");
+  assert.ok(install < track, "the wasi-sdk must be installed before track");
+});
+
+test("validate and track resolve urls against the same branch", () => {
+  const validate = load("validate.yml").jobs.validate.steps.find((step) => step.run === "node registry.mjs validate --online");
+  const track = load("track.yml").jobs.track.steps.find((step) => step.run === "node registry.mjs track");
+  assert.equal(validate.env.REGISTRY_REF, track.env.REGISTRY_REF);
+});

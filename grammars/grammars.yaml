@@ -200,6 +200,32 @@ grammars:
         url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/d-0.8.2/metrics.scm
         path: grammars/queries/d-0.8.2/metrics.scm
         sha256: 92f48ceea6392c3e36e060c51740ad241efff56d8f157d08c3b77f50a09be0cc
+  - id: dockerfile
+    version: 0.2.0
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/dockerfile-0.2.0.wasm
+    path: grammars/wasm/dockerfile-0.2.0.wasm
+    sha256: 0816e8c909dbe6d0746bc2f7818d93941f41df475bc524c42758bc73051f6183
+    queries: []
+  - id: dot
+    version: 0.1.6
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/dot-0.1.6.wasm
+    path: grammars/wasm/dot-0.1.6.wasm
+    sha256: 8e4e2f38d7e25d63b2b2b8aeb46d72a183b1f72ea368a5caa283f021716cff66
+    queries:
+      - name: injections
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/dot-0.1.6/injections.scm
+        path: grammars/queries/dot-0.1.6/injections.scm
+        sha256: aff62a5972446967a4ef407413bb11b2c289c174dfabae37f1c492802961c8fa
+  - id: earthfile
+    version: 0.6.0
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/earthfile-0.6.0.wasm
+    path: grammars/wasm/earthfile-0.6.0.wasm
+    sha256: 96e83dc861dbfc568bd52a23e422cfae5a01efb0143f903c12bc191401cdbcc0
+    queries:
+      - name: injections
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/earthfile-0.6.0/injections.scm
+        path: grammars/queries/earthfile-0.6.0/injections.scm
+        sha256: f8656c8913bef42cffe7097bd475ce5c8ef36ccbf8f55f08d6cc495eb8b3ba31
   - id: elixir
     version: 0.3.5
     url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/elixir-0.3.5.wasm
@@ -214,6 +240,36 @@ grammars:
         url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/elixir-0.3.5/metrics.scm
         path: grammars/queries/elixir-0.3.5/metrics.scm
         sha256: 5429cfd8168aaa0308e83cd7719d991170b607ba5cdba4e19696d09cf28d7152
+  - id: elm
+    version: 5.9.4
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/elm-5.9.4.wasm
+    path: grammars/wasm/elm-5.9.4.wasm
+    sha256: 16ad5c7525897c149c8fafbce916e574726dd5e7c7282ecea1c506883b31057b
+    queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/elm-5.9.4/tags.scm
+        path: grammars/queries/elm-5.9.4/tags.scm
+        sha256: d73d8b3a5a05b0dfd521df7ba53a807863e19b2be8f9248aa23a9e6e88815b0f
+      - name: locals
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/elm-5.9.4/locals.scm
+        path: grammars/queries/elm-5.9.4/locals.scm
+        sha256: 69b7186279618fcfbdc73ef9e50c32c6fc1ca7872128a9a9a616cd59d99aa48f
+      - name: injections
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/elm-5.9.4/injections.scm
+        path: grammars/queries/elm-5.9.4/injections.scm
+        sha256: fb2a7a9a27c47e41347b3eb596701201a7652abc35d1180a3286900e611e1f1b
+  - id: erlang
+    version: 0.21.0
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/erlang-0.21.0.wasm
+    path: grammars/wasm/erlang-0.21.0.wasm
+    sha256: a2cd5b095be094a8cccc3a66fa6f413b9d04284e8e0c34269b417fce5b03ba97
+    queries: []
+  - id: fish
+    version: 3.6.0
+    url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/fish-3.6.0.wasm
+    path: grammars/wasm/fish-3.6.0.wasm
+    sha256: 2af1e16601e0ccf612882f9f2eccce45c63856ca554e4580fda3d7266242a20b
+    queries: []
   - id: go
     version: 0.25.0
     url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/wasm/go-0.25.0.wasm

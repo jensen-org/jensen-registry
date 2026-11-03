@@ -4,6 +4,8 @@ source: npm
 requires:
   program: npm
   probe: [npm, --version]
+hosts:
+  - registry.npmjs.org
 bin_root:
   unix: node_modules/.bin
   windows: node_modules/.bin

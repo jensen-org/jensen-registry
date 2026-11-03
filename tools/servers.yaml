@@ -1,7 +1,7 @@
 schema_version: 2
 upstream:
   repo: neovim/nvim-lspconfig
-  sha: 4b2b045b8ceb035f5c8bc9cab19b95706bfa6a19
+  sha: 460bb34e7be114f1fda7815781696bc701e60f83
 servers:
   - id: ada_ls
     cmd:

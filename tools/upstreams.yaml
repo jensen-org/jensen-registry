@@ -1,12 +1,12 @@
 schema_version: 2
 mason:
   repo: mason-org/mason-registry
-  tag: 2026-10-29-blank-key
-  sha256: 81b6d0118972271d66f9d94857a077fd5ba3d3fe897ff625d7142898b804ced9
+  tag: 2026-10-31-zany-belt
+  sha256: fbb4b7b6733fa3eb1be096bc498297c030dc740751fb0d7a68362ae5bc1366ec
 sources:
   lspconfig:
     repo: neovim/nvim-lspconfig
-    sha: 4b2b045b8ceb035f5c8bc9cab19b95706bfa6a19
+    sha: 460bb34e7be114f1fda7815781696bc701e60f83
   conform:
     repo: stevearc/conform.nvim
     sha: 016802de402556da54c36bd7359b441266b01cdd
@@ -18,7 +18,7 @@ sources:
     sha: 9a10e096703966335bd5c46c8c875d5b0690dade
   neovim:
     repo: neovim/neovim
-    sha: 9290926ccf55ba3f55e4b48f5b94cad403017688
+    sha: 1d5c87b845646cfdb67c3061280582a031878334
   linguist:
     repo: github-linguist/linguist
     sha: 73ee9a3b277f398c37ca4ab0dea0193849de6460
