@@ -1,8 +1,8 @@
 schema_version: 2
 mason:
   repo: mason-org/mason-registry
-  tag: 2026-11-03-itchy-bottom
-  sha256: e38abf01242b93cdc036bc4e1b1629195a68048a27f818786fdcb1be30d58375
+  tag: 2026-11-03-dear-mouse
+  sha256: 6772dd8ee5ea3fe1a8b5b3b408ea38917fb88236eac0f83ffc3b819e24b5172f
 sources:
   lspconfig:
     repo: neovim/nvim-lspconfig
@@ -18,7 +18,7 @@ sources:
     sha: 9a10e096703966335bd5c46c8c875d5b0690dade
   neovim:
     repo: neovim/neovim
-    sha: 6332ba64fe56f922c5cd2d93e4cfa23673966b6d
+    sha: 8ffe7eb21c1159abb3384418aeb60c6f5a5d9907
   linguist:
     repo: github-linguist/linguist
     sha: 73ee9a3b277f398c37ca4ab0dea0193849de6460
