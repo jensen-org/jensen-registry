@@ -1,8 +1,8 @@
 schema_version: 2
 upstream:
   repo: mason-org/mason-registry
-  tag: 2026-11-03-itchy-bottom
-  sha256: e38abf01242b93cdc036bc4e1b1629195a68048a27f818786fdcb1be30d58375
+  tag: 2026-11-03-dear-mouse
+  sha256: 6772dd8ee5ea3fe1a8b5b3b408ea38917fb88236eac0f83ffc3b819e24b5172f
 packages:
   - id: actionlint
     source: github
@@ -597,7 +597,7 @@ packages:
   - id: ast-grep
     source: github
     coordinate: ast-grep/ast-grep
-    version: 0.51.0
+    version: 0.51.1
     description: A CLI tool for code structural search, lint and rewriting. Written in Rust.
     homepage: https://github.com/ast-grep/ast-grep
     languages:
@@ -632,8 +632,8 @@ packages:
           - darwin_arm64
         files:
           - name: app-aarch64-apple-darwin.zip
-            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.0/app-aarch64-apple-darwin.zip
-            sha256: e18e13c27ed6c4b3ec4de00745b0755dee9dc26c035e226f4dd5d147dca99cc8
+            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.1/app-aarch64-apple-darwin.zip
+            sha256: a95772097b4d02bd9d45ed63b300c37041ae3c36632b3bf19250cc7c10187dc4
         bin:
           ast-grep: ast-grep
           sg: sg
@@ -641,8 +641,8 @@ packages:
           - darwin_x64
         files:
           - name: app-x86_64-apple-darwin.zip
-            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.0/app-x86_64-apple-darwin.zip
-            sha256: 8438fe549da59da28518c45bdaab5b851aabafe8fb4f8dc05c261a7649b4eca6
+            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.1/app-x86_64-apple-darwin.zip
+            sha256: 302b92868fa1b0439f0927b1f31668e03636b12a8e646fb1a3cd8de816c78242
         bin:
           ast-grep: ast-grep
           sg: sg
@@ -650,8 +650,8 @@ packages:
           - linux_arm64_gnu
         files:
           - name: app-aarch64-unknown-linux-gnu.zip
-            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.0/app-aarch64-unknown-linux-gnu.zip
-            sha256: 73af0ebe5958acee012754a5b2826a186580ef83333092408a7a01096fc30b8b
+            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.1/app-aarch64-unknown-linux-gnu.zip
+            sha256: db02fae2d8eace5fc40c55242068882452dd03eab38a1d950d5fd981cf112926
         bin:
           ast-grep: ast-grep
           sg: sg
@@ -659,8 +659,8 @@ packages:
           - linux_x64_gnu
         files:
           - name: app-x86_64-unknown-linux-gnu.zip
-            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.0/app-x86_64-unknown-linux-gnu.zip
-            sha256: a7eead5552d3a8daad70f5d50d935da44bd0c138e946b5b0a96b1d38169fa639
+            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.1/app-x86_64-unknown-linux-gnu.zip
+            sha256: 42514f77ae0c8a25d7d32154d31d3e7e16f3ab894f8ce76ce417de234ee49157
         bin:
           ast-grep: ast-grep
           sg: sg
@@ -668,8 +668,8 @@ packages:
           - win_arm64
         files:
           - name: app-aarch64-pc-windows-msvc.zip
-            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.0/app-aarch64-pc-windows-msvc.zip
-            sha256: fb6a4c3c6ed350d7e64eae81961bdf6b3f201c6e7c31ace8caccf8ceddff1cac
+            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.1/app-aarch64-pc-windows-msvc.zip
+            sha256: 8b3f8fed40e99e0fa4df050859d2897fce454cba262d903486dc12a464237126
         bin:
           ast-grep: ast-grep.exe
           sg: sg.exe
@@ -679,8 +679,8 @@ packages:
           - win_x64
         files:
           - name: app-x86_64-pc-windows-msvc.zip
-            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.0/app-x86_64-pc-windows-msvc.zip
-            sha256: 1a5b7824c5925ac34257f806488e54860817cefd855fd308d13df7550d068908
+            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.1/app-x86_64-pc-windows-msvc.zip
+            sha256: 12a0cefb77498820ef6fb302ed8758cbda39be87d4c15120dc74c1dea968a50d
         bin:
           ast-grep: ast-grep.exe
           sg: sg.exe
@@ -690,8 +690,8 @@ packages:
           - win_x86
         files:
           - name: app-i686-pc-windows-msvc.zip
-            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.0/app-i686-pc-windows-msvc.zip
-            sha256: 20ee5bdbe55ec63180a808076a5095ee531f938d61c7b6466368605b61525e0e
+            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.1/app-i686-pc-windows-msvc.zip
+            sha256: 24196842dc24d2f6cdfd93045e6f4de56053bf8134bc261d4cffa2a54c64140b
         bin:
           ast-grep: ast-grep.exe
           sg: sg.exe
@@ -8022,7 +8022,7 @@ packages:
   - id: json-repair
     source: pypi
     coordinate: json-repair
-    version: 0.64.2
+    version: 0.64.3
     description: A package to repair broken json strings
     homepage: https://pypi.org/project/json-repair/
     languages:
@@ -10522,7 +10522,7 @@ packages:
   - id: neocmakelsp
     source: github
     coordinate: neocmakelsp/neocmakelsp
-    version: v0.11.2
+    version: v0.12.0
     description: CMake LSP implementation based on Tower and Tree-sitter.
     homepage: https://github.com/neocmakelsp/neocmakelsp
     languages:
@@ -10538,56 +10538,56 @@ packages:
           - darwin
         files:
           - name: neocmakelsp-universal-apple-darwin.tar.gz
-            url: https://github.com/neocmakelsp/neocmakelsp/releases/download/v0.11.2/neocmakelsp-universal-apple-darwin.tar.gz
-            sha256: 9d44c5dc8eac1f66a4c3abd1123c1086508d72c8f096dc9dc8ce8a027c6f075a
+            url: https://github.com/neocmakelsp/neocmakelsp/releases/download/v0.12.0/neocmakelsp-universal-apple-darwin.tar.gz
+            sha256: 39d0887ccc4cec0b8c8cf9c42aa5481aad27fa7198cebaabd3e581403f702ff8
         bin:
           neocmakelsp: neocmakelsp
       - targets:
           - linux_arm64_gnu
         files:
           - name: neocmakelsp-aarch64-unknown-linux-gnu.tar.gz
-            url: https://github.com/neocmakelsp/neocmakelsp/releases/download/v0.11.2/neocmakelsp-aarch64-unknown-linux-gnu.tar.gz
-            sha256: 464135a0d137b7298b22bcee693869e77f895a14393e24adab4ec099e4bfb3bc
+            url: https://github.com/neocmakelsp/neocmakelsp/releases/download/v0.12.0/neocmakelsp-aarch64-unknown-linux-gnu.tar.gz
+            sha256: 4a2e989b0c2de01452955ac4f7a5de8a82eda5ca2501d3d40272886f3a3726c8
         bin:
           neocmakelsp: neocmakelsp
       - targets:
           - linux_x64_gnu
         files:
           - name: neocmakelsp-x86_64-unknown-linux-gnu.tar.gz
-            url: https://github.com/neocmakelsp/neocmakelsp/releases/download/v0.11.2/neocmakelsp-x86_64-unknown-linux-gnu.tar.gz
-            sha256: d9e71ea1cfd6584689b4fc8e985285c30247f9af393b77cb2460a969ff79abfe
+            url: https://github.com/neocmakelsp/neocmakelsp/releases/download/v0.12.0/neocmakelsp-x86_64-unknown-linux-gnu.tar.gz
+            sha256: fae7bf87e114b0748fef5aa8c464b8413a2022925a2a61821bae5e2a9a7fdda2
         bin:
           neocmakelsp: neocmakelsp
       - targets:
           - linux_arm64
         files:
           - name: neocmakelsp-aarch64-unknown-linux-musl.tar.gz
-            url: https://github.com/neocmakelsp/neocmakelsp/releases/download/v0.11.2/neocmakelsp-aarch64-unknown-linux-musl.tar.gz
-            sha256: 21a2be4f746ac5281b596efeeb249aaf4ce33815f17e9b64ed0240f46df5a376
+            url: https://github.com/neocmakelsp/neocmakelsp/releases/download/v0.12.0/neocmakelsp-aarch64-unknown-linux-musl.tar.gz
+            sha256: 8216146860ede059741841592e6fdfedc7c99fdf7d199e4cefa582caef002698
         bin:
           neocmakelsp: neocmakelsp
       - targets:
           - linux_x64
         files:
           - name: neocmakelsp-x86_64-unknown-linux-musl.tar.gz
-            url: https://github.com/neocmakelsp/neocmakelsp/releases/download/v0.11.2/neocmakelsp-x86_64-unknown-linux-musl.tar.gz
-            sha256: 0b05d2574997f81275c34b69c90103f6ded03ea67bae3e086901c0d0afc98086
+            url: https://github.com/neocmakelsp/neocmakelsp/releases/download/v0.12.0/neocmakelsp-x86_64-unknown-linux-musl.tar.gz
+            sha256: df46fd5ff70fdc061f5666e1a7163fe7a710857d52e179ffe97a7e39d3aac119
         bin:
           neocmakelsp: neocmakelsp
       - targets:
           - win_arm64
         files:
           - name: neocmakelsp-aarch64-pc-windows-msvc.zip
-            url: https://github.com/neocmakelsp/neocmakelsp/releases/download/v0.11.2/neocmakelsp-aarch64-pc-windows-msvc.zip
-            sha256: 185205a0f05abee373d12946ffbba47f4aa9b02fead3a0e25e94659e3caf7992
+            url: https://github.com/neocmakelsp/neocmakelsp/releases/download/v0.12.0/neocmakelsp-aarch64-pc-windows-msvc.zip
+            sha256: 13eaedccb4706129658be33ecd83bfc2f76d3b3fa5c30f7c3e0b567c58bb5b49
         bin:
           neocmakelsp: neocmakelsp.exe
       - targets:
           - win_x64
         files:
           - name: neocmakelsp-x86_64-pc-windows-msvc.zip
-            url: https://github.com/neocmakelsp/neocmakelsp/releases/download/v0.11.2/neocmakelsp-x86_64-pc-windows-msvc.zip
-            sha256: 011aedd26fa5855490b612280482832ad10367ab4807d4e89f2d6fa4f8bae3cb
+            url: https://github.com/neocmakelsp/neocmakelsp/releases/download/v0.12.0/neocmakelsp-x86_64-pc-windows-msvc.zip
+            sha256: 8abc3cdfa641478e689b70ae474b0eb784b2d4211026398a2fd4fd2a452be8ae
         bin:
           neocmakelsp: neocmakelsp.exe
     filetypes:
@@ -13199,7 +13199,7 @@ packages:
   - id: pymobiledevice3
     source: pypi
     coordinate: pymobiledevice3
-    version: 11.49.1
+    version: 11.49.2
     description: Pure python3 implementation for working with iDevices (iPhone, etc...).
     homepage: https://github.com/doronz88/pymobiledevice3
     languages:
@@ -14343,7 +14343,7 @@ packages:
   - id: rust-analyzer
     source: github
     coordinate: rust-lang/rust-analyzer
-    version: 2026-10-26
+    version: 2026-11-02
     description: |-
       rust-analyzer is an implementation of the Language Server Protocol for the
       Rust programming language. It provides features like completion and goto
@@ -14362,56 +14362,56 @@ packages:
           - linux_x64_gnu
         files:
           - name: rust-analyzer-x86_64-unknown-linux-gnu.gz
-            url: https://github.com/rust-lang/rust-analyzer/releases/download/2026-10-26/rust-analyzer-x86_64-unknown-linux-gnu.gz
-            sha256: 4c83773525f93b636ed79761389568b4d2a89c05fa7ecc440245032d49ad80ce
+            url: https://github.com/rust-lang/rust-analyzer/releases/download/2026-11-02/rust-analyzer-x86_64-unknown-linux-gnu.gz
+            sha256: 5249da68c3f36bb77ea7d401824f5e8bd8d0a47a162daf5f72208eb7c1bf1500
         bin:
           rust-analyzer: rust-analyzer-x86_64-unknown-linux-gnu
       - targets:
           - linux_arm64_gnu
         files:
           - name: rust-analyzer-aarch64-unknown-linux-gnu.gz
-            url: https://github.com/rust-lang/rust-analyzer/releases/download/2026-10-26/rust-analyzer-aarch64-unknown-linux-gnu.gz
-            sha256: 1b225c4c9ae329ca96e8a75a5bbcb5562a7f1d25c57c8b55d3e02299a3dbe836
+            url: https://github.com/rust-lang/rust-analyzer/releases/download/2026-11-02/rust-analyzer-aarch64-unknown-linux-gnu.gz
+            sha256: 4f8699eaee4231df5a5ffd477106ecae3bf6328918a60de742798912ecff6869
         bin:
           rust-analyzer: rust-analyzer-aarch64-unknown-linux-gnu
       - targets:
           - linux_x64_musl
         files:
           - name: rust-analyzer-x86_64-unknown-linux-musl.gz
-            url: https://github.com/rust-lang/rust-analyzer/releases/download/2026-10-26/rust-analyzer-x86_64-unknown-linux-musl.gz
-            sha256: b12c272401af57558d68afb6310a47f27729bdd65bb11b7171582d9d7f286d32
+            url: https://github.com/rust-lang/rust-analyzer/releases/download/2026-11-02/rust-analyzer-x86_64-unknown-linux-musl.gz
+            sha256: 8ad63db9663672836f86526d2a6e6d92d1594edb954bf6dfc5dab5c56273ad4d
         bin:
           rust-analyzer: rust-analyzer-x86_64-unknown-linux-musl
       - targets:
           - darwin_x64
         files:
           - name: rust-analyzer-x86_64-apple-darwin.gz
-            url: https://github.com/rust-lang/rust-analyzer/releases/download/2026-10-26/rust-analyzer-x86_64-apple-darwin.gz
-            sha256: b3e4904877bcf7013a4a342c449cff1bf0ea0b91d5a1a30ac8df3d32142519c0
+            url: https://github.com/rust-lang/rust-analyzer/releases/download/2026-11-02/rust-analyzer-x86_64-apple-darwin.gz
+            sha256: 2c3d6c564f9b2734085cf6439c78896545e86b54ebb63870ba701e12ca582b22
         bin:
           rust-analyzer: rust-analyzer-x86_64-apple-darwin
       - targets:
           - darwin_arm64
         files:
           - name: rust-analyzer-aarch64-apple-darwin.gz
-            url: https://github.com/rust-lang/rust-analyzer/releases/download/2026-10-26/rust-analyzer-aarch64-apple-darwin.gz
-            sha256: 8fb90cb58f5910d8d8b24ac1a93cca49f053365cbf0eb3c682144ad0a0027dcf
+            url: https://github.com/rust-lang/rust-analyzer/releases/download/2026-11-02/rust-analyzer-aarch64-apple-darwin.gz
+            sha256: d10ca0a10e386f74ca36847b3df2ad5ab6f1328feeb1591467b3724f3fd8e8cf
         bin:
           rust-analyzer: rust-analyzer-aarch64-apple-darwin
       - targets:
           - win_x64
         files:
           - name: rust-analyzer-x86_64-pc-windows-msvc.zip
-            url: https://github.com/rust-lang/rust-analyzer/releases/download/2026-10-26/rust-analyzer-x86_64-pc-windows-msvc.zip
-            sha256: 13549dd0c380647685c82c87b8d80904f81bc4de92a82c099b6083c5b9aa1ca1
+            url: https://github.com/rust-lang/rust-analyzer/releases/download/2026-11-02/rust-analyzer-x86_64-pc-windows-msvc.zip
+            sha256: 5450a3735c601f047dc9ca46a01add55c4ac7ef450ae5e710d249a26d65f5632
         bin:
           rust-analyzer: rust-analyzer.exe
       - targets:
           - win_arm64
         files:
           - name: rust-analyzer-aarch64-pc-windows-msvc.zip
-            url: https://github.com/rust-lang/rust-analyzer/releases/download/2026-10-26/rust-analyzer-aarch64-pc-windows-msvc.zip
-            sha256: e5f758de3ece10656d7bba6565b92e65fb52843810dc1bd0a911e307755d63ad
+            url: https://github.com/rust-lang/rust-analyzer/releases/download/2026-11-02/rust-analyzer-aarch64-pc-windows-msvc.zip
+            sha256: e726401feb041e0952e3ba745e7a7cac5ea4e8bfa9ad2e078998ba835a524ac7
         bin:
           rust-analyzer: rust-analyzer.exe
     filetypes:
@@ -17078,7 +17078,7 @@ packages:
   - id: termux-language-server
     source: pypi
     coordinate: termux-language-server
-    version: 0.1.13
+    version: 0.1.15
     description: A language server for some specific bash scripts.
     homepage: https://termux-language-server.readthedocs.io/en/latest/
     languages:
