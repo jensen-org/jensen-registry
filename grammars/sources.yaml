@@ -195,3 +195,6 @@ grammars:
     version: 1.1.2
     own_queries:
       - metrics
+skip:
+  - id: gitcommit
+    reason: its generated parser needs about 12 GB of memory and 11 minutes of CPU to compile, which kills a 7 GB runner

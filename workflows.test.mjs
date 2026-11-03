@@ -36,3 +36,17 @@ test("validate and track resolve urls against the same branch", () => {
   const track = load("track.yml").jobs.track.steps.find((step) => step.run === "node registry.mjs track");
   assert.equal(validate.env.REGISTRY_REF, track.env.REGISTRY_REF);
 });
+
+test("the nightly track only re-pins and never discovers new grammars", () => {
+  const steps = load("track.yml").jobs.track.steps;
+  assert.ok(!steps.some((step) => /registry\.mjs discover/.test(step.run ?? "")));
+});
+
+test("the seed workflow is manual and provides the wasi-sdk before it builds", () => {
+  const workflow = load("seed.yml");
+  assert.deepEqual(Object.keys(workflow.on), ["workflow_dispatch"]);
+  const steps = workflow.jobs.seed.steps;
+  const install = steps.findIndex((step) => /wasi-sdk-29[\s\S]*bin\/clang/.test(step.run ?? ""));
+  const seed = steps.findIndex((step) => /registry\.mjs seed/.test(step.run ?? ""));
+  assert.ok(install >= 0 && install < seed);
+});

@@ -1,4 +1,4 @@
-import { execFileSync } from "node:child_process";
+import { execFileSync, spawn } from "node:child_process";
 import { copyFileSync, existsSync, lstatSync, mkdirSync, mkdtempSync, readFileSync, realpathSync, rmSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { dirname, join, sep } from "node:path";
@@ -10,6 +10,7 @@ export const QUERIES_DIR = "grammars/queries";
 export const QUERY_NAMES = ["tags", "locals", "injections", "metrics"];
 export const OWN_QUERIES_DIR = "grammars/own";
 const MAX_QUERY_BYTES = 256 * 1024;
+export const BUILD_TIMEOUT_MS = 5 * 60 * 1000;
 
 export const wasmFile = (grammar) => `${grammar.id}-${grammar.version}.wasm`;
 export const wasmUrl = (grammar) => `${RAW_BASE}/${REF}/${WASM_DIR}/${wasmFile(grammar)}`;
@@ -116,21 +117,54 @@ async function extractQueries(grammar) {
   }
 }
 
-async function build(grammar, wanted) {
+export function runWithTimeout(command, args, { cwd, timeoutMs }) {
+  return new Promise((resolve) => {
+    const child = spawn(command, args, { cwd, stdio: "inherit", detached: true });
+    const timer = setTimeout(() => {
+      try {
+        process.kill(-child.pid, "SIGKILL");
+      } catch {
+        child.kill("SIGKILL");
+      }
+      resolve({ ok: false, reason: `timed out after ${Math.round(timeoutMs / 1000)}s` });
+    }, timeoutMs);
+    child.on("error", (error) => {
+      clearTimeout(timer);
+      resolve({ ok: false, reason: error.message });
+    });
+    child.on("close", (code) => {
+      clearTimeout(timer);
+      resolve(code === 0 ? { ok: true } : { ok: false, reason: `exited with ${code}` });
+    });
+  });
+}
+
+export async function attemptBuild(grammar, wanted, { timeoutMs = BUILD_TIMEOUT_MS } = {}) {
   const found = cliVersion();
   if (found !== wanted) {
     throw new Error(`${wasmFile(grammar)} is not built and needs tree-sitter ${wanted}, found ${found ?? "none"}`);
   }
+  const started = Date.now();
   const { work, source } = await fetchCrate(grammar);
+  const output = join(ROOT, WASM_DIR, wasmFile(grammar));
   try {
     mkdirSync(join(ROOT, WASM_DIR), { recursive: true });
-    execFileSync("tree-sitter", ["build", "--wasm", "-o", join(ROOT, WASM_DIR, wasmFile(grammar)), grammar.path ?? "."], {
-      cwd: source,
-      stdio: "inherit",
-    });
+    const result = await runWithTimeout("tree-sitter", ["build", "--wasm", "-o", output, grammar.path ?? "."], { cwd: source, timeoutMs });
+    const seconds = Math.round((Date.now() - started) / 1000);
+    if (result.ok) console.log(`  built ${grammar.id} in ${seconds}s`);
+    else {
+      rmSync(output, { force: true });
+      console.log(`  skipped ${grammar.id} after ${seconds}s: ${result.reason}`);
+    }
+    return result;
   } finally {
     rmSync(work, { recursive: true, force: true });
   }
+}
+
+async function build(grammar, wanted) {
+  const result = await attemptBuild(grammar, wanted);
+  if (!result.ok) throw new Error(`${wasmFile(grammar)} ${result.reason}`);
 }
 
 export async function trackGrammars() {
