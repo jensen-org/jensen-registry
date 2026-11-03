@@ -4,6 +4,8 @@ source: nuget
 requires:
   program: dotnet
   probe: [dotnet, --version]
+hosts:
+  - api.nuget.org
 bin_root:
   unix: "."
   windows: "."

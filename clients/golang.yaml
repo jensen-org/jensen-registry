@@ -4,6 +4,9 @@ source: golang
 requires:
   program: go
   probe: [go, version]
+hosts:
+  - proxy.golang.org
+  - sum.golang.org
 bin_root:
   unix: bin
   windows: bin

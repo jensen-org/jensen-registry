@@ -4,6 +4,8 @@ source: luarocks
 requires:
   program: luarocks
   probe: [luarocks, --version]
+hosts:
+  - luarocks.org
 bin_root:
   unix: bin
   windows: bin
