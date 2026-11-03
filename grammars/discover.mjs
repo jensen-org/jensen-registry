@@ -28,13 +28,13 @@ export function parseParsers(lua) {
   return parsers;
 }
 
-export function wantedParsers(parsers, filetypes) {
+export function wantedParsers(parsers, filetypes, skip = new Set()) {
   const names = new Set();
   for (const filetype of filetypes.filetypes) {
     names.add(filetype.id);
     for (const related of filetype.related ?? []) names.add(related);
   }
-  return [...parsers].filter(([name, parser]) => names.has(name) && parser.location === undefined);
+  return [...parsers].filter(([name, parser]) => names.has(name) && !skip.has(name) && parser.location === undefined);
 }
 
 export function crateNames(name, parser) {
@@ -64,11 +64,7 @@ async function buildsFromTheRoot(crate, version) {
   return untar(gunzipSync(archive)).has("src/parser.c");
 }
 
-export async function discoverGrammars({ log = console.log, limit = batchLimit(process.env.DISCOVER_BATCH) } = {}) {
-  const sources = readYaml(SOURCES_FILE);
-  const lua = await rawText(sources.upstream.repo, sources.upstream.sha, PARSERS_FILE);
-  const wanted = wantedParsers(parseParsers(lua), readYaml("tools/filetypes.yaml"));
-  const known = new Set(sources.grammars.map((grammar) => grammar.id));
+export async function resolveCrates(wanted, { known, limit, log }) {
   const added = [];
   const skipped = [];
   let deferred = 0;
@@ -97,8 +93,30 @@ export async function discoverGrammars({ log = console.log, limit = batchLimit(p
     }
     added.push({ id: name, ...chosen });
   }
+  log(`resolved ${added.length} grammars, left ${skipped.length} out, ${deferred} more wait for the next run`);
+  return { added, skipped, deferred };
+}
+
+export const skippedIds = (sources) => new Set((sources.skip ?? []).map((entry) => entry.id));
+
+export async function loadCandidates(sources, only) {
+  const lua = await rawText(sources.upstream.repo, sources.upstream.sha, PARSERS_FILE);
+  const parsers = parseParsers(lua);
+  if (only) {
+    const parser = parsers.get(only);
+    if (!parser) throw new Error(`${only} is not a parser of ${sources.upstream.repo}`);
+    if (parser.location !== undefined) throw new Error(`${only} is built from a subfolder and cannot be seeded`);
+    return [[only, parser]];
+  }
+  return wantedParsers(parsers, readYaml("tools/filetypes.yaml"), skippedIds(sources));
+}
+
+export async function discoverGrammars({ log = console.log, limit = batchLimit(process.env.DISCOVER_BATCH) } = {}) {
+  const sources = readYaml(SOURCES_FILE);
+  const wanted = await loadCandidates(sources);
+  const known = new Set(sources.grammars.map((grammar) => grammar.id));
+  const { added, skipped } = await resolveCrates(wanted, { known, limit, log });
   if (added.length) writeText(SOURCES_FILE, dump(withDiscovered(sources, added)));
-  log(`discovered ${added.length} grammars, left ${skipped.length} out, ${deferred} more wait for the next run`);
   for (const line of skipped) log(`  skipped ${line}`);
   return { added, skipped };
 }

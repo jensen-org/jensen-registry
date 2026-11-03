@@ -58,3 +58,9 @@ test("a run takes a bounded batch of new grammars so the job can finish building
   assert.equal(batchLimit("0"), BATCH_DEFAULT);
   assert.equal(batchLimit("many"), BATCH_DEFAULT);
 });
+
+test("an id on the skip list is never picked", () => {
+  const filetypes = { filetypes: [{ id: "ada" }, { id: "csharp", related: ["c_sharp"] }] };
+  const wanted = wantedParsers(parseParsers(LUA), filetypes, new Set(["ada"])).map(([name]) => name);
+  assert.deepEqual(wanted, ["c_sharp"]);
+});
