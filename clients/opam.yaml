@@ -4,6 +4,8 @@ source: opam
 requires:
   program: opam
   probe: [opam, --version]
+hosts:
+  - opam.ocaml.org
 bin_root:
   unix: bin
   windows: bin

@@ -4,6 +4,9 @@ source: pypi
 requires:
   program: python3
   probe: [python3, --version]
+hosts:
+  - pypi.org
+  - files.pythonhosted.org
 bin_root:
   unix: venv/bin
   windows: venv/Scripts

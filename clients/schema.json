@@ -50,6 +50,10 @@
           "required": ["program"],
           "properties": { "program": { "type": "string", "minLength": 1 }, "probe": { "$ref": "#/$defs/argv" } }
         },
+        "hosts": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
         "bin_root": { "$ref": "#/$defs/platforms" },
         "env": { "type": "object", "additionalProperties": { "type": "string" } },
         "install": { "type": "array", "items": { "$ref": "#/$defs/step" }, "minItems": 1 },
