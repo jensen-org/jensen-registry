@@ -29,6 +29,14 @@ export function validateClients({ problems, packages = [] }) {
     for (const name of placeholdersOf([client.install, client.launcher, client.env, client.bin_root])) {
       if (!knownPlaceholder(name)) problems.push(`${path}: unknown placeholder {${name}}`);
     }
+    const seenHosts = new Set();
+    for (const host of client.hosts ?? []) {
+      if (host.includes("://")) problems.push(`${path}: host ${host} has a scheme`);
+      else if (host.includes("/")) problems.push(`${path}: host ${host} has a path`);
+      else if (host.includes(":")) problems.push(`${path}: host ${host} has a port`);
+      if (seenHosts.has(host)) problems.push(`${path}: host ${host} is listed twice`);
+      seenHosts.add(host);
+    }
     byId.set(client.id, client);
   }
   for (const client of byId.values()) {

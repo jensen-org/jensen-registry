@@ -4,6 +4,10 @@ source: cargo
 requires:
   program: cargo
   probe: [cargo, --version]
+hosts:
+  - crates.io
+  - index.crates.io
+  - static.crates.io
 bin_root:
   unix: bin
   windows: bin

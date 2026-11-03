@@ -1,6 +1,8 @@
 id: openvsx
 kind: package-manager
 source: openvsx
+hosts:
+  - open-vsx.org
 bin_root:
   unix: "."
   windows: "."
