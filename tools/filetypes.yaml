@@ -1,7 +1,7 @@
 schema_version: 2
 upstream:
   repo: neovim/neovim
-  sha: 1502d4a948123bc90e6a19777857527c7fad5966
+  sha: de6ea53768fffc4091f5ff57a4c3721681d35e55
 filetypes:
   - id: 8th
     extensions:
@@ -722,6 +722,7 @@ filetypes:
     filenames:
       - .alsoftrc
       - .buckconfig
+      - .codespellrc
       - .coveragerc
       - .flake8
       - .gitlint
@@ -1105,16 +1106,21 @@ filetypes:
       - prettierignore
     filenames:
       - .agignore
+      - .aiexclude
+      - .aiignore
       - .atomignore
       - .babelignore
       - .bzrignore
       - .ckignore
+      - .clang-format-ignore
       - .coffeelintignore
       - .containerignore
+      - .cursorignore
       - .cvsignore
       - .dockerignore
       - .easignore
       - .eleventyignore
+      - .elpaignore
       - .eslint-ignore
       - .eslintignore
       - .fdignore
@@ -1123,6 +1129,7 @@ filetypes:
       - .markdownlintignore
       - .nodemonignore
       - .npmignore
+      - .nxignore
       - .prettierignore
       - .rgignore
       - .stow-local-ignore
@@ -1632,6 +1639,7 @@ filetypes:
       - .all-contributorsrc
       - .arcconfig
       - .auto-changelog
+      - .autorc
       - .c8rc
       - .firebaserc
       - .htmlhintrc

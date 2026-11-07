@@ -1,7 +1,7 @@
 schema_version: 2
 upstream:
   repo: neovim/nvim-lspconfig
-  sha: cc404d425c7752f56b8eaa269107be44d888ea51
+  sha: 993d048db0d83d8e8ba3f9cb376456321acdcce3
 servers:
   - id: ada_ls
     cmd:
@@ -438,10 +438,12 @@ servers:
       - javascriptreact
       - json
       - jsonc
+      - markdown
       - svelte
       - typescript
       - typescriptreact
       - vue
+      - yaml
     workspace_required: true
     priority: -10
   - id: bitbake_language_server
