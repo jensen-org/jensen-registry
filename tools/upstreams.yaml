@@ -1,12 +1,12 @@
 schema_version: 2
 mason:
   repo: mason-org/mason-registry
-  tag: 2026-11-04-aware-octopus
-  sha256: 6f12f7ef2295a8e6de84e635a5696c205a44a10d8aaa0563158e2a8593bdf557
+  tag: 2026-11-07-uneven-raft
+  sha256: fd7b87410e33e7630b6debd7c5029e10801858536817466e3ed60844aad2df9d
 sources:
   lspconfig:
     repo: neovim/nvim-lspconfig
-    sha: cc404d425c7752f56b8eaa269107be44d888ea51
+    sha: 993d048db0d83d8e8ba3f9cb376456321acdcce3
   conform:
     repo: stevearc/conform.nvim
     sha: 016802de402556da54c36bd7359b441266b01cdd
@@ -18,10 +18,10 @@ sources:
     sha: 9a10e096703966335bd5c46c8c875d5b0690dade
   neovim:
     repo: neovim/neovim
-    sha: 1502d4a948123bc90e6a19777857527c7fad5966
+    sha: de6ea53768fffc4091f5ff57a4c3721681d35e55
   linguist:
     repo: github-linguist/linguist
-    sha: c9bbb9375181430fe3db6895ecf54f543f443a4b
+    sha: d456527fe93355baa28c3c29d542c97282b61bc7
   nonels:
     repo: nvimtools/none-ls.nvim
-    sha: c4b82bb63b13856ba4d6b971b7aad3bb38fc6fe2
+    sha: 0b281893e36fe147077b49f022bf9cd78af3ad12

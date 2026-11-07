@@ -914,13 +914,13 @@ mcp:
     package:
       ecosystem: pypi
       name: mcp-server-fetch
-      version: 2026.10.28
-      purl: pkg:pypi/mcp-server-fetch@2026.10.28
+      version: 2026.11.4
+      purl: pkg:pypi/mcp-server-fetch@2026.11.4
       bin: mcp-server-fetch
       lockfile:
         path: mcp/locks/fetch/requirements.txt
         url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/mcp/locks/fetch/requirements.txt
-        sha256: ab01217f86931bc69c605aeb3a8ade00f1477eceea5e13b218e07ae8cae0134b
+        sha256: 2d0b1894afd794c9fb7eb517a701c86dfcabdba2ee83169111d0704ddeef37b4
     env: []
   - id: figma-developer
     description: Read Figma designs with your own personal access token, so the hosted server's monthly call limit does not apply.
@@ -971,13 +971,13 @@ mcp:
     package:
       ecosystem: npm
       name: "@modelcontextprotocol/server-memory"
-      version: 2.0.1
-      purl: pkg:npm/%40modelcontextprotocol/server-memory@2.0.1
+      version: 2.1.0
+      purl: pkg:npm/%40modelcontextprotocol/server-memory@2.1.0
       bin: mcp-server-memory
       lockfile:
         path: mcp/locks/memory/package-lock.json
         url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/mcp/locks/memory/package-lock.json
-        sha256: c0f81223d907e535b3ce36fdc7c1906b25990d0edbccb838050ba24b97f61498
+        sha256: eeebbd2b9a10bbda61fff384c083bd26d57e53e3970a486334ccbed9d595f827
     env: []
   - id: playwright
     description: Drive a real browser to navigate pages, click, fill forms, read the page and take screenshots.
