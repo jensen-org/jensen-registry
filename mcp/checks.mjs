@@ -41,5 +41,18 @@ export function mcpProblems(entry, label) {
   if (entry.oauth && (entry.headers ?? []).some((header) => header.name.toLowerCase() === "authorization")) {
     problems.push(`${label}: oauth and an Authorization header cannot both be set`);
   }
+  problems.push(...designBridgeProblems(entry, label));
+  return problems;
+}
+
+function designBridgeProblems(entry, label) {
+  const bridge = entry.design_bridge;
+  if (!bridge) return [];
+  const problems = [];
+  if (entry.transport !== "stdio") problems.push(`${label}: a design bridge runs on this machine, so it must be a stdio server`);
+  const enable = bridge.script?.enable;
+  if (enable && (entry.env ?? []).some((variable) => variable.name === enable.env)) {
+    problems.push(`${label}: design_bridge enable ${enable.env} is a fixed value and cannot also be an env variable`);
+  }
   return problems;
 }
