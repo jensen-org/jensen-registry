@@ -1,7 +1,7 @@
 schema_version: 2
 upstream:
   repo: neovim/neovim
-  sha: 6332ba64fe56f922c5cd2d93e4cfa23673966b6d
+  sha: 1502d4a948123bc90e6a19777857527c7fad5966
 filetypes:
   - id: 8th
     extensions:
@@ -1125,6 +1125,7 @@ filetypes:
       - .npmignore
       - .prettierignore
       - .rgignore
+      - .stow-local-ignore
       - .stylelintignore
       - .vercelignore
       - .vscodeignore
@@ -2791,6 +2792,7 @@ filetypes:
       - pyw
       - rpy
       - tac
+      - vpy
       - wsgi
       - xpy
     filenames:
@@ -3780,7 +3782,7 @@ filetypes:
       - uit
   - id: uiua
     extensions:
-      - uiua
+      - ua
   - id: ungrammar
     extensions:
       - ungram
