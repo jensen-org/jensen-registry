@@ -86,14 +86,35 @@ export async function answeredError(url, response) {
   return error;
 }
 
-export async function getJson(url, headers = {}) {
-  const response = await fetch(url, { headers: { "user-agent": "jensen-registry", ...headers } });
+const FETCH_ATTEMPTS = 4;
+const MAX_RETRY_WAIT_SECONDS = 30;
+
+const transientStatus = (status) => status === 429 || status >= 500;
+
+export async function fetchWithRetry(url, options, { attempts = FETCH_ATTEMPTS, sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms)) } = {}) {
+  for (let attempt = 1; ; attempt += 1) {
+    let response;
+    try {
+      response = await fetch(url, options);
+    } catch (error) {
+      if (attempt >= attempts) throw error;
+      await sleep(2 ** attempt * 500);
+      continue;
+    }
+    if (response.ok || !transientStatus(response.status) || attempt >= attempts) return response;
+    const wait = retryAfterSeconds(response.headers);
+    await sleep(Math.min(wait ?? 2 ** attempt, MAX_RETRY_WAIT_SECONDS) * (wait ? 1000 : 500));
+  }
+}
+
+export async function getJson(url, headers = {}, retry) {
+  const response = await fetchWithRetry(url, { headers: { "user-agent": "jensen-registry", ...headers } }, retry);
   if (!response.ok) throw await answeredError(url, response);
   return response.json();
 }
 
-export async function getBytes(url) {
-  const response = await fetch(url, { headers: { "user-agent": "jensen-registry" } });
+export async function getBytes(url, retry) {
+  const response = await fetchWithRetry(url, { headers: { "user-agent": "jensen-registry" } }, retry);
   if (!response.ok) throw await answeredError(url, response);
   return Buffer.from(await response.arrayBuffer());
 }
