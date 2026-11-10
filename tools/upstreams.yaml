@@ -1,12 +1,12 @@
 schema_version: 2
 mason:
   repo: mason-org/mason-registry
-  tag: 2026-11-09-lush-dimple
-  sha256: 51e52e22d6ba3c6fb77991ba04f11cdd6fc4502197016336393d3a75b90ede1e
+  tag: 2026-11-10-showy-lan
+  sha256: 8def7c02ff90e0ef750c7ff179072ee8337b074e79f89ce0edbfb46b78ce2e3d
 sources:
   lspconfig:
     repo: neovim/nvim-lspconfig
-    sha: 993d048db0d83d8e8ba3f9cb376456321acdcce3
+    sha: 443d92c6bea761ab54cdde46fb197a2b4d614bdd
   conform:
     repo: stevearc/conform.nvim
     sha: 016802de402556da54c36bd7359b441266b01cdd
@@ -18,7 +18,7 @@ sources:
     sha: 9a10e096703966335bd5c46c8c875d5b0690dade
   neovim:
     repo: neovim/neovim
-    sha: c3fd4e629d08aa6046889755012fbe20958ae587
+    sha: d87aacc6fdf542a1bad999e8ec23eba4d60089eb
   linguist:
     repo: github-linguist/linguist
     sha: d456527fe93355baa28c3c29d542c97282b61bc7

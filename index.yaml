@@ -145,21 +145,21 @@ skills:
     repo: yctimlin/mcp_excalidraw
     path: skills/excalidraw-skill
     ref: main
-    commit: 66b768b47914987bb77a49e1fd1922e7f6deb0fe
-    content_hash: aaddee853b39de23e00ea86f1b9bf9de4060d788f5caf9e748ecc0ae533d0886
+    commit: 81720ac819d2325177cd6137c6ad41d52d0f5374
+    content_hash: f9753ac0b4282b64d06180a16794b5d6172f85d5e5d2c67b32eaf2fd0c13657e
     files:
       - path: SKILL.md
-        url: https://raw.githubusercontent.com/yctimlin/mcp_excalidraw/66b768b47914987bb77a49e1fd1922e7f6deb0fe/skills/excalidraw-skill/SKILL.md
-        sha256: 8496041f8764742cc694866603f37c6ec5b78227e6e98003d4fe953bcecb6a44
-        size: 18660
+        url: https://raw.githubusercontent.com/yctimlin/mcp_excalidraw/81720ac819d2325177cd6137c6ad41d52d0f5374/skills/excalidraw-skill/SKILL.md
+        sha256: 8acab04d093e6d9dbd1d576572e0ceaaf41df39f7ec4ea5f61a58f6ad7ff247d
+        size: 19144
       - path: evals/evals.json
-        url: https://raw.githubusercontent.com/yctimlin/mcp_excalidraw/66b768b47914987bb77a49e1fd1922e7f6deb0fe/skills/excalidraw-skill/evals/evals.json
+        url: https://raw.githubusercontent.com/yctimlin/mcp_excalidraw/81720ac819d2325177cd6137c6ad41d52d0f5374/skills/excalidraw-skill/evals/evals.json
         sha256: fea2f19e867e141cefb4fda970b91615c5e3a29a41eba6ca5d94cb1854919a57
         size: 3388
       - path: references/cheatsheet.md
-        url: https://raw.githubusercontent.com/yctimlin/mcp_excalidraw/66b768b47914987bb77a49e1fd1922e7f6deb0fe/skills/excalidraw-skill/references/cheatsheet.md
-        sha256: 0f1cad393e3098654544844e6094c51d4a0181348ed178c81237dcf2083957d2
-        size: 10803
+        url: https://raw.githubusercontent.com/yctimlin/mcp_excalidraw/81720ac819d2325177cd6137c6ad41d52d0f5374/skills/excalidraw-skill/references/cheatsheet.md
+        sha256: d39e85a89f0231ae0c8e5908f3904481bd38ae1ff1da8b4b1350560af3228f03
+        size: 12044
   - id: git-guardrails-claude-code
     name: git-guardrails-claude-code
     description: Set up Claude Code hooks to block dangerous git commands (push, reset --hard, clean, branch -D, etc.) before they execute. Use when user wants to prevent destructive git operations, add git safety hooks, or block git push/reset in Claude Code.
@@ -880,13 +880,13 @@ mcp:
     package:
       ecosystem: npm
       name: mcp-excalidraw-server
-      version: 2.1.2
-      purl: pkg:npm/mcp-excalidraw-server@2.1.2
+      version: 2.2.0
+      purl: pkg:npm/mcp-excalidraw-server@2.2.0
       bin: mcp-excalidraw-server
       lockfile:
         path: mcp/locks/excalidraw/package-lock.json
         url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/mcp/locks/excalidraw/package-lock.json
-        sha256: e34afb7ddd5fab1916626445d6b0006f05f0e664810b2bb2976966e3521db7fd
+        sha256: ab911d229f3b8223cbc03c19f37fd88191db70a06385683ece4c54bf7e9e46d4
     env:
       - name: EXCALIDRAW_EXPORT_DIR
         secret: false
@@ -991,13 +991,13 @@ mcp:
     package:
       ecosystem: npm
       name: "@playwright/mcp"
-      version: 0.0.84
-      purl: pkg:npm/%40playwright/mcp@0.0.84
+      version: 0.0.85
+      purl: pkg:npm/%40playwright/mcp@0.0.85
       bin: playwright-mcp
       lockfile:
         path: mcp/locks/playwright/package-lock.json
         url: https://raw.githubusercontent.com/jensen-org/jensen-registry/main/mcp/locks/playwright/package-lock.json
-        sha256: e0a738a47487a3f61f21f8f615cecf93aa40617157b5cc38a2f6ffba9f7c96e4
+        sha256: 1bd25f817f90f11aedf75e798ffe0bb7f0e74f94262df54a0a864cd5833eab77
     env: []
   - id: sentry
     description: Look up Sentry issues, events and releases through Sentry's hosted server, signed in with OAuth.

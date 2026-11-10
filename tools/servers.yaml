@@ -1,7 +1,7 @@
 schema_version: 2
 upstream:
   repo: neovim/nvim-lspconfig
-  sha: 993d048db0d83d8e8ba3f9cb376456321acdcce3
+  sha: 443d92c6bea761ab54cdde46fb197a2b4d614bdd
 servers:
   - id: ada_ls
     cmd:
@@ -2964,6 +2964,7 @@ servers:
       - graphql
       - markdown
       - svelte
+      - astro
   - id: oxlint
     package: oxlint
     cmd:
