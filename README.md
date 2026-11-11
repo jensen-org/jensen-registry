@@ -46,10 +46,34 @@ same bytes.
 Filetype ids are Neovim's (`sh`, `cs`, `typescriptreact`). Neovim says nothing of grammars or
 shebangs, so `tools/overrides/filetypes.yaml` adds them by filetype id: `grammar` (the grammar in
 `grammars/grammars.yaml` that parses it), `embeds` (grammars read inside it through its injections
-query, installed with it) and `interpreters` (the plain program names a shebang may run, each claimed
-by one filetype). `validate` fails the table when any `grammar` or `embeds` id is not published. A formatter, linter or debugger takes its
+query, installed with it), `interpreters` (the plain program names a shebang may run, each claimed
+by one filetype) and `markers` (see below). `validate` fails the table when any `grammar` or `embeds` id is not published. A formatter, linter or debugger takes its
 `filetypes` from the languages of its package: a Mason language name is looked up in GitHub Linguist
 by name or alias, and its extensions and filenames are matched against `filetypes.yaml`.
+
+### Project markers, workspace servers, priorities and requirements
+
+All four are optional and say nothing a client may not ignore.
+
+- `filetypes[].markers`: a list of exact file names (no globs, no paths, never empty), set in
+  `tools/overrides/filetypes.yaml`. A language counts in a project only when one of them exists at any
+  depth, so a stray `.rb` file in a repository without a `Gemfile` does not bring Ruby tooling. A
+  filetype without `markers` counts whenever it has files. `validate` rejects a marker on a filetype
+  `filetypes.yaml` does not list and an empty marker.
+- `servers[].workspace_required`: the server is a candidate only when one of its `root_markers` other
+  than `.git` exists near the file. `validate` rejects a workspace required server with no such marker.
+- `servers[].priority`: an integer, 0 when absent, set by override. A client installs, for each
+  language, the eligible server with the highest priority. `validate` rejects a filetype whose highest
+  priority is shared by two eligible servers (runnable and joined to a package), so the default is
+  never a tie. Canonical servers carry 10, general purpose helpers such as `tailwindcss` and `biome`
+  carry a negative value.
+- `packages[].requires`: the program names that must be found on the host (`npm`, `node`, `python3`,
+  `cargo`), generated from `requires.program` of the package's client and of the launchers of its
+  `bin` entries. A client that finds one missing shows the tool once as unavailable, with the reason.
+  `validate` checks the shape only: unique, non empty, lowercase program names without spaces.
+
+An override may also correct a server's `filetypes`, which is how `symfony_lsp` is held to `php` and
+`twig`.
 
 ### Placeholders in tool entries
 
@@ -80,7 +104,7 @@ a required field (a server `cmd`, a formatter `command`, a linter `cmd` or `pars
 `tools/overrides/<kind>/<id>.yaml`, with `kind` one of `server`, `formatter`, `linter` or `debugger`,
 is deep merged over the generated entry. It may hold Jensen policy upstream knows nothing of:
 `config` (the files a tool reads, with `executes` and `code_keys` for files that run code), `priority`,
-`root_strategy` and `remedies`. It may also supply a field that upstream sets with a function and
+`root_strategy`, `remedies` and `filetypes` (a correction to the languages a server serves). It may also supply a field that upstream sets with a function and
 `track` could not read. `validate` rejects an override that names no generated entry, repeats a value
 the generated entry already has, sets a field upstream provides, or sets a field outside the schema.
 

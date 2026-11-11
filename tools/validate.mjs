@@ -5,7 +5,7 @@ import { validateClients } from "../clients/validate.mjs";
 import { ROOT, readYaml } from "../lib.mjs";
 import { KINDS, LANGUAGES_FILE, OUTPUTS, generate, loadOverrides } from "./generate.mjs";
 
-const POLICY = new Set(["config", "priority", "root_strategy", "remedies"]);
+const POLICY = new Set(["config", "priority", "root_strategy", "remedies", "filetypes"]);
 const WITH_PARSER = new Set(["args", "stdin", "stream", "append_file", "ignore_exitcode"]);
 const LEGACY = ["tools.yaml", "upstreams.yaml", "tools/tools.yaml"];
 const FILES = { packages: "packages", servers: "servers", formatters: "formatters", linters: "linters", debuggers: "debuggers", filetypes: "filetypes", testrunners: "testrunners", entrypoints: "entrypoints" };
@@ -30,11 +30,64 @@ export function filetypeLanguageProblems(filetypes, grammarIds) {
   const claimed = new Map();
   for (const entry of filetypes) {
     if (entry.grammar !== undefined && !grammarIds.has(entry.grammar)) problems.push(`tools/filetypes.yaml: ${entry.id} names grammar ${entry.grammar}, which grammars/grammars.yaml does not publish`);
+    for (const marker of entry.markers ?? []) if (!marker.trim()) problems.push(`tools/filetypes.yaml: ${entry.id} lists an empty marker`);
     for (const id of entry.embeds ?? []) if (!grammarIds.has(id)) problems.push(`tools/filetypes.yaml: ${entry.id} embeds grammar ${id}, which grammars/grammars.yaml does not publish`);
     for (const name of entry.interpreters ?? []) {
       if (!PROGRAM_NAME.test(name)) problems.push(`tools/filetypes.yaml: ${entry.id} lists interpreter ${name}, which is not a plain program name`);
       else if (claimed.has(name)) problems.push(`tools/filetypes.yaml: ${entry.id} lists interpreter ${name}, which ${claimed.get(name)} already lists`);
       else claimed.set(name, entry.id);
+    }
+  }
+  return problems;
+}
+
+export function languageFileProblems(languages, filetypeIds) {
+  const problems = [];
+  for (const [id, language] of Object.entries(languages ?? {})) {
+    if (!filetypeIds.has(id)) problems.push(`${LANGUAGES_FILE}: ${id} names no filetype in tools/filetypes.yaml`);
+    for (const marker of language.markers ?? []) if (typeof marker !== "string" || !marker.trim()) problems.push(`${LANGUAGES_FILE}: ${id} lists an empty marker`);
+  }
+  return problems;
+}
+
+const eligible = (server) => server.runnable !== false && Boolean(server.package);
+const listed = (names) => (names.length < 3 ? names.join(" and ") : `${names.slice(0, -1).join(", ")} and ${names.at(-1)}`);
+
+export function serverPriorityProblems(servers) {
+  const byFiletype = new Map();
+  for (const server of servers.filter(eligible)) for (const type of server.filetypes ?? []) byFiletype.set(type, [...(byFiletype.get(type) ?? []), server]);
+  const problems = [];
+  for (const [type, group] of [...byFiletype].sort(([a], [b]) => (a < b ? -1 : 1))) {
+    if (group.length < 2) continue;
+    const top = Math.max(...group.map((server) => server.priority ?? 0));
+    const tied = group.filter((server) => (server.priority ?? 0) === top);
+    if (tied.length > 1) problems.push(`tools/servers.yaml: ${type} has no single default, ${listed(tied.map((server) => server.id))} share priority ${top}`);
+  }
+  return problems;
+}
+
+export function workspaceServerProblems(servers) {
+  const problems = [];
+  for (const server of servers.filter((entry) => entry.workspace_required)) {
+    const markers = server.root_markers ?? [];
+    if (!markers.length) problems.push(`tools/servers.yaml: ${server.id} is workspace_required and lists no root marker`);
+    else if (markers.every((marker) => marker === ".git")) problems.push(`tools/servers.yaml: ${server.id} is workspace_required and its only root marker is .git`);
+  }
+  return problems;
+}
+
+const RUNTIME_NAME = /^[a-z0-9][a-z0-9._+-]*$/;
+
+export function packageRequirementProblems(packages) {
+  const problems = [];
+  for (const pkg of packages) {
+    if (pkg.requires === undefined) continue;
+    if (!pkg.requires.length) problems.push(`tools/packages.yaml: ${pkg.id} lists an empty requires`);
+    const seen = new Set();
+    for (const name of pkg.requires) {
+      if (!RUNTIME_NAME.test(name)) problems.push(`tools/packages.yaml: ${pkg.id} requires ${name}, which is not a lowercase program name`);
+      else if (seen.has(name)) problems.push(`tools/packages.yaml: ${pkg.id} lists requirement ${name} twice`);
+      seen.add(name);
     }
   }
   return problems;
@@ -94,7 +147,8 @@ export function validateOffline({ problems }) {
   const filetypeIds = new Set(data.filetypes.map((entry) => entry.id));
   const grammarIds = new Set((readYaml("grammars/grammars.yaml").grammars ?? []).map((grammar) => grammar.id));
   problems.push(...filetypeLanguageProblems(data.filetypes, grammarIds));
-  for (const id of Object.keys(readYaml(LANGUAGES_FILE).filetypes ?? {})) if (!filetypeIds.has(id)) problems.push(`${LANGUAGES_FILE}: ${id} names no filetype in tools/filetypes.yaml`);
+  problems.push(...languageFileProblems(readYaml(LANGUAGES_FILE).filetypes, filetypeIds));
+  problems.push(...serverPriorityProblems(data.servers), ...workspaceServerProblems(data.servers), ...packageRequirementProblems(data.packages));
   for (const name of ["servers", "formatters", "linters", "debuggers", "testrunners"]) {
     for (const entry of data[name] ?? []) {
       if (entry.package && !packageIds.has(entry.package)) problems.push(`tools/${name}.yaml: ${entry.id} names package ${entry.package}, which does not exist`);

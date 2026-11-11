@@ -39,6 +39,7 @@ export const filetypeEntries = (table, extra = [], related = new Map(), language
     if (language.grammar) out.grammar = language.grammar;
     if (language.embeds?.length) out.embeds = [...language.embeds].sort(byText);
     if (language.interpreters?.length) out.interpreters = [...language.interpreters];
+    if (language.markers?.length) out.markers = [...language.markers];
     return out;
   });
 };

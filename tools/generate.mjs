@@ -33,6 +33,13 @@ export function loadOverrides() {
   return overrides;
 }
 
+export function requiresOf(pkg, programs) {
+  const found = new Set([programs.get(pkg.source), ...Object.values(pkg.bin ?? {}).map((bin) => programs.get(bin.client))].filter(Boolean));
+  return found.size ? [...found].sort(byText) : undefined;
+}
+
+const clientPrograms = () => new Map(entryFiles("clients").map((path) => readYaml(path)).map((client) => [client.id, client.requires?.program]));
+
 const previousDigests = (retryMissing) => {
   const known = new Map();
   if (!existsSync(join(ROOT, "tools/packages.yaml"))) return known;
@@ -82,7 +89,11 @@ export async function generate(upstreams, { retryMissing = false } = {}) {
   const { mason, sources } = upstreams;
   const registry = await masonRegistry(mason);
   const built = await buildPackages(registry, { digests: (repo, tag) => releaseDigests(repo, tag), known: previousDigests(retryMissing) });
-  const { packages } = built;
+  const programs = clientPrograms();
+  const packages = built.packages.map((pkg) => {
+    const requires = requiresOf(pkg, programs);
+    return requires ? { ...pkg, requires } : pkg;
+  });
   const archives = Object.fromEntries(
     await Promise.all(["lspconfig", "conform", "lint", "dap", "nonels"].map(async (name) => [name, await repoFiles(sources[name].repo, sources[name].sha)])),
   );

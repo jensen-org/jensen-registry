@@ -8,6 +8,9 @@ filetypes:
     grammar: arduino
   asm:
     grammar: asm
+  astro:
+    markers:
+      - package.json
   awk:
     interpreters:
       - awk
@@ -26,10 +29,17 @@ filetypes:
     grammar: starlark
   c:
     grammar: c
+  clojure:
+    markers:
+      - deps.edn
+      - project.clj
   cmake:
     grammar: cmake
   cpp:
     grammar: cpp
+  crystal:
+    markers:
+      - shard.yml
   cs:
     grammar: c_sharp
   css:
@@ -40,6 +50,9 @@ filetypes:
     grammar: cue
   d:
     grammar: d
+  dart:
+    markers:
+      - pubspec.yaml
   dockerfile:
     grammar: dockerfile
   dot:
@@ -50,10 +63,16 @@ filetypes:
     grammar: elixir
     interpreters:
       - elixir
+    markers:
+      - mix.exs
   elm:
     grammar: elm
+    markers:
+      - elm.json
   erlang:
     grammar: erlang
+    markers:
+      - rebar.config
   fish:
     grammar: fish
     interpreters:
@@ -66,8 +85,20 @@ filetypes:
     grammar: gdshader
   gitattributes:
     grammar: gitattributes
+  gleam:
+    markers:
+      - gleam.toml
   go:
     grammar: go
+    markers:
+      - go.mod
+      - go.work
+  haskell:
+    markers:
+      - stack.yaml
+      - cabal.project
+      - package.yaml
+      - hie.yaml
   hcl:
     grammar: hcl
   html:
@@ -77,17 +108,32 @@ filetypes:
       - javascript
   java:
     grammar: java
+    markers:
+      - pom.xml
+      - build.gradle
+      - build.gradle.kts
   javascript:
     grammar: javascript
     interpreters:
       - node
       - nodejs
+    markers:
+      - package.json
+      - jsconfig.json
+      - deno.json
+      - deno.jsonc
   javascriptreact:
     grammar: javascript
+    markers:
+      - package.json
+      - jsconfig.json
   json:
     grammar: json
   jsonc:
     grammar: json
+  julia:
+    markers:
+      - Project.toml
   kconfig:
     grammar: kconfig
   kotlin:
@@ -111,6 +157,9 @@ filetypes:
     grammar: nix
   objc:
     grammar: objc
+  ocaml:
+    markers:
+      - dune-project
   odin:
     grammar: odin
   pascal:
@@ -118,10 +167,15 @@ filetypes:
   perl:
     interpreters:
       - perl
+    markers:
+      - cpanfile
+      - Makefile.PL
   php:
     grammar: php
     interpreters:
       - php
+    markers:
+      - composer.json
   proto:
     grammar: proto
   puppet:
@@ -132,6 +186,12 @@ filetypes:
       - python
       - python2
       - python3
+    markers:
+      - pyproject.toml
+      - setup.py
+      - setup.cfg
+      - requirements.txt
+      - Pipfile
   ql:
     grammar: ql
   qmljs:
@@ -154,10 +214,17 @@ filetypes:
     grammar: ruby
     interpreters:
       - ruby
+    markers:
+      - Gemfile
   rust:
     grammar: rust
+    markers:
+      - Cargo.toml
   scala:
     grammar: scala
+    markers:
+      - build.sbt
+      - build.sc
   scheme:
     grammar: scheme
   sh:
@@ -178,8 +245,13 @@ filetypes:
       - javascript
       - tsx
       - typescript
+    markers:
+      - package.json
   swift:
     grammar: swift
+    markers:
+      - Package.swift
+      - project.pbxproj
   tcl:
     interpreters:
       - tclsh
@@ -196,8 +268,16 @@ filetypes:
     grammar: typescript
     interpreters:
       - ts-node
+    markers:
+      - tsconfig.json
+      - package.json
+      - deno.json
+      - deno.jsonc
   typescriptreact:
     grammar: tsx
+    markers:
+      - tsconfig.json
+      - package.json
   vhdl:
     grammar: vhdl
   vue:
@@ -207,12 +287,16 @@ filetypes:
       - javascript
       - tsx
       - typescript
+    markers:
+      - package.json
   xcompose:
     grammar: xcompose
   yaml:
     grammar: yaml
   zig:
     grammar: zig
+    markers:
+      - build.zig
   zsh:
     grammar: zsh
     interpreters:
