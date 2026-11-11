@@ -16,12 +16,15 @@ filetypes:
   elixir:
     markers:
       - mix.exs
+    grammar: elixir
   elm:
     markers:
       - elm.json
+    grammar: elm
   erlang:
     markers:
       - rebar.config
+    grammar: erlang
   gleam:
     markers:
       - gleam.toml
@@ -29,6 +32,7 @@ filetypes:
     markers:
       - go.mod
       - go.work
+    grammar: go
   haskell:
     markers:
       - stack.yaml
@@ -40,16 +44,19 @@ filetypes:
       - pom.xml
       - build.gradle
       - build.gradle.kts
+    grammar: java
   javascript:
     markers:
       - package.json
       - jsconfig.json
       - deno.json
       - deno.jsonc
+    grammar: javascript
   javascriptreact:
     markers:
       - package.json
       - jsconfig.json
+    grammar: javascript
   julia:
     markers:
       - Project.toml
@@ -63,6 +70,7 @@ filetypes:
   php:
     markers:
       - composer.json
+    grammar: php
   python:
     markers:
       - pyproject.toml
@@ -70,36 +78,176 @@ filetypes:
       - setup.cfg
       - requirements.txt
       - Pipfile
+    grammar: python
   ruby:
     markers:
       - Gemfile
+    grammar: ruby
   rust:
     markers:
       - Cargo.toml
+    grammar: rust
   scala:
     markers:
       - build.sbt
       - build.sc
+    grammar: scala
   svelte:
     markers:
       - package.json
+    grammar: html
+    embeds:
+      - javascript
+      - tsx
+      - typescript
   swift:
     markers:
       - Package.swift
       - project.pbxproj
+    grammar: swift
   typescript:
     markers:
       - tsconfig.json
       - package.json
       - deno.json
       - deno.jsonc
+    grammar: typescript
   typescriptreact:
     markers:
       - tsconfig.json
       - package.json
+    grammar: tsx
   vue:
     markers:
       - package.json
+    grammar: html
+    embeds:
+      - javascript
+      - tsx
+      - typescript
   zig:
     markers:
       - build.zig
+    grammar: zig
+  ada:
+    grammar: ada
+  agda:
+    grammar: agda
+  arduino:
+    grammar: arduino
+  asm:
+    grammar: asm
+  bash:
+    grammar: bash
+  beancount:
+    grammar: beancount
+  bicep:
+    grammar: bicep
+  bpftrace:
+    grammar: bpftrace
+  c:
+    grammar: c
+  cmake:
+    grammar: cmake
+  cpp:
+    grammar: cpp
+  css:
+    grammar: css
+  cuda:
+    grammar: cuda
+  cue:
+    grammar: cue
+  d:
+    grammar: d
+  dockerfile:
+    grammar: dockerfile
+  dot:
+    grammar: dot
+  earthfile:
+    grammar: earthfile
+  fish:
+    grammar: fish
+  foam:
+    grammar: foam
+  gdscript:
+    grammar: gdscript
+  gdshader:
+    grammar: gdshader
+  gitattributes:
+    grammar: gitattributes
+  hcl:
+    grammar: hcl
+  html:
+    grammar: html
+  json:
+    grammar: json
+  kconfig:
+    grammar: kconfig
+  kotlin:
+    grammar: kotlin
+  lua:
+    grammar: lua
+  luau:
+    grammar: luau
+  make:
+    grammar: make
+  matlab:
+    grammar: matlab
+  nginx:
+    grammar: nginx
+  nickel:
+    grammar: nickel
+  nix:
+    grammar: nix
+  objc:
+    grammar: objc
+  odin:
+    grammar: odin
+  pascal:
+    grammar: pascal
+  proto:
+    grammar: proto
+  puppet:
+    grammar: puppet
+  ql:
+    grammar: ql
+  qmljs:
+    grammar: qmljs
+  r:
+    grammar: r
+  racket:
+    grammar: racket
+  rbs:
+    grammar: rbs
+  requirements:
+    grammar: requirements
+  rst:
+    grammar: rst
+  scheme:
+    grammar: scheme
+  solidity:
+    grammar: solidity
+  starlark:
+    grammar: starlark
+  templ:
+    grammar: templ
+  tera:
+    grammar: tera
+  vhdl:
+    grammar: vhdl
+  xcompose:
+    grammar: xcompose
+  yaml:
+    grammar: yaml
+  zsh:
+    grammar: zsh
+  cs:
+    grammar: c_sharp
+  terraform:
+    grammar: hcl
+  tf:
+    grammar: hcl
+  terraform-vars:
+    grammar: hcl
+  sh:
+    grammar: bash
