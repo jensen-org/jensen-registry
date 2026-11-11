@@ -3,7 +3,7 @@ import { join } from "node:path";
 import Ajv2020 from "ajv/dist/2020.js";
 import { validateClients } from "../clients/validate.mjs";
 import { ROOT, readYaml } from "../lib.mjs";
-import { KINDS, OUTPUTS, generate, loadOverrides } from "./generate.mjs";
+import { KINDS, LANGUAGES_FILE, OUTPUTS, generate, loadOverrides } from "./generate.mjs";
 
 const POLICY = new Set(["config", "priority", "root_strategy", "remedies"]);
 const WITH_PARSER = new Set(["args", "stdin", "stream", "append_file", "ignore_exitcode"]);
@@ -22,6 +22,23 @@ function leaves(value, path = []) {
 }
 
 const at = (object, path) => path.reduce((node, key) => (node && typeof node === "object" ? node[key] : undefined), object);
+
+const PROGRAM_NAME = /^[A-Za-z0-9][\w.+-]*$/;
+
+export function filetypeLanguageProblems(filetypes, grammarIds) {
+  const problems = [];
+  const claimed = new Map();
+  for (const entry of filetypes) {
+    if (entry.grammar !== undefined && !grammarIds.has(entry.grammar)) problems.push(`tools/filetypes.yaml: ${entry.id} names grammar ${entry.grammar}, which grammars/grammars.yaml does not publish`);
+    for (const id of entry.embeds ?? []) if (!grammarIds.has(id)) problems.push(`tools/filetypes.yaml: ${entry.id} embeds grammar ${id}, which grammars/grammars.yaml does not publish`);
+    for (const name of entry.interpreters ?? []) {
+      if (!PROGRAM_NAME.test(name)) problems.push(`tools/filetypes.yaml: ${entry.id} lists interpreter ${name}, which is not a plain program name`);
+      else if (claimed.has(name)) problems.push(`tools/filetypes.yaml: ${entry.id} lists interpreter ${name}, which ${claimed.get(name)} already lists`);
+      else claimed.set(name, entry.id);
+    }
+  }
+  return problems;
+}
 
 export function checkOverrides({ generated, overrides, problems, allowed }) {
   for (const [kind, table] of Object.entries(overrides)) {
@@ -75,6 +92,9 @@ export function validateOffline({ problems }) {
   if (Object.keys(FILES).some((name) => !data[name])) return;
   const packageIds = new Set(data.packages.map((pkg) => pkg.id));
   const filetypeIds = new Set(data.filetypes.map((entry) => entry.id));
+  const grammarIds = new Set((readYaml("grammars/grammars.yaml").grammars ?? []).map((grammar) => grammar.id));
+  problems.push(...filetypeLanguageProblems(data.filetypes, grammarIds));
+  for (const id of Object.keys(readYaml(LANGUAGES_FILE).filetypes ?? {})) if (!filetypeIds.has(id)) problems.push(`${LANGUAGES_FILE}: ${id} names no filetype in tools/filetypes.yaml`);
   for (const name of ["servers", "formatters", "linters", "debuggers", "testrunners"]) {
     for (const entry of data[name] ?? []) {
       if (entry.package && !packageIds.has(entry.package)) problems.push(`tools/${name}.yaml: ${entry.id} names package ${entry.package}, which does not exist`);

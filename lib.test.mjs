@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import { afterEach, test } from "node:test";
 import { getBytes, getJson } from "./lib.mjs";
+import { filetypeLanguageProblems } from "./tools/validate.mjs";
 
 const realFetch = globalThis.fetch;
 afterEach(() => {
@@ -44,4 +45,39 @@ test("a network failure that never recovers is thrown after the last attempt", a
   const calls = script([new TypeError("fetch failed")]);
   await assert.rejects(() => getBytes("https://example.test/d", { ...noWait, attempts: 2 }), TypeError);
   assert.equal(calls.length, 2);
+});
+
+const published = new Set(["bash", "html", "javascript", "typescript"]);
+
+test("filetypes that name published grammars and plain interpreters have no problems", () => {
+  const filetypes = [
+    { id: "sh", grammar: "bash", interpreters: ["sh", "bash"] },
+    { id: "vue", grammar: "html", embeds: ["javascript", "typescript"] },
+    { id: "perl", interpreters: ["perl"] },
+  ];
+  assert.deepEqual(filetypeLanguageProblems(filetypes, published), []);
+});
+
+test("a grammar or embeds id that grammars.yaml does not publish is reported", () => {
+  const filetypes = [
+    { id: "cs", grammar: "c_sharp" },
+    { id: "svelte", grammar: "html", embeds: ["javascript", "tsx"] },
+  ];
+  assert.deepEqual(filetypeLanguageProblems(filetypes, published), [
+    "tools/filetypes.yaml: cs names grammar c_sharp, which grammars/grammars.yaml does not publish",
+    "tools/filetypes.yaml: svelte embeds grammar tsx, which grammars/grammars.yaml does not publish",
+  ]);
+});
+
+test("an interpreter must be a plain program name claimed by one filetype", () => {
+  const filetypes = [
+    { id: "sh", interpreters: ["/bin/sh", "env bash"] },
+    { id: "zsh", interpreters: ["zsh"] },
+    { id: "bash", interpreters: ["zsh"] },
+  ];
+  assert.deepEqual(filetypeLanguageProblems(filetypes, published), [
+    "tools/filetypes.yaml: sh lists interpreter /bin/sh, which is not a plain program name",
+    "tools/filetypes.yaml: sh lists interpreter env bash, which is not a plain program name",
+    "tools/filetypes.yaml: bash lists interpreter zsh, which zsh already lists",
+  ]);
 });

@@ -43,7 +43,11 @@ same bytes.
 | `debuggers.yaml` | mason-nvim-dap | the adapter (`bin` names a package binary), its `filetypes` and its `configurations` |
 | `filetypes.yaml` | Neovim `runtime/lua/vim/filetype.lua` | a filetype id with its `extensions` and `filenames` |
 
-Filetype ids are Neovim's (`sh`, `cs`, `typescriptreact`). A formatter, linter or debugger takes its
+Filetype ids are Neovim's (`sh`, `cs`, `typescriptreact`). Neovim says nothing of grammars or
+shebangs, so `tools/overrides/filetypes.yaml` adds them by filetype id: `grammar` (the grammar in
+`grammars/grammars.yaml` that parses it), `embeds` (grammars read inside it through its injections
+query, installed with it) and `interpreters` (the plain program names a shebang may run, each claimed
+by one filetype). `validate` fails the table when any `grammar` or `embeds` id is not published. A formatter, linter or debugger takes its
 `filetypes` from the languages of its package: a Mason language name is looked up in GitHub Linguist
 by name or alias, and its extensions and filenames are matched against `filetypes.yaml`.
 
@@ -135,7 +139,9 @@ update a grammar, change `sources.yaml` and run `npm run track` with that CLI ve
 builds only the files that are missing, records every file's sha256 in `grammars/grammars.yaml`, and
 refreshes `checksums.txt`. A file under `grammars/wasm/` is never rewritten, because released clients
 pin it by hash. `validate` checks that every source has a wasm file, that the file is a wasm module,
-and that the recorded entries match the files. The build is not byte reproducible, so `validate` never
+and that the recorded entries match the files. A query a crate does not ship, such as `tags` for
+kotlin, bash, hcl, css and zig, lives in `grammars/own/<id>/` and is listed in that grammar's
+`own_queries`; `validate` compiles every own query against its wasm. The build is not byte reproducible, so `validate` never
 rebuilds.
 
 ## Binding an MCP server to an integration

@@ -13,12 +13,17 @@ export function metricsProblems(text, language, label) {
   for (const [, capture] of text.matchAll(/@([A-Za-z_][\w.-]*)/g)) {
     if (!METRIC_CAPTURES.has(capture) && !capture.startsWith("_")) problems.push(`${label} captures @${capture}, which is not a metrics capture`);
   }
+  problems.push(...compileProblems(text, language, label));
+  return problems;
+}
+
+export function compileProblems(text, language, label) {
   try {
     new Query(language, text).delete();
+    return [];
   } catch (error) {
-    problems.push(`${label} does not compile: ${String(error.message ?? error).split("\n")[0]}`);
+    return [`${label} does not compile: ${String(error.message ?? error).split("\n")[0]}`];
   }
-  return problems;
 }
 
 export async function validateGrammars({ problems }) {
@@ -38,7 +43,10 @@ export async function validateGrammars({ problems }) {
     for (const query of entry.queries) {
       const text = readFileSync(join(ROOT, queryPath(grammar, query.name)), "utf8");
       if (text.trim() === "") problems.push(`${queryPath(grammar, query.name)} is empty`);
-      if (query.name !== "metrics") continue;
+      if (query.name !== "metrics") {
+        if ((grammar.own_queries ?? []).includes(query.name)) problems.push(...compileProblems(text, await Language.load(readFileSync(file)), queryPath(grammar, query.name)));
+        continue;
+      }
       if (!(grammar.own_queries ?? []).includes("metrics")) problems.push(`${queryPath(grammar, query.name)} has no source in grammars/own/${grammar.id}, a version bump would drop it`);
       const language = await Language.load(readFileSync(file));
       problems.push(...metricsProblems(text, language, queryPath(grammar, query.name)));

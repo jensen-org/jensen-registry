@@ -1,0 +1,219 @@
+schema_version: 2
+filetypes:
+  ada:
+    grammar: ada
+  agda:
+    grammar: agda
+  arduino:
+    grammar: arduino
+  asm:
+    grammar: asm
+  awk:
+    interpreters:
+      - awk
+      - gawk
+      - mawk
+      - nawk
+  bash:
+    grammar: bash
+  beancount:
+    grammar: beancount
+  bicep:
+    grammar: bicep
+  bpftrace:
+    grammar: bpftrace
+  bzl:
+    grammar: starlark
+  c:
+    grammar: c
+  cmake:
+    grammar: cmake
+  cpp:
+    grammar: cpp
+  cs:
+    grammar: c_sharp
+  css:
+    grammar: css
+  cuda:
+    grammar: cuda
+  cue:
+    grammar: cue
+  d:
+    grammar: d
+  dockerfile:
+    grammar: dockerfile
+  dot:
+    grammar: dot
+  earthfile:
+    grammar: earthfile
+  elixir:
+    grammar: elixir
+    interpreters:
+      - elixir
+  elm:
+    grammar: elm
+  erlang:
+    grammar: erlang
+  fish:
+    grammar: fish
+    interpreters:
+      - fish
+  foam:
+    grammar: foam
+  gdscript:
+    grammar: gdscript
+  gdshader:
+    grammar: gdshader
+  gitattributes:
+    grammar: gitattributes
+  go:
+    grammar: go
+  hcl:
+    grammar: hcl
+  html:
+    grammar: html
+    embeds:
+      - css
+      - javascript
+  java:
+    grammar: java
+  javascript:
+    grammar: javascript
+    interpreters:
+      - node
+      - nodejs
+  javascriptreact:
+    grammar: javascript
+  json:
+    grammar: json
+  jsonc:
+    grammar: json
+  kconfig:
+    grammar: kconfig
+  kotlin:
+    grammar: kotlin
+  lua:
+    grammar: lua
+    interpreters:
+      - lua
+      - luajit
+  luau:
+    grammar: luau
+  make:
+    grammar: make
+  matlab:
+    grammar: matlab
+  nginx:
+    grammar: nginx
+  nickel:
+    grammar: nickel
+  nix:
+    grammar: nix
+  objc:
+    grammar: objc
+  odin:
+    grammar: odin
+  pascal:
+    grammar: pascal
+  perl:
+    interpreters:
+      - perl
+  php:
+    grammar: php
+    interpreters:
+      - php
+  proto:
+    grammar: proto
+  puppet:
+    grammar: puppet
+  python:
+    grammar: python
+    interpreters:
+      - python
+      - python2
+      - python3
+  ql:
+    grammar: ql
+  qmljs:
+    grammar: qmljs
+  r:
+    grammar: r
+    interpreters:
+      - Rscript
+  racket:
+    grammar: racket
+    interpreters:
+      - racket
+  rbs:
+    grammar: rbs
+  requirements:
+    grammar: requirements
+  rst:
+    grammar: rst
+  ruby:
+    grammar: ruby
+    interpreters:
+      - ruby
+  rust:
+    grammar: rust
+  scala:
+    grammar: scala
+  scheme:
+    grammar: scheme
+  sh:
+    grammar: bash
+    interpreters:
+      - sh
+      - bash
+      - dash
+      - ash
+  solidity:
+    grammar: solidity
+  starlark:
+    grammar: starlark
+  svelte:
+    grammar: html
+    embeds:
+      - css
+      - javascript
+      - tsx
+      - typescript
+  swift:
+    grammar: swift
+  tcl:
+    interpreters:
+      - tclsh
+      - wish
+  templ:
+    grammar: templ
+  tera:
+    grammar: tera
+  terraform:
+    grammar: hcl
+  terraform-vars:
+    grammar: hcl
+  typescript:
+    grammar: typescript
+    interpreters:
+      - ts-node
+  typescriptreact:
+    grammar: tsx
+  vhdl:
+    grammar: vhdl
+  vue:
+    grammar: html
+    embeds:
+      - css
+      - javascript
+      - tsx
+      - typescript
+  xcompose:
+    grammar: xcompose
+  yaml:
+    grammar: yaml
+  zig:
+    grammar: zig
+  zsh:
+    grammar: zsh
+    interpreters:
+      - zsh

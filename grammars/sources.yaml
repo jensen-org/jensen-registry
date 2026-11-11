@@ -29,6 +29,7 @@ grammars:
     version: 0.25.1
     own_queries:
       - metrics
+      - tags
   - id: beancount
     crate: tree-sitter-beancount
     version: 2.5.1
@@ -69,6 +70,7 @@ grammars:
     version: 0.25.0
     own_queries:
       - metrics
+      - tags
   - id: cuda
     crate: tree-sitter-cuda
     version: 0.21.2
@@ -129,6 +131,7 @@ grammars:
     version: 1.1.0
     own_queries:
       - metrics
+      - tags
   - id: html
     crate: tree-sitter-html
     version: 0.23.2
@@ -156,6 +159,7 @@ grammars:
     version: 1.1.0
     own_queries:
       - metrics
+      - tags
   - id: lua
     crate: tree-sitter-lua
     version: 0.5.0
@@ -291,6 +295,7 @@ grammars:
     version: 1.1.2
     own_queries:
       - metrics
+      - tags
   - id: zsh
     crate: tree-sitter-zsh
     version: 0.63.4

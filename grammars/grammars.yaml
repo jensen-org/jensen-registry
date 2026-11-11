@@ -54,6 +54,10 @@ grammars:
     path: grammars/wasm/bash-0.25.1.wasm
     sha256: 129620b8be2bb2bd13ba1b00b7ff9331125cc75c0503921a2de0a14d7cc88560
     queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/bash-0.25.1/tags.scm
+        path: grammars/queries/bash-0.25.1/tags.scm
+        sha256: 29e61bd363b6098842baabeb66a6fa02d4b8aa4a1944dce3ed244c216d387a79
       - name: metrics
         url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/bash-0.25.1/metrics.scm
         path: grammars/queries/bash-0.25.1/metrics.scm
@@ -158,6 +162,10 @@ grammars:
     path: grammars/wasm/css-0.25.0.wasm
     sha256: 4bd7da6477e9e772b4ed8c2212d66a0dd0929fbd20c0be98c2a09155c43af95c
     queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/css-0.25.0/tags.scm
+        path: grammars/queries/css-0.25.0/tags.scm
+        sha256: e6e09d1733110c80641875c6a5b04b1c0249c2ee345d315c9cfa46ee2b7c786b
       - name: metrics
         url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/css-0.25.0/metrics.scm
         path: grammars/queries/css-0.25.0/metrics.scm
@@ -330,6 +338,10 @@ grammars:
     path: grammars/wasm/hcl-1.1.0.wasm
     sha256: f1ff1a7d8972d869cfef95b4aa17a5266e1f0c3bf12114a662dba4698351e714
     queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/hcl-1.1.0/tags.scm
+        path: grammars/queries/hcl-1.1.0/tags.scm
+        sha256: 2bf67f1898e9f8c92ace7602c5ce5a975ecfe712088222bcf259249b8d128304
       - name: metrics
         url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/hcl-1.1.0/metrics.scm
         path: grammars/queries/hcl-1.1.0/metrics.scm
@@ -406,6 +418,10 @@ grammars:
     path: grammars/wasm/kotlin-1.1.0.wasm
     sha256: b0234dac88fd1d7253764a1d8f66787e40c0b0068b0c6412edde98d1af9d33fc
     queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/kotlin-1.1.0/tags.scm
+        path: grammars/queries/kotlin-1.1.0/tags.scm
+        sha256: 4d82f8a3d884edb0cb4f8a2e778d96219ad17af3776640df8d29b27d62b602cf
       - name: metrics
         url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/kotlin-1.1.0/metrics.scm
         path: grammars/queries/kotlin-1.1.0/metrics.scm
@@ -834,6 +850,10 @@ grammars:
     path: grammars/wasm/zig-1.1.2.wasm
     sha256: 98f21709a2c489a8b78d07814bd2baa4c7d4b0116ce03b8c3496d8e50393e12d
     queries:
+      - name: tags
+        url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/zig-1.1.2/tags.scm
+        path: grammars/queries/zig-1.1.2/tags.scm
+        sha256: 946f34eaa604abbc801e3c437646d30a311e85d9be357013966a21a41957a7c8
       - name: injections
         url: https://raw.githubusercontent.com/jensen-org/jensen-registry/develop/grammars/queries/zig-1.1.2/injections.scm
         path: grammars/queries/zig-1.1.2/injections.scm
