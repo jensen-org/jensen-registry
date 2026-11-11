@@ -29,6 +29,16 @@ export function filetypeMarkerProblems(filetypes) {
   return problems;
 }
 
+export function filetypeGrammarProblems(filetypes, grammarIds) {
+  const problems = [];
+  for (const entry of filetypes) {
+    for (const id of [entry.grammar, ...(entry.embeds ?? [])].filter(Boolean)) {
+      if (!grammarIds.has(id)) problems.push(`tools/filetypes.yaml: ${entry.id} names the grammar ${id}, which grammars/grammars.yaml does not publish`);
+    }
+  }
+  return problems;
+}
+
 export function languageFileProblems(languages, filetypeIds) {
   const problems = [];
   for (const [id, language] of Object.entries(languages ?? {})) {
@@ -133,6 +143,8 @@ export function validateOffline({ problems }) {
   if (Object.keys(FILES).some((name) => !data[name])) return;
   const packageIds = new Set(data.packages.map((pkg) => pkg.id));
   const filetypeIds = new Set(data.filetypes.map((entry) => entry.id));
+  const grammarIds = new Set((readYaml("grammars/grammars.yaml").grammars ?? []).map((entry) => entry.id));
+  problems.push(...filetypeGrammarProblems(data.filetypes, grammarIds));
   problems.push(...filetypeMarkerProblems(data.filetypes), ...languageFileProblems(readYaml(LANGUAGES_FILE).filetypes, filetypeIds));
   problems.push(...serverPriorityProblems(data.servers), ...workspaceServerProblems(data.servers), ...packageRequirementProblems(data.packages));
   for (const name of ["servers", "formatters", "linters", "debuggers", "testrunners"]) {

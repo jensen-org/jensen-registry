@@ -36,6 +36,8 @@ export const filetypeEntries = (table, extra = [], related = new Map(), language
     if (filenames.size) out.filenames = [...filenames].sort(byText);
     if (related.get(id)?.size) out.related = [...related.get(id)].sort(byText);
     if (languages[id]?.markers?.length) out.markers = [...languages[id].markers];
+    if (languages[id]?.grammar) out.grammar = languages[id].grammar;
+    if (languages[id]?.embeds?.length) out.embeds = [...languages[id].embeds];
     return out;
   });
 };
