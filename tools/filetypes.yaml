@@ -142,6 +142,8 @@ filetypes:
   - id: astro
     extensions:
       - astro
+    markers:
+      - package.json
   - id: astro-markdown
   - id: asy
     extensions:
@@ -420,6 +422,9 @@ filetypes:
       - .trans
       - init.trans
       - riemann.config
+    markers:
+      - deps.edn
+      - project.clj
   - id: cmake
     extensions:
       - cmake
@@ -548,6 +553,8 @@ filetypes:
   - id: crystal
     extensions:
       - cr
+    markers:
+      - shard.yml
   - id: cs
     extensions:
       - cake
@@ -611,6 +618,8 @@ filetypes:
     extensions:
       - dart
       - drt
+    markers:
+      - pubspec.yaml
   - id: datascript
     extensions:
       - ds
@@ -845,9 +854,13 @@ filetypes:
       - exs
     filenames:
       - mix.lock
+    markers:
+      - mix.exs
   - id: elm
     extensions:
       - elm
+    markers:
+      - elm.json
   - id: elmfilt
     filenames:
       - filter-rules
@@ -885,6 +898,8 @@ filetypes:
       - rebar.config
       - rebar.config.lock
       - rebar.lock
+    markers:
+      - rebar.config
   - id: eruby
     extensions:
       - erb
@@ -1155,6 +1170,8 @@ filetypes:
   - id: gleam
     extensions:
       - gleam
+    markers:
+      - gleam.toml
   - id: glsl
     extensions:
       - comp
@@ -1205,6 +1222,9 @@ filetypes:
   - id: go
     extensions:
       - go
+    markers:
+      - go.mod
+      - go.work
   - id: goaccess
     filenames:
       - goaccess.conf
@@ -1321,6 +1341,11 @@ filetypes:
       - hs-boot
       - hsc
       - hsig
+    markers:
+      - stack.yaml
+      - cabal.project
+      - package.yaml
+      - hie.yaml
   - id: haskellpersistent
     extensions:
       - persistentmodels
@@ -1539,6 +1564,10 @@ filetypes:
       - jav
       - java
       - jsh
+    markers:
+      - pom.xml
+      - build.gradle
+      - build.gradle.kts
   - id: javacc
     extensions:
       - jj
@@ -1571,12 +1600,20 @@ filetypes:
       - .node_repl_history
       - Jakefile
       - deno_history.txt
+    markers:
+      - package.json
+      - jsconfig.json
+      - deno.json
+      - deno.jsonc
   - id: javascript.glimmer
     extensions:
       - gjs
   - id: javascriptreact
     extensions:
       - jsx
+    markers:
+      - package.json
+      - jsconfig.json
   - id: jess
     extensions:
       - clp
@@ -1728,6 +1765,8 @@ filetypes:
   - id: julia
     extensions:
       - jl
+    markers:
+      - Project.toml
   - id: just
     extensions:
       - JUST
@@ -2417,6 +2456,8 @@ filetypes:
       - mly
     filenames:
       - .ocamlinit
+    markers:
+      - dune-project
   - id: ocamlinterface
   - id: ocamllex
     extensions:
@@ -2576,6 +2617,9 @@ filetypes:
       - example.gitolite.rc
       - gitolite.rc
       - latexmkrc
+    markers:
+      - cpanfile
+      - Makefile.PL
   - id: pest
     extensions:
       - pest
@@ -2610,6 +2654,8 @@ filetypes:
       - .php_cs
       - .php_cs.dist
       - Phakefile
+    markers:
+      - composer.json
   - id: pike
     extensions:
       - pike
@@ -2815,6 +2861,12 @@ filetypes:
       - SConscript
       - SConstruct
       - wscript
+    markers:
+      - pyproject.toml
+      - setup.py
+      - setup.cfg
+      - requirements.txt
+      - Pipfile
   - id: ql
     extensions:
       - ql
@@ -3081,6 +3133,8 @@ filetypes:
       - irbrc
       - rakefile
       - rantfile
+    markers:
+      - Gemfile
   - id: rune
     extensions:
       - rune
@@ -3088,6 +3142,8 @@ filetypes:
     extensions:
       - rs
       - rs.in
+    markers:
+      - Cargo.toml
   - id: sage
     extensions:
       - sage
@@ -3113,6 +3169,9 @@ filetypes:
       - mill
       - sc
       - scala
+    markers:
+      - build.sbt
+      - build.sc
   - id: scheme
     extensions:
       - music
@@ -3490,6 +3549,8 @@ filetypes:
   - id: svelte
     extensions:
       - svelte
+    markers:
+      - package.json
   - id: svg
     extensions:
       - svg
@@ -3500,6 +3561,9 @@ filetypes:
     extensions:
       - swift
       - swiftinterface
+    markers:
+      - Package.swift
+      - project.pbxproj
   - id: swig
     extensions:
       - i
@@ -3768,12 +3832,20 @@ filetypes:
       - ts
     filenames:
       - .ts_node_repl_history
+    markers:
+      - tsconfig.json
+      - package.json
+      - deno.json
+      - deno.jsonc
   - id: typescript.glimmer
     extensions:
       - gts
   - id: typescriptreact
     extensions:
       - tsx
+    markers:
+      - tsconfig.json
+      - package.json
   - id: typespec
     extensions:
       - tsp
@@ -3939,6 +4011,8 @@ filetypes:
   - id: vue
     extensions:
       - vue
+    markers:
+      - package.json
   - id: vue-html
   - id: vv
   - id: wat
@@ -4257,6 +4331,8 @@ filetypes:
       - zig
       - zig.zon
       - zon
+    markers:
+      - build.zig
   - id: ziggy
     extensions:
       - ziggy
