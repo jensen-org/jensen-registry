@@ -27,7 +27,7 @@ export function readFiletypes(source) {
   return { table, summary: { filetypes: table.size, unextractable } };
 }
 
-export const filetypeEntries = (table, extra = [], related = new Map()) => {
+export const filetypeEntries = (table, extra = [], related = new Map(), languages = {}) => {
   for (const id of extra) if (!table.has(id)) table.set(id, { extensions: new Set(), filenames: new Set() });
   return [...table.keys()].sort(byText).map((id) => {
     const { extensions, filenames } = table.get(id);
@@ -35,6 +35,7 @@ export const filetypeEntries = (table, extra = [], related = new Map()) => {
     if (extensions.size) out.extensions = [...extensions].sort(byText);
     if (filenames.size) out.filenames = [...filenames].sort(byText);
     if (related.get(id)?.size) out.related = [...related.get(id)].sort(byText);
+    if (languages[id]?.markers?.length) out.markers = [...languages[id].markers];
     return out;
   });
 };

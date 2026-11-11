@@ -214,6 +214,7 @@ servers:
       - sgconfig.yaml
       - sgconfig.yml
     workspace_required: true
+    priority: -5
   - id: astro
     package: astro-language-server
     cmd:
@@ -446,6 +447,9 @@ servers:
       - yaml
     workspace_required: true
     priority: -10
+    root_markers:
+      - biome.json
+      - biome.jsonc
   - id: bitbake_language_server
     cmd:
       - bitbake-language-server
@@ -526,6 +530,7 @@ servers:
     root_markers:
       - buf.yaml
       - .git
+    priority: 10
   - id: bzl
     cmd:
       - bzl
@@ -662,6 +667,7 @@ servers:
       - shadow-cljs.edn
       - .git
       - bb.edn
+    priority: 10
   - id: cmake
     package: cmake-language-server
     cmd:
@@ -676,6 +682,7 @@ servers:
       - cmake
     init_options:
       buildDirectory: build
+    priority: 10
   - id: cobol_ls
     package: cobol-language-support
     cmd:
@@ -902,6 +909,7 @@ servers:
     root_markers:
       - cue.mod
       - .git
+    priority: 10
   - id: custom_elements_ls
     package: custom-elements-languageserver
     cmd:
@@ -1084,6 +1092,7 @@ servers:
       - manage.py
       - pyproject.toml
       - .git
+    priority: 5
   - id: djlsp
     package: django-template-lsp
     cmd:
@@ -1237,6 +1246,7 @@ servers:
       - eelixir
       - heex
       - surface
+    priority: 10
   - id: elmls
     package: elm-language-server
     cmd:
@@ -1273,6 +1283,7 @@ servers:
     root_markers:
       - ember-cli-build.js
       - .git
+    priority: 5
   - id: emmet_language_server
     package: emmet-language-server
     cmd:
@@ -1294,6 +1305,7 @@ servers:
       - vue
     root_markers:
       - .git
+    priority: 1
   - id: emmet_ls
     package: emmet-ls
     cmd:
@@ -1351,6 +1363,7 @@ servers:
     root_markers:
       - conf.py
       - .git
+    priority: 10
   - id: eslint
     package: eslint-lsp
     cmd:
@@ -1391,6 +1404,17 @@ servers:
         showDocumentation:
           enable: true
     priority: -10
+    root_markers:
+      - eslint.config.js
+      - eslint.config.mjs
+      - eslint.config.cjs
+      - eslint.config.ts
+      - .eslintrc
+      - .eslintrc.json
+      - .eslintrc.js
+      - .eslintrc.cjs
+      - .eslintrc.yaml
+      - .eslintrc.yml
   - id: expert
     package: expert
     cmd:
@@ -1434,6 +1458,7 @@ servers:
       - fennel-ls
     filetypes:
       - fennel
+    priority: 10
   - id: fish_lsp
     package: fish-lsp
     cmd:
@@ -1494,6 +1519,7 @@ servers:
       - .fortlsrc
       - .fortls.json
       - .git
+    priority: 10
   - id: fsautocomplete
     package: fsautocomplete
     cmd:
@@ -1709,6 +1735,7 @@ servers:
       - comp
     root_markers:
       - .git
+    priority: 10
   - id: glslls
     package: glslls
     cmd:
@@ -1817,6 +1844,7 @@ servers:
       - graphql
       - typescriptreact
       - javascriptreact
+    priority: 5
   - id: groovyls
     package: groovy-language-server
     cmd:
@@ -1826,6 +1854,7 @@ servers:
     root_markers:
       - Jenkinsfile
       - .git
+    priority: 10
   - id: guile_ls
     cmd:
       - guile-lsp-server
@@ -1881,6 +1910,7 @@ servers:
     root_markers:
       - .harper-dictionary.txt
       - .git
+    priority: -3
   - id: hdl_checker
     package: hdl-checker
     cmd:
@@ -1953,6 +1983,7 @@ servers:
       haskell:
         formattingProvider: ormolu
         cabalFormattingProvider: cabal-fmt
+    priority: 10
   - id: home_assistant
     package: vscode-home-assistant
     cmd:
@@ -2041,6 +2072,7 @@ servers:
       - templ
     root_markers:
       - .git
+    priority: -5
   - id: hydra_lsp
     package: hydra-lsp
     cmd:
@@ -2332,6 +2364,7 @@ servers:
       - blade
     root_markers:
       - artisan
+    priority: 5
   - id: laravel_lsp
     package: laravel_lsp
     cmd:
@@ -2370,6 +2403,7 @@ servers:
       - svg
     root_markers:
       - .git
+    priority: 10
   - id: lexical
     package: lexical
     cmd:
@@ -2463,6 +2497,7 @@ servers:
           - text
           - typst
           - xhtml
+    priority: 5
   - id: lua_ls
     package: lua-language-server
     cmd:
@@ -2564,6 +2599,7 @@ servers:
       - package.json
     init_options:
       typescript: {}
+    priority: 10
   - id: mesonlsp
     package: mesonlsp
     cmd:
@@ -2802,12 +2838,14 @@ servers:
     root_markers:
       - flake.nix
       - .git
+    priority: 10
   - id: nim_langserver
     package: nimlangserver
     cmd:
       - nimlangserver
     filetypes:
       - nim
+    priority: 10
   - id: nimls
     package: nimlsp
     cmd:
@@ -2874,6 +2912,7 @@ servers:
       - ocamllex
       - reason
       - dune
+    priority: 10
   - id: ols
     package: ols
     cmd:
@@ -3054,6 +3093,7 @@ servers:
       - perl
     root_markers:
       - .git
+    priority: 10
   - id: perlpls
     cmd:
       - pls
@@ -3448,6 +3488,7 @@ servers:
       - language-server
     filetypes:
       - rego
+    priority: 10
   - id: regols
     package: regols
     cmd:
@@ -3494,6 +3535,7 @@ servers:
         codeLens: true
         inlayHints:
           enable: true
+    priority: 10
   - id: rnix
     package: rnix-lsp
     cmd:
@@ -3512,6 +3554,7 @@ servers:
       - pyproject.toml
       - Pipfile
       - .git
+    priority: 10
   - id: robotframework_ls
     package: robotframework-lsp
     cmd:
@@ -3739,6 +3782,7 @@ servers:
       - .theme-check.yml
       - .theme-check.yaml
       - shopify.theme.toml
+    priority: 10
   - id: shuck
     package: shuck
     cmd:
@@ -3956,6 +4000,7 @@ servers:
       - ape-config.yaml
       - .git
       - package.json
+    priority: 10
   - id: somesass_ls
     package: some-sass-language-server
     cmd:
@@ -3970,6 +4015,7 @@ servers:
     settings:
       somesass:
         suggestAllFromOpenDocument: true
+    priority: 5
   - id: sorbet
     package: sorbet
     cmd:
@@ -4049,6 +4095,7 @@ servers:
       - mysql
     root_markers:
       - config.yml
+    priority: 10
   - id: sqruff
     package: sqruff
     cmd:
@@ -4099,6 +4146,7 @@ servers:
       - WORKSPACE
       - WORKSPACE.bazel
       - MODULE.bazel
+    priority: 10
   - id: statix
     package: statix
     cmd:
@@ -4250,12 +4298,6 @@ servers:
     filetypes:
       - php
       - twig
-      - yaml
-      - json
-      - xml
-      - javascript
-      - typescript
-      - env
     root_markers:
       - composer.json
       - .git
@@ -4397,6 +4439,11 @@ servers:
           htmlangular: html
           templ: html
     priority: -10
+    root_markers:
+      - tailwind.config.js
+      - tailwind.config.cjs
+      - tailwind.config.mjs
+      - tailwind.config.ts
   - id: taplo
     package: taplo
     cmd:
@@ -4450,6 +4497,7 @@ servers:
       - go.work
       - go.mod
       - .git
+    priority: 10
   - id: termux_language_server
     package: termux-language-server
     cmd:
@@ -4475,6 +4523,7 @@ servers:
     root_markers:
       - .terraform
       - .git
+    priority: 10
   - id: terragrunt_ls
     package: terragrunt-ls
     cmd:
@@ -4524,6 +4573,7 @@ servers:
           modifyLineBreaks: false
         bibtexFormatter: texlab
         formatterLineLength: 80
+    priority: 10
   - id: textlsp
     package: textlsp
     cmd:
@@ -4594,6 +4644,7 @@ servers:
       - typst
     root_markers:
       - .git
+    priority: 10
   - id: tofu_ls
     package: tofu-ls
     cmd:
@@ -4739,6 +4790,7 @@ servers:
     root_markers:
       - composer.json
       - .git
+    priority: 10
   - id: ty
     package: ty
     cmd:
@@ -4910,6 +4962,7 @@ servers:
     root_markers:
       - verible.filelist
       - .git
+    priority: 10
   - id: veridian
     cmd:
       - veridian
@@ -4949,6 +5002,7 @@ servers:
     root_markers:
       - vhdl_ls.toml
     workspace_required: true
+    priority: 10
   - id: vimdoc_ls
     cmd:
       - vimdoc-language-server

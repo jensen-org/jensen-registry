@@ -280,6 +280,8 @@ packages:
       alejandra:
         client: cargo
         target: alejandra
+    requires:
+      - cargo
     filetypes:
       - nix
   - id: alex
@@ -296,6 +298,8 @@ packages:
       alex:
         client: npm
         target: alex
+    requires:
+      - npm
     filetypes:
       - markdown
   - id: amber-lsp
@@ -371,6 +375,8 @@ packages:
       ngserver:
         client: npm
         target: ngserver
+    requires:
+      - npm
   - id: ansible-language-server
     source: npm
     coordinate: "@ansible/ansible-language-server"
@@ -386,6 +392,8 @@ packages:
       ansible-language-server:
         client: npm
         target: ansible-language-server
+    requires:
+      - npm
   - id: ansible-lint
     source: pypi
     coordinate: ansible-lint
@@ -402,6 +410,8 @@ packages:
       ansible-lint:
         client: pypi
         target: ansible-lint
+    requires:
+      - python3
   - id: antlers-language-server
     source: npm
     coordinate: antlers-language-server
@@ -419,6 +429,8 @@ packages:
       antlersls:
         client: npm
         target: antlersls
+    requires:
+      - npm
     filetypes:
       - antlers
   - id: apex-language-server
@@ -455,6 +467,8 @@ packages:
       api-linter:
         client: golang
         target: api-linter
+    requires:
+      - go
     filetypes:
       - proto
   - id: arduino-language-server
@@ -532,6 +546,8 @@ packages:
       asm-lsp:
         client: cargo
         target: asm-lsp
+    requires:
+      - cargo
     filetypes:
       - nasm
   - id: asmfmt
@@ -732,6 +748,8 @@ packages:
       astro-ls:
         client: npm
         target: astro-ls
+    requires:
+      - npm
     filetypes:
       - astro
   - id: autoflake
@@ -748,6 +766,8 @@ packages:
       autoflake:
         client: pypi
         target: autoflake
+    requires:
+      - python3
     filetypes:
       - python
   - id: autohotkey_lsp
@@ -771,6 +791,8 @@ packages:
           - name: vscode-autohotkey2-lsp-3.1.0.vsix
             url: https://github.com/thqby/vscode-autohotkey2-lsp/releases/download/v3.1.0/vscode-autohotkey2-lsp-3.1.0.vsix
             sha256: 0865aaa291a4271ef44d8d8a3081a033ee1e86adf446e1e6c7498a0be5558cc3
+    requires:
+      - node
     filetypes:
       - autohotkey
   - id: autopep8
@@ -787,6 +809,8 @@ packages:
       autopep8:
         client: pypi
         target: autopep8
+    requires:
+      - python3
     filetypes:
       - python
   - id: autotools-language-server
@@ -802,6 +826,8 @@ packages:
       autotools-language-server:
         client: pypi
         target: autotools-language-server
+    requires:
+      - python3
   - id: awk-language-server
     source: npm
     coordinate: awk-language-server
@@ -817,6 +843,8 @@ packages:
       awk-language-server:
         client: npm
         target: awk-language-server
+    requires:
+      - npm
     filetypes:
       - awk
   - id: azure-pipelines-language-server
@@ -834,6 +862,9 @@ packages:
       azure-pipelines-language-server:
         client: node
         target: node_modules/azure-pipelines-language-server/out/server.js
+    requires:
+      - node
+      - npm
   - id: bacon
     source: cargo
     coordinate: bacon
@@ -848,6 +879,8 @@ packages:
       bacon:
         client: cargo
         target: bacon
+    requires:
+      - cargo
     filetypes:
       - rust
   - id: bacon-ls
@@ -865,6 +898,8 @@ packages:
       bacon-ls:
         client: cargo
         target: bacon-ls
+    requires:
+      - cargo
     filetypes:
       - rust
   - id: badness
@@ -966,6 +1001,8 @@ packages:
       bandit:
         client: pypi
         target: bandit
+    requires:
+      - python3
     filetypes:
       - python
   - id: basedpyright
@@ -986,6 +1023,8 @@ packages:
       basedpyright-langserver:
         client: pypi
         target: basedpyright-langserver
+    requires:
+      - python3
     filetypes:
       - python
   - id: bash-debug-adapter
@@ -1009,6 +1048,8 @@ packages:
         files:
           - name: bash-debug-0.3.9.vsix
             url: https://github.com/rogalmic/vscode-bash-debug/releases/download/untagged-438733f35feb8659d939/bash-debug-0.3.9.vsix
+    requires:
+      - node
     filetypes:
       - bash
   - id: bash-language-server
@@ -1030,6 +1071,8 @@ packages:
       bash-language-server:
         client: npm
         target: bash-language-server
+    requires:
+      - npm
     filetypes:
       - bash
       - sh
@@ -1047,6 +1090,8 @@ packages:
       basics-language-server:
         client: npm
         target: basics-language-server
+    requires:
+      - npm
   - id: bazelrc-lsp
     source: github
     coordinate: salesforce-misc/bazelrc-lsp
@@ -1106,6 +1151,8 @@ packages:
       beancount-language-server:
         client: cargo
         target: beancount-language-server
+    requires:
+      - cargo
     filetypes:
       - beancount
   - id: beanhub-cli
@@ -1122,6 +1169,8 @@ packages:
       bh:
         client: pypi
         target: bh
+    requires:
+      - python3
     filetypes:
       - beancount
   - id: beautysh
@@ -1142,6 +1191,8 @@ packages:
       beautysh:
         client: pypi
         target: beautysh
+    requires:
+      - python3
     filetypes:
       - bash
       - sh
@@ -1160,6 +1211,8 @@ packages:
       bibtex-tidy:
         client: npm
         target: bibtex-tidy
+    requires:
+      - npm
     filetypes:
       - tex
   - id: bicep-lsp
@@ -1183,6 +1236,8 @@ packages:
           - name: vscode-bicep.vsix
             url: https://github.com/Azure/bicep/releases/download/v0.49.2/vscode-bicep.vsix
             sha256: 8302751057cb40bcbcf34dbdada30337e5d61de96f8918bfe404fe75cea08eba
+    requires:
+      - dotnet
     filetypes:
       - bicep
       - bicep-params
@@ -1205,6 +1260,8 @@ packages:
       biome:
         client: npm
         target: biome
+    requires:
+      - npm
     filetypes:
       - javascript
       - javascriptreact
@@ -1227,6 +1284,8 @@ packages:
       black:
         client: pypi
         target: black
+    requires:
+      - python3
     filetypes:
       - python
   - id: blackd-client
@@ -1274,6 +1333,8 @@ packages:
       blade-formatter:
         client: npm
         target: blade-formatter
+    requires:
+      - npm
     filetypes:
       - blade
   - id: blue
@@ -1293,6 +1354,8 @@ packages:
       blue:
         client: pypi
         target: blue
+    requires:
+      - python3
     filetypes:
       - python
   - id: bqls
@@ -1360,6 +1423,8 @@ packages:
       bsc:
         client: npm
         target: bsc
+    requires:
+      - npm
     filetypes:
       - brighterscript
   - id: brighterscript-formatter
@@ -1376,6 +1441,8 @@ packages:
       bsfmt:
         client: npm
         target: bsfmt
+    requires:
+      - npm
     filetypes:
       - brighterscript
   - id: brunette
@@ -1392,6 +1459,8 @@ packages:
       brunette:
         client: pypi
         target: brunette
+    requires:
+      - python3
     filetypes:
       - python
   - id: bsl-language-server
@@ -1417,6 +1486,8 @@ packages:
             sha256: 9f62765edd344d66456da24c906eaf623a03c56e90e5aafee466200100909f64
         bin:
           bsl-language-server: bsl-language-server-1.0.7-exec.jar
+    requires:
+      - java
   - id: bslint
     source: npm
     coordinate: "@rokucommunity/bslint"
@@ -1431,6 +1502,8 @@ packages:
       bslint:
         client: npm
         target: bslint
+    requires:
+      - npm
     filetypes:
       - brighterscript
   - id: buf
@@ -1615,6 +1688,8 @@ packages:
       cairo-language-server:
         client: cargo
         target: cairo-language-server
+    requires:
+      - cargo
     filetypes:
       - cairo
   - id: cbfmt
@@ -1683,6 +1758,8 @@ packages:
       format-cds:
         client: npm
         target: format-cds
+    requires:
+      - npm
     filetypes:
       - cds
   - id: cfn-lint
@@ -1703,6 +1780,8 @@ packages:
       cfn-lint:
         client: pypi
         target: cfn-lint
+    requires:
+      - python3
     filetypes:
       - json
       - jsonc
@@ -1788,6 +1867,8 @@ packages:
             sha256: 51e2bc7fed1bb56808aa39045f655a316194997acd24bac5195253dcf342b380
         bin:
           checkstyle: checkstyle-14.1.0-all.jar
+    requires:
+      - java
     filetypes:
       - java
   - id: circleci-yaml-language-server
@@ -1877,6 +1958,8 @@ packages:
       circom-lsp:
         client: cargo
         target: circom-lsp
+    requires:
+      - cargo
     filetypes:
       - circom
   - id: clang-format
@@ -1904,6 +1987,8 @@ packages:
       git-clang-format:
         client: pypi
         target: git-clang-format
+    requires:
+      - python3
     filetypes:
       - c
       - cpp
@@ -1940,6 +2025,8 @@ packages:
       clang-tidy-diff.py:
         client: pypi
         target: clang-tidy-diff.py
+    requires:
+      - python3
     filetypes:
       - c
       - cpp
@@ -2037,6 +2124,8 @@ packages:
       claude-agent-acp:
         client: npm
         target: claude-agent-acp
+    requires:
+      - npm
   - id: clice
     source: github
     coordinate: clice-io/clice
@@ -2301,6 +2390,8 @@ packages:
       cmake-language-server:
         client: pypi
         target: cmake-language-server
+    requires:
+      - python3
     filetypes:
       - cmake
   - id: cmakelang
@@ -2329,6 +2420,8 @@ packages:
       ctest-to:
         client: pypi
         target: ctest-to
+    requires:
+      - python3
     filetypes:
       - cmake
   - id: cmakelint
@@ -2345,6 +2438,8 @@ packages:
       cmakelint:
         client: pypi
         target: cmakelint
+    requires:
+      - python3
     filetypes:
       - cmake
   - id: cobol-language-support
@@ -2629,6 +2724,8 @@ packages:
       codespell:
         client: pypi
         target: codespell
+    requires:
+      - python3
   - id: codex-acp
     source: npm
     coordinate: "@agentclientprotocol/codex-acp"
@@ -2639,6 +2736,8 @@ packages:
       codex-acp:
         client: npm
         target: codex-acp
+    requires:
+      - npm
   - id: coffeesense-language-server
     source: npm
     coordinate: coffeesense-language-server
@@ -2653,6 +2752,8 @@ packages:
       coffeesense-language-server:
         client: npm
         target: coffeesense-language-server
+    requires:
+      - npm
     filetypes:
       - coffee
   - id: colorgen-nvim
@@ -2669,6 +2770,8 @@ packages:
       colorgen-nvim:
         client: cargo
         target: colorgen-nvim
+    requires:
+      - cargo
   - id: commitlint
     source: npm
     coordinate: "@commitlint/cli"
@@ -2684,6 +2787,8 @@ packages:
       commitlint:
         client: npm
         target: commitlint
+    requires:
+      - npm
   - id: contextive
     source: github
     coordinate: dev-cycles/contextive
@@ -2755,6 +2860,8 @@ packages:
       copilot-language-server:
         client: npm
         target: copilot-language-server
+    requires:
+      - npm
   - id: coq-lsp
     source: opam
     coordinate: coq-lsp
@@ -2770,6 +2877,8 @@ packages:
       coq-lsp:
         client: opam
         target: coq-lsp
+    requires:
+      - opam
     filetypes:
       - coq
   - id: cortex-debug
@@ -2809,6 +2918,8 @@ packages:
       cpplint:
         client: pypi
         target: cpplint
+    requires:
+      - python3
     filetypes:
       - c
       - cpp
@@ -2909,6 +3020,8 @@ packages:
         files:
           - name: cql-ls-service.jar
             url: https://repo1.maven.org/maven2/org/opencds/cqf/cql/ls/cql-ls-service/5.0.0/cql-ls-service-5.0.0.jar
+    requires:
+      - java
     filetypes:
       - cql
       - cqlang
@@ -2930,6 +3043,8 @@ packages:
       cqlls:
         client: cargo
         target: cqlls
+    requires:
+      - cargo
     filetypes:
       - cql
       - cqlang
@@ -2947,6 +3062,8 @@ packages:
       crlfmt:
         client: golang
         target: crlfmt
+    requires:
+      - go
     filetypes:
       - go
   - id: cronstrue
@@ -2959,6 +3076,8 @@ packages:
       cronstrue:
         client: npm
         target: cronstrue
+    requires:
+      - npm
   - id: crystalline
     source: github
     coordinate: elbywan/crystalline
@@ -3015,6 +3134,8 @@ packages:
       csharp-ls:
         client: nuget
         target: csharp-ls
+    requires:
+      - dotnet
     filetypes:
       - cs
   - id: csharpier
@@ -3031,6 +3152,8 @@ packages:
       csharpier:
         client: nuget
         target: csharpier
+    requires:
+      - dotnet
     filetypes:
       - cs
   - id: cspell
@@ -3045,6 +3168,8 @@ packages:
       cspell:
         client: npm
         target: cspell
+    requires:
+      - npm
   - id: cspell-lsp
     source: npm
     coordinate: "@vlabo/cspell-lsp"
@@ -3058,6 +3183,8 @@ packages:
       cspell-lsp:
         client: npm
         target: cspell-lsp
+    requires:
+      - npm
   - id: css-lsp
     source: npm
     coordinate: vscode-langservers-extracted
@@ -3075,6 +3202,8 @@ packages:
       vscode-css-language-server:
         client: npm
         target: vscode-css-language-server
+    requires:
+      - npm
     filetypes:
       - css
       - less
@@ -3096,6 +3225,8 @@ packages:
       css-variables-language-server:
         client: npm
         target: css-variables-language-server
+    requires:
+      - npm
     filetypes:
       - css
       - less
@@ -3182,6 +3313,8 @@ packages:
       cssmodules-language-server:
         client: npm
         target: cssmodules-language-server
+    requires:
+      - npm
     filetypes:
       - css
   - id: ctags-lsp
@@ -3260,6 +3393,8 @@ packages:
       cucumber-language-server:
         client: npm
         target: cucumber-language-server
+    requires:
+      - npm
     filetypes:
       - cucumber
   - id: cue
@@ -3277,6 +3412,8 @@ packages:
       cue:
         client: golang
         target: cue
+    requires:
+      - go
     filetypes:
       - cue
   - id: cueimports
@@ -3293,6 +3430,8 @@ packages:
       cueimports:
         client: golang
         target: cueimports
+    requires:
+      - go
     filetypes:
       - cue
   - id: cuelsp
@@ -3310,6 +3449,8 @@ packages:
       cuelsp:
         client: golang
         target: cuelsp
+    requires:
+      - go
     filetypes:
       - cue
   - id: curlylint
@@ -3330,6 +3471,8 @@ packages:
       curlylint:
         client: pypi
         target: curlylint
+    requires:
+      - python3
     filetypes:
       - jinja
       - liquid
@@ -3348,6 +3491,8 @@ packages:
       custom-elements-languageserver:
         client: npm
         target: custom-elements-languageserver
+    requires:
+      - npm
   - id: cypher-language-server
     source: npm
     coordinate: "@neo4j-cypher/language-server"
@@ -3363,6 +3508,8 @@ packages:
       cypher-language-server:
         client: npm
         target: cypher-language-server
+    requires:
+      - npm
     filetypes:
       - cypher
   - id: darker
@@ -3381,6 +3528,8 @@ packages:
       darker:
         client: pypi
         target: darker
+    requires:
+      - python3
     filetypes:
       - python
   - id: dart-debug-adapter
@@ -3403,6 +3552,8 @@ packages:
           - name: dart-code-3.146.0.vsix
             url: https://github.com/Dart-Code/Dart-Code/releases/download/v3.146.0/dart-code-3.146.0.vsix
             sha256: 8fa5b49b1e3fae54a6bf81a30b27c9736aba3297b555c2fd0a9fb2a94a23bbf4
+    requires:
+      - node
     filetypes:
       - dart
   - id: dbt
@@ -3528,6 +3679,8 @@ packages:
       debugpy-adapter:
         client: pyvenv
         target: debugpy.adapter
+    requires:
+      - python3
     filetypes:
       - python
   - id: delve
@@ -3544,6 +3697,8 @@ packages:
       dlv:
         client: golang
         target: dlv
+    requires:
+      - go
     filetypes:
       - go
   - id: deno
@@ -3656,6 +3811,8 @@ packages:
       devsense-php-ls:
         client: npm
         target: devsense-php-ls
+    requires:
+      - npm
     filetypes:
       - php
   - id: dexter
@@ -3751,6 +3908,8 @@ packages:
       diagnostic-languageserver:
         client: npm
         target: diagnostic-languageserver
+    requires:
+      - npm
   - id: digestif
     source: luarocks
     coordinate: digestif
@@ -3765,6 +3924,8 @@ packages:
       digestif:
         client: luarocks
         target: digestif
+    requires:
+      - luarocks
     filetypes:
       - tex
   - id: dingo
@@ -3787,6 +3948,8 @@ packages:
       dingo:
         client: golang
         target: dingo
+    requires:
+      - go
     filetypes:
       - go
   - id: dingo-lsp
@@ -3806,6 +3969,8 @@ packages:
       dingo-lsp:
         client: golang
         target: dingo-lsp
+    requires:
+      - go
   - id: django-language-server
     source: pypi
     coordinate: django-language-server
@@ -3821,6 +3986,8 @@ packages:
       djls:
         client: pypi
         target: djls
+    requires:
+      - python3
     filetypes:
       - python
   - id: django-template-lsp
@@ -3840,6 +4007,8 @@ packages:
       djlsp:
         client: pypi
         target: django-template-lsp
+    requires:
+      - python3
     filetypes:
       - html
       - jinja
@@ -3866,6 +4035,8 @@ packages:
       djlint:
         client: pypi
         target: djlint
+    requires:
+      - python3
     filetypes:
       - go
       - handlebars
@@ -3887,6 +4058,8 @@ packages:
       docformatter:
         client: pypi
         target: docformatter
+    requires:
+      - python3
     filetypes:
       - python
   - id: docker-compose-language-service
@@ -3904,6 +4077,8 @@ packages:
       docker-compose-langserver:
         client: npm
         target: docker-compose-langserver
+    requires:
+      - npm
   - id: docker-compose-linter
     source: npm
     coordinate: dclint
@@ -3918,6 +4093,8 @@ packages:
       dclint:
         client: npm
         target: dclint
+    requires:
+      - npm
     filetypes:
       - yaml.docker-compose
   - id: docker-language-server
@@ -4014,6 +4191,8 @@ packages:
       docker-langserver:
         client: npm
         target: docker-langserver
+    requires:
+      - npm
   - id: dockerfmt
     source: golang
     coordinate: github.com/reteps/dockerfmt
@@ -4028,6 +4207,8 @@ packages:
       dockerfmt:
         client: golang
         target: dockerfmt
+    requires:
+      - go
     filetypes:
       - dockerfile
   - id: doctoc
@@ -4044,6 +4225,8 @@ packages:
       doctoc:
         client: npm
         target: doctoc
+    requires:
+      - npm
     filetypes:
       - markdown
   - id: dot-language-server
@@ -4061,6 +4244,8 @@ packages:
       dot-language-server:
         client: npm
         target: dot-language-server
+    requires:
+      - npm
     filetypes:
       - dot
   - id: dotenv-linter
@@ -4239,6 +4424,8 @@ packages:
       duster:
         client: composer
         target: duster
+    requires:
+      - composer
     filetypes:
       - blade
       - php
@@ -4309,6 +4496,8 @@ packages:
       ecs:
         client: composer
         target: ecs
+    requires:
+      - composer
     filetypes:
       - php
   - id: edb
@@ -4537,6 +4726,8 @@ packages:
       elm-format:
         client: npm
         target: elm-format
+    requires:
+      - npm
     filetypes:
       - elm
   - id: elm-language-server
@@ -4554,6 +4745,8 @@ packages:
       elm-language-server:
         client: npm
         target: elm-language-server
+    requires:
+      - npm
     filetypes:
       - elm
   - id: elp
@@ -4620,6 +4813,8 @@ packages:
       ember-language-server:
         client: npm
         target: ember-language-server
+    requires:
+      - npm
   - id: emmet-language-server
     source: npm
     coordinate: "@olrtg/emmet-language-server"
@@ -4635,6 +4830,8 @@ packages:
       emmet-language-server:
         client: npm
         target: emmet-language-server
+    requires:
+      - npm
   - id: emmet-ls
     source: npm
     coordinate: emmet-ls
@@ -4650,6 +4847,8 @@ packages:
       emmet-ls:
         client: npm
         target: emmet-ls
+    requires:
+      - npm
   - id: emmylua-codeformat
     source: github
     coordinate: CppCXY/EmmyLuaCodeStyle
@@ -4796,6 +4995,8 @@ packages:
       erb-format:
         client: gem
         target: erb-format
+    requires:
+      - gem
     filetypes:
       - html
       - ruby
@@ -4814,6 +5015,8 @@ packages:
       erblint:
         client: gem
         target: erblint
+    requires:
+      - gem
     filetypes:
       - html
       - ruby
@@ -4995,6 +5198,8 @@ packages:
       esbonio:
         client: pypi
         target: esbonio
+    requires:
+      - python3
   - id: eslint-lsp
     source: npm
     coordinate: vscode-langservers-extracted
@@ -5013,6 +5218,8 @@ packages:
       vscode-eslint-language-server:
         client: npm
         target: vscode-eslint-language-server
+    requires:
+      - npm
     filetypes:
       - javascript
       - javascriptreact
@@ -5033,6 +5240,8 @@ packages:
       eslint_d:
         client: npm
         target: eslint_d
+    requires:
+      - npm
     filetypes:
       - javascript
       - javascriptreact
@@ -5167,6 +5376,8 @@ packages:
             url: https://github.com/FacilityApi/FacilityLanguageServer/releases/download/v2.5.1/Facility.LanguageServer.zip
             dest: libexec/
             sha256: 8e106f87f65730b648e50ba094018e5004b19e5661ca0e9274d629747b3c4be2
+    requires:
+      - dotnet
   - id: fantomas
     source: nuget
     coordinate: fantomas
@@ -5181,6 +5392,8 @@ packages:
       fantomas:
         client: nuget
         target: fantomas
+    requires:
+      - dotnet
     filetypes:
       - fsharp
   - id: fennel-language-server
@@ -5201,6 +5414,8 @@ packages:
       fennel-language-server:
         client: cargo
         target: fennel-language-server
+    requires:
+      - cargo
     filetypes:
       - fennel
   - id: fennel-ls
@@ -5218,6 +5433,8 @@ packages:
       fennel-ls:
         client: luarocks
         target: fennel-ls
+    requires:
+      - luarocks
     filetypes:
       - fennel
   - id: findent
@@ -5234,6 +5451,8 @@ packages:
       findent:
         client: pypi
         target: findent
+    requires:
+      - python3
     filetypes:
       - fortran
   - id: firefox-debug-adapter
@@ -5258,6 +5477,8 @@ packages:
           npm install
           npm run build
           npm install --production
+    requires:
+      - node
     filetypes:
       - javascript
       - javascriptreact
@@ -5278,6 +5499,8 @@ packages:
       fish-lsp:
         client: npm
         target: fish-lsp
+    requires:
+      - npm
     filetypes:
       - fish
   - id: fixjson
@@ -5294,6 +5517,8 @@ packages:
       fixjson:
         client: npm
         target: fixjson
+    requires:
+      - npm
     filetypes:
       - json
       - jsonc
@@ -5314,6 +5539,8 @@ packages:
       flake8:
         client: pypi
         target: flake8
+    requires:
+      - python3
     filetypes:
       - python
   - id: flakeheaven
@@ -5330,6 +5557,8 @@ packages:
       flakeheaven:
         client: pypi
         target: flakeheaven
+    requires:
+      - python3
     filetypes:
       - python
   - id: flux-lsp
@@ -5351,6 +5580,8 @@ packages:
       flux-lsp:
         client: cargo
         target: flux-lsp
+    requires:
+      - cargo
     filetypes:
       - flux
   - id: foam-language-server
@@ -5368,6 +5599,8 @@ packages:
       foam-ls:
         client: npm
         target: foam-ls
+    requires:
+      - npm
   - id: fortitude
     source: github
     coordinate: PlasmaFAIR/fortitude
@@ -5488,6 +5721,8 @@ packages:
       fortls:
         client: pypi
         target: fortls
+    requires:
+      - python3
     filetypes:
       - fortran
   - id: fourmolu
@@ -5537,6 +5772,8 @@ packages:
       fprettify:
         client: pypi
         target: fprettify
+    requires:
+      - python3
     filetypes:
       - fortran
   - id: fsautocomplete
@@ -5554,6 +5791,8 @@ packages:
       fsautocomplete:
         client: nuget
         target: fsautocomplete
+    requires:
+      - dotnet
     filetypes:
       - fsharp
   - id: gci
@@ -5570,6 +5809,8 @@ packages:
       gci:
         client: golang
         target: gci
+    requires:
+      - go
     filetypes:
       - go
   - id: gdscript-formatter
@@ -5654,6 +5895,8 @@ packages:
       gdformat:
         client: pypi
         target: gdformat
+    requires:
+      - python3
     filetypes:
       - gdscript
   - id: gersemi
@@ -5670,6 +5913,8 @@ packages:
       gersemi:
         client: pypi
         target: gersemi
+    requires:
+      - python3
     filetypes:
       - cmake
   - id: gh
@@ -5787,6 +6032,8 @@ packages:
       actions-languageserver:
         client: npm
         target: actions-languageserver
+    requires:
+      - npm
     filetypes:
       - yaml
   - id: ginko_ls
@@ -5844,6 +6091,8 @@ packages:
       gitlab-ci-ls:
         client: cargo
         target: gitlab-ci-ls
+    requires:
+      - cargo
     filetypes:
       - yaml
   - id: gitleaks
@@ -5955,6 +6204,8 @@ packages:
       gitlint:
         client: pypi
         target: gitlint
+    requires:
+      - python3
   - id: gitui
     source: github
     coordinate: extrawurst/gitui
@@ -6040,6 +6291,8 @@ packages:
       glint-language-server:
         client: npm
         target: glint-language-server
+    requires:
+      - npm
     filetypes:
       - handlebars
       - javascript
@@ -6317,6 +6570,8 @@ packages:
           - name: go-0.58.0.vsix
             url: https://github.com/golang/vscode-go/releases/download/v0.58.0/go-0.58.0.vsix
             sha256: bc638d118041fe91c2b437c7bc478adac9e1b9525490ab39770f4bf10f58a78d
+    requires:
+      - node
     filetypes:
       - go
   - id: gofumpt
@@ -6333,6 +6588,8 @@ packages:
       gofumpt:
         client: golang
         target: gofumpt
+    requires:
+      - go
     filetypes:
       - go
   - id: goimports
@@ -6351,6 +6608,8 @@ packages:
       goimports:
         client: golang
         target: goimports
+    requires:
+      - go
     filetypes:
       - go
   - id: goimports-reviser
@@ -6539,6 +6798,8 @@ packages:
       golangci-lint-langserver:
         client: golang
         target: golangci-lint-langserver
+    requires:
+      - go
     filetypes:
       - go
   - id: golines
@@ -6555,6 +6816,8 @@ packages:
       golines:
         client: golang
         target: golines
+    requires:
+      - go
     filetypes:
       - go
   - id: gomodifytags
@@ -6571,6 +6834,8 @@ packages:
       gomodifytags:
         client: golang
         target: gomodifytags
+    requires:
+      - go
     filetypes:
       - go
   - id: google-java-format
@@ -6647,6 +6912,8 @@ packages:
       gopls:
         client: golang
         target: gopls
+    requires:
+      - go
     filetypes:
       - go
   - id: gospel
@@ -6663,6 +6930,8 @@ packages:
       gospel:
         client: golang
         target: gospel
+    requires:
+      - go
     filetypes:
       - go
   - id: gotests
@@ -6681,6 +6950,8 @@ packages:
       gotests:
         client: golang
         target: gotests
+    requires:
+      - go
     filetypes:
       - go
   - id: gotestsum
@@ -6695,6 +6966,8 @@ packages:
       gotestsum:
         client: golang
         target: gotestsum
+    requires:
+      - go
     filetypes:
       - go
   - id: gradle-language-server
@@ -6716,6 +6989,8 @@ packages:
       - targets: []
         files: []
         file: vscjava.vscode-gradle-3.17.3.vsix
+    requires:
+      - java
     filetypes:
       - groovy
   - id: graphql-language-service-cli
@@ -6733,6 +7008,8 @@ packages:
       graphql-lsp:
         client: npm
         target: graphql-lsp
+    requires:
+      - npm
     filetypes:
       - graphql
   - id: groovy-language-server
@@ -6754,6 +7031,8 @@ packages:
     artifacts:
       - targets: []
         run: ./gradlew --no-daemon build
+    requires:
+      - java
     filetypes:
       - groovy
   - id: hadolint
@@ -6823,6 +7102,8 @@ packages:
       haml-lint:
         client: gem
         target: haml-lint
+    requires:
+      - gem
     filetypes:
       - haml
   - id: harper-ls
@@ -7038,6 +7319,8 @@ packages:
       - targets: []
         files: []
         file: nadako.vshaxe-2.34.2.vsix
+    requires:
+      - node
     filetypes:
       - haxe
   - id: hclfmt
@@ -7054,6 +7337,8 @@ packages:
       hclfmt:
         client: golang
         target: hclfmt
+    requires:
+      - go
     filetypes:
       - hcl
   - id: hdl-checker
@@ -7073,6 +7358,8 @@ packages:
       hdl_checker:
         client: pypi
         target: hdl_checker
+    requires:
+      - python3
     filetypes:
       - systemverilog
       - verilog
@@ -7158,6 +7445,8 @@ packages:
       herb-language-server:
         client: npm
         target: herb-language-server
+    requires:
+      - npm
     filetypes:
       - html
       - ruby
@@ -7216,6 +7505,8 @@ packages:
       hoon-language-server:
         client: npm
         target: hoon-language-server
+    requires:
+      - npm
     filetypes:
       - hoon
   - id: html-lsp
@@ -7233,6 +7524,8 @@ packages:
       vscode-html-language-server:
         client: npm
         target: vscode-html-language-server
+    requires:
+      - npm
     filetypes:
       - html
   - id: htmlbeautifier
@@ -7250,6 +7543,8 @@ packages:
       htmlbeautifier:
         client: gem
         target: htmlbeautifier
+    requires:
+      - gem
     filetypes:
       - html
       - ruby
@@ -7267,6 +7562,8 @@ packages:
       htmlhint:
         client: npm
         target: htmlhint
+    requires:
+      - npm
     filetypes:
       - html
   - id: htmx-lsp
@@ -7284,6 +7581,8 @@ packages:
       htmx-lsp:
         client: cargo
         target: htmx-lsp
+    requires:
+      - cargo
   - id: hydra-lsp
     source: pypi
     coordinate: hydra-lsp
@@ -7299,6 +7598,8 @@ packages:
       hydra-lsp:
         client: pypi
         target: hydra-lsp
+    requires:
+      - python3
     filetypes:
       - yaml
   - id: hylo-language-server
@@ -7420,6 +7721,8 @@ packages:
       iferr:
         client: golang
         target: iferr
+    requires:
+      - go
     filetypes:
       - go
   - id: impl
@@ -7434,6 +7737,8 @@ packages:
       impl:
         client: golang
         target: impl
+    requires:
+      - go
     filetypes:
       - go
   - id: intelephense
@@ -7451,6 +7756,8 @@ packages:
       intelephense:
         client: npm
         target: intelephense
+    requires:
+      - npm
     filetypes:
       - php
   - id: isort
@@ -7467,6 +7774,8 @@ packages:
       isort:
         client: pypi
         target: isort
+    requires:
+      - python3
     filetypes:
       - python
   - id: j2lint
@@ -7483,6 +7792,8 @@ packages:
       j2lint:
         client: pypi
         target: j2lint
+    requires:
+      - python3
     filetypes:
       - jinja
   - id: java-debug-adapter
@@ -7601,6 +7912,8 @@ packages:
         files:
           - name: jayvee.vsix
             url: https://github.com/jvalue/jayvee/releases/download/v0.5.0-alpha/jayvee.vsix
+    requires:
+      - node
   - id: jdtls
     source: generic
     coordinate: eclipse/eclipse.jdt.ls
@@ -7649,6 +7962,8 @@ packages:
             url: https://projectlombok.org/downloads/lombok.jar
         extra:
           config: config_win/
+    requires:
+      - python3
     filetypes:
       - java
   - id: jedi-language-server
@@ -7666,6 +7981,8 @@ packages:
       jedi-language-server:
         client: pypi
         target: jedi-language-server
+    requires:
+      - python3
     filetypes:
       - python
   - id: jinja-lsp
@@ -7971,6 +8288,8 @@ packages:
       jq-lsp:
         client: golang
         target: jq-lsp
+    requires:
+      - go
     filetypes:
       - jq
   - id: js-debug-adapter
@@ -8015,6 +8334,8 @@ packages:
       vscode-json-language-server:
         client: npm
         target: vscode-json-language-server
+    requires:
+      - npm
     filetypes:
       - json
       - jsonc
@@ -8033,6 +8354,8 @@ packages:
       json_repair:
         client: pypi
         target: json_repair
+    requires:
+      - python3
     filetypes:
       - python
   - id: json-to-struct
@@ -8047,6 +8370,8 @@ packages:
       json-to-struct:
         client: golang
         target: json-to-struct
+    requires:
+      - go
     filetypes:
       - go
   - id: jsonld-lsp
@@ -8099,6 +8424,8 @@ packages:
       jsonlint:
         client: npm
         target: jsonlint
+    requires:
+      - npm
     filetypes:
       - json
       - jsonc
@@ -8118,6 +8445,8 @@ packages:
       jsonnet-language-server:
         client: golang
         target: jsonnet-language-server
+    requires:
+      - go
     filetypes:
       - jsonnet
   - id: jsonnetfmt
@@ -8134,6 +8463,8 @@ packages:
       jsonnetfmt:
         client: golang
         target: jsonnetfmt
+    requires:
+      - go
     filetypes:
       - jsonnet
   - id: julia-lsp
@@ -8187,6 +8518,8 @@ packages:
       jupytext:
         client: pypi
         target: jupytext
+    requires:
+      - python3
     filetypes:
       - julia
       - markdown
@@ -8555,6 +8888,8 @@ packages:
       kls:
         client: npm
         target: kls
+    requires:
+      - npm
     filetypes:
       - kscript
   - id: kotlin-debug-adapter
@@ -8702,6 +9037,8 @@ packages:
             sha256: b8fbb814808d8da33f74a7bbacb6d1748cef81c0202a7f829b87139520b51273
         bin:
           ktfmt: ktfmt-0.64-with-dependencies.jar
+    requires:
+      - java
     filetypes:
       - kotlin
   - id: ktlint
@@ -8880,6 +9217,8 @@ packages:
       kulala-fmt:
         client: npm
         target: kulala-fmt
+    requires:
+      - npm
     filetypes:
       - http
   - id: language-server-bitbake
@@ -8896,6 +9235,8 @@ packages:
       language-server-bitbake:
         client: npm
         target: language-server-bitbake
+    requires:
+      - npm
     filetypes:
       - bitbake
   - id: laravel-ls
@@ -9063,6 +9404,8 @@ packages:
       lean-language-server:
         client: npm
         target: lean-language-server
+    requires:
+      - npm
     filetypes:
       - lean3
   - id: lelwel
@@ -9085,6 +9428,8 @@ packages:
       llw:
         client: cargo
         target: llw
+    requires:
+      - cargo
   - id: lemminx
     source: github
     coordinate: redhat-developer/vscode-xml
@@ -9210,6 +9555,8 @@ packages:
       lemonade:
         client: golang
         target: lemonade
+    requires:
+      - go
   - id: lexical
     source: github
     coordinate: lexical-lsp/lexical
@@ -9526,6 +9873,8 @@ packages:
       luacheck:
         client: luarocks
         target: luacheck
+    requires:
+      - luarocks
     filetypes:
       - lua
   - id: luafmt
@@ -9632,6 +9981,8 @@ packages:
       lua-format:
         client: luarocks
         target: lua-format
+    requires:
+      - luarocks
     filetypes:
       - lua
   - id: luau-lsp
@@ -9700,6 +10051,8 @@ packages:
       lwc-language-server:
         client: npm
         target: lwc-language-server
+    requires:
+      - npm
     filetypes:
       - html
       - javascript
@@ -9718,6 +10071,8 @@ packages:
       m68k-lsp-server:
         client: npm
         target: m68k-lsp-server
+    requires:
+      - npm
     filetypes:
       - nasm
   - id: markdown-oxide
@@ -9793,6 +10148,8 @@ packages:
       markdown-toc:
         client: npm
         target: markdown-toc
+    requires:
+      - npm
     filetypes:
       - markdown
   - id: markdownlint
@@ -9810,6 +10167,8 @@ packages:
       markdownlint:
         client: npm
         target: markdownlint
+    requires:
+      - npm
     filetypes:
       - markdown
   - id: markdownlint-cli2
@@ -9827,6 +10186,8 @@ packages:
       markdownlint-cli2:
         client: npm
         target: markdownlint-cli2
+    requires:
+      - npm
     filetypes:
       - markdown
   - id: markmap-cli
@@ -9841,6 +10202,8 @@ packages:
       markmap:
         client: npm
         target: markmap
+    requires:
+      - npm
     filetypes:
       - markdown
   - id: marko-language-server
@@ -9858,6 +10221,8 @@ packages:
       marko-language-server:
         client: npm
         target: marko-language-server
+    requires:
+      - npm
     filetypes:
       - marko
   - id: marksman
@@ -9924,6 +10289,8 @@ packages:
       markuplint:
         client: npm
         target: markuplint
+    requires:
+      - npm
     filetypes:
       - html
   - id: matlab-language-server
@@ -9947,6 +10314,8 @@ packages:
         run: |
           npm install
           npm run package
+    requires:
+      - node
     filetypes:
       - matlab
   - id: mbake
@@ -9964,6 +10333,8 @@ packages:
       mbake:
         client: pypi
         target: mbake
+    requires:
+      - python3
     filetypes:
       - make
   - id: mdformat
@@ -9980,6 +10351,8 @@ packages:
       mdformat:
         client: pypi
         target: mdformat
+    requires:
+      - python3
     filetypes:
       - markdown
   - id: mdsf
@@ -9996,6 +10369,8 @@ packages:
       mdsf:
         client: cargo
         target: mdsf
+    requires:
+      - cargo
     filetypes:
       - markdown
   - id: mdslw
@@ -10063,6 +10438,8 @@ packages:
       mdx-language-server:
         client: npm
         target: mdx-language-server
+    requires:
+      - npm
     filetypes:
       - mdx
   - id: mesonlsp
@@ -10237,6 +10614,8 @@ packages:
       mh_lint:
         client: pypi
         target: mh_lint
+    requires:
+      - python3
     filetypes:
       - matlab
       - octave
@@ -10252,6 +10631,8 @@ packages:
       misspell:
         client: golang
         target: misspell
+    requires:
+      - go
   - id: mmdc
     source: npm
     coordinate: "@mermaid-js/mermaid-cli"
@@ -10265,6 +10646,8 @@ packages:
       mmdc:
         client: npm
         target: mmdc
+    requires:
+      - npm
     filetypes:
       - markdown
       - mermaid
@@ -10289,6 +10672,8 @@ packages:
           npm install
           npm run compile
           npm install --production
+    requires:
+      - node
   - id: motoko-lsp
     source: openvsx
     coordinate: dfinity-foundation/vscode-motoko
@@ -10308,6 +10693,8 @@ packages:
       - targets: []
         files: []
         file: dfinity-foundation.vscode-motoko-0.23.0.vsix
+    requires:
+      - node
     filetypes:
       - motoko
   - id: move-analyzer
@@ -10329,6 +10716,8 @@ packages:
       move-analyzer:
         client: cargo
         target: move-analyzer
+    requires:
+      - cargo
     filetypes:
       - move
   - id: mpls
@@ -10495,6 +10884,8 @@ packages:
       mutt-language-server:
         client: pypi
         target: mutt-language-server
+    requires:
+      - python3
     filetypes:
       - python
   - id: mypy
@@ -10517,6 +10908,8 @@ packages:
       mypyc:
         client: pypi
         target: mypyc
+    requires:
+      - python3
     filetypes:
       - python
   - id: neocmakelsp
@@ -10668,6 +11061,8 @@ packages:
           - name: language-server-all.jar
             url: https://github.com/nextflow-io/language-server/releases/download/v26.10.2/language-server-all.jar
             sha256: 20326778651c5c5e5f40a570c2275d1f520419941624386a2b1a111f1dfa4b26
+    requires:
+      - java
     filetypes:
       - nextflow
   - id: nextls
@@ -10741,6 +11136,8 @@ packages:
       nginxfmt:
         client: pypi
         target: nginxfmt
+    requires:
+      - python3
     filetypes:
       - nginx
   - id: nginx-language-server
@@ -10758,6 +11155,8 @@ packages:
       nginx-language-server:
         client: pypi
         target: nginx-language-server
+    requires:
+      - python3
     filetypes:
       - nginx
   - id: nickel-lang-lsp
@@ -10777,6 +11176,8 @@ packages:
       nls:
         client: cargo
         target: nls
+    requires:
+      - cargo
     filetypes:
       - nickel
   - id: nil
@@ -10796,6 +11197,8 @@ packages:
       nil:
         client: cargo
         target: nil
+    requires:
+      - cargo
     filetypes:
       - nix
   - id: nilaway
@@ -10815,6 +11218,8 @@ packages:
       nilaway:
         client: golang
         target: nilaway
+    requires:
+      - go
     filetypes:
       - go
   - id: nimlangserver
@@ -10949,6 +11354,8 @@ packages:
       nixpkgs-fmt:
         client: cargo
         target: nixpkgs-fmt
+    requires:
+      - cargo
     filetypes:
       - nix
   - id: nlpplus-language-server
@@ -10966,6 +11373,8 @@ packages:
       nlpplus-language-server:
         client: npm
         target: nlpplus-language-server
+    requires:
+      - npm
   - id: nomad
     source: generic
     coordinate: hashicorp/nomad
@@ -11037,6 +11446,8 @@ packages:
       nomicfoundation-solidity-language-server:
         client: npm
         target: nomicfoundation-solidity-language-server
+    requires:
+      - npm
     filetypes:
       - solidity
   - id: npm-groovy-lint
@@ -11054,6 +11465,8 @@ packages:
       npm-groovy-lint:
         client: npm
         target: npm-groovy-lint
+    requires:
+      - npm
     filetypes:
       - groovy
   - id: ntt
@@ -11125,6 +11538,8 @@ packages:
       nxls:
         client: npm
         target: nxls
+    requires:
+      - npm
     filetypes:
       - json
       - jsonc
@@ -11144,6 +11559,8 @@ packages:
       ocamllsp:
         client: opam
         target: ocamllsp
+    requires:
+      - opam
     filetypes:
       - ocaml
   - id: ocamlearlybird
@@ -11160,6 +11577,8 @@ packages:
       ocamlearlybird:
         client: opam
         target: ocamlearlybird
+    requires:
+      - opam
     filetypes:
       - ocaml
   - id: ocamlformat
@@ -11178,6 +11597,8 @@ packages:
       ocamlformat:
         client: opam
         target: ocamlformat
+    requires:
+      - opam
     filetypes:
       - ocaml
   - id: oelint-adv
@@ -11194,6 +11615,8 @@ packages:
       oelint-adv:
         client: pypi
         target: oelint-adv
+    requires:
+      - python3
     filetypes:
       - bitbake
   - id: ols
@@ -11342,6 +11765,8 @@ packages:
             url: https://github.com/OmniSharp/omnisharp-roslyn/releases/download/v1.39.15/omnisharp-win-arm64-net6.0.zip
             dest: libexec/
             sha256: b8294f77e368a85875767f8e3a82cd4f9c8de2ecc727d71d0dd378a9107c4588
+    requires:
+      - dotnet
     filetypes:
       - cs
   - id: omnisharp-mono
@@ -11555,6 +11980,8 @@ packages:
       openscad-language-server:
         client: cargo
         target: openscad-language-server
+    requires:
+      - cargo
     filetypes:
       - openscad
   - id: openscad-lsp
@@ -11572,6 +11999,8 @@ packages:
       openscad-lsp:
         client: cargo
         target: openscad-lsp
+    requires:
+      - cargo
     filetypes:
       - openscad
   - id: ormolu
@@ -11650,6 +12079,8 @@ packages:
       oxfmt:
         client: npm
         target: oxfmt
+    requires:
+      - npm
     filetypes:
       - css
       - graphql
@@ -11683,6 +12114,8 @@ packages:
       oxlint:
         client: npm
         target: oxlint
+    requires:
+      - npm
     filetypes:
       - javascript
       - javascriptreact
@@ -11828,6 +12261,8 @@ packages:
       pbls:
         client: cargo
         target: pbls
+    requires:
+      - cargo
     filetypes:
       - proto
   - id: perl-debug-adapter
@@ -11850,6 +12285,8 @@ packages:
         run: |
           npm install
           npm run compile
+    requires:
+      - node
     filetypes:
       - perl
   - id: perl-lsp
@@ -11924,6 +12361,9 @@ packages:
       perlnavigator:
         client: node
         target: node_modules/perlnavigator-server/out/server.js
+    requires:
+      - node
+      - npm
     filetypes:
       - perl
   - id: pest-language-server
@@ -11941,6 +12381,8 @@ packages:
       pest-language-server:
         client: cargo
         target: pest-language-server
+    requires:
+      - cargo
     filetypes:
       - pest
   - id: pgformatter
@@ -11987,6 +12429,8 @@ packages:
           - name: php-cs-fixer.phar
             url: https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.29/php-cs-fixer.phar
             sha256: 5ec1e3b9dae2d3a7e4af11580501e29738968d4b986caf2cb14a2e04e6bb650c
+    requires:
+      - php
     filetypes:
       - php
   - id: php-debug-adapter
@@ -12009,6 +12453,8 @@ packages:
           - name: php-debug-1.40.2.vsix
             url: https://github.com/xdebug/vscode-php-debug/releases/download/v1.40.2/php-debug-1.40.2.vsix
             sha256: 17631993fe800083a2fc89a6782c8bf58a79603ad201ddff60d9b59ba2345d5f
+    requires:
+      - node
     filetypes:
       - php
   - id: phpactor
@@ -12034,6 +12480,8 @@ packages:
           - name: phpactor.phar
             url: https://github.com/phpactor/phpactor/releases/download/2026.10.07.0/phpactor.phar
             sha256: b28bf6166e016d539fc2f2aec18ef918b12590e436a6f1ccbdf30b5bbdbdb16b
+    requires:
+      - php
     filetypes:
       - php
   - id: phpantom_lsp
@@ -12115,6 +12563,8 @@ packages:
           - name: phpcbf.phar
             url: https://github.com/PHPCSStandards/PHP_CodeSniffer/releases/download/4.0.4/phpcbf.phar
             sha256: 0b3b8c5571543e94452f6edec0d7e924b287a64c13b73d8dcf3d25f0ee004948
+    requires:
+      - php
     filetypes:
       - php
   - id: phpcs
@@ -12137,6 +12587,8 @@ packages:
           - name: phpcs.phar
             url: https://github.com/PHPCSStandards/PHP_CodeSniffer/releases/download/4.0.4/phpcs.phar
             sha256: 4b010cd21d8bc8a17e2504792e3c77ef8259126f24caf7eafe7eddef1fa871e9
+    requires:
+      - php
     filetypes:
       - php
   - id: phpmd
@@ -12161,6 +12613,8 @@ packages:
           - name: phpmd.phar
             url: https://github.com/phpmd/phpmd/releases/download/3.0.0/phpmd.phar
             sha256: 0d6ba223b7bf41119e02e1ef23faac3cb93e5f0fc6d06ea42211873edf6a8236
+    requires:
+      - php
     filetypes:
       - php
   - id: phpstan
@@ -12183,6 +12637,8 @@ packages:
           - name: phpstan.phar
             url: https://github.com/phpstan/phpstan/releases/download/2.3.5/phpstan.phar
             sha256: 4b3ed7850a20b092331bd1040e4f54a1d3c0559b4cf006431073997ebcb4324b
+    requires:
+      - php
     filetypes:
       - php
   - id: pico8-ls
@@ -12207,6 +12663,8 @@ packages:
           npm install
           npm run compile
           npm install --production
+    requires:
+      - node
   - id: pinact
     source: github
     coordinate: suzuki-shunsuke/pinact
@@ -12283,6 +12741,8 @@ packages:
       pint:
         client: composer
         target: pint
+    requires:
+      - composer
     filetypes:
       - php
   - id: pkl-lsp
@@ -12306,6 +12766,8 @@ packages:
             sha256: 41d74d907520d0a5051aea128b145e3c39695cf83a384e46d98c74eee2d39592
         bin:
           pkl-lsp: pkl-lsp-0.9.0.jar
+    requires:
+      - java
     filetypes:
       - pkl
   - id: postgres-language-server
@@ -12429,6 +12891,8 @@ packages:
       prettier:
         client: npm
         target: prettier
+    requires:
+      - npm
     filetypes:
       - css
       - graphql
@@ -12472,6 +12936,8 @@ packages:
       prettierd:
         client: npm
         target: prettierd
+    requires:
+      - npm
     filetypes:
       - css
       - graphql
@@ -12508,6 +12974,8 @@ packages:
           - name: pretty-php.phar
             url: https://github.com/lkrms/pretty-php/releases/download/v0.4.95/pretty-php.phar
             sha256: e2b334c6f3621ab99e90e0293f706cb4a5e25081ec12469dcad8c7ca1b7bc2e8
+    requires:
+      - php
     filetypes:
       - php
   - id: prettydiff
@@ -12524,6 +12992,8 @@ packages:
       prettydiff:
         client: npm
         target: prettydiff
+    requires:
+      - npm
     filetypes:
       - html
   - id: prettypst
@@ -12542,6 +13012,8 @@ packages:
       prettypst:
         client: cargo
         target: prettypst
+    requires:
+      - cargo
     filetypes:
       - typst
   - id: prisma-language-server
@@ -12561,6 +13033,8 @@ packages:
       prisma-language-server:
         client: npm
         target: prisma-language-server
+    requires:
+      - npm
     filetypes:
       - prisma
   - id: prolog-lsp
@@ -12688,6 +13162,8 @@ packages:
       proselint:
         client: pypi
         target: proselint
+    requires:
+      - python3
     filetypes:
       - markdown
       - text
@@ -12886,6 +13362,8 @@ packages:
       psalter:
         client: composer
         target: psalter
+    requires:
+      - composer
     filetypes:
       - php
   - id: pug-lsp
@@ -12964,6 +13442,8 @@ packages:
           - name: puppet_editor_services_v2.0.4.zip
             url: https://github.com/puppetlabs/puppet-editor-services/releases/download/v2.0.4/puppet_editor_services_v2.0.4.zip
             dest: libexec/
+    requires:
+      - ruby
     filetypes:
       - puppet
   - id: purescript-language-server
@@ -12983,6 +13463,8 @@ packages:
       purescript-language-server:
         client: npm
         target: purescript-language-server
+    requires:
+      - npm
     filetypes:
       - purescript
   - id: purescript-tidy
@@ -12999,6 +13481,8 @@ packages:
       purs-tidy:
         client: npm
         target: purs-tidy
+    requires:
+      - npm
     filetypes:
       - purescript
   - id: pydoclint
@@ -13015,6 +13499,8 @@ packages:
       pydoclint:
         client: pypi
         target: pydoclint
+    requires:
+      - python3
     filetypes:
       - python
   - id: pydocstyle
@@ -13033,6 +13519,8 @@ packages:
       pydocstyle:
         client: pypi
         target: pydocstyle
+    requires:
+      - python3
     filetypes:
       - python
   - id: pyflakes
@@ -13053,6 +13541,8 @@ packages:
       pyflakes:
         client: pypi
         target: pyflakes
+    requires:
+      - python3
     filetypes:
       - python
   - id: pyink
@@ -13069,6 +13559,8 @@ packages:
       pyink:
         client: pypi
         target: pyink
+    requires:
+      - python3
     filetypes:
       - python
   - id: pylama
@@ -13087,6 +13579,8 @@ packages:
       pylama:
         client: pypi
         target: pylama
+    requires:
+      - python3
     filetypes:
       - python
   - id: pylint
@@ -13103,6 +13597,8 @@ packages:
       pylint:
         client: pypi
         target: pylint
+    requires:
+      - python3
     filetypes:
       - python
   - id: pylyzer
@@ -13178,6 +13674,8 @@ packages:
       pymarkdownlnt:
         client: pypi
         target: pymarkdownlnt
+    requires:
+      - python3
     filetypes:
       - markdown
   - id: pyment
@@ -13194,6 +13692,8 @@ packages:
       pyment:
         client: pypi
         target: pyment
+    requires:
+      - python3
     filetypes:
       - python
   - id: pymobiledevice3
@@ -13210,6 +13710,8 @@ packages:
       pymobiledevice3:
         client: pypi
         target: pymobiledevice3
+    requires:
+      - python3
     filetypes:
       - python
   - id: pyproject-flake8
@@ -13226,6 +13728,8 @@ packages:
       pflake8:
         client: pypi
         target: pflake8
+    requires:
+      - python3
     filetypes:
       - python
   - id: pyproject-fmt
@@ -13243,6 +13747,8 @@ packages:
       pyproject-fmt:
         client: pypi
         target: pyproject-fmt
+    requires:
+      - python3
     filetypes:
       - python
       - toml
@@ -13262,6 +13768,8 @@ packages:
       pyre:
         client: pypi
         target: pyre
+    requires:
+      - python3
     filetypes:
       - python
   - id: pyrefly
@@ -13280,6 +13788,8 @@ packages:
       pyrefly:
         client: pypi
         target: pyrefly
+    requires:
+      - python3
     filetypes:
       - python
   - id: pyright
@@ -13300,6 +13810,8 @@ packages:
       pyright-langserver:
         client: npm
         target: pyright-langserver
+    requires:
+      - npm
     filetypes:
       - python
   - id: pytest-language-server
@@ -13317,6 +13829,8 @@ packages:
       pytest-language-server:
         client: pypi
         target: pytest-language-server
+    requires:
+      - python3
     filetypes:
       - python
   - id: python-lsp-server
@@ -13336,6 +13850,8 @@ packages:
       pylsp:
         client: pypi
         target: pylsp
+    requires:
+      - python3
     filetypes:
       - python
   - id: pyupgrade
@@ -13352,6 +13868,8 @@ packages:
       pyupgrade:
         client: pypi
         target: pyupgrade
+    requires:
+      - python3
     filetypes:
       - python
   - id: qmlls
@@ -13542,6 +14060,8 @@ packages:
           npm install
           npm run compile
           npm install --production
+    requires:
+      - node
     filetypes:
       - raku
   - id: rassumfrassum
@@ -13558,6 +14078,8 @@ packages:
       rass:
         client: pypi
         target: rass
+    requires:
+      - python3
     filetypes:
       - python
   - id: rdbg
@@ -13574,6 +14096,8 @@ packages:
       rdbg:
         client: gem
         target: rdbg
+    requires:
+      - gem
     filetypes:
       - ruby
   - id: reason-language-server
@@ -13629,6 +14153,8 @@ packages:
       reformat-gherkin:
         client: pypi
         target: reformat-gherkin
+    requires:
+      - python3
     filetypes:
       - cucumber
   - id: refurb
@@ -13645,6 +14171,8 @@ packages:
       refurb:
         client: pypi
         target: refurb
+    requires:
+      - python3
     filetypes:
       - python
   - id: regal
@@ -13720,6 +14248,8 @@ packages:
       regols:
         client: golang
         target: regols
+    requires:
+      - go
     filetypes:
       - rego
   - id: remark-cli
@@ -13736,6 +14266,8 @@ packages:
       remark:
         client: npm
         target: remark
+    requires:
+      - npm
     filetypes:
       - markdown
   - id: remark-language-server
@@ -13753,6 +14285,8 @@ packages:
       remark-language-server:
         client: npm
         target: remark-language-server
+    requires:
+      - npm
     filetypes:
       - markdown
   - id: reorder-python-imports
@@ -13769,6 +14303,8 @@ packages:
       reorder-python-imports:
         client: pypi
         target: reorder-python-imports
+    requires:
+      - python3
     filetypes:
       - python
   - id: rescript-language-server
@@ -13786,6 +14322,8 @@ packages:
       rescript-language-server:
         client: npm
         target: rescript-language-server
+    requires:
+      - npm
     filetypes:
       - rescript
   - id: revive
@@ -13802,6 +14340,8 @@ packages:
       revive:
         client: golang
         target: revive
+    requires:
+      - go
     filetypes:
       - go
   - id: ripper-tags
@@ -13816,6 +14356,8 @@ packages:
       ripper-tags:
         client: gem
         target: ripper-tags
+    requires:
+      - gem
     filetypes:
       - ruby
   - id: rnix-lsp
@@ -13833,6 +14375,8 @@ packages:
       rnix-lsp:
         client: cargo
         target: rnix-lsp
+    requires:
+      - cargo
     filetypes:
       - nix
   - id: robotcode
@@ -13853,6 +14397,8 @@ packages:
       robotcode:
         client: pypi
         target: robotcode
+    requires:
+      - python3
   - id: robotframework-lsp
     source: pypi
     coordinate: robotframework-lsp
@@ -13868,6 +14414,8 @@ packages:
       robotframework_ls:
         client: pypi
         target: robotframework_ls
+    requires:
+      - python3
   - id: roc_language_server
     source: github
     coordinate: roc-lang/roc
@@ -13934,6 +14482,8 @@ packages:
       roslyn-language-server:
         client: nuget
         target: roslyn-language-server
+    requires:
+      - dotnet
     filetypes:
       - cs
   - id: rpm_lsp_server
@@ -13951,6 +14501,8 @@ packages:
       rpm_lsp_server:
         client: pypi
         target: rpm_lsp_server
+    requires:
+      - python3
     filetypes:
       - spec
   - id: rpmlint
@@ -13967,6 +14519,8 @@ packages:
       rpmlint:
         client: pypi
         target: rpmlint
+    requires:
+      - python3
     filetypes:
       - python
   - id: rshtml-analyzer
@@ -14055,6 +14609,8 @@ packages:
       rstcheck:
         client: pypi
         target: rstcheck
+    requires:
+      - python3
     filetypes:
       - rst
   - id: rubocop
@@ -14074,6 +14630,8 @@ packages:
       rubocop:
         client: gem
         target: rubocop
+    requires:
+      - gem
     filetypes:
       - ruby
   - id: ruby-lsp
@@ -14093,6 +14651,8 @@ packages:
       ruby-lsp:
         client: gem
         target: ruby-lsp
+    requires:
+      - gem
     filetypes:
       - ruby
   - id: rubyfmt
@@ -14263,6 +14823,8 @@ packages:
       rufo:
         client: gem
         target: rufo
+    requires:
+      - gem
     filetypes:
       - ruby
   - id: rumdl
@@ -14542,6 +15104,8 @@ packages:
       rustywind:
         client: npm
         target: rustywind
+    requires:
+      - npm
     filetypes:
       - html
       - javascript
@@ -14563,6 +15127,8 @@ packages:
       salt-lint:
         client: pypi
         target: salt-lint
+    requires:
+      - python3
     filetypes:
       - salt
   - id: salt-lsp
@@ -14580,6 +15146,8 @@ packages:
       salt_lsp_server:
         client: pypi
         target: salt_lsp_server
+    requires:
+      - python3
     filetypes:
       - salt
   - id: selene
@@ -14655,6 +15223,8 @@ packages:
       pysemgrep:
         client: pypi
         target: pysemgrep
+    requires:
+      - python3
     filetypes:
       - cs
       - go
@@ -14734,6 +15304,8 @@ packages:
       sharpdbg:
         client: nuget
         target: sharpdbg
+    requires:
+      - dotnet
     filetypes:
       - cs
       - fsharp
@@ -14816,6 +15388,8 @@ packages:
       shellharden:
         client: cargo
         target: shellharden
+    requires:
+      - cargo
     filetypes:
       - bash
   - id: shfmt
@@ -14903,6 +15477,8 @@ packages:
       shopify:
         client: npm
         target: shopify
+    requires:
+      - npm
     filetypes:
       - liquid
   - id: shuck
@@ -15333,6 +15909,8 @@ packages:
       snakefmt:
         client: pypi
         target: snakefmt
+    requires:
+      - python3
     filetypes:
       - snakemake
   - id: snakeskin-cli
@@ -15350,6 +15928,8 @@ packages:
       snakeskin-cli:
         client: npm
         target: snakeskin-cli
+    requires:
+      - npm
   - id: snyk
     source: github
     coordinate: snyk/cli
@@ -15630,6 +16210,8 @@ packages:
       solargraph:
         client: gem
         target: solargraph
+    requires:
+      - gem
     filetypes:
       - ruby
   - id: solhint
@@ -15646,6 +16228,8 @@ packages:
       solhint:
         client: npm
         target: solhint
+    requires:
+      - npm
     filetypes:
       - solidity
   - id: solidity
@@ -15706,6 +16290,8 @@ packages:
       solidity-ls:
         client: npm
         target: solidity-ls
+    requires:
+      - npm
     filetypes:
       - solidity
   - id: some-sass-language-server
@@ -15723,6 +16309,8 @@ packages:
       some-sass-language-server:
         client: npm
         target: some-sass-language-server
+    requires:
+      - npm
     filetypes:
       - scss
   - id: sonarlint-language-server
@@ -15766,6 +16354,8 @@ packages:
           - name: sonarlint-vscode-4.39.0.vsix
             url: https://github.com/SonarSource/sonarlint-vscode/releases/download/4.39.0+79757/sonarlint-vscode-4.39.0.vsix
             sha256: df7a085378e53b0b5717ef837e06c0d739e3f08e1f516e03b0df4b65c9497c11
+    requires:
+      - java
     filetypes:
       - c
       - cpp
@@ -15802,6 +16392,8 @@ packages:
       srb:
         client: gem
         target: srb
+    requires:
+      - gem
     filetypes:
       - ruby
   - id: sourcery
@@ -15821,6 +16413,8 @@ packages:
       sourcery:
         client: pypi
         target: sourcery
+    requires:
+      - python3
     filetypes:
       - python
   - id: spectral-language-server
@@ -15847,6 +16441,8 @@ packages:
         run: |
           npm exec yarn@1 install
           npm exec --package=yarn@1 -c 'node make package'
+    requires:
+      - node
     filetypes:
       - json
       - jsonc
@@ -15867,6 +16463,8 @@ packages:
       sphinx-lint:
         client: pypi
         target: sphinx-lint
+    requires:
+      - python3
     filetypes:
       - python
       - rst
@@ -15889,6 +16487,8 @@ packages:
         files:
           - name: spring-javaformat.vsix
             url: https://repo1.maven.org/maven2/io/spring/javaformat/spring-javaformat-vscode-extension/0.0.48/spring-javaformat-vscode-extension-0.0.48.vsix
+    requires:
+      - java
     filetypes:
       - java
   - id: spyglassmc-language-server
@@ -15906,6 +16506,8 @@ packages:
       spyglassmc-language-server:
         client: npm
         target: spyglassmc-language-server
+    requires:
+      - npm
     filetypes:
       - mcfunction
   - id: sql-formatter
@@ -15922,6 +16524,8 @@ packages:
       sql-formatter:
         client: npm
         target: sql-formatter
+    requires:
+      - npm
     filetypes:
       - sql
   - id: sqlfluff
@@ -15938,6 +16542,8 @@ packages:
       sqlfluff:
         client: pypi
         target: sqlfluff
+    requires:
+      - python3
     filetypes:
       - sql
   - id: sqlfmt
@@ -15956,6 +16562,8 @@ packages:
       sqlfmt:
         client: pypi
         target: sqlfmt
+    requires:
+      - python3
     filetypes:
       - sql
   - id: sqlls
@@ -15973,6 +16581,8 @@ packages:
       sql-language-server:
         client: npm
         target: sql-language-server
+    requires:
+      - npm
     filetypes:
       - sql
   - id: sqls
@@ -15990,6 +16600,8 @@ packages:
       sqls:
         client: golang
         target: sqls
+    requires:
+      - go
     filetypes:
       - sql
   - id: sqruff
@@ -16130,6 +16742,8 @@ packages:
       stan-language-server:
         client: npm
         target: stan-language-server
+    requires:
+      - npm
     filetypes:
       - stan
   - id: standardjs
@@ -16147,6 +16761,8 @@ packages:
       standard:
         client: npm
         target: standard
+    requires:
+      - npm
     filetypes:
       - javascript
       - javascriptreact
@@ -16166,6 +16782,8 @@ packages:
       standardrb:
         client: gem
         target: standardrb
+    requires:
+      - gem
     filetypes:
       - ruby
   - id: starlark-rust
@@ -16183,6 +16801,8 @@ packages:
       starlark:
         client: cargo
         target: starlark
+    requires:
+      - cargo
     filetypes:
       - starlark
   - id: starpls
@@ -16240,6 +16860,8 @@ packages:
       staticcheck:
         client: golang
         target: staticcheck
+    requires:
+      - go
     filetypes:
       - go
   - id: statix
@@ -16259,6 +16881,8 @@ packages:
       statix:
         client: cargo
         target: statix
+    requires:
+      - cargo
     filetypes:
       - nix
   - id: steep
@@ -16276,6 +16900,8 @@ packages:
       steep:
         client: gem
         target: steep
+    requires:
+      - gem
     filetypes:
       - ruby
   - id: stimulus-language-server
@@ -16296,6 +16922,8 @@ packages:
       stimulus-language-server:
         client: npm
         target: stimulus-language-server
+    requires:
+      - npm
     filetypes:
       - blade
       - html
@@ -16315,6 +16943,8 @@ packages:
       stree:
         client: gem
         target: stree
+    requires:
+      - gem
     filetypes:
       - ruby
   - id: stylelint
@@ -16334,6 +16964,8 @@ packages:
       stylelint:
         client: npm
         target: stylelint
+    requires:
+      - npm
     filetypes:
       - css
       - less
@@ -16354,6 +16986,8 @@ packages:
       stylelint-language-server:
         client: npm
         target: stylelint-language-server
+    requires:
+      - npm
   - id: stylish-haskell
     source: github
     coordinate: haskell/stylish-haskell
@@ -16537,6 +17171,8 @@ packages:
       svelteserver:
         client: npm
         target: svelteserver
+    requires:
+      - npm
     filetypes:
       - svelte
   - id: svlangserver
@@ -16556,6 +17192,8 @@ packages:
       svlangserver:
         client: npm
         target: svlangserver
+    requires:
+      - npm
     filetypes:
       - systemverilog
   - id: svls
@@ -16573,6 +17211,8 @@ packages:
       svls:
         client: cargo
         target: svls
+    requires:
+      - cargo
     filetypes:
       - systemverilog
   - id: swiftformat
@@ -16785,6 +17425,8 @@ packages:
       systemdlint:
         client: pypi
         target: systemdlint
+    requires:
+      - python3
     filetypes:
       - systemd
   - id: tabby-agent
@@ -16799,6 +17441,8 @@ packages:
       tabby-agent:
         client: npm
         target: tabby-agent
+    requires:
+      - npm
   - id: tailwindcss-language-server
     source: npm
     coordinate: "@tailwindcss/language-server"
@@ -16814,6 +17458,8 @@ packages:
       tailwindcss-language-server:
         client: npm
         target: tailwindcss-language-server
+    requires:
+      - npm
     filetypes:
       - css
   - id: taplo
@@ -16913,6 +17559,8 @@ packages:
       tclsp:
         client: pypi
         target: tclsp
+    requires:
+      - python3
     filetypes:
       - tcl
   - id: teal-language-server
@@ -16930,6 +17578,8 @@ packages:
       teal-language-server:
         client: luarocks
         target: teal-language-server
+    requires:
+      - luarocks
     filetypes:
       - teal
   - id: tectonic
@@ -17090,6 +17740,8 @@ packages:
       termux-language-server:
         client: pypi
         target: termux-language-server
+    requires:
+      - python3
     filetypes:
       - bash
   - id: terraform
@@ -17484,6 +18136,8 @@ packages:
       textlint:
         client: npm
         target: textlint
+    requires:
+      - npm
     filetypes:
       - markdown
       - text
@@ -17504,6 +18158,8 @@ packages:
       textlsp:
         client: pypi
         target: textlsp
+    requires:
+      - python3
     filetypes:
       - org
       - tex
@@ -17889,6 +18545,8 @@ packages:
       tlint:
         client: composer
         target: tlint
+    requires:
+      - composer
     filetypes:
       - blade
       - php
@@ -18355,6 +19013,8 @@ packages:
       ts-standard:
         client: npm
         target: ts-standard
+    requires:
+      - npm
     filetypes:
       - typescript
       - typescriptreact
@@ -18435,6 +19095,8 @@ packages:
       tsc:
         client: npm
         target: tsc
+    requires:
+      - npm
     filetypes:
       - javascript
       - javascriptreact
@@ -18455,6 +19117,8 @@ packages:
       tsp-server:
         client: npm
         target: tsp-server
+    requires:
+      - npm
     filetypes:
       - typespec
   - id: turtle-language-server
@@ -18471,6 +19135,8 @@ packages:
       turtle-language-server:
         client: npm
         target: turtle-language-server
+    requires:
+      - npm
     filetypes:
       - turtle
   - id: twig-cs-fixer
@@ -18487,6 +19153,8 @@ packages:
       twig-cs-fixer:
         client: composer
         target: twig-cs-fixer
+    requires:
+      - composer
     filetypes:
       - twig
   - id: twigcs
@@ -18510,6 +19178,8 @@ packages:
         files:
           - name: twigcs.phar
             url: https://github.com/friendsoftwig/twigcs/releases/download/6.5.0/twigcs.phar
+    requires:
+      - php
     filetypes:
       - twig
   - id: twiggy-language-server
@@ -18529,6 +19199,9 @@ packages:
       twiggy-language-server:
         client: node
         target: node_modules/twiggy-language-server/dist/server.js
+    requires:
+      - node
+      - npm
     filetypes:
       - html
       - twig
@@ -18548,6 +19221,8 @@ packages:
       ty:
         client: pypi
         target: ty
+    requires:
+      - python3
     filetypes:
       - python
   - id: typescript-language-server
@@ -18568,6 +19243,8 @@ packages:
       typescript-language-server:
         client: npm
         target: typescript-language-server
+    requires:
+      - npm
     filetypes:
       - javascript
       - javascriptreact
@@ -18773,6 +19450,8 @@ packages:
       unocss-language-server:
         client: npm
         target: unocss-language-server
+    requires:
+      - npm
     filetypes:
       - css
   - id: usort
@@ -18789,6 +19468,8 @@ packages:
       usort:
         client: pypi
         target: usort
+    requires:
+      - python3
     filetypes:
       - python
   - id: uv
@@ -19224,6 +19905,8 @@ packages:
       vectorcode-mcp-server:
         client: pypi
         target: vectorcode-mcp-server
+    requires:
+      - python3
     filetypes:
       - python
   - id: verible
@@ -19398,6 +20081,8 @@ packages:
             sha256: 160dd363822557f27da97488de097ded164023971dfd2d3c48b38eb4944f7c53
         bin:
           vespa-language-server: vespa-language-server_2.6.2.jar
+    requires:
+      - java
     filetypes:
       - sd
       - yql
@@ -19416,6 +20101,8 @@ packages:
       vls:
         client: npm
         target: vls
+    requires:
+      - npm
     filetypes:
       - vue
   - id: vhdl-style-guide
@@ -19432,6 +20119,8 @@ packages:
       vsg:
         client: pypi
         target: vsg
+    requires:
+      - python3
     filetypes:
       - vhdl
   - id: vim-language-server
@@ -19449,6 +20138,8 @@ packages:
       vim-language-server:
         client: npm
         target: vim-language-server
+    requires:
+      - npm
     filetypes:
       - vim
   - id: vint
@@ -19465,6 +20156,8 @@ packages:
       vint:
         client: pypi
         target: vint
+    requires:
+      - python3
     filetypes:
       - vim
   - id: visualforce-language-server
@@ -19488,6 +20181,8 @@ packages:
           - name: salesforcedx-vscode-visualforce-68.8.0.vsix
             url: https://github.com/forcedotcom/salesforcedx-vscode/releases/download/v68.8.0/salesforcedx-vscode-visualforce-68.8.0.vsix
             sha256: de56fde2525bff90b364e29ee4088f0160f1cc81d61b0e3a9284944fda9544d5
+    requires:
+      - node
     filetypes:
       - visualforce
   - id: vls
@@ -19548,6 +20243,8 @@ packages:
       - targets: []
         files: []
         file: keesschollaart.vscode-home-assistant-2.2.0.vsix
+    requires:
+      - node
     filetypes:
       - yaml
   - id: vscode-java-decompiler
@@ -19603,6 +20300,8 @@ packages:
       vscode-solidity-server:
         client: npm
         target: vscode-solidity-server
+    requires:
+      - npm
     filetypes:
       - solidity
   - id: vscode-spring-boot-tools
@@ -19643,6 +20342,8 @@ packages:
       vsg:
         client: pypi
         target: vsg
+    requires:
+      - python3
     filetypes:
       - vhdl
   - id: vtsls
@@ -19661,6 +20362,8 @@ packages:
       vtsls:
         client: npm
         target: vtsls
+    requires:
+      - npm
     filetypes:
       - javascript
       - javascriptreact
@@ -19684,6 +20387,8 @@ packages:
       vue-language-server:
         client: npm
         target: vue-language-server
+    requires:
+      - npm
     filetypes:
       - vue
   - id: vulture
@@ -19706,6 +20411,8 @@ packages:
       vulture:
         client: pypi
         target: vulture
+    requires:
+      - python3
     filetypes:
       - python
   - id: wasm-language-tools
@@ -19931,6 +20638,8 @@ packages:
       wing:
         client: npm
         target: wing
+    requires:
+      - npm
   - id: woke
     source: github
     coordinate: get-woke/woke
@@ -20013,6 +20722,8 @@ packages:
       write-good:
         client: npm
         target: write-good
+    requires:
+      - npm
     filetypes:
       - markdown
   - id: xcbeautify
@@ -20167,6 +20878,8 @@ packages:
       xmlformat:
         client: pypi
         target: xmlformat
+    requires:
+      - python3
     filetypes:
       - xml
   - id: yaml-language-server
@@ -20184,6 +20897,8 @@ packages:
       yaml-language-server:
         client: npm
         target: yaml-language-server
+    requires:
+      - npm
     filetypes:
       - yaml
   - id: yamlfix
@@ -20200,6 +20915,8 @@ packages:
       yamlfix:
         client: pypi
         target: yamlfix
+    requires:
+      - python3
     filetypes:
       - yaml
   - id: yamlfmt
@@ -20282,6 +20999,8 @@ packages:
       yamllint:
         client: pypi
         target: yamllint
+    requires:
+      - python3
     filetypes:
       - yaml
   - id: yapf
@@ -20300,6 +21019,8 @@ packages:
       yapf:
         client: pypi
         target: yapf
+    requires:
+      - python3
     filetypes:
       - python
   - id: yls-yara
@@ -20319,6 +21040,8 @@ packages:
       yls:
         client: pypi
         target: yls
+    requires:
+      - python3
     filetypes:
       - yara
   - id: yq
@@ -20461,6 +21184,8 @@ packages:
       zizmor:
         client: pypi
         target: zizmor
+    requires:
+      - python3
     filetypes:
       - yaml
   - id: zk
@@ -20701,6 +21426,8 @@ packages:
       zprint-clj:
         client: npm
         target: zprint-clj
+    requires:
+      - npm
     filetypes:
       - clojure
   - id: zuban
@@ -20719,5 +21446,7 @@ packages:
       zuban:
         client: pypi
         target: zuban
+    requires:
+      - python3
     filetypes:
       - python

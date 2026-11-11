@@ -1,1 +1,4 @@
 priority: -10
+root_markers:
+  - biome.json
+  - biome.jsonc

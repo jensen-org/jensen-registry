@@ -1,0 +1,105 @@
+schema_version: 2
+filetypes:
+  astro:
+    markers:
+      - package.json
+  clojure:
+    markers:
+      - deps.edn
+      - project.clj
+  crystal:
+    markers:
+      - shard.yml
+  dart:
+    markers:
+      - pubspec.yaml
+  elixir:
+    markers:
+      - mix.exs
+  elm:
+    markers:
+      - elm.json
+  erlang:
+    markers:
+      - rebar.config
+  gleam:
+    markers:
+      - gleam.toml
+  go:
+    markers:
+      - go.mod
+      - go.work
+  haskell:
+    markers:
+      - stack.yaml
+      - cabal.project
+      - package.yaml
+      - hie.yaml
+  java:
+    markers:
+      - pom.xml
+      - build.gradle
+      - build.gradle.kts
+  javascript:
+    markers:
+      - package.json
+      - jsconfig.json
+      - deno.json
+      - deno.jsonc
+  javascriptreact:
+    markers:
+      - package.json
+      - jsconfig.json
+  julia:
+    markers:
+      - Project.toml
+  ocaml:
+    markers:
+      - dune-project
+  perl:
+    markers:
+      - cpanfile
+      - Makefile.PL
+  php:
+    markers:
+      - composer.json
+  python:
+    markers:
+      - pyproject.toml
+      - setup.py
+      - setup.cfg
+      - requirements.txt
+      - Pipfile
+  ruby:
+    markers:
+      - Gemfile
+  rust:
+    markers:
+      - Cargo.toml
+  scala:
+    markers:
+      - build.sbt
+      - build.sc
+  svelte:
+    markers:
+      - package.json
+  swift:
+    markers:
+      - Package.swift
+      - project.pbxproj
+  typescript:
+    markers:
+      - tsconfig.json
+      - package.json
+      - deno.json
+      - deno.jsonc
+  typescriptreact:
+    markers:
+      - tsconfig.json
+      - package.json
+  vue:
+    markers:
+      - package.json
+  zig:
+    markers:
+      - build.zig
