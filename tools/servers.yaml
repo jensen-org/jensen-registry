@@ -3720,16 +3720,10 @@ servers:
     init_options:
       cargo:
         targetDir: true
-        autoreload: false
-      checkOnSave: false
       cachePriming:
         numThreads: 2
       lru:
         capacity: 64
-      lens:
-        enable: false
-      inlayHints:
-        enable: false
   - id: rust_glancer
     package: rust-glancer
     cmd:
