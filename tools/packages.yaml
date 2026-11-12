@@ -1,8 +1,8 @@
 schema_version: 2
 upstream:
   repo: mason-org/mason-registry
-  tag: 2026-11-10-showy-lan
-  sha256: 8def7c02ff90e0ef750c7ff179072ee8337b074e79f89ce0edbfb46b78ce2e3d
+  tag: 2026-11-12-jovial-orchestra
+  sha256: 04d07fc89e950a91116b0af602559dcae1a92a5301f9d141788c9d3c9861a415
 packages:
   - id: actionlint
     source: github
@@ -613,7 +613,7 @@ packages:
   - id: ast-grep
     source: github
     coordinate: ast-grep/ast-grep
-    version: 0.51.1
+    version: 0.51.2
     description: A CLI tool for code structural search, lint and rewriting. Written in Rust.
     homepage: https://github.com/ast-grep/ast-grep
     languages:
@@ -648,8 +648,8 @@ packages:
           - darwin_arm64
         files:
           - name: app-aarch64-apple-darwin.zip
-            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.1/app-aarch64-apple-darwin.zip
-            sha256: a95772097b4d02bd9d45ed63b300c37041ae3c36632b3bf19250cc7c10187dc4
+            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.2/app-aarch64-apple-darwin.zip
+            sha256: ea4f4082d25e5f8e0450add6fd488dd008a373c90483cc2031759c8431f1dcfb
         bin:
           ast-grep: ast-grep
           sg: sg
@@ -657,8 +657,8 @@ packages:
           - darwin_x64
         files:
           - name: app-x86_64-apple-darwin.zip
-            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.1/app-x86_64-apple-darwin.zip
-            sha256: 302b92868fa1b0439f0927b1f31668e03636b12a8e646fb1a3cd8de816c78242
+            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.2/app-x86_64-apple-darwin.zip
+            sha256: ef347c331d97cb6a043809091bd96bdd64de6a8354f01da66764496885230591
         bin:
           ast-grep: ast-grep
           sg: sg
@@ -666,8 +666,8 @@ packages:
           - linux_arm64_gnu
         files:
           - name: app-aarch64-unknown-linux-gnu.zip
-            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.1/app-aarch64-unknown-linux-gnu.zip
-            sha256: db02fae2d8eace5fc40c55242068882452dd03eab38a1d950d5fd981cf112926
+            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.2/app-aarch64-unknown-linux-gnu.zip
+            sha256: c3ab2bd43959db28621dc1551c13ea5fe5db4c1fc7b18086dade6b65042c78d0
         bin:
           ast-grep: ast-grep
           sg: sg
@@ -675,8 +675,8 @@ packages:
           - linux_x64_gnu
         files:
           - name: app-x86_64-unknown-linux-gnu.zip
-            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.1/app-x86_64-unknown-linux-gnu.zip
-            sha256: 42514f77ae0c8a25d7d32154d31d3e7e16f3ab894f8ce76ce417de234ee49157
+            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.2/app-x86_64-unknown-linux-gnu.zip
+            sha256: 40604c21c38d4c7581c56bdddeef277c56bf3c0113620aa96e78ae87e82366df
         bin:
           ast-grep: ast-grep
           sg: sg
@@ -684,8 +684,8 @@ packages:
           - win_arm64
         files:
           - name: app-aarch64-pc-windows-msvc.zip
-            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.1/app-aarch64-pc-windows-msvc.zip
-            sha256: 8b3f8fed40e99e0fa4df050859d2897fce454cba262d903486dc12a464237126
+            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.2/app-aarch64-pc-windows-msvc.zip
+            sha256: bceb859b8d9adb68398bff129ef9ea34dd045e81a5b304732a54d310adf599a5
         bin:
           ast-grep: ast-grep.exe
           sg: sg.exe
@@ -695,8 +695,8 @@ packages:
           - win_x64
         files:
           - name: app-x86_64-pc-windows-msvc.zip
-            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.1/app-x86_64-pc-windows-msvc.zip
-            sha256: 12a0cefb77498820ef6fb302ed8758cbda39be87d4c15120dc74c1dea968a50d
+            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.2/app-x86_64-pc-windows-msvc.zip
+            sha256: 7d5a83bf2f9a4020dc529df371537c860e7a665e52789ac67ef231123a6b4a7e
         bin:
           ast-grep: ast-grep.exe
           sg: sg.exe
@@ -706,8 +706,8 @@ packages:
           - win_x86
         files:
           - name: app-i686-pc-windows-msvc.zip
-            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.1/app-i686-pc-windows-msvc.zip
-            sha256: 24196842dc24d2f6cdfd93045e6f4de56053bf8134bc261d4cffa2a54c64140b
+            url: https://github.com/ast-grep/ast-grep/releases/download/0.51.2/app-i686-pc-windows-msvc.zip
+            sha256: e1a7bcf8db1cdfb81885edf9ed07d868453f4dbcea3b4f75f43e960eeb95ed4e
         bin:
           ast-grep: ast-grep.exe
           sg: sg.exe
@@ -2510,7 +2510,7 @@ packages:
   - id: codebook
     source: github
     coordinate: blopker/codebook
-    version: v0.3.42
+    version: v0.4.0
     description: An unholy spell checker for code.
     homepage: https://github.com/blopker/codebook
     languages:
@@ -2541,40 +2541,40 @@ packages:
           - linux_x64_gnu
         files:
           - name: codebook-lsp-x86_64-unknown-linux-musl.tar.gz
-            url: https://github.com/blopker/codebook/releases/download/v0.3.42/codebook-lsp-x86_64-unknown-linux-musl.tar.gz
-            sha256: 979b9a92f7a433c8830b51783dd06aab1d2668aee991c22d42560b593d291f9c
+            url: https://github.com/blopker/codebook/releases/download/v0.4.0/codebook-lsp-x86_64-unknown-linux-musl.tar.gz
+            sha256: 2c79e0bf317410550bd7f7e69d4a625d1f2f781f835f8d29de3dd75636ca0612
         bin:
           codebook-lsp: codebook-lsp
       - targets:
           - linux_arm64_gnu
         files:
           - name: codebook-lsp-aarch64-unknown-linux-musl.tar.gz
-            url: https://github.com/blopker/codebook/releases/download/v0.3.42/codebook-lsp-aarch64-unknown-linux-musl.tar.gz
-            sha256: 5f1448369447f0f61e407e0082cd72a89f2ea7e47e3c45692b910a9b03adb6fe
+            url: https://github.com/blopker/codebook/releases/download/v0.4.0/codebook-lsp-aarch64-unknown-linux-musl.tar.gz
+            sha256: f8310cbdc9a85663af0626cf4d36754f444c00f34c14720ddeed8edca64d0936
         bin:
           codebook-lsp: codebook-lsp
       - targets:
           - darwin_x64
         files:
           - name: codebook-lsp-x86_64-apple-darwin.tar.gz
-            url: https://github.com/blopker/codebook/releases/download/v0.3.42/codebook-lsp-x86_64-apple-darwin.tar.gz
-            sha256: e826b9890ff2e6c4be9207f427e87a04818dd600bf99d6dbf4c9eab3c39aa331
+            url: https://github.com/blopker/codebook/releases/download/v0.4.0/codebook-lsp-x86_64-apple-darwin.tar.gz
+            sha256: e20194467d7c5d4994b113a60457d8af2865882a827997ca9800112e369d439d
         bin:
           codebook-lsp: codebook-lsp
       - targets:
           - darwin_arm64
         files:
           - name: codebook-lsp-aarch64-apple-darwin.tar.gz
-            url: https://github.com/blopker/codebook/releases/download/v0.3.42/codebook-lsp-aarch64-apple-darwin.tar.gz
-            sha256: d0a17c11eaccb7d08091c195e5908956be67a05554fc0df9a0842988387a1852
+            url: https://github.com/blopker/codebook/releases/download/v0.4.0/codebook-lsp-aarch64-apple-darwin.tar.gz
+            sha256: e9fa1da4bf854fae3f32de6179fe069674661a1078d70ba1c78aa72ad066d2ba
         bin:
           codebook-lsp: codebook-lsp
       - targets:
           - win_x64
         files:
           - name: codebook-lsp-x86_64-pc-windows-msvc.zip
-            url: https://github.com/blopker/codebook/releases/download/v0.3.42/codebook-lsp-x86_64-pc-windows-msvc.zip
-            sha256: a0d0b01ce1e40522590859a66063b884bb6c494c5e45595aaf0eb77c2fd7afe6
+            url: https://github.com/blopker/codebook/releases/download/v0.4.0/codebook-lsp-x86_64-pc-windows-msvc.zip
+            sha256: 51f2c55bb266b502e57eccbb5f016989c7687f3b2d947b85ac5f9cd98fb0866c
         bin:
           codebook-lsp: codebook-lsp.exe
     filetypes:
@@ -2729,7 +2729,7 @@ packages:
   - id: codex-acp
     source: npm
     coordinate: "@agentclientprotocol/codex-acp"
-    version: 2.5.0
+    version: 2.6.0
     description: ACP adapter for Codex CLI
     homepage: https://github.com/agentclientprotocol/codex-acp
     bin:
@@ -2850,7 +2850,7 @@ packages:
   - id: copilot-language-server
     source: npm
     coordinate: "@github/copilot-language-server"
-    version: 1.566.0
+    version: 1.567.0
     description: The Copilot Language Server enables any editor or IDE to integrate with GitHub Copilot via the language server protocol.
     homepage: https://www.npmjs.com/package/@github/copilot-language-server
     categories:
@@ -8295,7 +8295,7 @@ packages:
   - id: js-debug-adapter
     source: github
     coordinate: microsoft/vscode-js-debug
-    version: v1.140.0
+    version: v1.140.1
     description: The VS Code JavaScript debugger.
     homepage: https://github.com/microsoft/vscode-js-debug
     languages:
@@ -8309,9 +8309,9 @@ packages:
     artifacts:
       - targets: []
         files:
-          - name: js-debug-dap-v1.140.0.tar.gz
-            url: https://github.com/microsoft/vscode-js-debug/releases/download/v1.140.0/js-debug-dap-v1.140.0.tar.gz
-            sha256: 27dab92937ec1ab35821ae955aac867544fe06a1b6307229049f2d789af10968
+          - name: js-debug-dap-v1.140.1.tar.gz
+            url: https://github.com/microsoft/vscode-js-debug/releases/download/v1.140.1/js-debug-dap-v1.140.1.tar.gz
+            sha256: c72fab31bcbfdce6ad1f42adfd28eff8d4681dd3b03b5e2e6f9e72e6f9927faf
         bin:
           js-debug-adapter: node:js-debug/src/dapDebugServer.js
     filetypes:
@@ -8343,7 +8343,7 @@ packages:
   - id: json-repair
     source: pypi
     coordinate: json-repair
-    version: 0.64.8
+    version: 0.64.9
     description: A package to repair broken json strings
     homepage: https://pypi.org/project/json-repair/
     languages:
@@ -11453,7 +11453,7 @@ packages:
   - id: npm-groovy-lint
     source: npm
     coordinate: npm-groovy-lint
-    version: 19.0.0
+    version: 19.0.1
     description: Lint, format and auto-fix your Groovy / Jenkinsfile / Gradle files using command line.
     homepage: https://github.com/nvuillam/npm-groovy-lint
     languages:
@@ -11832,7 +11832,7 @@ packages:
   - id: opa
     source: github
     coordinate: open-policy-agent/opa
-    version: v1.22.2
+    version: v1.22.3
     description: Open Policy Agent (OPA) is an open source, general-purpose policy engine.
     homepage: https://github.com/open-policy-agent/opa
     languages:
@@ -11850,40 +11850,40 @@ packages:
           - darwin_arm64
         files:
           - name: opa_darwin_arm64_static
-            url: https://github.com/open-policy-agent/opa/releases/download/v1.22.2/opa_darwin_arm64_static
-            sha256: c7767cb68c21c3ea9866a76a2d6703d132a25ddad3cd1c1213925e2802ed1dce
+            url: https://github.com/open-policy-agent/opa/releases/download/v1.22.3/opa_darwin_arm64_static
+            sha256: 3776eae11d2daa1aadf1e5e6fe9202eca90b260ac3da4f1f980f75c74ce23366
         bin:
           opa: opa_darwin_arm64_static
       - targets:
           - darwin_x64
         files:
           - name: opa_darwin_amd64
-            url: https://github.com/open-policy-agent/opa/releases/download/v1.22.2/opa_darwin_amd64
-            sha256: d0b8203cd6c4540c0e0664fee80b13ca4e89b37f1646d73efd6f6417ff635957
+            url: https://github.com/open-policy-agent/opa/releases/download/v1.22.3/opa_darwin_amd64
+            sha256: 503013bf75950c938c4df74b1efd77697e73b6ad5b8f19ba93399dee6431dd2a
         bin:
           opa: opa_darwin_amd64
       - targets:
           - linux_arm64
         files:
           - name: opa_linux_arm64_static
-            url: https://github.com/open-policy-agent/opa/releases/download/v1.22.2/opa_linux_arm64_static
-            sha256: 8fc1c524f93b4369eb207961aba213d990604205fc49fe3ba923dfc125c8a422
+            url: https://github.com/open-policy-agent/opa/releases/download/v1.22.3/opa_linux_arm64_static
+            sha256: 4c1be43eb34a8c253c369e4236ec5436e2e0dd19b97efb875cc756bcc75ddf6c
         bin:
           opa: opa_linux_arm64_static
       - targets:
           - linux_x64
         files:
           - name: opa_linux_amd64_static
-            url: https://github.com/open-policy-agent/opa/releases/download/v1.22.2/opa_linux_amd64_static
-            sha256: 24e344d1fc394cd93dc75666f584cfb97c6981f7255af25f8d2979834317317b
+            url: https://github.com/open-policy-agent/opa/releases/download/v1.22.3/opa_linux_amd64_static
+            sha256: 26f04bc50983ac67db9dea2fd28c1670c74ac22639a2f4408a7e16d488898e5f
         bin:
           opa: opa_linux_amd64_static
       - targets:
           - win_x64
         files:
           - name: opa_windows_amd64.exe
-            url: https://github.com/open-policy-agent/opa/releases/download/v1.22.2/opa_windows_amd64.exe
-            sha256: ef8bd2e56a329f91192053da7e4adfb09fbfdaee07de588d6c10b939d581bc64
+            url: https://github.com/open-policy-agent/opa/releases/download/v1.22.3/opa_windows_amd64.exe
+            sha256: 01fb91eedf7cfd53ffc308d828af19c86dc1f3e4f0b86c69fe8f3ce2699a7d83
         bin:
           opa: opa_windows_amd64.exe
     filetypes:
@@ -12409,7 +12409,7 @@ packages:
   - id: php-cs-fixer
     source: github
     coordinate: PHP-CS-Fixer/PHP-CS-Fixer
-    version: v3.95.29
+    version: v3.95.30
     description: |-
       The PHP Coding Standards Fixer (PHP CS Fixer) tool fixes your code to follow standards; whether you want to follow PHP
       coding standards as defined in the PSR-1, PSR-2, etc., or other community driven ones like the Symfony one. You can
@@ -12427,8 +12427,8 @@ packages:
       - targets: []
         files:
           - name: php-cs-fixer.phar
-            url: https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.29/php-cs-fixer.phar
-            sha256: 5ec1e3b9dae2d3a7e4af11580501e29738968d4b986caf2cb14a2e04e6bb650c
+            url: https://github.com/PHP-CS-Fixer/PHP-CS-Fixer/releases/download/v3.95.30/php-cs-fixer.phar
+            sha256: 401607e17017f42929f075f4eaf56d78ebe9f9aef9c9d328979756d6d3b64b9a
     requires:
       - php
     filetypes:
@@ -12730,7 +12730,7 @@ packages:
   - id: pint
     source: composer
     coordinate: laravel/pint
-    version: v1.32.1
+    version: v1.32.2
     description: Laravel Pint is an opinionated PHP code style fixer for minimalists.
     homepage: https://laravel.com/docs/pint
     languages:
@@ -13338,7 +13338,7 @@ packages:
   - id: psalm
     source: composer
     coordinate: vimeo/psalm
-    version: 7.2.0
+    version: 7.3.0
     description: A static analysis tool for finding errors in PHP applications.
     homepage: https://psalm.dev/
     languages:
@@ -13699,7 +13699,7 @@ packages:
   - id: pymobiledevice3
     source: pypi
     coordinate: pymobiledevice3
-    version: 11.50.3
+    version: 11.52.0
     description: Pure python3 implementation for working with iDevices (iPhone, etc...).
     homepage: https://github.com/doronz88/pymobiledevice3
     languages:
@@ -14526,7 +14526,7 @@ packages:
   - id: rshtml-analyzer
     source: github
     coordinate: rshtml/rshtml-analyzer
-    version: v0.1.8
+    version: v0.1.9
     description: |-
       rshtml-analyzer is an implementation of the Language Server Protocol (LSP)
       for the RsHtml templating language which elegantly combines Rust and HTML.
@@ -14543,62 +14543,62 @@ packages:
           - linux_x64_gnu
         files:
           - name: rshtml-analyzer-linux-x64.tar.gz
-            url: https://github.com/rshtml/rshtml-analyzer/releases/download/v0.1.8/rshtml-analyzer-linux-x64.tar.gz
-            sha256: e1f8d8a12a2c3c8984dcc1c599d5d614ae997250ff1506ad1c44607ab06abc1d
+            url: https://github.com/rshtml/rshtml-analyzer/releases/download/v0.1.9/rshtml-analyzer-linux-x64.tar.gz
+            sha256: 6acdec51b5690261b99417e789222754d6f01bdb10f65a55f8d085389ab9fcaf
         bin:
           rshtml-analyzer: rshtml-analyzer
       - targets:
           - linux_arm64_gnu
         files:
           - name: rshtml-analyzer-linux-arm64.tar.gz
-            url: https://github.com/rshtml/rshtml-analyzer/releases/download/v0.1.8/rshtml-analyzer-linux-arm64.tar.gz
-            sha256: 7f832425a2b4e07b5915de5cc078cc8da1b5f21de47f421ec6b72f416f37a432
+            url: https://github.com/rshtml/rshtml-analyzer/releases/download/v0.1.9/rshtml-analyzer-linux-arm64.tar.gz
+            sha256: 01c6a4c86eab489650999de33d9d9b101cac1a15c220489865e374fb14cc36c7
         bin:
           rshtml-analyzer: rshtml-analyzer
       - targets:
           - linux_x64_musl
         files:
           - name: rshtml-analyzer-linux-x64-musl.tar.gz
-            url: https://github.com/rshtml/rshtml-analyzer/releases/download/v0.1.8/rshtml-analyzer-linux-x64-musl.tar.gz
-            sha256: a204da3216c884942606bd0033dcbaebdd99a2183694e5e70cc39974b6f1bc50
+            url: https://github.com/rshtml/rshtml-analyzer/releases/download/v0.1.9/rshtml-analyzer-linux-x64-musl.tar.gz
+            sha256: c8dfca467a35f856fa4bde519cd75f1596e3170c9a4e0a8e2543fafc426740e9
         bin:
           rshtml-analyzer: rshtml-analyzer
       - targets:
           - darwin_x64
         files:
           - name: rshtml-analyzer-macos-x64.tar.gz
-            url: https://github.com/rshtml/rshtml-analyzer/releases/download/v0.1.8/rshtml-analyzer-macos-x64.tar.gz
-            sha256: ec36ac648507135c3c256d3ebbb0d04e78441603a1c0f503f52764db60430a05
+            url: https://github.com/rshtml/rshtml-analyzer/releases/download/v0.1.9/rshtml-analyzer-macos-x64.tar.gz
+            sha256: dae055bf22984f0924918cbf8241e5a210d327a58494a36d96f4003349e5e355
         bin:
           rshtml-analyzer: rshtml-analyzer
       - targets:
           - darwin_arm64
         files:
           - name: rshtml-analyzer-macos-arm64.tar.gz
-            url: https://github.com/rshtml/rshtml-analyzer/releases/download/v0.1.8/rshtml-analyzer-macos-arm64.tar.gz
-            sha256: 85e3412c1cf3fe04f8a277e2c2c953fe2362645bcb42b487b9f501e3265e9fef
+            url: https://github.com/rshtml/rshtml-analyzer/releases/download/v0.1.9/rshtml-analyzer-macos-arm64.tar.gz
+            sha256: b9a1e2846f024b45400303accdb8ce3b7e9c1674d330cee9dd4e7ffe296239be
         bin:
           rshtml-analyzer: rshtml-analyzer
       - targets:
           - win_x64
         files:
           - name: rshtml-analyzer-windows-x64.tar.gz
-            url: https://github.com/rshtml/rshtml-analyzer/releases/download/v0.1.8/rshtml-analyzer-windows-x64.tar.gz
-            sha256: 6bbc635669979b98c48ecf2fe66363c3a7829f9c29411a958bdb7fb83167addb
+            url: https://github.com/rshtml/rshtml-analyzer/releases/download/v0.1.9/rshtml-analyzer-windows-x64.tar.gz
+            sha256: 07c0c6714a527cbbe2adbb27e84a9509856298a4fe8090304e8becedfe1729ce
         bin:
           rshtml-analyzer: rshtml-analyzer.exe
       - targets:
           - win_arm64
         files:
           - name: rshtml-analyzer-windows-arm64.tar.gz
-            url: https://github.com/rshtml/rshtml-analyzer/releases/download/v0.1.8/rshtml-analyzer-windows-arm64.tar.gz
-            sha256: a93c735a0eccae94efc5b4c385b0802ad10cf808d556f53aa1aa63591b8be511
+            url: https://github.com/rshtml/rshtml-analyzer/releases/download/v0.1.9/rshtml-analyzer-windows-arm64.tar.gz
+            sha256: f6014aff9d192690cad69cd7df2214cc73c86ce9642cf6b74c1ef9b7991c4c4c
         bin:
           rshtml-analyzer: rshtml-analyzer.exe
   - id: rstcheck
     source: pypi
     coordinate: rstcheck
-    version: 6.3.0
+    version: 6.3.1
     description: Checks syntax of reStructuredText and code blocks nested within it.
     homepage: https://rstcheck.readthedocs.io/
     languages:
@@ -14830,7 +14830,7 @@ packages:
   - id: rumdl
     source: github
     coordinate: rvben/rumdl
-    version: v0.3.2
+    version: v0.3.3
     description: Fast Markdown linter and formatter.
     homepage: https://github.com/rvben/rumdl
     languages:
@@ -14847,57 +14847,57 @@ packages:
       - targets:
           - darwin_arm64
         files:
-          - name: rumdl-v0.3.2-aarch64-apple-darwin.tar.gz
-            url: https://github.com/rvben/rumdl/releases/download/v0.3.2/rumdl-v0.3.2-aarch64-apple-darwin.tar.gz
-            sha256: a1eefb1cd2e0cafa42f0ca98d3f8713d7e73f9eba77fc8ef0ed6836875197935
+          - name: rumdl-v0.3.3-aarch64-apple-darwin.tar.gz
+            url: https://github.com/rvben/rumdl/releases/download/v0.3.3/rumdl-v0.3.3-aarch64-apple-darwin.tar.gz
+            sha256: 8c60fbfc8064acda1e40856bfdbc7cc5f51a477920de1bae9426482d08916424
         bin:
           rumdl: rumdl
       - targets:
           - darwin_x64
         files:
-          - name: rumdl-v0.3.2-x86_64-apple-darwin.tar.gz
-            url: https://github.com/rvben/rumdl/releases/download/v0.3.2/rumdl-v0.3.2-x86_64-apple-darwin.tar.gz
-            sha256: ab35f245127a06374833127162eebdbdec1be17c1e3d8274f02f1b909645635c
+          - name: rumdl-v0.3.3-x86_64-apple-darwin.tar.gz
+            url: https://github.com/rvben/rumdl/releases/download/v0.3.3/rumdl-v0.3.3-x86_64-apple-darwin.tar.gz
+            sha256: 180cfc7b647561b8b93a8df897ccb33aaadeca989ff4593bc51b6967ff753b9a
         bin:
           rumdl: rumdl
       - targets:
           - linux_x64_gnu
         files:
-          - name: rumdl-v0.3.2-x86_64-unknown-linux-gnu.tar.gz
-            url: https://github.com/rvben/rumdl/releases/download/v0.3.2/rumdl-v0.3.2-x86_64-unknown-linux-gnu.tar.gz
-            sha256: f527d1374765d826c1627ceab3d1f46e548268731a495b5b12a3af529b3d79e8
+          - name: rumdl-v0.3.3-x86_64-unknown-linux-gnu.tar.gz
+            url: https://github.com/rvben/rumdl/releases/download/v0.3.3/rumdl-v0.3.3-x86_64-unknown-linux-gnu.tar.gz
+            sha256: 2e82399d566b4663625405bad6c36427477a81c7ff726a4986c4d9947e3a51ef
         bin:
           rumdl: rumdl
       - targets:
           - linux_arm64_gnu
         files:
-          - name: rumdl-v0.3.2-aarch64-unknown-linux-gnu.tar.gz
-            url: https://github.com/rvben/rumdl/releases/download/v0.3.2/rumdl-v0.3.2-aarch64-unknown-linux-gnu.tar.gz
-            sha256: bdfca7a602f893fbe5d73d5e38f73b31f45a21d3bcf385b6ea819997d0449ec3
+          - name: rumdl-v0.3.3-aarch64-unknown-linux-gnu.tar.gz
+            url: https://github.com/rvben/rumdl/releases/download/v0.3.3/rumdl-v0.3.3-aarch64-unknown-linux-gnu.tar.gz
+            sha256: c9233ea9233f9cf23dc9b063363d32fb55d28f9b0bdcf472288fc29c305c5bc2
         bin:
           rumdl: rumdl
       - targets:
           - linux_x64
         files:
-          - name: rumdl-v0.3.2-x86_64-unknown-linux-musl.tar.gz
-            url: https://github.com/rvben/rumdl/releases/download/v0.3.2/rumdl-v0.3.2-x86_64-unknown-linux-musl.tar.gz
-            sha256: 395c4061041c5a25301c7b3564a93c4a661ed4df93427a77b6fc9e426ec8a13a
+          - name: rumdl-v0.3.3-x86_64-unknown-linux-musl.tar.gz
+            url: https://github.com/rvben/rumdl/releases/download/v0.3.3/rumdl-v0.3.3-x86_64-unknown-linux-musl.tar.gz
+            sha256: 225291d073d46654030cb2c256ce98252965e1f475b77fee4f28a3dbb3632cfd
         bin:
           rumdl: rumdl
       - targets:
           - linux_arm64
         files:
-          - name: rumdl-v0.3.2-aarch64-unknown-linux-musl.tar.gz
-            url: https://github.com/rvben/rumdl/releases/download/v0.3.2/rumdl-v0.3.2-aarch64-unknown-linux-musl.tar.gz
-            sha256: afc6dd91f1c4f2a8cf4a40ab99f8e52e06e6dddfc5334f1c1db8b158d353d143
+          - name: rumdl-v0.3.3-aarch64-unknown-linux-musl.tar.gz
+            url: https://github.com/rvben/rumdl/releases/download/v0.3.3/rumdl-v0.3.3-aarch64-unknown-linux-musl.tar.gz
+            sha256: 84e5ecb564dc55483b480aa3287751e133771caeb5bb92d349105fe20e2b234d
         bin:
           rumdl: rumdl
       - targets:
           - win_x64
         files:
-          - name: rumdl-v0.3.2-x86_64-pc-windows-msvc.zip
-            url: https://github.com/rvben/rumdl/releases/download/v0.3.2/rumdl-v0.3.2-x86_64-pc-windows-msvc.zip
-            sha256: 87a632668c55969a7d916f214a28a7d365f6a68ec626b547bd1243e035b9c7ff
+          - name: rumdl-v0.3.3-x86_64-pc-windows-msvc.zip
+            url: https://github.com/rvben/rumdl/releases/download/v0.3.3/rumdl-v0.3.3-x86_64-pc-windows-msvc.zip
+            sha256: 75c080c3ee3456ac1d2a59cce194f46122f85b0e47c025ec66f3fbbd1e8181fa
         bin:
           rumdl: rumdl.exe
     filetypes:
@@ -15196,7 +15196,7 @@ packages:
   - id: semgrep
     source: pypi
     coordinate: semgrep
-    version: 1.184.0
+    version: 1.185.0
     description: |-
       Semgrep is a fast, open-source, static analysis engine for finding bugs, detecting vulnerabilities in third-party
       dependencies, and enforcing code standards.
@@ -15628,7 +15628,7 @@ packages:
   - id: slang
     source: github
     coordinate: shader-slang/slang
-    version: v2026.21
+    version: v2026.22
     description: |-
       Slang is a shading language that makes it easier to build and maintain large shader codebases in a modular and
       extensible fashion, while also maintaining the highest possible performance on modern GPUs and graphics APIs. Slang is
@@ -15649,45 +15649,45 @@ packages:
       - targets:
           - linux_x64_gnu
         files:
-          - name: slang-2026.21-linux-x86_64.tar.gz
-            url: https://github.com/shader-slang/slang/releases/download/v2026.21/slang-2026.21-linux-x86_64.tar.gz
-            sha256: 691f9341e5bec099eec97ee30a83bcbef541cee7fe3b4de68a821d42f9506c2f
+          - name: slang-2026.22-linux-x86_64.tar.gz
+            url: https://github.com/shader-slang/slang/releases/download/v2026.22/slang-2026.22-linux-x86_64.tar.gz
+            sha256: a877b75c6ec515f5d8bf66ea4bae4f0a5ba85050b9540c2046670285808347e6
         bin:
           slangd: bin/slangd
           slangc: bin/slangc
       - targets:
           - darwin_x64
         files:
-          - name: slang-2026.21-macos-x86_64.tar.gz
-            url: https://github.com/shader-slang/slang/releases/download/v2026.21/slang-2026.21-macos-x86_64.tar.gz
-            sha256: a6bc9ba38c5d3a092ae868595ba9c838663682b3e16de40d5786bd38964970ba
+          - name: slang-2026.22-macos-x86_64.tar.gz
+            url: https://github.com/shader-slang/slang/releases/download/v2026.22/slang-2026.22-macos-x86_64.tar.gz
+            sha256: baad48f7432c1826a84a396d9bd6a2ebc3c9ceb395a187baad49d29066fbcd02
         bin:
           slangd: bin/slangd
           slangc: bin/slangc
       - targets:
           - darwin_arm64
         files:
-          - name: slang-2026.21-macos-aarch64.tar.gz
-            url: https://github.com/shader-slang/slang/releases/download/v2026.21/slang-2026.21-macos-aarch64.tar.gz
-            sha256: c3d3c959ba3e0c8fdb6c2a5cf6a471ed097ed19c41820af9fb21625779794fb2
+          - name: slang-2026.22-macos-aarch64.tar.gz
+            url: https://github.com/shader-slang/slang/releases/download/v2026.22/slang-2026.22-macos-aarch64.tar.gz
+            sha256: 885b5bd9a79a1ae81fdb92212f5f7c785001f870d45c39f9bb5df01339db3fea
         bin:
           slangd: bin/slangd
           slangc: bin/slangc
       - targets:
           - win_x64
         files:
-          - name: slang-2026.21-windows-x86_64.zip
-            url: https://github.com/shader-slang/slang/releases/download/v2026.21/slang-2026.21-windows-x86_64.zip
-            sha256: 4b6f509e73397175ed36a341beb7ad15f4fff5feaf5f6d95fecf896c0d86b8de
+          - name: slang-2026.22-windows-x86_64.zip
+            url: https://github.com/shader-slang/slang/releases/download/v2026.22/slang-2026.22-windows-x86_64.zip
+            sha256: dd0c4a86bd44cdb7e9cf712af0c8ebf2fff1bba19fa5e3c128ff87384e8ff17b
         bin:
           slangd: bin/slangd.exe
           slangc: bin/slangc.exe
       - targets:
           - win_arm64
         files:
-          - name: slang-2026.21-windows-aarch64.zip
-            url: https://github.com/shader-slang/slang/releases/download/v2026.21/slang-2026.21-windows-aarch64.zip
-            sha256: 4250623b0e72a5ef297c31aacd1d9f0b7ae1c1b65d7d22834ee94e71c1098027
+          - name: slang-2026.22-windows-aarch64.zip
+            url: https://github.com/shader-slang/slang/releases/download/v2026.22/slang-2026.22-windows-aarch64.zip
+            sha256: 3b74b69e1924d359d3626949b3cde0f6e65068a7b5eb2457e83a351697fe4e71
         bin:
           slangd: bin/slangd.exe
           slangc: bin/slangc.exe
@@ -16378,7 +16378,7 @@ packages:
   - id: sorbet
     source: gem
     coordinate: sorbet
-    version: 0.6.13646
+    version: 0.6.13650
     description: Sorbet is a fast, powerful type checker designed for Ruby.
     homepage: https://sorbet.org/
     languages:
@@ -17728,7 +17728,7 @@ packages:
   - id: termux-language-server
     source: pypi
     coordinate: termux-language-server
-    version: 0.1.15
+    version: 0.1.16
     description: A language server for some specific bash scripts.
     homepage: https://termux-language-server.readthedocs.io/en/latest/
     languages:
@@ -18634,7 +18634,7 @@ packages:
   - id: tombi
     source: github
     coordinate: tombi-toml/tombi
-    version: v1.11.1
+    version: v1.11.2
     description: TOML Formatter / Linter / Language Server
     homepage: https://github.com/tombi-toml/tombi
     languages:
@@ -18651,57 +18651,57 @@ packages:
       - targets:
           - darwin_x64
         files:
-          - name: tombi-cli-1.11.1-x86_64-apple-darwin.tar.gz
-            url: https://github.com/tombi-toml/tombi/releases/download/v1.11.1/tombi-cli-1.11.1-x86_64-apple-darwin.tar.gz
-            sha256: 3130e3cdae621f09c730a19c725b7302463310fd5868362a7241ff9cdf370251
+          - name: tombi-cli-1.11.2-x86_64-apple-darwin.tar.gz
+            url: https://github.com/tombi-toml/tombi/releases/download/v1.11.2/tombi-cli-1.11.2-x86_64-apple-darwin.tar.gz
+            sha256: 09ed72a2e8a5a57fa325f95942833692bdc838b4ca4c0964dfbad20da44553c3
         bin:
-          tombi: tombi-cli-1.11.1-x86_64-apple-darwin/tombi
+          tombi: tombi-cli-1.11.2-x86_64-apple-darwin/tombi
       - targets:
           - darwin_arm64
         files:
-          - name: tombi-cli-1.11.1-aarch64-apple-darwin.tar.gz
-            url: https://github.com/tombi-toml/tombi/releases/download/v1.11.1/tombi-cli-1.11.1-aarch64-apple-darwin.tar.gz
-            sha256: c14d4dbe7e0f8887a0090a91362ce3e46aa61002f879ff1728e8607f1c573197
+          - name: tombi-cli-1.11.2-aarch64-apple-darwin.tar.gz
+            url: https://github.com/tombi-toml/tombi/releases/download/v1.11.2/tombi-cli-1.11.2-aarch64-apple-darwin.tar.gz
+            sha256: 035be0afc61549adbe9ce6b6ab582cfff99bcd6b86f38f847149c3819dc89d33
         bin:
-          tombi: tombi-cli-1.11.1-aarch64-apple-darwin/tombi
+          tombi: tombi-cli-1.11.2-aarch64-apple-darwin/tombi
       - targets:
           - linux_x64
         files:
-          - name: tombi-cli-1.11.1-x86_64-unknown-linux-musl.tar.gz
-            url: https://github.com/tombi-toml/tombi/releases/download/v1.11.1/tombi-cli-1.11.1-x86_64-unknown-linux-musl.tar.gz
-            sha256: 20ad530e4878c8214e40e14e92623fd2ef244254a397a5cab29137f9076c156e
+          - name: tombi-cli-1.11.2-x86_64-unknown-linux-musl.tar.gz
+            url: https://github.com/tombi-toml/tombi/releases/download/v1.11.2/tombi-cli-1.11.2-x86_64-unknown-linux-musl.tar.gz
+            sha256: 8bb862497e99b415310ede463ee6cf997845368d3e6d4edac4dd33b07084beb3
         bin:
-          tombi: tombi-cli-1.11.1-x86_64-unknown-linux-musl/tombi
+          tombi: tombi-cli-1.11.2-x86_64-unknown-linux-musl/tombi
       - targets:
           - linux_arm64
         files:
-          - name: tombi-cli-1.11.1-aarch64-unknown-linux-musl.tar.gz
-            url: https://github.com/tombi-toml/tombi/releases/download/v1.11.1/tombi-cli-1.11.1-aarch64-unknown-linux-musl.tar.gz
-            sha256: df98bd2067cc97f12e1c92b9a916ed0a6515cda643b31785887c78612fcd15e0
+          - name: tombi-cli-1.11.2-aarch64-unknown-linux-musl.tar.gz
+            url: https://github.com/tombi-toml/tombi/releases/download/v1.11.2/tombi-cli-1.11.2-aarch64-unknown-linux-musl.tar.gz
+            sha256: 14122e634113d2d9b1210b3f01d5139289575494a2d585824e1e51e116a58d96
         bin:
-          tombi: tombi-cli-1.11.1-aarch64-unknown-linux-musl/tombi
+          tombi: tombi-cli-1.11.2-aarch64-unknown-linux-musl/tombi
       - targets:
           - linux_armv7_gnu
         files:
-          - name: tombi-cli-1.11.1-arm-unknown-linux-gnueabihf.tar.gz
-            url: https://github.com/tombi-toml/tombi/releases/download/v1.11.1/tombi-cli-1.11.1-arm-unknown-linux-gnueabihf.tar.gz
-            sha256: c74e0c9aa619af5e720f07354cbadb4fb180dd05722e7c831d1fa8dd0b1e5d5b
+          - name: tombi-cli-1.11.2-arm-unknown-linux-gnueabihf.tar.gz
+            url: https://github.com/tombi-toml/tombi/releases/download/v1.11.2/tombi-cli-1.11.2-arm-unknown-linux-gnueabihf.tar.gz
+            sha256: 51ce60d4570ad0429b1be09240dba1288d69df5a341c204ec672899a7406f3e2
         bin:
-          tombi: tombi-cli-1.11.1-arm-unknown-linux-gnueabihf/tombi
+          tombi: tombi-cli-1.11.2-arm-unknown-linux-gnueabihf/tombi
       - targets:
           - win_x64
         files:
-          - name: tombi-cli-1.11.1-x86_64-pc-windows-msvc.zip
-            url: https://github.com/tombi-toml/tombi/releases/download/v1.11.1/tombi-cli-1.11.1-x86_64-pc-windows-msvc.zip
-            sha256: a12a12dd8cae4199b67b24480f6523859c94e6af1de1f1ef0df81a3da37e4480
+          - name: tombi-cli-1.11.2-x86_64-pc-windows-msvc.zip
+            url: https://github.com/tombi-toml/tombi/releases/download/v1.11.2/tombi-cli-1.11.2-x86_64-pc-windows-msvc.zip
+            sha256: fc059da801b0f6f6dd816eb4ede2a532d1562bc16c56cfe6557a9ecfa81a235a
         bin:
           tombi: tombi.exe
       - targets:
           - win_arm64
         files:
-          - name: tombi-cli-1.11.1-aarch64-pc-windows-msvc.zip
-            url: https://github.com/tombi-toml/tombi/releases/download/v1.11.1/tombi-cli-1.11.1-aarch64-pc-windows-msvc.zip
-            sha256: e2f3fe10bd8abab2989a99303ba63c682bba4b8e8c0c121e332b7c45bf37621a
+          - name: tombi-cli-1.11.2-aarch64-pc-windows-msvc.zip
+            url: https://github.com/tombi-toml/tombi/releases/download/v1.11.2/tombi-cli-1.11.2-aarch64-pc-windows-msvc.zip
+            sha256: c6da0c40b5f969acb6a1063874f31b6b3a2f24505a88c169a4d04834cd55af35
         bin:
           tombi: tombi.exe
     filetypes:
@@ -19208,7 +19208,7 @@ packages:
   - id: ty
     source: pypi
     coordinate: ty
-    version: 0.0.99
+    version: 0.0.100
     description: An extremely fast Python type checker and language server, written in Rust.
     homepage: https://github.com/astral-sh/ty
     languages:
@@ -19253,7 +19253,7 @@ packages:
   - id: typos
     source: github
     coordinate: crate-ci/typos
-    version: v1.52.0
+    version: v1.52.2
     description: Source code spell checker
     homepage: https://github.com/crate-ci/typos
     categories:
@@ -19265,33 +19265,33 @@ packages:
       - targets:
           - darwin_x64
         files:
-          - name: typos-v1.52.0-x86_64-apple-darwin.tar.gz
-            url: https://github.com/crate-ci/typos/releases/download/v1.52.0/typos-v1.52.0-x86_64-apple-darwin.tar.gz
-            sha256: 8de057f425909b02c0184892539755d70ecc3244c4b214ae9382cedd691127e0
+          - name: typos-v1.52.2-x86_64-apple-darwin.tar.gz
+            url: https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-x86_64-apple-darwin.tar.gz
+            sha256: 2c1e5cd3be644005d27543d7d83a32dbba36eb285bc12678818709938a63a988
         bin:
           typos: typos
       - targets:
           - darwin_arm64
         files:
-          - name: typos-v1.52.0-x86_64-apple-darwin.tar.gz
-            url: https://github.com/crate-ci/typos/releases/download/v1.52.0/typos-v1.52.0-x86_64-apple-darwin.tar.gz
-            sha256: 8de057f425909b02c0184892539755d70ecc3244c4b214ae9382cedd691127e0
+          - name: typos-v1.52.2-x86_64-apple-darwin.tar.gz
+            url: https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-x86_64-apple-darwin.tar.gz
+            sha256: 2c1e5cd3be644005d27543d7d83a32dbba36eb285bc12678818709938a63a988
         bin:
           typos: typos
       - targets:
           - linux_x64
         files:
-          - name: typos-v1.52.0-x86_64-unknown-linux-musl.tar.gz
-            url: https://github.com/crate-ci/typos/releases/download/v1.52.0/typos-v1.52.0-x86_64-unknown-linux-musl.tar.gz
-            sha256: 6155d4114f9a0f5b8f6d4fda96266c9d5f6add71df80da7f684ee5e72eb14588
+          - name: typos-v1.52.2-x86_64-unknown-linux-musl.tar.gz
+            url: https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-x86_64-unknown-linux-musl.tar.gz
+            sha256: 3b13d1291281d39d01822e54035636487a7a0f228e70097899b1e33aeb0e7e93
         bin:
           typos: typos
       - targets:
           - win_x64
         files:
-          - name: typos-v1.52.0-x86_64-pc-windows-msvc.zip
-            url: https://github.com/crate-ci/typos/releases/download/v1.52.0/typos-v1.52.0-x86_64-pc-windows-msvc.zip
-            sha256: 7da6eb1932ad86921420a7198dbc9e62a10bcd995144704dc19b81d3fb802182
+          - name: typos-v1.52.2-x86_64-pc-windows-msvc.zip
+            url: https://github.com/crate-ci/typos/releases/download/v1.52.2/typos-v1.52.2-x86_64-pc-windows-msvc.zip
+            sha256: ab79036832cea0f2a21aa947731d39512250cc0f7a6a2f6add26262738a8cc11
         bin:
           typos: typos.exe
   - id: typos-lsp

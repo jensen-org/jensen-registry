@@ -601,9 +601,9 @@ mcp==2.3.0 \
     --hash=sha256:8b147a50441cf059dc88c684e0aeed3687f0aa0f39c6cde7b90330effd2b34d8 \
     --hash=sha256:dd0c44c089d16453e8ae31a3877a0054d7a2314caaa81f5e0541b9b1734b2377
     # via mcp-server-fetch
-mcp-server-fetch==2026.11.4 \
-    --hash=sha256:7c5891e3d3e3ea7d2d8c21acb9c64ccd30ff1f42beeea59f95715637b970307d \
-    --hash=sha256:bee7b99b40d0c82b9e82de45055182a01372c3b082c6fa3dea9f7feaa0723a89
+mcp-server-fetch==2026.11.11 \
+    --hash=sha256:6652fbe0e231f6891d3aa08e0b4943a1d0ea9f5e09e75cc3fb46180b620976e6 \
+    --hash=sha256:8e22e58942b1bb9b04d94034f50b4c89b8533081d3c2a58d6b4998614bacf23f
     # via -r requirements.in
 mcp-types==2.3.0 \
     --hash=sha256:968efdbdaedfab06adae40d378a34395f1090c5921d4be3c9cde283aaf76d91d \
@@ -1050,9 +1050,9 @@ socksio==1.0.0 \
     --hash=sha256:95dc1f15f9b34e8d7b16f06d74b8ccf48f609af32ab33c608d08761c5dcbb1f3 \
     --hash=sha256:f88beb3da5b5c38b9890469de67d0cb0f9d494b78b106ca1845f96c10b91c4ac
     # via httpx
-soupsieve==4.0.1 \
-    --hash=sha256:2e68cf7dd5a0f29d81f9d485275ccf294e6475f615e211895d91cb81f8614f04 \
-    --hash=sha256:7621e3c5f6b371ed2c5eabaac5de300ac3d66d05e6d7f34783e31b63c4f90c75
+soupsieve==4.1 \
+    --hash=sha256:ca9abf7126667010d8f6e9b39bfc1bc3b23c8aed9bcb0f54a754dde969bb8aab \
+    --hash=sha256:e4d667b3974ce6e038e7390486b8093369854a1d345ffdd4c121dfc4a782e809
     # via beautifulsoup4
 sse-starlette==3.7.0 \
     --hash=sha256:326416da2ab52e9a41b3f409d3ff897eda45aa68c9f3b7b17d0913aab8d219c3 \
