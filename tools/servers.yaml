@@ -3715,6 +3715,19 @@ servers:
             enable: true
           updateTest:
             enable: true
+    init_options:
+      cargo:
+        targetDir: true
+        autoreload: false
+      checkOnSave: false
+      cachePriming:
+        numThreads: 2
+      lru:
+        capacity: 64
+      lens:
+        enable: false
+      inlayHints:
+        enable: false
     root_strategy: cargo-workspace
     priority: 10
   - id: rust_glancer
