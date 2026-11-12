@@ -3715,6 +3715,8 @@ servers:
             enable: true
           updateTest:
             enable: true
+    root_strategy: cargo-workspace
+    priority: 10
     init_options:
       cargo:
         targetDir: true
@@ -3728,8 +3730,6 @@ servers:
         enable: false
       inlayHints:
         enable: false
-    root_strategy: cargo-workspace
-    priority: 10
   - id: rust_glancer
     package: rust-glancer
     cmd:
