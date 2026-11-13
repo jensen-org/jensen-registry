@@ -2,7 +2,9 @@ import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node
 import { join } from "node:path";
 import { Language, Parser, Query } from "web-tree-sitter";
 import { ROOT, dump, readYaml, writeText } from "../lib.mjs";
-import { OWN_QUERIES_DIR, fetchCrate, queryPath, wasmPath } from "./track.mjs";
+import { OWN_QUERIES_DIR, fetchCrate, queryPath, regularFileWithin, wasmPath } from "./track.mjs";
+
+const MAX_NODE_TYPES_BYTES = 8 * 1024 * 1024;
 
 const KINDS = [
   ["function", /(^|_)(function|func|fn|procedure|subroutine|def)(_|$)/],
@@ -64,6 +66,7 @@ export async function generateQueries({ log = console.log } = {}) {
     try {
       const file = join(source, grammar.path ?? ".", "src/node-types.json");
       if (!existsSync(file)) continue;
+      regularFileWithin(file, source, MAX_NODE_TYPES_BYTES);
       const nodeTypes = JSON.parse(readFileSync(file, "utf8"));
       const language = await Language.load(readFileSync(join(ROOT, wasmPath(grammar))));
       for (const name of missing) {

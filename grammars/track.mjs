@@ -70,10 +70,10 @@ export async function fetchCrate(grammar) {
   return { work, source: join(work, `${grammar.crate}-${grammar.version}`) };
 }
 
-function regularFileWithin(file, crateRoot) {
+export function regularFileWithin(file, crateRoot, maxBytes = MAX_QUERY_BYTES) {
   const stat = lstatSync(file);
   if (!stat.isFile() || stat.isSymbolicLink()) throw new Error(`${file} is not a regular file, refusing to publish it`);
-  if (stat.size > MAX_QUERY_BYTES) throw new Error(`${file} is larger than ${MAX_QUERY_BYTES} bytes`);
+  if (stat.size > maxBytes) throw new Error(`${file} is larger than ${maxBytes} bytes`);
   if (!realpathSync(file).startsWith(realpathSync(crateRoot) + sep)) throw new Error(`${file} resolves outside the crate`);
 }
 
