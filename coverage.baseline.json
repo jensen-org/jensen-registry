@@ -1,0 +1,14 @@
+{
+  "grammars": 72,
+  "withGrammar": 87,
+  "withServer": 378,
+  "withFormatter": 146,
+  "withLinter": 102,
+  "queries": {
+    "tags": 25,
+    "locals": 26,
+    "injections": 20,
+    "imports": 14,
+    "metrics": 33
+  }
+}

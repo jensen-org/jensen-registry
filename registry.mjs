@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ROOT, SCHEMA_VERSION, checksumsText, checksummed, dump, loadEntries, readYaml, validator, writeText } from "./lib.mjs";
+import { baselineProblems, formatReport, loadCoverage, writeBaseline } from "./report.mjs";
 import { buildShard, mergeShards, parseShard, resolveGrammars, seedGrammars } from "./grammars/seed.mjs";
 import { trackGrammars } from "./grammars/track.mjs";
 import { validateGrammars } from "./grammars/validate.mjs";
@@ -42,6 +43,7 @@ async function validate(online) {
   const context = { check, index, problems, same, online };
   await validateTools(context);
   await validateGrammars(context);
+  problems.push(...baselineProblems(loadCoverage()));
   await validateSkills(context);
   validateMcp(context);
   validateIntegrations({ ...context, mcpEntries: loadEntries("mcp") });
@@ -67,10 +69,15 @@ const commands = {
       await track();
     }
   },
+  report: async () => {
+    const result = loadCoverage();
+    console.log(formatReport(result));
+    if (flag === "--update") writeBaseline(result);
+  },
   validate: () => validate(flag === "--online"),
 };
 if (!commands[command]) {
-  console.error("usage: node registry.mjs track | seed [id | resolve | index/total | merge] | validate [--online]");
+  console.error("usage: node registry.mjs track | seed [id | resolve | index/total | merge] | report [--update] | validate [--online]");
   process.exit(2);
 }
 commands[command]().catch((error) => {
