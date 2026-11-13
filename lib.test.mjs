@@ -1,6 +1,6 @@
 import assert from "node:assert/strict";
 import { afterEach, test } from "node:test";
-import { getBytes, getJson } from "./lib.mjs";
+import { checksummed, getBytes, getJson } from "./lib.mjs";
 import { requiresOf } from "./tools/generate.mjs";
 import { filetypeEntries } from "./tools/sources/filetype.mjs";
 import { filetypeMarkerProblems, languageFileProblems, packageRequirementProblems, serverPriorityProblems, workspaceServerProblems } from "./tools/validate.mjs";
@@ -107,4 +107,8 @@ test("a package requires the programs its client and its launchers need", () => 
   assert.deepEqual(requiresOf({ source: "npm", bin: { a: { client: "node" }, b: { client: "path" } } }, clients), ["node", "npm"]);
   assert.deepEqual(requiresOf({ source: "pypi", bin: { a: { client: "path" } } }, clients), ["python3"]);
   assert.equal(requiresOf({ source: "github", bin: { a: { client: "path" } } }, clients), undefined);
+});
+
+test("the sparse manifest is checksummed so its file hashes have a root of trust", () => {
+  assert.ok(checksummed().includes("sparse/manifest.json"));
 });
