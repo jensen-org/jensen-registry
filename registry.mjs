@@ -1,8 +1,10 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ROOT, SCHEMA_VERSION, checksumsText, checksummed, dump, loadEntries, readYaml, validator, writeText } from "./lib.mjs";
-import { discoverGrammars } from "./grammars/discover.mjs";
-import { seedGrammars } from "./grammars/seed.mjs";
+import { generateQueries } from "./grammars/generate.mjs";
+import { buildSparse, loadCatalogs, sparseProblems, writeSparse } from "./sparse.mjs";
+import { baselineProblems, formatReport, loadCoverage, writeBaseline } from "./report.mjs";
+import { buildShard, mergeShards, parseShard, resolveGrammars, seedGrammars } from "./grammars/seed.mjs";
 import { trackGrammars } from "./grammars/track.mjs";
 import { validateGrammars } from "./grammars/validate.mjs";
 import { trackIntegrations } from "./integrations/track.mjs";
@@ -28,6 +30,7 @@ async function track() {
   const grammars = await trackGrammars();
   await trackTools();
   writeText("index.yaml", dump({ schema_version: SCHEMA_VERSION, skills, mcp, integrations }));
+  writeSparse(buildSparse(loadCatalogs()));
   writeText("checksums.txt", checksumsText(checksummed()));
   console.log(`tracked ${skills.length} skills, ${mcp.length} mcp servers, ${integrations.length} integrations and ${grammars.length} grammars`);
 }
@@ -43,6 +46,8 @@ async function validate(online) {
   const context = { check, index, problems, same, online };
   await validateTools(context);
   await validateGrammars(context);
+  problems.push(...baselineProblems(loadCoverage()));
+  problems.push(...sparseProblems(buildSparse(loadCatalogs())));
   await validateSkills(context);
   validateMcp(context);
   validateIntegrations({ ...context, mcpEntries: loadEntries("mcp") });
@@ -57,15 +62,31 @@ async function validate(online) {
 const [command, flag] = process.argv.slice(2);
 const commands = {
   track,
-  discover: () => discoverGrammars(),
   seed: async () => {
-    await seedGrammars({ only: flag });
+    if (flag === "resolve") await resolveGrammars();
+    else if (flag === "merge") {
+      mergeShards();
+      await generateQueries();
+      await track();
+    } else if (flag?.includes("/")) await buildShard(parseShard(flag));
+    else {
+      await seedGrammars({ only: flag });
+      await track();
+    }
+  },
+  queries: async () => {
+    await generateQueries();
     await track();
+  },
+  report: async () => {
+    const result = loadCoverage();
+    console.log(formatReport(result));
+    if (flag === "--update") writeBaseline(result);
   },
   validate: () => validate(flag === "--online"),
 };
 if (!commands[command]) {
-  console.error("usage: node registry.mjs track | discover | seed [id] | validate [--online]");
+  console.error("usage: node registry.mjs track | seed [id | resolve | index/total | merge] | queries | report [--update] | validate [--online]");
   process.exit(2);
 }
 commands[command]().catch((error) => {
