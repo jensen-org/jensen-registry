@@ -15,6 +15,10 @@ grammars:
     version: 1.3.3
     own_queries:
       - metrics
+  - id: apex
+    crate: tree-sitter-sfapex
+    version: 3.0.2
+    path: apex
   - id: arduino
     crate: tree-sitter-arduino
     version: 0.24.0
@@ -99,6 +103,10 @@ grammars:
   - id: dot
     crate: tree-sitter-dot
     version: 0.1.6
+  - id: dtd
+    crate: tree-sitter-xml
+    version: 0.7.0
+    path: dtd
   - id: earthfile
     crate: tree-sitter-earthfile
     version: 0.6.0
@@ -185,11 +193,18 @@ grammars:
   - id: make
     crate: tree-sitter-make
     version: 1.1.1
+  - id: markdown
+    crate: tree-sitter-md
+    version: 0.5.4
+    path: tree-sitter-markdown
   - id: matlab
     crate: tree-sitter-matlab
     version: 1.3.1
     own_queries:
       - tags
+  - id: menhir
+    crate: tree-sitter-menhir
+    version: 0.6.1
   - id: nginx
     crate: tree-sitter-nginx
     version: 1.0.1
@@ -205,6 +220,10 @@ grammars:
     own_queries:
       - metrics
       - tags
+  - id: ocaml
+    crate: tree-sitter-ocaml
+    version: 0.26.0
+    path: grammars/ocaml
   - id: odin
     crate: tree-sitter-odin
     version: 1.3.0
@@ -328,6 +347,10 @@ grammars:
   - id: xcompose
     crate: tree-sitter-xcompose
     version: 0.4.0
+  - id: xml
+    crate: tree-sitter-xml
+    version: 0.7.0
+    path: xml
   - id: yaml
     crate: tree-sitter-yaml
     version: 0.7.2
@@ -343,13 +366,487 @@ grammars:
     own_queries:
       - tags
 skip:
-  - id: gitcommit
-    reason: its generated parser needs about 12 GB of memory and 11 minutes of CPU to compile, which kills a 7 GB runner
-  - id: vim
-    reason: exited with 1
+  - id: angular
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: astro
+    reason: no crates.io release published from https://github.com/virchau13/tree-sitter-astro
+  - id: authzed
+    reason: no crates.io release published from https://github.com/mleonidas/tree-sitter-authzed
+  - id: awk
+    reason: no crates.io release published from https://github.com/Beaglefoot/tree-sitter-awk
+  - id: bass
+    reason: no crates.io release published from https://github.com/vito/tree-sitter-bass
+  - id: bibtex
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: bitbake
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-bitbake
+  - id: blade
+    reason: no crates.io release published from https://github.com/EmranMR/tree-sitter-blade
+  - id: bp
+    reason: no crates.io release published from https://github.com/ambroisie/tree-sitter-bp
+  - id: brightscript
+    reason: no crates.io release published from https://github.com/ajdelcimmuto/tree-sitter-brightscript
+  - id: c3
+    reason: no crates.io release published from https://github.com/c3lang/tree-sitter-c3
+  - id: caddy
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: cairo
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-cairo
+  - id: capnp
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-capnp
+  - id: chatito
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-chatito
+  - id: circom
+    reason: no crates.io release published from https://github.com/Decurity/tree-sitter-circom
+  - id: clojure
+    reason: no crates.io release published from https://github.com/sogaiu/tree-sitter-clojure
+  - id: comment
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: commonlisp
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: cooklang
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: corn
+    reason: no crates.io release published from https://github.com/jakestanger/tree-sitter-corn
+  - id: cpon
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-cpon
+  - id: csv
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-csv
+  - id: cylc
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: dart
+    reason: no crates.io release published from https://github.com/UserNobody14/tree-sitter-dart
+  - id: desktop
+    reason: no crates.io release published from https://github.com/ValdezFOmar/tree-sitter-desktop
+  - id: devicetree
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: dhall
+    reason: no crates.io release published from https://github.com/jbellerb/tree-sitter-dhall
+  - id: diff
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-diff
+  - id: disassembly
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: djot
+    reason: no crates.io release published from https://github.com/treeman/tree-sitter-djot
+  - id: doxygen
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: ebnf
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: editorconfig
+    reason: no crates.io release published from https://github.com/ValdezFOmar/tree-sitter-editorconfig
+  - id: eds
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: eex
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: elsa
+    reason: no crates.io release published from https://github.com/glapa-grossklag/tree-sitter-elsa
+  - id: elvish
+    reason: no crates.io release published from https://github.com/elves/tree-sitter-elvish
+  - id: embedded_template
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: enforce
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: facility
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: faust
+    reason: no crates.io release published from https://github.com/khiner/tree-sitter-faust
+  - id: fennel
+    reason: no crates.io release published from https://github.com/alexmozaidze/tree-sitter-fennel
+  - id: fidl
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: firrtl
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-firrtl
+  - id: forth
+    reason: no crates.io release published from https://github.com/AlexanderBrevig/tree-sitter-forth
   - id: fortran
     reason: its wasm is 6.4 MB, above the 5 MB the repository accepts
+  - id: fsh
+    reason: no crates.io release published from https://github.com/mgramigna/tree-sitter-fsh
+  - id: fsharp
+    reason: its wasm is 10.9 MB, above the 5 MB the repository accepts
+  - id: func
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-func
+  - id: gap
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: gaptst
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: git_config
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: git_rebase
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: gitcommit
+    reason: its generated parser needs about 12 GB of memory and 11 minutes of CPU to compile, which kills a 7 GB runner
+  - id: gitignore
+    reason: no crates.io release published from https://github.com/shunsambongi/tree-sitter-gitignore
+  - id: gleam
+    reason: no crates.io release published from https://github.com/gleam-lang/tree-sitter-gleam
+  - id: glimmer
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: glimmer_javascript
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: glimmer_typescript
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: glsl
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-glsl
+  - id: gn
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-gn
   - id: gnuplot
     reason: its wasm is 7.7 MB, above the 5 MB the repository accepts
+  - id: goctl
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: godot_resource
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: gomod
+    reason: no crates.io release published from https://github.com/camdencheek/tree-sitter-go-mod
+  - id: gosum
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-go-sum
+  - id: gotmpl
+    reason: no crates.io release published from https://github.com/ngalaiko/tree-sitter-go-template
+  - id: gowork
+    reason: no crates.io release published from https://github.com/omertuc/tree-sitter-go-work
+  - id: gpg
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-gpg-config
+  - id: graphql
+    reason: no crates.io release published from https://github.com/bkegley/tree-sitter-graphql
+  - id: gren
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: groovy
+    reason: no crates.io release published from https://github.com/murtaza64/tree-sitter-groovy
+  - id: groq
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: gstlaunch
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: hack
+    reason: no crates.io release published from https://github.com/slackhq/tree-sitter-hack
+  - id: hare
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-hare
+  - id: haskell
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-haskell
+  - id: haskell_persistent
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: heex
+    reason: no crates.io release published from https://github.com/connorlay/tree-sitter-heex
+  - id: helm
+    reason: no crates.io release published from https://github.com/ngalaiko/tree-sitter-go-template
+  - id: hjson
+    reason: no crates.io release published from https://github.com/winston0410/tree-sitter-hjson
+  - id: hlsl
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-hlsl
+  - id: hocon
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: hoon
+    reason: no crates.io release published from https://github.com/urbit-pilled/tree-sitter-hoon
+  - id: htmldjango
+    reason: no crates.io release published from https://github.com/interdependence/tree-sitter-htmldjango
+  - id: http
+    reason: no crates.io release published from https://github.com/rest-nvim/tree-sitter-http
+  - id: hurl
+    reason: no crates.io release published from https://github.com/pfeiferj/tree-sitter-hurl
+  - id: hyprlang
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-hyprlang
+  - id: idl
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: idris
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: ini
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: inko
+    reason: no crates.io release published from https://github.com/inko-lang/tree-sitter-inko
+  - id: ispc
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-ispc
+  - id: janet_simple
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: javadoc
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: jinja
+    reason: tree-sitter-jinja 0.13.1 has no grammar at tree-sitter-jinja
+  - id: jinja_inline
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: jjdescription
+    reason: no crates.io release published from https://github.com/ribru17/tree-sitter-jjdescription
+  - id: jq
+    reason: no crates.io release published from https://github.com/flurie/tree-sitter-jq
+  - id: jsdoc
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: json5
+    reason: no crates.io release published from https://github.com/Joakker/tree-sitter-json5
+  - id: jsonnet
+    reason: no crates.io release published from https://github.com/sourcegraph/tree-sitter-jsonnet
+  - id: julia
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-julia
+  - id: just
+    reason: no crates.io release published from https://github.com/IndianBoy42/tree-sitter-just
+  - id: kcl
+    reason: no crates.io release published from https://github.com/kcl-lang/tree-sitter-kcl
+  - id: kdl
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-kdl
+  - id: kitty
+    reason: no crates.io release published from https://github.com/OXY2DEV/tree-sitter-kitty
+  - id: kos
+    reason: no crates.io release published from https://github.com/kos-lang/tree-sitter-kos
+  - id: koto
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: kusto
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: lalrpop
+    reason: no crates.io release published from https://github.com/traxys/tree-sitter-lalrpop
+  - id: latex
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: ledger
+    reason: no crates.io release published from https://github.com/cbarrete/tree-sitter-ledger
+  - id: leo
+    reason: no crates.io release published from https://github.com/r001/tree-sitter-leo
+  - id: linkerscript
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: liquid
+    reason: no crates.io release published from https://github.com/hankthetank27/tree-sitter-liquid
+  - id: liquidsoap
+    reason: no crates.io release published from https://github.com/savonet/tree-sitter-liquidsoap
+  - id: llvm
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: luadoc
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: luap
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: m68k
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: markdown_inline
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: mermaid
+    reason: no crates.io release published from https://github.com/monaqa/tree-sitter-mermaid
+  - id: meson
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-meson
+  - id: mlir
+    reason: no crates.io release published from https://github.com/artagnon/tree-sitter-mlir
+  - id: nasm
+    reason: no crates.io release published from https://github.com/naclsn/tree-sitter-nasm
+  - id: nim
+    reason: no crates.io release published from https://github.com/alaviss/tree-sitter-nim
+  - id: nim_format_string
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: ninja
+    reason: no crates.io release published from https://github.com/alemuller/tree-sitter-ninja
+  - id: nqc
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-nqc
+  - id: nu
+    reason: no crates.io release published from https://github.com/nushell/tree-sitter-nu
+  - id: objdump
+    reason: no crates.io release published from https://github.com/ColinKennedy/tree-sitter-objdump
+  - id: ocaml_interface
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: ocamllex
+    reason: no crates.io release published from https://github.com/atom-ocaml/tree-sitter-ocamllex
+  - id: passwd
+    reason: no crates.io release published from https://github.com/ath3/tree-sitter-passwd
+  - id: pem
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-pem
+  - id: perl
+    reason: no crates.io release published from https://github.com/tree-sitter-perl/tree-sitter-perl
+  - id: php_only
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: phpdoc
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: pioasm
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: pkl
+    reason: no crates.io release published from https://github.com/apple/tree-sitter-pkl
+  - id: po
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-po
+  - id: pod
+    reason: no crates.io release published from https://github.com/tree-sitter-perl/tree-sitter-pod
+  - id: poe_filter
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: pony
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-pony
+  - id: powershell
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: printf
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: prisma
+    reason: no crates.io release published from https://github.com/victorhqc/tree-sitter-prisma
+  - id: promql
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: properties
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: prql
+    reason: no crates.io release published from https://github.com/PRQL/tree-sitter-prql
+  - id: psv
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: pug
+    reason: no crates.io release published from https://github.com/zealot128/tree-sitter-pug
+  - id: purescript
+    reason: no crates.io release published from https://github.com/postsolar/tree-sitter-purescript
+  - id: pymanifest
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-pymanifest
+  - id: qmldir
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-qmldir
+  - id: query
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-query
+  - id: ralph
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: rasi
+    reason: no crates.io release published from https://github.com/Fymyte/tree-sitter-rasi
+  - id: razor
+    reason: no crates.io release published from https://github.com/tris203/tree-sitter-razor
+  - id: re2c
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: readline
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-readline
+  - id: regex
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: rego
+    reason: no crates.io release published from https://github.com/FallenAngel97/tree-sitter-rego
+  - id: rescript
+    reason: no crates.io release published from https://github.com/rescript-lang/tree-sitter-rescript
+  - id: rifleconf
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: rnoweb
+    reason: no crates.io release published from https://github.com/bamonroe/tree-sitter-rnoweb
+  - id: robot
+    reason: no crates.io release published from https://github.com/Hubro/tree-sitter-robot
+  - id: robots_txt
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: roc
+    reason: no crates.io release published from https://github.com/faldor20/tree-sitter-roc
+  - id: ron
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-ron
+  - id: runescript
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: scfg
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: scss
+    reason: no crates.io release published from https://github.com/serenadeai/tree-sitter-scss
+  - id: sflog
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: slang
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-slang
+  - id: slim
+    reason: no crates.io release published from https://github.com/theoo/tree-sitter-slim
+  - id: slint
+    reason: no crates.io release published from https://github.com/slint-ui/tree-sitter-slint
+  - id: smali
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-smali
+  - id: smithy
+    reason: no crates.io release published from https://github.com/indoorvivants/tree-sitter-smithy
+  - id: snakemake
+    reason: no crates.io release published from https://github.com/osthomas/tree-sitter-snakemake
+  - id: snl
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: soql
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: sosl
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: sourcepawn
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: sparql
+    reason: no crates.io release published from https://github.com/GordianDziwis/tree-sitter-sparql
+  - id: sproto
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: sql
+    reason: no crates.io release published from https://github.com/derekstride/tree-sitter-sql
+  - id: squirrel
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-squirrel
+  - id: ssh_config
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: strace
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: styled
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: supercollider
+    reason: no crates.io release published from https://github.com/madskjeldgaard/tree-sitter-supercollider
+  - id: superhtml
+    reason: no crates.io release published from https://github.com/kristoff-it/superhtml
+  - id: surface
+    reason: no crates.io release published from https://github.com/connorlay/tree-sitter-surface
+  - id: svelte
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-svelte
+  - id: sway
+    reason: no crates.io release published from https://github.com/FuelLabs/tree-sitter-sway.git
+  - id: sxhkdrc
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: systemtap
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
   - id: systemverilog
     reason: its wasm is 22.4 MB, above the 5 MB the repository accepts
+  - id: t32
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: tablegen
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-tablegen
+  - id: tact
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: tcl
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-tcl
+  - id: teal
+    reason: no crates.io release published from https://github.com/euclidianAce/tree-sitter-teal
+  - id: terraform
+    reason: no crates.io release published from https://github.com/MichaHoffmann/tree-sitter-hcl
+  - id: textproto
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: thrift
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-thrift
+  - id: tiger
+    reason: no crates.io release published from https://github.com/ambroisie/tree-sitter-tiger
+  - id: tlaplus
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: todotxt
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: toml
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-toml
+  - id: tsv
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-csv
+  - id: turtle
+    reason: no crates.io release published from https://github.com/GordianDziwis/tree-sitter-turtle
+  - id: twig
+    reason: no crates.io release published from https://github.com/gbprod/tree-sitter-twig
+  - id: typespec
+    reason: no crates.io release published from https://github.com/happenslol/tree-sitter-typespec
+  - id: typoscript
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: typst
+    reason: no crates.io release published from https://github.com/uben0/tree-sitter-typst
+  - id: udev
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: ungrammar
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-ungrammar
+  - id: unison
+    reason: no crates.io release published from https://github.com/kylegoetz/tree-sitter-unison
+  - id: usd
+    reason: no crates.io release published from https://github.com/ColinKennedy/tree-sitter-usd
+  - id: uxntal
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: v
+    reason: no crates.io release published from https://github.com/vlang/v-analyzer
+  - id: vala
+    reason: no crates.io release published from https://github.com/vala-lang/tree-sitter-vala
+  - id: vento
+    reason: no crates.io release published from https://github.com/ventojs/tree-sitter-vento
+  - id: vhs
+    reason: no crates.io release published from https://github.com/charmbracelet/tree-sitter-vhs
+  - id: vim
+    reason: exited with 1
+  - id: vimdoc
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: vrl
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: vue
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-vue
+  - id: wgsl
+    reason: no crates.io release published from https://github.com/szebniok/tree-sitter-wgsl
+  - id: wgsl_bevy
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: wing
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: wit
+    reason: no crates.io release published from https://github.com/bytecodealliance/tree-sitter-wit
+  - id: wxml
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: xresources
+    reason: no filetype of the catalog names this language, so nothing would select its grammar
+  - id: yang
+    reason: no crates.io release published from https://github.com/Hubro/tree-sitter-yang
+  - id: yuck
+    reason: no crates.io release published from https://github.com/tree-sitter-grammars/tree-sitter-yuck
+  - id: ziggy
+    reason: no crates.io release published from https://github.com/kristoff-it/ziggy
+  - id: ziggy_schema
+    reason: no crates.io release published from https://github.com/kristoff-it/ziggy

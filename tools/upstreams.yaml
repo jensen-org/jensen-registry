@@ -1,8 +1,8 @@
 schema_version: 2
 mason:
   repo: mason-org/mason-registry
-  tag: 2026-11-12-jovial-orchestra
-  sha256: 04d07fc89e950a91116b0af602559dcae1a92a5301f9d141788c9d3c9861a415
+  tag: 2026-11-13-dental-driver
+  sha256: 3958b82e71eb68b1fd93cae392422d2c541941721fb3214d4d4f36e8fd9d6a66
 sources:
   lspconfig:
     repo: neovim/nvim-lspconfig
@@ -18,7 +18,7 @@ sources:
     sha: 9a10e096703966335bd5c46c8c875d5b0690dade
   neovim:
     repo: neovim/neovim
-    sha: 629e501cd6112e5d77301afa01f5fcfd531b9ea0
+    sha: 49b853fb327f5f6b5c1bdb38d2e3b8026a4124eb
   linguist:
     repo: github-linguist/linguist
     sha: d456527fe93355baa28c3c29d542c97282b61bc7
