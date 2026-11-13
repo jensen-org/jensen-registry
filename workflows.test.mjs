@@ -42,11 +42,17 @@ test("the nightly track only re-pins and never discovers new grammars", () => {
   assert.ok(!steps.some((step) => /registry\.mjs discover/.test(step.run ?? "")));
 });
 
-test("the seed workflow is manual and provides the wasi-sdk before it builds", () => {
+test("the seed workflow is manual, resolves once and builds the grammars in parallel shards", () => {
   const workflow = load("seed.yml");
   assert.deepEqual(Object.keys(workflow.on), ["workflow_dispatch"]);
-  const steps = workflow.jobs.seed.steps;
+  assert.deepEqual(Object.keys(workflow.jobs), ["resolve", "build", "merge"]);
+  assert.equal(workflow.jobs.build.needs, "resolve");
+  assert.equal(workflow.jobs.merge.needs, "build");
+  assert.equal(workflow.jobs.build.strategy["fail-fast"], false);
+  const steps = workflow.jobs.build.steps;
   const install = steps.findIndex((step) => /wasi-sdk-29[\s\S]*bin\/clang/.test(step.run ?? ""));
-  const seed = steps.findIndex((step) => /registry\.mjs seed/.test(step.run ?? ""));
-  assert.ok(install >= 0 && install < seed);
+  const build = steps.findIndex((step) => /registry\.mjs seed \$\{\{ matrix\.shard \}\}\/\d+/.test(step.run ?? ""));
+  assert.ok(install >= 0 && install < build);
+  const total = Number(/\/(\d+)/.exec(steps[build].run)[1]);
+  assert.equal(workflow.jobs.build.strategy.matrix.shard.length, total);
 });

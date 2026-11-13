@@ -1,7 +1,7 @@
 import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ROOT, SCHEMA_VERSION, checksumsText, checksummed, dump, loadEntries, readYaml, validator, writeText } from "./lib.mjs";
-import { seedGrammars } from "./grammars/seed.mjs";
+import { buildShard, mergeShards, parseShard, resolveGrammars, seedGrammars } from "./grammars/seed.mjs";
 import { trackGrammars } from "./grammars/track.mjs";
 import { validateGrammars } from "./grammars/validate.mjs";
 import { trackIntegrations } from "./integrations/track.mjs";
@@ -57,13 +57,20 @@ const [command, flag] = process.argv.slice(2);
 const commands = {
   track,
   seed: async () => {
-    await seedGrammars({ only: flag });
-    await track();
+    if (flag === "resolve") await resolveGrammars();
+    else if (flag === "merge") {
+      mergeShards();
+      await track();
+    } else if (flag?.includes("/")) await buildShard(parseShard(flag));
+    else {
+      await seedGrammars({ only: flag });
+      await track();
+    }
   },
   validate: () => validate(flag === "--online"),
 };
 if (!commands[command]) {
-  console.error("usage: node registry.mjs track | seed [id] | validate [--online]");
+  console.error("usage: node registry.mjs track | seed [id | resolve | index/total | merge] | validate [--online]");
   process.exit(2);
 }
 commands[command]().catch((error) => {

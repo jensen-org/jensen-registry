@@ -2,22 +2,14 @@ name: seed
 
 on:
   workflow_dispatch:
-    inputs:
-      id:
-        description: One grammar id to add, or empty to seed every language
-        required: false
-        default: ""
 
 permissions:
   contents: read
 
 jobs:
-  seed:
+  resolve:
     runs-on: ubuntu-latest
-    timeout-minutes: 120
-    permissions:
-      contents: write
-      pull-requests: write
+    timeout-minutes: 60
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -25,6 +17,36 @@ jobs:
       - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
         with:
           node-version: 24
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node registry.mjs seed resolve
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REGISTRY_REF: develop
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: sources
+          path: grammars/sources.yaml
+          if-no-files-found: error
+
+  build:
+    needs: resolve
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [0, 1, 2, 3, 4, 5, 6, 7]
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: develop
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: sources
+          path: grammars
       - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
         with:
           path: ~/.cache/tree-sitter
@@ -40,7 +62,49 @@ jobs:
       - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
       - run: npm ci --ignore-scripts --no-audit --no-fund
       - run: npm install --global --ignore-scripts=false --no-audit --no-fund tree-sitter-cli@0.26.7
-      - run: node registry.mjs seed ${{ inputs.id }}
+      - run: node registry.mjs seed ${{ matrix.shard }}/8
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REGISTRY_REF: develop
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: shard-${{ matrix.shard }}
+          path: |
+            grammars/wasm
+            grammars/.failed
+          if-no-files-found: error
+          include-hidden-files: true
+
+  merge:
+    needs: build
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: develop
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: 24
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: sources
+          path: grammars
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          pattern: shard-*
+          path: grammars
+          merge-multiple: true
+      - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+        with:
+          path: ~/.cache/tree-sitter
+          key: tree-sitter-wasi-sdk-29-${{ runner.os }}
+      - uses: astral-sh/setup-uv@1c37ad07a6a961277cf70c0d37d6f313000f5884 # v10.3.0
+      - run: npm ci --ignore-scripts --no-audit --no-fund
+      - run: node registry.mjs seed merge
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REGISTRY_REF: develop
@@ -53,5 +117,5 @@ jobs:
           commit-message: "feat(grammars): seed the grammars"
           title: "feat(grammars): seed the grammars"
           body: |
-            Added by `registry.mjs seed`. Grammars that could not build are listed under `skip` in `grammars/sources.yaml` with the reason.
+            Added by `registry.mjs seed`, resolved once and built in parallel shards. Languages that were left out are listed under `skip` in `grammars/sources.yaml` with the reason.
             Nothing here merges on its own.
