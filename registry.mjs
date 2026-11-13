@@ -2,6 +2,7 @@ import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import { ROOT, SCHEMA_VERSION, checksumsText, checksummed, dump, loadEntries, readYaml, validator, writeText } from "./lib.mjs";
 import { generateQueries } from "./grammars/generate.mjs";
+import { buildSparse, loadCatalogs, sparseProblems, writeSparse } from "./sparse.mjs";
 import { baselineProblems, formatReport, loadCoverage, writeBaseline } from "./report.mjs";
 import { buildShard, mergeShards, parseShard, resolveGrammars, seedGrammars } from "./grammars/seed.mjs";
 import { trackGrammars } from "./grammars/track.mjs";
@@ -29,6 +30,7 @@ async function track() {
   const grammars = await trackGrammars();
   await trackTools();
   writeText("index.yaml", dump({ schema_version: SCHEMA_VERSION, skills, mcp, integrations }));
+  writeSparse(buildSparse(loadCatalogs()));
   writeText("checksums.txt", checksumsText(checksummed()));
   console.log(`tracked ${skills.length} skills, ${mcp.length} mcp servers, ${integrations.length} integrations and ${grammars.length} grammars`);
 }
@@ -45,6 +47,7 @@ async function validate(online) {
   await validateTools(context);
   await validateGrammars(context);
   problems.push(...baselineProblems(loadCoverage()));
+  problems.push(...sparseProblems(buildSparse(loadCatalogs())));
   await validateSkills(context);
   validateMcp(context);
   validateIntegrations({ ...context, mcpEntries: loadEntries("mcp") });
