@@ -49,11 +49,13 @@ grammars:
     version: 0.24.2
     own_queries:
       - metrics
+      - imports
   - id: c_sharp
     crate: tree-sitter-c-sharp
     version: 0.23.5
     own_queries:
       - metrics
+      - imports
   - id: cmake
     crate: tree-sitter-cmake
     version: 0.7.5
@@ -64,6 +66,7 @@ grammars:
     version: 0.23.4
     own_queries:
       - metrics
+      - imports
   - id: css
     crate: tree-sitter-css
     version: 0.25.0
@@ -124,6 +127,7 @@ grammars:
     version: 0.25.0
     own_queries:
       - metrics
+      - imports
   - id: hcl
     crate: tree-sitter-hcl
     version: 1.1.0
@@ -140,11 +144,13 @@ grammars:
     version: 0.23.5
     own_queries:
       - metrics
+      - imports
   - id: javascript
     crate: tree-sitter-javascript
     version: 0.25.0
     own_queries:
       - metrics
+      - imports
   - id: json
     crate: tree-sitter-json
     version: 0.24.8
@@ -156,6 +162,7 @@ grammars:
     version: 1.1.0
     own_queries:
       - metrics
+      - imports
   - id: lua
     crate: tree-sitter-lua
     version: 0.5.0
@@ -194,6 +201,7 @@ grammars:
     path: php
     own_queries:
       - metrics
+      - imports
   - id: proto
     crate: tree-sitter-proto
     version: 0.6.0
@@ -205,6 +213,7 @@ grammars:
     version: 0.25.0
     own_queries:
       - metrics
+      - imports
   - id: ql
     crate: tree-sitter-ql
     version: 0.23.1
@@ -231,11 +240,13 @@ grammars:
     version: 0.23.1
     own_queries:
       - metrics
+      - imports
   - id: rust
     crate: tree-sitter-rust
     version: 0.24.2
     own_queries:
       - metrics
+      - imports
   - id: scala
     crate: tree-sitter-scala
     version: 0.26.2
@@ -255,6 +266,7 @@ grammars:
     version: 0.7.3
     own_queries:
       - metrics
+      - imports
   - id: templ
     crate: tree-sitter-templ
     version: 2.2.0
@@ -267,6 +279,7 @@ grammars:
     path: tsx
     own_queries:
       - metrics
+      - imports
     inherit_queries:
       - javascript
   - id: typescript
@@ -275,6 +288,7 @@ grammars:
     path: typescript
     own_queries:
       - metrics
+      - imports
     inherit_queries:
       - javascript
   - id: vhdl

@@ -21,6 +21,17 @@ export function metricsProblems(text, language, label) {
   return problems;
 }
 
+export function importsProblems(text, language, label) {
+  const problems = [];
+  if (!/@import\b/.test(text)) problems.push(`${label} has no @import capture`);
+  try {
+    new Query(language, text).delete();
+  } catch (error) {
+    problems.push(`${label} does not compile: ${String(error.message ?? error).split("\n")[0]}`);
+  }
+  return problems;
+}
+
 export async function validateGrammars({ problems }) {
   await Parser.init();
   const uncovered = [];
@@ -38,6 +49,11 @@ export async function validateGrammars({ problems }) {
     for (const query of entry.queries) {
       const text = readFileSync(join(ROOT, queryPath(grammar, query.name)), "utf8");
       if (text.trim() === "") problems.push(`${queryPath(grammar, query.name)} is empty`);
+      if (query.name === "imports") {
+        const language = await Language.load(readFileSync(file));
+        problems.push(...importsProblems(text, language, queryPath(grammar, query.name)));
+        continue;
+      }
       if (query.name !== "metrics") continue;
       if (!(grammar.own_queries ?? []).includes("metrics")) problems.push(`${queryPath(grammar, query.name)} has no source in grammars/own/${grammar.id}, a version bump would drop it`);
       const language = await Language.load(readFileSync(file));
