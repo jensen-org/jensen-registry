@@ -58,7 +58,7 @@ function cliVersion() {
   }
 }
 
-async function fetchCrate(grammar) {
+export async function fetchCrate(grammar) {
   const published = await getJson(`https://crates.io/api/v1/crates/${grammar.crate}/${grammar.version}`);
   const archive = await getBytes(`https://static.crates.io/crates/${grammar.crate}/${grammar.crate}-${grammar.version}.crate`);
   if (sha256(archive) !== published.version.checksum) {

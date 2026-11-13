@@ -5,10 +5,10 @@
   "withFormatter": 146,
   "withLinter": 102,
   "queries": {
-    "tags": 25,
+    "tags": 41,
     "locals": 26,
     "injections": 20,
-    "imports": 14,
+    "imports": 21,
     "metrics": 33
   }
 }
