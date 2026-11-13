@@ -146,6 +146,7 @@ const TOOL_FILES = ["packages", "servers", "formatters", "linters", "debuggers",
 export const checksummed = () => [
   "index.yaml",
   "grammars/grammars.yaml",
+  "sparse/manifest.json",
   ...TOOL_FILES,
   ...entryFiles("clients"),
 ];

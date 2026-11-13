@@ -7,7 +7,7 @@ import { RAW_BASE, REF, ROOT, SCHEMA_VERSION, dump, getBytes, getJson, readYaml,
 export const GRAMMARS_FILE = "grammars/grammars.yaml";
 export const WASM_DIR = "grammars/wasm";
 export const QUERIES_DIR = "grammars/queries";
-export const QUERY_NAMES = ["tags", "locals", "injections", "metrics"];
+export const QUERY_NAMES = ["tags", "locals", "injections", "metrics", "imports"];
 export const OWN_QUERIES_DIR = "grammars/own";
 const MAX_QUERY_BYTES = 256 * 1024;
 export const BUILD_TIMEOUT_MS = 5 * 60 * 1000;
@@ -58,7 +58,7 @@ function cliVersion() {
   }
 }
 
-async function fetchCrate(grammar) {
+export async function fetchCrate(grammar) {
   const published = await getJson(`https://crates.io/api/v1/crates/${grammar.crate}/${grammar.version}`);
   const archive = await getBytes(`https://static.crates.io/crates/${grammar.crate}/${grammar.crate}-${grammar.version}.crate`);
   if (sha256(archive) !== published.version.checksum) {
@@ -70,10 +70,10 @@ async function fetchCrate(grammar) {
   return { work, source: join(work, `${grammar.crate}-${grammar.version}`) };
 }
 
-function regularFileWithin(file, crateRoot) {
+export function regularFileWithin(file, crateRoot, maxBytes = MAX_QUERY_BYTES) {
   const stat = lstatSync(file);
   if (!stat.isFile() || stat.isSymbolicLink()) throw new Error(`${file} is not a regular file, refusing to publish it`);
-  if (stat.size > MAX_QUERY_BYTES) throw new Error(`${file} is larger than ${MAX_QUERY_BYTES} bytes`);
+  if (stat.size > maxBytes) throw new Error(`${file} is larger than ${maxBytes} bytes`);
   if (!realpathSync(file).startsWith(realpathSync(crateRoot) + sep)) throw new Error(`${file} resolves outside the crate`);
 }
 

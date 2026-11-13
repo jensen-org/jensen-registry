@@ -17,6 +17,8 @@ export const SCHEMA_VERSION = 2;
 export const KINDS = { server: "servers", formatter: "formatters", linter: "linters", debugger: "debuggers" };
 export const OUTPUTS = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes"].map((name) => `tools/${name}.yaml`);
 
+export const LANGUAGES_FILE = "tools/overrides/filetypes.yaml";
+
 export function deepMerge(base, override) {
   if (Array.isArray(override) || !override || typeof override !== "object") return override;
   const out = { ...base };
@@ -31,6 +33,13 @@ export function loadOverrides() {
   }
   return overrides;
 }
+
+export function requiresOf(pkg, programs) {
+  const found = new Set([programs.get(pkg.source), ...Object.values(pkg.bin ?? {}).map((bin) => programs.get(bin.client))].filter(Boolean));
+  return found.size ? [...found].sort(byText) : undefined;
+}
+
+const clientPrograms = () => new Map(entryFiles("clients").map((path) => readYaml(path)).map((client) => [client.id, client.requires?.program]));
 
 const previousDigests = (retryMissing) => {
   const known = new Map();
@@ -81,7 +90,11 @@ export async function generate(upstreams, { retryMissing = false } = {}) {
   const { mason, sources } = upstreams;
   const registry = await masonRegistry(mason);
   const built = await buildPackages(registry, { digests: (repo, tag) => releaseDigests(repo, tag), known: previousDigests(retryMissing) });
-  const { packages } = built;
+  const programs = clientPrograms();
+  const packages = built.packages.map((pkg) => {
+    const requires = requiresOf(pkg, programs);
+    return requires ? { ...pkg, requires } : pkg;
+  });
   const archives = Object.fromEntries(
     await Promise.all(["lspconfig", "conform", "lint", "dap", "nonels"].map(async (name) => [name, await repoFiles(sources[name].repo, sources[name].sha)])),
   );
@@ -163,7 +176,7 @@ export async function generate(upstreams, { retryMissing = false } = {}) {
     ["tools/formatters.yaml", dump({ ...header(sources.conform), formatters: merged.formatter })],
     ["tools/linters.yaml", dump({ ...header(sources.lint), linters: merged.linter })],
     ["tools/debuggers.yaml", dump({ ...header(sources.dap), debuggers: merged.debugger })],
-    ["tools/filetypes.yaml", dump({ ...header(sources.neovim), filetypes: filetypeEntries(table, [...named], related) })],
+    ["tools/filetypes.yaml", dump({ ...header(sources.neovim), filetypes: filetypeEntries(table, [...named], related, readYaml(LANGUAGES_FILE).filetypes) })],
   ]);
   const summary = {
     packages: built.summary,

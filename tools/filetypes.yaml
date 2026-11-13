@@ -1,7 +1,7 @@
 schema_version: 2
 upstream:
   repo: neovim/neovim
-  sha: 1502d4a948123bc90e6a19777857527c7fad5966
+  sha: 49b853fb327f5f6b5c1bdb38d2e3b8026a4124eb
 filetypes:
   - id: 8th
     extensions:
@@ -40,9 +40,11 @@ filetypes:
       - adb
       - ads
       - gpr
+    grammar: ada
   - id: agda
     extensions:
       - agda
+    grammar: agda
   - id: agentscript
     extensions:
       - agentscript
@@ -118,17 +120,21 @@ filetypes:
     extensions:
       - ino
       - pde
+    grammar: arduino
   - id: art
     extensions:
       - art
+  - id: ascendc
+    extensions:
+      - asc
   - id: asciidoc
     extensions:
       - adoc
-      - asc
       - asciidoc
   - id: asm
     related:
       - nasm
+    grammar: asm
   - id: asm68k
     extensions:
       - asm68k
@@ -140,6 +146,8 @@ filetypes:
   - id: astro
     extensions:
       - astro
+    markers:
+      - package.json
   - id: astro-markdown
   - id: asy
     extensions:
@@ -194,6 +202,7 @@ filetypes:
     related:
       - sh
       - zsh
+    grammar: bash
   - id: bass
     extensions:
       - bass
@@ -214,12 +223,14 @@ filetypes:
     extensions:
       - bean
       - beancount
+    grammar: beancount
   - id: bib
     extensions:
       - bib
   - id: bicep
     extensions:
       - bicep
+    grammar: bicep
   - id: bicep-params
     extensions:
       - bicepparam
@@ -249,6 +260,7 @@ filetypes:
   - id: bpftrace
     extensions:
       - bt
+    grammar: bpftrace
   - id: brighterscript
     extensions:
       - bs
@@ -293,6 +305,7 @@ filetypes:
       - idc
       - mdh
       - qc
+    grammar: c
   - id: c.doxygen
   - id: c3
     extensions:
@@ -418,12 +431,16 @@ filetypes:
       - .trans
       - init.trans
       - riemann.config
+    markers:
+      - deps.edn
+      - project.clj
   - id: cmake
     extensions:
       - cmake
       - cmake.in
     filenames:
       - CMakeLists.txt
+    grammar: cmake
   - id: cmakecache
     filenames:
       - CMakeCache.txt
@@ -532,6 +549,7 @@ filetypes:
       - txx
     filenames:
       - .cling_history
+    grammar: cpp
   - id: cpp.doxygen
   - id: cql
   - id: cqlang
@@ -546,11 +564,14 @@ filetypes:
   - id: crystal
     extensions:
       - cr
+    markers:
+      - shard.yml
   - id: cs
     extensions:
       - cake
       - cs
       - csx
+    grammar: c_sharp
   - id: csc
     extensions:
       - csc
@@ -564,6 +585,7 @@ filetypes:
   - id: css
     extensions:
       - css
+    grammar: css
   - id: csv
     extensions:
       - csv
@@ -578,9 +600,11 @@ filetypes:
     extensions:
       - cu
       - cuh
+    grammar: cuda
   - id: cue
     extensions:
       - cue
+    grammar: cue
   - id: cupl
     extensions:
       - pld
@@ -601,6 +625,7 @@ filetypes:
     extensions:
       - d
       - di
+    grammar: d
   - id: d2
   - id: dafny
     extensions:
@@ -609,6 +634,8 @@ filetypes:
     extensions:
       - dart
       - drt
+    markers:
+      - pubspec.yaml
   - id: datascript
     extensions:
       - ds
@@ -691,6 +718,7 @@ filetypes:
       - Containerfile
       - Dockerfile
       - dockerfile
+    grammar: dockerfile
   - id: dosbatch
     extensions:
       - bat
@@ -722,6 +750,7 @@ filetypes:
     filenames:
       - .alsoftrc
       - .buckconfig
+      - .codespellrc
       - .coveragerc
       - .flake8
       - .gitlint
@@ -757,6 +786,7 @@ filetypes:
     extensions:
       - dot
       - gv
+    grammar: dot
   - id: dracula
     extensions:
       - drac
@@ -795,6 +825,7 @@ filetypes:
   - id: earthfile
     filenames:
       - Earthfile
+    grammar: earthfile
   - id: ecd
     extensions:
       - ecd
@@ -842,9 +873,15 @@ filetypes:
       - exs
     filenames:
       - mix.lock
+    markers:
+      - mix.exs
+    grammar: elixir
   - id: elm
     extensions:
       - elm
+    markers:
+      - elm.json
+    grammar: elm
   - id: elmfilt
     filenames:
       - filter-rules
@@ -882,6 +919,9 @@ filetypes:
       - rebar.config
       - rebar.config.lock
       - rebar.lock
+    markers:
+      - rebar.config
+    grammar: erlang
   - id: eruby
     extensions:
       - erb
@@ -947,6 +987,7 @@ filetypes:
   - id: fish
     extensions:
       - fish
+    grammar: fish
   - id: flix
     extensions:
       - flix
@@ -960,6 +1001,7 @@ filetypes:
   - id: foam
     extensions:
       - foam
+    grammar: foam
   - id: focexec
     extensions:
       - fex
@@ -1052,11 +1094,13 @@ filetypes:
   - id: gdscript
     extensions:
       - gd
+    grammar: gdscript
   - id: gdshader
     extensions:
       - gdshader
       - gdshaderinc
       - shader
+    grammar: gdshader
   - id: gdshaderinc
   - id: gedcom
     extensions:
@@ -1083,6 +1127,7 @@ filetypes:
   - id: gitattributes
     filenames:
       - .gitattributes
+    grammar: gitattributes
   - id: gitcommit
     filenames:
       - .gitmessage
@@ -1105,16 +1150,21 @@ filetypes:
       - prettierignore
     filenames:
       - .agignore
+      - .aiexclude
+      - .aiignore
       - .atomignore
       - .babelignore
       - .bzrignore
       - .ckignore
+      - .clang-format-ignore
       - .coffeelintignore
       - .containerignore
+      - .cursorignore
       - .cvsignore
       - .dockerignore
       - .easignore
       - .eleventyignore
+      - .elpaignore
       - .eslint-ignore
       - .eslintignore
       - .fdignore
@@ -1123,6 +1173,7 @@ filetypes:
       - .markdownlintignore
       - .nodemonignore
       - .npmignore
+      - .nxignore
       - .prettierignore
       - .rgignore
       - .stow-local-ignore
@@ -1146,6 +1197,8 @@ filetypes:
   - id: gleam
     extensions:
       - gleam
+    markers:
+      - gleam.toml
   - id: glsl
     extensions:
       - comp
@@ -1196,6 +1249,10 @@ filetypes:
   - id: go
     extensions:
       - go
+    markers:
+      - go.mod
+      - go.work
+    grammar: go
   - id: goaccess
     filenames:
       - goaccess.conf
@@ -1312,6 +1369,11 @@ filetypes:
       - hs-boot
       - hsc
       - hsig
+    markers:
+      - stack.yaml
+      - cabal.project
+      - package.yaml
+      - hie.yaml
   - id: haskellpersistent
     extensions:
       - persistentmodels
@@ -1341,6 +1403,7 @@ filetypes:
     related:
       - opentofu
       - terraform
+    grammar: hcl
   - id: hcl.docker-bake
   - id: hcl.nomad
   - id: heex
@@ -1419,6 +1482,7 @@ filetypes:
       - html.hl
     related:
       - xhtml
+    grammar: html
   - id: html-eex
   - id: html.handlebars
   - id: htmlangular
@@ -1530,6 +1594,11 @@ filetypes:
       - jav
       - java
       - jsh
+    markers:
+      - pom.xml
+      - build.gradle
+      - build.gradle.kts
+    grammar: java
   - id: javacc
     extensions:
       - jj
@@ -1562,12 +1631,22 @@ filetypes:
       - .node_repl_history
       - Jakefile
       - deno_history.txt
+    markers:
+      - package.json
+      - jsconfig.json
+      - deno.json
+      - deno.jsonc
+    grammar: javascript
   - id: javascript.glimmer
     extensions:
       - gjs
   - id: javascriptreact
     extensions:
       - jsx
+    markers:
+      - package.json
+      - jsconfig.json
+    grammar: javascript
   - id: jess
     extensions:
       - clp
@@ -1632,6 +1711,7 @@ filetypes:
       - .all-contributorsrc
       - .arcconfig
       - .auto-changelog
+      - .autorc
       - .c8rc
       - .firebaserc
       - .htmlhintrc
@@ -1655,6 +1735,7 @@ filetypes:
       - symfony.lock
     related:
       - jsonl
+    grammar: json
   - id: json.openapi
   - id: json5
     extensions:
@@ -1718,6 +1799,8 @@ filetypes:
   - id: julia
     extensions:
       - jl
+    markers:
+      - Project.toml
   - id: just
     extensions:
       - JUST
@@ -1746,6 +1829,7 @@ filetypes:
       - Config.in
       - Kconfig
       - Kconfig.debug
+    grammar: kconfig
   - id: kdl
     extensions:
       - kdl
@@ -1772,6 +1856,7 @@ filetypes:
       - kt
       - ktm
       - kts
+    grammar: kotlin
   - id: krl
     extensions:
       - SUB
@@ -1939,9 +2024,11 @@ filetypes:
       - .luacheckrc
       - config.ld
       - rock_manifest
+    grammar: lua
   - id: luau
     extensions:
       - luau
+    grammar: luau
   - id: lynx
     filenames:
       - lynx.cfg
@@ -2002,6 +2089,7 @@ filetypes:
       - mkfile
     related:
       - mf
+    grammar: make
   - id: mallard
     extensions:
       - page
@@ -2049,6 +2137,7 @@ filetypes:
       - matlab
     related:
       - octave
+    grammar: matlab
   - id: maxima
     extensions:
       - demo
@@ -2279,9 +2368,11 @@ filetypes:
       - vhost
     filenames:
       - nginx.conf
+    grammar: nginx
   - id: nickel
     extensions:
       - ncl
+    grammar: nickel
   - id: nim
     extensions:
       - nim
@@ -2297,6 +2388,7 @@ filetypes:
   - id: nix
     extensions:
       - nix
+    grammar: nix
   - id: njk
     related:
       - nunjucks
@@ -2377,6 +2469,7 @@ filetypes:
   - id: objc
     extensions:
       - m
+    grammar: objc
   - id: objcpp
     extensions:
       - objcpp
@@ -2407,6 +2500,8 @@ filetypes:
       - mly
     filenames:
       - .ocamlinit
+    markers:
+      - dune-project
   - id: ocamlinterface
   - id: ocamllex
     extensions:
@@ -2424,6 +2519,7 @@ filetypes:
   - id: odin
     extensions:
       - odin
+    grammar: odin
   - id: omnimark
     extensions:
       - xin
@@ -2510,6 +2606,7 @@ filetypes:
       - lpr
       - pas
       - pascal
+    grammar: pascal
   - id: passwd
     filenames:
       - /etc/passwd
@@ -2566,6 +2663,9 @@ filetypes:
       - example.gitolite.rc
       - gitolite.rc
       - latexmkrc
+    markers:
+      - cpanfile
+      - Makefile.PL
   - id: pest
     extensions:
       - pest
@@ -2600,6 +2700,9 @@ filetypes:
       - .php_cs
       - .php_cs.dist
       - Phakefile
+    markers:
+      - composer.json
+    grammar: php
   - id: pike
     extensions:
       - pike
@@ -2730,6 +2833,7 @@ filetypes:
   - id: proto
     extensions:
       - proto
+    grammar: proto
   - id: protocols
     filenames:
       - /etc/protocols
@@ -2763,6 +2867,7 @@ filetypes:
       - pp
     filenames:
       - Modulefile
+    grammar: puppet
   - id: purescript
     extensions:
       - purs
@@ -2805,10 +2910,18 @@ filetypes:
       - SConscript
       - SConstruct
       - wscript
+    markers:
+      - pyproject.toml
+      - setup.py
+      - setup.cfg
+      - requirements.txt
+      - Pipfile
+    grammar: python
   - id: ql
     extensions:
       - ql
       - qll
+    grammar: ql
   - id: qml
     extensions:
       - qbs
@@ -2819,6 +2932,7 @@ filetypes:
   - id: qmljs
     extensions:
       - qmljs
+    grammar: qmljs
   - id: quarto
     extensions:
       - qmd
@@ -2840,12 +2954,14 @@ filetypes:
       - Rprofile
       - Rprofile.site
       - expr-dist
+    grammar: r
   - id: racket
     extensions:
       - rkt
       - rktd
       - rktl
       - scrbl
+    grammar: racket
   - id: radiance
     extensions:
       - mat
@@ -2901,6 +3017,7 @@ filetypes:
   - id: rbs
     extensions:
       - rbs
+    grammar: rbs
   - id: readline
     filenames:
       - .inputrc
@@ -2924,6 +3041,7 @@ filetypes:
       - constraints.txt
       - requirements.in
       - requirements.txt
+    grammar: requirements
   - id: rescript
     extensions:
       - res
@@ -3013,6 +3131,7 @@ filetypes:
       - rest.txt
       - rst
       - rst.txt
+    grammar: rst
   - id: rtf
     extensions:
       - rtf
@@ -3071,6 +3190,9 @@ filetypes:
       - irbrc
       - rakefile
       - rantfile
+    markers:
+      - Gemfile
+    grammar: ruby
   - id: rune
     extensions:
       - rune
@@ -3078,6 +3200,9 @@ filetypes:
     extensions:
       - rs
       - rs.in
+    markers:
+      - Cargo.toml
+    grammar: rust
   - id: sage
     extensions:
       - sage
@@ -3103,6 +3228,10 @@ filetypes:
       - mill
       - sc
       - scala
+    markers:
+      - build.sbt
+      - build.sc
+    grammar: scala
   - id: scheme
     extensions:
       - music
@@ -3124,6 +3253,7 @@ filetypes:
     filenames:
       - .guile
       - .lips_repl_history
+    grammar: scheme
   - id: scheme.guile
   - id: scilab
     extensions:
@@ -3234,6 +3364,7 @@ filetypes:
     related:
       - bash
       - zsh
+    grammar: bash
   - id: shaderslang
     extensions:
       - slang
@@ -3337,6 +3468,7 @@ filetypes:
   - id: solidity
     extensions:
       - sol
+    grammar: solidity
   - id: solution
     extensions:
       - sln
@@ -3444,6 +3576,7 @@ filetypes:
       - WORKSPACE.bazel
     related:
       - bzl
+    grammar: starlark
   - id: stata
     extensions:
       - ado
@@ -3480,6 +3613,13 @@ filetypes:
   - id: svelte
     extensions:
       - svelte
+    markers:
+      - package.json
+    grammar: html
+    embeds:
+      - javascript
+      - tsx
+      - typescript
   - id: svg
     extensions:
       - svg
@@ -3490,6 +3630,10 @@ filetypes:
     extensions:
       - swift
       - swiftinterface
+    markers:
+      - Package.swift
+      - project.pbxproj
+    grammar: swift
   - id: swig
     extensions:
       - i
@@ -3558,12 +3702,14 @@ filetypes:
   - id: templ
     extensions:
       - templ
+    grammar: templ
   - id: template
     extensions:
       - tmpl
   - id: tera
     extensions:
       - tera
+    grammar: tera
   - id: terminfo
     extensions:
       - ti
@@ -3573,9 +3719,11 @@ filetypes:
     related:
       - hcl
       - opentofu
+    grammar: hcl
   - id: terraform-vars
     extensions:
       - tfvars
+    grammar: hcl
   - id: tesc
   - id: tese
   - id: tex
@@ -3654,6 +3802,7 @@ filetypes:
     filenames:
       - .tfrc
       - tfrc
+    grammar: hcl
   - id: thrift
     extensions:
       - thrift
@@ -3758,12 +3907,22 @@ filetypes:
       - ts
     filenames:
       - .ts_node_repl_history
+    markers:
+      - tsconfig.json
+      - package.json
+      - deno.json
+      - deno.jsonc
+    grammar: typescript
   - id: typescript.glimmer
     extensions:
       - gts
   - id: typescriptreact
     extensions:
       - tsx
+    markers:
+      - tsconfig.json
+      - package.json
+    grammar: tsx
   - id: typespec
     extensions:
       - tsp
@@ -3881,6 +4040,7 @@ filetypes:
       - vht
       - vhw
       - vst
+    grammar: vhdl
   - id: vhs
     extensions:
       - tape
@@ -3929,6 +4089,13 @@ filetypes:
   - id: vue
     extensions:
       - vue
+    markers:
+      - package.json
+    grammar: html
+    embeds:
+      - javascript
+      - tsx
+      - typescript
   - id: vue-html
   - id: vv
   - id: wat
@@ -3983,6 +4150,7 @@ filetypes:
       - Compose
       - XCompose
       - xcompose
+    grammar: xcompose
   - id: xdc
     related:
       - sdc
@@ -4211,6 +4379,7 @@ filetypes:
       - yarn.lock
     related:
       - yml
+    grammar: yaml
   - id: yaml.ansible
   - id: yaml.docker-compose
   - id: yaml.gitlab
@@ -4247,6 +4416,9 @@ filetypes:
       - zig
       - zig.zon
       - zon
+    markers:
+      - build.zig
+    grammar: zig
   - id: ziggy
     extensions:
       - ziggy
@@ -4283,3 +4455,4 @@ filetypes:
     related:
       - bash
       - sh
+    grammar: zsh
