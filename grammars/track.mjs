@@ -7,7 +7,7 @@ import { RAW_BASE, REF, ROOT, SCHEMA_VERSION, dump, getBytes, getJson, readYaml,
 export const GRAMMARS_FILE = "grammars/grammars.yaml";
 export const WASM_DIR = "grammars/wasm";
 export const QUERIES_DIR = "grammars/queries";
-export const QUERY_NAMES = ["tags", "locals", "injections", "metrics"];
+export const QUERY_NAMES = ["tags", "locals", "injections", "metrics", "imports"];
 export const OWN_QUERIES_DIR = "grammars/own";
 const MAX_QUERY_BYTES = 256 * 1024;
 export const BUILD_TIMEOUT_MS = 5 * 60 * 1000;
