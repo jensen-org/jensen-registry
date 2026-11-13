@@ -1,7 +1,7 @@
 schema_version: 2
 upstream:
   repo: neovim/neovim
-  sha: 629e501cd6112e5d77301afa01f5fcfd531b9ea0
+  sha: 49b853fb327f5f6b5c1bdb38d2e3b8026a4124eb
 filetypes:
   - id: 8th
     extensions:
