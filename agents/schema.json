@@ -1,0 +1,36 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jensen-org/jensen-registry/agents/schema.json",
+  "title": "Jensen registry agents",
+  "description": "Entry files under agents/ and the agent items of index.yaml.",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$",
+      "maxLength": 80
+    },
+    "agentEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name", "summary", "prompt", "trigger", "advised"],
+      "properties": {
+        "id": { "$ref": "#/$defs/id" },
+        "name": { "type": "string", "minLength": 1, "maxLength": 40 },
+        "summary": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "prompt": { "type": "string", "minLength": 1, "maxLength": 4000 },
+        "trigger": { "enum": ["ask", "diff"] },
+        "skills": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/id" }
+        },
+        "provider": { "type": "string" },
+        "advised": { "type": "boolean" },
+        "tags": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "indexAgent": {
+      "$ref": "#/$defs/agentEntry"
+    }
+  }
+}

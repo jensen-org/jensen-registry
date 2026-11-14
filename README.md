@@ -1,13 +1,13 @@
 # jensen-registry
 
-The one catalog Jensen reads for developer tools, skills, MCP servers and integrations. Everything is
+The one catalog Jensen reads for developer tools, skills, preset agents, MCP servers and integrations. Everything is
 a static file on `main`, with a checksum, so a client verifies what it fetched and caches it on disk.
 There is no hosted service and no seed copy anywhere else. Jensen's code holds no catalog: what you
 publish here is what Jensen offers.
 
 ## Layout
 
-There are six folders. Each holds its entries, the assets generated from them, and the code that
+There are seven folders. Each holds its entries, the assets generated from them, and the code that
 checks them.
 
 | Folder | Entries | Assets | Code |
@@ -16,6 +16,7 @@ checks them.
 | `clients/` | `<id>.yaml`: how to install a package of one type, or launch a binary through one runtime | | `schema.json`, `validate.mjs` |
 | `grammars/` | `sources.yaml`: the crates.io release each tree-sitter grammar is built from, and the CLI version that builds it | `grammars.yaml` (generated), `wasm/<id>-<version>.wasm`: the built grammars | `track.mjs`, `validate.mjs` |
 | `skills/` | `<id>.yaml`: the repo, path and ref a skill tracks | | `schema.json`, `track.mjs`, `validate.mjs` |
+| `agents/` | `<id>.yaml`: a preset agent, its prompt, its wake rule (`ask` or `diff`) and the skills it relies on | | `schema.json`, `track.mjs`, `validate.mjs` |
 | `mcp/` | `<id>.yaml`: a server's package or url, its env, its auth, and the integrations it `serves` | `locks/<id>/`: the lockfile a stdio server installs from | `schema.json`, `track.mjs`, `checks.mjs`, `validate.mjs` |
 | `integrations/` | `<id>.yaml`: a service Jensen connects to | `icons/<name>.svg` | `schema.json`, `track.mjs`, `checks.mjs`, `validate.mjs`, `icons.mjs` |
 
