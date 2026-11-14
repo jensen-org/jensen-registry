@@ -1,12 +1,12 @@
 schema_version: 2
 mason:
   repo: mason-org/mason-registry
-  tag: 2026-11-13-dental-driver
-  sha256: 3958b82e71eb68b1fd93cae392422d2c541941721fb3214d4d4f36e8fd9d6a66
+  tag: 2026-11-14-antiquet-bubble
+  sha256: e2a9e1f6cd7105202a8d5aa1f68c6d6eab8b0befd61b6e9534e52673ac11576b
 sources:
   lspconfig:
     repo: neovim/nvim-lspconfig
-    sha: 443d92c6bea761ab54cdde46fb197a2b4d614bdd
+    sha: 05588aab66016c6836634b87ca2d392d097515f2
   conform:
     repo: stevearc/conform.nvim
     sha: 016802de402556da54c36bd7359b441266b01cdd
@@ -18,7 +18,7 @@ sources:
     sha: 9a10e096703966335bd5c46c8c875d5b0690dade
   neovim:
     repo: neovim/neovim
-    sha: 49b853fb327f5f6b5c1bdb38d2e3b8026a4124eb
+    sha: a86bb1de4ac1f4eb0065e3fb979358015684c43c
   linguist:
     repo: github-linguist/linguist
     sha: d456527fe93355baa28c3c29d542c97282b61bc7
