@@ -1332,10 +1332,6 @@ agents:
     trigger: diff
     skills:
       - code-review
-    provider: Jensen
-    advised: true
-    tags:
-      - review
   - id: design-reviewer
     name: Design reviewer
     summary: Checks interface changes for consistency, spacing, type, states and accessibility.
@@ -1345,11 +1341,6 @@ agents:
       Report each problem with the file and line and the token or pattern the project already uses instead.
       Do not edit files. If the diff does not touch the interface, say so in one line and stop.
     trigger: diff
-    provider: Jensen
-    advised: true
-    tags:
-      - design
-      - review
   - id: quality-keeper
     name: Quality keeper
     summary: Looks for duplication, dead code and shallow modules after a change and proposes the cleanup.
@@ -1361,7 +1352,3 @@ agents:
     trigger: diff
     skills:
       - improve-codebase-architecture
-    provider: Jensen
-    advised: false
-    tags:
-      - quality

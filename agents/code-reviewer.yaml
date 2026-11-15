@@ -10,7 +10,3 @@ prompt: |
 trigger: diff
 skills:
   - code-review
-provider: Jensen
-advised: true
-tags:
-  - review

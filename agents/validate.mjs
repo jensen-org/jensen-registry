@@ -18,7 +18,7 @@ export function validateAgents({ check, index, problems, same }) {
       fail(`index.yaml: agent ${item.id} has no entry file`);
       continue;
     }
-    for (const key of ["name", "summary", "prompt", "trigger", "skills", "provider", "advised", "tags"]) {
+    for (const key of ["name", "summary", "prompt", "trigger", "skills"]) {
       same(`index.yaml agent ${item.id} ${key}`, item[key], source[key]);
     }
   }

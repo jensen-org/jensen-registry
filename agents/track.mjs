@@ -17,9 +17,6 @@ export function trackAgents({ check, problems }) {
       prompt: entry.prompt,
       trigger: entry.trigger,
       ...(entry.skills?.length ? { skills: entry.skills } : {}),
-      ...(entry.provider ? { provider: entry.provider } : {}),
-      advised: entry.advised,
-      ...(entry.tags?.length ? { tags: entry.tags } : {}),
     });
   }
   return agents;
