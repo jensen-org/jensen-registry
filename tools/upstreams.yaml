@@ -1,8 +1,8 @@
 schema_version: 2
 mason:
   repo: mason-org/mason-registry
-  tag: 2026-11-14-antiquet-bubble
-  sha256: e2a9e1f6cd7105202a8d5aa1f68c6d6eab8b0befd61b6e9534e52673ac11576b
+  tag: 2026-11-15-measly-lung
+  sha256: 4c4d3a6ba8a937b0860ba5940f02bd0f8945389f6516bcba14c53c2e0e6110b6
 sources:
   lspconfig:
     repo: neovim/nvim-lspconfig
@@ -18,7 +18,7 @@ sources:
     sha: 9a10e096703966335bd5c46c8c875d5b0690dade
   neovim:
     repo: neovim/neovim
-    sha: a86bb1de4ac1f4eb0065e3fb979358015684c43c
+    sha: 94edc50849f31db250554f15875f8626cce56142
   linguist:
     repo: github-linguist/linguist
     sha: d456527fe93355baa28c3c29d542c97282b61bc7

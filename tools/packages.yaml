@@ -1,8 +1,8 @@
 schema_version: 2
 upstream:
   repo: mason-org/mason-registry
-  tag: 2026-11-14-antiquet-bubble
-  sha256: e2a9e1f6cd7105202a8d5aa1f68c6d6eab8b0befd61b6e9534e52673ac11576b
+  tag: 2026-11-15-measly-lung
+  sha256: 4c4d3a6ba8a937b0860ba5940f02bd0f8945389f6516bcba14c53c2e0e6110b6
 packages:
   - id: actionlint
     source: github
@@ -359,7 +359,7 @@ packages:
   - id: angular-language-server
     source: npm
     coordinate: "@angular/language-server"
-    version: 22.2.5
+    version: 22.2.6
     description: |-
       The Angular Language Service provides code editors with a way to get completions, errors, hints, and navigation inside
       Angular templates. It works with external templates in separate HTML files, and also with in-line templates.
@@ -1244,7 +1244,7 @@ packages:
   - id: biome
     source: npm
     coordinate: "@biomejs/biome"
-    version: 2.6.6
+    version: 2.6.7
     description: Toolchain of the web. Successor to Rome.
     homepage: https://biomejs.dev
     languages:
@@ -4016,7 +4016,7 @@ packages:
   - id: djlint
     source: pypi
     coordinate: djlint
-    version: 1.50.0
+    version: 1.50.1
     description: HTML Template Linter and Formatter. Django - Jinja - Nunjucks - Handlebars - GoLang.
     homepage: https://github.com/Riverside-Healthcare/djLint
     languages:
@@ -4196,7 +4196,7 @@ packages:
   - id: dockerfmt
     source: golang
     coordinate: github.com/reteps/dockerfmt
-    version: v0.6.0
+    version: v1.0.0
     description: An opinionated Dockerfile formatter.
     homepage: https://github.com/reteps/dockerfmt
     languages:
@@ -7109,7 +7109,7 @@ packages:
   - id: harper-ls
     source: github
     coordinate: elijah-potter/harper
-    version: v3.1.0
+    version: v3.2.0
     description: The Grammar Checker for Developers.
     homepage: https://github.com/elijah-potter/harper
     languages:
@@ -7138,56 +7138,56 @@ packages:
           - linux_x64_gnu
         files:
           - name: harper-ls-x86_64-unknown-linux-gnu.tar.gz
-            url: https://github.com/elijah-potter/harper/releases/download/v3.1.0/harper-ls-x86_64-unknown-linux-gnu.tar.gz
-            sha256: 47469b3b628fa2040797d834a1df84e7288be2d055602a76e92d28a7135f76e2
+            url: https://github.com/elijah-potter/harper/releases/download/v3.2.0/harper-ls-x86_64-unknown-linux-gnu.tar.gz
+            sha256: f854bdda5627a85915b2c6549ad83250db8535362e73d3ed02393e5df0217d33
         bin:
           harper-ls: harper-ls
       - targets:
           - linux_x64_musl
         files:
           - name: harper-ls-x86_64-unknown-linux-musl.tar.gz
-            url: https://github.com/elijah-potter/harper/releases/download/v3.1.0/harper-ls-x86_64-unknown-linux-musl.tar.gz
-            sha256: 5e431c4c1a9bae694dfeb7e72d094f9efb8d8e43da27124052acf5d9848f98be
+            url: https://github.com/elijah-potter/harper/releases/download/v3.2.0/harper-ls-x86_64-unknown-linux-musl.tar.gz
+            sha256: 4b44c54ff6a0831901805584bb9d70a004b768b713af9725b65d13e1b369c138
         bin:
           harper-ls: harper-ls
       - targets:
           - linux_arm64_gnu
         files:
           - name: harper-ls-aarch64-unknown-linux-gnu.tar.gz
-            url: https://github.com/elijah-potter/harper/releases/download/v3.1.0/harper-ls-aarch64-unknown-linux-gnu.tar.gz
-            sha256: b5bb00dd1c6de484a5953d4c41790f7694591d103cf8c36613ff666edbf59d24
+            url: https://github.com/elijah-potter/harper/releases/download/v3.2.0/harper-ls-aarch64-unknown-linux-gnu.tar.gz
+            sha256: e2a13cd9bb91b505ef46bcbcafeb4f11b96d95e75b9cc0a156c680474c476804
         bin:
           harper-ls: harper-ls
       - targets:
           - linux_arm64_musl
         files:
           - name: harper-ls-aarch64-unknown-linux-musl.tar.gz
-            url: https://github.com/elijah-potter/harper/releases/download/v3.1.0/harper-ls-aarch64-unknown-linux-musl.tar.gz
-            sha256: b108673b89e1533914e4a27c0d933e82dc7ba7818ec4c682ed498fa76732b39d
+            url: https://github.com/elijah-potter/harper/releases/download/v3.2.0/harper-ls-aarch64-unknown-linux-musl.tar.gz
+            sha256: 61bac6b6992797531b0ef7addbd51eb455a033681f7189d8dc22a1024de6b632
         bin:
           harper-ls: harper-ls
       - targets:
           - darwin_x64
         files:
           - name: harper-ls-x86_64-apple-darwin.tar.gz
-            url: https://github.com/elijah-potter/harper/releases/download/v3.1.0/harper-ls-x86_64-apple-darwin.tar.gz
-            sha256: 9afd9fe28f4e502b1771307d26ad144778a55fdf180f0f6df0070ea4189cde7f
+            url: https://github.com/elijah-potter/harper/releases/download/v3.2.0/harper-ls-x86_64-apple-darwin.tar.gz
+            sha256: 3ca19166a4ffef14c24b0396af920bbb11abd071e6724bfedbe1f2eccad3b76d
         bin:
           harper-ls: harper-ls
       - targets:
           - darwin_arm64
         files:
           - name: harper-ls-aarch64-apple-darwin.tar.gz
-            url: https://github.com/elijah-potter/harper/releases/download/v3.1.0/harper-ls-aarch64-apple-darwin.tar.gz
-            sha256: 8b7af69862e4546cb94844e0b324eb23858bafa1f07a818440b00a76c1eef8ac
+            url: https://github.com/elijah-potter/harper/releases/download/v3.2.0/harper-ls-aarch64-apple-darwin.tar.gz
+            sha256: 9dd31b0cabfb040f658a8d595cc36520eb306a5a69ac37c7b828c36574b47ce9
         bin:
           harper-ls: harper-ls
       - targets:
           - win_x64
         files:
           - name: harper-ls-x86_64-pc-windows-msvc.zip
-            url: https://github.com/elijah-potter/harper/releases/download/v3.1.0/harper-ls-x86_64-pc-windows-msvc.zip
-            sha256: 0827f6940a1cc150335ea475307dfa0b7c1237a5e5dd24b1a506fab5839addf8
+            url: https://github.com/elijah-potter/harper/releases/download/v3.2.0/harper-ls-x86_64-pc-windows-msvc.zip
+            sha256: a9e370166ace4e92a592f954baa2fedf4528e6daf59e64a9973fc9f3d7d30d5e
         bin:
           harper-ls: harper-ls.exe
     filetypes:
@@ -9136,7 +9136,7 @@ packages:
   - id: kubescape
     source: github
     coordinate: kubescape/kubescape
-    version: v4.0.20
+    version: v4.0.21
     description: Kubescape is an open-source Kubernetes security platform for your IDE, CI/CD pipelines, and clusters. It includes risk analysis, security, compliance, and misconfiguration scanning, saving Kubernetes users and administrators precious time, effort, and resources.
     homepage: https://kubescape.io/
     languages:
@@ -9152,49 +9152,49 @@ packages:
       - targets:
           - darwin_x64
         files:
-          - name: kubescape_4.0.20_darwin_amd64.tar.gz
-            url: https://github.com/kubescape/kubescape/releases/download/v4.0.20/kubescape_4.0.20_darwin_amd64.tar.gz
-            sha256: d38a0f0706c4f9c8ccba22f6c821ff85022e9a3a8bf1802983fd13cb8ff08ea7
+          - name: kubescape_4.0.21_darwin_amd64.tar.gz
+            url: https://github.com/kubescape/kubescape/releases/download/v4.0.21/kubescape_4.0.21_darwin_amd64.tar.gz
+            sha256: e7a2e5db699e098a72a6ba4fce1435c70d722141d540d00e2ccdff3494243983
         bin:
           kubescape: kubescape
       - targets:
           - darwin_arm64
         files:
-          - name: kubescape_4.0.20_darwin_arm64.tar.gz
-            url: https://github.com/kubescape/kubescape/releases/download/v4.0.20/kubescape_4.0.20_darwin_arm64.tar.gz
-            sha256: b3e54c96a33e8950e9e3f6c3aa67a7bcc272887d249c502fc00423e6b3e296f3
+          - name: kubescape_4.0.21_darwin_arm64.tar.gz
+            url: https://github.com/kubescape/kubescape/releases/download/v4.0.21/kubescape_4.0.21_darwin_arm64.tar.gz
+            sha256: cf9ff1364050923a98377a750436abff5bea41f3d6293593bbbddb1e0f4fa011
         bin:
           kubescape: kubescape
       - targets:
           - linux_x64
         files:
-          - name: kubescape_4.0.20_linux_amd64.tar.gz
-            url: https://github.com/kubescape/kubescape/releases/download/v4.0.20/kubescape_4.0.20_linux_amd64.tar.gz
-            sha256: 6586bb94b9a250ad1353df743e65008802da1515bd4eb3c80eb3c5ce40a16672
+          - name: kubescape_4.0.21_linux_amd64.tar.gz
+            url: https://github.com/kubescape/kubescape/releases/download/v4.0.21/kubescape_4.0.21_linux_amd64.tar.gz
+            sha256: f901b27b3143441eff8a1c57216794b0765df6e322fd62fb82f81c1c314086ae
         bin:
           kubescape: kubescape
       - targets:
           - linux_arm64
         files:
-          - name: kubescape_4.0.20_linux_arm64.tar.gz
-            url: https://github.com/kubescape/kubescape/releases/download/v4.0.20/kubescape_4.0.20_linux_arm64.tar.gz
-            sha256: a20a52f061c5fc3de0d7ffea133a8110bf051d15960618ab36a7430717ac6489
+          - name: kubescape_4.0.21_linux_arm64.tar.gz
+            url: https://github.com/kubescape/kubescape/releases/download/v4.0.21/kubescape_4.0.21_linux_arm64.tar.gz
+            sha256: ebb3e2793c7e5a42c3fceff17b9541e4046fa5cd914c4a5fc6c15f42034de039
         bin:
           kubescape: kubescape
       - targets:
           - win_x64
         files:
-          - name: kubescape_4.0.20_windows_amd64.tar.gz
-            url: https://github.com/kubescape/kubescape/releases/download/v4.0.20/kubescape_4.0.20_windows_amd64.tar.gz
-            sha256: f16e842990921bf63f6717afa260868cad1875d33a1bf83a5ad29970d404c3ca
+          - name: kubescape_4.0.21_windows_amd64.tar.gz
+            url: https://github.com/kubescape/kubescape/releases/download/v4.0.21/kubescape_4.0.21_windows_amd64.tar.gz
+            sha256: eb69559b8557effe6d339c99d32fbef26f5dbc32835c7a000ec60ad16ebb4130
         bin:
           kubescape: kubescape.exe
       - targets:
           - win_arm64
         files:
-          - name: kubescape_4.0.20_windows_arm64.tar.gz
-            url: https://github.com/kubescape/kubescape/releases/download/v4.0.20/kubescape_4.0.20_windows_arm64.tar.gz
-            sha256: 4bf1e9616b34660bdd1628f2a252d74d4da35fed32e75a5ed78dea017e382c4f
+          - name: kubescape_4.0.21_windows_arm64.tar.gz
+            url: https://github.com/kubescape/kubescape/releases/download/v4.0.21/kubescape_4.0.21_windows_arm64.tar.gz
+            sha256: 66caacd9eec9039f442f1004a10b63d6280c90ea8d30e111ef13e566700b9476
         bin:
           kubescape: kubescape.exe
     filetypes:
@@ -10174,7 +10174,7 @@ packages:
   - id: markdownlint-cli2
     source: npm
     coordinate: markdownlint-cli2
-    version: 0.24.0
+    version: 0.24.1
     description: A fast, flexible, configuration-based command-line interface for linting Markdown/CommonMark files with the markdownlint library
     homepage: https://github.com/DavidAnson/markdownlint-cli2
     languages:
@@ -11361,7 +11361,7 @@ packages:
   - id: nlpplus-language-server
     source: npm
     coordinate: nlpplus-language-server
-    version: 4.3.2
+    version: 4.3.19
     description: Language server for NLP++, the programming language for natural language processing.
     homepage: https://visualtext.org/nlp/
     languages:
@@ -12867,7 +12867,7 @@ packages:
   - id: prettier
     source: npm
     coordinate: prettier
-    version: 3.9.10
+    version: 3.10.1
     description: Prettier is an opinionated code formatter.
     homepage: https://prettier.io
     languages:
@@ -13338,7 +13338,7 @@ packages:
   - id: psalm
     source: composer
     coordinate: vimeo/psalm
-    version: 7.3.2
+    version: 7.5.0
     description: A static analysis tool for finding errors in PHP applications.
     homepage: https://psalm.dev/
     languages:
@@ -13699,7 +13699,7 @@ packages:
   - id: pymobiledevice3
     source: pypi
     coordinate: pymobiledevice3
-    version: 11.54.0
+    version: 11.55.0
     description: Pure python3 implementation for working with iDevices (iPhone, etc...).
     homepage: https://github.com/doronz88/pymobiledevice3
     languages:
@@ -13817,7 +13817,7 @@ packages:
   - id: pytest-language-server
     source: pypi
     coordinate: pytest-language-server
-    version: 0.26.0
+    version: 0.26.1
     description: A language server for pytest
     homepage: https://github.com/bellini666/pytest-language-server
     languages:
@@ -16378,7 +16378,7 @@ packages:
   - id: sorbet
     source: gem
     coordinate: sorbet
-    version: 0.6.13680
+    version: 0.6.13681
     description: Sorbet is a fast, powerful type checker designed for Ruby.
     homepage: https://sorbet.org/
     languages:
@@ -17218,7 +17218,7 @@ packages:
   - id: swiftformat
     source: github
     coordinate: nicklockwood/SwiftFormat
-    version: 0.64.6
+    version: 0.64.7
     description: A command-line tool and Xcode Extension for formatting Swift code.
     homepage: https://github.com/nicklockwood/SwiftFormat
     languages:
@@ -17233,26 +17233,26 @@ packages:
           - darwin_arm64
         files:
           - name: swiftformat.artifactbundle.zip
-            url: https://github.com/nicklockwood/SwiftFormat/releases/download/0.64.6/swiftformat.artifactbundle.zip
-            sha256: e34ade11d5920a4f5851add0bfead5b551be688513b2dfe8b6fb4be7ee096821
+            url: https://github.com/nicklockwood/SwiftFormat/releases/download/0.64.7/swiftformat.artifactbundle.zip
+            sha256: 44b9cacf63d3a7d1610ad03b3b0556514df70bdcc6ba24cd9b3abad345c957f1
         bin:
-          swiftformat: swiftformat.artifactbundle/swiftformat-0.64.6-macos/bin/swiftformat
+          swiftformat: swiftformat.artifactbundle/swiftformat-0.64.7-macos/bin/swiftformat
       - targets:
           - linux_arm64_gnu
         files:
           - name: swiftformat.artifactbundle.zip
-            url: https://github.com/nicklockwood/SwiftFormat/releases/download/0.64.6/swiftformat.artifactbundle.zip
-            sha256: e34ade11d5920a4f5851add0bfead5b551be688513b2dfe8b6fb4be7ee096821
+            url: https://github.com/nicklockwood/SwiftFormat/releases/download/0.64.7/swiftformat.artifactbundle.zip
+            sha256: 44b9cacf63d3a7d1610ad03b3b0556514df70bdcc6ba24cd9b3abad345c957f1
         bin:
-          swiftformat: swiftformat.artifactbundle/swiftformat-0.64.6-linux-gnu/bin/swiftformat_linux_aarch64
+          swiftformat: swiftformat.artifactbundle/swiftformat-0.64.7-linux-gnu/bin/swiftformat_linux_aarch64
       - targets:
           - linux_x64_gnu
         files:
           - name: swiftformat.artifactbundle.zip
-            url: https://github.com/nicklockwood/SwiftFormat/releases/download/0.64.6/swiftformat.artifactbundle.zip
-            sha256: e34ade11d5920a4f5851add0bfead5b551be688513b2dfe8b6fb4be7ee096821
+            url: https://github.com/nicklockwood/SwiftFormat/releases/download/0.64.7/swiftformat.artifactbundle.zip
+            sha256: 44b9cacf63d3a7d1610ad03b3b0556514df70bdcc6ba24cd9b3abad345c957f1
         bin:
-          swiftformat: swiftformat.artifactbundle/swiftformat-0.64.6-linux-gnu/bin/swiftformat_linux
+          swiftformat: swiftformat.artifactbundle/swiftformat-0.64.7-linux-gnu/bin/swiftformat_linux
     filetypes:
       - swift
   - id: swiftlint
@@ -18368,7 +18368,7 @@ packages:
   - id: tilt
     source: github
     coordinate: tilt-dev/tilt
-    version: v0.37.8
+    version: v0.37.9
     description: Define your dev environment as code. For microservice apps on Kubernetes.
     homepage: https://tilt.dev/
     languages:
@@ -18384,65 +18384,65 @@ packages:
       - targets:
           - darwin_arm64
         files:
-          - name: tilt.0.37.8.mac.arm64.tar.gz
-            url: https://github.com/tilt-dev/tilt/releases/download/v0.37.8/tilt.0.37.8.mac.arm64.tar.gz
-            sha256: 2d396b13c479f74deb19cb2161a3f0858f6e03f26f15f8d3b3be982d09ff4484
+          - name: tilt.0.37.9.mac.arm64.tar.gz
+            url: https://github.com/tilt-dev/tilt/releases/download/v0.37.9/tilt.0.37.9.mac.arm64.tar.gz
+            sha256: b3a3ad44f6c2d92abb49191a2e0dfa16dd1d84a367c97d83074e46af347a0426
         bin:
           tilt: tilt
       - targets:
           - darwin_x64
         files:
-          - name: tilt.0.37.8.mac.x86_64.tar.gz
-            url: https://github.com/tilt-dev/tilt/releases/download/v0.37.8/tilt.0.37.8.mac.x86_64.tar.gz
-            sha256: 0d03359e43f7faea07a6ed0e7423bb56176d1959462fa155329e9acabf90e6fa
+          - name: tilt.0.37.9.mac.x86_64.tar.gz
+            url: https://github.com/tilt-dev/tilt/releases/download/v0.37.9/tilt.0.37.9.mac.x86_64.tar.gz
+            sha256: e8d6a3bddf0118fa1d46e1090608762d07b33cb0dab8578b17bf001979172ced
         bin:
           tilt: tilt
       - targets:
           - linux_arm
         files:
-          - name: tilt.0.37.8.linux.arm.tar.gz
-            url: https://github.com/tilt-dev/tilt/releases/download/v0.37.8/tilt.0.37.8.linux.arm.tar.gz
-            sha256: 811cdf70db89a70eb0dfded1c26326539d55b3226c226efe3f5b7756fb9640e5
+          - name: tilt.0.37.9.linux.arm.tar.gz
+            url: https://github.com/tilt-dev/tilt/releases/download/v0.37.9/tilt.0.37.9.linux.arm.tar.gz
+            sha256: 7623c97ba53384c483bbf89b2f7a5d0e2d1b0ec40be162eaacf457415b4da437
         bin:
           tilt: tilt
       - targets:
           - linux_arm64
         files:
-          - name: tilt.0.37.8.linux.arm64.tar.gz
-            url: https://github.com/tilt-dev/tilt/releases/download/v0.37.8/tilt.0.37.8.linux.arm64.tar.gz
-            sha256: 7a21281e830930be158202b7f8405ba62445613788b4d9708512ffe51f5cce90
+          - name: tilt.0.37.9.linux.arm64.tar.gz
+            url: https://github.com/tilt-dev/tilt/releases/download/v0.37.9/tilt.0.37.9.linux.arm64.tar.gz
+            sha256: fb180544da945f346757eb64e12f23f5105a6b0ed67846845057861c99cb8d23
         bin:
           tilt: tilt
       - targets:
           - linux_arm64_musl
         files:
-          - name: tilt.0.37.8.linux-alpine.arm64.tar.gz
-            url: https://github.com/tilt-dev/tilt/releases/download/v0.37.8/tilt.0.37.8.linux-alpine.arm64.tar.gz
-            sha256: 101259fedb4faccb66c69afcb135de5e461765eccb06ff23693a016b6d26e963
+          - name: tilt.0.37.9.linux-alpine.arm64.tar.gz
+            url: https://github.com/tilt-dev/tilt/releases/download/v0.37.9/tilt.0.37.9.linux-alpine.arm64.tar.gz
+            sha256: 75ecb4d838b4094330b7316095cd5173299cd07087a3dde4bec6efbdfad63498
         bin:
           tilt: tilt
       - targets:
           - linux_x64
         files:
-          - name: tilt.0.37.8.linux.x86_64.tar.gz
-            url: https://github.com/tilt-dev/tilt/releases/download/v0.37.8/tilt.0.37.8.linux.x86_64.tar.gz
-            sha256: e39513f958705d30524d55f68b1d46fbef2b46a0da568efd00e6383dee6be44f
+          - name: tilt.0.37.9.linux.x86_64.tar.gz
+            url: https://github.com/tilt-dev/tilt/releases/download/v0.37.9/tilt.0.37.9.linux.x86_64.tar.gz
+            sha256: e70bb856b8e1cddb249b1e4231c1b1edca1f78167415effbdc9a1e893b6b9a19
         bin:
           tilt: tilt
       - targets:
           - linux_x64_musl
         files:
-          - name: tilt.0.37.8.linux-alpine.x86_64.tar.gz
-            url: https://github.com/tilt-dev/tilt/releases/download/v0.37.8/tilt.0.37.8.linux-alpine.x86_64.tar.gz
-            sha256: 7ce69fca2d3b48746d575be8378e0ea0a46bea3e15775d9b4c6548324183dcf4
+          - name: tilt.0.37.9.linux-alpine.x86_64.tar.gz
+            url: https://github.com/tilt-dev/tilt/releases/download/v0.37.9/tilt.0.37.9.linux-alpine.x86_64.tar.gz
+            sha256: a56e5deb260be3c0a463584e4518e883800b523bc04617328c59bed4e43ce3a5
         bin:
           tilt: tilt
       - targets:
           - win_x64
         files:
-          - name: tilt.0.37.8.windows.x86_64.zip
-            url: https://github.com/tilt-dev/tilt/releases/download/v0.37.8/tilt.0.37.8.windows.x86_64.zip
-            sha256: b8abb4b50e98d45300bd953a717a684f3555b158ee1238c9c938d72d2bea8cbe
+          - name: tilt.0.37.9.windows.x86_64.zip
+            url: https://github.com/tilt-dev/tilt/releases/download/v0.37.9/tilt.0.37.9.windows.x86_64.zip
+            sha256: ca0f6531ad5930da8a12214de22b83e1757d412ed78c86950c0e8ee9d946cca9
         bin:
           tilt: tilt.exe
     filetypes:
@@ -19208,7 +19208,7 @@ packages:
   - id: ty
     source: pypi
     coordinate: ty
-    version: 0.0.102
+    version: 0.0.104
     description: An extremely fast Python type checker and language server, written in Rust.
     homepage: https://github.com/astral-sh/ty
     languages:
