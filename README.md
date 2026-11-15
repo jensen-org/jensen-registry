@@ -17,6 +17,7 @@ checks them.
 | `grammars/` | `sources.yaml`: the crates.io release each tree-sitter grammar is built from, and the CLI version that builds it | `grammars.yaml` (generated), `wasm/<id>-<version>.wasm`: the built grammars | `track.mjs`, `validate.mjs` |
 | `skills/` | `<id>.yaml`: the repo, path and ref a skill tracks | | `schema.json`, `track.mjs`, `validate.mjs` |
 | `agents/` | `<id>.yaml`: a preset agent, its prompt, its wake rule (`ask` or `diff`) and the skills it relies on | | `schema.json`, `track.mjs`, `validate.mjs` |
+| `runtimes/` | `<id>.yaml`: where a runtime keeps the model gateway it talks to (the config file under the home folder, the key paths of its base url and token, the models path, and the variable that picks its model at launch) | | `schema.json`, `track.mjs`, `validate.mjs` |
 | `mcp/` | `<id>.yaml`: a server's package or url, its env, its auth, and the integrations it `serves` | `locks/<id>/`: the lockfile a stdio server installs from | `schema.json`, `track.mjs`, `checks.mjs`, `validate.mjs` |
 | `integrations/` | `<id>.yaml`: a service Jensen connects to | `icons/<name>.svg` | `schema.json`, `track.mjs`, `checks.mjs`, `validate.mjs`, `icons.mjs` |
 

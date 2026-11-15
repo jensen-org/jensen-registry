@@ -1352,3 +1352,13 @@ agents:
     trigger: diff
     skills:
       - improve-codebase-architecture
+runtimes:
+  - id: claude
+    gateway:
+      file: .claude/settings.json
+      format: json
+      base_url: env.ANTHROPIC_BASE_URL
+      token: env.ANTHROPIC_AUTH_TOKEN
+      models_path: /v1/models
+      model_env: ANTHROPIC_MODEL
+      auth_scheme: Bearer
