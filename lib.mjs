@@ -45,7 +45,7 @@ export function purl(ecosystem, name, version) {
   return `pkg:${ecosystem}/${encoded}@${version}`;
 }
 
-const SCHEMAS = ["skills", "mcp", "integrations"];
+const SCHEMAS = ["skills", "mcp", "integrations", "agents"];
 
 export function validator() {
   const ajv = new Ajv2020({ allErrors: true, strict: true, strictRequired: false });
