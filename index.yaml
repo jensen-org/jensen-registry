@@ -1395,6 +1395,54 @@ runtimes:
           native: false
       guidance:
         - AGENTS.md
+  - id: auggie
+    label: Auggie CLI
+    tier: 2
+    program: auggie
+    docs:
+      - https://www.augmentcode.com/
+      - https://agentclientprotocol.com/get-started/registry
+    config_dir: .augment
+    acp_registry: auggie
+    acp:
+      program: auggie
+      args:
+        - --acp
+      requires:
+        - node
+      install:
+        label: Install Auggie CLI
+        commands:
+          - npm install -g @augmentcode/auggie
+        docs_url: https://www.augmentcode.com/
+    mcp:
+      via: session
+    skills:
+      mode: none
+  - id: bob
+    label: Bob
+    tier: 2
+    program: bob
+    docs:
+      - https://bob.ibm.com
+      - https://agentclientprotocol.com/get-started/registry
+    config_dir: .bob
+    acp_registry: bob
+    acp:
+      program: bob
+      args:
+        - acp
+      requires:
+        - node
+      install:
+        label: Install Bob
+        commands:
+          - npm install -g @ibm/bob
+        docs_url: https://bob.ibm.com
+    mcp:
+      via: session
+    skills:
+      mode: none
   - id: claude
     label: Claude Code
     tier: 1
@@ -1497,6 +1545,30 @@ runtimes:
         - CLAUDE.md
         - AGENTS.md
       plugins: true
+  - id: cline
+    label: Cline
+    tier: 2
+    program: cline
+    docs:
+      - https://cline.bot/cli
+      - https://agentclientprotocol.com/get-started/registry
+    config_dir: .cline
+    acp_registry: cline
+    acp:
+      program: cline
+      args:
+        - --acp
+      requires:
+        - node
+      install:
+        label: Install Cline
+        commands:
+          - npm install -g cline
+        docs_url: https://cline.bot/cli
+    mcp:
+      via: session
+    skills:
+      mode: none
   - id: codex
     label: Codex
     tier: 1
@@ -1657,6 +1729,27 @@ runtimes:
           native: false
       guidance:
         - AGENTS.md
+  - id: devin
+    label: Devin CLI
+    tier: 2
+    program: devin
+    docs:
+      - https://docs.devin.ai/cli
+      - https://agentclientprotocol.com/get-started/registry
+    config_dir: .devin
+    acp_registry: devin
+    acp:
+      program: devin
+      args:
+        - acp
+      install:
+        label: Install Devin CLI
+        commands: []
+        docs_url: https://docs.devin.ai/cli
+    mcp:
+      via: session
+    skills:
+      mode: none
   - id: gemini
     label: Gemini CLI
     tier: 1
@@ -1838,6 +1931,51 @@ runtimes:
           native: false
       guidance:
         - AGENTS.md
+  - id: kilo
+    label: Kilo
+    tier: 2
+    program: kilo
+    docs:
+      - https://kilo.ai/
+      - https://agentclientprotocol.com/get-started/registry
+    config_dir: .kilocode
+    acp_registry: kilo
+    acp:
+      program: kilo
+      args:
+        - acp
+      requires:
+        - node
+      install:
+        label: Install Kilo
+        commands:
+          - npm install -g @kilocode/cli
+        docs_url: https://kilo.ai/
+    mcp:
+      via: session
+    skills:
+      mode: none
+  - id: kiro
+    label: Kiro CLI
+    tier: 2
+    program: kiro-cli
+    docs:
+      - https://kiro.dev/docs/cli/acp/
+      - https://agentclientprotocol.com/get-started/registry
+    config_dir: .kiro
+    acp_registry: kiro
+    acp:
+      program: kiro-cli
+      args:
+        - acp
+      install:
+        label: Install Kiro CLI
+        commands: []
+        docs_url: https://kiro.dev/docs/cli/acp/
+    mcp:
+      via: session
+    skills:
+      mode: none
   - id: opencode
     label: OpenCode
     tier: 1
@@ -1988,3 +2126,27 @@ runtimes:
           native: false
       guidance:
         - AGENTS.md
+  - id: qwen-code
+    label: Qwen Code
+    tier: 2
+    program: qwen
+    docs:
+      - https://qwenlm.github.io/qwen-code-docs/en/users/overview
+      - https://agentclientprotocol.com/get-started/registry
+    config_dir: .qwen
+    acp_registry: qwen-code
+    acp:
+      program: qwen
+      args:
+        - --acp
+      requires:
+        - node
+      install:
+        label: Install Qwen Code
+        commands:
+          - npm install -g @qwen-code/qwen-code
+        docs_url: https://qwenlm.github.io/qwen-code-docs/en/users/overview
+    mcp:
+      via: session
+    skills:
+      mode: none
