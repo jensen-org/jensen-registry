@@ -1,0 +1,397 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/jensen-org/jensen-registry/runtimes/schema.json",
+  "title": "Jensen registry runtimes",
+  "description": "Entry files under runtimes/ and the runtime items of index.yaml. Every field a runtime declares is backed by a vendor documentation url in docs.",
+  "$defs": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9._-]*$",
+      "maxLength": 80
+    },
+    "program": {
+      "type": "string",
+      "pattern": "^[A-Za-z0-9][A-Za-z0-9._-]*$",
+      "maxLength": 80
+    },
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "strings": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "maxLength": 400
+      }
+    },
+    "install": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "label",
+        "commands"
+      ],
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 80
+        },
+        "commands": {
+          "$ref": "#/$defs/strings"
+        },
+        "docs_url": {
+          "type": "string",
+          "pattern": "^https://"
+        }
+      }
+    },
+    "acp": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "program",
+        "install"
+      ],
+      "properties": {
+        "program": {
+          "$ref": "#/$defs/program"
+        },
+        "args": {
+          "$ref": "#/$defs/strings"
+        },
+        "env": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "ready": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "args"
+          ],
+          "properties": {
+            "args": {
+              "$ref": "#/$defs/strings"
+            },
+            "contains": {
+              "type": "string"
+            }
+          }
+        },
+        "login": {
+          "$ref": "#/$defs/strings"
+        },
+        "requires": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/program"
+          }
+        },
+        "install": {
+          "$ref": "#/$defs/install"
+        }
+      }
+    },
+    "mcp": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "via"
+      ],
+      "properties": {
+        "via": {
+          "enum": [
+            "session",
+            "command",
+            "file"
+          ]
+        },
+        "add": {
+          "$ref": "#/$defs/strings"
+        },
+        "config": {
+          "$ref": "#/$defs/path"
+        },
+        "format": {
+          "enum": [
+            "json",
+            "toml"
+          ]
+        },
+        "project": {
+          "$ref": "#/$defs/path"
+        }
+      }
+    },
+    "skills": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "none",
+            "agents",
+            "claude_plugin",
+            "gemini_extension",
+            "folder"
+          ]
+        },
+        "path": {
+          "$ref": "#/$defs/path"
+        }
+      }
+    },
+    "launch": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "args": {
+          "$ref": "#/$defs/strings"
+        },
+        "print_args": {
+          "$ref": "#/$defs/strings"
+        },
+        "lean_args": {
+          "$ref": "#/$defs/strings"
+        },
+        "system_prompt_flag": {
+          "type": "string"
+        },
+        "prompt_flag": {
+          "type": "string"
+        },
+        "positional_prompt": {
+          "type": "boolean"
+        },
+        "writable_root_flag": {
+          "type": "string"
+        },
+        "document": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "variable",
+            "document"
+          ],
+          "properties": {
+            "variable": {
+              "type": "string",
+              "pattern": "^[A-Z][A-Z0-9_]*$"
+            },
+            "document": {
+              "type": "string",
+              "maxLength": 4000
+            }
+          }
+        }
+      }
+    },
+    "runtimeEntry": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "label",
+        "tier",
+        "program",
+        "docs",
+        "config_dir",
+        "mcp",
+        "skills"
+      ],
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 40
+        },
+        "tier": {
+          "enum": [
+            1,
+            2
+          ]
+        },
+        "program": {
+          "$ref": "#/$defs/program"
+        },
+        "aliases": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "$ref": "#/$defs/id"
+          }
+        },
+        "docs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "pattern": "^https://"
+          }
+        },
+        "config_dir": {
+          "$ref": "#/$defs/path"
+        },
+        "acp_registry": {
+          "$ref": "#/$defs/id"
+        },
+        "acp": {
+          "$ref": "#/$defs/acp"
+        },
+        "mcp": {
+          "$ref": "#/$defs/mcp"
+        },
+        "skills": {
+          "$ref": "#/$defs/skills"
+        },
+        "guidance": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "file"
+          ],
+          "properties": {
+            "file": {
+              "$ref": "#/$defs/path"
+            },
+            "include": {
+              "$ref": "#/$defs/path"
+            }
+          }
+        },
+        "hooks": {
+          "enum": [
+            "claude",
+            "codex",
+            "gemini"
+          ]
+        },
+        "launch": {
+          "$ref": "#/$defs/launch"
+        },
+        "trusted_mcp": {
+          "$ref": "#/$defs/strings"
+        },
+        "assets": {
+          "$ref": "#/$defs/assets"
+        }
+      }
+    },
+    "indexRuntime": {
+      "$ref": "#/$defs/runtimeEntry"
+    },
+    "scope": {
+      "enum": [
+        "user",
+        "project"
+      ]
+    },
+    "place": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scope",
+        "dir",
+        "origin",
+        "native"
+      ],
+      "properties": {
+        "scope": {
+          "$ref": "#/$defs/scope"
+        },
+        "dir": {
+          "$ref": "#/$defs/path"
+        },
+        "origin": {
+          "$ref": "#/$defs/id"
+        },
+        "native": {
+          "type": "boolean"
+        }
+      }
+    },
+    "mcpFile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "scope",
+        "path",
+        "shape",
+        "origin",
+        "native"
+      ],
+      "properties": {
+        "scope": {
+          "$ref": "#/$defs/scope"
+        },
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "shape": {
+          "enum": [
+            "mcp_servers",
+            "claude_json",
+            "opencode",
+            "toml"
+          ]
+        },
+        "origin": {
+          "$ref": "#/$defs/id"
+        },
+        "native": {
+          "type": "boolean"
+        }
+      }
+    },
+    "assets": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "skills": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/place"
+          }
+        },
+        "commands": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/place"
+          }
+        },
+        "agents": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/place"
+          }
+        },
+        "mcp": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/mcpFile"
+          }
+        },
+        "guidance": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/path"
+          }
+        },
+        "plugins": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

@@ -1352,3 +1352,801 @@ agents:
     trigger: diff
     skills:
       - improve-codebase-architecture
+runtimes:
+  - id: antigravity
+    label: Antigravity CLI
+    tier: 1
+    program: agy
+    docs:
+      - https://antigravity.google/docs/cli/acp.md
+    config_dir: .gemini/antigravity-cli
+    acp_registry: antigravity-acp
+    acp:
+      program: agy
+      args:
+        - acp
+      install:
+        label: Install Antigravity CLI
+        commands: []
+        docs_url: https://antigravity.google/docs/install
+    mcp:
+      via: session
+    skills:
+      mode: agents
+    launch:
+      writable_root_flag: --include-directories
+      print_args:
+        - -p
+    assets:
+      skills:
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: false
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: false
+      mcp:
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: mcp
+          native: false
+      guidance:
+        - AGENTS.md
+  - id: auggie
+    label: Auggie CLI
+    tier: 2
+    program: auggie
+    docs:
+      - https://www.augmentcode.com/
+      - https://agentclientprotocol.com/get-started/registry
+    config_dir: .augment
+    acp_registry: auggie
+    acp:
+      program: auggie
+      args:
+        - --acp
+      requires:
+        - node
+      install:
+        label: Install Auggie CLI
+        commands:
+          - npm install -g @augmentcode/auggie
+        docs_url: https://www.augmentcode.com/
+    mcp:
+      via: session
+    skills:
+      mode: none
+  - id: bob
+    label: Bob
+    tier: 2
+    program: bob
+    docs:
+      - https://bob.ibm.com
+      - https://agentclientprotocol.com/get-started/registry
+    config_dir: .bob
+    acp_registry: bob
+    acp:
+      program: bob
+      args:
+        - acp
+      requires:
+        - node
+      install:
+        label: Install Bob
+        commands:
+          - npm install -g @ibm/bob
+        docs_url: https://bob.ibm.com
+    mcp:
+      via: session
+    skills:
+      mode: none
+  - id: claude
+    label: Claude Code
+    tier: 1
+    program: claude
+    aliases:
+      - claude-code
+    docs:
+      - https://code.claude.com/docs/en/cli-reference
+    config_dir: .claude
+    acp_registry: claude-acp
+    acp:
+      program: claude-agent-acp
+      requires:
+        - node
+      install:
+        label: Install the Claude adapter
+        commands:
+          - npm install -g @agentclientprotocol/claude-agent-acp
+        docs_url: https://github.com/agentclientprotocol/claude-agent-acp
+    mcp:
+      via: command
+      add:
+        - mcp
+        - add
+        - --transport
+        - stdio
+        - --scope
+        - user
+        - jensen
+        - --
+        - "{bin}"
+        - bridge
+        - .
+      config: .claude.json
+      project: .mcp.json
+    skills:
+      mode: claude_plugin
+    guidance:
+      file: JENSEN.md
+      include: CLAUDE.md
+    hooks: claude
+    launch:
+      writable_root_flag: --add-dir
+      print_args:
+        - -p
+      lean_args:
+        - --safe-mode
+        - --tools
+        - ""
+      system_prompt_flag: --system-prompt
+      positional_prompt: true
+    assets:
+      skills:
+        - scope: project
+          dir: .claude/skills
+          origin: claude
+          native: true
+        - scope: user
+          dir: .claude/skills
+          origin: claude
+          native: true
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: false
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: false
+      commands:
+        - scope: project
+          dir: .claude/commands
+          origin: claude
+          native: true
+        - scope: user
+          dir: .claude/commands
+          origin: claude
+          native: true
+      agents:
+        - scope: project
+          dir: .claude/agents
+          origin: claude
+          native: true
+        - scope: user
+          dir: .claude/agents
+          origin: claude
+          native: true
+      mcp:
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: claude
+          native: true
+        - scope: user
+          path: .claude.json
+          shape: claude_json
+          origin: claude
+          native: true
+      guidance:
+        - CLAUDE.md
+        - AGENTS.md
+      plugins: true
+  - id: cline
+    label: Cline
+    tier: 2
+    program: cline
+    docs:
+      - https://cline.bot/cli
+      - https://agentclientprotocol.com/get-started/registry
+    config_dir: .cline
+    acp_registry: cline
+    acp:
+      program: cline
+      args:
+        - --acp
+      requires:
+        - node
+      install:
+        label: Install Cline
+        commands:
+          - npm install -g cline
+        docs_url: https://cline.bot/cli
+    mcp:
+      via: session
+    skills:
+      mode: none
+  - id: codex
+    label: Codex
+    tier: 1
+    program: codex
+    docs:
+      - https://developers.openai.com/codex/cli
+    config_dir: .codex
+    acp_registry: codex-acp
+    acp:
+      program: codex-acp
+      requires:
+        - node
+      install:
+        label: Install the Codex adapter
+        commands:
+          - npm install -g @agentclientprotocol/codex-acp
+        docs_url: https://github.com/agentclientprotocol/codex-acp
+    mcp:
+      via: command
+      add:
+        - mcp
+        - add
+        - jensen
+        - --
+        - "{bin}"
+        - bridge
+        - .
+      config: .codex/config.toml
+      format: toml
+    skills:
+      mode: agents
+    guidance:
+      file: AGENTS.md
+    hooks: codex
+    launch:
+      writable_root_flag: --add-dir
+      print_args:
+        - exec
+      positional_prompt: true
+    assets:
+      skills:
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: true
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: true
+        - scope: user
+          dir: .codex/skills
+          origin: codex
+          native: true
+      commands:
+        - scope: user
+          dir: .codex/prompts
+          origin: codex
+          native: true
+      mcp:
+        - scope: project
+          path: .codex/config.toml
+          shape: toml
+          origin: codex
+          native: true
+        - scope: user
+          path: .codex/config.toml
+          shape: toml
+          origin: codex
+          native: true
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: mcp
+          native: false
+      guidance:
+        - AGENTS.md
+  - id: copilot
+    label: Copilot CLI
+    tier: 1
+    program: copilot
+    docs:
+      - https://docs.github.com/en/copilot/reference/copilot-cli-reference/acp-server
+    config_dir: .copilot
+    acp:
+      program: copilot
+      args:
+        - --acp
+      install:
+        label: Install Copilot CLI
+        commands:
+          - npm install -g @github/copilot
+        docs_url: https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli
+    mcp:
+      via: session
+    skills:
+      mode: none
+    launch:
+      print_args:
+        - -p
+    assets:
+      skills:
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: false
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: false
+      mcp:
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: mcp
+          native: false
+      guidance:
+        - AGENTS.md
+  - id: cursor
+    label: Cursor CLI
+    tier: 1
+    program: cursor-agent
+    aliases:
+      - agent
+    docs:
+      - https://cursor.com/docs/cli/acp
+    config_dir: .cursor
+    acp:
+      program: cursor-agent
+      args:
+        - acp
+      install:
+        label: Install Cursor CLI
+        commands:
+          - curl https://cursor.com/install -fsS | bash
+        docs_url: https://cursor.com/docs/cli/overview
+    mcp:
+      via: session
+    skills:
+      mode: none
+    launch:
+      print_args:
+        - -p
+    assets:
+      skills:
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: false
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: false
+      mcp:
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: mcp
+          native: false
+      guidance:
+        - AGENTS.md
+  - id: devin
+    label: Devin CLI
+    tier: 2
+    program: devin
+    docs:
+      - https://docs.devin.ai/cli
+      - https://agentclientprotocol.com/get-started/registry
+    config_dir: .devin
+    acp_registry: devin
+    acp:
+      program: devin
+      args:
+        - acp
+      install:
+        label: Install Devin CLI
+        commands: []
+        docs_url: https://docs.devin.ai/cli
+    mcp:
+      via: session
+    skills:
+      mode: none
+  - id: gemini
+    label: Gemini CLI
+    tier: 1
+    program: gemini
+    aliases:
+      - gemini-cli
+    docs:
+      - https://geminicli.com/docs/cli/skills/
+    config_dir: .gemini
+    acp_registry: gemini
+    acp:
+      program: gemini
+      args:
+        - --acp
+      requires:
+        - node
+      ready:
+        args:
+          - --help
+        contains: --acp
+      install:
+        label: Install Gemini CLI
+        commands:
+          - npm install -g @google/gemini-cli
+        docs_url: https://geminicli.com
+    mcp:
+      via: command
+      add:
+        - mcp
+        - add
+        - jensen
+        - "{bin}"
+        - bridge
+        - .
+        - --scope
+        - user
+      config: .gemini/settings.json
+    skills:
+      mode: gemini_extension
+    guidance:
+      file: JENSEN.md
+      include: GEMINI.md
+    hooks: gemini
+    launch:
+      writable_root_flag: --include-directories
+      print_args:
+        - -p
+    assets:
+      skills:
+        - scope: project
+          dir: .gemini/skills
+          origin: gemini
+          native: true
+        - scope: user
+          dir: .gemini/skills
+          origin: gemini
+          native: true
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: false
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: false
+      commands:
+        - scope: project
+          dir: .gemini/commands
+          origin: gemini
+          native: true
+        - scope: user
+          dir: .gemini/commands
+          origin: gemini
+          native: true
+      mcp:
+        - scope: project
+          path: .gemini/settings.json
+          shape: mcp_servers
+          origin: gemini
+          native: true
+        - scope: user
+          path: .gemini/settings.json
+          shape: mcp_servers
+          origin: gemini
+          native: true
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: mcp
+          native: false
+      guidance:
+        - GEMINI.md
+        - AGENTS.md
+  - id: goose
+    label: Goose
+    tier: 1
+    program: goose
+    docs:
+      - https://goose-docs.ai/docs/guides/acp-clients
+    config_dir: .config/goose
+    acp:
+      program: goose
+      args:
+        - acp
+      install:
+        label: Install Goose
+        commands:
+          - curl -fsSL https://github.com/block/goose/releases/download/stable/download_cli.sh | bash
+        docs_url: https://goose-docs.ai/docs/getting-started/installation
+    mcp:
+      via: session
+    skills:
+      mode: none
+    launch:
+      print_args:
+        - run
+        - -t
+    assets:
+      skills:
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: false
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: false
+      mcp:
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: mcp
+          native: false
+      guidance:
+        - AGENTS.md
+  - id: hermes
+    label: Hermes Agent
+    tier: 1
+    program: hermes
+    docs:
+      - https://hermes-agent.nousresearch.com/docs/user-guide/features/acp
+    config_dir: .hermes
+    acp:
+      program: hermes
+      args:
+        - acp
+      ready:
+        args:
+          - acp
+          - --check
+      install:
+        label: Install Hermes Agent
+        commands:
+          - pip install 'hermes-agent[acp]'
+        docs_url: https://hermes-agent.nousresearch.com/docs/user-guide/features/acp
+    mcp:
+      via: session
+    skills:
+      mode: none
+    launch:
+      writable_root_flag: --add-dir
+      print_args:
+        - -z
+    assets:
+      skills:
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: false
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: false
+      mcp:
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: mcp
+          native: false
+      guidance:
+        - AGENTS.md
+  - id: kilo
+    label: Kilo
+    tier: 2
+    program: kilo
+    docs:
+      - https://kilo.ai/
+      - https://agentclientprotocol.com/get-started/registry
+    config_dir: .kilocode
+    acp_registry: kilo
+    acp:
+      program: kilo
+      args:
+        - acp
+      requires:
+        - node
+      install:
+        label: Install Kilo
+        commands:
+          - npm install -g @kilocode/cli
+        docs_url: https://kilo.ai/
+    mcp:
+      via: session
+    skills:
+      mode: none
+  - id: kiro
+    label: Kiro CLI
+    tier: 2
+    program: kiro-cli
+    docs:
+      - https://kiro.dev/docs/cli/acp/
+      - https://agentclientprotocol.com/get-started/registry
+    config_dir: .kiro
+    acp_registry: kiro
+    acp:
+      program: kiro-cli
+      args:
+        - acp
+      install:
+        label: Install Kiro CLI
+        commands: []
+        docs_url: https://kiro.dev/docs/cli/acp/
+    mcp:
+      via: session
+    skills:
+      mode: none
+  - id: opencode
+    label: OpenCode
+    tier: 1
+    program: opencode
+    docs:
+      - https://opencode.ai/docs/cli
+    config_dir: .config/opencode
+    acp_registry: opencode-v2
+    acp:
+      program: opencode
+      args:
+        - acp
+      env:
+        OPENCODE_DISABLE_AUTOUPDATE: "1"
+        OPENCODE_DISABLE_LSP_DOWNLOAD: "1"
+      ready:
+        args:
+          - acp
+          - --help
+        contains: Agent Client Protocol
+      login:
+        - auth
+        - login
+      install:
+        label: Install OpenCode
+        commands:
+          - curl -fsSL https://opencode.ai/install | bash
+          - npm install -g opencode-ai
+        docs_url: https://opencode.ai/docs
+    mcp:
+      via: session
+    skills:
+      mode: agents
+    launch:
+      writable_root_flag: --add-dir
+      print_args:
+        - run
+      prompt_flag: --prompt
+      document:
+        variable: OPENCODE_CONFIG_CONTENT
+        document: '{"agent":{"ask":{"description":"Ask before editing files or running commands","mode":"primary","permission":{"edit":"ask","bash":"ask"}}}}'
+    assets:
+      skills:
+        - scope: project
+          dir: .opencode/skills
+          origin: opencode
+          native: true
+        - scope: project
+          dir: .claude/skills
+          origin: claude
+          native: true
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: true
+        - scope: user
+          dir: .config/opencode/skills
+          origin: opencode
+          native: true
+        - scope: user
+          dir: .claude/skills
+          origin: claude
+          native: true
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: true
+      commands:
+        - scope: project
+          dir: .opencode/commands
+          origin: opencode
+          native: true
+        - scope: user
+          dir: .config/opencode/commands
+          origin: opencode
+          native: true
+      agents:
+        - scope: project
+          dir: .opencode/agents
+          origin: opencode
+          native: true
+        - scope: user
+          dir: .config/opencode/agents
+          origin: opencode
+          native: true
+      mcp:
+        - scope: project
+          path: opencode.json
+          shape: opencode
+          origin: opencode
+          native: true
+        - scope: project
+          path: opencode.jsonc
+          shape: opencode
+          origin: opencode
+          native: true
+        - scope: user
+          path: .config/opencode/opencode.json
+          shape: opencode
+          origin: opencode
+          native: true
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: mcp
+          native: false
+      guidance:
+        - AGENTS.md
+  - id: pi
+    label: Pi
+    tier: 1
+    program: pi
+    docs:
+      - https://github.com/svkozak/pi-acp
+    config_dir: .pi
+    acp:
+      program: pi-acp
+      requires:
+        - node
+        - pi
+      install:
+        label: Install the Pi ACP adapter
+        commands:
+          - npm install -g @mariozechner/pi-coding-agent pi-acp
+        docs_url: https://github.com/svkozak/pi-acp
+    mcp:
+      via: session
+    skills:
+      mode: none
+    launch:
+      print_args:
+        - -p
+    assets:
+      skills:
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: false
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: false
+      mcp:
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: mcp
+          native: false
+      guidance:
+        - AGENTS.md
+  - id: qwen-code
+    label: Qwen Code
+    tier: 2
+    program: qwen
+    docs:
+      - https://qwenlm.github.io/qwen-code-docs/en/users/overview
+      - https://agentclientprotocol.com/get-started/registry
+    config_dir: .qwen
+    acp_registry: qwen-code
+    acp:
+      program: qwen
+      args:
+        - --acp
+      requires:
+        - node
+      install:
+        label: Install Qwen Code
+        commands:
+          - npm install -g @qwen-code/qwen-code
+        docs_url: https://qwenlm.github.io/qwen-code-docs/en/users/overview
+    mcp:
+      via: session
+    skills:
+      mode: none

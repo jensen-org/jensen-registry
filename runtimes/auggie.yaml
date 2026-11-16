@@ -1,0 +1,24 @@
+id: auggie
+label: Auggie CLI
+tier: 2
+program: auggie
+docs:
+  - https://www.augmentcode.com/
+  - https://agentclientprotocol.com/get-started/registry
+config_dir: .augment
+acp_registry: auggie
+acp:
+  program: auggie
+  args:
+    - --acp
+  requires:
+    - node
+  install:
+    label: Install Auggie CLI
+    commands:
+      - npm install -g @augmentcode/auggie
+    docs_url: https://www.augmentcode.com/
+mcp:
+  via: session
+skills:
+  mode: none

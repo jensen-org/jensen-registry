@@ -1,0 +1,21 @@
+id: kiro
+label: Kiro CLI
+tier: 2
+program: kiro-cli
+docs:
+  - https://kiro.dev/docs/cli/acp/
+  - https://agentclientprotocol.com/get-started/registry
+config_dir: .kiro
+acp_registry: kiro
+acp:
+  program: kiro-cli
+  args:
+    - acp
+  install:
+    label: Install Kiro CLI
+    commands: []
+    docs_url: https://kiro.dev/docs/cli/acp/
+mcp:
+  via: session
+skills:
+  mode: none

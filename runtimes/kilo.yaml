@@ -1,0 +1,24 @@
+id: kilo
+label: Kilo
+tier: 2
+program: kilo
+docs:
+  - https://kilo.ai/
+  - https://agentclientprotocol.com/get-started/registry
+config_dir: .kilocode
+acp_registry: kilo
+acp:
+  program: kilo
+  args:
+    - acp
+  requires:
+    - node
+  install:
+    label: Install Kilo
+    commands:
+      - npm install -g @kilocode/cli
+    docs_url: https://kilo.ai/
+mcp:
+  via: session
+skills:
+  mode: none

@@ -1,0 +1,46 @@
+id: hermes
+label: Hermes Agent
+tier: 1
+program: hermes
+docs:
+  - https://hermes-agent.nousresearch.com/docs/user-guide/features/acp
+config_dir: .hermes
+acp:
+  program: hermes
+  args:
+    - acp
+  ready:
+    args:
+      - acp
+      - --check
+  install:
+    label: Install Hermes Agent
+    commands:
+      - pip install 'hermes-agent[acp]'
+    docs_url: https://hermes-agent.nousresearch.com/docs/user-guide/features/acp
+mcp:
+  via: session
+skills:
+  mode: none
+launch:
+  writable_root_flag: --add-dir
+  print_args:
+    - -z
+assets:
+  skills:
+    - scope: project
+      dir: .agents/skills
+      origin: agents
+      native: false
+    - scope: user
+      dir: .agents/skills
+      origin: agents
+      native: false
+  mcp:
+    - scope: project
+      path: .mcp.json
+      shape: mcp_servers
+      origin: mcp
+      native: false
+  guidance:
+    - AGENTS.md

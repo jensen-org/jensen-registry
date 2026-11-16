@@ -1,0 +1,102 @@
+id: claude
+label: Claude Code
+tier: 1
+program: claude
+aliases:
+  - claude-code
+docs:
+  - https://code.claude.com/docs/en/cli-reference
+config_dir: .claude
+acp_registry: claude-acp
+acp:
+  program: claude-agent-acp
+  requires:
+    - node
+  install:
+    label: Install the Claude adapter
+    commands:
+      - npm install -g @agentclientprotocol/claude-agent-acp
+    docs_url: https://github.com/agentclientprotocol/claude-agent-acp
+mcp:
+  via: command
+  add:
+    - mcp
+    - add
+    - --transport
+    - stdio
+    - --scope
+    - user
+    - jensen
+    - --
+    - "{bin}"
+    - bridge
+    - .
+  config: .claude.json
+  project: .mcp.json
+skills:
+  mode: claude_plugin
+guidance:
+  file: JENSEN.md
+  include: CLAUDE.md
+hooks: claude
+launch:
+  writable_root_flag: --add-dir
+  print_args:
+    - -p
+  lean_args:
+    - --safe-mode
+    - --tools
+    - ""
+  system_prompt_flag: --system-prompt
+  positional_prompt: true
+assets:
+  skills:
+    - scope: project
+      dir: .claude/skills
+      origin: claude
+      native: true
+    - scope: user
+      dir: .claude/skills
+      origin: claude
+      native: true
+    - scope: project
+      dir: .agents/skills
+      origin: agents
+      native: false
+    - scope: user
+      dir: .agents/skills
+      origin: agents
+      native: false
+  commands:
+    - scope: project
+      dir: .claude/commands
+      origin: claude
+      native: true
+    - scope: user
+      dir: .claude/commands
+      origin: claude
+      native: true
+  agents:
+    - scope: project
+      dir: .claude/agents
+      origin: claude
+      native: true
+    - scope: user
+      dir: .claude/agents
+      origin: claude
+      native: true
+  mcp:
+    - scope: project
+      path: .mcp.json
+      shape: mcp_servers
+      origin: claude
+      native: true
+    - scope: user
+      path: .claude.json
+      shape: claude_json
+      origin: claude
+      native: true
+  guidance:
+    - CLAUDE.md
+    - AGENTS.md
+  plugins: true
