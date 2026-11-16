@@ -1352,3 +1352,326 @@ agents:
     trigger: diff
     skills:
       - improve-codebase-architecture
+runtimes:
+  - id: antigravity
+    label: Antigravity CLI
+    tier: 1
+    program: agy
+    docs:
+      - https://antigravity.google/docs/cli/acp.md
+    config_dir: .gemini/antigravity-cli
+    acp_registry: antigravity-acp
+    acp:
+      program: agy
+      args:
+        - acp
+      install:
+        label: Install Antigravity CLI
+        commands: []
+        docs_url: https://antigravity.google/docs/install
+    mcp:
+      via: session
+    skills:
+      mode: agents
+    launch:
+      writable_root_flag: --include-directories
+      print_args:
+        - -p
+  - id: claude
+    label: Claude Code
+    tier: 1
+    program: claude
+    docs:
+      - https://code.claude.com/docs/en/cli-reference
+    config_dir: .claude
+    acp_registry: claude-acp
+    acp:
+      program: claude-agent-acp
+      requires:
+        - node
+      install:
+        label: Install the Claude adapter
+        commands:
+          - npm install -g @agentclientprotocol/claude-agent-acp
+        docs_url: https://github.com/agentclientprotocol/claude-agent-acp
+    mcp:
+      via: command
+      add:
+        - mcp
+        - add
+        - --transport
+        - stdio
+        - --scope
+        - user
+        - jensen
+        - --
+        - "{bin}"
+        - bridge
+        - .
+      config: .claude.json
+      project: .mcp.json
+    skills:
+      mode: claude_plugin
+    guidance:
+      file: JENSEN.md
+      include: CLAUDE.md
+    hooks: claude
+    launch:
+      writable_root_flag: --add-dir
+      print_args:
+        - -p
+      lean_args:
+        - --safe-mode
+        - --tools
+        - ""
+      system_prompt_flag: --system-prompt
+      positional_prompt: true
+  - id: codex
+    label: Codex
+    tier: 1
+    program: codex
+    docs:
+      - https://developers.openai.com/codex/cli
+    config_dir: .codex
+    acp_registry: codex-acp
+    acp:
+      program: codex-acp
+      requires:
+        - node
+      install:
+        label: Install the Codex adapter
+        commands:
+          - npm install -g @agentclientprotocol/codex-acp
+        docs_url: https://github.com/agentclientprotocol/codex-acp
+    mcp:
+      via: command
+      add:
+        - mcp
+        - add
+        - jensen
+        - --
+        - "{bin}"
+        - bridge
+        - .
+      config: .codex/config.toml
+      format: toml
+    skills:
+      mode: agents
+    guidance:
+      file: AGENTS.md
+    hooks: codex
+    launch:
+      writable_root_flag: --add-dir
+      print_args:
+        - exec
+      positional_prompt: true
+  - id: copilot
+    label: Copilot CLI
+    tier: 1
+    program: copilot
+    docs:
+      - https://docs.github.com/en/copilot/reference/copilot-cli-reference/acp-server
+    config_dir: .copilot
+    acp:
+      program: copilot
+      args:
+        - --acp
+      install:
+        label: Install Copilot CLI
+        commands:
+          - npm install -g @github/copilot
+        docs_url: https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli
+    mcp:
+      via: session
+    skills:
+      mode: none
+    launch:
+      print_args:
+        - -p
+  - id: cursor
+    label: Cursor CLI
+    tier: 1
+    program: cursor-agent
+    aliases:
+      - agent
+    docs:
+      - https://cursor.com/docs/cli/acp
+    config_dir: .cursor
+    acp:
+      program: cursor-agent
+      args:
+        - acp
+      install:
+        label: Install Cursor CLI
+        commands:
+          - curl https://cursor.com/install -fsS | bash
+        docs_url: https://cursor.com/docs/cli/overview
+    mcp:
+      via: session
+    skills:
+      mode: none
+    launch:
+      print_args:
+        - -p
+  - id: gemini
+    label: Gemini CLI
+    tier: 1
+    program: gemini
+    docs:
+      - https://geminicli.com/docs/cli/skills/
+    config_dir: .gemini
+    acp_registry: gemini
+    acp:
+      program: gemini
+      args:
+        - --acp
+      requires:
+        - node
+      ready:
+        args:
+          - --help
+        contains: --acp
+      install:
+        label: Install Gemini CLI
+        commands:
+          - npm install -g @google/gemini-cli
+        docs_url: https://geminicli.com
+    mcp:
+      via: command
+      add:
+        - mcp
+        - add
+        - jensen
+        - "{bin}"
+        - bridge
+        - .
+        - --scope
+        - user
+      config: .gemini/settings.json
+    skills:
+      mode: gemini_extension
+    guidance:
+      file: JENSEN.md
+      include: GEMINI.md
+    hooks: gemini
+    launch:
+      writable_root_flag: --include-directories
+      print_args:
+        - -p
+  - id: goose
+    label: Goose
+    tier: 1
+    program: goose
+    docs:
+      - https://goose-docs.ai/docs/guides/acp-clients
+    config_dir: .config/goose
+    acp:
+      program: goose
+      args:
+        - acp
+      install:
+        label: Install Goose
+        commands:
+          - curl -fsSL https://github.com/block/goose/releases/download/stable/download_cli.sh | bash
+        docs_url: https://goose-docs.ai/docs/getting-started/installation
+    mcp:
+      via: session
+    skills:
+      mode: none
+    launch:
+      print_args:
+        - run
+        - -t
+  - id: hermes
+    label: Hermes Agent
+    tier: 1
+    program: hermes
+    docs:
+      - https://hermes-agent.nousresearch.com/docs/user-guide/features/acp
+    config_dir: .hermes
+    acp:
+      program: hermes
+      args:
+        - acp
+      ready:
+        args:
+          - acp
+          - --check
+      install:
+        label: Install Hermes Agent
+        commands:
+          - pip install 'hermes-agent[acp]'
+        docs_url: https://hermes-agent.nousresearch.com/docs/user-guide/features/acp
+    mcp:
+      via: session
+    skills:
+      mode: none
+    launch:
+      writable_root_flag: --add-dir
+      print_args:
+        - -z
+  - id: opencode
+    label: OpenCode
+    tier: 1
+    program: opencode
+    docs:
+      - https://opencode.ai/docs/cli
+    config_dir: .config/opencode
+    acp_registry: opencode-v2
+    acp:
+      program: opencode
+      args:
+        - acp
+      env:
+        OPENCODE_DISABLE_AUTOUPDATE: "1"
+        OPENCODE_DISABLE_LSP_DOWNLOAD: "1"
+      ready:
+        args:
+          - acp
+          - --help
+        contains: Agent Client Protocol
+      login:
+        - auth
+        - login
+      install:
+        label: Install OpenCode
+        commands:
+          - curl -fsSL https://opencode.ai/install | bash
+          - npm install -g opencode-ai
+        docs_url: https://opencode.ai/docs
+    mcp:
+      via: session
+    skills:
+      mode: agents
+    launch:
+      writable_root_flag: --add-dir
+      print_args:
+        - run
+      prompt_flag: --prompt
+      document:
+        variable: OPENCODE_CONFIG_CONTENT
+        document: '{"agent":{"ask":{"description":"Ask before editing files or running commands","mode":"primary","permission":{"edit":"ask","bash":"ask"}}}}'
+  - id: pi
+    label: Pi
+    tier: 1
+    program: pi
+    docs:
+      - https://github.com/svkozak/pi-acp
+    config_dir: .pi
+    acp:
+      program: pi-acp
+      requires:
+        - node
+        - pi
+      install:
+        label: Install the Pi ACP adapter
+        commands:
+          - npm install -g @mariozechner/pi-coding-agent pi-acp
+        docs_url: https://github.com/svkozak/pi-acp
+    mcp:
+      via: session
+    skills:
+      mode: none
+    launch:
+      print_args:
+        - -p

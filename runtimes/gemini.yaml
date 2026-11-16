@@ -1,0 +1,45 @@
+id: gemini
+label: Gemini CLI
+tier: 1
+program: gemini
+docs:
+  - https://geminicli.com/docs/cli/skills/
+config_dir: .gemini
+acp_registry: gemini
+acp:
+  program: gemini
+  args:
+    - --acp
+  requires:
+    - node
+  ready:
+    args:
+      - --help
+    contains: --acp
+  install:
+    label: Install Gemini CLI
+    commands:
+      - npm install -g @google/gemini-cli
+    docs_url: https://geminicli.com
+mcp:
+  via: command
+  add:
+    - mcp
+    - add
+    - jensen
+    - "{bin}"
+    - bridge
+    - .
+    - --scope
+    - user
+  config: .gemini/settings.json
+skills:
+  mode: gemini_extension
+guidance:
+  file: JENSEN.md
+  include: GEMINI.md
+hooks: gemini
+launch:
+  writable_root_flag: --include-directories
+  print_args:
+    - -p

@@ -1,0 +1,25 @@
+id: cursor
+label: Cursor CLI
+tier: 1
+program: cursor-agent
+aliases:
+  - agent
+docs:
+  - https://cursor.com/docs/cli/acp
+config_dir: .cursor
+acp:
+  program: cursor-agent
+  args:
+    - acp
+  install:
+    label: Install Cursor CLI
+    commands:
+      - curl https://cursor.com/install -fsS | bash
+    docs_url: https://cursor.com/docs/cli/overview
+mcp:
+  via: session
+skills:
+  mode: none
+launch:
+  print_args:
+    - -p

@@ -1,0 +1,24 @@
+id: goose
+label: Goose
+tier: 1
+program: goose
+docs:
+  - https://goose-docs.ai/docs/guides/acp-clients
+config_dir: .config/goose
+acp:
+  program: goose
+  args:
+    - acp
+  install:
+    label: Install Goose
+    commands:
+      - curl -fsSL https://github.com/block/goose/releases/download/stable/download_cli.sh | bash
+    docs_url: https://goose-docs.ai/docs/getting-started/installation
+mcp:
+  via: session
+skills:
+  mode: none
+launch:
+  print_args:
+    - run
+    - -t

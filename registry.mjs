@@ -5,6 +5,8 @@ import { generateQueries } from "./grammars/generate.mjs";
 import { buildSparse, loadCatalogs, sparseProblems, writeSparse } from "./sparse.mjs";
 import { baselineProblems, formatReport, loadCoverage, writeBaseline } from "./report.mjs";
 import { buildShard, mergeShards, parseShard, resolveGrammars, seedGrammars } from "./grammars/seed.mjs";
+import { trackRuntimes } from "./runtimes/track.mjs";
+import { validateRuntimes } from "./runtimes/validate.mjs";
 import { trackAgents } from "./agents/track.mjs";
 import { validateAgents } from "./agents/validate.mjs";
 import { trackGrammars } from "./grammars/track.mjs";
@@ -26,13 +28,14 @@ async function track() {
   const { mcp, entries: mcpEntries } = await trackMcpServers({ check, previous, problems });
   const integrations = trackIntegrations({ check, problems, mcpEntries });
   const agents = trackAgents({ check, problems });
+  const runtimes = trackRuntimes({ check, problems });
   if (problems.length) {
     console.error(problems.join("\n"));
     process.exit(1);
   }
   const grammars = await trackGrammars();
   await trackTools();
-  writeText("index.yaml", dump({ schema_version: SCHEMA_VERSION, skills, mcp, integrations, agents }));
+  writeText("index.yaml", dump({ schema_version: SCHEMA_VERSION, skills, mcp, integrations, agents, runtimes }));
   writeSparse(buildSparse(loadCatalogs()));
   writeText("checksums.txt", checksumsText(checksummed()));
   console.log(`tracked ${skills.length} skills, ${mcp.length} mcp servers, ${integrations.length} integrations and ${grammars.length} grammars`);
@@ -54,6 +57,7 @@ async function validate(online) {
   await validateSkills(context);
   validateMcp(context);
   validateAgents(context);
+  validateRuntimes(context);
   validateIntegrations({ ...context, mcpEntries: loadEntries("mcp") });
   if (readFileSync(join(ROOT, "checksums.txt"), "utf8") !== checksumsText(checksummed())) problems.push("checksums.txt does not match the published files");
   if (problems.length) {

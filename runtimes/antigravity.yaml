@@ -1,0 +1,24 @@
+id: antigravity
+label: Antigravity CLI
+tier: 1
+program: agy
+docs:
+  - https://antigravity.google/docs/cli/acp.md
+config_dir: .gemini/antigravity-cli
+acp_registry: antigravity-acp
+acp:
+  program: agy
+  args:
+    - acp
+  install:
+    label: Install Antigravity CLI
+    commands: []
+    docs_url: https://antigravity.google/docs/install
+mcp:
+  via: session
+skills:
+  mode: agents
+launch:
+  writable_root_flag: --include-directories
+  print_args:
+    - -p
