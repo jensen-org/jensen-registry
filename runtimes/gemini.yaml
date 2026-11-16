@@ -2,6 +2,8 @@ id: gemini
 label: Gemini CLI
 tier: 1
 program: gemini
+aliases:
+  - gemini-cli
 docs:
   - https://geminicli.com/docs/cli/skills/
 config_dir: .gemini

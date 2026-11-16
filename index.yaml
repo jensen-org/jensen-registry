@@ -1399,6 +1399,8 @@ runtimes:
     label: Claude Code
     tier: 1
     program: claude
+    aliases:
+      - claude-code
     docs:
       - https://code.claude.com/docs/en/cli-reference
     config_dir: .claude
@@ -1659,6 +1661,8 @@ runtimes:
     label: Gemini CLI
     tier: 1
     program: gemini
+    aliases:
+      - gemini-cli
     docs:
       - https://geminicli.com/docs/cli/skills/
     config_dir: .gemini

@@ -2,6 +2,8 @@ id: claude
 label: Claude Code
 tier: 1
 program: claude
+aliases:
+  - claude-code
 docs:
   - https://code.claude.com/docs/en/cli-reference
 config_dir: .claude
