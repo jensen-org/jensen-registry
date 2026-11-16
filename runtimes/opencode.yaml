@@ -39,3 +39,70 @@ launch:
   document:
     variable: OPENCODE_CONFIG_CONTENT
     document: '{"agent":{"ask":{"description":"Ask before editing files or running commands","mode":"primary","permission":{"edit":"ask","bash":"ask"}}}}'
+assets:
+  skills:
+    - scope: project
+      dir: .opencode/skills
+      origin: opencode
+      native: true
+    - scope: project
+      dir: .claude/skills
+      origin: claude
+      native: true
+    - scope: project
+      dir: .agents/skills
+      origin: agents
+      native: true
+    - scope: user
+      dir: .config/opencode/skills
+      origin: opencode
+      native: true
+    - scope: user
+      dir: .claude/skills
+      origin: claude
+      native: true
+    - scope: user
+      dir: .agents/skills
+      origin: agents
+      native: true
+  commands:
+    - scope: project
+      dir: .opencode/commands
+      origin: opencode
+      native: true
+    - scope: user
+      dir: .config/opencode/commands
+      origin: opencode
+      native: true
+  agents:
+    - scope: project
+      dir: .opencode/agents
+      origin: opencode
+      native: true
+    - scope: user
+      dir: .config/opencode/agents
+      origin: opencode
+      native: true
+  mcp:
+    - scope: project
+      path: opencode.json
+      shape: opencode
+      origin: opencode
+      native: true
+    - scope: project
+      path: opencode.jsonc
+      shape: opencode
+      origin: opencode
+      native: true
+    - scope: user
+      path: .config/opencode/opencode.json
+      shape: opencode
+      origin: opencode
+      native: true
+    - scope: project
+      path: .mcp.json
+      shape: mcp_servers
+      origin: mcp
+      native: false
+  guidance:
+    - AGENTS.md

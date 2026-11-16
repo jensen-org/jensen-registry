@@ -47,3 +47,54 @@ launch:
     - ""
   system_prompt_flag: --system-prompt
   positional_prompt: true
+assets:
+  skills:
+    - scope: project
+      dir: .claude/skills
+      origin: claude
+      native: true
+    - scope: user
+      dir: .claude/skills
+      origin: claude
+      native: true
+    - scope: project
+      dir: .agents/skills
+      origin: agents
+      native: false
+    - scope: user
+      dir: .agents/skills
+      origin: agents
+      native: false
+  commands:
+    - scope: project
+      dir: .claude/commands
+      origin: claude
+      native: true
+    - scope: user
+      dir: .claude/commands
+      origin: claude
+      native: true
+  agents:
+    - scope: project
+      dir: .claude/agents
+      origin: claude
+      native: true
+    - scope: user
+      dir: .claude/agents
+      origin: claude
+      native: true
+  mcp:
+    - scope: project
+      path: .mcp.json
+      shape: mcp_servers
+      origin: claude
+      native: true
+    - scope: user
+      path: .claude.json
+      shape: claude_json
+      origin: claude
+      native: true
+  guidance:
+    - CLAUDE.md
+    - AGENTS.md
+  plugins: true

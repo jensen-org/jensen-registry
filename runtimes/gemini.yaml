@@ -43,3 +43,49 @@ launch:
   writable_root_flag: --include-directories
   print_args:
     - -p
+assets:
+  skills:
+    - scope: project
+      dir: .gemini/skills
+      origin: gemini
+      native: true
+    - scope: user
+      dir: .gemini/skills
+      origin: gemini
+      native: true
+    - scope: project
+      dir: .agents/skills
+      origin: agents
+      native: false
+    - scope: user
+      dir: .agents/skills
+      origin: agents
+      native: false
+  commands:
+    - scope: project
+      dir: .gemini/commands
+      origin: gemini
+      native: true
+    - scope: user
+      dir: .gemini/commands
+      origin: gemini
+      native: true
+  mcp:
+    - scope: project
+      path: .gemini/settings.json
+      shape: mcp_servers
+      origin: gemini
+      native: true
+    - scope: user
+      path: .gemini/settings.json
+      shape: mcp_servers
+      origin: gemini
+      native: true
+    - scope: project
+      path: .mcp.json
+      shape: mcp_servers
+      origin: mcp
+      native: false
+  guidance:
+    - GEMINI.md
+    - AGENTS.md

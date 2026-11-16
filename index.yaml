@@ -1377,6 +1377,24 @@ runtimes:
       writable_root_flag: --include-directories
       print_args:
         - -p
+    assets:
+      skills:
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: false
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: false
+      mcp:
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: mcp
+          native: false
+      guidance:
+        - AGENTS.md
   - id: claude
     label: Claude Code
     tier: 1
@@ -1426,6 +1444,57 @@ runtimes:
         - ""
       system_prompt_flag: --system-prompt
       positional_prompt: true
+    assets:
+      skills:
+        - scope: project
+          dir: .claude/skills
+          origin: claude
+          native: true
+        - scope: user
+          dir: .claude/skills
+          origin: claude
+          native: true
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: false
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: false
+      commands:
+        - scope: project
+          dir: .claude/commands
+          origin: claude
+          native: true
+        - scope: user
+          dir: .claude/commands
+          origin: claude
+          native: true
+      agents:
+        - scope: project
+          dir: .claude/agents
+          origin: claude
+          native: true
+        - scope: user
+          dir: .claude/agents
+          origin: claude
+          native: true
+      mcp:
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: claude
+          native: true
+        - scope: user
+          path: .claude.json
+          shape: claude_json
+          origin: claude
+          native: true
+      guidance:
+        - CLAUDE.md
+        - AGENTS.md
+      plugins: true
   - id: codex
     label: Codex
     tier: 1
@@ -1465,6 +1534,43 @@ runtimes:
       print_args:
         - exec
       positional_prompt: true
+    assets:
+      skills:
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: true
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: true
+        - scope: user
+          dir: .codex/skills
+          origin: codex
+          native: true
+      commands:
+        - scope: user
+          dir: .codex/prompts
+          origin: codex
+          native: true
+      mcp:
+        - scope: project
+          path: .codex/config.toml
+          shape: toml
+          origin: codex
+          native: true
+        - scope: user
+          path: .codex/config.toml
+          shape: toml
+          origin: codex
+          native: true
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: mcp
+          native: false
+      guidance:
+        - AGENTS.md
   - id: copilot
     label: Copilot CLI
     tier: 1
@@ -1488,6 +1594,24 @@ runtimes:
     launch:
       print_args:
         - -p
+    assets:
+      skills:
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: false
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: false
+      mcp:
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: mcp
+          native: false
+      guidance:
+        - AGENTS.md
   - id: cursor
     label: Cursor CLI
     tier: 1
@@ -1513,6 +1637,24 @@ runtimes:
     launch:
       print_args:
         - -p
+    assets:
+      skills:
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: false
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: false
+      mcp:
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: mcp
+          native: false
+      guidance:
+        - AGENTS.md
   - id: gemini
     label: Gemini CLI
     tier: 1
@@ -1558,6 +1700,52 @@ runtimes:
       writable_root_flag: --include-directories
       print_args:
         - -p
+    assets:
+      skills:
+        - scope: project
+          dir: .gemini/skills
+          origin: gemini
+          native: true
+        - scope: user
+          dir: .gemini/skills
+          origin: gemini
+          native: true
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: false
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: false
+      commands:
+        - scope: project
+          dir: .gemini/commands
+          origin: gemini
+          native: true
+        - scope: user
+          dir: .gemini/commands
+          origin: gemini
+          native: true
+      mcp:
+        - scope: project
+          path: .gemini/settings.json
+          shape: mcp_servers
+          origin: gemini
+          native: true
+        - scope: user
+          path: .gemini/settings.json
+          shape: mcp_servers
+          origin: gemini
+          native: true
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: mcp
+          native: false
+      guidance:
+        - GEMINI.md
+        - AGENTS.md
   - id: goose
     label: Goose
     tier: 1
@@ -1582,6 +1770,24 @@ runtimes:
       print_args:
         - run
         - -t
+    assets:
+      skills:
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: false
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: false
+      mcp:
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: mcp
+          native: false
+      guidance:
+        - AGENTS.md
   - id: hermes
     label: Hermes Agent
     tier: 1
@@ -1610,6 +1816,24 @@ runtimes:
       writable_root_flag: --add-dir
       print_args:
         - -z
+    assets:
+      skills:
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: false
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: false
+      mcp:
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: mcp
+          native: false
+      guidance:
+        - AGENTS.md
   - id: opencode
     label: OpenCode
     tier: 1
@@ -1651,6 +1875,73 @@ runtimes:
       document:
         variable: OPENCODE_CONFIG_CONTENT
         document: '{"agent":{"ask":{"description":"Ask before editing files or running commands","mode":"primary","permission":{"edit":"ask","bash":"ask"}}}}'
+    assets:
+      skills:
+        - scope: project
+          dir: .opencode/skills
+          origin: opencode
+          native: true
+        - scope: project
+          dir: .claude/skills
+          origin: claude
+          native: true
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: true
+        - scope: user
+          dir: .config/opencode/skills
+          origin: opencode
+          native: true
+        - scope: user
+          dir: .claude/skills
+          origin: claude
+          native: true
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: true
+      commands:
+        - scope: project
+          dir: .opencode/commands
+          origin: opencode
+          native: true
+        - scope: user
+          dir: .config/opencode/commands
+          origin: opencode
+          native: true
+      agents:
+        - scope: project
+          dir: .opencode/agents
+          origin: opencode
+          native: true
+        - scope: user
+          dir: .config/opencode/agents
+          origin: opencode
+          native: true
+      mcp:
+        - scope: project
+          path: opencode.json
+          shape: opencode
+          origin: opencode
+          native: true
+        - scope: project
+          path: opencode.jsonc
+          shape: opencode
+          origin: opencode
+          native: true
+        - scope: user
+          path: .config/opencode/opencode.json
+          shape: opencode
+          origin: opencode
+          native: true
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: mcp
+          native: false
+      guidance:
+        - AGENTS.md
   - id: pi
     label: Pi
     tier: 1
@@ -1675,3 +1966,21 @@ runtimes:
     launch:
       print_args:
         - -p
+    assets:
+      skills:
+        - scope: project
+          dir: .agents/skills
+          origin: agents
+          native: false
+        - scope: user
+          dir: .agents/skills
+          origin: agents
+          native: false
+      mcp:
+        - scope: project
+          path: .mcp.json
+          shape: mcp_servers
+          origin: mcp
+          native: false
+      guidance:
+        - AGENTS.md
