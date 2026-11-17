@@ -19,7 +19,7 @@ export function validateMcp({ check, index, problems, same }) {
       fail(`index.yaml: mcp server ${server.id} has no entry file`);
       continue;
     }
-    for (const key of ["transport", "advised", "description", "url", "env", "headers", "oauth", "serves"]) {
+    for (const key of ["transport", "advised", "description", "url", "env", "headers", "oauth", "serves", "design_bridge"]) {
       const empty = key === "env" ? [] : undefined;
       same(`index.yaml mcp ${server.id} ${key}`, server[key] ?? empty, source[key] ?? empty);
     }

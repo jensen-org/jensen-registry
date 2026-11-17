@@ -175,6 +175,9 @@
           "items": {
             "$ref": "#/$defs/id"
           }
+        },
+        "design_bridge": {
+          "$ref": "#/$defs/designBridge"
         }
       },
       "allOf": [
@@ -332,6 +335,66 @@
           "uniqueItems": true,
           "items": {
             "$ref": "#/$defs/id"
+          }
+        },
+        "design_bridge": {
+          "$ref": "#/$defs/designBridge"
+        }
+      }
+    },
+    "designBridge": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "script"
+      ],
+      "properties": {
+        "script": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "tool",
+            "code"
+          ],
+          "properties": {
+            "tool": {
+              "type": "string",
+              "minLength": 1
+            },
+            "code": {
+              "type": "string",
+              "minLength": 1
+            },
+            "enable": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "env",
+                "value"
+              ],
+              "properties": {
+                "env": {
+                  "$ref": "#/$defs/envName"
+                },
+                "value": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            }
+          }
+        },
+        "status": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "tool"
+          ],
+          "properties": {
+            "tool": {
+              "type": "string",
+              "minLength": 1
+            }
           }
         }
       }

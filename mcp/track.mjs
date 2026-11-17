@@ -55,6 +55,7 @@ async function trackMcp(entry, previous) {
     advised: entry.advised,
     ...(entry.tags?.length ? { tags: entry.tags } : {}),
     ...(entry.serves?.length ? { serves: entry.serves } : {}),
+    ...(entry.design_bridge ? { design_bridge: entry.design_bridge } : {}),
     transport: entry.transport,
   };
   const env = entry.env ?? [];
