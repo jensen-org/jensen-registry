@@ -37,6 +37,12 @@ launch:
   print_args:
     - exec
   positional_prompt: true
+transcript:
+  format: codex_rollout
+  locations:
+    - root: .codex
+      env: CODEX_HOME
+      pattern: 'sessions/*/*/*/rollout-*-{session}.jsonl'
 assets:
   skills:
     - scope: project

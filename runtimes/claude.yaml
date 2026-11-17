@@ -49,6 +49,12 @@ launch:
     - ""
   system_prompt_flag: --system-prompt
   positional_prompt: true
+transcript:
+  format: claude_jsonl
+  locations:
+    - root: .claude
+      env: CLAUDE_CONFIG_DIR
+      pattern: 'projects/*/{session}.jsonl'
 assets:
   skills:
     - scope: project

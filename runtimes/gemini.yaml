@@ -45,6 +45,11 @@ launch:
   writable_root_flag: --include-directories
   print_args:
     - -p
+transcript:
+  format: gemini_chat
+  locations:
+    - root: .gemini
+      pattern: 'tmp/*/chats/session-*-{session_short}.jsonl'
 assets:
   skills:
     - scope: project

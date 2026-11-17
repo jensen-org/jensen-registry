@@ -22,6 +22,11 @@ skills:
 launch:
   print_args:
     - -p
+transcript:
+  format: pi_session
+  locations:
+    - root: .pi/agent/sessions
+      pattern: '*/*_{session}.jsonl'
 assets:
   skills:
     - scope: project

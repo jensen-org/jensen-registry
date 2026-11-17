@@ -39,6 +39,11 @@ launch:
   document:
     variable: OPENCODE_CONFIG_CONTENT
     document: '{"agent":{"ask":{"description":"Ask before editing files or running commands","mode":"primary","permission":{"edit":"ask","bash":"ask"}}}}'
+transcript:
+  format: opencode_sqlite
+  locations:
+    - root: .local/share/opencode
+      pattern: opencode.db
 assets:
   skills:
     - scope: project

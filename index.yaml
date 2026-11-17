@@ -1494,6 +1494,12 @@ runtimes:
         - ""
       system_prompt_flag: --system-prompt
       positional_prompt: true
+    transcript:
+      format: claude_jsonl
+      locations:
+        - root: .claude
+          env: CLAUDE_CONFIG_DIR
+          pattern: projects/*/{session}.jsonl
     assets:
       skills:
         - scope: project
@@ -1608,6 +1614,12 @@ runtimes:
       print_args:
         - exec
       positional_prompt: true
+    transcript:
+      format: codex_rollout
+      locations:
+        - root: .codex
+          env: CODEX_HOME
+          pattern: sessions/*/*/*/rollout-*-{session}.jsonl
     assets:
       skills:
         - scope: project
@@ -1797,6 +1809,11 @@ runtimes:
       writable_root_flag: --include-directories
       print_args:
         - -p
+    transcript:
+      format: gemini_chat
+      locations:
+        - root: .gemini
+          pattern: tmp/*/chats/session-*-{session_short}.jsonl
     assets:
       skills:
         - scope: project
@@ -1867,6 +1884,15 @@ runtimes:
       print_args:
         - run
         - -t
+    transcript:
+      format: goose_sqlite
+      locations:
+        - root: .local/share/goose
+          env: GOOSE_PATH_ROOT
+          pattern: data/sessions/sessions.db
+        - root: .local/share
+          env: XDG_DATA_HOME
+          pattern: goose/sessions/sessions.db
     assets:
       skills:
         - scope: project
@@ -1913,6 +1939,12 @@ runtimes:
       writable_root_flag: --add-dir
       print_args:
         - -z
+    transcript:
+      format: hermes_sqlite
+      locations:
+        - root: .hermes
+          env: HERMES_HOME
+          pattern: state.db
     assets:
       skills:
         - scope: project
@@ -2017,6 +2049,11 @@ runtimes:
       document:
         variable: OPENCODE_CONFIG_CONTENT
         document: '{"agent":{"ask":{"description":"Ask before editing files or running commands","mode":"primary","permission":{"edit":"ask","bash":"ask"}}}}'
+    transcript:
+      format: opencode_sqlite
+      locations:
+        - root: .local/share/opencode
+          pattern: opencode.db
     assets:
       skills:
         - scope: project
@@ -2108,6 +2145,11 @@ runtimes:
     launch:
       print_args:
         - -p
+    transcript:
+      format: pi_session
+      locations:
+        - root: .pi/agent/sessions
+          pattern: "*/*_{session}.jsonl"
     assets:
       skills:
         - scope: project

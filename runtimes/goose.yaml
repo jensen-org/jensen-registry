@@ -22,6 +22,15 @@ launch:
   print_args:
     - run
     - -t
+transcript:
+  format: goose_sqlite
+  locations:
+    - root: .local/share/goose
+      env: GOOSE_PATH_ROOT
+      pattern: data/sessions/sessions.db
+    - root: .local/share
+      env: XDG_DATA_HOME
+      pattern: goose/sessions/sessions.db
 assets:
   skills:
     - scope: project
