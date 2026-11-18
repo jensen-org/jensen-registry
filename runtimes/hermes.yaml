@@ -26,6 +26,12 @@ launch:
   writable_root_flag: --add-dir
   print_args:
     - -z
+transcript:
+  format: hermes_sqlite
+  locations:
+    - root: .hermes
+      env: HERMES_HOME
+      pattern: state.db
 assets:
   skills:
     - scope: project

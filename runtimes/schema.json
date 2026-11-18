@@ -285,6 +285,9 @@
         },
         "assets": {
           "$ref": "#/$defs/assets"
+        },
+        "transcript": {
+          "$ref": "#/$defs/transcript"
         }
       }
     },
@@ -390,6 +393,62 @@
         },
         "plugins": {
           "type": "boolean"
+        }
+      }
+    },
+    "transcript": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "format",
+        "locations"
+      ],
+      "properties": {
+        "format": {
+          "enum": [
+            "claude_jsonl",
+            "codex_rollout",
+            "gemini_chat",
+            "pi_session",
+            "opencode_sqlite",
+            "goose_sqlite",
+            "hermes_sqlite"
+          ]
+        },
+        "locations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "root",
+              "pattern"
+            ],
+            "properties": {
+              "root": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9._-]+(/[A-Za-z0-9._-]+)*$",
+                "not": {
+                  "pattern": "(^|/)\\.\\.(/|$)"
+                },
+                "maxLength": 200
+              },
+              "env": {
+                "type": "string",
+                "pattern": "^[A-Z][A-Z0-9_]*$",
+                "maxLength": 64
+              },
+              "pattern": {
+                "type": "string",
+                "pattern": "^[A-Za-z0-9._*{}/-]+$",
+                "not": {
+                  "pattern": "\\.\\."
+                },
+                "maxLength": 200
+              }
+            }
+          }
         }
       }
     }
