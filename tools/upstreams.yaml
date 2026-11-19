@@ -1,27 +1,27 @@
 schema_version: 2
 mason:
   repo: mason-org/mason-registry
-  tag: 2026-11-15-measly-lung
-  sha256: 4c4d3a6ba8a937b0860ba5940f02bd0f8945389f6516bcba14c53c2e0e6110b6
+  tag: 2026-11-19-keen-nase
+  sha256: fa9d78a101c5729e8fdd747f2901bc5037d8526ed5f88095d9c13190e792f24b
 sources:
   lspconfig:
     repo: neovim/nvim-lspconfig
-    sha: 05588aab66016c6836634b87ca2d392d097515f2
+    sha: 4648fd8ba5c678d7e2db75ae44ffac269bb589d8
   conform:
     repo: stevearc/conform.nvim
     sha: 016802de402556da54c36bd7359b441266b01cdd
   lint:
     repo: mfussenegger/nvim-lint
-    sha: 52107ce2076a27a285af781248e2c59bad817cd0
+    sha: 6bf29b9dbdad60b38b489b23309c22ba6d4c915a
   dap:
     repo: jay-babu/mason-nvim-dap.nvim
     sha: 9a10e096703966335bd5c46c8c875d5b0690dade
   neovim:
     repo: neovim/neovim
-    sha: 94edc50849f31db250554f15875f8626cce56142
+    sha: 2843068c7a9c78c206189c37b53cdb6f464e57ae
   linguist:
     repo: github-linguist/linguist
-    sha: d456527fe93355baa28c3c29d542c97282b61bc7
+    sha: cfd7a0113aa1efab99faeff38756f0ed4d48add8
   nonels:
     repo: nvimtools/none-ls.nvim
     sha: 0b281893e36fe147077b49f022bf9cd78af3ad12

@@ -1,7 +1,7 @@
 schema_version: 2
 upstream:
   repo: neovim/nvim-lspconfig
-  sha: 05588aab66016c6836634b87ca2d392d097515f2
+  sha: 4648fd8ba5c678d7e2db75ae44ffac269bb589d8
 servers:
   - id: ada_ls
     cmd:
@@ -1079,6 +1079,30 @@ servers:
       - context
     root_markers:
       - .git
+  - id: djlint
+    cmd:
+      - djlint
+      - --lsp
+    filetypes:
+      - html
+      - htmldjango
+      - htmlangular
+      - jinja
+      - jinja.html
+      - nunjucks
+      - twig
+      - handlebars
+      - mustache
+      - liquid
+      - gotmpl
+      - tera
+      - mako
+    root_markers:
+      - pyproject.toml
+      - djlint.toml
+      - .djlint.toml
+      - .djlintrc
+      - .git
   - id: djls
     package: django-language-server
     cmd:
@@ -1911,6 +1935,20 @@ servers:
       - .harper-dictionary.txt
       - .git
     priority: -3
+  - id: haxe_language_server
+    package: haxe-language-server
+    cmd:
+      - haxe-language-server
+    filetypes:
+      - haxe
+    root_markers:
+      - "*.hxml"
+      - haxelib.json
+      - .git
+    workspace_required: true
+    settings:
+      haxe:
+        executable: haxe
   - id: hdl_checker
     package: hdl-checker
     cmd:

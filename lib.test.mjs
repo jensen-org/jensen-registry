@@ -3,7 +3,7 @@ import { afterEach, test } from "node:test";
 import { checksummed, getBytes, getJson } from "./lib.mjs";
 import { requiresOf } from "./tools/generate.mjs";
 import { filetypeEntries } from "./tools/sources/filetype.mjs";
-import { filetypeMarkerProblems, languageFileProblems, packageRequirementProblems, serverPriorityProblems, workspaceServerProblems } from "./tools/validate.mjs";
+import { checkOverrides, filetypeMarkerProblems, languageFileProblems, packageRequirementProblems, serverPriorityProblems, workspaceServerProblems } from "./tools/validate.mjs";
 
 const realFetch = globalThis.fetch;
 afterEach(() => {
@@ -90,6 +90,24 @@ test("a workspace required server needs a root marker", () => {
     "tools/servers.yaml: a is workspace_required and lists no root marker",
     "tools/servers.yaml: b is workspace_required and its only root marker is .git",
   ]);
+});
+
+test("an override may widen root_markers upstream already sets, but not another field upstream already sets", () => {
+  const generated = { server: [server("a", ["x"], { cmd: ["a"], root_markers: [".git"] })] };
+  const overrides = {
+    server: new Map([["a", { path: "tools/overrides/server/a.yaml", value: { root_markers: ["*.hxml", ".git"], cmd: ["b"] } }]]),
+  };
+  const problems = [];
+  checkOverrides({ generated, overrides, problems, allowed: { server: new Set(["cmd", "root_markers"]) } });
+  assert.deepEqual(problems, ["tools/overrides/server/a.yaml: cmd is already provided by upstream"]);
+});
+
+test("an override that repeats the generated root_markers is still reported", () => {
+  const generated = { server: [server("a", ["x"], { root_markers: [".git"] })] };
+  const overrides = { server: new Map([["a", { path: "tools/overrides/server/a.yaml", value: { root_markers: [".git"] } }]]) };
+  const problems = [];
+  checkOverrides({ generated, overrides, problems, allowed: { server: new Set(["root_markers"]) } });
+  assert.deepEqual(problems, ["tools/overrides/server/a.yaml: root_markers repeats the generated value"]);
 });
 
 test("package requirements are unique lowercase program tokens", () => {
