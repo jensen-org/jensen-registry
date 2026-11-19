@@ -5,7 +5,7 @@ import { validateClients } from "../clients/validate.mjs";
 import { ROOT, readYaml } from "../lib.mjs";
 import { KINDS, LANGUAGES_FILE, OUTPUTS, generate, loadOverrides } from "./generate.mjs";
 
-const POLICY = new Set(["config", "priority", "root_strategy", "remedies", "filetypes"]);
+const POLICY = new Set(["config", "priority", "root_strategy", "remedies", "filetypes", "root_markers"]);
 const WITH_PARSER = new Set(["args", "stdin", "stream", "append_file", "ignore_exitcode"]);
 const LEGACY = ["tools.yaml", "upstreams.yaml", "tools/tools.yaml"];
 const FILES = { packages: "packages", servers: "servers", formatters: "formatters", linters: "linters", debuggers: "debuggers", filetypes: "filetypes", testrunners: "testrunners", entrypoints: "entrypoints" };

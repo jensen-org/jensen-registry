@@ -1942,6 +1942,8 @@ servers:
     filetypes:
       - haxe
     root_markers:
+      - "*.hxml"
+      - haxelib.json
       - .git
     workspace_required: true
     settings:
