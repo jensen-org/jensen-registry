@@ -76,3 +76,23 @@ export const releaseDigests = (repo, tag) =>
       }
     }
   });
+
+export const HASHICORP_RELEASES = "https://releases.hashicorp.com";
+
+export const hashicorpDigests = (product, version) =>
+  once(`hashicorp:${product}@${version}`, async () => {
+    try {
+      const sums = await getBytes(`${HASHICORP_RELEASES}/${product}/${version}/${product}_${version}_SHA256SUMS`);
+      return new Map(
+        sums
+          .toString("utf8")
+          .split("\n")
+          .map((line) => line.trim().split(/\s+/))
+          .filter(([digest, name]) => digest && name)
+          .map(([digest, name]) => [name, digest]),
+      );
+    } catch (error) {
+      if (error.status === 404) return new Map();
+      throw error;
+    }
+  });

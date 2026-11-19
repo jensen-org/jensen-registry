@@ -5,7 +5,7 @@ import { ROOT, dump, entryFiles, readYaml } from "../lib.mjs";
 import { readFormatters } from "./sources/conform.mjs";
 import { byText } from "./sources/common.mjs";
 import { readDebuggers } from "./sources/dap.mjs";
-import { masonRegistry, rawText, releaseDigests, repoFiles } from "./sources/fetch.mjs";
+import { hashicorpDigests, masonRegistry, rawText, releaseDigests, repoFiles } from "./sources/fetch.mjs";
 import { filetypeEntries, readFiletypes } from "./sources/filetype.mjs";
 import { readLinters } from "./sources/lint.mjs";
 import { readNoneLs } from "./sources/nonels.mjs";
@@ -89,7 +89,10 @@ const withLanguages = (entries, packages, lookup, declared = new Map()) => {
 export async function generate(upstreams, { retryMissing = false } = {}) {
   const { mason, sources } = upstreams;
   const registry = await masonRegistry(mason);
-  const built = await buildPackages(registry, { digests: (repo, tag) => releaseDigests(repo, tag), known: previousDigests(retryMissing) });
+  const built = await buildPackages(registry, {
+    digests: { github: releaseDigests, hashicorp: hashicorpDigests },
+    known: previousDigests(retryMissing),
+  });
   const programs = clientPrograms();
   const packages = built.packages.map((pkg) => {
     const requires = requiresOf(pkg, programs);

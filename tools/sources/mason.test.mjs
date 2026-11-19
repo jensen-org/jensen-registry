@@ -40,10 +40,26 @@ const registry = [
     source: { id: "pkg:generic/x/y@1.0.0", build: [{ target: "unix", run: "cabal install\n", env: { VERSION: "{{version}}" }, bin: { y: "y" } }] },
     bin: { y: "{{source.build.bin.y}}" },
   },
+  {
+    name: "terraform-ls",
+    languages: ["Terraform"],
+    categories: ["LSP"],
+    source: {
+      id: "pkg:generic/hashicorp/terraform-ls@v0.39.1",
+      download: [{ target: "linux_x64", files: { "terraform-ls.zip": "https://releases.hashicorp.com/terraform-ls/0.39.1/terraform-ls_0.39.1_linux_amd64.zip" } }],
+    },
+    bin: { "terraform-ls": "path:terraform-ls" },
+  },
   { name: "old", source: { id: "pkg:npm/old@1.0.0" }, deprecation: { reason: "gone" } },
 ];
 
-const run = () => buildPackages(registry, { digests: async () => new Map([["rust-analyzer-x86_64-unknown-linux-gnu.gz", "ab".repeat(32)]]) });
+const run = () =>
+  buildPackages(registry, {
+    digests: {
+      github: async () => new Map([["rust-analyzer-x86_64-unknown-linux-gnu.gz", "ab".repeat(32)]]),
+      hashicorp: async () => new Map([["terraform-ls_0.39.1_linux_amd64.zip", "cd".repeat(32)]]),
+    },
+  });
 
 test("github asset gets its url, digest and resolved bin", async () => {
   const { packages } = await run();
@@ -64,6 +80,13 @@ test("npm and pyvenv bins split into client and target", async () => {
 test("generic download resolves strip_prefix", async () => {
   const { packages } = await run();
   assert.equal(packages.find((entry) => entry.id === "jdtls").artifacts[0].files[0].url, "https://example.test/jdt-1.62.0.tar.gz");
+});
+
+test("a generic package served from releases.hashicorp.com gets its digest by filename, not through github's api", async () => {
+  const { packages } = await run();
+  const pkg = packages.find((entry) => entry.id === "terraform-ls");
+  assert.equal(pkg.source, "generic");
+  assert.equal(pkg.artifacts[0].files[0].sha256, "cd".repeat(32));
 });
 
 test("build packages keep their script and are marked", async () => {
