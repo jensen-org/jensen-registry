@@ -1,7 +1,7 @@
 schema_version: 2
 upstream:
   repo: neovim/neovim
-  sha: 94edc50849f31db250554f15875f8626cce56142
+  sha: 2843068c7a9c78c206189c37b53cdb6f464e57ae
 filetypes:
   - id: 8th
     extensions:
@@ -1660,6 +1660,7 @@ filetypes:
       - jinja2
     related:
       - htmldjango
+  - id: jinja.html
   - id: jjdescription
     extensions:
       - jjdescription
@@ -2090,6 +2091,10 @@ filetypes:
     related:
       - mf
     grammar: make
+  - id: mako
+    extensions:
+      - mako
+      - mao
   - id: mallard
     extensions:
       - page
@@ -2241,7 +2246,6 @@ filetypes:
   - id: mojo
     extensions:
       - mojo
-      - 🔥
   - id: monk
     extensions:
       - isc

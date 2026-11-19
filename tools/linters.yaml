@@ -1,7 +1,7 @@
 schema_version: 2
 upstream:
   repo: mfussenegger/nvim-lint
-  sha: 52107ce2076a27a285af781248e2c59bad817cd0
+  sha: 6bf29b9dbdad60b38b489b23309c22ba6d4c915a
 linters:
   - id: actionlint
     package: actionlint
@@ -1209,6 +1209,11 @@ linters:
       - --stdin
     stdin: true
     stream: stdout
+    ignore_exitcode: true
+    runnable: false
+  - id: jactionlint
+    cmd: jactionlint
+    stdin: true
     ignore_exitcode: true
     runnable: false
   - id: janet
