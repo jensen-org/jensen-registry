@@ -1,8 +1,8 @@
 schema_version: 2
 mason:
   repo: mason-org/mason-registry
-  tag: 2026-11-19-keen-nase
-  sha256: fa9d78a101c5729e8fdd747f2901bc5037d8526ed5f88095d9c13190e792f24b
+  tag: 2026-11-20-mighty-betta
+  sha256: 78b81a1ae57270e9cf600f89f37aeb6b863ab2f198975eb532452c31175c56fc
 sources:
   lspconfig:
     repo: neovim/nvim-lspconfig
@@ -18,7 +18,7 @@ sources:
     sha: 9a10e096703966335bd5c46c8c875d5b0690dade
   neovim:
     repo: neovim/neovim
-    sha: 2843068c7a9c78c206189c37b53cdb6f464e57ae
+    sha: f2f87f5fc55fbb4c0307bd775d625515b2de8dea
   linguist:
     repo: github-linguist/linguist
     sha: cfd7a0113aa1efab99faeff38756f0ed4d48add8

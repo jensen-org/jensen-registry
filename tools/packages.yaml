@@ -1,8 +1,8 @@
 schema_version: 2
 upstream:
   repo: mason-org/mason-registry
-  tag: 2026-11-19-keen-nase
-  sha256: fa9d78a101c5729e8fdd747f2901bc5037d8526ed5f88095d9c13190e792f24b
+  tag: 2026-11-20-mighty-betta
+  sha256: 78b81a1ae57270e9cf600f89f37aeb6b863ab2f198975eb532452c31175c56fc
 packages:
   - id: actionlint
     source: github
@@ -849,7 +849,7 @@ packages:
   - id: azure-pipelines-language-server
     source: npm
     coordinate: azure-pipelines-language-server
-    version: 0.9.3
+    version: 0.9.4
     description: A language server for Azure Pipelines YAML.
     homepage: https://github.com/microsoft/azure-pipelines-language-server
     languages:
@@ -2116,7 +2116,7 @@ packages:
   - id: claude-agent-acp
     source: npm
     coordinate: "@agentclientprotocol/claude-agent-acp"
-    version: 0.107.1
+    version: 0.107.3
     description: ACP adapter for the Claude Agent SDK
     homepage: https://github.com/agentclientprotocol/claude-agent-acp
     bin:
@@ -2509,7 +2509,7 @@ packages:
   - id: codebook
     source: github
     coordinate: blopker/codebook
-    version: v0.4.0
+    version: v0.4.1
     description: An unholy spell checker for code.
     homepage: https://github.com/blopker/codebook
     languages:
@@ -2540,40 +2540,40 @@ packages:
           - linux_x64_gnu
         files:
           - name: codebook-lsp-x86_64-unknown-linux-musl.tar.gz
-            url: https://github.com/blopker/codebook/releases/download/v0.4.0/codebook-lsp-x86_64-unknown-linux-musl.tar.gz
-            sha256: 2c79e0bf317410550bd7f7e69d4a625d1f2f781f835f8d29de3dd75636ca0612
+            url: https://github.com/blopker/codebook/releases/download/v0.4.1/codebook-lsp-x86_64-unknown-linux-musl.tar.gz
+            sha256: 2e7b1031edf165fb8dc48a12a6fac85c43d36c9eaf7ef7fc9d7cbd12f553a21b
         bin:
           codebook-lsp: codebook-lsp
       - targets:
           - linux_arm64_gnu
         files:
           - name: codebook-lsp-aarch64-unknown-linux-musl.tar.gz
-            url: https://github.com/blopker/codebook/releases/download/v0.4.0/codebook-lsp-aarch64-unknown-linux-musl.tar.gz
-            sha256: f8310cbdc9a85663af0626cf4d36754f444c00f34c14720ddeed8edca64d0936
+            url: https://github.com/blopker/codebook/releases/download/v0.4.1/codebook-lsp-aarch64-unknown-linux-musl.tar.gz
+            sha256: 3487488acd718d03b27c5a2d331291e388dd999eddc6eb90e071a51a55d35e80
         bin:
           codebook-lsp: codebook-lsp
       - targets:
           - darwin_x64
         files:
           - name: codebook-lsp-x86_64-apple-darwin.tar.gz
-            url: https://github.com/blopker/codebook/releases/download/v0.4.0/codebook-lsp-x86_64-apple-darwin.tar.gz
-            sha256: e20194467d7c5d4994b113a60457d8af2865882a827997ca9800112e369d439d
+            url: https://github.com/blopker/codebook/releases/download/v0.4.1/codebook-lsp-x86_64-apple-darwin.tar.gz
+            sha256: c70ff2c623c1b053f0c541e0cc9dc3da8f5545e68a4f25fcb98c48ee71b2fea9
         bin:
           codebook-lsp: codebook-lsp
       - targets:
           - darwin_arm64
         files:
           - name: codebook-lsp-aarch64-apple-darwin.tar.gz
-            url: https://github.com/blopker/codebook/releases/download/v0.4.0/codebook-lsp-aarch64-apple-darwin.tar.gz
-            sha256: e9fa1da4bf854fae3f32de6179fe069674661a1078d70ba1c78aa72ad066d2ba
+            url: https://github.com/blopker/codebook/releases/download/v0.4.1/codebook-lsp-aarch64-apple-darwin.tar.gz
+            sha256: 2cae5261ab08bfd6d226396ff194c79f03f6c513500fd34a4e73840a9e072086
         bin:
           codebook-lsp: codebook-lsp
       - targets:
           - win_x64
         files:
           - name: codebook-lsp-x86_64-pc-windows-msvc.zip
-            url: https://github.com/blopker/codebook/releases/download/v0.4.0/codebook-lsp-x86_64-pc-windows-msvc.zip
-            sha256: 51f2c55bb266b502e57eccbb5f016989c7687f3b2d947b85ac5f9cd98fb0866c
+            url: https://github.com/blopker/codebook/releases/download/v0.4.1/codebook-lsp-x86_64-pc-windows-msvc.zip
+            sha256: f74a06f22243533ae3071ef97c00c322fa406c313f2bc660018176813864d89a
         bin:
           codebook-lsp: codebook-lsp.exe
     filetypes:
@@ -2728,7 +2728,7 @@ packages:
   - id: codex-acp
     source: npm
     coordinate: "@agentclientprotocol/codex-acp"
-    version: 2.6.0
+    version: 2.7.0
     description: ACP adapter for Codex CLI
     homepage: https://github.com/agentclientprotocol/codex-acp
     bin:
@@ -2849,7 +2849,7 @@ packages:
   - id: copilot-language-server
     source: npm
     coordinate: "@github/copilot-language-server"
-    version: 1.570.0
+    version: 1.572.0
     description: The Copilot Language Server enables any editor or IDE to integrate with GitHub Copilot via the language server protocol.
     homepage: https://www.npmjs.com/package/@github/copilot-language-server
     categories:
@@ -3068,7 +3068,7 @@ packages:
   - id: cronstrue
     source: npm
     coordinate: cronstrue
-    version: 3.39.0
+    version: 3.41.0
     description: JavaScript library that translates Cron expressions into human readable descriptions.
     homepage: https://github.com/bradymholt/cRonstrue
     bin:
@@ -4482,7 +4482,7 @@ packages:
   - id: easy-coding-standard
     source: composer
     coordinate: symplify/easy-coding-standard
-    version: 13.3.19
+    version: 13.3.21
     description: Use Coding Standard with 0-knowledge of PHP-CS-Fixer and PHP_CodeSniffer.
     homepage: https://github.com/easy-coding-standard/easy-coding-standard
     languages:
@@ -4748,7 +4748,7 @@ packages:
   - id: elp
     source: github
     coordinate: WhatsApp/erlang-language-platform
-    version: 2026-11-16
+    version: 2026-11-19
     description: ELP integrates Erlang into modern IDEs via the language server protocol.
     homepage: https://github.com/WhatsApp/erlang-language-platform
     languages:
@@ -4764,32 +4764,32 @@ packages:
           - linux_x64_gnu
         files:
           - name: elp-linux-x86_64-unknown-linux-gnu-otp-27.3.tar.gz
-            url: https://github.com/WhatsApp/erlang-language-platform/releases/download/2026-11-16/elp-linux-x86_64-unknown-linux-gnu-otp-27.3.tar.gz
-            sha256: a76208096b16a5961597cd1f9c5051cd5e3ccfe5776a5ce1a660874cb6915d86
+            url: https://github.com/WhatsApp/erlang-language-platform/releases/download/2026-11-19/elp-linux-x86_64-unknown-linux-gnu-otp-27.3.tar.gz
+            sha256: e4be49a0b04a987a59e9668d25eb620ccd0ce1a4ae72a046092ff764c685e873
         bin:
           elp: elp
       - targets:
           - linux_arm64_gnu
         files:
           - name: elp-linux-aarch64-unknown-linux-gnu-otp-27.3.tar.gz
-            url: https://github.com/WhatsApp/erlang-language-platform/releases/download/2026-11-16/elp-linux-aarch64-unknown-linux-gnu-otp-27.3.tar.gz
-            sha256: 79c5343851fbbd21ebd40ebef5479c56a586330956c952a388f95a4cd85a73d3
+            url: https://github.com/WhatsApp/erlang-language-platform/releases/download/2026-11-19/elp-linux-aarch64-unknown-linux-gnu-otp-27.3.tar.gz
+            sha256: 7d89d09df5775ad61a88c65a431a040093246da41a9046da0e3f3ee47ce2b806
         bin:
           elp: elp
       - targets:
           - darwin_x64
         files:
           - name: elp-macos-x86_64-apple-darwin-otp-27.3.tar.gz
-            url: https://github.com/WhatsApp/erlang-language-platform/releases/download/2026-11-16/elp-macos-x86_64-apple-darwin-otp-27.3.tar.gz
-            sha256: 2d174b4e807cf6b023c6e6f042f6ef0f73df765fcca0ea72b5ffc21a280ece08
+            url: https://github.com/WhatsApp/erlang-language-platform/releases/download/2026-11-19/elp-macos-x86_64-apple-darwin-otp-27.3.tar.gz
+            sha256: 339d84e19377621ebf3470631323b3129b1cf8216b545d0883094e68132431ed
         bin:
           elp: elp
       - targets:
           - darwin_arm64
         files:
           - name: elp-macos-aarch64-apple-darwin-otp-27.3.tar.gz
-            url: https://github.com/WhatsApp/erlang-language-platform/releases/download/2026-11-16/elp-macos-aarch64-apple-darwin-otp-27.3.tar.gz
-            sha256: 4af61c10cce35ba3a00b9a26d3e8cc13427b5af651aab9f1974e71e1ecc1a4df
+            url: https://github.com/WhatsApp/erlang-language-platform/releases/download/2026-11-19/elp-macos-aarch64-apple-darwin-otp-27.3.tar.gz
+            sha256: b2c58229a0d6e708b9533363756a5f2ac2120100058d649dd7321675c96429b4
         bin:
           elp: elp
     filetypes:
@@ -5224,7 +5224,7 @@ packages:
   - id: eslint_d
     source: npm
     coordinate: eslint_d
-    version: 15.1.0
+    version: 15.1.1
     description: Makes eslint the fastest linter on the planet.
     homepage: https://github.com/mantoni/eslint_d.js/
     languages:
@@ -7103,7 +7103,7 @@ packages:
   - id: harper-ls
     source: github
     coordinate: elijah-potter/harper
-    version: v3.2.0
+    version: v3.3.0
     description: The Grammar Checker for Developers.
     homepage: https://github.com/elijah-potter/harper
     languages:
@@ -7132,56 +7132,56 @@ packages:
           - linux_x64_gnu
         files:
           - name: harper-ls-x86_64-unknown-linux-gnu.tar.gz
-            url: https://github.com/elijah-potter/harper/releases/download/v3.2.0/harper-ls-x86_64-unknown-linux-gnu.tar.gz
-            sha256: f854bdda5627a85915b2c6549ad83250db8535362e73d3ed02393e5df0217d33
+            url: https://github.com/elijah-potter/harper/releases/download/v3.3.0/harper-ls-x86_64-unknown-linux-gnu.tar.gz
+            sha256: db9980a3387b48b4c99cac6402fdbcaff121a1724410ebbe554500df7fa7af88
         bin:
           harper-ls: harper-ls
       - targets:
           - linux_x64_musl
         files:
           - name: harper-ls-x86_64-unknown-linux-musl.tar.gz
-            url: https://github.com/elijah-potter/harper/releases/download/v3.2.0/harper-ls-x86_64-unknown-linux-musl.tar.gz
-            sha256: 4b44c54ff6a0831901805584bb9d70a004b768b713af9725b65d13e1b369c138
+            url: https://github.com/elijah-potter/harper/releases/download/v3.3.0/harper-ls-x86_64-unknown-linux-musl.tar.gz
+            sha256: 45e35a06952636caebc3145601574f446c0e9e536ee441f42ba73cd3ce8f5855
         bin:
           harper-ls: harper-ls
       - targets:
           - linux_arm64_gnu
         files:
           - name: harper-ls-aarch64-unknown-linux-gnu.tar.gz
-            url: https://github.com/elijah-potter/harper/releases/download/v3.2.0/harper-ls-aarch64-unknown-linux-gnu.tar.gz
-            sha256: e2a13cd9bb91b505ef46bcbcafeb4f11b96d95e75b9cc0a156c680474c476804
+            url: https://github.com/elijah-potter/harper/releases/download/v3.3.0/harper-ls-aarch64-unknown-linux-gnu.tar.gz
+            sha256: 4e044296ce9150671e24a8b5d9eefc513f7e785b2f55d8c11885907842fc7232
         bin:
           harper-ls: harper-ls
       - targets:
           - linux_arm64_musl
         files:
           - name: harper-ls-aarch64-unknown-linux-musl.tar.gz
-            url: https://github.com/elijah-potter/harper/releases/download/v3.2.0/harper-ls-aarch64-unknown-linux-musl.tar.gz
-            sha256: 61bac6b6992797531b0ef7addbd51eb455a033681f7189d8dc22a1024de6b632
+            url: https://github.com/elijah-potter/harper/releases/download/v3.3.0/harper-ls-aarch64-unknown-linux-musl.tar.gz
+            sha256: 0707f4a687f97fa6770b28275cfe494e3a5f824783e32f9d6c1f49a35beb0064
         bin:
           harper-ls: harper-ls
       - targets:
           - darwin_x64
         files:
           - name: harper-ls-x86_64-apple-darwin.tar.gz
-            url: https://github.com/elijah-potter/harper/releases/download/v3.2.0/harper-ls-x86_64-apple-darwin.tar.gz
-            sha256: 3ca19166a4ffef14c24b0396af920bbb11abd071e6724bfedbe1f2eccad3b76d
+            url: https://github.com/elijah-potter/harper/releases/download/v3.3.0/harper-ls-x86_64-apple-darwin.tar.gz
+            sha256: 871a6116635ca37020de2d48a907f637a40355d97641dc56511fa5f85a65988d
         bin:
           harper-ls: harper-ls
       - targets:
           - darwin_arm64
         files:
           - name: harper-ls-aarch64-apple-darwin.tar.gz
-            url: https://github.com/elijah-potter/harper/releases/download/v3.2.0/harper-ls-aarch64-apple-darwin.tar.gz
-            sha256: 9dd31b0cabfb040f658a8d595cc36520eb306a5a69ac37c7b828c36574b47ce9
+            url: https://github.com/elijah-potter/harper/releases/download/v3.3.0/harper-ls-aarch64-apple-darwin.tar.gz
+            sha256: bd640c5a1e80f61e602b9cde6c40d29612ce791528ae5081fbfd80a57308cd9f
         bin:
           harper-ls: harper-ls
       - targets:
           - win_x64
         files:
           - name: harper-ls-x86_64-pc-windows-msvc.zip
-            url: https://github.com/elijah-potter/harper/releases/download/v3.2.0/harper-ls-x86_64-pc-windows-msvc.zip
-            sha256: a9e370166ace4e92a592f954baa2fedf4528e6daf59e64a9973fc9f3d7d30d5e
+            url: https://github.com/elijah-potter/harper/releases/download/v3.3.0/harper-ls-x86_64-pc-windows-msvc.zip
+            sha256: 4c9a825db4ec859c853e0a0d3116579298d96fbb3229f64923c6f99f95e39535
         bin:
           harper-ls: harper-ls.exe
     filetypes:
@@ -10203,7 +10203,7 @@ packages:
   - id: marko-language-server
     source: npm
     coordinate: "@marko/language-server"
-    version: 3.5.1
+    version: 3.5.2
     description: A language server (implementing the language server protocol) for Marko.
     homepage: https://github.com/marko-js/language-server
     languages:
@@ -11602,7 +11602,7 @@ packages:
   - id: oelint-adv
     source: pypi
     coordinate: oelint-adv
-    version: 9.12.1
+    version: 9.13.0
     description: Linter for bitbake recipes.
     homepage: https://github.com/priv-kweihmann/oelint-adv
     languages:
@@ -12044,7 +12044,7 @@ packages:
   - id: oxfmt
     source: npm
     coordinate: oxfmt
-    version: 0.78.0
+    version: 0.79.0
     description: Prettier-compatible code formatter powered by Oxc
     homepage: https://oxc.rs/docs/guide/usage/formatter
     languages:
@@ -12090,7 +12090,7 @@ packages:
   - id: oxlint
     source: npm
     coordinate: oxlint
-    version: 1.93.0
+    version: 1.94.0
     description: High-performance linter for JavaScript and TypeScript written in Rust.
     homepage: https://github.com/oxc-project/oxc
     languages:
@@ -13328,7 +13328,7 @@ packages:
   - id: psalm
     source: composer
     coordinate: vimeo/psalm
-    version: 7.10.0
+    version: 7.11.0
     description: A static analysis tool for finding errors in PHP applications.
     homepage: https://psalm.dev/
     languages:
@@ -13765,7 +13765,7 @@ packages:
   - id: pyrefly
     source: pypi
     coordinate: pyrefly
-    version: 1.4.1
+    version: 1.5.0
     description: Pyrefly, a faster Python type checker written in Rust
     homepage: https://pyrefly.org/
     languages:
@@ -14820,7 +14820,7 @@ packages:
   - id: rumdl
     source: github
     coordinate: rvben/rumdl
-    version: v0.3.4
+    version: v0.3.5
     description: Fast Markdown linter and formatter.
     homepage: https://github.com/rvben/rumdl
     languages:
@@ -14837,57 +14837,57 @@ packages:
       - targets:
           - darwin_arm64
         files:
-          - name: rumdl-v0.3.4-aarch64-apple-darwin.tar.gz
-            url: https://github.com/rvben/rumdl/releases/download/v0.3.4/rumdl-v0.3.4-aarch64-apple-darwin.tar.gz
-            sha256: 51f7bce0d56ea632ed65e7e42a99effb7ce7a23923fe0738ecda0e1d11bcb788
+          - name: rumdl-v0.3.5-aarch64-apple-darwin.tar.gz
+            url: https://github.com/rvben/rumdl/releases/download/v0.3.5/rumdl-v0.3.5-aarch64-apple-darwin.tar.gz
+            sha256: 7caeb6c0264970479c0c0185c936463255b7b6048e675a647dfbebab337f91fe
         bin:
           rumdl: rumdl
       - targets:
           - darwin_x64
         files:
-          - name: rumdl-v0.3.4-x86_64-apple-darwin.tar.gz
-            url: https://github.com/rvben/rumdl/releases/download/v0.3.4/rumdl-v0.3.4-x86_64-apple-darwin.tar.gz
-            sha256: e08cce7484b30f755b00b24d0629c2f87ab418cf1c24550e2466d2ac754dc97d
+          - name: rumdl-v0.3.5-x86_64-apple-darwin.tar.gz
+            url: https://github.com/rvben/rumdl/releases/download/v0.3.5/rumdl-v0.3.5-x86_64-apple-darwin.tar.gz
+            sha256: a7f4afebf8079b387efc7aae5aedde2f9d2274e9762d4f7a099d701b5005c082
         bin:
           rumdl: rumdl
       - targets:
           - linux_x64_gnu
         files:
-          - name: rumdl-v0.3.4-x86_64-unknown-linux-gnu.tar.gz
-            url: https://github.com/rvben/rumdl/releases/download/v0.3.4/rumdl-v0.3.4-x86_64-unknown-linux-gnu.tar.gz
-            sha256: 36f1524f0cfaf33f5dfe68ac19220e1bd57ded1f0f9205931f6ee1de32f4a040
+          - name: rumdl-v0.3.5-x86_64-unknown-linux-gnu.tar.gz
+            url: https://github.com/rvben/rumdl/releases/download/v0.3.5/rumdl-v0.3.5-x86_64-unknown-linux-gnu.tar.gz
+            sha256: 1f7f569ce1978ec1ed21528234d01c9bd2041ed7265d2677f4d845177114f452
         bin:
           rumdl: rumdl
       - targets:
           - linux_arm64_gnu
         files:
-          - name: rumdl-v0.3.4-aarch64-unknown-linux-gnu.tar.gz
-            url: https://github.com/rvben/rumdl/releases/download/v0.3.4/rumdl-v0.3.4-aarch64-unknown-linux-gnu.tar.gz
-            sha256: d51bfff8c4aacebb786f701918389b3b568129cb9c16aee12567ede6869a61ad
+          - name: rumdl-v0.3.5-aarch64-unknown-linux-gnu.tar.gz
+            url: https://github.com/rvben/rumdl/releases/download/v0.3.5/rumdl-v0.3.5-aarch64-unknown-linux-gnu.tar.gz
+            sha256: 3adec6780fe6e2295d634ff06601104e3e775005cdf98dd19b1817711f801502
         bin:
           rumdl: rumdl
       - targets:
           - linux_x64
         files:
-          - name: rumdl-v0.3.4-x86_64-unknown-linux-musl.tar.gz
-            url: https://github.com/rvben/rumdl/releases/download/v0.3.4/rumdl-v0.3.4-x86_64-unknown-linux-musl.tar.gz
-            sha256: 2e64c7654906f0df82218fcc73cbdded2e41f37961f5be3e876e708bdf42e367
+          - name: rumdl-v0.3.5-x86_64-unknown-linux-musl.tar.gz
+            url: https://github.com/rvben/rumdl/releases/download/v0.3.5/rumdl-v0.3.5-x86_64-unknown-linux-musl.tar.gz
+            sha256: 47acba7706ff7a57aa38ecacde5953dacd411feca4d36e2d6c994b1a33253ec4
         bin:
           rumdl: rumdl
       - targets:
           - linux_arm64
         files:
-          - name: rumdl-v0.3.4-aarch64-unknown-linux-musl.tar.gz
-            url: https://github.com/rvben/rumdl/releases/download/v0.3.4/rumdl-v0.3.4-aarch64-unknown-linux-musl.tar.gz
-            sha256: 712d7b0c5413a5bc0315c939f29a9cc87dbee43fb9a119138fff1d6599a41f92
+          - name: rumdl-v0.3.5-aarch64-unknown-linux-musl.tar.gz
+            url: https://github.com/rvben/rumdl/releases/download/v0.3.5/rumdl-v0.3.5-aarch64-unknown-linux-musl.tar.gz
+            sha256: 1f6b8198ce688f6f7db8c9bae2ea0ae13b93af445473e16c60e4579809121931
         bin:
           rumdl: rumdl
       - targets:
           - win_x64
         files:
-          - name: rumdl-v0.3.4-x86_64-pc-windows-msvc.zip
-            url: https://github.com/rvben/rumdl/releases/download/v0.3.4/rumdl-v0.3.4-x86_64-pc-windows-msvc.zip
-            sha256: d059ae097c7d23ac627abb92a4496eb25aecc513f901a8e907662de98df0e875
+          - name: rumdl-v0.3.5-x86_64-pc-windows-msvc.zip
+            url: https://github.com/rvben/rumdl/releases/download/v0.3.5/rumdl-v0.3.5-x86_64-pc-windows-msvc.zip
+            sha256: ff40c7b64f8c67e5a39d5734837d2fc9984c0da436e4cc79bb72a08cea413b2d
         bin:
           rumdl: rumdl.exe
     filetypes:
@@ -16361,7 +16361,7 @@ packages:
   - id: sorbet
     source: gem
     coordinate: sorbet
-    version: 0.6.13698
+    version: 0.6.13704
     description: Sorbet is a fast, powerful type checker designed for Ruby.
     homepage: https://sorbet.org/
     languages:
@@ -18123,7 +18123,7 @@ packages:
   - id: textlint
     source: npm
     coordinate: textlint
-    version: 16.0.0
+    version: 16.1.1
     description: The pluggable natural language linter for text and markdown.
     homepage: https://textlint.github.io
     languages:
@@ -19207,7 +19207,7 @@ packages:
   - id: ty
     source: pypi
     coordinate: ty
-    version: 0.0.105
+    version: 0.0.107
     description: An extremely fast Python type checker and language server, written in Rust.
     homepage: https://github.com/astral-sh/ty
     languages:
