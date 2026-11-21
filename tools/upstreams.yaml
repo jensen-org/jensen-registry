@@ -1,8 +1,8 @@
 schema_version: 2
 mason:
   repo: mason-org/mason-registry
-  tag: 2026-11-20-mighty-betta
-  sha256: 78b81a1ae57270e9cf600f89f37aeb6b863ab2f198975eb532452c31175c56fc
+  tag: 2026-11-21-fickle-copy
+  sha256: 2de7f409ffd6105bb5b439457c90869ff01311b8b0c195d3d84a7a20364a36c5
 sources:
   lspconfig:
     repo: neovim/nvim-lspconfig
@@ -18,7 +18,7 @@ sources:
     sha: 9a10e096703966335bd5c46c8c875d5b0690dade
   neovim:
     repo: neovim/neovim
-    sha: f2f87f5fc55fbb4c0307bd775d625515b2de8dea
+    sha: 4a6c01776d14b4e29649ae16aed086020b38f386
   linguist:
     repo: github-linguist/linguist
     sha: cfd7a0113aa1efab99faeff38756f0ed4d48add8

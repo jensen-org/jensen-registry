@@ -10,7 +10,7 @@ sources:
     commit: dcf8345f777094786572ca28037ea215aed7f572
     sha256: 94a649751dcccd6b547244df2108703870c4c269142021a4b729e9d400bab5e6
   - url: https://raw.githubusercontent.com/DanielGavin/ols/master/misc/ols.schema.json
-    commit: 50b13fae0619511a9f50dddf4a57febaf2873b01
+    commit: 03d35a02e98e6c768a3978bcd9c0dc207eedb0ad
     sha256: 894118e065348316c4cd09e31f6e48c017a9cb84263fb6fa42b5acbef68fe721
   - url: https://raw.githubusercontent.com/Dart-Code/Dart-Code/master/package.json
     commit: ad3fe06bc2235f45d69e0789aa30e6d6ad6f88c4
@@ -64,7 +64,7 @@ sources:
     commit: 43252ef411ac06e8cc9458065bf2831293ab1ca5
     sha256: 76ba47f839ed88f7d293842d5ea23d326ae1a17f2178f3c3a7c8497ea449cd52
   - url: https://raw.githubusercontent.com/astral-sh/ruff/main/ruff.schema.json
-    commit: cd2d973241d7f5bcba588e94cc686d9e356a4621
+    commit: 31cfa858b944e879929aeb63dcadf95faeffb286
     sha256: 8196faa512f7f7012227948b28049987149d5083c8f26a9e4dc8ecab95ed70e8
   - url: https://raw.githubusercontent.com/aviatesk/jetls-vscode/refs/heads/master/package.json
     commit: 76b78bfbbf2b4b6a2ded269fd289b6b6c67dcdd0
@@ -121,8 +121,8 @@ sources:
     commit: 3757fdb6e9bd4202d0dfcca771b825c4d0c75062
     sha256: 8f3a26ec4592086c24666f067bf90306d11dee02938e3a92ab94e72cd8966495
   - url: https://raw.githubusercontent.com/julia-vscode/julia-vscode/master/package.json
-    commit: dbbc6e32b323fdd19f14b895ce012379c576b41e
-    sha256: 316361ec899205e4b862cfac2dd497b4f69b180852f8f69caf9aa0c11e53a1b2
+    commit: ee6fc23933a41221a9abe44358e99ccd3fa336f6
+    sha256: bb27bbd60ee93d469104cff61eb33c85e45f7b41be56187ce31bb01b6736ad07
   - url: https://raw.githubusercontent.com/microsoft/pyright/master/packages/vscode-pyright/package.json
     commit: 2981f9f1ce41be5c15667da1f7a3cfda4f245089
     sha256: 7513dc22dc3d9fef229cf45a77db79eb15f4b4fa2714c6df13ac24355791a666
@@ -130,28 +130,28 @@ sources:
     commit: c999730b195bd8dc3eaf58435de71b185cb35138
     sha256: 7828be25521992eb27b7ee900de726c1f816cc4285d823d6c52e9dd2724ec6f2
   - url: https://raw.githubusercontent.com/microsoft/vscode/main/extensions/css-language-features/package.json
-    commit: ddbdd50a9ed1f9dc32e4fbadcf950b290e7d35b4
+    commit: bfbf12b35b9978b92b2d341e81ade49f2b18c68c
     sha256: 3248ae969682abc9cd463a25fc0ca5f0d28bdc6e20daa13a0bb91a04e3fbc187
   - url: https://raw.githubusercontent.com/microsoft/vscode/main/extensions/css-language-features/package.nls.json
-    commit: ddbdd50a9ed1f9dc32e4fbadcf950b290e7d35b4
+    commit: bfbf12b35b9978b92b2d341e81ade49f2b18c68c
     sha256: 3c9526bf7eb8a8a7daf54d98b571c313b7291740c95e23fddaa57872f3a20d67
   - url: https://raw.githubusercontent.com/microsoft/vscode/main/extensions/html-language-features/package.json
-    commit: ddbdd50a9ed1f9dc32e4fbadcf950b290e7d35b4
+    commit: bfbf12b35b9978b92b2d341e81ade49f2b18c68c
     sha256: cb3eb0dacb754977b66403067030228c6768cb7248ae323fffadeb0ce497604f
   - url: https://raw.githubusercontent.com/microsoft/vscode/main/extensions/html-language-features/package.nls.json
-    commit: ddbdd50a9ed1f9dc32e4fbadcf950b290e7d35b4
+    commit: bfbf12b35b9978b92b2d341e81ade49f2b18c68c
     sha256: 6471e57a3a3f5fca714044383e2930e4d51fd2417eb1ec5920323d5e3f51e955
   - url: https://raw.githubusercontent.com/microsoft/vscode/main/extensions/typescript-language-features/package.json
-    commit: ddbdd50a9ed1f9dc32e4fbadcf950b290e7d35b4
+    commit: bfbf12b35b9978b92b2d341e81ade49f2b18c68c
     sha256: 0340aefc463ed22bdb3c8389c71e18713b09cf2530bb0250a6733d7a3aec1918
   - url: https://raw.githubusercontent.com/microsoft/vscode/main/extensions/typescript-language-features/package.nls.json
-    commit: ddbdd50a9ed1f9dc32e4fbadcf950b290e7d35b4
+    commit: bfbf12b35b9978b92b2d341e81ade49f2b18c68c
     sha256: 70afd9ec1e8e36ee2437522f44eb3142e96328fca3ad9d92b0ad33e8d2559b47
   - url: https://raw.githubusercontent.com/microsoft/vscode/master/extensions/json-language-features/package.json
-    commit: ddbdd50a9ed1f9dc32e4fbadcf950b290e7d35b4
+    commit: bfbf12b35b9978b92b2d341e81ade49f2b18c68c
     sha256: b5b843888e49d67b6e62dcf094904d1fd7a25dd743c84bd26347819fc8230ac6
   - url: https://raw.githubusercontent.com/microsoft/vscode/master/extensions/json-language-features/package.nls.json
-    commit: ddbdd50a9ed1f9dc32e4fbadcf950b290e7d35b4
+    commit: bfbf12b35b9978b92b2d341e81ade49f2b18c68c
     sha256: 2fce07d98b43f4f859828c73ed0fbc3c32037453de7454b1c2e537cfa024dfdd
   - url: https://raw.githubusercontent.com/nickel-lang/nickel/master/lsp/vscode-extension/package.json
     commit: a9cd302cb6ffef865f6ae7fed30d4ba922abfb0b
