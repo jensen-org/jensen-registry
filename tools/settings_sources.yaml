@@ -1,0 +1,245 @@
+schema_version: 2
+upstream:
+  repo: neovim/nvim-lspconfig
+  sha: 4648fd8ba5c678d7e2db75ae44ffac269bb589d8
+sources:
+  - url: https://raw.githubusercontent.com/AdaCore/ada_language_server/master/integration/vscode/ada/package.json
+    commit: 6f8880f1714b5a4ee8944ec7680a45466685164f
+    sha256: 4f22133a9a4c38f10b02e7ba8d611a2bb4aa0ebbdcd47968bbbaaa5bc04b0808
+  - url: https://raw.githubusercontent.com/Beaglefoot/awk-language-server/master/client/package.json
+    commit: dcf8345f777094786572ca28037ea215aed7f572
+    sha256: 94a649751dcccd6b547244df2108703870c4c269142021a4b729e9d400bab5e6
+  - url: https://raw.githubusercontent.com/DanielGavin/ols/master/misc/ols.schema.json
+    commit: 50b13fae0619511a9f50dddf4a57febaf2873b01
+    sha256: 894118e065348316c4cd09e31f6e48c017a9cb84263fb6fa42b5acbef68fe721
+  - url: https://raw.githubusercontent.com/Dart-Code/Dart-Code/master/package.json
+    commit: ad3fe06bc2235f45d69e0789aa30e6d6ad6f88c4
+    sha256: f77673adcd5939be714339c769639c422e38aaf37ea6c892f3f37e0cd88bc0ce
+  - url: https://raw.githubusercontent.com/DetachHead/basedpyright/main/packages/vscode-pyright/package.json
+    commit: a5ea571f1f332be54fb917c1dcf3906e3b873d3b
+    sha256: 95ac4dc5076e7ec4113e2c8f1a704612a661374f6f7a0a85fd290baafb92d2ef
+  - url: https://raw.githubusercontent.com/EmmyLuaLs/emmylua-analyzer-rust/main/crates/emmylua_code_analysis/resources/schema.json
+    commit: 70dbcf4db9a240a970dab317b56a01e6ac2ff65e
+    sha256: d1a97c0beded6afa913b77ebe784ab6e932a75dbf94fe72a9e135a0ada424251
+  - url: https://raw.githubusercontent.com/FractalBoy/perl-language-server/master/client/package.json
+    commit: b79ec17b11e70084b5049ee2dbe1e0caf0570174
+    sha256: bd7e2a4e5b189990792f1d7a4decc7035b4d1527a6d803e1c77ec09170907578
+  - url: https://raw.githubusercontent.com/JohnnyMorganz/StyLua/main/stylua-vscode/package.json
+    commit: d6562caedd4a45c2bd0e734574dd8ff200a44d63
+    sha256: 27f7de7cc1a4c3c972ee2b7a0ef880161aec6826f757ae72388c3bae6cc71017
+  - url: https://raw.githubusercontent.com/JohnnyMorganz/luau-lsp/main/editors/code/package.json
+    commit: 0de6a18a0259de9596264e925c1bb4e12ad754e8
+    sha256: 77cd2591767684dc38670c2936b5ea6f61dc2c08b461ed476d6627c197bb6a08
+  - url: https://raw.githubusercontent.com/LuaLS/vscode-lua/master/package.json
+    commit: 76ad79d8bf3260a78ce6ab3d967e27c39261dc95
+    sha256: a6dee96a1b3be3699d99ab6eb91451bfda00593513355f048f91dc8bde17c4d6
+  - url: https://raw.githubusercontent.com/LuaLS/vscode-lua/master/package.nls.json
+    commit: 76ad79d8bf3260a78ce6ab3d967e27c39261dc95
+    sha256: 2af236691d528c9eb37a512fc6d2406c7dc02b8dc428da2fdf165d9cceab5f65
+  - url: https://raw.githubusercontent.com/Myriad-Dreamin/tinymist/refs/heads/main/editors/vscode/package.json
+    commit: 76cf472a357cf4fb371a0367411ab888cd987044
+    sha256: e539e949b9a56420e24013c166a3ce6cd8f315b3b907bbafb5ab4bbc5f351af5
+  - url: https://raw.githubusercontent.com/OmniSharp/omnisharp-vscode/master/package.json
+    commit: 4aefea395caf69ac95512f73ad75323ac7cb240c
+    sha256: 9c8cac331a5e238aa48b519a861ad076846f785590b6bb4e9afe03070f33f867
+  - url: https://raw.githubusercontent.com/PowerShell/vscode-powershell/main/package.json
+    commit: 03cf548e9ad04209e03e6153cc0443ac7120eac0
+    sha256: 84085bef5442a40d027410d15efcdd6e09ccf74923793ab0982a123c08a4e73b
+  - url: https://raw.githubusercontent.com/REditorSupport/vscode-r-lsp/master/package.json
+    commit: 7d193194aa4e0c2ee495f226130063eafc9ca9fc
+    sha256: aeedeb0ac80cce430d32850c0fce6f2ef90f95040d91426ff2ada63a10bdaca5
+  - url: https://raw.githubusercontent.com/Shopify/ruby-lsp/main/vscode/package.json
+    commit: ad2996afdfe7c414d7d753e2d1da9b3e0bb6d202
+    sha256: 860e239799a8279dc6e77327ae06c552a3da912acb6f653905ac49c8f718f583
+  - url: https://raw.githubusercontent.com/alanz/vscode-hie-server/master/package.json
+    commit: 094bb161a264227be068a0c1266d1add932c8f49
+    sha256: 7349b5b281aeaa736f49b660ada339f92a7495ab8a55cc7378f5bb5cecd581f2
+  - url: https://raw.githubusercontent.com/angular/angular/main/vscode-ng-language-service/package.json
+    commit: 8b15295e8c7f1543d41dadb5955279702be52c16
+    sha256: 3276ae37cc3c4515a5753f688ef454d7d56468016b115f1b5c3003f0b59a573a
+  - url: https://raw.githubusercontent.com/ansible/vscode-ansible/main/package.json
+    commit: 06adc560f6e042c2cf75357a5e062e9f77901368
+    sha256: f9a2014b6e85a9dbc48ab4a62d0fd568dddfbece084fa34ba79aad2c984ebc47
+  - url: https://raw.githubusercontent.com/astral-sh/ruff-vscode/main/package.json
+    commit: 43252ef411ac06e8cc9458065bf2831293ab1ca5
+    sha256: 76ba47f839ed88f7d293842d5ea23d326ae1a17f2178f3c3a7c8497ea449cd52
+  - url: https://raw.githubusercontent.com/astral-sh/ruff/main/ruff.schema.json
+    commit: cd2d973241d7f5bcba588e94cc686d9e356a4621
+    sha256: 8196faa512f7f7012227948b28049987149d5083c8f26a9e4dc8ecab95ed70e8
+  - url: https://raw.githubusercontent.com/aviatesk/jetls-vscode/refs/heads/master/package.json
+    commit: 76b78bfbbf2b4b6a2ded269fd289b6b6c67dcdd0
+    sha256: 334cceb56b480b0cd23e28a324b0910f31c73f39af2ae0dadb533b14c6e67abe
+  - url: https://raw.githubusercontent.com/bash-lsp/bash-language-server/master/vscode-client/package.json
+    commit: 97f19d2d2bd01793ac98184bd2d2a3d9c9ae3fe8
+    sha256: ed6db49ac500ee9c66948915231d8d9cfae3513aea022a12174a390750001722
+  - url: https://raw.githubusercontent.com/bmewburn/vscode-intelephense/master/package.json
+    commit: 8935a6dba162b36ea22137baa14934544ea7cd43
+    sha256: 09e8c3ad6d811c831040f70e711b8e3c31fdb5d00c0be38ce08af15fb98a77bd
+  - url: https://raw.githubusercontent.com/bscan/PerlNavigator/main/package.json
+    commit: 60360a31913316f58e196e8986dcc1447415d6cf
+    sha256: 821abc7a8fa7a98513724affcd80badc829ce758c7b858b745e057bbb105cf1d
+  - url: https://raw.githubusercontent.com/castwide/vscode-solargraph/master/package.json
+    commit: edb5afc72c84b0c06ddf4bffb6f0c85b2215232f
+    sha256: 730b679c8486a26fa77f1e80eaaf85e2f55c5bb46f8c98a37604cbf21e0fc01a
+  - url: https://raw.githubusercontent.com/clangd/vscode-clangd/master/package.json
+    commit: 4a6fe6386dd06745692662d1285d6ddccbe306a7
+    sha256: c5b6681b30052032541dcc161fe8709a42a5cbcc92d4c5a4b1b2382ec8e0d880
+  - url: https://raw.githubusercontent.com/denoland/vscode_deno/main/package.json
+    commit: a93c5fd2109381cf4723156db925b09141125c1c
+    sha256: 4f3b3854fc072e17606e932a9bc059d494004a0015a33b473439a6d9e1820f38
+  - url: https://raw.githubusercontent.com/eirikpre/VSCode-SystemVerilog/master/package.json
+    commit: cf034fb8637e0510f16789e63be4883449837cb7
+    sha256: 1017e46bcb866247b248af96aa13e804ee9469dd9805c13ea929fcd20ec38c5b
+  - url: https://raw.githubusercontent.com/elixir-lsp/vscode-elixir-ls/master/package.json
+    commit: 72c89d1cc38e9e4a4c54d6715e4372338df976e7
+    sha256: f3d0496d901bd4f094d899b371a5ba5440aa0c4344977fd559298babeb8a8da1
+  - url: https://raw.githubusercontent.com/elm-tooling/elm-language-client-vscode/master/package.json
+    commit: 3e5c74feb0a1866b9f660a14215fa88ee2cf298d
+    sha256: 255a630ff0283c4d6eb1820ee2e29cb8f04d7d45790a1d1226c96773fc967283
+  - url: https://raw.githubusercontent.com/flowtype/flow-for-vscode/master/package.json
+    commit: 361382723b6b09c21fcdbb3d9e3c561916d2a962
+    sha256: ce466bfe2a20a0eb02d7f34a1249ca91aea0d3153b94da0853fc622ad31af243
+  - url: https://raw.githubusercontent.com/fwcd/vscode-kotlin/master/package.json
+    commit: 4a7c1538754828c1d22a8bee8ff3400045b4352a
+    sha256: 2f53933cffb9125fda117b6b74b2f40f1bf6d814db0516d1ee4cc21fa63afe44
+  - url: https://raw.githubusercontent.com/georgewfraser/java-language-server/master/package.json
+    commit: 58daaa29a0e2fe22764283607da6801cf8b493b9
+    sha256: 4e62a0da0e67db0507cfc5d2b0f18b35e05056b9dccf7847a59846ec38127897
+  - url: https://raw.githubusercontent.com/golang/vscode-go/refs/heads/master/extension/package.json
+    commit: 3ab28d002229a06be6d3853ab23a4583ec173d6c
+    sha256: 9cd3c64320a05b7d989c9e7c088fed24ddd48b280e71be71de00c207d37d6981
+  - url: https://raw.githubusercontent.com/hashicorp/vscode-terraform/master/package.json
+    commit: 21755fa6378779af3402d6c9b23db3b2d0ef826a
+    sha256: ef5b4b6ad4696196eb9135d91e0e777a54102f424988c09292c6613bb2d2798d
+  - url: https://raw.githubusercontent.com/ionide/ionide-vscode-fsharp/main/release/package.json
+    commit: 12da8c46c3c6854ba46e93dd7b99dace14188a00
+    sha256: ba43c9e0d6ef4b340d940e8bc7a1efe266559b21dc1c9163cfb78fbde2389932
+  - url: https://raw.githubusercontent.com/joe-re/sql-language-server/release/package.json
+    commit: dbab8d8273f2580cb493c7d27f29ed39edccf99c
+    sha256: 46d37df8bd8e4922b7d21e6b1d91e293c03a4f0199b816c66dd491015dadb68d
+  - url: https://raw.githubusercontent.com/juanfranblanco/vscode-solidity/master/package.json
+    commit: 3757fdb6e9bd4202d0dfcca771b825c4d0c75062
+    sha256: 8f3a26ec4592086c24666f067bf90306d11dee02938e3a92ab94e72cd8966495
+  - url: https://raw.githubusercontent.com/julia-vscode/julia-vscode/master/package.json
+    commit: dbbc6e32b323fdd19f14b895ce012379c576b41e
+    sha256: 316361ec899205e4b862cfac2dd497b4f69b180852f8f69caf9aa0c11e53a1b2
+  - url: https://raw.githubusercontent.com/microsoft/pyright/master/packages/vscode-pyright/package.json
+    commit: 2981f9f1ce41be5c15667da1f7a3cfda4f245089
+    sha256: 7513dc22dc3d9fef229cf45a77db79eb15f4b4fa2714c6df13ac24355791a666
+  - url: https://raw.githubusercontent.com/microsoft/vscode-eslint/main/package.json
+    commit: c999730b195bd8dc3eaf58435de71b185cb35138
+    sha256: 7828be25521992eb27b7ee900de726c1f816cc4285d823d6c52e9dd2724ec6f2
+  - url: https://raw.githubusercontent.com/microsoft/vscode/main/extensions/css-language-features/package.json
+    commit: ddbdd50a9ed1f9dc32e4fbadcf950b290e7d35b4
+    sha256: 3248ae969682abc9cd463a25fc0ca5f0d28bdc6e20daa13a0bb91a04e3fbc187
+  - url: https://raw.githubusercontent.com/microsoft/vscode/main/extensions/css-language-features/package.nls.json
+    commit: ddbdd50a9ed1f9dc32e4fbadcf950b290e7d35b4
+    sha256: 3c9526bf7eb8a8a7daf54d98b571c313b7291740c95e23fddaa57872f3a20d67
+  - url: https://raw.githubusercontent.com/microsoft/vscode/main/extensions/html-language-features/package.json
+    commit: ddbdd50a9ed1f9dc32e4fbadcf950b290e7d35b4
+    sha256: cb3eb0dacb754977b66403067030228c6768cb7248ae323fffadeb0ce497604f
+  - url: https://raw.githubusercontent.com/microsoft/vscode/main/extensions/html-language-features/package.nls.json
+    commit: ddbdd50a9ed1f9dc32e4fbadcf950b290e7d35b4
+    sha256: 6471e57a3a3f5fca714044383e2930e4d51fd2417eb1ec5920323d5e3f51e955
+  - url: https://raw.githubusercontent.com/microsoft/vscode/main/extensions/typescript-language-features/package.json
+    commit: ddbdd50a9ed1f9dc32e4fbadcf950b290e7d35b4
+    sha256: 0340aefc463ed22bdb3c8389c71e18713b09cf2530bb0250a6733d7a3aec1918
+  - url: https://raw.githubusercontent.com/microsoft/vscode/main/extensions/typescript-language-features/package.nls.json
+    commit: ddbdd50a9ed1f9dc32e4fbadcf950b290e7d35b4
+    sha256: 70afd9ec1e8e36ee2437522f44eb3142e96328fca3ad9d92b0ad33e8d2559b47
+  - url: https://raw.githubusercontent.com/microsoft/vscode/master/extensions/json-language-features/package.json
+    commit: ddbdd50a9ed1f9dc32e4fbadcf950b290e7d35b4
+    sha256: b5b843888e49d67b6e62dcf094904d1fd7a25dd743c84bd26347819fc8230ac6
+  - url: https://raw.githubusercontent.com/microsoft/vscode/master/extensions/json-language-features/package.nls.json
+    commit: ddbdd50a9ed1f9dc32e4fbadcf950b290e7d35b4
+    sha256: 2fce07d98b43f4f859828c73ed0fbc3c32037453de7454b1c2e537cfa024dfdd
+  - url: https://raw.githubusercontent.com/nickel-lang/nickel/master/lsp/vscode-extension/package.json
+    commit: a9cd302cb6ffef865f6ae7fed30d4ba922abfb0b
+    sha256: ad7f44f7b8721ecf9acb88dc64b2eb120f6f7c910e0a5984e7161dff8da9c621
+  - url: https://raw.githubusercontent.com/nix-community/nixd/main/nixd/docs/nixd-schema.json
+    commit: 47d603c736a2fd3a424ddf38020df5dcc8aea696
+    sha256: 91ae1e2414ee579911b1d36142bd3f10ea63b3e775385472a69a77a0163de57d
+  - url: https://raw.githubusercontent.com/nvarner/typst-lsp/refs/heads/master/editors/vscode/package.json
+    commit: ebf6d6fc722dd579c2b8915182ad813445763bb7
+    sha256: 8712c217fbe64b71e208f983073fc0de3cada6e1cacaba58b25173e94621120d
+  - url: https://raw.githubusercontent.com/nwolverson/vscode-ide-purescript/master/package.json
+    commit: 7f1f8104b3572c42c8207d5a224dd14c229e9bbb
+    sha256: 43591b7203f8c5a2767007f70e0bd3e9e5212ac610fde3a5cf2242950f23d764
+  - url: https://raw.githubusercontent.com/oxalica/nil/main/editors/coc-nil/package.json
+    commit: 205c8ba65a7f956d7837a710794001b3515c65ff
+    sha256: 5720a22f1edc80df39851fcf0d5eccf4af3974c07ebb7b0945bb30d133f2aeb3
+  - url: https://raw.githubusercontent.com/pherrymason/c3-lsp/main/client/vscode/package.json
+    commit: 725b25e1018949b3c205045bb4c3b7f850227ef2
+    sha256: 51306574ad5745e313f610edb9437b44f1ae5e50873ce2ecca3dab72cd18e949
+  - url: https://raw.githubusercontent.com/psalm/psalm-vscode-plugin/master/package.json
+    commit: a3ea0ee8ee2145c73c2b0d41212f32e37764a211
+    sha256: dc569a20c947c36fbef946135796295d1fd03ba2c29e717d30a399300e2a0908
+  - url: https://raw.githubusercontent.com/puppetlabs/puppet-vscode/main/package.json
+    commit: 49f4b56f163499a35d028906bbbbf0e3c98a7e76
+    sha256: 341c93c1c4f0b242c01014148db6647ddb0cbe76dbd9652c9d940118c7a28319
+  - url: https://raw.githubusercontent.com/python-lsp/python-lsp-server/develop/pylsp/config/schema.json
+    commit: a3620069a607a63ed52569fde188e9301feae93a
+    sha256: 32e895600a01606167b75e000d0c2d1db635d3f1208d2375d056bbb00d36ce34
+  - url: https://raw.githubusercontent.com/redhat-developer/vscode-java/master/package.json
+    commit: 7d6e9222f55318839e728d362802981d3a4168e9
+    sha256: cb596a026fb910253a315e0b2b2df27fd3908b591feb43305c7ae54c1117b356
+  - url: https://raw.githubusercontent.com/redhat-developer/vscode-yaml/master/package.json
+    commit: bdfe22606258975b2dd5dd0a47ff4b7cf127ebdb
+    sha256: c9c7eb7986719f5dc668a10b9cbc2a845ac8c4cbcdb7c93ce448aef4139e5e51
+  - url: https://raw.githubusercontent.com/rescript-lang/rescript-vscode/master/package.json
+    commit: 76d30468cb05401c10dd1e9dcf5a2993f8fc7140
+    sha256: 26c773346c40a6113017b5db158e3537bc8164b35fafff91c758fd09f5c90a9e
+  - url: https://raw.githubusercontent.com/richterger/Perl-LanguageServer/master/clients/vscode/perl/package.json
+    commit: 2ba4cb235246950f3157ffefa02cf4af9defd452
+    sha256: 5aa2456d8436740ebd0b2215714359f4288e479a342021bdb5a5d4ffcffeb03a
+  - url: https://raw.githubusercontent.com/rome/tools/main/editors/vscode/package.json
+    commit: 392d188a49d70e495f13b1bb08cd7d9c43690f9b
+    sha256: f7328fd15612ff02044386c219ade82b3821b21fb7f6f224c7d028b9d7fbfa96
+  - url: https://raw.githubusercontent.com/rust-analyzer/rust-analyzer/master/editors/code/package.json
+    commit: a9a08a23cbf507eb8ceeb2d7443b67fd7a25ddbb
+    sha256: 7be6964e26d2160bfac334e32eebf086b7732c6465b7e9cfc38dcfc304033b84
+  - url: https://raw.githubusercontent.com/slackhq/vscode-hack/master/package.json
+    commit: 264314b7ece459b0b2ec4cec50063ff6939a2aa5
+    sha256: c16fa0abbf33dff4a78a0f9c54794aa93b891893c71e6bfb5949075af1f7f606
+  - url: https://raw.githubusercontent.com/sorbet/sorbet/master/vscode_extension/package.json
+    commit: dcd94bb1af09dbcfc8707071ac006f3b142dd7c3
+    sha256: 2d286d711e25fc2cde085079df276a1bcc5e64374dd40df3004e29e7ec5b7464
+  - url: https://raw.githubusercontent.com/stoplightio/vscode-spectral/master/package.json
+    commit: 98944818712f6d0c4909d5b2e1950dab8160fa97
+    sha256: 238111595f0e9a15ea5ad69b68ffc67c6906815247401b7862a3605686830196
+  - url: https://raw.githubusercontent.com/stylelint/vscode-stylelint/main/package.json
+    commit: 03bcbe137e1f70315701ec7bdc03ac891472ba26
+    sha256: c5e2161305e50377f6aa9271fced0d222df1abf05bc1869a9c919d9990f27728
+  - url: https://raw.githubusercontent.com/sveltejs/language-tools/master/packages/svelte-vscode/package.json
+    commit: 1c895e980e2f5f1bd2247d19d395f2050e072f60
+    sha256: bb7dab9e155940f12e81b6997406b9354dd74bb8c34c408363af259e5e4afe38
+  - url: https://raw.githubusercontent.com/swift-server/vscode-swift/main/package.json
+    commit: 5d15ea4a0af738273d4d4ee4d6d0cd55dcdb48ed
+    sha256: 5e0b4c58af5ccea175afa1149ec958648910a9ee8c8ff7469b80c702656a0c78
+  - url: https://raw.githubusercontent.com/tailwindlabs/tailwindcss-intellisense/master/packages/vscode-tailwindcss/package.json
+    commit: 5067ff7ec0b4b8bb5c3325a69c1f3410eb5b350a
+    sha256: 1f729141cc88db8316529eed31885641d46e51262d21df38e3e68ea3da6d3541
+  - url: https://raw.githubusercontent.com/tombi-toml/tombi/refs/heads/main/www.schemastore.org/tombi.json
+    commit: 1c2b39c43db4a3b1e23088a62c1e3f660445452a
+    sha256: 0153e9b9cd9e844ba5c3f38a61659d98cf20edf0fbd35454e1b187bb88d303b7
+  - url: https://raw.githubusercontent.com/valentjn/vscode-ltex/develop/package.json
+    commit: 74484ff6e0f1f810fc24d57ba51286c347b31cf3
+    sha256: 10bdb4a6d2a9b1b18514c1db67200d7cf6b6cfd728b7eeeae851af098d5c24cb
+  - url: https://raw.githubusercontent.com/valentjn/vscode-ltex/develop/package.nls.json
+    commit: 74484ff6e0f1f810fc24d57ba51286c347b31cf3
+    sha256: 42ff29043b25710c97bed218b556fcd2adf14bf6023e54bbd85d427234e38846
+  - url: https://raw.githubusercontent.com/vuejs/vetur/master/package.json
+    commit: 96aaa707f8ca629f0883c57a47adb0e58995936d
+    sha256: c2a98458ebfc1befe16e1de2e84cc6d543958ec6836a50d8ce7989e29b5f9a81
+  - url: https://raw.githubusercontent.com/withastro/astro/main/packages/language-tools/vscode/package.json
+    commit: c302892e4a2434fb4d8e66702576f5406e63d986
+    sha256: 81fca31023cc82203df17b108a992e4ee67cf021f117608d240663073d4070c0
+  - url: https://raw.githubusercontent.com/yioneko/vtsls/main/packages/service/configuration.schema.json
+    commit: 44fbc410a3590d9e92cd72a8b350aea8314e3749
+    sha256: 57d2bbee1f7a6d4073ad657af1ddbb0a83089e1367c960dbdb1d8ebccaed9a18
+  - url: https://raw.githubusercontent.com/zigtools/zls/master/schema.json
+    commit: e0911cd1ca5a48060c209c242ea3775dcd2a74e2
+    sha256: a097b6c3765ab2982262f03297c39c20039a9bbd7155eacc33dd24c955ebfc7b
+  - url: https://raw.githubusercontent.com/znck/grammarly/main/extension/package.json
+    commit: a81aac2c7da571abdb3c22a3dbb5de254af62562
+    sha256: 7bc6ddbf044ddb30ffabefbeb400b59507ea1069d2856d7a4106ad7dc6f13e5a

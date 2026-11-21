@@ -11,11 +11,12 @@ import { readLinters } from "./sources/lint.mjs";
 import { readNoneLs } from "./sources/nonels.mjs";
 import { filetypesFor, linguistLookup, nameByExtension, relatedFiletypes, supplementFromLinguist } from "./sources/linguist.mjs";
 import { readServers } from "./sources/lspconfig.mjs";
+import { INDEX_PATH, readSettingsSchemas } from "./sources/settings.mjs";
 import { buildPackages } from "./sources/mason.mjs";
 
 export const SCHEMA_VERSION = 2;
 export const KINDS = { server: "servers", formatter: "formatters", linter: "linters", debugger: "debuggers" };
-export const OUTPUTS = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes"].map((name) => `tools/${name}.yaml`);
+export const OUTPUTS = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes", "settings_sources"].map((name) => `tools/${name}.yaml`);
 
 export const LANGUAGES_FILE = "tools/overrides/filetypes.yaml";
 
@@ -86,7 +87,13 @@ const withLanguages = (entries, packages, lookup, declared = new Map()) => {
   return { entries: out, missed };
 };
 
-export async function generate(upstreams, { retryMissing = false } = {}) {
+const SETTINGS_LOCK = "tools/settings_sources.yaml";
+
+export const settingsPinned = () => existsSync(join(ROOT, SETTINGS_LOCK));
+
+const previousSettingsPins = () => new Map(settingsPinned() ? (readYaml(SETTINGS_LOCK).sources ?? []).map((pin) => [pin.url, { commit: pin.commit, sha256: pin.sha256 }]) : []);
+
+export async function generate(upstreams, { retryMissing = false, repin = false } = {}) {
   const { mason, sources } = upstreams;
   const registry = await masonRegistry(mason);
   const built = await buildPackages(registry, {
@@ -132,6 +139,10 @@ export async function generate(upstreams, { retryMissing = false } = {}) {
   const merged = Object.fromEntries(
     Object.entries(generated).map(([kind, entries]) => [kind, entries.map((entry) => (overrides[kind].has(entry.id) ? deepMerge(entry, overrides[kind].get(entry.id).value) : entry))]),
   );
+  const indexLua = archives.lspconfig.get(INDEX_PATH)?.toString("utf8");
+  if (!indexLua) throw new Error(`nvim-lspconfig ${sources.lspconfig.sha} has no ${INDEX_PATH}`);
+  const settings = await readSettingsSchemas(indexLua, new Set(merged.server.map((entry) => entry.id)), { known: previousSettingsPins(), repin });
+  merged.server = merged.server.map((entry) => (settings.schemas.has(entry.id) ? { ...entry, settings_schema: settings.schemas.get(entry.id) } : entry));
   const named = new Set([...merged.server, ...merged.debugger].flatMap((entry) => entry.filetypes ?? []));
   for (const entry of [...merged.formatter, ...merged.linter]) for (const type of entry.filetypes ?? []) named.add(type);
   filetypeSummary.named_by_extension = nameByExtension(table, named);
@@ -179,11 +190,13 @@ export async function generate(upstreams, { retryMissing = false } = {}) {
     ["tools/formatters.yaml", dump({ ...header(sources.conform), formatters: merged.formatter })],
     ["tools/linters.yaml", dump({ ...header(sources.lint), linters: merged.linter })],
     ["tools/debuggers.yaml", dump({ ...header(sources.dap), debuggers: merged.debugger })],
+    ["tools/settings_sources.yaml", dump({ ...header(sources.lspconfig), sources: [...settings.pins].sort(([a], [b]) => byText(a, b)).map(([url, pin]) => ({ url, commit: pin.commit, sha256: pin.sha256 })) })],
     ["tools/filetypes.yaml", dump({ ...header(sources.neovim), filetypes: filetypeEntries(table, [...named], related, readYaml(LANGUAGES_FILE).filetypes) })],
   ]);
   const summary = {
     packages: built.summary,
     servers: servers.summary,
+    settings_schemas: { built: settings.schemas.size, skipped: settings.skipped },
     formatters: formatters.summary,
     linters: linters.summary,
     debuggers: debuggers.summary,
