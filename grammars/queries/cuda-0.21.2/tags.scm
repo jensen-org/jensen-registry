@@ -1,0 +1,10 @@
+(class_specifier name: (_) @name) @definition.class
+(enum_specifier name: (_) @name) @definition.type
+(module_declaration name: (_) @name) @definition.module
+(namespace_alias_definition name: (_) @name) @definition.module
+(namespace_definition name: (_) @name) @definition.module
+(optional_type_parameter_declaration name: (_) @name) @definition.type
+(preproc_def name: (_) @name) @definition.function
+(preproc_function_def name: (_) @name) @definition.function
+(struct_specifier name: (_) @name) @definition.type
+(union_specifier name: (_) @name) @definition.type

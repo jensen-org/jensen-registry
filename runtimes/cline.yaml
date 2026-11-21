@@ -1,0 +1,24 @@
+id: cline
+label: Cline
+tier: 2
+program: cline
+docs:
+  - https://cline.bot/cli
+  - https://agentclientprotocol.com/get-started/registry
+config_dir: .cline
+acp_registry: cline
+acp:
+  program: cline
+  args:
+    - --acp
+  requires:
+    - node
+  install:
+    label: Install Cline
+    commands:
+      - npm install -g cline
+    docs_url: https://cline.bot/cli
+mcp:
+  via: session
+skills:
+  mode: none

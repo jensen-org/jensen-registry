@@ -1,0 +1,42 @@
+id: antigravity
+label: Antigravity CLI
+tier: 1
+program: agy
+docs:
+  - https://antigravity.google/docs/cli/acp.md
+config_dir: .gemini/antigravity-cli
+acp_registry: antigravity-acp
+acp:
+  program: agy
+  args:
+    - acp
+  install:
+    label: Install Antigravity CLI
+    commands: []
+    docs_url: https://antigravity.google/docs/install
+mcp:
+  via: session
+skills:
+  mode: agents
+launch:
+  writable_root_flag: --include-directories
+  print_args:
+    - -p
+assets:
+  skills:
+    - scope: project
+      dir: .agents/skills
+      origin: agents
+      native: false
+    - scope: user
+      dir: .agents/skills
+      origin: agents
+      native: false
+  mcp:
+    - scope: project
+      path: .mcp.json
+      shape: mcp_servers
+      origin: mcp
+      native: false
+  guidance:
+    - AGENTS.md

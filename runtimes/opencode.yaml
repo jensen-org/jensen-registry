@@ -1,0 +1,113 @@
+id: opencode
+label: OpenCode
+tier: 1
+program: opencode
+docs:
+  - https://opencode.ai/docs/cli
+config_dir: .config/opencode
+acp_registry: opencode-v2
+acp:
+  program: opencode
+  args:
+    - acp
+  env:
+    OPENCODE_DISABLE_AUTOUPDATE: "1"
+    OPENCODE_DISABLE_LSP_DOWNLOAD: "1"
+  ready:
+    args:
+      - acp
+      - --help
+    contains: Agent Client Protocol
+  login:
+    - auth
+    - login
+  install:
+    label: Install OpenCode
+    commands:
+      - curl -fsSL https://opencode.ai/install | bash
+      - npm install -g opencode-ai
+    docs_url: https://opencode.ai/docs
+mcp:
+  via: session
+skills:
+  mode: agents
+launch:
+  writable_root_flag: --add-dir
+  print_args:
+    - run
+  prompt_flag: --prompt
+  document:
+    variable: OPENCODE_CONFIG_CONTENT
+    document: '{"agent":{"ask":{"description":"Ask before editing files or running commands","mode":"primary","permission":{"edit":"ask","bash":"ask"}}}}'
+transcript:
+  format: opencode_sqlite
+  locations:
+    - root: .local/share/opencode
+      pattern: opencode.db
+assets:
+  skills:
+    - scope: project
+      dir: .opencode/skills
+      origin: opencode
+      native: true
+    - scope: project
+      dir: .claude/skills
+      origin: claude
+      native: true
+    - scope: project
+      dir: .agents/skills
+      origin: agents
+      native: true
+    - scope: user
+      dir: .config/opencode/skills
+      origin: opencode
+      native: true
+    - scope: user
+      dir: .claude/skills
+      origin: claude
+      native: true
+    - scope: user
+      dir: .agents/skills
+      origin: agents
+      native: true
+  commands:
+    - scope: project
+      dir: .opencode/commands
+      origin: opencode
+      native: true
+    - scope: user
+      dir: .config/opencode/commands
+      origin: opencode
+      native: true
+  agents:
+    - scope: project
+      dir: .opencode/agents
+      origin: opencode
+      native: true
+    - scope: user
+      dir: .config/opencode/agents
+      origin: opencode
+      native: true
+  mcp:
+    - scope: project
+      path: opencode.json
+      shape: opencode
+      origin: opencode
+      native: true
+    - scope: project
+      path: opencode.jsonc
+      shape: opencode
+      origin: opencode
+      native: true
+    - scope: user
+      path: .config/opencode/opencode.json
+      shape: opencode
+      origin: opencode
+      native: true
+    - scope: project
+      path: .mcp.json
+      shape: mcp_servers
+      origin: mcp
+      native: false
+  guidance:
+    - AGENTS.md

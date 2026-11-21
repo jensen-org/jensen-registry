@@ -1,0 +1,1 @@
+{"icnf":{"servers":["dolmenls"]},"idris2":{"servers":["idris2_lsp"]},"imba":{"formatters":["imba_fmt"]},"indent":{"formatters":["indent","ocp-indent"]},"inko":{"formatters":["inko"],"linters":["inko"]}}

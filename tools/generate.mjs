@@ -5,7 +5,7 @@ import { ROOT, dump, entryFiles, readYaml } from "../lib.mjs";
 import { readFormatters } from "./sources/conform.mjs";
 import { byText } from "./sources/common.mjs";
 import { readDebuggers } from "./sources/dap.mjs";
-import { masonRegistry, rawText, releaseDigests, repoFiles } from "./sources/fetch.mjs";
+import { hashicorpDigests, masonRegistry, rawText, releaseDigests, repoFiles } from "./sources/fetch.mjs";
 import { filetypeEntries, readFiletypes } from "./sources/filetype.mjs";
 import { readLinters } from "./sources/lint.mjs";
 import { readNoneLs } from "./sources/nonels.mjs";
@@ -17,6 +17,8 @@ import { buildPackages } from "./sources/mason.mjs";
 export const SCHEMA_VERSION = 2;
 export const KINDS = { server: "servers", formatter: "formatters", linter: "linters", debugger: "debuggers" };
 export const OUTPUTS = ["packages", "servers", "formatters", "linters", "debuggers", "filetypes", "settings_sources"].map((name) => `tools/${name}.yaml`);
+
+export const LANGUAGES_FILE = "tools/overrides/filetypes.yaml";
 
 export function deepMerge(base, override) {
   if (Array.isArray(override) || !override || typeof override !== "object") return override;
@@ -32,6 +34,13 @@ export function loadOverrides() {
   }
   return overrides;
 }
+
+export function requiresOf(pkg, programs) {
+  const found = new Set([programs.get(pkg.source), ...Object.values(pkg.bin ?? {}).map((bin) => programs.get(bin.client))].filter(Boolean));
+  return found.size ? [...found].sort(byText) : undefined;
+}
+
+const clientPrograms = () => new Map(entryFiles("clients").map((path) => readYaml(path)).map((client) => [client.id, client.requires?.program]));
 
 const previousDigests = (retryMissing) => {
   const known = new Map();
@@ -82,13 +91,20 @@ const SETTINGS_LOCK = "tools/settings_sources.yaml";
 
 export const settingsPinned = () => existsSync(join(ROOT, SETTINGS_LOCK));
 
-const previousSettingsPins = () => new Map(settingsPinned() ? (readYaml(SETTINGS_LOCK).sources ?? []).map((pin) => [pin.url, pin.sha256]) : []);
+const previousSettingsPins = () => new Map(settingsPinned() ? (readYaml(SETTINGS_LOCK).sources ?? []).map((pin) => [pin.url, { commit: pin.commit, sha256: pin.sha256 }]) : []);
 
 export async function generate(upstreams, { retryMissing = false, repin = false } = {}) {
   const { mason, sources } = upstreams;
   const registry = await masonRegistry(mason);
-  const built = await buildPackages(registry, { digests: (repo, tag) => releaseDigests(repo, tag), known: previousDigests(retryMissing) });
-  const { packages } = built;
+  const built = await buildPackages(registry, {
+    digests: { github: releaseDigests, hashicorp: hashicorpDigests },
+    known: previousDigests(retryMissing),
+  });
+  const programs = clientPrograms();
+  const packages = built.packages.map((pkg) => {
+    const requires = requiresOf(pkg, programs);
+    return requires ? { ...pkg, requires } : pkg;
+  });
   const archives = Object.fromEntries(
     await Promise.all(["lspconfig", "conform", "lint", "dap", "nonels"].map(async (name) => [name, await repoFiles(sources[name].repo, sources[name].sha)])),
   );
@@ -174,8 +190,8 @@ export async function generate(upstreams, { retryMissing = false, repin = false 
     ["tools/formatters.yaml", dump({ ...header(sources.conform), formatters: merged.formatter })],
     ["tools/linters.yaml", dump({ ...header(sources.lint), linters: merged.linter })],
     ["tools/debuggers.yaml", dump({ ...header(sources.dap), debuggers: merged.debugger })],
-    ["tools/settings_sources.yaml", dump({ ...header(sources.lspconfig), sources: [...settings.pins].sort(([a], [b]) => byText(a, b)).map(([url, digest]) => ({ url, sha256: digest })) })],
-    ["tools/filetypes.yaml", dump({ ...header(sources.neovim), filetypes: filetypeEntries(table, [...named], related) })],
+    ["tools/settings_sources.yaml", dump({ ...header(sources.lspconfig), sources: [...settings.pins].sort(([a], [b]) => byText(a, b)).map(([url, pin]) => ({ url, commit: pin.commit, sha256: pin.sha256 })) })],
+    ["tools/filetypes.yaml", dump({ ...header(sources.neovim), filetypes: filetypeEntries(table, [...named], related, readYaml(LANGUAGES_FILE).filetypes) })],
   ]);
   const summary = {
     packages: built.summary,

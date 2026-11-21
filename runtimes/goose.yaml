@@ -1,0 +1,51 @@
+id: goose
+label: Goose
+tier: 1
+program: goose
+docs:
+  - https://goose-docs.ai/docs/guides/acp-clients
+config_dir: .config/goose
+acp:
+  program: goose
+  args:
+    - acp
+  install:
+    label: Install Goose
+    commands:
+      - curl -fsSL https://github.com/block/goose/releases/download/stable/download_cli.sh | bash
+    docs_url: https://goose-docs.ai/docs/getting-started/installation
+mcp:
+  via: session
+skills:
+  mode: none
+launch:
+  print_args:
+    - run
+    - -t
+transcript:
+  format: goose_sqlite
+  locations:
+    - root: .local/share/goose
+      env: GOOSE_PATH_ROOT
+      pattern: data/sessions/sessions.db
+    - root: .local/share
+      env: XDG_DATA_HOME
+      pattern: goose/sessions/sessions.db
+assets:
+  skills:
+    - scope: project
+      dir: .agents/skills
+      origin: agents
+      native: false
+    - scope: user
+      dir: .agents/skills
+      origin: agents
+      native: false
+  mcp:
+    - scope: project
+      path: .mcp.json
+      shape: mcp_servers
+      origin: mcp
+      native: false
+  guidance:
+    - AGENTS.md

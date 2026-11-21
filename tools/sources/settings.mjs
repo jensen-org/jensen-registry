@@ -1,4 +1,4 @@
-import { getBytes, sha256 } from "../../lib.mjs";
+import { getBytes, github, sha256 } from "../../lib.mjs";
 
 export const INDEX_PATH = "scripts/gen_json_schemas.lua";
 export const DESCRIPTION_LIMIT = 300;
@@ -96,15 +96,38 @@ export function localized(node, table) {
 
 const siblingNls = (url) => url.replace(/package\.json$/, "package.nls.json");
 
-async function download(url, known, repin, fetchBytes) {
-  const bytes = await fetchBytes(url);
-  const digest = sha256(bytes);
-  if (known.has(url) && known.get(url) !== digest && !repin) throw new Error(`${url} changed since it was pinned, run npm run track`);
-  if (!known.has(url) && !repin) throw new Error(`${url} is not pinned, run npm run track`);
-  return { bytes, digest };
+const RAW = /^https:\/\/raw\.githubusercontent\.com\/([^/]+)\/([^/]+)\/(?:refs\/heads\/)?([^/]+)\/(.+)$/;
+
+export function pinnedUrl(url, commit) {
+  const hit = RAW.exec(url);
+  if (!hit) throw new Error(`${url} is not a raw.githubusercontent.com url`);
+  return `https://raw.githubusercontent.com/${hit[1]}/${hit[2]}/${commit}/${hit[4]}`;
 }
 
-export async function readSettingsSchemas(lua, ids, { known = new Map(), repin = false, fetchBytes = getBytes } = {}) {
+export async function headCommit(url) {
+  const hit = RAW.exec(url);
+  if (!hit) throw new Error(`${url} is not a raw.githubusercontent.com url`);
+  const repo = `/repos/${hit[1]}/${hit[2]}`;
+  try {
+    return (await github(`${repo}/commits/${hit[3]}`)).sha;
+  } catch (error) {
+    if (error.status !== 422 && error.status !== 404) throw error;
+    // raw.githubusercontent keeps serving a renamed default branch, the commits API does not
+    return (await github(`${repo}/commits/${(await github(repo)).default_branch}`)).sha;
+  }
+}
+
+async function download(url, known, repin, { fetchBytes, resolveCommit }) {
+  const pin = known.get(url);
+  if (!pin && !repin) throw new Error(`${url} is not pinned, run npm run track`);
+  const commit = repin ? await resolveCommit(url) : pin.commit;
+  const bytes = await fetchBytes(pinnedUrl(url, commit));
+  const digest = sha256(bytes);
+  if (pin && !repin && pin.sha256 !== digest) throw new Error(`${url} at ${commit} no longer matches its pinned sha256`);
+  return { bytes, pin: { commit, sha256: digest } };
+}
+
+export async function readSettingsSchemas(lua, ids, { known = new Map(), repin = false, fetchBytes = getBytes, resolveCommit = headCommit } = {}) {
   const index = readIndex(lua);
   const wanted = [...index].filter(([id]) => ids.has(id)).sort(([a], [b]) => (a < b ? -1 : 1));
   const built = new Map();
@@ -113,12 +136,12 @@ export async function readSettingsSchemas(lua, ids, { known = new Map(), repin =
   await Promise.all(
     wanted.map(async ([id, source]) => {
       try {
-        const page = await download(source.url, known, repin, fetchBytes);
-        pins.set(source.url, page.digest);
+        const page = await download(source.url, known, repin, { fetchBytes, resolveCommit });
+        pins.set(source.url, page.pin);
         let nls;
         if (source.translate) {
-          const table = await download(siblingNls(source.url), known, repin, fetchBytes);
-          pins.set(siblingNls(source.url), table.digest);
+          const table = await download(siblingNls(source.url), known, repin, { fetchBytes, resolveCommit });
+          pins.set(siblingNls(source.url), table.pin);
           nls = JSON.parse(table.bytes.toString("utf8"));
         }
         built.set(id, settingsSchema(JSON.parse(page.bytes.toString("utf8")), { prefix: source.prefix, nls }));

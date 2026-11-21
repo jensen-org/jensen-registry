@@ -1,0 +1,47 @@
+id: pi
+label: Pi
+tier: 1
+program: pi
+docs:
+  - https://github.com/svkozak/pi-acp
+config_dir: .pi
+acp:
+  program: pi-acp
+  requires:
+    - node
+    - pi
+  install:
+    label: Install the Pi ACP adapter
+    commands:
+      - npm install -g @mariozechner/pi-coding-agent pi-acp
+    docs_url: https://github.com/svkozak/pi-acp
+mcp:
+  via: session
+skills:
+  mode: none
+launch:
+  print_args:
+    - -p
+transcript:
+  format: pi_session
+  locations:
+    - root: .pi/agent/sessions
+      pattern: '*/*_{session}.jsonl'
+assets:
+  skills:
+    - scope: project
+      dir: .agents/skills
+      origin: agents
+      native: false
+    - scope: user
+      dir: .agents/skills
+      origin: agents
+      native: false
+  mcp:
+    - scope: project
+      path: .mcp.json
+      shape: mcp_servers
+      origin: mcp
+      native: false
+  guidance:
+    - AGENTS.md

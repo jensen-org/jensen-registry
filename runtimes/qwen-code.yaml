@@ -1,0 +1,24 @@
+id: qwen-code
+label: Qwen Code
+tier: 2
+program: qwen
+docs:
+  - https://qwenlm.github.io/qwen-code-docs/en/users/overview
+  - https://agentclientprotocol.com/get-started/registry
+config_dir: .qwen
+acp_registry: qwen-code
+acp:
+  program: qwen
+  args:
+    - --acp
+  requires:
+    - node
+  install:
+    label: Install Qwen Code
+    commands:
+      - npm install -g @qwen-code/qwen-code
+    docs_url: https://qwenlm.github.io/qwen-code-docs/en/users/overview
+mcp:
+  via: session
+skills:
+  mode: none

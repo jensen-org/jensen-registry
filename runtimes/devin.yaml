@@ -1,0 +1,21 @@
+id: devin
+label: Devin CLI
+tier: 2
+program: devin
+docs:
+  - https://docs.devin.ai/cli
+  - https://agentclientprotocol.com/get-started/registry
+config_dir: .devin
+acp_registry: devin
+acp:
+  program: devin
+  args:
+    - acp
+  install:
+    label: Install Devin CLI
+    commands: []
+    docs_url: https://docs.devin.ai/cli
+mcp:
+  via: session
+skills:
+  mode: none

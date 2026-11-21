@@ -1,0 +1,4 @@
+root_markers:
+  - "*.hxml"
+  - haxelib.json
+  - .git

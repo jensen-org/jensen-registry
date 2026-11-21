@@ -1,1 +1,12 @@
 priority: -10
+root_markers:
+  - eslint.config.js
+  - eslint.config.mjs
+  - eslint.config.cjs
+  - eslint.config.ts
+  - .eslintrc
+  - .eslintrc.json
+  - .eslintrc.js
+  - .eslintrc.cjs
+  - .eslintrc.yaml
+  - .eslintrc.yml

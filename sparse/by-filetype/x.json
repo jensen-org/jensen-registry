@@ -1,0 +1,1 @@
+{"xdc":{"servers":["tclsp"]},"xhtml":{"servers":["ltex","ltex_plus"]},"xml":{"servers":["lemminx","vale_ls"],"formatters":["xmlformatter","xmllint"],"linters":["tidy"],"packages":["lemminx","sonarlint-language-server","xmlformatter"]},"xsd":{"servers":["lemminx"]},"xsl":{"servers":["lemminx"]},"xslt":{"servers":["lemminx"]}}

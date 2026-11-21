@@ -133,6 +133,20 @@ export function normalizePackage(pkg, { miss }) {
   });
 }
 
+const HASHICORP_RELEASE_URL = /^https:\/\/releases\.hashicorp\.com\/([^/]+)\/([^/]+)\/([^/]+)$/;
+
+function hashicorpRelease(url) {
+  const match = HASHICORP_RELEASE_URL.exec(url);
+  return match ? { product: match[1], version: match[2], name: match[3] } : null;
+}
+
+async function digestFor(pkg, file, digests) {
+  const release = hashicorpRelease(file.url);
+  if (release) return (await digests.hashicorp(release.product, release.version)).get(release.name);
+  if (pkg.source === "github") return (await digests.github(pkg.coordinate, pkg.version)).get(file.name);
+  return undefined;
+}
+
 export async function buildPackages(registry, { digests, known = new Map(), concurrency = 4 }) {
   const misses = [];
   const miss = (message) => misses.push(message);
@@ -143,8 +157,7 @@ export async function buildPackages(registry, { digests, known = new Map(), conc
   const worker = async () => {
     while (cursor < packages.length) {
       const pkg = packages[cursor++];
-      if (pkg.source !== "github") continue;
-      for (const artifact of pkg.artifacts) {
+      for (const artifact of pkg.artifacts ?? []) {
         for (const file of artifact.files ?? []) {
           if (!file.url) continue;
           if (known.has(file.url)) {
@@ -153,7 +166,7 @@ export async function buildPackages(registry, { digests, known = new Map(), conc
             else unhashed += 1;
             continue;
           }
-          const found = (await digests(pkg.coordinate, pkg.version)).get(file.name);
+          const found = await digestFor(pkg, file, digests);
           if (found) file.sha256 = found;
           else unhashed += 1;
         }

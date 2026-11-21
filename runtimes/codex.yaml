@@ -1,0 +1,82 @@
+id: codex
+label: Codex
+tier: 1
+program: codex
+docs:
+  - https://developers.openai.com/codex/cli
+config_dir: .codex
+acp_registry: codex-acp
+acp:
+  program: codex-acp
+  requires:
+    - node
+  install:
+    label: Install the Codex adapter
+    commands:
+      - npm install -g @agentclientprotocol/codex-acp
+    docs_url: https://github.com/agentclientprotocol/codex-acp
+mcp:
+  via: command
+  add:
+    - mcp
+    - add
+    - jensen
+    - --
+    - "{bin}"
+    - bridge
+    - .
+  config: .codex/config.toml
+  format: toml
+skills:
+  mode: agents
+guidance:
+  file: AGENTS.md
+hooks: codex
+launch:
+  writable_root_flag: --add-dir
+  print_args:
+    - exec
+  positional_prompt: true
+transcript:
+  format: codex_rollout
+  locations:
+    - root: .codex
+      env: CODEX_HOME
+      pattern: 'sessions/*/*/*/rollout-*-{session}.jsonl'
+assets:
+  skills:
+    - scope: project
+      dir: .agents/skills
+      origin: agents
+      native: true
+    - scope: user
+      dir: .agents/skills
+      origin: agents
+      native: true
+    - scope: user
+      dir: .codex/skills
+      origin: codex
+      native: true
+  commands:
+    - scope: user
+      dir: .codex/prompts
+      origin: codex
+      native: true
+  mcp:
+    - scope: project
+      path: .codex/config.toml
+      shape: toml
+      origin: codex
+      native: true
+    - scope: user
+      path: .codex/config.toml
+      shape: toml
+      origin: codex
+      native: true
+    - scope: project
+      path: .mcp.json
+      shape: mcp_servers
+      origin: mcp
+      native: false
+  guidance:
+    - AGENTS.md

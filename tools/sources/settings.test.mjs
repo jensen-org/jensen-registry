@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { createHash } from "node:crypto";
 import { test } from "node:test";
-import { DESCRIPTION_LIMIT, localized, nest, prune, readIndex, readSettingsSchemas, settingsSchema } from "./settings.mjs";
+import { DESCRIPTION_LIMIT, localized, nest, pinnedUrl, prune, readIndex, readSettingsSchemas, settingsSchema } from "./settings.mjs";
 
 const lua = `local index = {
   rust_analyzer = 'https://raw.githubusercontent.com/rust-analyzer/rust-analyzer/master/editors/code/package.json',
@@ -96,40 +96,54 @@ const pages = {
   "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/package.json": JSON.stringify({ contributes: { configuration: { properties: { "Lua.runtime.version": { type: "string", description: "%lua.version%" } } } } }),
   "https://raw.githubusercontent.com/LuaLS/vscode-lua/master/package.nls.json": JSON.stringify({ "lua.version": "Runtime version" }),
 };
+const COMMIT = "a".repeat(40);
 const serve = (table) => async (url) => {
-  if (!(url in table)) throw new Error(`404 ${url}`);
-  return Buffer.from(table[url]);
+  const plain = url.replace(`/${COMMIT}/`, "/master/");
+  if (!(plain in table)) throw new Error(`404 ${url}`);
+  return Buffer.from(table[plain]);
 };
+const options = (table, extra = {}) => ({ fetchBytes: serve(table), resolveCommit: async () => COMMIT, ...extra });
+const ZLS = "https://raw.githubusercontent.com/zigtools/zls/master/schema.json";
+
+test("a branch url is rewritten to the commit it was read from", () => {
+  assert.equal(pinnedUrl(ZLS, COMMIT), `https://raw.githubusercontent.com/zigtools/zls/${COMMIT}/schema.json`);
+  assert.equal(pinnedUrl("https://raw.githubusercontent.com/a/b/refs/heads/main/x/y.json", COMMIT), `https://raw.githubusercontent.com/a/b/${COMMIT}/x/y.json`);
+  assert.throws(() => pinnedUrl("https://example.test/x.json", COMMIT), /not a raw.githubusercontent.com url/);
+});
 
 test("schemas are built for servers the registry has and the rest are reported skipped", async () => {
-  const { schemas, pins, skipped } = await readSettingsSchemas(lua, new Set(["rust_analyzer", "zls", "lua_ls"]), { repin: true, fetchBytes: serve(pages) });
+  const { schemas, pins, skipped } = await readSettingsSchemas(lua, new Set(["rust_analyzer", "zls", "lua_ls"]), options(pages, { repin: true }));
   assert.deepEqual([...schemas.keys()], ["lua_ls", "rust_analyzer", "zls"]);
   assert.equal(schemas.get("lua_ls").properties.Lua.properties.runtime.properties.version.description, "Runtime version");
   assert.equal(schemas.get("zls").properties.zls.properties.enable_snippets.type, "boolean");
   assert.deepEqual(skipped, ["gone"]);
   assert.equal(pins.size, 4);
-  assert.equal(pins.get("https://raw.githubusercontent.com/zigtools/zls/master/schema.json"), digest(pages["https://raw.githubusercontent.com/zigtools/zls/master/schema.json"]));
+  assert.deepEqual(pins.get(ZLS), { commit: COMMIT, sha256: digest(pages[ZLS]) });
 });
 
 test("a source that cannot be fetched fails the whole run and names it", async () => {
   const table = { ...pages };
-  delete table["https://raw.githubusercontent.com/zigtools/zls/master/schema.json"];
-  await assert.rejects(readSettingsSchemas(lua, new Set(["rust_analyzer", "zls"]), { repin: true, fetchBytes: serve(table) }), /zls \(https:\/\/raw.githubusercontent.com\/zigtools\/zls\/master\/schema.json\): 404/);
+  delete table[ZLS];
+  await assert.rejects(readSettingsSchemas(lua, new Set(["rust_analyzer", "zls"]), options(table, { repin: true })), /zls \(https:\/\/raw.githubusercontent.com\/zigtools\/zls\/master\/schema.json\): 404/);
 });
 
 test("a source that is not a settings document fails the whole run", async () => {
-  const table = { ...pages, "https://raw.githubusercontent.com/zigtools/zls/master/schema.json": "{}" };
-  await assert.rejects(readSettingsSchemas(lua, new Set(["zls"]), { repin: true, fetchBytes: serve(table) }), /zls .*no contributes.configuration/);
+  await assert.rejects(readSettingsSchemas(lua, new Set(["zls"]), options({ ...pages, [ZLS]: "{}" }, { repin: true })), /zls .*no contributes.configuration/);
 });
 
-test("a source that changed after it was pinned fails unless the run re-pins", async () => {
-  const url = "https://raw.githubusercontent.com/zigtools/zls/master/schema.json";
-  const known = new Map([[url, digest("old")]]);
-  await assert.rejects(readSettingsSchemas(lua, new Set(["zls"]), { known, fetchBytes: serve(pages) }), /changed since it was pinned/);
-  const fresh = await readSettingsSchemas(lua, new Set(["zls"]), { known, repin: true, fetchBytes: serve(pages) });
-  assert.equal(fresh.pins.get(url), digest(pages[url]));
+test("a pinned run reads the pinned commit and never asks for a new one", async () => {
+  const pinned = new Map([[ZLS, { commit: COMMIT, sha256: digest(pages[ZLS]) }]]);
+  const asked = [];
+  const run = await readSettingsSchemas(lua, new Set(["zls"]), { known: pinned, fetchBytes: async (url) => (asked.push(url), Buffer.from(pages[ZLS])), resolveCommit: async () => assert.fail("resolved a commit") });
+  assert.deepEqual(asked, [pinnedUrl(ZLS, COMMIT)]);
+  assert.equal(run.schemas.size, 1);
+});
+
+test("bytes that no longer match the pinned sha256 fail the run", async () => {
+  const pinned = new Map([[ZLS, { commit: COMMIT, sha256: digest("old") }]]);
+  await assert.rejects(readSettingsSchemas(lua, new Set(["zls"]), options(pages, { known: pinned })), /no longer matches its pinned sha256/);
 });
 
 test("a source that was never pinned fails unless the run re-pins", async () => {
-  await assert.rejects(readSettingsSchemas(lua, new Set(["zls"]), { fetchBytes: serve(pages) }), /is not pinned/);
+  await assert.rejects(readSettingsSchemas(lua, new Set(["zls"]), options(pages)), /is not pinned/);
 });

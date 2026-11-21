@@ -2,13 +2,6 @@ import { gunzipSync } from "fflate";
 import { dump, getBytes, getJson, readYaml, writeText } from "../lib.mjs";
 import { rawText, untar } from "../tools/sources/fetch.mjs";
 
-export const BATCH_DEFAULT = 6;
-
-export function batchLimit(value) {
-  const parsed = Number.parseInt(value ?? "", 10);
-  return Number.isInteger(parsed) && parsed > 0 ? parsed : BATCH_DEFAULT;
-}
-
 export const SOURCES_FILE = "grammars/sources.yaml";
 const PARSERS_FILE = "lua/nvim-treesitter/parsers.lua";
 const CRATES_PAUSE_MS = 1100;
@@ -28,18 +21,32 @@ export function parseParsers(lua) {
   return parsers;
 }
 
-export function wantedParsers(parsers, filetypes, skip = new Set()) {
+const detectable = (filetypes) => {
   const names = new Set();
   for (const filetype of filetypes.filetypes) {
     names.add(filetype.id);
     for (const related of filetype.related ?? []) names.add(related);
   }
-  return [...parsers].filter(([name, parser]) => names.has(name) && !skip.has(name) && parser.location === undefined);
+  return names;
+};
+
+export function wantedParsers(parsers, filetypes, skip = new Set()) {
+  const names = detectable(filetypes);
+  return [...parsers].filter(([name]) => names.has(name) && !skip.has(name));
 }
+
+export function undetectableParsers(parsers, filetypes, known = new Set(), skip = new Set()) {
+  const names = detectable(filetypes);
+  return [...parsers.keys()].filter((name) => !names.has(name) && !known.has(name) && !skip.has(name)).sort();
+}
+
+export const UNDETECTABLE = "no filetype of the catalog names this language, so nothing would select its grammar";
+
+const CRATE_ALIASES = { markdown: ["tree-sitter-md"], markdown_inline: ["tree-sitter-md"] };
 
 export function crateNames(name, parser) {
   const last = parser.url.replace(/\/$/, "").split("/").at(-1).replace(/\.git$/, "");
-  return [...new Set([last, `tree-sitter-${name.replace(/_/g, "-")}`])];
+  return [...new Set([last, `tree-sitter-${name.replace(/_/g, "-")}`, ...(CRATE_ALIASES[name] ?? [])])];
 }
 
 export function withDiscovered(sources, added) {
@@ -59,42 +66,37 @@ async function release(crate, parser) {
   return found.crate.max_stable_version ?? null;
 }
 
-async function buildsFromTheRoot(crate, version) {
+async function buildsFromTheRoot(crate, version, location) {
   const archive = await getBytes(`https://static.crates.io/crates/${crate}/${crate}-${version}.crate`);
-  return untar(gunzipSync(archive)).has("src/parser.c");
+  return untar(gunzipSync(archive)).has(location ? `${location}/src/parser.c` : "src/parser.c");
 }
 
-export async function resolveCrates(wanted, { known, limit, log }) {
+export async function resolveCrates(wanted, { known, log, lookup = release, builds = buildsFromTheRoot, pauseMs = CRATES_PAUSE_MS }) {
   const added = [];
   const skipped = [];
-  let deferred = 0;
   for (const [name, parser] of wanted) {
     if (known.has(name)) continue;
-    if (added.length >= limit) {
-      deferred += 1;
-      continue;
-    }
     let chosen = null;
     for (const crate of crateNames(name, parser)) {
-      await pause(CRATES_PAUSE_MS);
-      const version = await release(crate, parser);
+      await pause(pauseMs);
+      const version = await lookup(crate, parser);
       if (version) {
         chosen = { crate, version };
         break;
       }
     }
     if (!chosen) {
-      skipped.push(`${name}: no crates.io release published from ${parser.url}`);
+      skipped.push({ id: name, reason: `no crates.io release published from ${parser.url}` });
       continue;
     }
-    if (!(await buildsFromTheRoot(chosen.crate, chosen.version))) {
-      skipped.push(`${name}: ${chosen.crate} ${chosen.version} has no grammar at its root`);
+    if (!(await builds(chosen.crate, chosen.version, parser.location))) {
+      skipped.push({ id: name, reason: `${chosen.crate} ${chosen.version} has no grammar at ${parser.location ?? "its root"}` });
       continue;
     }
-    added.push({ id: name, ...chosen });
+    added.push({ id: name, ...chosen, ...(parser.location ? { path: parser.location } : {}) });
   }
-  log(`resolved ${added.length} grammars, left ${skipped.length} out, ${deferred} more wait for the next run`);
-  return { added, skipped, deferred };
+  log(`resolved ${added.length} grammars and left ${skipped.length} out`);
+  return { added, skipped };
 }
 
 export const skippedIds = (sources) => new Set((sources.skip ?? []).map((entry) => entry.id));
@@ -105,18 +107,13 @@ export async function loadCandidates(sources, only) {
   if (only) {
     const parser = parsers.get(only);
     if (!parser) throw new Error(`${only} is not a parser of ${sources.upstream.repo}`);
-    if (parser.location !== undefined) throw new Error(`${only} is built from a subfolder and cannot be seeded`);
-    return [[only, parser]];
+    return { wanted: [[only, parser]], undetectable: [] };
   }
-  return wantedParsers(parsers, readYaml("tools/filetypes.yaml"), skippedIds(sources));
-}
-
-export async function discoverGrammars({ log = console.log, limit = batchLimit(process.env.DISCOVER_BATCH) } = {}) {
-  const sources = readYaml(SOURCES_FILE);
-  const wanted = await loadCandidates(sources);
+  const filetypes = readYaml("tools/filetypes.yaml");
+  const skip = skippedIds(sources);
   const known = new Set(sources.grammars.map((grammar) => grammar.id));
-  const { added, skipped } = await resolveCrates(wanted, { known, limit, log });
-  if (added.length) writeText(SOURCES_FILE, dump(withDiscovered(sources, added)));
-  for (const line of skipped) log(`  skipped ${line}`);
-  return { added, skipped };
+  return {
+    wanted: wantedParsers(parsers, filetypes, skip),
+    undetectable: undetectableParsers(parsers, filetypes, known, skip).map((id) => ({ id, reason: UNDETECTABLE })),
+  };
 }
