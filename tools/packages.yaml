@@ -1,8 +1,8 @@
 schema_version: 2
 upstream:
   repo: mason-org/mason-registry
-  tag: 2026-11-20-mighty-betta
-  sha256: 78b81a1ae57270e9cf600f89f37aeb6b863ab2f198975eb532452c31175c56fc
+  tag: 2026-11-21-fickle-copy
+  sha256: 2de7f409ffd6105bb5b439457c90869ff01311b8b0c195d3d84a7a20364a36c5
 packages:
   - id: actionlint
     source: github
@@ -904,7 +904,7 @@ packages:
   - id: badness
     source: github
     coordinate: jolars/badness
-    version: v0.29.1
+    version: v0.30.0
     description: A language server, formatter, and linter for LaTeX
     homepage: https://badness.dev/
     languages:
@@ -923,64 +923,64 @@ packages:
           - darwin_arm64
         files:
           - name: badness-aarch64-apple-darwin.tar.gz
-            url: https://github.com/jolars/badness/releases/download/v0.29.1/badness-aarch64-apple-darwin.tar.gz
-            sha256: fc51978b2f06b29524315e47bbd180876f9343497164465732c16b1b36075ea8
+            url: https://github.com/jolars/badness/releases/download/v0.30.0/badness-aarch64-apple-darwin.tar.gz
+            sha256: 41e4fb5ab58bfd5853b8b242f3015d9cf51ebff7c4d12b4672881dbb9e683a13
         bin:
           badness: badness
       - targets:
           - darwin_x64
         files:
           - name: badness-x86_64-apple-darwin.tar.gz
-            url: https://github.com/jolars/badness/releases/download/v0.29.1/badness-x86_64-apple-darwin.tar.gz
-            sha256: 259a7921f60eb6f20fa6e87721ee27e36ebbc8960a23ffc76a0c98d9d2a19625
+            url: https://github.com/jolars/badness/releases/download/v0.30.0/badness-x86_64-apple-darwin.tar.gz
+            sha256: a3c4b0b0963ca0949f28f933fc507a6005a30baad853cc832591b034936652cf
         bin:
           badness: badness
       - targets:
           - linux_arm64_gnu
         files:
           - name: badness-aarch64-unknown-linux-gnu.tar.gz
-            url: https://github.com/jolars/badness/releases/download/v0.29.1/badness-aarch64-unknown-linux-gnu.tar.gz
-            sha256: dbbbdc854d0eaef4d9e96329995a0791f53f2f92fc1b825179697242effec674
+            url: https://github.com/jolars/badness/releases/download/v0.30.0/badness-aarch64-unknown-linux-gnu.tar.gz
+            sha256: c6f202f4d22e608de223c03d8daf51658d64975f5139607bed56ac6ced6dc693
         bin:
           badness: badness
       - targets:
           - linux_arm64_musl
         files:
           - name: badness-aarch64-unknown-linux-musl.tar.gz
-            url: https://github.com/jolars/badness/releases/download/v0.29.1/badness-aarch64-unknown-linux-musl.tar.gz
-            sha256: ca3f95eff1444f94237812d817cae34a79439b0964aaafa94b36fdaf092ef5e8
+            url: https://github.com/jolars/badness/releases/download/v0.30.0/badness-aarch64-unknown-linux-musl.tar.gz
+            sha256: 3023cb57ebad140e4cb43ea7c0cb408f3dca189a9f8bfe78683cb90bd5851d95
         bin:
           badness: badness
       - targets:
           - linux_x64_gnu
         files:
           - name: badness-x86_64-unknown-linux-gnu.tar.gz
-            url: https://github.com/jolars/badness/releases/download/v0.29.1/badness-x86_64-unknown-linux-gnu.tar.gz
-            sha256: de9eb6bbec9fd66341f3220f00bfe70c244ada80b99b1d04684c343cec7e9f90
+            url: https://github.com/jolars/badness/releases/download/v0.30.0/badness-x86_64-unknown-linux-gnu.tar.gz
+            sha256: fef131bebb977000af53a0276d5285d4dd5edfe9331f582bc17990c90661b248
         bin:
           badness: badness
       - targets:
           - linux_x64_musl
         files:
           - name: badness-x86_64-unknown-linux-musl.tar.gz
-            url: https://github.com/jolars/badness/releases/download/v0.29.1/badness-x86_64-unknown-linux-musl.tar.gz
-            sha256: ccb3e6da87a4976586dcf4cc18ddbd3e2b47b392d6aa0280f8564c21bc81b812
+            url: https://github.com/jolars/badness/releases/download/v0.30.0/badness-x86_64-unknown-linux-musl.tar.gz
+            sha256: 08fc759c7482c2c3d2254ef916db6d5d22989a862afb3fe5d44a55ce258f4469
         bin:
           badness: badness
       - targets:
           - win_arm64
         files:
           - name: badness-aarch64-pc-windows-msvc.zip
-            url: https://github.com/jolars/badness/releases/download/v0.29.1/badness-aarch64-pc-windows-msvc.zip
-            sha256: 54760184b83f901f6f503a282098cba215cab0ff1aef8bbc8ca91f40fb2f276b
+            url: https://github.com/jolars/badness/releases/download/v0.30.0/badness-aarch64-pc-windows-msvc.zip
+            sha256: 76c94314206ea97dad40db352a903dc3ab8068a023cfe45bfa2cffb8e7dd6b9e
         bin:
           badness: badness.exe
       - targets:
           - win_x64
         files:
           - name: badness-x86_64-pc-windows-msvc.zip
-            url: https://github.com/jolars/badness/releases/download/v0.29.1/badness-x86_64-pc-windows-msvc.zip
-            sha256: 7d63d449794da1bb4dd28ba1225a378814a9e5835e4fc51d9680cf3ea5539e18
+            url: https://github.com/jolars/badness/releases/download/v0.30.0/badness-x86_64-pc-windows-msvc.zip
+            sha256: 52fd4f39b169b4048e55d83cda8bd375c236054c5996849c91ccb4693f077775
         bin:
           badness: badness.exe
     filetypes:
@@ -1764,7 +1764,7 @@ packages:
   - id: cfn-lint
     source: pypi
     coordinate: cfn-lint
-    version: 1.60.1
+    version: 1.61.0
     description: |-
       CloudFormation Linter. Validate AWS CloudFormation YAML/JSON templates against the AWS CloudFormation Resource
       Specification and additional checks. Includes checking valid values for resource properties and best practices.
@@ -2116,7 +2116,7 @@ packages:
   - id: claude-agent-acp
     source: npm
     coordinate: "@agentclientprotocol/claude-agent-acp"
-    version: 0.107.3
+    version: 0.108.0
     description: ACP adapter for the Claude Agent SDK
     homepage: https://github.com/agentclientprotocol/claude-agent-acp
     bin:
@@ -2444,7 +2444,7 @@ packages:
   - id: cobol-language-support
     source: github
     coordinate: eclipse-che4z/che-che4z-lsp-for-cobol
-    version: 2.5.1
+    version: 2.5.2
     description: COBOL Language Support provides autocomplete, highlighting and diagnostics for COBOL code and copybooks
     homepage: https://github.com/eclipse-che4z/che-che4z-lsp-for-cobol
     languages:
@@ -2459,49 +2459,49 @@ packages:
       - targets:
           - darwin_arm64
         files:
-          - name: cobol-language-support-darwin-arm64-2.5.1.vsix
-            url: https://github.com/eclipse-che4z/che-che4z-lsp-for-cobol/releases/download/2.5.1/cobol-language-support-darwin-arm64-2.5.1.vsix
-            sha256: 9da6fa181fde831efd95de1b6b3b63c88d4f4a6d3ce4ba2c07c019a2706ebae5
+          - name: cobol-language-support-darwin-arm64-2.5.2.vsix
+            url: https://github.com/eclipse-che4z/che-che4z-lsp-for-cobol/releases/download/2.5.2/cobol-language-support-darwin-arm64-2.5.2.vsix
+            sha256: 7fdb287f70c74d429b9060a9f1a40646504953b428b8cd462862f46a7bf7506f
         bin:
           cobol-language-support: extension/server/native/server-mac
       - targets:
           - darwin_x64
         files:
-          - name: cobol-language-support-darwin-x64-2.5.1.vsix
-            url: https://github.com/eclipse-che4z/che-che4z-lsp-for-cobol/releases/download/2.5.1/cobol-language-support-darwin-x64-2.5.1.vsix
-            sha256: 8f3411e3cf19293f089196066fb3d307ae5cba77269d75c385c9ec33cb26d30a
+          - name: cobol-language-support-darwin-x64-2.5.2.vsix
+            url: https://github.com/eclipse-che4z/che-che4z-lsp-for-cobol/releases/download/2.5.2/cobol-language-support-darwin-x64-2.5.2.vsix
+            sha256: ca79d141ecfdb2902e44a4e149fbb882dbde688d887cfea9d7f4fe761082c1e3
         bin:
           cobol-language-support: extension/server/native/server-mac
       - targets:
           - linux_arm64
         files:
-          - name: cobol-language-support-linux-arm64-2.5.1.vsix
-            url: https://github.com/eclipse-che4z/che-che4z-lsp-for-cobol/releases/download/2.5.1/cobol-language-support-linux-arm64-2.5.1.vsix
-            sha256: 4161d2ec9aafe6ca302334a0c484d12457a1f4fcb8b65a2289a23b7f07ebc1c2
+          - name: cobol-language-support-linux-arm64-2.5.2.vsix
+            url: https://github.com/eclipse-che4z/che-che4z-lsp-for-cobol/releases/download/2.5.2/cobol-language-support-linux-arm64-2.5.2.vsix
+            sha256: 17f22c5b5bd17adf322981f667f91856e0da7163cc694cbd7e54c808095ec675
         bin:
           cobol-language-support: extension/server/native/server-linux
       - targets:
           - linux_x64
         files:
-          - name: cobol-language-support-linux-x64-2.5.1.vsix
-            url: https://github.com/eclipse-che4z/che-che4z-lsp-for-cobol/releases/download/2.5.1/cobol-language-support-linux-x64-2.5.1.vsix
-            sha256: 53ee5701e666d117c890a7e694a307d0366d333fbde57d5ae06b47fc789fbfdc
+          - name: cobol-language-support-linux-x64-2.5.2.vsix
+            url: https://github.com/eclipse-che4z/che-che4z-lsp-for-cobol/releases/download/2.5.2/cobol-language-support-linux-x64-2.5.2.vsix
+            sha256: 2cae78ba00e2fdfec06ad2471d9cdcc6625e177679af4398c731dcd43c076fe9
         bin:
           cobol-language-support: extension/server/native/server-linux
       - targets:
           - win_arm64
         files:
-          - name: cobol-language-support-win32-arm64-2.5.1.vsix
-            url: https://github.com/eclipse-che4z/che-che4z-lsp-for-cobol/releases/download/2.5.1/cobol-language-support-win32-arm64-2.5.1.vsix
-            sha256: dcc2051b52d9d50887414c2a9845d248a8264d99923f7fac134d97dc45b9d2e6
+          - name: cobol-language-support-win32-arm64-2.5.2.vsix
+            url: https://github.com/eclipse-che4z/che-che4z-lsp-for-cobol/releases/download/2.5.2/cobol-language-support-win32-arm64-2.5.2.vsix
+            sha256: 196c6099d3b15ffe7f38582973755c82237dab5d94056ad7c41a18745a6d2f13
         bin:
           cobol-language-support: extension/server/native/engine.exe
       - targets:
           - win_x64
         files:
-          - name: cobol-language-support-win32-x64-2.5.1.vsix
-            url: https://github.com/eclipse-che4z/che-che4z-lsp-for-cobol/releases/download/2.5.1/cobol-language-support-win32-x64-2.5.1.vsix
-            sha256: e52a2e5ca36446065a842f2347ab22a44bcc1c449cd2b2f92e53c986a2248bd3
+          - name: cobol-language-support-win32-x64-2.5.2.vsix
+            url: https://github.com/eclipse-che4z/che-che4z-lsp-for-cobol/releases/download/2.5.2/cobol-language-support-win32-x64-2.5.2.vsix
+            sha256: f0ac63488c793f71d486d2d8e18306d4bdc64c5915eb5d9226dd8b4dddf3a3c6
         bin:
           cobol-language-support: extension/server/native/engine.exe
     filetypes:
@@ -2669,7 +2669,7 @@ packages:
   - id: codeql
     source: github
     coordinate: github/codeql-cli-binaries
-    version: v2.27.4
+    version: v2.27.5
     description: |-
       Discover vulnerabilities across a codebase with CodeQL, our industry-leading semantic code analysis engine. CodeQL
       lets you query code as though it were data. Write a query to find all variants of a vulnerability, eradicating it
@@ -2689,24 +2689,24 @@ packages:
           - darwin_arm64
         files:
           - name: codeql-osx64.zip
-            url: https://github.com/github/codeql-cli-binaries/releases/download/v2.27.4/codeql-osx64.zip
-            sha256: 7da72a7a758ef272985cce665ddb22bccc0b0a212f09f175d943eb5ff5fc57e4
+            url: https://github.com/github/codeql-cli-binaries/releases/download/v2.27.5/codeql-osx64.zip
+            sha256: 8ae1473137e44e8f701b75d34055dde10ba09f9deaabbb504fc13d18e4281576
         bin:
           codeql: codeql/codeql
       - targets:
           - linux_x64
         files:
           - name: codeql-linux64.zip
-            url: https://github.com/github/codeql-cli-binaries/releases/download/v2.27.4/codeql-linux64.zip
-            sha256: 393bf92b66596141ec93baf9b483f4a350f3749916c922fed0dd63c67706047d
+            url: https://github.com/github/codeql-cli-binaries/releases/download/v2.27.5/codeql-linux64.zip
+            sha256: 9026c01f4aa4ccd66fe734c8fe037e7a03aecfe151f681760922c304dda14208
         bin:
           codeql: codeql/codeql
       - targets:
           - win_x64
         files:
           - name: codeql-win64.zip
-            url: https://github.com/github/codeql-cli-binaries/releases/download/v2.27.4/codeql-win64.zip
-            sha256: a7ab5f73a8f440c3269f6660deb1d34f76005e756ccdf58c84c5ff88355453db
+            url: https://github.com/github/codeql-cli-binaries/releases/download/v2.27.5/codeql-win64.zip
+            sha256: f8a7df76e49359a954344dfdc2918e117636907c49c8e43b68c50cfefbaf64e8
         bin:
           codeql: codeql/codeql.exe
     filetypes:
@@ -2849,7 +2849,7 @@ packages:
   - id: copilot-language-server
     source: npm
     coordinate: "@github/copilot-language-server"
-    version: 1.572.0
+    version: 1.573.0
     description: The Copilot Language Server enables any editor or IDE to integrate with GitHub Copilot via the language server protocol.
     homepage: https://www.npmjs.com/package/@github/copilot-language-server
     categories:
@@ -3157,7 +3157,7 @@ packages:
   - id: cspell
     source: npm
     coordinate: cspell
-    version: 10.5.1
+    version: 10.5.2
     description: A Spell Checker for Code.
     homepage: https://github.com/streetsidesoftware/cspell
     categories:
@@ -4098,7 +4098,7 @@ packages:
   - id: docker-language-server
     source: github
     coordinate: docker/docker-language-server
-    version: v0.20.1
+    version: v0.20.2
     description: Language server for Dockerfiles, Compose files, and Bake files.
     homepage: https://github.com/docker/docker-language-server
     languages:
@@ -4113,67 +4113,67 @@ packages:
       - targets:
           - darwin_x64
         files:
-          - name: docker-language-server-darwin-amd64-v0.20.1
-            url: https://github.com/docker/docker-language-server/releases/download/v0.20.1/docker-language-server-darwin-amd64-v0.20.1
-            sha256: 2dbaec15645e940d1e02092f5b5e10148531a6206225e71faab7bfe71130b457
+          - name: docker-language-server-darwin-amd64-v0.20.2
+            url: https://github.com/docker/docker-language-server/releases/download/v0.20.2/docker-language-server-darwin-amd64-v0.20.2
+            sha256: ae1d9107fbb854858cd2b1493b162055f14df96712639e698e75fb5815bc5716
         bin:
-          docker-language-server: docker-language-server-darwin-amd64-v0.20.1
+          docker-language-server: docker-language-server-darwin-amd64-v0.20.2
       - targets:
           - darwin_arm64
         files:
-          - name: docker-language-server-darwin-arm64-v0.20.1
-            url: https://github.com/docker/docker-language-server/releases/download/v0.20.1/docker-language-server-darwin-arm64-v0.20.1
-            sha256: 5a9d48fd2b1334d7d20a62faf542e611cca32dc79a478553ad65c27437467fac
+          - name: docker-language-server-darwin-arm64-v0.20.2
+            url: https://github.com/docker/docker-language-server/releases/download/v0.20.2/docker-language-server-darwin-arm64-v0.20.2
+            sha256: 1a3050ad5e2174f0213f90e16aee26b19c59e3d4ecdaf2acbfb083ee242e6694
         bin:
-          docker-language-server: docker-language-server-darwin-arm64-v0.20.1
+          docker-language-server: docker-language-server-darwin-arm64-v0.20.2
       - targets:
           - linux_arm64_gnu
         files:
-          - name: docker-language-server-linux-arm64-v0.20.1
-            url: https://github.com/docker/docker-language-server/releases/download/v0.20.1/docker-language-server-linux-arm64-v0.20.1
-            sha256: bd56c7815e0a22cfb708669f3d5e817de91d9b54039ff7e52867142a132ad8d7
+          - name: docker-language-server-linux-arm64-v0.20.2
+            url: https://github.com/docker/docker-language-server/releases/download/v0.20.2/docker-language-server-linux-arm64-v0.20.2
+            sha256: 8c269140a4e347f7e9308b694ec74a455c49d97800e37c02cdcdcbe409bc13ae
         bin:
-          docker-language-server: docker-language-server-linux-arm64-v0.20.1
+          docker-language-server: docker-language-server-linux-arm64-v0.20.2
       - targets:
           - linux_arm64_musl
         files:
-          - name: docker-language-server-linux-arm64-v0.20.1
-            url: https://github.com/docker/docker-language-server/releases/download/v0.20.1/docker-language-server-linux-arm64-v0.20.1
-            sha256: bd56c7815e0a22cfb708669f3d5e817de91d9b54039ff7e52867142a132ad8d7
+          - name: docker-language-server-linux-arm64-v0.20.2
+            url: https://github.com/docker/docker-language-server/releases/download/v0.20.2/docker-language-server-linux-arm64-v0.20.2
+            sha256: 8c269140a4e347f7e9308b694ec74a455c49d97800e37c02cdcdcbe409bc13ae
         bin:
-          docker-language-server: docker-language-server-linux-arm64-v0.20.1
+          docker-language-server: docker-language-server-linux-arm64-v0.20.2
       - targets:
           - linux_x64_gnu
         files:
-          - name: docker-language-server-linux-amd64-v0.20.1
-            url: https://github.com/docker/docker-language-server/releases/download/v0.20.1/docker-language-server-linux-amd64-v0.20.1
-            sha256: 01907aa5b0eae11e44cffea0a993d08aa155542a9af570295dd1dff39e67692a
+          - name: docker-language-server-linux-amd64-v0.20.2
+            url: https://github.com/docker/docker-language-server/releases/download/v0.20.2/docker-language-server-linux-amd64-v0.20.2
+            sha256: 62001a70c364b37c91ffc64483ef9da8a38abd23b7bcda1a91379006a018830d
         bin:
-          docker-language-server: docker-language-server-linux-amd64-v0.20.1
+          docker-language-server: docker-language-server-linux-amd64-v0.20.2
       - targets:
           - linux_x64_musl
         files:
-          - name: docker-language-server-linux-amd64-v0.20.1
-            url: https://github.com/docker/docker-language-server/releases/download/v0.20.1/docker-language-server-linux-amd64-v0.20.1
-            sha256: 01907aa5b0eae11e44cffea0a993d08aa155542a9af570295dd1dff39e67692a
+          - name: docker-language-server-linux-amd64-v0.20.2
+            url: https://github.com/docker/docker-language-server/releases/download/v0.20.2/docker-language-server-linux-amd64-v0.20.2
+            sha256: 62001a70c364b37c91ffc64483ef9da8a38abd23b7bcda1a91379006a018830d
         bin:
-          docker-language-server: docker-language-server-linux-amd64-v0.20.1
+          docker-language-server: docker-language-server-linux-amd64-v0.20.2
       - targets:
           - win_arm64
         files:
-          - name: docker-language-server-windows-arm64-v0.20.1.exe
-            url: https://github.com/docker/docker-language-server/releases/download/v0.20.1/docker-language-server-windows-arm64-v0.20.1.exe
-            sha256: ac1c1190deb7b605829a11702222eb5fe8a68968c287c8af34615f4f92c0712d
+          - name: docker-language-server-windows-arm64-v0.20.2.exe
+            url: https://github.com/docker/docker-language-server/releases/download/v0.20.2/docker-language-server-windows-arm64-v0.20.2.exe
+            sha256: 02323aa914cccbab1061a325767f1b3c20ab3e102eb8bf4d1d8c18399aeb5e3a
         bin:
-          docker-language-server: docker-language-server-windows-arm64-v0.20.1.exe
+          docker-language-server: docker-language-server-windows-arm64-v0.20.2.exe
       - targets:
           - win_x64
         files:
-          - name: docker-language-server-windows-amd64-v0.20.1.exe
-            url: https://github.com/docker/docker-language-server/releases/download/v0.20.1/docker-language-server-windows-amd64-v0.20.1.exe
-            sha256: 3c1e5019cbd9779341d39c94589d058434ef295b3a1a0c0e89bdfb7ae4d59e2e
+          - name: docker-language-server-windows-amd64-v0.20.2.exe
+            url: https://github.com/docker/docker-language-server/releases/download/v0.20.2/docker-language-server-windows-amd64-v0.20.2.exe
+            sha256: 978df7eec848ca3fff0f7f43e04ae55a8db8c3444e7775d7d108682783fa180f
         bin:
-          docker-language-server: docker-language-server-windows-amd64-v0.20.1.exe
+          docker-language-server: docker-language-server-windows-amd64-v0.20.2.exe
   - id: dockerfile-language-server
     source: npm
     coordinate: dockerfile-language-server-nodejs
@@ -4482,7 +4482,7 @@ packages:
   - id: easy-coding-standard
     source: composer
     coordinate: symplify/easy-coding-standard
-    version: 13.3.21
+    version: 13.3.23
     description: Use Coding Standard with 0-knowledge of PHP-CS-Fixer and PHP_CodeSniffer.
     homepage: https://github.com/easy-coding-standard/easy-coding-standard
     languages:
@@ -11602,7 +11602,7 @@ packages:
   - id: oelint-adv
     source: pypi
     coordinate: oelint-adv
-    version: 9.13.0
+    version: 9.14.0
     description: Linter for bitbake recipes.
     homepage: https://github.com/priv-kweihmann/oelint-adv
     languages:
@@ -12282,7 +12282,7 @@ packages:
   - id: perl-lsp
     source: github
     coordinate: tree-sitter-perl/perl-lsp
-    version: v0.9.2
+    version: v0.10.0
     description: A fast Perl language server in Rust with cross-file type inference, completion, goto-def, and rename.
     homepage: https://github.com/tree-sitter-perl/perl-lsp
     languages:
@@ -12298,40 +12298,40 @@ packages:
           - darwin_arm64
         files:
           - name: perl-lsp-aarch64-apple-darwin.tar.gz
-            url: https://github.com/tree-sitter-perl/perl-lsp/releases/download/v0.9.2/perl-lsp-aarch64-apple-darwin.tar.gz
-            sha256: e850b2dc9395f5b38bda8f26d983be07727a6794b3ec4f8365d2dec5e2ebcf95
+            url: https://github.com/tree-sitter-perl/perl-lsp/releases/download/v0.10.0/perl-lsp-aarch64-apple-darwin.tar.gz
+            sha256: a43f261c4bcc0ddccf5dbdf53876ed92b3d3b1c63deda6543abd1e548b497144
         bin:
           perl-lsp: perl-lsp
       - targets:
           - darwin_x64
         files:
           - name: perl-lsp-x86_64-apple-darwin.tar.gz
-            url: https://github.com/tree-sitter-perl/perl-lsp/releases/download/v0.9.2/perl-lsp-x86_64-apple-darwin.tar.gz
-            sha256: bc95f977e3ba8d06c904aa8108a9eb64b0f817383ef364aee4108a044f900f12
+            url: https://github.com/tree-sitter-perl/perl-lsp/releases/download/v0.10.0/perl-lsp-x86_64-apple-darwin.tar.gz
+            sha256: aee9ff28a6ab781b055788a69dc61e3f5aec4cf83f19b2953ed86fa3451f7a55
         bin:
           perl-lsp: perl-lsp
       - targets:
           - linux_arm64
         files:
           - name: perl-lsp-aarch64-unknown-linux-musl.tar.gz
-            url: https://github.com/tree-sitter-perl/perl-lsp/releases/download/v0.9.2/perl-lsp-aarch64-unknown-linux-musl.tar.gz
-            sha256: 6b5097bf4c12e0b0c04ffc796ef8a800e5c8d2c9acda61d5d1fc42fa211abc17
+            url: https://github.com/tree-sitter-perl/perl-lsp/releases/download/v0.10.0/perl-lsp-aarch64-unknown-linux-musl.tar.gz
+            sha256: b62067914848fb29575146a7a485c81b61755b69f90e79bbc1eb7c46b8c679cf
         bin:
           perl-lsp: perl-lsp
       - targets:
           - linux_x64
         files:
           - name: perl-lsp-x86_64-unknown-linux-musl.tar.gz
-            url: https://github.com/tree-sitter-perl/perl-lsp/releases/download/v0.9.2/perl-lsp-x86_64-unknown-linux-musl.tar.gz
-            sha256: c312a2ff97714cd1db853ee1a6c46cd3bcbe39465592817eaadb8be165c456bc
+            url: https://github.com/tree-sitter-perl/perl-lsp/releases/download/v0.10.0/perl-lsp-x86_64-unknown-linux-musl.tar.gz
+            sha256: 5ccbb13162ba405beeefbbbb7ab4f3701376d2e94b688e9cc4a9182e95993867
         bin:
           perl-lsp: perl-lsp
       - targets:
           - win_x64
         files:
           - name: perl-lsp-x86_64-pc-windows-msvc.zip
-            url: https://github.com/tree-sitter-perl/perl-lsp/releases/download/v0.9.2/perl-lsp-x86_64-pc-windows-msvc.zip
-            sha256: 2fa15bfcdaa2982cf8ff9247a31577207e3d58842ea91e6e9b6e923338c344c4
+            url: https://github.com/tree-sitter-perl/perl-lsp/releases/download/v0.10.0/perl-lsp-x86_64-pc-windows-msvc.zip
+            sha256: 2f6f375ee84cd7cde292b079d2728fa07657858d4ee062453529831b2bf7306b
         bin:
           perl-lsp: perl-lsp.exe
     filetypes:
@@ -12610,7 +12610,7 @@ packages:
   - id: phpstan
     source: github
     coordinate: phpstan/phpstan
-    version: 2.3.6
+    version: 2.3.7
     description: PHP Static Analysis Tool - discover bugs in your code without running it!
     homepage: https://github.com/phpstan/phpstan
     languages:
@@ -12625,8 +12625,8 @@ packages:
       - targets: []
         files:
           - name: phpstan.phar
-            url: https://github.com/phpstan/phpstan/releases/download/2.3.6/phpstan.phar
-            sha256: bd5af896c8eb831e10873a4407c37ac33118dcd88de4ea77e13cd6e6702a41cc
+            url: https://github.com/phpstan/phpstan/releases/download/2.3.7/phpstan.phar
+            sha256: 87fa9aa451bb9b61d7c65d40ec7d14d5bab67e3ad74ce75a09b3140d6f22631a
     requires:
       - php
     filetypes:
@@ -13328,7 +13328,7 @@ packages:
   - id: psalm
     source: composer
     coordinate: vimeo/psalm
-    version: 7.11.0
+    version: 7.12.0
     description: A static analysis tool for finding errors in PHP applications.
     homepage: https://psalm.dev/
     languages:
@@ -13689,7 +13689,7 @@ packages:
   - id: pymobiledevice3
     source: pypi
     coordinate: pymobiledevice3
-    version: 11.59.0
+    version: 11.61.1
     description: Pure python3 implementation for working with iDevices (iPhone, etc...).
     homepage: https://github.com/doronz88/pymobiledevice3
     languages:
@@ -13725,7 +13725,7 @@ packages:
   - id: pyproject-fmt
     source: pypi
     coordinate: pyproject-fmt
-    version: 2.31.1
+    version: 2.31.2
     description: Format your pyproject.toml file
     homepage: https://pypi.org/project/pyproject-fmt/
     languages:
@@ -14689,7 +14689,7 @@ packages:
   - id: ruff
     source: github
     coordinate: astral-sh/ruff
-    version: 0.17.5
+    version: 0.17.6
     description: An extremely fast Python linter and code formatter, written in Rust.
     homepage: https://github.com/astral-sh/ruff/
     languages:
@@ -14707,88 +14707,88 @@ packages:
           - darwin_x64
         files:
           - name: ruff-x86_64-apple-darwin.tar.gz
-            url: https://github.com/astral-sh/ruff/releases/download/0.17.5/ruff-x86_64-apple-darwin.tar.gz
-            sha256: 892f70854ebcd70d873b1bee8358cfd3a1e3180388e3851e3fd3e4a1d5a4dfdd
+            url: https://github.com/astral-sh/ruff/releases/download/0.17.6/ruff-x86_64-apple-darwin.tar.gz
+            sha256: 5e554db9c2663e1b84911446cab0a9fd4aa6d9a14dc751a4869d2f92209dcb70
         bin:
           ruff: ruff-x86_64-apple-darwin/ruff
       - targets:
           - darwin_arm64
         files:
           - name: ruff-aarch64-apple-darwin.tar.gz
-            url: https://github.com/astral-sh/ruff/releases/download/0.17.5/ruff-aarch64-apple-darwin.tar.gz
-            sha256: 4ffadabec5c5fee1ddb2eecac0787ffe6fa18c665b73da9258b84211f40c5829
+            url: https://github.com/astral-sh/ruff/releases/download/0.17.6/ruff-aarch64-apple-darwin.tar.gz
+            sha256: 72a886253072cd1bb6a5978a33a5a7add848ee315a8b0f1589f164a11c26328d
         bin:
           ruff: ruff-aarch64-apple-darwin/ruff
       - targets:
           - linux_x64
         files:
           - name: ruff-x86_64-unknown-linux-musl.tar.gz
-            url: https://github.com/astral-sh/ruff/releases/download/0.17.5/ruff-x86_64-unknown-linux-musl.tar.gz
-            sha256: dc94b7e225b8910fb6f55298ada32d00e356dbd195a5ffb647847f388cb54f84
+            url: https://github.com/astral-sh/ruff/releases/download/0.17.6/ruff-x86_64-unknown-linux-musl.tar.gz
+            sha256: 3c8d5a4264558df8b1587ce32409b658069b6a1ef5bfe4d279431eb1db62a183
         bin:
           ruff: ruff-x86_64-unknown-linux-musl/ruff
       - targets:
           - linux_arm64
         files:
           - name: ruff-aarch64-unknown-linux-gnu.tar.gz
-            url: https://github.com/astral-sh/ruff/releases/download/0.17.5/ruff-aarch64-unknown-linux-gnu.tar.gz
-            sha256: 4d959d4322a8cd3effe11e9fc6743da1dbb41cd0b2476e433b6e6bfd9a69b626
+            url: https://github.com/astral-sh/ruff/releases/download/0.17.6/ruff-aarch64-unknown-linux-gnu.tar.gz
+            sha256: d4eea36ee6228f6c6bbcf0aea4ebf66fe0e595eedc6cffe628d7b8ba3623390f
         bin:
           ruff: ruff-aarch64-unknown-linux-gnu/ruff
       - targets:
           - linux_x64_musl
         files:
           - name: ruff-x86_64-unknown-linux-musl.tar.gz
-            url: https://github.com/astral-sh/ruff/releases/download/0.17.5/ruff-x86_64-unknown-linux-musl.tar.gz
-            sha256: dc94b7e225b8910fb6f55298ada32d00e356dbd195a5ffb647847f388cb54f84
+            url: https://github.com/astral-sh/ruff/releases/download/0.17.6/ruff-x86_64-unknown-linux-musl.tar.gz
+            sha256: 3c8d5a4264558df8b1587ce32409b658069b6a1ef5bfe4d279431eb1db62a183
         bin:
           ruff: ruff-x86_64-unknown-linux-musl/ruff
       - targets:
           - linux_arm64_musl
         files:
           - name: ruff-aarch64-unknown-linux-musl.tar.gz
-            url: https://github.com/astral-sh/ruff/releases/download/0.17.5/ruff-aarch64-unknown-linux-musl.tar.gz
-            sha256: 98f5ee4cf0cd2ad122ef61bbcce236782e5ac3cd00122dcf458ce19488863428
+            url: https://github.com/astral-sh/ruff/releases/download/0.17.6/ruff-aarch64-unknown-linux-musl.tar.gz
+            sha256: dc96feed20df78c9498106cd2483e710a4db8b00b13a75954b2a37bc9f61e65c
         bin:
           ruff: ruff-aarch64-unknown-linux-musl/ruff
       - targets:
           - linux_x86
         files:
           - name: ruff-i686-unknown-linux-gnu.tar.gz
-            url: https://github.com/astral-sh/ruff/releases/download/0.17.5/ruff-i686-unknown-linux-gnu.tar.gz
-            sha256: 9a9cdada9b0c8ad1e19a8169f6c01e6c844ffef7f0e53925f239d1967f8801db
+            url: https://github.com/astral-sh/ruff/releases/download/0.17.6/ruff-i686-unknown-linux-gnu.tar.gz
+            sha256: 2420011b02bd27e302cf8c9eb89fcabc5fd40b160dbb92f10eb05cde01f6354d
         bin:
           ruff: ruff-i686-unknown-linux-gnu/ruff
       - targets:
           - linux_armv7_gnu
         files:
           - name: ruff-armv7-unknown-linux-gnueabihf.tar.gz
-            url: https://github.com/astral-sh/ruff/releases/download/0.17.5/ruff-armv7-unknown-linux-gnueabihf.tar.gz
-            sha256: dd78e039952c8b7205848553c0851299b108e716b9f414eee1d8e9ce9e41d280
+            url: https://github.com/astral-sh/ruff/releases/download/0.17.6/ruff-armv7-unknown-linux-gnueabihf.tar.gz
+            sha256: 2bd513dd430e7758915be3a4f8192acfa884e6dac4921c5e99c7600676aabd09
         bin:
           ruff: ruff-armv7-unknown-linux-gnueabihf/ruff
       - targets:
           - win_x64
         files:
           - name: ruff-x86_64-pc-windows-msvc.zip
-            url: https://github.com/astral-sh/ruff/releases/download/0.17.5/ruff-x86_64-pc-windows-msvc.zip
-            sha256: 6e1284ce4e2fa0ea7b4a28d0947f59c63e6983aa8b2e5b04402b0e59376405ca
+            url: https://github.com/astral-sh/ruff/releases/download/0.17.6/ruff-x86_64-pc-windows-msvc.zip
+            sha256: 00c5d5793d308e8575b16b7303527110dd49bd02d46db0a8668b0eefdca14c2e
         bin:
           ruff: ruff.exe
       - targets:
           - win_arm64
         files:
           - name: ruff-aarch64-pc-windows-msvc.zip
-            url: https://github.com/astral-sh/ruff/releases/download/0.17.5/ruff-aarch64-pc-windows-msvc.zip
-            sha256: 037fee4b6a171e81c910f30a6067857d254b78d4ca57eafaeead30854c15c543
+            url: https://github.com/astral-sh/ruff/releases/download/0.17.6/ruff-aarch64-pc-windows-msvc.zip
+            sha256: fdb5146498cd30b7af288c8becab610a30aa7d300d899927347f49e99766dd85
         bin:
           ruff: ruff.exe
       - targets:
           - win_x86
         files:
           - name: ruff-i686-pc-windows-msvc.zip
-            url: https://github.com/astral-sh/ruff/releases/download/0.17.5/ruff-i686-pc-windows-msvc.zip
-            sha256: a9091457795a29d01f6bad88d466be009e71377a5c8ca15caa42dc8e85273a68
+            url: https://github.com/astral-sh/ruff/releases/download/0.17.6/ruff-i686-pc-windows-msvc.zip
+            sha256: ba23ab6f8801c0eaf5b20ad5c988c1dd2d7bed720ddaf71f742b10e7923bf704
         bin:
           ruff: ruff.exe
     filetypes:
@@ -15449,7 +15449,7 @@ packages:
   - id: shopify-cli
     source: npm
     coordinate: "@shopify/cli"
-    version: 5.0.1
+    version: 5.0.2
     description: Command-line interface tool that helps you generate and work with Shopify apps, themes and custom storefronts.
     homepage: https://shopify.dev/docs/api/shopify-cli
     languages:
@@ -15469,7 +15469,7 @@ packages:
   - id: shuck
     source: github
     coordinate: ewhauser/shuck
-    version: v0.2.7
+    version: v0.2.11
     description: A lightning fast shell linter, formatter, and LSP server for bash, zsh, posix, and mksh dialects.
     homepage: https://ewhauser.github.io/shuck/
     languages:
@@ -15490,48 +15490,48 @@ packages:
           - darwin_arm64
         files:
           - name: shuck-cli-aarch64-apple-darwin.tar.xz
-            url: https://github.com/ewhauser/shuck/releases/download/v0.2.7/shuck-cli-aarch64-apple-darwin.tar.xz
-            sha256: c831ad2f92d15ad05a39188f78f0f4dc518937bd4019ea38eb67c3f266706903
+            url: https://github.com/ewhauser/shuck/releases/download/v0.2.11/shuck-cli-aarch64-apple-darwin.tar.xz
+            sha256: 089a2ace3bd8b414f615c2c9bfd217a0d2b5302a428e0fefa821e7188a43e5f7
         bin:
           shuck: shuck-cli-aarch64-apple-darwin/shuck
       - targets:
           - linux_arm64_gnu
         files:
           - name: shuck-cli-aarch64-unknown-linux-gnu.tar.xz
-            url: https://github.com/ewhauser/shuck/releases/download/v0.2.7/shuck-cli-aarch64-unknown-linux-gnu.tar.xz
-            sha256: 0cdafbba17fefb67bd998e1bc2dfb7c3d34bdce2ca58affca28b0c46cd7fc800
+            url: https://github.com/ewhauser/shuck/releases/download/v0.2.11/shuck-cli-aarch64-unknown-linux-gnu.tar.xz
+            sha256: d1ac87a617edc875932edc00fedfa7b995ad878a7e1b0ab14bf5403245d9e8d4
         bin:
           shuck: shuck-cli-aarch64-unknown-linux-gnu/shuck
       - targets:
           - linux_arm64_musl
         files:
           - name: shuck-cli-aarch64-unknown-linux-musl.tar.xz
-            url: https://github.com/ewhauser/shuck/releases/download/v0.2.7/shuck-cli-aarch64-unknown-linux-musl.tar.xz
-            sha256: 7e9763353b9afb5f8eed53896a5c8ab9d4758a49eacedf72fdaa211694aa2ef8
+            url: https://github.com/ewhauser/shuck/releases/download/v0.2.11/shuck-cli-aarch64-unknown-linux-musl.tar.xz
+            sha256: 60d931f7aebae87e89adcbf6d03bb5635376a0308ddaaf4de389810fbfb60fdb
         bin:
           shuck: shuck-cli-aarch64-unknown-linux-musl/shuck
       - targets:
           - linux_x64_gnu
         files:
           - name: shuck-cli-x86_64-unknown-linux-gnu.tar.xz
-            url: https://github.com/ewhauser/shuck/releases/download/v0.2.7/shuck-cli-x86_64-unknown-linux-gnu.tar.xz
-            sha256: 66db3daa642210657876c9f57bc69b76c4215d3e80cbee591ed729bfeb910215
+            url: https://github.com/ewhauser/shuck/releases/download/v0.2.11/shuck-cli-x86_64-unknown-linux-gnu.tar.xz
+            sha256: 7cf0a7811bae7c33dad70c0affa4f766c413766782090c9d37197d853bc7c5da
         bin:
           shuck: shuck-cli-x86_64-unknown-linux-gnu/shuck
       - targets:
           - linux_x64_musl
         files:
           - name: shuck-cli-x86_64-unknown-linux-musl.tar.xz
-            url: https://github.com/ewhauser/shuck/releases/download/v0.2.7/shuck-cli-x86_64-unknown-linux-musl.tar.xz
-            sha256: abac1f0a8722067483479e6ed4db858bc7a69c18c2bf4b6141b37411a0f68ffd
+            url: https://github.com/ewhauser/shuck/releases/download/v0.2.11/shuck-cli-x86_64-unknown-linux-musl.tar.xz
+            sha256: 539649355bed7d9dd32c83d622f3568cf63457d5119fe7dc295515e0ede48297
         bin:
           shuck: shuck-cli-x86_64-unknown-linux-musl/shuck
       - targets:
           - win_x64
         files:
           - name: shuck-cli-x86_64-pc-windows-msvc.zip
-            url: https://github.com/ewhauser/shuck/releases/download/v0.2.7/shuck-cli-x86_64-pc-windows-msvc.zip
-            sha256: 37f720ea9f952e877e94ffad9902e5b6bd2fb5e3a59e290e33c50ce40b74439b
+            url: https://github.com/ewhauser/shuck/releases/download/v0.2.11/shuck-cli-x86_64-pc-windows-msvc.zip
+            sha256: d00980386a5e07b7667102e65de5ef55741a631006091596f79bb3697f3384af
         bin:
           shuck: shuck.exe
     filetypes:
@@ -15613,7 +15613,7 @@ packages:
   - id: slang
     source: github
     coordinate: shader-slang/slang
-    version: v2026.22
+    version: v2026.22.1
     description: |-
       Slang is a shading language that makes it easier to build and maintain large shader codebases in a modular and
       extensible fashion, while also maintaining the highest possible performance on modern GPUs and graphics APIs. Slang is
@@ -15634,45 +15634,45 @@ packages:
       - targets:
           - linux_x64_gnu
         files:
-          - name: slang-2026.22-linux-x86_64.tar.gz
-            url: https://github.com/shader-slang/slang/releases/download/v2026.22/slang-2026.22-linux-x86_64.tar.gz
-            sha256: a877b75c6ec515f5d8bf66ea4bae4f0a5ba85050b9540c2046670285808347e6
+          - name: slang-2026.22.1-linux-x86_64.tar.gz
+            url: https://github.com/shader-slang/slang/releases/download/v2026.22.1/slang-2026.22.1-linux-x86_64.tar.gz
+            sha256: 37156099ebaabf62cd92522eba55eb93b8663e65ea3be618ce015d9a8edda6bc
         bin:
           slangd: bin/slangd
           slangc: bin/slangc
       - targets:
           - darwin_x64
         files:
-          - name: slang-2026.22-macos-x86_64.tar.gz
-            url: https://github.com/shader-slang/slang/releases/download/v2026.22/slang-2026.22-macos-x86_64.tar.gz
-            sha256: baad48f7432c1826a84a396d9bd6a2ebc3c9ceb395a187baad49d29066fbcd02
+          - name: slang-2026.22.1-macos-x86_64.tar.gz
+            url: https://github.com/shader-slang/slang/releases/download/v2026.22.1/slang-2026.22.1-macos-x86_64.tar.gz
+            sha256: 4288c32f577d2444b211f6d40f490bfe73276c48ffc5bb8ce90e4ff29b209d2b
         bin:
           slangd: bin/slangd
           slangc: bin/slangc
       - targets:
           - darwin_arm64
         files:
-          - name: slang-2026.22-macos-aarch64.tar.gz
-            url: https://github.com/shader-slang/slang/releases/download/v2026.22/slang-2026.22-macos-aarch64.tar.gz
-            sha256: 885b5bd9a79a1ae81fdb92212f5f7c785001f870d45c39f9bb5df01339db3fea
+          - name: slang-2026.22.1-macos-aarch64.tar.gz
+            url: https://github.com/shader-slang/slang/releases/download/v2026.22.1/slang-2026.22.1-macos-aarch64.tar.gz
+            sha256: 1d5370a07be409b94685ea4bd84b7bd191313a6b1fae8795f451009bc0dc3fd7
         bin:
           slangd: bin/slangd
           slangc: bin/slangc
       - targets:
           - win_x64
         files:
-          - name: slang-2026.22-windows-x86_64.zip
-            url: https://github.com/shader-slang/slang/releases/download/v2026.22/slang-2026.22-windows-x86_64.zip
-            sha256: dd0c4a86bd44cdb7e9cf712af0c8ebf2fff1bba19fa5e3c128ff87384e8ff17b
+          - name: slang-2026.22.1-windows-x86_64.zip
+            url: https://github.com/shader-slang/slang/releases/download/v2026.22.1/slang-2026.22.1-windows-x86_64.zip
+            sha256: e72344f7b0323cec8b039c534caaf4680e7ba629489fc796ea4c7f7adb7deb68
         bin:
           slangd: bin/slangd.exe
           slangc: bin/slangc.exe
       - targets:
           - win_arm64
         files:
-          - name: slang-2026.22-windows-aarch64.zip
-            url: https://github.com/shader-slang/slang/releases/download/v2026.22/slang-2026.22-windows-aarch64.zip
-            sha256: 3b74b69e1924d359d3626949b3cde0f6e65068a7b5eb2457e83a351697fe4e71
+          - name: slang-2026.22.1-windows-aarch64.zip
+            url: https://github.com/shader-slang/slang/releases/download/v2026.22.1/slang-2026.22.1-windows-aarch64.zip
+            sha256: 7c50b36af8428533f524604d10cf84936dbd94d8536940d0611cb754ad4bea7c
         bin:
           slangd: bin/slangd.exe
           slangc: bin/slangc.exe
@@ -15918,7 +15918,7 @@ packages:
   - id: snyk
     source: github
     coordinate: snyk/cli
-    version: v1.1308.4
+    version: v1.1309.0
     description: Snyk CLI scans and monitors your projects for security vulnerabilities
     homepage: https://github.com/snyk/cli
     languages:
@@ -15955,40 +15955,40 @@ packages:
           - darwin_x64
         files:
           - name: snyk-macos
-            url: https://github.com/snyk/cli/releases/download/v1.1308.4/snyk-macos
-            sha256: a5dd98a899b2843d4add974682ccb2cc2420d758edb2ac98ff17dde547ae5412
+            url: https://github.com/snyk/cli/releases/download/v1.1309.0/snyk-macos
+            sha256: 886740e8b33e821f46e90ed6510ce09c1aa431f3ff2b16418eb42c4dcb6fe596
         bin:
           snyk: snyk-macos
       - targets:
           - darwin_arm64
         files:
           - name: snyk-macos-arm64
-            url: https://github.com/snyk/cli/releases/download/v1.1308.4/snyk-macos-arm64
-            sha256: dfb90210c5fb7d22e163b6518ed35c3634f6e5903932ef51096c3d768cac8f74
+            url: https://github.com/snyk/cli/releases/download/v1.1309.0/snyk-macos-arm64
+            sha256: 54e7c341d6ab37da4c0a728bcde1064f78faf898f498acb4a214d397ec50ecc0
         bin:
           snyk: snyk-macos-arm64
       - targets:
           - linux_x64_gnu
         files:
           - name: snyk-linux
-            url: https://github.com/snyk/cli/releases/download/v1.1308.4/snyk-linux
-            sha256: 979172ee128903f50e43fff221f22a0689579f22c086dabaa0d1a5416485b9ba
+            url: https://github.com/snyk/cli/releases/download/v1.1309.0/snyk-linux
+            sha256: 4802579c2818938a2f4849d270df1139f310104286a8a5c6305328a3c2eb9e1c
         bin:
           snyk: snyk-linux
       - targets:
           - linux_arm64_gnu
         files:
           - name: snyk-linux-arm64
-            url: https://github.com/snyk/cli/releases/download/v1.1308.4/snyk-linux-arm64
-            sha256: 9cf3e55e4bd216138a86a08f6d4235d5a014459cf0df7150818421fd8e044d48
+            url: https://github.com/snyk/cli/releases/download/v1.1309.0/snyk-linux-arm64
+            sha256: 97d6c5d0aed21d0f8ae0b0b7764acab3c67f5ccd211b1069a6a74fd953e5c600
         bin:
           snyk: snyk-linux-arm64
       - targets:
           - win_x64
         files:
           - name: snyk-win.exe
-            url: https://github.com/snyk/cli/releases/download/v1.1308.4/snyk-win.exe
-            sha256: 0e8616a2ae07f370f4231263daf296a18c7780693c2ba7eccd302295f1e040f3
+            url: https://github.com/snyk/cli/releases/download/v1.1309.0/snyk-win.exe
+            sha256: 659f2bb5e86a2f72e0ec880eab57b841b251fe58ef18a50733ed86c705f14cf1
         bin:
           snyk: snyk-win.exe
     filetypes:
@@ -16218,7 +16218,7 @@ packages:
   - id: solidity
     source: github
     coordinate: ethereum/solidity
-    version: v0.8.38
+    version: v0.8.39
     description: Solidity, the Smart Contract Programming Language.
     homepage: https://github.com/ethereum/solidity
     languages:
@@ -16236,24 +16236,24 @@ packages:
           - darwin_arm64
         files:
           - name: solc-macos
-            url: https://github.com/ethereum/solidity/releases/download/v0.8.38/solc-macos
-            sha256: b18ac1d1f48394c71ca9aefbf0fb94fef24c87b358f48578de5941e234e0a2a9
+            url: https://github.com/ethereum/solidity/releases/download/v0.8.39/solc-macos
+            sha256: 6134d77c433e3b714b64b4101a6147cacff93d50137c0b66ab80825fb274ef51
         bin:
           solc: solc-macos
       - targets:
           - linux_x64
         files:
           - name: solc-static-linux
-            url: https://github.com/ethereum/solidity/releases/download/v0.8.38/solc-static-linux
-            sha256: 65c3180a336eabb6bdc4bbd49cc405aeb233976964ae6c11fba2a6c8be8f3243
+            url: https://github.com/ethereum/solidity/releases/download/v0.8.39/solc-static-linux
+            sha256: b8b0642d46838575d3177628b685564b52f51f2aee546cb4dce781951d23c666
         bin:
           solc: solc-static-linux
       - targets:
           - win_x64
         files:
           - name: solc-windows.exe
-            url: https://github.com/ethereum/solidity/releases/download/v0.8.38/solc-windows.exe
-            sha256: 3fb6699791d7eb9d8cb28168116cc9b5eca9f2bec1ec356f7d66034d91035e9b
+            url: https://github.com/ethereum/solidity/releases/download/v0.8.39/solc-windows.exe
+            sha256: a769165dc9e2f8d006e8ff2b57bf3caf5d905530f7a3fc0e98218a8fabd892e9
         bin:
           solc: solc-windows.exe
     filetypes:
@@ -16361,7 +16361,7 @@ packages:
   - id: sorbet
     source: gem
     coordinate: sorbet
-    version: 0.6.13704
+    version: 0.6.13707
     description: Sorbet is a fast, powerful type checker designed for Ruby.
     homepage: https://sorbet.org/
     languages:
@@ -16496,7 +16496,7 @@ packages:
   - id: sql-formatter
     source: npm
     coordinate: sql-formatter
-    version: 15.9.0
+    version: 15.9.1
     description: A whitespace formatter for different query languages.
     homepage: https://sql-formatter-org.github.io/sql-formatter/
     languages:
@@ -18940,7 +18940,7 @@ packages:
   - id: trufflehog
     source: github
     coordinate: trufflesecurity/trufflehog
-    version: v3.99.9
+    version: v3.100.0
     description: Find and verify credentials.
     homepage: https://github.com/trufflesecurity/trufflehog
     categories:
@@ -18952,49 +18952,49 @@ packages:
       - targets:
           - darwin_x64
         files:
-          - name: trufflehog_3.99.9_darwin_amd64.tar.gz
-            url: https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.9/trufflehog_3.99.9_darwin_amd64.tar.gz
-            sha256: 1f18f69a49a8cfb9d59e730bace971722dfdf79266d9b8cf71e59ac161eb19ae
+          - name: trufflehog_3.100.0_darwin_amd64.tar.gz
+            url: https://github.com/trufflesecurity/trufflehog/releases/download/v3.100.0/trufflehog_3.100.0_darwin_amd64.tar.gz
+            sha256: e69972286bf313d551ad976b75da5395dc660ff316e2db9660e841e328c96210
         bin:
           trufflehog: trufflehog
       - targets:
           - darwin_arm64
         files:
-          - name: trufflehog_3.99.9_darwin_arm64.tar.gz
-            url: https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.9/trufflehog_3.99.9_darwin_arm64.tar.gz
-            sha256: 1d85e5c9c7eddbf12ae2714eb89317ba2cbbbf59be4e161e4b2ff396adbaa3a8
+          - name: trufflehog_3.100.0_darwin_arm64.tar.gz
+            url: https://github.com/trufflesecurity/trufflehog/releases/download/v3.100.0/trufflehog_3.100.0_darwin_arm64.tar.gz
+            sha256: fb326527959216a858636640adcfb93720bb09a7d7e727237c1244cdb3af4ac3
         bin:
           trufflehog: trufflehog
       - targets:
           - linux_x64
         files:
-          - name: trufflehog_3.99.9_linux_amd64.tar.gz
-            url: https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.9/trufflehog_3.99.9_linux_amd64.tar.gz
-            sha256: 12050095c8063bf4d34f9f6cbce6ba9fa8d0deea9d503d0570364feba093658e
+          - name: trufflehog_3.100.0_linux_amd64.tar.gz
+            url: https://github.com/trufflesecurity/trufflehog/releases/download/v3.100.0/trufflehog_3.100.0_linux_amd64.tar.gz
+            sha256: b2d85eba59865e98f45c9fc9f77d2c6d62df529fdd5755af121304ea5a7cecbb
         bin:
           trufflehog: trufflehog
       - targets:
           - linux_arm64
         files:
-          - name: trufflehog_3.99.9_linux_arm64.tar.gz
-            url: https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.9/trufflehog_3.99.9_linux_arm64.tar.gz
-            sha256: 778b1913196dc9b9234e8fd366f64387efeb08c01930a1d2110dcb2ffd07e68b
+          - name: trufflehog_3.100.0_linux_arm64.tar.gz
+            url: https://github.com/trufflesecurity/trufflehog/releases/download/v3.100.0/trufflehog_3.100.0_linux_arm64.tar.gz
+            sha256: aa61657049229ae523e8455fcbba87dff57b0a2ba6bdb391a38cf75e6d4016dd
         bin:
           trufflehog: trufflehog
       - targets:
           - win_x64
         files:
-          - name: trufflehog_3.99.9_windows_amd64.tar.gz
-            url: https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.9/trufflehog_3.99.9_windows_amd64.tar.gz
-            sha256: da6754ea6f16be84fbda9860bdc49492edfa7a141eddc3ac900047fe88d16648
+          - name: trufflehog_3.100.0_windows_amd64.tar.gz
+            url: https://github.com/trufflesecurity/trufflehog/releases/download/v3.100.0/trufflehog_3.100.0_windows_amd64.tar.gz
+            sha256: e3e854ded5b19ce1312fd103f3ca898f367e99f24f27c1170a711e0e9288f86d
         bin:
           trufflehog: trufflehog.exe
       - targets:
           - win_arm64
         files:
-          - name: trufflehog_3.99.9_windows_arm64.tar.gz
-            url: https://github.com/trufflesecurity/trufflehog/releases/download/v3.99.9/trufflehog_3.99.9_windows_arm64.tar.gz
-            sha256: e1872ac23e3310245d924ed365f7a04c08e9f181c552eb8b11989ac28bc6ace6
+          - name: trufflehog_3.100.0_windows_arm64.tar.gz
+            url: https://github.com/trufflesecurity/trufflehog/releases/download/v3.100.0/trufflehog_3.100.0_windows_arm64.tar.gz
+            sha256: 89553c4dbe94eb712226083ddcc0acd72ce2a280f2d542ba8458e483eee3945f
         bin:
           trufflehog: trufflehog.exe
   - id: ts-standard
@@ -19651,7 +19651,7 @@ packages:
   - id: vacuum
     source: github
     coordinate: daveshanley/vacuum
-    version: v0.41.0
+    version: v0.42.1
     description: |-
       vacuum is the worlds fastest OpenAPI 3, OpenAPI 2 / Swagger linter and quality analysis tool. Built in go, it tears
       through API specs faster than you can think. vacuum is compatible with Spectral rulesets and generates compatible
@@ -19669,65 +19669,65 @@ packages:
       - targets:
           - darwin_arm64
         files:
-          - name: vacuum_0.41.0_darwin_arm64.tar.gz
-            url: https://github.com/daveshanley/vacuum/releases/download/v0.41.0/vacuum_0.41.0_darwin_arm64.tar.gz
-            sha256: 9d8c3efb19e4a307743fd4b046b736441c61959e5b6de58d1ee3472b2791c8d3
+          - name: vacuum_0.42.1_darwin_arm64.tar.gz
+            url: https://github.com/daveshanley/vacuum/releases/download/v0.42.1/vacuum_0.42.1_darwin_arm64.tar.gz
+            sha256: 7649c0c0cd541a9be9f924b122ef42f15a1f609fc6f119c2e4b369c0c0241f62
         bin:
           vacuum: vacuum
       - targets:
           - darwin_x64
         files:
-          - name: vacuum_0.41.0_darwin_x86_64.tar.gz
-            url: https://github.com/daveshanley/vacuum/releases/download/v0.41.0/vacuum_0.41.0_darwin_x86_64.tar.gz
-            sha256: fc40e65a8a532151e080a8a562d6903fc1a362d274ab496341fc532822dda27d
+          - name: vacuum_0.42.1_darwin_x86_64.tar.gz
+            url: https://github.com/daveshanley/vacuum/releases/download/v0.42.1/vacuum_0.42.1_darwin_x86_64.tar.gz
+            sha256: 133aa72791532dcd7f8c5d17481466b2211427462e2678854a407ab73e871143
         bin:
           vacuum: vacuum
       - targets:
           - linux_arm64
         files:
-          - name: vacuum_0.41.0_linux_arm64.tar.gz
-            url: https://github.com/daveshanley/vacuum/releases/download/v0.41.0/vacuum_0.41.0_linux_arm64.tar.gz
-            sha256: 3ff590d05aa3ee42b9608f871ae14ae8bc1f90a594c06f3820079f498d9b0cac
+          - name: vacuum_0.42.1_linux_arm64.tar.gz
+            url: https://github.com/daveshanley/vacuum/releases/download/v0.42.1/vacuum_0.42.1_linux_arm64.tar.gz
+            sha256: 308d2c272635ed5c5b2cbd8ffd7e20f0bc9ace1aaeb636fe6237d6ab22407e92
         bin:
           vacuum: vacuum
       - targets:
           - linux_x64
         files:
-          - name: vacuum_0.41.0_linux_x86_64.tar.gz
-            url: https://github.com/daveshanley/vacuum/releases/download/v0.41.0/vacuum_0.41.0_linux_x86_64.tar.gz
-            sha256: 17b9ca0f23c4f926bac3814393684acc81dc40e2f8fffd28812e4bf885d4269f
+          - name: vacuum_0.42.1_linux_x86_64.tar.gz
+            url: https://github.com/daveshanley/vacuum/releases/download/v0.42.1/vacuum_0.42.1_linux_x86_64.tar.gz
+            sha256: 76578241d8696fe5eef5534fb7d9500ca94bb7db6739061ea24afa4705108659
         bin:
           vacuum: vacuum
       - targets:
           - linux_x86
         files:
-          - name: vacuum_0.41.0_linux_i386.tar.gz
-            url: https://github.com/daveshanley/vacuum/releases/download/v0.41.0/vacuum_0.41.0_linux_i386.tar.gz
-            sha256: 3ea1bd018e6fc4883d7a0b556dbf555cd2254bb7d4211802b89e9766395b4dc3
+          - name: vacuum_0.42.1_linux_i386.tar.gz
+            url: https://github.com/daveshanley/vacuum/releases/download/v0.42.1/vacuum_0.42.1_linux_i386.tar.gz
+            sha256: f55ea1703e14a44e4b884387fbca301c7c6c4a2513b0dea055f7231dbc9d4c00
         bin:
           vacuum: vacuum
       - targets:
           - win_arm64
         files:
-          - name: vacuum_0.41.0_windows_arm64.tar.gz
-            url: https://github.com/daveshanley/vacuum/releases/download/v0.41.0/vacuum_0.41.0_windows_arm64.tar.gz
-            sha256: 83b07c4ca15dafdfb21cb391813f677c666d430b33b79c6fb3c45eba8c750d1b
+          - name: vacuum_0.42.1_windows_arm64.tar.gz
+            url: https://github.com/daveshanley/vacuum/releases/download/v0.42.1/vacuum_0.42.1_windows_arm64.tar.gz
+            sha256: 7a8120637777bf0bca78c11b47c324c019836daea4223e1706ca9300949cc5fd
         bin:
           vacuum: vacuum.exe
       - targets:
           - win_x64
         files:
-          - name: vacuum_0.41.0_windows_x86_64.tar.gz
-            url: https://github.com/daveshanley/vacuum/releases/download/v0.41.0/vacuum_0.41.0_windows_x86_64.tar.gz
-            sha256: 32b2df18dab0f5481bc20271bae03421f54e78e0b57b0b772f3ff10278efe2b6
+          - name: vacuum_0.42.1_windows_x86_64.tar.gz
+            url: https://github.com/daveshanley/vacuum/releases/download/v0.42.1/vacuum_0.42.1_windows_x86_64.tar.gz
+            sha256: f47709e458103bdc3b77bdf93fce643b733613bca686bfb52def5af407e1d687
         bin:
           vacuum: vacuum.exe
       - targets:
           - win_x86
         files:
-          - name: vacuum_0.41.0_windows_i386.tar.gz
-            url: https://github.com/daveshanley/vacuum/releases/download/v0.41.0/vacuum_0.41.0_windows_i386.tar.gz
-            sha256: 641f7081edbc7a7af3236b3eb4343479ddfcec2d799a1bd47caed334407df1bc
+          - name: vacuum_0.42.1_windows_i386.tar.gz
+            url: https://github.com/daveshanley/vacuum/releases/download/v0.42.1/vacuum_0.42.1_windows_i386.tar.gz
+            sha256: 0c0c9d4be06b3ef38b9abbcb66d25a859d7374490a4b7aecb27abb4186cde29e
         bin:
           vacuum: vacuum.exe
   - id: vala-language-server
@@ -19765,7 +19765,7 @@ packages:
   - id: vale
     source: github
     coordinate: errata-ai/vale
-    version: v3.27.0
+    version: v3.28.1
     description: A syntax-aware linter for prose built with speed and extensibility in mind.
     homepage: https://vale.sh/
     languages:
@@ -19781,41 +19781,41 @@ packages:
       - targets:
           - darwin_x64
         files:
-          - name: vale_3.27.0_macOS_64-bit.tar.gz
-            url: https://github.com/errata-ai/vale/releases/download/v3.27.0/vale_3.27.0_macOS_64-bit.tar.gz
-            sha256: 0288ab603ee6d67240ac5b97e67b0915efcfc28bb33f212a885110a2a5a6e2bc
+          - name: vale_3.28.1_macOS_64-bit.tar.gz
+            url: https://github.com/errata-ai/vale/releases/download/v3.28.1/vale_3.28.1_macOS_64-bit.tar.gz
+            sha256: 4a59f52678b4e6bd55846fb6c22371ed531a274a614ea8e4d51a365c365b563e
         bin:
           vale: vale
       - targets:
           - darwin_arm64
         files:
-          - name: vale_3.27.0_macOS_arm64.tar.gz
-            url: https://github.com/errata-ai/vale/releases/download/v3.27.0/vale_3.27.0_macOS_arm64.tar.gz
-            sha256: 91bcd6352a832e5995a61dde73ee6367c5006669c6efa4091e0404ec8d7dd7e3
+          - name: vale_3.28.1_macOS_arm64.tar.gz
+            url: https://github.com/errata-ai/vale/releases/download/v3.28.1/vale_3.28.1_macOS_arm64.tar.gz
+            sha256: b5362c16d2c95db9d773078b957f5bd59cef27d05dac34c5248a93fed130e9f1
         bin:
           vale: vale
       - targets:
           - linux_x64
         files:
-          - name: vale_3.27.0_Linux_64-bit.tar.gz
-            url: https://github.com/errata-ai/vale/releases/download/v3.27.0/vale_3.27.0_Linux_64-bit.tar.gz
-            sha256: c80d62f6bce87b81843ac5b512a26e63213927b957adba0a64fc594570da2000
+          - name: vale_3.28.1_Linux_64-bit.tar.gz
+            url: https://github.com/errata-ai/vale/releases/download/v3.28.1/vale_3.28.1_Linux_64-bit.tar.gz
+            sha256: 068954ad869ebec24b8dec6ebcd1cbb1fd5f5a83e966a35baedfae8b2cdc093a
         bin:
           vale: vale
       - targets:
           - linux_arm64
         files:
-          - name: vale_3.27.0_Linux_arm64.tar.gz
-            url: https://github.com/errata-ai/vale/releases/download/v3.27.0/vale_3.27.0_Linux_arm64.tar.gz
-            sha256: dcaee812fd892c5750702d16ed348a1f7113be57c73cf36fe9e016c789cae6e2
+          - name: vale_3.28.1_Linux_arm64.tar.gz
+            url: https://github.com/errata-ai/vale/releases/download/v3.28.1/vale_3.28.1_Linux_arm64.tar.gz
+            sha256: af0ca36ec6133ba20093295591e43ed2823b2632520d1f3811293aa4cbe758f2
         bin:
           vale: vale
       - targets:
           - win_x64
         files:
-          - name: vale_3.27.0_Windows_64-bit.zip
-            url: https://github.com/errata-ai/vale/releases/download/v3.27.0/vale_3.27.0_Windows_64-bit.zip
-            sha256: 26e61cc58ac4180866d068dc2325d2625560c8cc518de7e7b5523211a5ab0cbc
+          - name: vale_3.28.1_Windows_64-bit.zip
+            url: https://github.com/errata-ai/vale/releases/download/v3.28.1/vale_3.28.1_Windows_64-bit.zip
+            sha256: 5ad37282f16f3903bb2ec89a7b7b9e718ef838577ffc1657f892a0068cd9b0f3
         bin:
           vale: vale.exe
     filetypes:
@@ -20798,7 +20798,7 @@ packages:
   - id: xcodegen
     source: github
     coordinate: yonaskolb/XcodeGen
-    version: 2.47.0
+    version: 2.48.0
     description: A Swift command line tool for generating your Xcode project
     homepage: https://github.com/yonaskolb/XcodeGen
     languages:
@@ -20813,24 +20813,24 @@ packages:
           - darwin_arm64
         files:
           - name: xcodegen.artifactbundle.zip
-            url: https://github.com/yonaskolb/XcodeGen/releases/download/2.47.0/xcodegen.artifactbundle.zip
-            sha256: d1df818f2bc998756f0ac20dcd46933922d43fcd1d3a4af93b9559b7b5730dfc
+            url: https://github.com/yonaskolb/XcodeGen/releases/download/2.48.0/xcodegen.artifactbundle.zip
+            sha256: 65a53e31c3e965b3d4383c55160af109043e34c4c029ebcf9247b26a6f20f210
         bin:
-          xcodegen: xcodegen.artifactbundle/xcodegen-2.47.0-macosx/bin/xcodegen
+          xcodegen: xcodegen.artifactbundle/xcodegen-2.48.0-macosx/bin/xcodegen
       - targets:
           - linux_x64_gnu
         files:
           - name: xcodegen.zip
-            url: https://github.com/yonaskolb/XcodeGen/releases/download/2.47.0/xcodegen.zip
-            sha256: 6ef12a3ef5327c2c713397f46d9160550f8b1cdc5c925cd884d65c77c9f696cd
+            url: https://github.com/yonaskolb/XcodeGen/releases/download/2.48.0/xcodegen.zip
+            sha256: 620c9f0dc10849f94728ab5df52d225ebab8187439dd6fee1925e59e80dff892
         bin:
           xcodegen: xcodegen/bin/xcodegen
       - targets:
           - linux_arm64_gnu
         files:
           - name: xcodegen.zip
-            url: https://github.com/yonaskolb/XcodeGen/releases/download/2.47.0/xcodegen.zip
-            sha256: 6ef12a3ef5327c2c713397f46d9160550f8b1cdc5c925cd884d65c77c9f696cd
+            url: https://github.com/yonaskolb/XcodeGen/releases/download/2.48.0/xcodegen.zip
+            sha256: 620c9f0dc10849f94728ab5df52d225ebab8187439dd6fee1925e59e80dff892
         bin:
           xcodegen: xcodegen/bin/xcodegen
     filetypes:
